@@ -1,0 +1,44 @@
+{
+  "about": "A multidisciplinary UX designer and often refers to himself in third person. With a passion for blending creativity and functionality, Irfan delivers visually stunning designs backed by painstakingly thorough decision tree.",
+  "contact": {
+    "hero": [
+      "Irfan,",
+      "Adam,",
+      "M —",
+      "crafting iconic",
+      "interactions",
+      "for people."
+    ],
+    "now": "Fixating right now on Architecture of Interactions",
+    "past": "In the past worked using modular designing approach.",
+    "bio2": "Shaping products through UX Stories. Tinkerer for 6+ yrs. HCI is about to change. Design Systems & Cyberpunk music are my jam.",
+    "wip": "WIP: FUI concepts on Communication, Health, Identity. Aim to be a design engineer.",
+    "quote": "Sophistication isn't complex but made up of much simpler things. It's how they work together."
+  },
+  "socials": [
+    {
+      "name": "Linkedin",
+      "url": "https://www.linkedin.com/in/irfan-adam-m-197408164/"
+    },
+    {
+      "name": "Dribbble",
+      "url": "https://dribbble.com/irfandribble"
+    },
+    {
+      "name": "Medium",
+      "url": "https://medium.com/@irfan.adam.m.1993"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/irfanadammn"
+    },
+    {
+      "name": "Strava",
+      "url": "https://www.strava.com/athletes/17721722"
+    },
+    {
+      "name": "Goodreads",
+      "url": "https://www.goodreads.com/user/show/78073160-irfan-adm-m"
+    }
+  ]
+}

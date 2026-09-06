@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irfan Adam M — Portfolio</title>
+  <meta name="description" content="Working on stories that last." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@500&family=Inter+Tight:wght@500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/tokens.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/masonry.css" />
+  <link rel="stylesheet" href="/src/styles/pages.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="#/" style="text-decoration:none">IRF<small>AN</small></a>
+    <nav>
+      <a class="pill" data-nav="#/" href="#/">Index</a>
+      <a class="pill" data-nav="#/masonry" href="#/masonry">Masonry</a>
+      <a class="pill" data-nav="#/contact" href="#/contact">Contact</a>
+    </nav>
+    <button class="pill on" data-cols="4" title="Masonry">▦</button>
+    <button class="pill" data-cols="3" title="3 cols">☰</button>
+    <button class="pill" data-cols="2" title="2 cols">⋮⋮</button>
+    <div class="spacer"></div>
+    <span class="hint" id="count">14 stories</span>
+    <a class="pill" href="https://irfanadam.framer.website/masonry" target="_blank" rel="noreferrer">↗ Framer</a>
+  </header>
+  <div class="wrap" id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+backend:
+  name: github
+  repo: irfanadam/personal-website
+  branch: main
+  # Requires GitHub OAuth via Netlify/Cloudflare or Decap proxy.
+  # For local editing without GitHub, set local_backend: true and run `npm run cms`
+
+local_backend: true
+
+media_folder: "public/images"
+public_folder: "/images"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General"
+        name: "general"
+        file: "content/settings.json"
+        fields:
+          - { label: "About", name: "about", widget: "text" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Hero Lines", name: "hero", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+              - { label: "Now", name: "now", widget: "string" }
+              - { label: "Past", name: "past", widget: "string" }
+              - { label: "Bio 2", name: "bio2", widget: "text" }
+              - { label: "WIP", name: "wip", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "text" }
+          - label: "Socials"
+            name: "socials"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    path: "{{slug}}.json"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    identifier_field: "slug"
+    summary: "{{title}} ({{slug}})"
+    sort: "order"
+    fields:
+      - { label: "Order", name: "order", widget: "number", value_type: "int", min: 1 }
+      - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "lowercase, numbers, dashes only"] }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category A", name: "catA", widget: "string", required: false }
+      - { label: "Category B", name: "catB", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "string", hint: "e.g. Sep-Dec'24" }
+      - { label: "Timeline", name: "timeline", widget: "string", required: false }
+      - { label: "Role", name: "role", widget: "string", required: false }
+      - { label: "Deliverables", name: "deliverables", widget: "string", required: false }
+      - { label: "Platform", name: "platform", widget: "string", required: false }
+      - { label: "Filter Tag", name: "tag", widget: "select", options: ["crm", "goals"], default: "crm" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false, hint: "Uploads to /public/images" }
+      - { label: "Body", name: "body", widget: "markdown", required: false, hint: "Case study content — supports markdown" }

@@ -1,0 +1,30 @@
+.grid { columns: 4 240px; column-gap: 14px; }
+.grid[data-cols="2"] { columns: 2 240px; }
+.grid[data-cols="3"] { columns: 3 240px; }
+.grid[data-cols="4"] { columns: 4 240px; }
+.card {
+  display: inline-block; width: 100%; margin: 0 0 14px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 4px; overflow: hidden; text-decoration: none;
+  break-inside: avoid;
+}
+.card .img { display: block; overflow: hidden; position: relative; }
+.card img { width: 100%; display: block; object-fit: cover; }
+.card:nth-child(3n) img { aspect-ratio: 3/3.6; }
+.card:nth-child(3n+1) img { aspect-ratio: 3/3.2; }
+.card:nth-child(3n+2) img { aspect-ratio: 3/4.1; }
+.card:hover img { transform: scale(1.02); }
+.card img { transition: transform 0.5s ease; }
+.tags {
+  position: relative; display: flex; gap: 6px;
+  padding: 0; margin: -30px 0 0 10px;
+}
+.tags i {
+  font-style: normal; font-family: 'Chivo Mono', monospace; font-size: 11px;
+  background: var(--chip); color: var(--chip-ink);
+  padding: 3px 7px; border-radius: 2px;
+}
+.meta { display: block; padding: 12px 12px 14px; }
+.meta b { display: block; font-size: 14px; letter-spacing: -0.01em; }
+.meta small { color: var(--muted); font-family: 'Chivo Mono', monospace; }
+@media (max-width: 640px) { .hint { display: none; } }

@@ -1,0 +1,14 @@
+// Content lives in /content/*.json so Decap CMS (/admin) can edit it.
+// Tuple: [slug, title, catA, catB, date, timeline, role, tag, image, deliverables, platform]
+import settings from '../../content/settings.json';
+const files = import.meta.glob('../../content/projects/*.json', { eager: true });
+const items = Object.values(files)
+  .map((m) => m.default ?? m)
+  .sort((a, b) => a.order - b.order);
+export const socials = (settings.socials || []).map((s) => [s.name, s.url]);
+export const about = settings.about || '';
+export const contact = settings.contact || { hero: [], now: '', past: '', bio2: '', wip: '', quote: '' };
+export const bodies = Object.fromEntries(items.map((p) => [p.slug, p.body || '']));
+export const projects = items.map((p) =>
+  [p.slug, p.title, p.catA || '', p.catB || '', p.date, p.timeline, p.role, p.tag, p.image, p.deliverables || '—', p.platform || '—']);
+export const iconFor = (slug) => `/icons/${slug === 'apparel-manufacturing-system-reimagined' ? 'apparel' : slug}.jpg`;
