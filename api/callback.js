@@ -26,29 +26,32 @@ export default async function handler(req, res) {
     }
 
     const token = data.access_token;
-    const provider = 'github';
 
-    // Handle both popup (window.opener) and same-window redirect flows
     const html = `<!doctype html>
 <html><body><script>
 (function() {
   const token = ${JSON.stringify(token)};
-  const provider = ${JSON.stringify(provider)};
-  const msg = 'authorization:' + provider + ':success:' + JSON.stringify({ token, provider });
-  // Popup flow: Decap opened /api/auth in a new window
+  const msg = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });
+  // Try popup flow first
   if (window.opener) {
-    window.opener.postMessage(msg, '*');
-    window.close();
+    try { window.opener.postMessage(msg, '*'); } catch(e) {}
+    try { window.opener.postMessage(msg, window.location.origin); } catch(e) {}
+    // Backup: also store in localStorage so /admin can recover on refresh
+    try {
+      const user = { token: token, provider: 'github', backendName: 'github' };
+      window.opener.localStorage.setItem('decap-cms-user', JSON.stringify(user));
+      window.opener.localStorage.setItem('netlify-cms-user', JSON.stringify(user));
+    } catch(e) {}
+    document.body.innerHTML = '<p style="font-family:sans-serif;padding:40px;text-align:center">Authorized! Closing...</p>';
+    setTimeout(function(){ window.close(); }, 800);
     return;
   }
-  // Same-window flow: browser blocked popup and navigated here directly
-  // Decap stores user in localStorage under 'decap-cms-user' (v3) and 'netlify-cms-user' (compat)
+  // Same-window fallback
   try {
-    const user = { token, provider, backendName: provider };
+    const user = { token: token, provider: 'github', backendName: 'github' };
     localStorage.setItem('decap-cms-user', JSON.stringify(user));
     localStorage.setItem('netlify-cms-user', JSON.stringify(user));
   } catch(e) {}
-  // Go back to admin - Decap will read token from localStorage
   document.body.innerHTML = '<p style="font-family:sans-serif;padding:40px;text-align:center">Authorized! Redirecting to CMS...</p>';
   setTimeout(function(){ window.location.href = '/admin/'; }, 800);
 })();
