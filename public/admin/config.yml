@@ -1,10 +1,12 @@
 backend:
   name: github
-  repo: irfanadam/personal-website
+  repo: IrfanAdam/personal-website
   branch: main
-  # Requires GitHub OAuth via Netlify/Cloudflare or Decap proxy.
-  # For local editing without GitHub, set local_backend: true and run `npm run cms`
+  base_url: https://irfanadam.vercel.app
+  auth_endpoint: api/auth
 
+# Local editing: run `npm run cms:dev` then open http://localhost:5173/admin
+# Decap will use local_backend and skip GitHub OAuth locally.
 local_backend: true
 
 media_folder: "public/images"
