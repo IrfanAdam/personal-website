@@ -28,19 +28,29 @@ export default async function handler(req, res) {
     const token = data.access_token;
     const provider = 'github';
 
-    // Decap CMS expects postMessage: `authorization:github:success:{"token":"...","provider":"github"}`
+    // Handle both popup (window.opener) and same-window redirect flows
     const html = `<!doctype html>
 <html><body><script>
 (function() {
   const token = ${JSON.stringify(token)};
   const provider = ${JSON.stringify(provider)};
   const msg = 'authorization:' + provider + ':success:' + JSON.stringify({ token, provider });
+  // Popup flow: Decap opened /api/auth in a new window
   if (window.opener) {
     window.opener.postMessage(msg, '*');
     window.close();
-  } else {
-    document.body.innerText = 'Auth success. You can close this window. Token: ' + token.slice(0,8) + '...';
+    return;
   }
+  // Same-window flow: browser blocked popup and navigated here directly
+  // Decap stores user in localStorage under 'decap-cms-user' (v3) and 'netlify-cms-user' (compat)
+  try {
+    const user = { token, provider, backendName: provider };
+    localStorage.setItem('decap-cms-user', JSON.stringify(user));
+    localStorage.setItem('netlify-cms-user', JSON.stringify(user));
+  } catch(e) {}
+  // Go back to admin - Decap will read token from localStorage
+  document.body.innerHTML = '<p style="font-family:sans-serif;padding:40px;text-align:center">Authorized! Redirecting to CMS...</p>';
+  setTimeout(function(){ window.location.href = '/admin/'; }, 800);
 })();
 <\/script></body></html>`;
 
