@@ -79,7 +79,7 @@
   --header-bg: var(--color-header); --accent: var(--color-accent);
 }
 /* Dark theme — hand-tuned inversion, not a pure ramp swap. Exactly one source:
-   applied via OS preference or manual [data-theme] override (DS docs toggle). */
+   applied via OS preference or manual [data-theme] override (site + DS toggles). */
 /* Theme scopes: html[data-theme] forces a theme site-wide; any nested
    [data-theme] container (e.g. DS swatch demos) re-declares for its subtree. */
 @media (prefers-color-scheme: dark) { :root {

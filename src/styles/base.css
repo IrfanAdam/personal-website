@@ -22,6 +22,8 @@ body { padding-top: var(--header-h, var(--size-header)); }
 .stripbar :is(a, button) { border-radius: var(--radius-none); }
 .stripbar .strip { flex: 1 1 auto; min-width: 0; padding: var(--space-6) var(--space-2); }
 .strip-meta { display: flex; align-items: center; gap: var(--space-10); flex: none; }
+.theme-switch { display: flex; gap: var(--space-6); align-items: center; }
+.theme-switch .pill { font-family: var(--font-mono); font-size: var(--text-meta); padding: var(--space-4) var(--space-9); }
 @media (prefers-reduced-motion: reduce) { .top { transition: none; } }
 @media (max-width: 640px) {
   .top {
@@ -36,6 +38,9 @@ body { padding-top: var(--header-h, var(--size-header)); }
   .wrap { padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
   footer { padding-bottom: calc(var(--space-28) + env(safe-area-inset-bottom, 0px)); }
   .stripbar { padding: var(--space-8) var(--space-12); gap: var(--space-10); }
+  .stripbar .strip { gap: var(--space-6); }
+  .hint { display: none; }
+  .theme-switch .pill { padding: var(--space-4) var(--space-7); }
 }
 .logo { font-weight: var(--weight-extrabold); letter-spacing: var(--tracking-display); line-height: var(--leading-display); font-size: var(--text-logo); }
 .logo small { display: block; font-size: var(--text-logo); }
