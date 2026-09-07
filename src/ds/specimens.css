@@ -1,0 +1,37 @@
+/* ADAM/DS specimen scaffolding — real site classes, framed for docs.
+   Only neutralizes animation-entry states and adds framing; never restyles
+   the component itself. */
+.ds-spec .card { opacity: 1; translate: none; width: var(--size-ds-card); }
+.ds-spec .card .img { height: var(--size-ds-img); }
+.ds-spec .card.ready .img::before { display: none; }
+.ds-spec .card.ready img { filter: blur(0); }
+.ds-spec .strip { max-width: var(--size-ds-strip); }
+.ds-spec .top { position: static; width: 100%; background: var(--color-header); }
+.ds-spec .top .stripbar { flex-wrap: wrap; }
+.ds-spec .next { margin: 0; }
+.ds-spec footer { margin: 0; padding: var(--space-16) var(--space-4); border-top: var(--border-hairline); }
+.ds-spec .case-grid { border: var(--border-hairline); }
+.ds-spec .case-media { align-self: stretch; }
+.ds-spec .case-media img { height: 100%; object-fit: cover; }
+.ds-spec .works { margin: 0; }
+.ds-spec .work { border-top: none; border-bottom: var(--border-hairline); }
+.ds-spec .spec { margin: 0; }
+.ds-spec .hero { padding: 0; }
+.ds-spec .hero h1 { font-size: var(--text-title); }
+.ds-spec .contact-hero h1 { font-size: var(--text-title); }
+.ds-spec .wrap { max-width: none; padding: 0; }
+.ds-spec .tab-frame { display: none; }
+.ds-spec .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+.ds-spec .col { will-change: auto; }
+/* pinned hover state for docs (mirrors card.css:79-81 :hover/:focus-within) */
+.ds-spec .card.force-hover .tags { opacity: 0; }
+.ds-spec .card.force-hover .scrim { opacity: 1; }
+.ds-spec .card.force-hover .card-info { opacity: 1; translate: 0 0; }
+/* token-scoped demo helpers (docs-only primitives, values from tokens.css) */
+.ds-scale { display: grid; gap: var(--space-8); margin: var(--space-12) 0; }
+.ds-scale-row { display: grid; grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val); gap: var(--space-12); align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.ds-scale-row b { color: var(--color-ink); font-weight: 500; }
+.ds-bar { height: var(--space-10); background: var(--color-ink); }
+.ds-bar.accent { background: var(--color-accent); }
+.ds-ramp { display: flex; height: var(--space-42); border: var(--border-hairline); }
+.ds-ramp i { flex: 1; }

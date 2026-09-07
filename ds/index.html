@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ADAM/DS — Design System</title>
+  <meta name="description" content="Design system for the Irfan Adam portfolio — foundations, tokens, components, and patterns." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@500&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- The DS dogfoods the site's real stylesheets: specimens are pixel-true. -->
+  <link rel="stylesheet" href="/src/styles/tokens.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/pages.css" />
+  <link rel="stylesheet" href="/src/styles/masonry.css" />
+  <link rel="stylesheet" href="/src/styles/card.css" />
+  <link rel="stylesheet" href="/src/ds/ds.css" />
+  <link rel="stylesheet" href="/src/ds/specimens.css" />
+</head>
+<body>
+  <div class="ds-shell">
+    <aside class="ds-side" id="ds-side">
+      <a class="ds-mark" href="#/">ADAM<span>/DS</span></a>
+      <nav class="ds-nav" id="ds-nav" aria-label="Design system"></nav>
+      <div class="ds-side-foot">v1.0.0 · <a href="/">↗ Site</a></div>
+    </aside>
+    <main class="ds-main" id="ds-main"></main>
+  </div>
+  <script type="module" src="/src/ds/ds.js"></script>
+</body>
+</html>

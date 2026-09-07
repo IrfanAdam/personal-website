@@ -1,9 +1,11 @@
 {
   "cleanUrls": false,
   "redirects": [
-    { "source": "/admin", "destination": "/admin/", "permanent": false }
+    { "source": "/admin", "destination": "/admin/", "permanent": false },
+    { "source": "/ds", "destination": "/ds/", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/admin/:path*", "destination": "/admin/:path*" }
+    { "source": "/admin/:path*", "destination": "/admin/:path*" },
+    { "source": "/ds/:path*", "destination": "/ds/:path*" }
   ]
 }
