@@ -1,15 +1,15 @@
 {
-  "order": 8,
+  "timeline": "—",
+  "body": "Hi",
   "slug": "acquapanna",
-  "title": "Onboarding members to a talent network",
   "catA": "",
   "catB": "Mobile App",
+  "order": 8,
   "date": "Oct'20-Jan'21",
-  "timeline": "—",
-  "role": "—",
-  "tag": "crm",
-  "image": "/images/acquapanna.png",
-  "body": "",
+  "platform": "—",
   "deliverables": "—",
-  "platform": "—"
+  "role": "—",
+  "title": "Onboarding members to a talent network",
+  "tag": "crm",
+  "image": "/images/acquapanna.png"
 }
