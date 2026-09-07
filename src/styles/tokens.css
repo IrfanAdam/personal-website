@@ -9,6 +9,11 @@
   --panel: rgba(235, 235, 235, 0.32);
   --header-bg: rgba(244, 242, 238, 0.75);
   --accent: #e8442e;
+  --radius-none: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-pill: 0;
 }
 @media (prefers-color-scheme: dark) {
   :root {

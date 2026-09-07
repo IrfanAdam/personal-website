@@ -15,6 +15,14 @@ const stripLinks = [...stripbar.querySelectorAll('.strip a')];
 let cleanup = null;
 let masonryView = 'grid'; // 'grid' | 'list'
 
+function setHeaderH() {
+  document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+}
+setHeaderH();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderH);
+window.addEventListener('resize', setHeaderH);
+new ResizeObserver(setHeaderH).observe(header);
+
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   let lastY = window.scrollY;
   let ticking = false;

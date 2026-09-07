@@ -10,6 +10,7 @@ const items = Object.values(files)
 export const socials = (settings.socials || []).map((s) => [s.name, s.url]);
 export const about = settings.about || '';
 export const contact = settings.contact || { hero: [], now: '', past: '', bio2: '', wip: '', quote: '' };
+export const profileImage = settings.profileImage || '/images/irfan-profile.jpg';
 export const bodies = Object.fromEntries(items.map((p) => [p.slug, p.body || '']));
 export const projects = items.map((p) =>
   [p.slug, p.title, p.catA || '', p.catB || '', p.date, p.timeline, p.role, p.tag, p.image, p.deliverables || '—', p.platform || '—', ...(dims[p.slug] || [3, 4])]);

@@ -23,6 +23,7 @@ collections:
         file: "content/settings.json"
         fields:
           - { label: "About", name: "about", widget: "text" }
+          - { label: "Profile Image", name: "profileImage", widget: "image", required: false, hint: "Contact page portrait — shown 56/44 like projects" }
           - label: "Contact"
             name: "contact"
             widget: "object"
