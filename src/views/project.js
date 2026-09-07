@@ -1,5 +1,5 @@
 import { projects, bodies } from '../data/site.js';
-import { footer, iconStrip } from './shared.js';
+import { footer } from './shared.js';
 import { marked } from 'marked';
 
 function renderBody(md) {
@@ -17,8 +17,7 @@ export function Project(slug) {
   const next = projects[(i + 1) % projects.length];
   const cats = [a, b].filter(Boolean).join(' · ');
   const body = bodies[s] || '';
-  return `${iconStrip(s)}
-  <article class="case"><div class="case-grid">
+  return `<article class="case"><div class="case-grid">
   <div class="case-copy"><p class="kicker">${cats ? cats + ' · ' : ''}${date}</p><h1>${title}</h1>
   ${renderBody(body)}
   <dl class="spec"><div><dt>Deliverables</dt><dd>${deliverables || '—'}</dd></div><div><dt>Date</dt><dd>${date}</dd></div>

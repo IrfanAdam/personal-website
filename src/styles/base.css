@@ -9,17 +9,26 @@ body {
 a { color: inherit; }
 .top {
   position: sticky; top: 0; z-index: 20;
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 16px;
-  background: var(--bg);
+  background: var(--header-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  backdrop-filter: blur(18px) saturate(1.6);
   border-bottom: 1px solid var(--line);
+  transition: transform 0.3s ease;
 }
+.top.hide { transform: translateY(-100%); }
+.stripbar { display: flex; align-items: center; gap: 12px; padding: 8px 16px; }
+.stripbar :is(a, button) { border-radius: 0; }
+.stripbar .strip { flex: 1 1 auto; min-width: 0; padding: 6px 2px; }
+.strip-meta { display: flex; align-items: center; gap: 10px; flex: none; }
+@media (prefers-reduced-motion: reduce) { .top { transition: none; } }
 .logo { font-weight: 800; letter-spacing: -0.04em; line-height: 0.9; font-size: 22px; }
 .logo small { display: block; font-size: 22px; }
 .pill {
-  border: 1px solid var(--line); background: var(--card); color: var(--ink);
-  border-radius: 8px; padding: 6px 10px; cursor: pointer; font-weight: 600;
+  border: 1px solid var(--line); background: transparent; color: var(--ink);
+  border-radius: 0; padding: 6px 10px; cursor: pointer; font-weight: 600;
+  text-decoration: none; transition: background 0.25s ease, color 0.25s ease;
 }
+.pill:hover { background: var(--ink); color: var(--bg); }
 .pill.on { background: var(--ink); color: var(--bg); }
 .spacer { flex: 1; }
 .hint { color: var(--muted); font-size: 12px; }

@@ -1,24 +1,80 @@
-import { Home } from './views/home.js';
-import { Masonry, mountMasonry, setCols } from './views/masonry.js';
+import { Masonry, mountMasonry, setView } from './views/masonry.js';
 import { Project } from './views/project.js';
 import { Contact } from './views/contact.js';
+import { stripItems, viewTabs } from './views/shared.js';
+import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
+
 const root = document.getElementById('app');
-const colBtns = [...document.querySelectorAll('[data-cols]')];
-colBtns.forEach((b) => b.addEventListener('click', () => {
-  colBtns.forEach((x) => x.classList.remove('on'));
-  b.classList.add('on');
-  setCols(Number(b.dataset.cols));
-}));
+const header = document.querySelector('.top');
+const stripbar = document.getElementById('stripbar');
+stripbar.innerHTML = `<div class="strip" id="strip">${viewTabs()}${stripItems()}<span class="tab-frame" id="tabframe" aria-hidden="true"></span></div>`
+  + `<div class="strip-meta"><span class="hint" id="count">14 stories</span>`
+  + `<a class="pill" href="https://irfanadam.framer.website/masonry" target="_blank" rel="noreferrer">↗ Framer</a></div>`;
+const vtabs = [...stripbar.querySelectorAll('[data-vtab]')];
+const stripLinks = [...stripbar.querySelectorAll('.strip a')];
+let cleanup = null;
+let masonryView = 'grid'; // 'grid' | 'list'
+
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let lastY = window.scrollY;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      header.classList.toggle('hide', y > 120 && y > lastY);
+      lastY = y;
+      ticking = false;
+    });
+  }, { passive: true });
+}
+
+function syncTabs() {
+  vtabs.forEach((b) => b.classList.toggle('on', b.dataset.vtab === masonryView));
+  syncHeaderFrames();
+}
+
+function showMasonry(view) {
+  masonryView = view;
+  if (location.hash !== '#/masonry') location.hash = '#/masonry';
+  else route();
+  syncTabs();
+}
+
+vtabs.forEach((b) => b.addEventListener('click', () => showMasonry(b.dataset.vtab)));
+
 function route() {
   const h = location.hash || '#/';
+  if (h === '#/') {
+    masonryView = 'list';
+    location.hash = '#/masonry';
+    return;
+  }
   window.scrollTo(0, 0);
-  document.querySelectorAll('[data-nav]').forEach((a) =>
-    a.classList.toggle('on', h.startsWith(a.dataset.nav)));
+  if (cleanup) {
+    cleanup();
+    cleanup = null;
+  }
+  const slug = h.startsWith('#/projects/') ? h.split('/')[2] : '';
+  const contact = h.startsWith('#/contact');
+  stripLinks.forEach((a) => {
+    const href = a.getAttribute('href');
+    a.classList.toggle('on', href === `#/projects/${slug}` || (contact && href === '#/contact'));
+  });
   if (h.startsWith('#/projects/')) root.innerHTML = Project(h.split('/')[2]);
-  else if (h.startsWith('#/masonry')) { root.innerHTML = Masonry(); mountMasonry(root); }
   else if (h.startsWith('#/contact')) root.innerHTML = Contact();
-  else root.innerHTML = Home();
+  else {
+    setView(masonryView);
+    root.innerHTML = Masonry();
+    cleanup = mountMasonry(root);
+  }
+  syncTabs();
+  centerActiveThumb();
 }
 window.addEventListener('hashchange', route);
+window.addEventListener('resize', () => requestAnimationFrame(syncHeaderFrames));
+window.addEventListener('load', syncHeaderFrames);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeaderFrames);
 if (!location.hash) location.hash = '#/masonry';
 route();

@@ -7,6 +7,7 @@
   --chip-ink: #f6f3ec;
   --line: rgba(22, 19, 14, 0.1);
   --panel: rgba(235, 235, 235, 0.32);
+  --header-bg: rgba(244, 242, 238, 0.75);
   --accent: #e8442e;
 }
 @media (prefers-color-scheme: dark) {
@@ -16,6 +17,7 @@
     --muted: #a39c8f;
     --card: #1e1b17;
     --panel: rgba(242, 237, 228, 0.06);
+    --header-bg: rgba(20, 18, 16, 0.6);
     --line: rgba(242, 237, 228, 0.12);
   }
 }
