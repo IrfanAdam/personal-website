@@ -54,10 +54,27 @@ function attachLinger(grid) {
     if (isMobile()) cards.forEach((c) => c.classList.add('in-view'));
     return () => {};
   }
+  const timers = new Map();
+  const LINGER_MS = 380;
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
-        e.target.classList.toggle('in-view', e.isIntersecting && e.intersectionRatio > 0.22);
+        const el = e.target;
+        const shouldShow = e.isIntersecting && e.intersectionRatio > 0.22;
+        if (shouldShow) {
+          if (el.classList.contains('in-view') || timers.has(el)) return;
+          const t = setTimeout(() => {
+            timers.delete(el);
+            if (el.isConnected && isMobile()) el.classList.add('in-view');
+          }, LINGER_MS);
+          timers.set(el, t);
+        } else {
+          if (timers.has(el)) {
+            clearTimeout(timers.get(el));
+            timers.delete(el);
+          }
+          el.classList.remove('in-view');
+        }
       });
     },
     { rootMargin: '0px 0px -8% 0px', threshold: [0, 0.22, 0.5, 1] }
@@ -66,6 +83,8 @@ function attachLinger(grid) {
   // handle resize column change: toggle observer
   const onResize = () => {
     if (!isMobile()) {
+      timers.forEach((t) => clearTimeout(t));
+      timers.clear();
       cards.forEach((c) => c.classList.remove('in-view'));
       io.disconnect();
       window.removeEventListener('resize', onResize);
@@ -73,6 +92,8 @@ function attachLinger(grid) {
   };
   window.addEventListener('resize', onResize);
   return () => {
+    timers.forEach((t) => clearTimeout(t));
+    timers.clear();
     io.disconnect();
     window.removeEventListener('resize', onResize);
     cards.forEach((c) => c.classList.remove('in-view'));

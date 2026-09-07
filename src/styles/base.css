@@ -13,7 +13,7 @@ a { color: inherit; }
   background: var(--header-bg);
   -webkit-backdrop-filter: blur(18px) saturate(1.6);
   backdrop-filter: blur(18px) saturate(1.6);
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
   transition: transform 0.3s ease;
 }
 .top.hide { transform: translateY(-100%); }
@@ -27,7 +27,7 @@ body { padding-top: var(--header-h, 64px); }
   .top {
     top: auto; bottom: 0;
     border-bottom: none;
-    border-top: 1px solid var(--line);
+    border-top: none;
     padding-bottom: env(safe-area-inset-bottom, 0px);
     width: 100vw;
   }
@@ -57,11 +57,11 @@ body { padding-top: var(--header-h, 64px); }
 .contact-hero h1 {
   display: flex; flex-wrap: wrap; column-gap: 0.28em; row-gap: 0.08em;
   align-items: baseline;
-  font-size: clamp(32px, 5.2vw, 54px);
-  font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  margin: 0 0 14px;
+  font-size: clamp(26px, 4.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 6px 0 14px;
 }
 .contact-hero h1 span.ink { color: var(--ink); }
 .contact-hero h1 span.muted { color: var(--muted); }

@@ -18,7 +18,7 @@ export function Project(slug) {
   const cats = [a, b].filter(Boolean).join(' · ');
   const body = bodies[s] || '';
   return `<article class="case"><div class="case-grid">
-  <div class="case-copy"><p class="kicker">${cats ? cats + ' · ' : ''}${date}</p><h1>${title}</h1>
+  <div class="case-copy"><h1>${title}</h1><p class="kicker">${cats ? cats + ' · ' : ''}${date}</p>
   ${renderBody(body)}
   <dl class="spec"><div><dt>Deliverables</dt><dd>${deliverables || '—'}</dd></div><div><dt>Date</dt><dd>${date}</dd></div>
   <div><dt>Timeline</dt><dd>${timeline || '—'}</dd></div><div><dt>Role</dt><dd>${role || '—'}</dd></div><div><dt>Platform</dt><dd>${platform || '—'}</dd></div></dl></div>

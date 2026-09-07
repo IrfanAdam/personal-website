@@ -31,20 +31,19 @@
 .about blockquote { margin: 14px 0; padding-left: 14px; border-left: 3px solid var(--line); color: var(--muted); }
 .case { width: 100%; }
 .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start; }
-.case-copy { min-width: 0; padding-right: 28px; }
+.case-copy { min-width: 0; padding-right: 16px; }
 .case-media { padding: 0; line-height: 0; }
 .case-media img { width: 100%; height: auto; border-radius: var(--radius-none); border: none; display: block; }
-.wrap:has(> .case) { padding-right: 0; padding-top: 0; padding-bottom: 0; }
+.wrap:has(> .case) { padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 12px; }
 @media (max-width: 800px) {
   .case-grid { grid-template-columns: 1fr; }
   .case-copy { padding-right: 0; padding-bottom: 16px; }
-  .wrap:has(> .case) { padding-right: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .wrap:has(> .case) { padding: 12px; }
 }
 @media (max-width: 640px) {
   .wrap:has(> .case) {
-    padding-top: 16px;
-    padding-right: 16px;
-    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    padding: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   }
   .case-media { order: -1; }
   .case-copy { padding-top: 16px; }
