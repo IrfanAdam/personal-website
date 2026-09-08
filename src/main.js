@@ -1,6 +1,6 @@
 import { Masonry, mountMasonry, setView } from './views/masonry.js';
 import { Project, mountProject } from './views/project.js';
-import { Contact } from './views/contact.js';
+import { Contact, mountContact } from './views/contact.js';
 import { stripItems, viewTabs } from './views/shared.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initTheme } from './theme.js';
@@ -82,8 +82,10 @@ function route() {
   if (h.startsWith('#/projects/')) {
     root.innerHTML = Project(h.split('/')[2]);
     cleanup = mountProject(root);
-  } else if (h.startsWith('#/contact')) root.innerHTML = Contact();
-  else {
+  } else if (h.startsWith('#/contact')) {
+    root.innerHTML = Contact();
+    cleanup = mountContact(root);
+  } else {
     setView(masonryView);
     root.innerHTML = Masonry();
     cleanup = mountMasonry(root);

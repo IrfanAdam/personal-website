@@ -4,20 +4,12 @@
 import { buildTree, measureTree, orderRandom, clamp01, mix, easeOut, smoothstep, MORPH } from './cells.js';
 const TARGET = 30, SAMPLE = 128, WAIT_CAP = 0.72, PHOTO_FROM = 0.93;
 const COLOR_MS = 240, SPAN_S = 0.6;
-// hero: denser + slower so the mosaic is unmistakable on detail page
-const H_TARGET = 22, H_WAIT = 0.75, H_PHOTO = 0.88;
-const H_COLOR = 360, H_SPAN = 0.78;
 const darkNow = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
 const greyOf = (tone, dark, clock) => (dark ? 30 : 228) + tone * 13 + Math.sin(clock * 1.5 + tone * 6.28) * 3;
 const cellCount = (box) => {
   const r = box.getBoundingClientRect();
   if (!r.width || !r.height) return 120;
   return Math.min(180, Math.max(48, Math.round((r.width * r.height) / (TARGET * TARGET))));
-};
-const heroCellCount = (box) => {
-  const r = box.getBoundingClientRect();
-  if (!r.width || !r.height) return 220;
-  return Math.min(380, Math.max(96, Math.round((r.width * r.height) / (H_TARGET * H_TARGET))));
 };
 function patch(ctx, p, W, H, gut, tint, dark, clock, white) {
   const x = Math.round(p.x), y = Math.round(p.y);
@@ -66,13 +58,9 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   if (!canvas || !ctx) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const asp = (() => { const w = parseFloat(img.getAttribute('width') || ''), h = parseFloat(img.getAttribute('height') || ''); return w > 0 && h > 0 ? w / h : 0.75; })();
-  const count = hero ? heroCellCount(box) : cellCount(box);
+  const count = cellCount(box);
   const { root, branches } = buildTree(asp, count);
-  const colorMs = hero ? H_COLOR : COLOR_MS;
-  const span = hero ? H_SPAN : SPAN_S;
-  const waitCap = hero ? H_WAIT : WAIT_CAP;
-  const photoFrom = hero ? H_PHOTO : PHOTO_FROM;
-  const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), photoFrom, colorMs, hero };
+  const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), photoFrom: PHOTO_FROM, colorMs: COLOR_MS };
 
   let finished = false;
   const finish = () => {
@@ -130,14 +118,14 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
     raf = nextFrame(tick);
     const dt = Math.min(((now - (s.now || now)) / 1000) || 0, 0.05);
     s.clock += dt; if (now > s.t0) s.elapsed += dt;
-    const target = s.done ? 1 : 0.9 * (1 - Math.exp(-s.elapsed / span));
-    const easeK = hero ? 7.0 : 8, splitK = hero ? 5.6 : 6;
+    const target = s.done ? 1 : 0.9 * (1 - Math.exp(-s.elapsed / SPAN_S));
+    const easeK = 8, splitK = 6;
     s.eased += (target - s.eased) * (1 - Math.exp(-dt * easeK));
-    const wanted = Math.min(s.eased, s.done ? 1 : waitCap);
+    const wanted = Math.min(s.eased, s.done ? 1 : WAIT_CAP);
     s.split += (wanted - s.split) * (1 - Math.exp(-dt * splitK));
     render(now);
     if (s.done && s.eased > 0.99 && now - s.loadedAt > s.colorMs) {
-      const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
+      const pr = s.hasColors ? smoothstep(PHOTO_FROM, 1, s.split) : s.fade;
       if (pr > 0.99) { render(now); stopped = true; cancelFrame(raf); raf = 0; finish(); }
     }
   };

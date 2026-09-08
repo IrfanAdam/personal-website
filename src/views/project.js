@@ -23,71 +23,23 @@ export function Project(slug) {
   ${renderBody(body)}
   <dl class="spec"><div><dt>Deliverables</dt><dd>${deliverables || '—'}</dd></div><div><dt>Date</dt><dd>${date}</dd></div>
   <div><dt>Timeline</dt><dd>${timeline || '—'}</dd></div><div><dt>Role</dt><dd>${role || '—'}</dd></div><div><dt>Platform</dt><dd>${platform || '—'}</dd></div></dl></div>
-  <div class="case-media hero-box" style="--hero-aspect:${w}/${h}" data-w="${w}" data-h="${h}"><canvas class="gr" aria-hidden="true"></canvas><img src="${heroSrc}" alt="${title}" width="${w}" height="${h}" decoding="async" fetchpriority="high"${heroSrc.startsWith("http") ? ' crossorigin="anonymous"' : ""} /></div></div>
+  <div class="case-media hero-box" style="--hero-aspect:${w}/${h}" data-w="${w}" data-h="${h}"><canvas class="gr" aria-hidden="true"></canvas><img src="${heroSrc}" alt="${title}" width="${w}" height="${h}" decoding="async" fetchpriority="high"${heroSrc.startsWith('http') ? ' crossorigin="anonymous"' : ''} /></div></div>
   <a class="next" href="#/projects/${next[0]}"><small>See whats next</small><b>${next[1]}</b>
   <span class="work-meta">${next[2] ? next[2] + ' · ' : ''}${next[3] ? next[3] + ' · ' : ''}${next[0]}</span></a></article>${footer()}`;
-}
-
-let lastHeroSrc = null;
-const SEEN_KEY = 'seenHeroes';
-let seenSet = null;
-function getSeen() {
-  if (seenSet) return seenSet;
-  seenSet = new Set();
-  try {
-    const raw = sessionStorage.getItem(SEEN_KEY);
-    const arr = raw ? JSON.parse(raw) : [];
-    if (Array.isArray(arr)) arr.forEach((v) => v && seenSet.add(v));
-  } catch {}
-  try {
-    const legacy = sessionStorage.getItem('lastHeroSrc');
-    if (legacy) seenSet.add(legacy);
-  } catch {}
-  if (lastHeroSrc) seenSet.add(lastHeroSrc);
-  return seenSet;
-}
-function markSeen(src) {
-  const s = getSeen();
-  if (!s.has(src)) {
-    s.add(src);
-    try { sessionStorage.setItem(SEEN_KEY, JSON.stringify([...s])); } catch {}
-  }
-  lastHeroSrc = src;
-  try { sessionStorage.setItem('lastHeroSrc', src); } catch {}
 }
 
 export function mountProject(root) {
   const box = root.querySelector('.hero-box');
   const img = box?.querySelector('img');
   if (!box || !img) return () => {};
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (img.src.startsWith("http") && !img.crossOrigin) {
-    try { img.crossOrigin = "anonymous"; } catch {}
-  }
-  const currentSrc = img.currentSrc || img.src;
-  const seen = getSeen();
-  const same = seen.has(currentSrc);
-  if (same && !reduce) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     box.classList.add('ready');
-    box.style.height = '';
-    box.style.aspectRatio = 'var(--hero-aspect)';
-    box.style.transition = '';
-    box.style.willChange = '';
-    if (img.complete && img.naturalWidth) return () => {};
-    const onLoad = () => box.classList.add('ready');
-    img.addEventListener('load', onLoad, { once: true });
-    return () => img.removeEventListener('load', onLoad);
-  }
-  if (reduce) {
-    box.classList.add('ready');
-    markSeen(currentSrc);
     return () => {};
   }
+  if (img.src.startsWith('http') && !img.crossOrigin) {
+    try { img.crossOrigin = 'anonymous'; } catch {}
+  }
   const isMobile = matchMedia('(max-width: 640px)').matches;
-  markSeen(currentSrc);
-  // Mobile: layout-first to avoid stretch. Skeleton (CSS grid + shimmer) at
-  // placeholder height, height morphs to final aspect, only then attach
-  // canvas GridReveal at final size — canvas never resizes mid-morph.
   if (isMobile) {
     const w = parseFloat(box.dataset.w) || 3;
     const h = parseFloat(box.dataset.h) || 4;
@@ -105,32 +57,23 @@ export function mountProject(root) {
     box.style.transition = 'height 860ms cubic-bezier(0.32,0.72,0,1)';
     box.style.willChange = 'height';
     let done = false;
-    let offReveal = () => {};
     let tFallback = 0;
-    const startGrid = () => {
-      // height done — cut to final aspect before first canvas frame
-      box.style.height = '';
-      box.style.aspectRatio = 'var(--hero-aspect)';
-      box.style.transition = '';
-      box.style.willChange = '';
-      box.classList.remove('loading');
-      // image remains blurred (CSS filter) behind canvas until grid ready
-      offReveal = attachGridReveal(box, img, 0, true);
-    };
+    let offReveal = () => {};
     const finishHeight = () => {
       if (done) return;
       done = true;
       box.removeEventListener('transitionend', onEnd);
       clearTimeout(tFallback);
-      startGrid();
+      box.style.height = '';
+      box.style.aspectRatio = 'var(--hero-aspect)';
+      box.style.transition = '';
+      box.style.willChange = '';
+      box.classList.remove('loading');
+      offReveal = attachGridReveal(box, img, 80, true);
     };
-    const onEnd = (e) => {
-      if (e.propertyName !== 'height') return;
-      finishHeight();
-    };
+    const onEnd = (e) => { if (e.propertyName !== 'height') return; finishHeight(); };
     box.addEventListener('transitionend', onEnd);
     tFallback = setTimeout(finishHeight, 980);
-    // kick morph after skeleton paints
     requestAnimationFrame(() => requestAnimationFrame(() => {
       if (!done) box.style.height = finalH + 'px';
     }));
@@ -146,7 +89,6 @@ export function mountProject(root) {
       offReveal();
     };
   }
-  // Desktop: no layout morph — skeletal at final aspect until image found, then grid
-  const offReveal = attachGridReveal(box, img, 120, true);
+  const offReveal = attachGridReveal(box, img, 80, true);
   return () => offReveal();
 }
