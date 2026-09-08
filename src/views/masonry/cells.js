@@ -1,9 +1,9 @@
-// Binary-split cell tree for the mosaic reveal (vanilla port of rareui
-// GridReveal): the biggest cell splits first, keeping cells square; once
-// the image decodes, detail-heavy regions steal earlier split slots so
-// busy areas sharpen first.
-export const MORPH = 0.055;
-const LAST_SPLIT = 0.92, OPENING = 999;
+// Binary-split cell tree + square mosaic (single tone · varying opacity).
+// buildTree keeps legacy rectangular path; buildSquare gives square pixels
+// for the new shimmer: cols=√(n·aspect), rows=cols/aspect, 1:1 in px.
+export const MORPH = 0.04;
+export const smoothstep = (a, b, x) => { const t = clamp01((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const LAST_SPLIT = 0.92;
 export const clamp01 = (n) => (n > 0 ? (n < 1 ? n : 1) : 0);
 export const mix = (a, b, t) => a + (b - a) * t;
 export const easeOut = (t) => 1 - Math.pow(1 - t, 3);
@@ -31,13 +31,28 @@ export function buildTree(aspect, count) {
     const b = wide ? make(p.x + half, p.y, half, p.h, p) : make(p.x, p.y + half, p.w, half, p);
     p.kids = [a, b]; branches.push(p); leaves.push(a, b);
   }
-  const opening = OPENING - 1, rest = Math.max(1, branches.length - opening);
+  // frame one sits one step before the final grid: half the branches are
+  // already split, so every visible cell divides exactly once more to finish
+  const opening = Math.max(1, (leaves.length >> 1) - 1), rest = Math.max(1, branches.length - opening);
   branches.forEach((c, i) => {
     c.splitAt = i < opening ? -MORPH : (LAST_SPLIT * (i - opening + 1)) / rest;
   });
   return { root, branches };
 }
-// Average colour per cell + luminance spread (= detail) from a downsampled frame.
+export function buildSquare(aspect, count) {
+  const cols = Math.max(1, Math.round(Math.sqrt(count * aspect)));
+  const rows = Math.max(1, Math.round(cols / aspect));
+  const w = 1 / cols, h = 1 / rows;
+  const root = make(0, 0, 1, 1, null);
+  const leaves = [];
+  root.kids = leaves;
+  for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+    const cx = x * w, cy = y * h, c = make(cx, cy, w, h, root);
+    c.tone = hash(cx + 3.1, cy + 1.7, w * 31.7);
+    leaves.push(c);
+  }
+  return { root, leaves };
+}
 export function measureTree(root, px, size) {
   const gather = (c) => {
     let n = 0, r = 0, g = 0, b = 0, l = 0, l2 = 0;
@@ -63,7 +78,6 @@ export function measureTree(root, px, size) {
   };
   gather(root);
 }
-// Reuse the same time slots so only the order changes, pacing stays identical.
 export function orderByDetail(branches, at) {
   const pending = branches.filter((c) => c.splitAt > at);
   if (pending.length < 2) return;
@@ -74,6 +88,21 @@ export function orderByDetail(branches, at) {
     let pick = 0;
     for (let i = 1; i < queue.length; i++) if (queue[i].detail > queue[pick].detail) pick = i;
     const c = queue.splice(pick, 1)[0];
+    c.splitAt = slots[next++];
+    for (const k of c.kids ?? []) if (k.kids) queue.push(k);
+  }
+}
+// Same slots and pacing as orderByDetail, but shuffled — splits resolve in
+// random order instead of busy-first. Hierarchy still holds (kids queue only
+// after their parent is eligible), so pacing is identical run to run.
+export function orderRandom(branches, at) {
+  const pending = branches.filter((c) => c.splitAt > at);
+  if (pending.length < 2) return;
+  const slots = pending.map((c) => c.splitAt).sort((a, b) => a - b);
+  const queue = pending.filter((c) => !c.parent || c.parent.splitAt <= at);
+  let next = 0;
+  while (queue.length && next < slots.length) {
+    const c = queue.splice((Math.random() * queue.length) | 0, 1)[0];
     c.splitAt = slots[next++];
     for (const k of c.kids ?? []) if (k.kids) queue.push(k);
   }

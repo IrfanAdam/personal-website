@@ -113,6 +113,7 @@ export function attachViewer(grid) {
     if (cursorOn) return;
     cursorOn = true;
     cursorEl.classList.add('on');
+    document.documentElement.classList.add('viewer-cursor-active');
     grid.style.cursor = 'none';
   };
   const showPortal = () => {
@@ -140,6 +141,7 @@ export function attachViewer(grid) {
     // coupled hide: window + lines share the same 380ms glide — never lines first
     viewerEl.classList.remove('on');
     svg.classList.remove('on');
+    document.documentElement.classList.remove('viewer-cursor-active');
     grid.style.cursor = '';
     if (raf) { cancelAnimationFrame(raf); raf = 0; }
     if (pendingRaf) { cancelAnimationFrame(pendingRaf); pendingRaf = 0; }

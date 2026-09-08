@@ -37,27 +37,16 @@ function row(p) {
 }
 
 function reveal(grid) {
-  // GridReveal + image fade: canvas mosaic does per-cell shimmer &
-  // pixelated (busy regions split first → variable sharpness), the
-  // <img> above it de-blurs and fades in. Stagger keeps shine visible.
+  // Shimmer skeleton (half mosaic) → final splits, random order → photo
+  // lands at the very end → final shimmer → ready.
+  // gridReveal owns reveal/ready timing. Uniform beat — no inter-card stagger.
   const t0 = performance.now();
-  const SKELETON_MS = 480, STAGGER_MS = 45, STAGGER_CAP = 500;
+  const SKELETON_MS = 120;
   const cards = [...grid.querySelectorAll('.card')];
-  const offs = [];
-  cards.forEach((el, idx) => {
-    const box = el.querySelector('.img');
-    const img = el.querySelector('img');
-    offs.push(attachGridReveal(box, img));
-    const show = () => {
-      const wait = Math.max(0,
-        SKELETON_MS + Math.min(idx * STAGGER_MS, STAGGER_CAP) - (performance.now() - t0));
-      setTimeout(() => { if (el.isConnected) el.classList.add('ready'); }, wait);
-    };
-    if (img.complete && img.naturalWidth) show();
-    else {
-      img.addEventListener('load', show, { once: true });
-      img.addEventListener('error', show, { once: true });
-    }
+  const offs = cards.map((el) => {
+    const box = el.querySelector('.img'), img = el.querySelector('img');
+    const delay = Math.max(0, SKELETON_MS - (performance.now() - t0));
+    return attachGridReveal(box, img, delay);
   });
   return () => offs.forEach((fn) => fn());
 }

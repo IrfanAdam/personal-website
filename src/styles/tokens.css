@@ -33,8 +33,8 @@
   --scrim-gradient: linear-gradient(to top, rgba(16,12,8,0.58) 0%, rgba(16,12,8,0.26) 42%, rgba(16,12,8,0) 100%);
   --scrim-fallback: linear-gradient(to top, rgba(16,12,8,0.62), rgba(16,12,8,0));
   --scrim-mask: linear-gradient(to top, #000 0%, #000 38%, transparent 100%);
-  --shimmer-gradient: linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 95%, transparent) 0%, color-mix(in srgb, var(--color-line) 30%, transparent) 55%, transparent 85%);
-  --shimmer-band: linear-gradient(105deg, transparent 26%, #000 43%, #000 57%, transparent 74%);
+  --shimmer-gradient: linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 95%, transparent) 0%, color-mix(in srgb, var(--color-line) 30%, transparent) 58%, transparent 85%);
+  --shimmer-band: linear-gradient(90deg, transparent 27%, #000 41%, #000 59%, transparent 73%);
   --reveal-grid: repeating-linear-gradient(to right, color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px, transparent 1px 14px), repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px, transparent 1px 14px);
   --shadow-on-media: 0 1px 12px rgba(0, 0, 0, 0.45);
   --shadow-on-media-sm: 0 1px 10px rgba(0, 0, 0, 0.4);
@@ -68,7 +68,7 @@
   /* — Radius — zero is the doctrine; consume via var(), never a literal — */
   --radius-none: 0; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-pill: 0;
   /* — Motion — */
-  --dur-fast: 150ms; --dur-base: 200ms; --dur-med: 220ms; --dur-soft: 250ms; --dur-slow: 280ms; --dur-glide: 380ms; --dur-reveal: 300ms; --dur-blur: 450ms; --dur-zoom: 650ms; --dur-shimmer: 1.8s;
+  --dur-fast: 150ms; --dur-base: 200ms; --dur-med: 220ms; --dur-soft: 250ms; --dur-slow: 280ms; --dur-glide: 380ms; --dur-reveal: 300ms; --dur-blur: 450ms; --dur-zoom: 650ms; --dur-shimmer: 2.2s;
   --ease-standard: ease; --ease-signature: cubic-bezier(0.32, 0.72, 0, 1);
   /* — Viewer (cyberpunk expander) — */
   --size-viewer-w: 180px; --size-viewer-gap: 10px; --size-viewer-pad: 20px;
@@ -85,7 +85,7 @@
   --color-viewer-tether: color-mix(in srgb, var(--stone-0) 68%, transparent);
   --size-viewer-tether: var(--space-2);
   --color-viewer-neon: var(--color-accent);
-  --viewer-border: var(--size-hairline) solid var(--color-viewer-line);
+  --viewer-border: var(--size-viewer-tether) solid var(--color-viewer-line);
   --viewer-neon: 0 0 0 1px var(--color-viewer-line), 0 0 14px color-mix(in srgb, var(--color-viewer-neon) 10%, transparent);
   --shadow-viewer: 0 12px 32px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
   --viewer-grid: repeating-linear-gradient(to right, color-mix(in srgb, var(--color-line) 35%, transparent) 0 1px, transparent 1px 14px), repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 35%, transparent) 0 1px, transparent 1px 14px);

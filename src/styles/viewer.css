@@ -54,4 +54,6 @@
   .viewer-cursor, .viewer, .viewer-lines, .viewer-lines line { transition: none; animation: none; }
   .viewer-shimmer { animation: none; display: none; }
 }
-@media (max-width: 640px) { .viewer, .viewer-cursor, .viewer-lines { display: none; } }
+html.viewer-cursor-active .cols,
+html.viewer-cursor-active .cols * { cursor: none !important; }
+@media (max-width: 640px) { .viewer, .viewer-cursor, .viewer-lines { display: none; } html.viewer-cursor-active .cols, html.viewer-cursor-active .cols * { cursor: auto !important; } }

@@ -4,6 +4,8 @@
 // independent exponential decay (critically damped, no overshoot).
 // That removes the underdamped spring's wobble/stutter and feels
 // butter-smooth even on variable refresh (60→120Hz) and momentum scroll.
+// Gate: parallax stays at 0 until the grid's top reaches the header edge
+// so short columns visibly hit the top before they start drifting.
 export function attachParallax(grid) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   if (window.innerWidth <= 640) return () => {};
@@ -12,19 +14,26 @@ export function attachParallax(grid) {
 
   let deficits = [];
   let maxScroll = 1;
+  let gridStart = 0;
   let target = 0, current = 0, rafId = 0, last = 0;
 
   // λ controls chase speed: 10 ≈ 300ms settle, 14 ≈ 210ms.
   // 10–12 feels fluid without lag; no overshoot by construction.
   const LAMBDA = 11;
 
-  function syncMax() {
+  function syncBounds() {
     maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const topEl = document.querySelector('.top');
+    const hdr = topEl ? topEl.offsetHeight : 0;
+    const rectTop = grid.getBoundingClientRect().top + window.scrollY;
+    gridStart = Math.max(0, rectTop - hdr);
   }
 
   function progress() {
     if (maxScroll <= 40) return 0;
-    return Math.min(1, Math.max(0, window.scrollY / maxScroll));
+    const range = maxScroll - gridStart;
+    if (range <= 40) return 0;
+    return Math.min(1, Math.max(0, (window.scrollY - gridStart) / range));
   }
 
   function render() {
@@ -67,7 +76,7 @@ export function attachParallax(grid) {
       current = target = 0;
       return;
     }
-    syncMax();
+    syncBounds();
     // read heights in one batch before writing transforms
     const hs = cols.map((c) => c.getBoundingClientRect().height);
     const tallest = Math.max(...hs);
@@ -78,7 +87,7 @@ export function attachParallax(grid) {
     if (!rafId && Math.abs(current - target) > 0.002) {
       // if we haven't animated yet, jump to near target to avoid visible snap
       // but still let the decay smooth subsequent scrolls
-      const atTop = window.scrollY < 2;
+      const atTop = window.scrollY < gridStart + 2;
       if (atTop) current = target;
     }
     kick();
@@ -109,7 +118,7 @@ export function attachParallax(grid) {
     if (pending <= 0) measure();
   }
 
-  syncMax();
+  syncBounds();
   window.addEventListener('scroll', kick, { passive: true });
   window.addEventListener('resize', onResize);
   const ro = new ResizeObserver(onResize);
