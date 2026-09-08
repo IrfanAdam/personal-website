@@ -62,7 +62,7 @@
   pointer-events: none;
 }
 .card-info b {
-  display: block; font-size: var(--text-body); line-height: var(--leading-snug); font-weight: var(--weight-semibold);
+  display: block; font-size: var(--text-card-title); line-height: var(--leading-snug); font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-body); text-wrap: balance;
   text-shadow: var(--shadow-on-media);
 }
