@@ -31,14 +31,14 @@ body { padding-top: var(--header-h, var(--size-header)); }
     border-bottom: none;
     border-top: none;
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    overflow: visible;
+    overflow: hidden;
   }
   .top.hide { transform: translateY(100%); }
   body { padding-top: 0; padding-bottom: calc(var(--header-h, var(--size-header)) + env(safe-area-inset-bottom, 0px)); }
-  .wrap { padding: 0 var(--gutter); padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
+  .wrap { padding: 0; padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
   footer { padding-bottom: calc(var(--space-28) + env(safe-area-inset-bottom, 0px)); }
-  .stripbar { padding: var(--space-8) var(--gutter); gap: 0; overflow: visible; }
-  .stripbar .strip { gap: var(--space-6); padding: var(--space-6) 0; overflow-x: auto; overflow-y: hidden; }
+  .stripbar { padding: var(--space-8) 0; gap: 0; overflow: hidden; }
+  .stripbar .strip { gap: var(--space-6); padding: var(--space-6) 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
   .hint { display: none; }
   .theme-switch .pill { padding: var(--space-4) var(--space-7); }
 }
