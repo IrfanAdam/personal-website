@@ -27,18 +27,17 @@ body { padding-top: var(--header-h, var(--size-header)); }
 @media (prefers-reduced-motion: reduce) { .top { transition: none; } }
 @media (max-width: 640px) {
   .top {
-    top: auto; bottom: 0;
+    top: auto; bottom: 0; left: 0; right: 0; width: auto;
     border-bottom: none;
     border-top: none;
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    width: 100%;
     overflow: visible;
   }
   .top.hide { transform: translateY(100%); }
   body { padding-top: 0; padding-bottom: calc(var(--header-h, var(--size-header)) + env(safe-area-inset-bottom, 0px)); }
-  .wrap { padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
+  .wrap { padding: 0; padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
   footer { padding-bottom: calc(var(--space-28) + env(safe-area-inset-bottom, 0px)); }
-  .stripbar { padding: var(--space-8) var(--space-12); gap: var(--space-10); overflow: visible; }
+  .stripbar { padding: var(--space-8) 0; gap: var(--space-10); overflow: visible; }
   .stripbar .strip { gap: var(--space-6); padding: var(--space-6) 0; overflow-x: auto; overflow-y: hidden; }
   .hint { display: none; }
   .theme-switch .pill { padding: var(--space-4) var(--space-7); }
