@@ -28,7 +28,6 @@ export function Project(slug) {
   <span class="work-meta">${next[2] ? next[2] + ' · ' : ''}${next[3] ? next[3] + ' · ' : ''}${next[0]}</span></a></article>${footer()}`;
 }
 
-// remember last hero so second fetch with same image doesn't re-animate
 let lastHeroSrc = null;
 
 export function mountProject(root) {
@@ -42,22 +41,22 @@ export function mountProject(root) {
   if (img.src.startsWith("http") && !img.crossOrigin) {
     try { img.crossOrigin = "anonymous"; } catch {}
   }
-
   const currentSrc = img.currentSrc || img.src;
-  const sameAsLast = lastHeroSrc && currentSrc === lastHeroSrc && img.complete && img.naturalWidth > 0;
-  if (sameAsLast && !reduce) {
+  let stored = null;
+  try { stored = sessionStorage.getItem('lastHeroSrc'); } catch {}
+  const same = (lastHeroSrc && currentSrc === lastHeroSrc) || (stored && currentSrc === stored);
+  // dedup: if same image as last mount, don't re-run mosaic — just show ready
+  // (covers cached second load where img.complete may still be false at mount, and hard reload via sessionStorage)
+  if (same && !reduce) {
     box.classList.add('ready');
-    lastHeroSrc = currentSrc;
-    return () => {};
+    if (img.complete && img.naturalWidth) {
+      lastHeroSrc = currentSrc;
+      return () => {};
+    }
+    const onLoad = () => box.classList.add('ready');
+    img.addEventListener('load', onLoad, { once: true });
+    return () => img.removeEventListener('load', onLoad);
   }
-
-  let startedReveal = false;
-  const startReveal = () => {
-    if (startedReveal) return;
-    startedReveal = true;
-    offReveal = attachGridReveal(box, img, 0, true);
-    lastHeroSrc = currentSrc;
-  };
 
   if (isMobile && !reduce) {
     const w = parseFloat(box.dataset.w) || 3;
@@ -74,10 +73,14 @@ export function mountProject(root) {
     box.getBoundingClientRect();
     box.style.transition = 'height 860ms cubic-bezier(0.32,0.72,0,1)';
     box.style.willChange = 'height';
-
+    // shimmer during height: start GridReveal immediately with delay = height duration
+    // so cells stay at split 0 with shimmer, then animate after height
+    offReveal = attachGridReveal(box, img, 980, true);
+    lastHeroSrc = currentSrc;
+    try { sessionStorage.setItem('lastHeroSrc', currentSrc); } catch {}
     let done = false;
     let tFallback = 0;
-    const revealAfterHeight = () => {
+    const finishHeight = () => {
       if (done) return;
       done = true;
       box.removeEventListener('transitionend', onEnd);
@@ -86,20 +89,14 @@ export function mountProject(root) {
       box.style.aspectRatio = 'var(--hero-aspect)';
       box.style.transition = '';
       box.style.willChange = '';
-      startReveal();
     };
     const onEnd = (e) => {
-
       if (e.propertyName !== 'height') return;
-      revealAfterHeight();
+      finishHeight();
     };
     box.addEventListener('transitionend', onEnd);
-    tFallback = setTimeout(revealAfterHeight, 980);
-    const expand = () => {
-
-      box.style.height = finalH + 'px';
-    };
-    const t = setTimeout(expand, 48);
+    tFallback = setTimeout(finishHeight, 980);
+    const t = setTimeout(() => { box.style.height = finalH + 'px'; }, 48);
     const onResize = () => {};
     window.addEventListener('resize', onResize, { once: true });
     cleanupHeight = () => {
@@ -112,15 +109,21 @@ export function mountProject(root) {
       box.style.transition = '';
       box.style.willChange = '';
     };
-  } else {
-    if (reduce) {
-      box.classList.add('ready');
-      lastHeroSrc = currentSrc;
-    } else {
-      startReveal();
-    }
+    return () => {
+      cleanupHeight();
+      offReveal();
+    };
   }
 
+  if (reduce) {
+    box.classList.add('ready');
+    lastHeroSrc = currentSrc;
+    try { sessionStorage.setItem('lastHeroSrc', currentSrc); } catch {}
+    return () => {};
+  }
+  offReveal = attachGridReveal(box, img, 0, true);
+  lastHeroSrc = currentSrc;
+  try { sessionStorage.setItem('lastHeroSrc', currentSrc); } catch {}
   return () => {
     cleanupHeight();
     offReveal();
