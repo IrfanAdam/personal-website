@@ -9,8 +9,7 @@ const root = document.getElementById('app');
 const header = document.querySelector('.top');
 const stripbar = document.getElementById('stripbar');
 stripbar.innerHTML = `<div class="strip" id="strip">${viewTabs()}${stripItems()}<span class="tab-frame" id="tabframe" aria-hidden="true"></span></div>`
-  + `<div class="strip-meta"><div class="theme-switch" id="themeSwitch"><button class="pill" data-theme-btn="system">system</button><button class="pill" data-theme-btn="light">light</button><button class="pill" data-theme-btn="dark">dark</button></div><span class="hint" id="count">14 stories</span>`
-  + `<a class="pill" href="https://irfanadam.framer.website/masonry" target="_blank" rel="noreferrer">↗ Framer</a></div>`;
+  + `<div class="strip-meta"><div class="theme-switch" id="themeSwitch"><button class="pill" data-theme-btn="system">system</button><button class="pill" data-theme-btn="light">light</button><button class="pill" data-theme-btn="dark">dark</button></div><span class="hint" id="count">14 stories</span></div>`;
 initTheme();
 const vtabs = [...stripbar.querySelectorAll('[data-vtab]')];
 const stripLinks = [...stripbar.querySelectorAll('.strip a')];
