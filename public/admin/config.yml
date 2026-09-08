@@ -66,5 +66,7 @@ collections:
       - { label: "Deliverables", name: "deliverables", widget: "string", required: false }
       - { label: "Platform", name: "platform", widget: "string", required: false }
       - { label: "Filter Tag", name: "tag", widget: "select", options: ["crm", "goals"], default: "crm" }
-      - { label: "Cover Image", name: "image", widget: "image", required: false, hint: "Uploads to /public/images" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false, hint: "Grid thumbnail — /public/images" }
+      - { label: "Hover Mock (masonry hover + viewer)", name: "mock", widget: "image", required: false, hint: "Framer BEj — masonry hover & viewer preview; also detail hero if hero empty (CDN or /public/mocks)" }
+      - { label: "Hero Image (detail page hero)", name: "hero", widget: "image", required: false, hint: "Detail page large hero — Framer detail uses mock, not grid thumb; falls back to mock → image" }
       - { label: "Body", name: "body", widget: "markdown", required: false, hint: "Case study content — supports markdown" }

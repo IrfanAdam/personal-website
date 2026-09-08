@@ -73,19 +73,24 @@
   /* — Viewer (cyberpunk expander) — */
   --size-viewer-w: 180px; --size-viewer-gap: 10px; --size-viewer-pad: 20px;
   --size-cursor: 32px; --blur-viewer: 2px;
+  --blur-cursor: 4px;
+  --blur-micro: 1px;
   --blur-viewer-1: 2px; --blur-viewer-2: 8px; --blur-viewer-3: 24px;
   --color-viewer-shade: rgba(0, 0, 0, 0.32);
   --viewer-mask-1: linear-gradient(to bottom, #000 0%, #000 33%, transparent 33%, transparent 100%);
   --viewer-mask-2: linear-gradient(to bottom, transparent 0%, transparent 33%, #000 33%, #000 66%, transparent 66%, transparent 100%);
   --viewer-mask-3: linear-gradient(to bottom, transparent 0%, transparent 66%, #000 66%, #000 100%);
   --color-viewer-bg: var(--color-surface);
-  --color-viewer-line: var(--color-ink);
+  --color-viewer-line: var(--stone-0);
+  --color-viewer-tether: color-mix(in srgb, var(--stone-0) 68%, transparent);
+  --size-viewer-tether: var(--space-2);
   --color-viewer-neon: var(--color-accent);
   --viewer-border: var(--size-hairline) solid var(--color-viewer-line);
-  --viewer-neon: 0 0 0 1px var(--color-viewer-line), 0 0 18px color-mix(in srgb, var(--color-viewer-neon) 18%, transparent);
+  --viewer-neon: 0 0 0 1px var(--color-viewer-line), 0 0 14px color-mix(in srgb, var(--color-viewer-neon) 10%, transparent);
+  --shadow-viewer: 0 12px 32px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
   --viewer-grid: repeating-linear-gradient(to right, color-mix(in srgb, var(--color-line) 35%, transparent) 0 1px, transparent 1px 14px), repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 35%, transparent) 0 1px, transparent 1px 14px);
   --viewer-scan: repeating-linear-gradient(to bottom, transparent 0 2px, color-mix(in srgb, var(--color-line) 12%, transparent) 2px 3px);
-  --dur-viewer-in: 300ms; --dur-viewer-line: 240ms;
+  --dur-viewer-in: 300ms; --dur-viewer-line: 780ms;
   --z-viewer: 15; --z-viewer-lines: 14;
   /* — Elevation, blur, opacity, scale — */
   --blur-header: 18px; --blur-scrim: 18px; --blur-placeholder: 14px; --sat-header: 1.6; --sat-scrim: 1.35;
@@ -104,10 +109,12 @@
 @media (prefers-color-scheme: dark) { :root {
   --color-bg: #141210; --color-surface: #1e1b17; --color-ink: #f2ede4; --color-ink-muted: #a39c8f; --color-ink-subtle: #a39c8f;
   --color-line: rgba(242, 237, 228, 0.12); --color-panel: rgba(242, 237, 228, 0.06); --color-header: rgba(20, 18, 16, 0.6);
+  --shadow-viewer: 0 14px 36px rgba(0, 0, 0, 0.52), 0 3px 12px rgba(0, 0, 0, 0.42);
 } }
 [data-theme="dark"] {
   --color-bg: #141210; --color-surface: #1e1b17; --color-ink: #f2ede4; --color-ink-muted: #a39c8f; --color-ink-subtle: #a39c8f;
   --color-line: rgba(242, 237, 228, 0.12); --color-panel: rgba(242, 237, 228, 0.06); --color-header: rgba(20, 18, 16, 0.6);
+  --shadow-viewer: 0 14px 36px rgba(0, 0, 0, 0.52), 0 3px 12px rgba(0, 0, 0, 0.42);
 }
 [data-theme="light"] {
   --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-500); --color-ink-subtle: var(--stone-400);

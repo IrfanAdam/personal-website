@@ -1,60 +1,57 @@
-/* Viewer — cyberpunk expander portal: cursor viewfinder + floating preview + tethers. */
+/* Viewer — cursor viewfinder + floating preview + tethers. Light borders, clear hero. */
 .viewer-cursor {
   position: fixed; left: 0; top: 0; width: var(--size-cursor); height: var(--size-cursor);
-  border: var(--viewer-border); background: color-mix(in srgb, var(--color-viewer-bg) 92%, transparent);
-  box-shadow: var(--viewer-neon); backdrop-filter: blur(var(--blur-viewer));
-  -webkit-backdrop-filter: blur(var(--blur-viewer));
-  pointer-events: none; z-index: var(--z-viewer); opacity: 0; will-change: transform;
+  border: var(--viewer-border);
+  background: color-mix(in srgb, var(--color-viewer-bg) 58%, transparent);
+  box-shadow: var(--shadow-viewer);
+  backdrop-filter: blur(var(--blur-cursor)) saturate(var(--sat-header));
+  -webkit-backdrop-filter: blur(var(--blur-cursor)) saturate(var(--sat-header));
+  pointer-events: none; z-index: var(--z-viewer);
+  opacity: 0; filter: blur(var(--blur-micro));
+  transform: translate3d(0,0,0);
+  will-change: transform, opacity, filter;
+  contain: layout paint;
+  transition: opacity var(--dur-glide) var(--ease-standard), filter var(--dur-glide) var(--ease-signature);
 }
-.viewer-cursor.on { opacity: 1; transition: opacity var(--dur-viewer-in) var(--ease-standard); }
+.viewer-cursor.on {
+  opacity: 1; filter: blur(0);
+  transition: opacity var(--dur-glide) var(--ease-signature), filter var(--dur-glide) var(--ease-signature);
+}
 .viewer {
   position: fixed; left: 0; top: 0; width: var(--size-viewer-w);
-  background: color-mix(in srgb, var(--color-viewer-bg) 88%, transparent); border: var(--viewer-border); box-shadow: var(--viewer-neon);
-  padding: var(--space-4); z-index: var(--z-viewer); opacity: 0; will-change: transform; pointer-events: none; overflow: hidden;
+  background: var(--color-surface); border: var(--viewer-border); box-shadow: var(--shadow-viewer);
+  padding: var(--space-4); z-index: var(--z-viewer); pointer-events: none; overflow: hidden;
+  opacity: 0; filter: blur(var(--blur-viewer));
+  transform: translate3d(0,0,0);
+  will-change: transform, opacity, filter;
+  contain: layout paint;
+  transition: opacity var(--dur-glide) var(--ease-standard), filter var(--dur-glide) var(--ease-signature);
 }
-.viewer.on { opacity: 1; transition: opacity var(--dur-viewer-in) var(--ease-standard); animation: viewerIn var(--dur-viewer-in) var(--ease-signature); }
-.viewer-glass { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
-.viewer-glass i { position: absolute; inset: 0; pointer-events: none; }
-.viewer-glass i:nth-child(1) {
-  backdrop-filter: blur(var(--blur-viewer-1)); -webkit-backdrop-filter: blur(var(--blur-viewer-1));
-  -webkit-mask-image: var(--viewer-mask-1); mask-image: var(--viewer-mask-1);
+.viewer.on {
+  opacity: 1; filter: blur(0);
+  transition: opacity var(--dur-glide) var(--ease-signature), filter var(--dur-glide) var(--ease-signature);
 }
-.viewer-glass i:nth-child(2) {
-  backdrop-filter: blur(var(--blur-viewer-2)); -webkit-backdrop-filter: blur(var(--blur-viewer-2));
-  -webkit-mask-image: var(--viewer-mask-2); mask-image: var(--viewer-mask-2);
-}
-.viewer-glass i:nth-child(3) {
-  backdrop-filter: blur(var(--blur-viewer-3)); -webkit-backdrop-filter: blur(var(--blur-viewer-3));
-  -webkit-mask-image: var(--viewer-mask-3); mask-image: var(--viewer-mask-3);
-}
-.viewer-bar {
-  position: absolute; left: 0; right: 0; bottom: 0; height: var(--space-28); z-index: 3;
-  background: var(--color-viewer-shade); backdrop-filter: blur(var(--blur-viewer-3));
-  -webkit-backdrop-filter: blur(var(--blur-viewer-3)); pointer-events: none;
-}
-.viewer::before {
-  content: ""; position: absolute; inset: 0; background: var(--viewer-grid); opacity: 0.35; pointer-events: none;
-  -webkit-mask-image: var(--shimmer-band); mask-image: var(--shimmer-band);
-}
-.viewer::after { content: ""; position: absolute; inset: 0; background: var(--viewer-scan); opacity: 0.18; pointer-events: none; }
-.viewer img { display: block; width: 100%; height: auto; position: relative; z-index: 1; filter: contrast(1.02) saturate(0.96); }
-.viewer-shimmer {
-  position: absolute; inset: 0; background: var(--shimmer-gradient); pointer-events: none; z-index: 4;
-  -webkit-mask-image: var(--shimmer-band); mask-image: var(--shimmer-band); animation: shimmer var(--dur-shimmer) infinite;
-}
-.viewer-lines { position: fixed; inset: 0; pointer-events: none; z-index: var(--z-viewer-lines); }
+/* Decoration layers hidden — hero stays clearly visible, no blur on top */
+.viewer-glass, .viewer-bar, .viewer-shimmer { display: none !important; }
+.viewer::before, .viewer::after { display: none !important; }
+.viewer img { display: block; width: 100%; height: auto; position: relative; z-index: 1; filter: none; }
+.viewer-lines { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: var(--z-viewer-lines); opacity: 0; will-change: opacity; contain: layout paint; transition: opacity var(--dur-glide) var(--ease-standard); }
+.viewer-lines.on { opacity: 1; transition: opacity var(--dur-glide) var(--ease-standard); }
 .viewer-lines line {
-  stroke: var(--color-viewer-line); stroke-width: var(--size-hairline);
-  stroke-dasharray: 120; stroke-dashoffset: 120; opacity: 0.9;
+  stroke: var(--color-viewer-tether); stroke-width: var(--size-viewer-tether);
+  stroke-dasharray: 100; stroke-dashoffset: 100; opacity: 1;
+  stroke-linecap: square;
+  will-change: stroke-dashoffset;
+  transition: stroke-dashoffset var(--dur-glide) var(--ease-signature);
 }
-.viewer-lines.on line { stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-viewer-line) var(--ease-standard); }
-@keyframes viewerIn { from { filter: hue-rotate(-6deg) saturate(1.2); } to { filter: none; } }
+.viewer-lines.on line { stroke-dashoffset: 0; transition-duration: var(--dur-viewer-line); }
+@keyframes viewerIn { from { opacity: 0; } to { opacity: 1; } }
 @supports not ((backdrop-filter: blur(var(--blur-viewer-1))) or (-webkit-backdrop-filter: blur(var(--blur-viewer-1)))) {
   .viewer-glass, .viewer-bar { display: none; }
   .viewer { background: var(--color-viewer-bg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .viewer-cursor, .viewer, .viewer-lines line { transition: none; animation: none; }
+  .viewer-cursor, .viewer, .viewer-lines, .viewer-lines line { transition: none; animation: none; }
   .viewer-shimmer { animation: none; display: none; }
 }
 @media (max-width: 640px) { .viewer, .viewer-cursor, .viewer-lines { display: none; } }
