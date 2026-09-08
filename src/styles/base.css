@@ -38,7 +38,7 @@ body { padding-top: var(--header-h, var(--size-header)); }
   .wrap { padding: 0; padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
   footer { padding-bottom: calc(var(--space-28) + env(safe-area-inset-bottom, 0px)); }
   .stripbar { padding: var(--space-8) 0; gap: 0; overflow: hidden; }
-  .stripbar .strip { gap: var(--space-6); padding: var(--space-6) 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+  .stripbar .strip { gap: var(--space-6); padding: var(--space-6) var(--space-12); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
   .hint { display: none; }
   .theme-switch .pill { padding: var(--space-4) var(--space-7); }
 }
