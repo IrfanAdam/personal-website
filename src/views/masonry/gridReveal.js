@@ -73,6 +73,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   const waitCap = hero ? H_WAIT : WAIT_CAP;
   const photoFrom = hero ? H_PHOTO : PHOTO_FROM;
   const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), photoFrom, colorMs };
+
   let finished = false;
   const finish = () => {
     if (finished) return; finished = true;
