@@ -1,0 +1,37 @@
+/* Viewer — cyberpunk expander portal: cursor viewfinder + floating preview + tethers. */
+.viewer-cursor {
+  position: fixed; left: 0; top: 0; width: var(--size-cursor); height: var(--size-cursor);
+  border: var(--viewer-border); background: color-mix(in srgb, var(--color-viewer-bg) 92%, transparent);
+  box-shadow: var(--viewer-neon); backdrop-filter: blur(var(--blur-viewer));
+  pointer-events: none; z-index: var(--z-viewer); opacity: 0; will-change: transform;
+}
+.viewer-cursor.on { opacity: 1; transition: opacity var(--dur-viewer-in) var(--ease-standard); }
+.viewer {
+  position: fixed; left: 0; top: 0; width: var(--size-viewer-w);
+  background: var(--color-viewer-bg); border: var(--viewer-border); box-shadow: var(--viewer-neon);
+  padding: var(--space-4); z-index: var(--z-viewer); opacity: 0; will-change: transform; pointer-events: none;
+}
+.viewer.on { opacity: 1; transition: opacity var(--dur-viewer-in) var(--ease-standard); animation: viewerIn var(--dur-viewer-in) var(--ease-signature); }
+.viewer::before {
+  content: ""; position: absolute; inset: 0; background: var(--viewer-grid); opacity: 0.35; pointer-events: none;
+  -webkit-mask-image: var(--shimmer-band); mask-image: var(--shimmer-band);
+}
+.viewer::after { content: ""; position: absolute; inset: 0; background: var(--viewer-scan); opacity: 0.18; pointer-events: none; }
+.viewer img { display: block; width: 100%; height: auto; filter: contrast(1.02) saturate(0.96); }
+.viewer-shimmer {
+  position: absolute; inset: 0; background: var(--shimmer-gradient); pointer-events: none;
+  -webkit-mask-image: var(--shimmer-band); mask-image: var(--shimmer-band); animation: shimmer var(--dur-shimmer) infinite;
+}
+.viewer-lines { position: fixed; inset: 0; pointer-events: none; z-index: var(--z-viewer-lines); }
+.viewer-lines line {
+  stroke: var(--color-viewer-line); stroke-width: var(--size-hairline);
+  stroke-dasharray: 120; stroke-dashoffset: 120; opacity: 0.9;
+  filter: drop-shadow(0 0 var(--space-6) color-mix(in srgb, var(--color-viewer-neon) 24%, transparent));
+}
+.viewer-lines.on line { stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-viewer-line) var(--ease-standard); }
+@keyframes viewerIn { from { filter: hue-rotate(-6deg) saturate(1.2); } to { filter: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .viewer-cursor, .viewer, .viewer-lines line { transition: none; animation: none; }
+  .viewer-shimmer { animation: none; display: none; }
+}
+@media (max-width: 640px) { .viewer, .viewer-cursor, .viewer-lines { display: none; } }

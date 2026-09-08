@@ -70,6 +70,18 @@
   /* — Motion — */
   --dur-fast: 150ms; --dur-base: 200ms; --dur-med: 220ms; --dur-soft: 250ms; --dur-slow: 280ms; --dur-glide: 380ms; --dur-reveal: 300ms; --dur-blur: 450ms; --dur-zoom: 650ms; --dur-shimmer: 1.8s;
   --ease-standard: ease; --ease-signature: cubic-bezier(0.32, 0.72, 0, 1);
+  /* — Viewer (cyberpunk expander) — */
+  --size-viewer-w: 180px; --size-viewer-gap: 10px; --size-viewer-pad: 20px;
+  --size-cursor: 32px; --blur-viewer: 2px;
+  --color-viewer-bg: var(--color-surface);
+  --color-viewer-line: var(--color-ink);
+  --color-viewer-neon: var(--color-accent);
+  --viewer-border: var(--size-hairline) solid var(--color-viewer-line);
+  --viewer-neon: 0 0 0 1px var(--color-viewer-line), 0 0 18px color-mix(in srgb, var(--color-viewer-neon) 18%, transparent);
+  --viewer-grid: repeating-linear-gradient(to right, color-mix(in srgb, var(--color-line) 35%, transparent) 0 1px, transparent 1px 14px), repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 35%, transparent) 0 1px, transparent 1px 14px);
+  --viewer-scan: repeating-linear-gradient(to bottom, transparent 0 2px, color-mix(in srgb, var(--color-line) 12%, transparent) 2px 3px);
+  --dur-viewer-in: 300ms; --dur-viewer-line: 240ms;
+  --z-viewer: 15; --z-viewer-lines: 14;
   /* — Elevation, blur, opacity, scale — */
   --blur-header: 18px; --blur-scrim: 18px; --blur-placeholder: 14px; --sat-header: 1.6; --sat-scrim: 1.35;
   --opacity-hover: 0.55; --scale-press: 0.94; --scale-zoom: 1.015;

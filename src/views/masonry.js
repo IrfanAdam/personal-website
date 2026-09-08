@@ -2,6 +2,7 @@ import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
 import { attachGridReveal } from './masonry/gridReveal.js';
+import { attachViewer } from './masonry/viewer.js';
 import { footer, aboutBlock } from './shared.js';
 
 let filter = 'all';
@@ -11,6 +12,7 @@ let redraw = null;
 let parallaxOff = null;
 let lingerOff = null;
 let revealOff = null;
+let viewerOff = null;
 const TEXT_H = 0; // overlay — no extra text block height
 
 const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filter);
@@ -130,6 +132,7 @@ function draw(root) {
   if (parallaxOff) { parallaxOff(); parallaxOff = null; }
   if (lingerOff) { lingerOff(); lingerOff = null; }
   if (revealOff) { revealOff(); revealOff = null; }
+  if (viewerOff) { viewerOff(); viewerOff = null; }
   if (view === 'list') {
     grid.className = 'works';
     grid.style.removeProperty('--cols');
@@ -144,6 +147,7 @@ function draw(root) {
     // parallax aligns short-column bottoms as you scroll
     parallaxOff = attachParallax(grid);
     lingerOff = attachLinger(grid);
+    if (window.innerWidth > 640) viewerOff = attachViewer(grid);
   }
   if (count) count.textContent = `${list.length} stories`;
 }
@@ -174,6 +178,7 @@ export function mountMasonry(root) {
     if (parallaxOff) { parallaxOff(); parallaxOff = null; }
     if (lingerOff) { lingerOff(); lingerOff = null; }
     if (revealOff) { revealOff(); revealOff = null; }
+    if (viewerOff) { viewerOff(); viewerOff = null; }
     redraw = null;
   };
 }
