@@ -53,7 +53,7 @@ function draw(ctx, root, W, H, s) {
     }, gl);
   };
   walk(root, seed);
-  if (!s.done) walk(root, seed, { pos: ((s.clock % 1.6) / 1.6) * 1.5, amp: 0.14 });
+  if (!s.done || s.now < s.t0) walk(root, seed, { pos: ((s.clock % 1.6) / 1.6) * 1.5, amp: 0.14 });
   if (s.sharp) {
     const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
     const photo = pr * s.fade;
@@ -73,7 +73,6 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   const waitCap = hero ? H_WAIT : WAIT_CAP;
   const photoFrom = hero ? H_PHOTO : PHOTO_FROM;
   const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), photoFrom, colorMs };
-
 
   let finished = false;
   const finish = () => {
@@ -117,9 +116,18 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   };
   resize(); const ro = new ResizeObserver(resize); ro.observe(box);
   if (reduce) { render(performance.now()); return () => { ro.disconnect(); }; }
+  // RAF fallback for headless/hidden tabs where requestAnimationFrame is throttled
+  const nextFrame = (cb) => {
+    if (typeof requestAnimationFrame === 'function' && document.visibilityState === 'visible') return requestAnimationFrame(cb);
+    return setTimeout(() => cb(performance.now()), 16);
+  };
+  const cancelFrame = (id) => {
+    if (typeof cancelAnimationFrame === 'function' && document.visibilityState === 'visible') return cancelAnimationFrame(id);
+    return clearTimeout(id);
+  };
   let raf = 0, visible = true, stopped = false;
   const tick = (now) => {
-    raf = requestAnimationFrame(tick);
+    raf = nextFrame(tick);
     const dt = Math.min(((now - (s.now || now)) / 1000) || 0, 0.05);
     s.clock += dt; if (now > s.t0) s.elapsed += dt;
     const target = s.done ? 1 : 0.9 * (1 - Math.exp(-s.elapsed / span));
@@ -130,11 +138,11 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
     render(now);
     if (s.done && s.eased > 0.99 && now - s.loadedAt > s.colorMs) {
       const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
-      if (pr > 0.99) { render(now); stopped = true; cancelAnimationFrame(raf); raf = 0; finish(); }
+      if (pr > 0.99) { render(now); stopped = true; cancelFrame(raf); raf = 0; finish(); }
     }
   };
-  const start = () => { if (!stopped && !raf) raf = requestAnimationFrame(tick); };
-  const io = hero ? null : ('IntersectionObserver' in window ? new IntersectionObserver(([e]) => { if (e.isIntersecting === visible) return; visible = e.isIntersecting; if (visible) start(); else { cancelAnimationFrame(raf); raf = 0; } }, { rootMargin: '150px' }) : null);
+  const start = () => { if (!stopped && !raf) raf = nextFrame(tick); };
+  const io = hero ? null : ('IntersectionObserver' in window ? new IntersectionObserver(([e]) => { if (e.isIntersecting === visible) return; visible = e.isIntersecting; if (visible) start(); else { cancelFrame(raf); raf = 0; } }, { rootMargin: '150px' }) : null);
   if (io) io.observe(box); start();
-  return () => { cancelAnimationFrame(raf); ro.disconnect(); if (io) io.disconnect(); };
+  return () => { cancelFrame(raf); ro.disconnect(); if (io) io.disconnect(); };
 }

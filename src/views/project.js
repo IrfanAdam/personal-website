@@ -29,6 +29,32 @@ export function Project(slug) {
 }
 
 let lastHeroSrc = null;
+const SEEN_KEY = 'seenHeroes';
+let seenSet = null;
+function getSeen() {
+  if (seenSet) return seenSet;
+  seenSet = new Set();
+  try {
+    const raw = sessionStorage.getItem(SEEN_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    if (Array.isArray(arr)) arr.forEach((v) => v && seenSet.add(v));
+  } catch {}
+  try {
+    const legacy = sessionStorage.getItem('lastHeroSrc');
+    if (legacy) seenSet.add(legacy);
+  } catch {}
+  if (lastHeroSrc) seenSet.add(lastHeroSrc);
+  return seenSet;
+}
+function markSeen(src) {
+  const s = getSeen();
+  if (!s.has(src)) {
+    s.add(src);
+    try { sessionStorage.setItem(SEEN_KEY, JSON.stringify([...s])); } catch {}
+  }
+  lastHeroSrc = src;
+  try { sessionStorage.setItem('lastHeroSrc', src); } catch {}
+}
 
 export function mountProject(root) {
   const box = root.querySelector('.hero-box');
@@ -42,17 +68,15 @@ export function mountProject(root) {
     try { img.crossOrigin = "anonymous"; } catch {}
   }
   const currentSrc = img.currentSrc || img.src;
-  let stored = null;
-  try { stored = sessionStorage.getItem('lastHeroSrc'); } catch {}
-  const same = (lastHeroSrc && currentSrc === lastHeroSrc) || (stored && currentSrc === stored);
-  // dedup: if same image as last mount, don't re-run mosaic — just show ready
-  // (covers cached second load where img.complete may still be false at mount, and hard reload via sessionStorage)
+  const seen = getSeen();
+  const same = seen.has(currentSrc);
   if (same && !reduce) {
     box.classList.add('ready');
-    if (img.complete && img.naturalWidth) {
-      lastHeroSrc = currentSrc;
-      return () => {};
-    }
+    box.style.height = '';
+    box.style.aspectRatio = 'var(--hero-aspect)';
+    box.style.transition = '';
+    box.style.willChange = '';
+    if (img.complete && img.naturalWidth) return () => {};
     const onLoad = () => box.classList.add('ready');
     img.addEventListener('load', onLoad, { once: true });
     return () => img.removeEventListener('load', onLoad);
@@ -73,11 +97,9 @@ export function mountProject(root) {
     box.getBoundingClientRect();
     box.style.transition = 'height 860ms cubic-bezier(0.32,0.72,0,1)';
     box.style.willChange = 'height';
-    // shimmer during height: start GridReveal immediately with delay = height duration
-    // so cells stay at split 0 with shimmer, then animate after height
+    // shimmer during height: start GridReveal with delay so cells stay at split 0 with shimmer until height ready
     offReveal = attachGridReveal(box, img, 980, true);
-    lastHeroSrc = currentSrc;
-    try { sessionStorage.setItem('lastHeroSrc', currentSrc); } catch {}
+    markSeen(currentSrc);
     let done = false;
     let tFallback = 0;
     const finishHeight = () => {
@@ -117,13 +139,11 @@ export function mountProject(root) {
 
   if (reduce) {
     box.classList.add('ready');
-    lastHeroSrc = currentSrc;
-    try { sessionStorage.setItem('lastHeroSrc', currentSrc); } catch {}
+    markSeen(currentSrc);
     return () => {};
   }
   offReveal = attachGridReveal(box, img, 0, true);
-  lastHeroSrc = currentSrc;
-  try { sessionStorage.setItem('lastHeroSrc', currentSrc); } catch {}
+  markSeen(currentSrc);
   return () => {
     cleanupHeight();
     offReveal();
