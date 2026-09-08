@@ -1,6 +1,7 @@
 import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
+import { attachGridReveal } from './masonry/gridReveal.js';
 import { footer, aboutBlock } from './shared.js';
 
 let filter = 'all';
@@ -9,6 +10,7 @@ let view = 'grid'; // 'grid' | 'list'
 let redraw = null;
 let parallaxOff = null;
 let lingerOff = null;
+let revealOff = null;
 const TEXT_H = 0; // overlay — no extra text block height
 
 const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filter);
@@ -16,8 +18,9 @@ const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filte
 function card(p, i) {
   const [slug, title, a, b, date, , , , img, , , w = 3, h = 4] = p;
   const tags = [a, b].filter(Boolean).map((c) => `<i>${c}</i>`).join('');
-  return `<a class="card" style="transition-delay:${Math.min(i * 28, 280)}ms" href="#/projects/${slug}">`
+  return `<a class="card" href="#/projects/${slug}">`
     + `<span class="img" style="aspect-ratio:${w}/${h}">`
+    + `<canvas class="gr" aria-hidden="true"></canvas>`
     + `<img loading="lazy" decoding="async" width="${w}" height="${h}" src="${img}" alt="${title}" /></span>`
     + `<span class="tags">${tags}</span>`
     + `<span class="scrim" aria-hidden="true"></span>`
@@ -32,70 +35,90 @@ function row(p) {
 }
 
 function reveal(grid) {
-  grid.querySelectorAll('.card').forEach((el) => {
+  // GridReveal + image fade: canvas mosaic does per-cell shimmer &
+  // pixelated (busy regions split first → variable sharpness), the
+  // <img> above it de-blurs and fades in. Stagger keeps shine visible.
+  const t0 = performance.now();
+  const SKELETON_MS = 480, STAGGER_MS = 45, STAGGER_CAP = 500;
+  const cards = [...grid.querySelectorAll('.card')];
+  const offs = [];
+  cards.forEach((el, idx) => {
+    const box = el.querySelector('.img');
     const img = el.querySelector('img');
-    const ready = () => el.classList.add('ready');
-    if (img.complete && img.naturalWidth) ready();
+    offs.push(attachGridReveal(box, img));
+    const show = () => {
+      const wait = Math.max(0,
+        SKELETON_MS + Math.min(idx * STAGGER_MS, STAGGER_CAP) - (performance.now() - t0));
+      setTimeout(() => { if (el.isConnected) el.classList.add('ready'); }, wait);
+    };
+    if (img.complete && img.naturalWidth) show();
     else {
-      img.addEventListener('load', ready, { once: true });
-      img.addEventListener('error', ready, { once: true });
+      img.addEventListener('load', show, { once: true });
+      img.addEventListener('error', show, { once: true });
     }
   });
+  return () => offs.forEach((fn) => fn());
 }
 
 function attachLinger(grid) {
-  // mobile 1-col: info shows when card is in view (no hover). lingers while visible.
+  // mobile 1-col: info shows only when WHOLE card is visible, lingers in + out.
   const cards = [...grid.querySelectorAll('.card')];
   if (!cards.length) return () => {};
-  // disable on desktop 4/2-col where hover is primary; enable only when single col
   const isMobile = () => window.innerWidth <= 640;
   if (!isMobile() || !('IntersectionObserver' in window)) {
-    // fallback: make all visible on narrow without observer
     if (isMobile()) cards.forEach((c) => c.classList.add('in-view'));
     return () => {};
   }
-  const timers = new Map();
-  const LINGER_MS = 380;
-  const io = new IntersectionObserver(
+  const LINGER_IN = 60, LINGER_OUT = 480;
+  const showTimers = new Map(), hideTimers = new Map();
+  const topEl = document.querySelector('.top');
+  const hdr = () => (topEl ? topEl.offsetHeight : 56);
+  // threshold ≈ 80% visible — forgiving while still requiring most of card
+  // in viewport (not just peeking). root shrinks viewport by bottom bar.
+  const buildIO = () => new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
         const el = e.target;
-        const shouldShow = e.isIntersecting && e.intersectionRatio > 0.22;
-        if (shouldShow) {
-          if (el.classList.contains('in-view') || timers.has(el)) return;
+        const whole = e.isIntersecting && e.intersectionRatio >= 0.8;
+        if (whole) {
+          if (hideTimers.has(el)) { clearTimeout(hideTimers.get(el)); hideTimers.delete(el); }
+          if (el.classList.contains('in-view') || showTimers.has(el)) return;
           const t = setTimeout(() => {
-            timers.delete(el);
+            showTimers.delete(el);
             if (el.isConnected && isMobile()) el.classList.add('in-view');
-          }, LINGER_MS);
-          timers.set(el, t);
+          }, LINGER_IN);
+          showTimers.set(el, t);
         } else {
-          if (timers.has(el)) {
-            clearTimeout(timers.get(el));
-            timers.delete(el);
-          }
-          el.classList.remove('in-view');
+          if (showTimers.has(el)) { clearTimeout(showTimers.get(el)); showTimers.delete(el); }
+          if (!el.classList.contains('in-view') || hideTimers.has(el)) return;
+          const t = setTimeout(() => {
+            hideTimers.delete(el);
+            el.classList.remove('in-view');
+          }, LINGER_OUT);
+          hideTimers.set(el, t);
         }
       });
     },
-    { rootMargin: '0px 0px -8% 0px', threshold: [0, 0.22, 0.5, 1] }
+    { rootMargin: `0px 0px -${hdr() + 12}px 0px`, threshold: [0, 0.8, 1] }
   );
+  let io = buildIO();
   cards.forEach((c) => io.observe(c));
-  // handle resize column change: toggle observer
   const onResize = () => {
     if (!isMobile()) {
-      timers.forEach((t) => clearTimeout(t));
-      timers.clear();
+      showTimers.forEach((t) => clearTimeout(t)); hideTimers.forEach((t) => clearTimeout(t));
+      showTimers.clear(); hideTimers.clear();
       cards.forEach((c) => c.classList.remove('in-view'));
-      io.disconnect();
-      window.removeEventListener('resize', onResize);
+      io.disconnect(); window.removeEventListener('resize', onResize);
+      return;
     }
+    // header height may have changed — rebuild observer with new rootMargin
+    io.disconnect(); io = buildIO(); cards.forEach((c) => io.observe(c));
   };
   window.addEventListener('resize', onResize);
   return () => {
-    timers.forEach((t) => clearTimeout(t));
-    timers.clear();
-    io.disconnect();
-    window.removeEventListener('resize', onResize);
+    showTimers.forEach((t) => clearTimeout(t)); hideTimers.forEach((t) => clearTimeout(t));
+    showTimers.clear(); hideTimers.clear();
+    io.disconnect(); window.removeEventListener('resize', onResize);
     cards.forEach((c) => c.classList.remove('in-view'));
   };
 }
@@ -106,6 +129,7 @@ function draw(root) {
   const list = filtered();
   if (parallaxOff) { parallaxOff(); parallaxOff = null; }
   if (lingerOff) { lingerOff(); lingerOff = null; }
+  if (revealOff) { revealOff(); revealOff = null; }
   if (view === 'list') {
     grid.className = 'works';
     grid.style.removeProperty('--cols');
@@ -116,7 +140,7 @@ function draw(root) {
     grid.className = 'cols';
     grid.style.setProperty('--cols', cols);
     grid.innerHTML = buckets.map((b) => `<div class="col">${b.map((i) => card(list[i], i)).join('')}</div>`).join('');
-    reveal(grid);
+    revealOff = reveal(grid);
     // parallax aligns short-column bottoms as you scroll
     parallaxOff = attachParallax(grid);
     lingerOff = attachLinger(grid);
@@ -149,6 +173,7 @@ export function mountMasonry(root) {
     root.removeEventListener('click', onFilter);
     if (parallaxOff) { parallaxOff(); parallaxOff = null; }
     if (lingerOff) { lingerOff(); lingerOff = null; }
+    if (revealOff) { revealOff(); revealOff = null; }
     redraw = null;
   };
 }
