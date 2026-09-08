@@ -61,9 +61,6 @@ export function mountProject(root) {
   const img = box?.querySelector('img');
   if (!box || !img) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = matchMedia('(max-width: 640px)').matches;
-  let offReveal = () => {};
-  let cleanupHeight = () => {};
   if (img.src.startsWith("http") && !img.crossOrigin) {
     try { img.crossOrigin = "anonymous"; } catch {}
   }
@@ -81,8 +78,17 @@ export function mountProject(root) {
     img.addEventListener('load', onLoad, { once: true });
     return () => img.removeEventListener('load', onLoad);
   }
-
-  if (isMobile && !reduce) {
+  if (reduce) {
+    box.classList.add('ready');
+    markSeen(currentSrc);
+    return () => {};
+  }
+  const isMobile = matchMedia('(max-width: 640px)').matches;
+  markSeen(currentSrc);
+  // Mobile: layout-first to avoid stretch. Skeleton (CSS grid + shimmer) at
+  // placeholder height, height morphs to final aspect, only then attach
+  // canvas GridReveal at final size — canvas never resizes mid-morph.
+  if (isMobile) {
     const w = parseFloat(box.dataset.w) || 3;
     const h = parseFloat(box.dataset.h) || 4;
     const asp = h / w;
@@ -94,23 +100,29 @@ export function mountProject(root) {
     if (placeholderH < 180) placeholderH = Math.min(220, finalH - 24);
     box.style.aspectRatio = 'auto';
     box.style.height = placeholderH + 'px';
+    box.classList.add('loading');
     box.getBoundingClientRect();
     box.style.transition = 'height 860ms cubic-bezier(0.32,0.72,0,1)';
     box.style.willChange = 'height';
-    // shimmer during height: start GridReveal with delay so cells stay at split 0 with shimmer until height ready
-    offReveal = attachGridReveal(box, img, 980, true);
-    markSeen(currentSrc);
     let done = false;
+    let offReveal = () => {};
     let tFallback = 0;
+    const startGrid = () => {
+      // height done — cut to final aspect before first canvas frame
+      box.style.height = '';
+      box.style.aspectRatio = 'var(--hero-aspect)';
+      box.style.transition = '';
+      box.style.willChange = '';
+      box.classList.remove('loading');
+      // image remains blurred (CSS filter) behind canvas until grid ready
+      offReveal = attachGridReveal(box, img, 0, true);
+    };
     const finishHeight = () => {
       if (done) return;
       done = true;
       box.removeEventListener('transitionend', onEnd);
       clearTimeout(tFallback);
-      box.style.height = '';
-      box.style.aspectRatio = 'var(--hero-aspect)';
-      box.style.transition = '';
-      box.style.willChange = '';
+      startGrid();
     };
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
@@ -118,34 +130,23 @@ export function mountProject(root) {
     };
     box.addEventListener('transitionend', onEnd);
     tFallback = setTimeout(finishHeight, 980);
-    const t = setTimeout(() => { box.style.height = finalH + 'px'; }, 48);
-    const onResize = () => {};
-    window.addEventListener('resize', onResize, { once: true });
-    cleanupHeight = () => {
-      clearTimeout(t);
+    // kick morph after skeleton paints
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (!done) box.style.height = finalH + 'px';
+    }));
+    return () => {
+      done = true;
       clearTimeout(tFallback);
-      window.removeEventListener('resize', onResize);
       box.removeEventListener('transitionend', onEnd);
+      box.classList.remove('loading');
       box.style.height = '';
       box.style.aspectRatio = '';
       box.style.transition = '';
       box.style.willChange = '';
-    };
-    return () => {
-      cleanupHeight();
       offReveal();
     };
   }
-
-  if (reduce) {
-    box.classList.add('ready');
-    markSeen(currentSrc);
-    return () => {};
-  }
-  offReveal = attachGridReveal(box, img, 0, true);
-  markSeen(currentSrc);
-  return () => {
-    cleanupHeight();
-    offReveal();
-  };
+  // Desktop: no layout morph — skeletal at final aspect until image found, then grid
+  const offReveal = attachGridReveal(box, img, 120, true);
+  return () => offReveal();
 }

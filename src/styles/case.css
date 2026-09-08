@@ -26,23 +26,36 @@
   aspect-ratio: var(--hero-aspect, 3 / 4);
   line-height: 0;
 }
+.case-media.hero-box.loading {
+  /* skeletal placeholder — fixed 14px grid tiles, so height morph adds tiles rather than stretching cells */
+  background-image: var(--reveal-grid);
+}
+.case-media.hero-box.loading canvas.gr { opacity: 0; }
 .case-media.hero-box canvas.gr {
   position: absolute; inset: 0; width: 100%; height: 100%; display: block;
   opacity: 1; transition: opacity var(--dur-blur) var(--ease-standard);
 }
 .case-media.hero-box img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
-  opacity: 0; transition: opacity var(--dur-blur) var(--ease-standard);
+  opacity: 0; filter: blur(var(--blur-placeholder)); transition: opacity var(--dur-blur) var(--ease-standard), filter 520ms var(--ease-standard);
 }
-.case-media.hero-box.ready img { opacity: 1; }
+.case-media.hero-box.ready img { opacity: 1; filter: blur(0); }
 .case-media.hero-box.ready canvas.gr { opacity: 0; }
+.case-media.hero-box.loading::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: var(--shimmer-gradient);
+  -webkit-mask-image: var(--shimmer-band);
+  mask-image: var(--shimmer-band);
+  animation: hero-shimmer var(--dur-shimmer) linear infinite;
+}
+.case-media.hero-box.ready::after { display: none; }
+@keyframes hero-shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+.case-media.hero-box { will-change: height; }
 @media (prefers-reduced-motion: reduce) {
   .case-media.hero-box canvas.gr, .case-media.hero-box img { transition: none; }
   .case-media.hero-box img { opacity: 1; }
   .case-media.hero-box canvas.gr { opacity: 0; }
-}
-@media (max-width: 640px) {
-  .case-media.hero-box { will-change: height; }
+  .case-media.hero-box.loading::after { animation: none; display: none; }
 }
 .case .kicker { font-family: var(--font-mono); color: var(--color-ink-muted); font-size: var(--text-meta); }
 .case h1 { font-size: var(--text-title); letter-spacing: var(--tracking-title); margin: var(--space-6) 0 var(--space-14); }
