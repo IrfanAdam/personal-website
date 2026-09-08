@@ -1,5 +1,5 @@
 import { Masonry, mountMasonry, setView } from './views/masonry.js';
-import { Project } from './views/project.js';
+import { Project, mountProject } from './views/project.js';
 import { Contact } from './views/contact.js';
 import { stripItems, viewTabs } from './views/shared.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
@@ -79,8 +79,10 @@ function route() {
     const href = a.getAttribute('href');
     a.classList.toggle('on', href === `#/projects/${slug}` || (contact && href === '#/contact'));
   });
-  if (h.startsWith('#/projects/')) root.innerHTML = Project(h.split('/')[2]);
-  else if (h.startsWith('#/contact')) root.innerHTML = Contact();
+  if (h.startsWith('#/projects/')) {
+    root.innerHTML = Project(h.split('/')[2]);
+    cleanup = mountProject(root);
+  } else if (h.startsWith('#/contact')) root.innerHTML = Contact();
   else {
     setView(masonryView);
     root.innerHTML = Masonry();
