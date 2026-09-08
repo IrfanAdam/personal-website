@@ -5,8 +5,8 @@ import { buildTree, measureTree, orderRandom, clamp01, mix, easeOut, smoothstep,
 const TARGET = 30, SAMPLE = 128, WAIT_CAP = 0.72, PHOTO_FROM = 0.93;
 const COLOR_MS = 240, SPAN_S = 0.6;
 // hero: denser + slower so the mosaic is unmistakable on detail page
-const H_TARGET = 16, H_WAIT = 0.82, H_PHOTO = 0.86;
-const H_COLOR = 560, H_SPAN = 1.35;
+const H_TARGET = 22, H_WAIT = 0.75, H_PHOTO = 0.88;
+const H_COLOR = 360, H_SPAN = 0.78;
 const darkNow = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
 const greyOf = (tone, dark, clock) => (dark ? 30 : 228) + tone * 13 + Math.sin(clock * 1.5 + tone * 6.28) * 3;
 const cellCount = (box) => {
@@ -74,6 +74,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   const photoFrom = hero ? H_PHOTO : PHOTO_FROM;
   const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), photoFrom, colorMs };
 
+
   let finished = false;
   const finish = () => {
     if (finished) return; finished = true;
@@ -122,7 +123,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
     const dt = Math.min(((now - (s.now || now)) / 1000) || 0, 0.05);
     s.clock += dt; if (now > s.t0) s.elapsed += dt;
     const target = s.done ? 1 : 0.9 * (1 - Math.exp(-s.elapsed / span));
-    const easeK = hero ? 5.2 : 8, splitK = hero ? 4.1 : 6;
+    const easeK = hero ? 7.0 : 8, splitK = hero ? 5.6 : 6;
     s.eased += (target - s.eased) * (1 - Math.exp(-dt * easeK));
     const wanted = Math.min(s.eased, s.done ? 1 : waitCap);
     s.split += (wanted - s.split) * (1 - Math.exp(-dt * splitK));
@@ -133,7 +134,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
     }
   };
   const start = () => { if (!stopped && !raf) raf = requestAnimationFrame(tick); };
-  const io = 'IntersectionObserver' in window ? new IntersectionObserver(([e]) => { if (e.isIntersecting === visible) return; visible = e.isIntersecting; if (visible) start(); else { cancelAnimationFrame(raf); raf = 0; } }, { rootMargin: '150px' }) : null;
+  const io = hero ? null : ('IntersectionObserver' in window ? new IntersectionObserver(([e]) => { if (e.isIntersecting === visible) return; visible = e.isIntersecting; if (visible) start(); else { cancelAnimationFrame(raf); raf = 0; } }, { rootMargin: '150px' }) : null);
   if (io) io.observe(box); start();
   return () => { cancelAnimationFrame(raf); ro.disconnect(); if (io) io.disconnect(); };
 }

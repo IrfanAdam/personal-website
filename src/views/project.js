@@ -28,6 +28,9 @@ export function Project(slug) {
   <span class="work-meta">${next[2] ? next[2] + ' · ' : ''}${next[3] ? next[3] + ' · ' : ''}${next[0]}</span></a></article>${footer()}`;
 }
 
+// remember last hero so second fetch with same image doesn't re-animate
+let lastHeroSrc = null;
+
 export function mountProject(root) {
   const box = root.querySelector('.hero-box');
   const img = box?.querySelector('img');
@@ -36,10 +39,25 @@ export function mountProject(root) {
   const isMobile = matchMedia('(max-width: 640px)').matches;
   let offReveal = () => {};
   let cleanupHeight = () => {};
-  // external hero needs CORS so canvas sampling can colour the mosaic like masonry cards
   if (img.src.startsWith("http") && !img.crossOrigin) {
     try { img.crossOrigin = "anonymous"; } catch {}
   }
+
+  const currentSrc = img.currentSrc || img.src;
+  const sameAsLast = lastHeroSrc && currentSrc === lastHeroSrc && img.complete && img.naturalWidth > 0;
+  if (sameAsLast && !reduce) {
+    box.classList.add('ready');
+    lastHeroSrc = currentSrc;
+    return () => {};
+  }
+
+  let startedReveal = false;
+  const startReveal = () => {
+    if (startedReveal) return;
+    startedReveal = true;
+    offReveal = attachGridReveal(box, img, 0, true);
+    lastHeroSrc = currentSrc;
+  };
 
   if (isMobile && !reduce) {
     const w = parseFloat(box.dataset.w) || 3;
@@ -56,45 +74,52 @@ export function mountProject(root) {
     box.getBoundingClientRect();
     box.style.transition = 'height 860ms cubic-bezier(0.32,0.72,0,1)';
     box.style.willChange = 'height';
+
     let done = false;
-    const expand = () => {
+    let tFallback = 0;
+    const revealAfterHeight = () => {
       if (done) return;
       done = true;
+      box.removeEventListener('transitionend', onEnd);
+      clearTimeout(tFallback);
+      box.style.height = '';
+      box.style.aspectRatio = 'var(--hero-aspect)';
+      box.style.transition = '';
+      box.style.willChange = '';
+      startReveal();
+    };
+    const onEnd = (e) => {
+
+      if (e.propertyName !== 'height') return;
+      revealAfterHeight();
+    };
+    box.addEventListener('transitionend', onEnd);
+    tFallback = setTimeout(revealAfterHeight, 980);
+    const expand = () => {
+
       box.style.height = finalH + 'px';
-      const onEnd = (e) => {
-        if (e.propertyName !== 'height') return;
-        box.removeEventListener('transitionend', onEnd);
-        box.style.height = '';
-        box.style.aspectRatio = 'var(--hero-aspect)';
-        box.style.transition = '';
-        box.style.willChange = '';
-      };
-      box.addEventListener('transitionend', onEnd);
-      setTimeout(() => {
-        if (box.style.height) {
-          box.style.height = '';
-          box.style.aspectRatio = 'var(--hero-aspect)';
-          box.style.transition = '';
-          box.style.willChange = '';
-        }
-      }, 1180);
     };
-    const t = setTimeout(expand, 96);
-    const onResize = () => {
-      if (done) return;
-    };
+    const t = setTimeout(expand, 48);
+    const onResize = () => {};
     window.addEventListener('resize', onResize, { once: true });
     cleanupHeight = () => {
       clearTimeout(t);
+      clearTimeout(tFallback);
       window.removeEventListener('resize', onResize);
+      box.removeEventListener('transitionend', onEnd);
       box.style.height = '';
       box.style.aspectRatio = '';
       box.style.transition = '';
       box.style.willChange = '';
     };
+  } else {
+    if (reduce) {
+      box.classList.add('ready');
+      lastHeroSrc = currentSrc;
+    } else {
+      startReveal();
+    }
   }
-
-  offReveal = attachGridReveal(box, img, 80, true);
 
   return () => {
     cleanupHeight();
