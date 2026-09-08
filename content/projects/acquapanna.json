@@ -1,15 +1,16 @@
 {
-  "timeline": "—",
-  "body": "Story\\\nteachers, coaches get an insight into how students & trainers onboarded to the platform to learn if the rich material and network",
+  "order": 8,
   "slug": "acquapanna",
+  "title": "Onboarding members to a talent network",
   "catA": "",
   "catB": "Mobile App",
-  "order": 8,
   "date": "Oct'20-Jan'21",
-  "platform": "—",
-  "deliverables": "—",
-  "role": "—",
-  "title": "Onboarding members to a talent network",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
-  "image": "/images/acquapanna.png"
+  "image": "/images/acquapanna.png",
+  "mock": "/mocks/acquapanna.png",
+  "body": "Story\\\nteachers, coaches get an insight into how students & trainers onboarded to the platform to learn if the rich material and network",
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

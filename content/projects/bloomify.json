@@ -5,11 +5,12 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Jan-Mar'21",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
   "image": "/images/bloomify.jpg",
+  "mock": "/mocks/bloomify.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

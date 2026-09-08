@@ -1,6 +1,6 @@
 // Content lives in /content/*.json so Decap CMS (/admin) can edit it.
-// Tuple: [slug, title, catA, catB, date, timeline, role, tag, image, deliverables, platform, w, h]
-// w/h come from content/dims.json (node scripts/dims.mjs); fallback 3:4.
+// Tuple: [slug, title, catA, catB, date, timeline, role, tag, image, deliverables, platform, w, h, mock]
+// w/h come from content/dims.json (node scripts/dims.mjs); fallback 3:4. mock is /mocks/<slug>.<ext> (Framer hover variant).
 import settings from '../../content/settings.json';
 import dims from '../../content/dims.json';
 const files = import.meta.glob('../../content/projects/*.json', { eager: true });
@@ -13,5 +13,5 @@ export const contact = settings.contact || { hero: [], now: '', past: '', bio2: 
 export const profileImage = settings.profileImage || '/images/irfan-profile.jpg';
 export const bodies = Object.fromEntries(items.map((p) => [p.slug, p.body || '']));
 export const projects = items.map((p) =>
-  [p.slug, p.title, p.catA || '', p.catB || '', p.date, p.timeline, p.role, p.tag, p.image, p.deliverables || '—', p.platform || '—', ...(dims[p.slug] || [3, 4])]);
+  [p.slug, p.title, p.catA || '', p.catB || '', p.date, p.timeline, p.role, p.tag, p.image, p.deliverables || '—', p.platform || '—', ...(dims[p.slug] || [3, 4]), p.mock || p.image]);
 export const iconFor = (slug) => `/icons/${slug === 'apparel-manufacturing-system-reimagined' ? 'apparel' : slug}.jpg`;

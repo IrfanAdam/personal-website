@@ -27,7 +27,7 @@ export function attachViewer(grid) {
   cursorEl.className = 'viewer-cursor'; cursorEl.setAttribute('aria-hidden', 'true');
   const viewerEl = document.createElement('div');
   viewerEl.className = 'viewer'; viewerEl.setAttribute('aria-hidden', 'true');
-  viewerEl.innerHTML = '<div class="viewer-shimmer" aria-hidden="true"></div><img alt="" />';
+  viewerEl.innerHTML = '<div class="viewer-glass" aria-hidden="true"><i></i><i></i><i></i></div><img alt="" /><div class="viewer-bar" aria-hidden="true"></div><div class="viewer-shimmer" aria-hidden="true"></div>';
   const vimg = viewerEl.querySelector('img');
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('class', 'viewer-lines'); svg.setAttribute('aria-hidden', 'true');
@@ -43,9 +43,10 @@ export function attachViewer(grid) {
     viewerEl.style.transform = `translate3d(${vx}px,${(rect.top + cur).toFixed(1)}px,0)`;
     cursorEl.style.transform = `translate3d(${(cx - HALF).toFixed(1)}px,${(cy - HALF).toFixed(1)}px,0)`;
     const vy = rect.top + cur, vw = 180;
-    const ex = side === 'right' ? vx : vx + vw;
-    setLine(l1, { x: cx, y: cy - HALF }, { x: ex, y: vy });
-    setLine(l2, { x: cx, y: cy + HALF }, { x: ex, y: vy + vh });
+    const cxSide = side === 'right' ? cx + HALF : cx - HALF;
+    const vxSide = side === 'right' ? vx : vx + vw;
+    setLine(l1, { x: cxSide, y: cy - HALF }, { x: vxSide, y: vy });
+    setLine(l2, { x: cxSide, y: cy + HALF }, { x: vxSide, y: vy + vh });
   };
   const tick = () => {
     const s = springStep(cur, vel, tgt, 0.1, 0.54);
@@ -66,7 +67,9 @@ export function attachViewer(grid) {
   const enter = (e) => {
     card = e.currentTarget; rect = card.getBoundingClientRect();
     const img = card.querySelector('img');
-    if (img && img.currentSrc) { vimg.src = img.currentSrc; vimg.alt = img.alt; }
+    const mock = card.dataset.mock;
+    const src = mock || (img && (img.currentSrc || img.src));
+    if (src) { vimg.src = src; if (img) vimg.alt = img.alt; }
     vh = viewerEl.offsetHeight || 220;
     const p = placeViewer(rect, 180, 10, 20); vx = p.x; side = p.side;
     cx = e.clientX; cy = e.clientY;
@@ -85,6 +88,11 @@ export function attachViewer(grid) {
     vh = viewerEl.offsetHeight || vh; tgt = targetY(cy, rect, vh); paint(); kick();
   };
   const remeasure = () => { if (card) { vh = viewerEl.offsetHeight || vh; tgt = targetY(cy, rect, vh); paint(); kick(); } };
+  vimg.addEventListener('error', () => {
+    const fb = card && card.querySelector('img');
+    const fsrc = fb && (fb.currentSrc || fb.src);
+    if (fsrc && vimg.src !== fsrc) vimg.src = fsrc;
+  });
   vimg.addEventListener('load', remeasure);
   cards.forEach((c) => {
     c.addEventListener('mouseenter', enter); c.addEventListener('mousemove', move); c.addEventListener('mouseleave', leave);

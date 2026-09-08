@@ -18,9 +18,9 @@ const TEXT_H = 0; // overlay — no extra text block height
 const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filter);
 
 function card(p, i) {
-  const [slug, title, a, b, date, , , , img, , , w = 3, h = 4] = p;
+  const [slug, title, a, b, date, , , , img, , , w = 3, h = 4, mock] = p;
   const tags = [a, b].filter(Boolean).map((c) => `<i>${c}</i>`).join('');
-  return `<a class="card" href="#/projects/${slug}">`
+  return `<a class="card" href="#/projects/${slug}" data-mock="${mock || img}">`
     + `<span class="img" style="aspect-ratio:${w}/${h}">`
     + `<canvas class="gr" aria-hidden="true"></canvas>`
     + `<img loading="lazy" decoding="async" width="${w}" height="${h}" src="${img}" alt="${title}" /></span>`

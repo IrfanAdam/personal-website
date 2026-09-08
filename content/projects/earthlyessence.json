@@ -5,11 +5,12 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Mar-May'19",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "goals",
   "image": "/images/earthly.jpg",
+  "mock": "/mocks/earthlyessence.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

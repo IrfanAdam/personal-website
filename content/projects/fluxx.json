@@ -9,7 +9,8 @@
   "role": "Website Design",
   "tag": "goals",
   "image": "/images/fluxx.jpg",
+  "mock": "/mocks/fluxx.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

@@ -5,11 +5,12 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Jan-Apr'19",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
   "image": "/images/helix.png",
+  "mock": "/mocks/helix.png",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

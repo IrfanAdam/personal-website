@@ -5,11 +5,12 @@
   "catA": "Batting Data",
   "catB": "Sports Tech",
   "date": "Jun-Jul'19",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
   "image": "/images/gravitas.jpg",
+  "mock": "/mocks/gravitas.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

@@ -5,11 +5,12 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Aug-Nov'20",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "goals",
   "image": "/images/apparel.jpg",
+  "mock": "/mocks/apparel-manufacturing-system-reimagined.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

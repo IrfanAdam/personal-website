@@ -5,11 +5,12 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Nov'18",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "goals",
   "image": "/images/grovegoods.jpg",
+  "mock": "/mocks/grovegoods.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

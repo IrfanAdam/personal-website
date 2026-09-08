@@ -5,11 +5,12 @@
   "catA": "Wine Authentication",
   "catB": "Authentication",
   "date": "Nov'21-Jan'22",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
   "image": "/images/tas-58.jpg",
+  "mock": "/mocks/tas-58.jpg",
   "body": "",
-  "deliverables": "—",
-  "platform": "—"
+  "deliverables": "\u2014",
+  "platform": "\u2014"
 }

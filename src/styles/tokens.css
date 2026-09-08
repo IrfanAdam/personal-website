@@ -73,6 +73,11 @@
   /* — Viewer (cyberpunk expander) — */
   --size-viewer-w: 180px; --size-viewer-gap: 10px; --size-viewer-pad: 20px;
   --size-cursor: 32px; --blur-viewer: 2px;
+  --blur-viewer-1: 2px; --blur-viewer-2: 8px; --blur-viewer-3: 24px;
+  --color-viewer-shade: rgba(0, 0, 0, 0.32);
+  --viewer-mask-1: linear-gradient(to bottom, #000 0%, #000 33%, transparent 33%, transparent 100%);
+  --viewer-mask-2: linear-gradient(to bottom, transparent 0%, transparent 33%, #000 33%, #000 66%, transparent 66%, transparent 100%);
+  --viewer-mask-3: linear-gradient(to bottom, transparent 0%, transparent 66%, #000 66%, #000 100%);
   --color-viewer-bg: var(--color-surface);
   --color-viewer-line: var(--color-ink);
   --color-viewer-neon: var(--color-accent);
