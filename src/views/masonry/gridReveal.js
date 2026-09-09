@@ -18,6 +18,9 @@ const fx = () => ({
   sheen: fxNum('--fx-sheen', 0.14),
 });
 const darkNow = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+// URLs decoded at least once this session — revisits skip the reveal
+// (grid rebuilds its <img> nodes per visit, so complete-at-attach misses).
+const seen = new Set();
 const greyOf = (tone, dark, clock) => (dark ? 30 : 228) + tone * 13 + Math.sin(clock * 1.5 + tone * 6.28) * 3;
 const cellCount = (box, target) => {
   const r = box.getBoundingClientRect();
@@ -104,11 +107,17 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
       btx.drawImage(img, (SAMPLE - img.naturalWidth * sc) / 2, (SAMPLE - img.naturalHeight * sc) / 2, img.naturalWidth * sc, img.naturalHeight * sc);
       try { measureTree(root, btx.getImageData(0, 0, SAMPLE, SAMPLE).data, SAMPLE); orderRandom(branches, s.split); s.hasColors = true; } catch {}
     }
+    seen.add(img.currentSrc || img.src);
     s.done = true; s.loadedAt = performance.now(); makeBuffers();
     if (reduce) { s.split = 1; s.eased = 1; s.fade = 1; render(s.loadedAt + s.colorMs); finish(); }
   };
-  if (img.complete && img.naturalWidth) decode();
-  else { img.addEventListener('load', decode, { once: true }); img.addEventListener('error', () => { s.done = true; s.loadedAt = performance.now(); if (reduce) { render(s.loadedAt); finish(); } }, { once: true }); }
+  if (seen.has(img.currentSrc || img.src) || (img.complete && img.naturalWidth)) {
+    decode();
+    // cached / already seen — skip the reveal entirely, show the photo
+    s.split = 1; s.eased = 1; s.fade = 1; finish();
+    return () => {};
+  }
+  img.addEventListener('load', decode, { once: true }); img.addEventListener('error', () => { s.done = true; s.loadedAt = performance.now(); if (reduce) { render(s.loadedAt); finish(); } }, { once: true });
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2), r = box.getBoundingClientRect();
     const W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));
