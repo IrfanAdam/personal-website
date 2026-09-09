@@ -8,6 +8,10 @@ import { render as patterns, mount as mountPatterns } from './pages-patterns.js'
 import { render as functions, mount as mountFunctions } from './pages-functions.js';
 import { render as primitives, mount as mountPrimitives } from './pages-primitives.js';
 import { render as library, mount as mountLibrary } from './pages-library.js';
+import { render as gridReveal, mount as mountGrid } from './functions/grid-reveal.js';
+import { render as shimmer, mount as mountShimmer } from './functions/shimmer.js';
+import { render as rise, mount as mountRise } from './functions/rise.js';
+import { render as viewer, mount as mountViewer } from './functions/viewer.js';
 import { refreshLive } from './specimens.js';
 import { mountTabs } from './tabs.js';
 const routes = [
@@ -20,6 +24,10 @@ const routes = [
   { hash: '#/components', label: 'Components', group: 'Components', render: components },
   { hash: '#/patterns', label: 'Patterns · Quality', group: 'Components', render: patterns, mount: mountPatterns },
   { hash: '#/functions', label: 'Functions', group: 'Functions', render: functions, mount: mountFunctions },
+  { hash: '#/functions/grid-reveal', label: 'GridReveal', group: 'Functions', render: gridReveal, mount: mountGrid },
+  { hash: '#/functions/shimmer', label: 'Shimmer', group: 'Functions', render: shimmer, mount: mountShimmer },
+  { hash: '#/functions/rise', label: 'Rise', group: 'Functions', render: rise, mount: mountRise },
+  { hash: '#/functions/viewer', label: 'Viewer', group: 'Functions', render: viewer, mount: mountViewer },
 ];
 const main = document.getElementById('ds-main');
 const nav = document.getElementById('ds-nav');
@@ -28,7 +36,7 @@ const root = document.documentElement;
 const saved = localStorage.getItem('adam-theme') || localStorage.getItem('adam-ds-theme') || 'system';
 const bar = document.createElement('div');
 bar.className = 'ds-controls';
-bar.innerHTML = ['system', 'light', 'dark'].map((m) => `<button class="pill" data-theme-btn="${m}">${m}</button>`).join('');
+bar.innerHTML = ['system', 'light', 'dark'].map((m) => `<button class="pill" data-theme-btn="${m}\">${m}</button>`).join('');
 document.body.prepend(bar);
 function applyTheme(m) {
   root.removeAttribute('data-theme');

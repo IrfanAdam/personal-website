@@ -36,7 +36,8 @@
 .ds-ramp { display: flex; height: var(--space-42); border: var(--border-hairline); }
 .ds-ramp i { flex: 1; }
 /* Functions lab — DS-only controls + specimens (site untouched) */
-.fx-stage { width: 100%; aspect-ratio: 4 / 3; display: block; background: var(--color-panel); border: var(--border-hairline); }
+.fx-stage { width: 100%; aspect-ratio: 4 / 3; max-height: var(--size-ds-lab); display: block; background: var(--color-panel); border: var(--border-hairline); }
+.fx-stage.has-image { background-size: cover; background-position: center; }
 .fx-controls { display: grid; gap: var(--space-8); margin-top: var(--space-12); width: 100%; }
 .fx-row { display: grid; grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val); gap: var(--space-12); align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 .fx-row output { color: var(--color-ink); text-align: right; }

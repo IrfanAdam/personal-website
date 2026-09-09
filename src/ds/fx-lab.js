@@ -1,7 +1,7 @@
 /* ADAM/DS Functions lab engine — DS-only. Imports the REAL cell-tree builder
    (../views/masonry/cells.js) as reference: identical geometry + split pacing,
    lab-local renderer + controls. The site is never touched from here. */
-import { buildTree, orderRandom, mix, clamp01, easeOut } from '../views/masonry/cells.js';
+import { buildTree, measureTree, orderRandom, mix, clamp01, easeOut } from '../views/masonry/cells.js';
 import { cssVar } from './specimens.js';
 
 const toRGB = (s) => {
@@ -22,21 +22,40 @@ const tok = (n, val) => { try { document.documentElement.style.setProperty(n, va
 const rgb = (c) => `rgb(${c[0] | 0},${c[1] | 0},${c[2] | 0})`;
 const mix3 = (a, b, t) => [mix(a[0], b[0], t), mix(a[1], b[1], t), mix(a[2], b[2], t)];
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SAMPLE = 64;
 
 function mountCells(scope) {
   const canvas = scope.querySelector('[data-fx-stage]');
   if (!canvas || !canvas.getContext) return () => {};
   const ctx = canvas.getContext('2d');
   const ctl = scope.querySelector('[data-fx-cells]');
-  const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq' };
+  const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none' };
   let root = null, branches = [], split = 0, playing = false, raf = 0, last = 0;
-  // NOTE: --color-surface, not --color-panel — panel is a translucent wash
-  // (alpha reads as near-identical to ink in dark mode and the mosaic goes flat).
+  let texImg = null, hasTex = false;
   const readPal = () => ({ bg: css('--color-surface', [255, 255, 255]), ink: css('--color-ink', [22, 19, 14]), accent: css('--color-accent', [232, 68, 46]) });
   let pal = readPal();
+  const imgMap = { helix: '/images/helix.png', fluxx: '/images/fluxx.jpg', 'tas-35': '/images/tas-35.jpg' };
+  const sampleTex = () => {
+    if (!texImg || !texImg.complete || !texImg.naturalWidth || !root) return;
+    const c = document.createElement('canvas'); c.width = SAMPLE; c.height = SAMPLE;
+    const x = c.getContext('2d', { willReadFrequently: true }); if (!x) return;
+    const sc = Math.max(SAMPLE / texImg.naturalWidth, SAMPLE / texImg.naturalHeight);
+    x.drawImage(texImg, (SAMPLE - texImg.naturalWidth * sc) / 2, (SAMPLE - texImg.naturalHeight * sc) / 2, texImg.naturalWidth * sc, texImg.naturalHeight * sc);
+    try { measureTree(root, x.getImageData(0, 0, SAMPLE, SAMPLE).data, SAMPLE); hasTex = true; } catch {}
+  };
   const rebuild = () => {
     const r = buildTree(4 / 3, P.count); root = r.root; branches = r.branches;
+    hasTex = false;
+    if (texImg && texImg.complete && texImg.naturalWidth) sampleTex();
     if (P.order === 'rnd') orderRandom(branches, split);
+  };
+  const loadImage = (key) => {
+    hasTex = false; texImg = null;
+    const src = imgMap[key];
+    if (!src) { rebuild(); draw(); return; }
+    const im = new Image(); im.crossOrigin = 'anonymous'; im.src = src;
+    im.onload = () => { texImg = im; hasTex = false; rebuild(); draw(); if (playing) play(); else draw(); };
+    im.onerror = () => { texImg = null; hasTex = false; rebuild(); draw(); };
   };
   const size = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -53,8 +72,11 @@ function mountCells(scope) {
     const walk = (c, px, py, pw, ph) => {
       if (!c.kids || split < c.splitAt) {
         const g = gut / 2, frontier = split - c.splitAt;
-        let col = mix3(pal.bg, pal.ink, 0.1 + c.tone * 0.45);
-        if (c.splitAt > -1 && frontier >= 0 && frontier < 0.09) col = mix3(col, pal.accent, 0.55);
+        let col;
+        if (hasTex) col = [c.r, c.g, c.b];
+        else col = mix3(pal.bg, pal.ink, 0.1 + c.tone * 0.45);
+        if (!hasTex && c.splitAt > -1 && frontier >= 0 && frontier < 0.09) col = mix3(col, pal.accent, 0.55);
+        else if (hasTex && c.splitAt > -1 && frontier >= 0 && frontier < 0.09) col = mix3(col, pal.accent, 0.35);
         ctx.fillStyle = rgb(col);
         ctx.fillRect(px + g, py + g, Math.max(0, pw - gut), Math.max(0, ph - gut));
         return;
@@ -75,13 +97,14 @@ function mountCells(scope) {
   const play = () => { if (playing || reduced()) return; playing = true; last = performance.now(); raf = requestAnimationFrame(tick); };
   const replay = () => { pal = readPal(); stop(); split = reduced() ? 1 : 0; draw(); play(); };
   const outs = {};
-  ctl.querySelectorAll('[data-v]').forEach((o) => { outs[o.dataset.v] = o; });
+  if (ctl) ctl.querySelectorAll('[data-v]').forEach((o) => { outs[o.dataset.v] = o; });
   const show = () => {
-    outs.count.textContent = P.count;
-    outs.morph.textContent = P.morph.toFixed(2);
-    outs.gut.textContent = (P.gut % 1 ? P.gut.toFixed(1) : P.gut) + 'px';
-    outs.span.textContent = P.span.toFixed(1) + 's';
+    if (outs.count) outs.count.textContent = P.count;
+    if (outs.morph) outs.morph.textContent = P.morph.toFixed(2);
+    if (outs.gut) outs.gut.textContent = (P.gut % 1 ? P.gut.toFixed(1) : P.gut) + 'px';
+    if (outs.span) outs.span.textContent = P.span.toFixed(1) + 's';
     if (outs.order) outs.order.textContent = P.order;
+    if (outs.image) outs.image.textContent = P.image;
   };
   const onCtl = (e) => {
     const k = e.target.dataset.k; if (!k) return;
@@ -91,26 +114,25 @@ function mountCells(scope) {
     else if (k === 'gut') P.gut = +v;
     else if (k === 'span') { P.span = (+v) / 10; tok('--dur-fx-span', P.span.toFixed(1) + 's'); }
     else if (k === 'order') { P.order = v; rebuild(); }
+    else if (k === 'image') { P.image = v; loadImage(v); show(); return; }
     show(); draw();
   };
   const replayBtn = scope.querySelector('[data-fx-replay]');
   const shuffleBtn = scope.querySelector('[data-fx-shuffle]');
   const onReplay = () => replay();
   const onShuffle = () => { rebuild(); replay(); };
-  ctl.addEventListener('input', onCtl);
-  ctl.addEventListener('change', onCtl);
-  replayBtn.addEventListener('click', onReplay);
-  shuffleBtn.addEventListener('click', onShuffle);
+  if (ctl) { ctl.addEventListener('input', onCtl); ctl.addEventListener('change', onCtl); }
+  if (replayBtn) replayBtn.addEventListener('click', onReplay);
+  if (shuffleBtn) shuffleBtn.addEventListener('click', onShuffle);
   const ro = new ResizeObserver(() => { size(); draw(); });
   ro.observe(canvas);
   rebuild(); size(); show();
   split = reduced() ? 1 : 0; draw(); play();
   return () => {
     stop(); ro.disconnect();
-    ctl.removeEventListener('input', onCtl);
-    ctl.removeEventListener('change', onCtl);
-    replayBtn.removeEventListener('click', onReplay);
-    shuffleBtn.removeEventListener('click', onShuffle);
+    if (ctl) { ctl.removeEventListener('input', onCtl); ctl.removeEventListener('change', onCtl); }
+    if (replayBtn) replayBtn.removeEventListener('click', onReplay);
+    if (shuffleBtn) shuffleBtn.removeEventListener('click', onShuffle);
   };
 }
 
@@ -121,17 +143,17 @@ function mountShimmer(scope) {
   const out = scope.querySelector('[data-fx-dur-v]');
   const dirB = scope.querySelector('[data-fx-dir]');
   const pauseB = scope.querySelector('[data-fx-pause]');
-  const onDur = () => { const s = (+dur.value / 10).toFixed(1); box.style.setProperty('--fx-dur', s + 's'); out.textContent = s + 's'; };
-  const onDir = () => { dirB.textContent = box.classList.toggle('rev') ? 'forward' : 'reverse'; };
-  const onPause = () => { pauseB.textContent = box.classList.toggle('off') ? 'play' : 'pause'; };
-  dur.addEventListener('input', onDur);
-  dirB.addEventListener('click', onDir);
-  pauseB.addEventListener('click', onPause);
-  onDur();
+  const onDur = () => { const s = (+dur.value / 10).toFixed(1); box.style.setProperty('--fx-dur', s + 's'); if (out) out.textContent = s + 's'; };
+  const onDir = () => { if (dirB) dirB.textContent = box.classList.toggle('rev') ? 'forward' : 'reverse'; };
+  const onPause = () => { if (pauseB) pauseB.textContent = box.classList.toggle('off') ? 'play' : 'pause'; };
+  if (dur) dur.addEventListener('input', onDur);
+  if (dirB) dirB.addEventListener('click', onDir);
+  if (pauseB) pauseB.addEventListener('click', onPause);
+  if (dur) onDur();
   return () => {
-    dur.removeEventListener('input', onDur);
-    dirB.removeEventListener('click', onDir);
-    pauseB.removeEventListener('click', onPause);
+    if (dur) dur.removeEventListener('input', onDur);
+    if (dirB) dirB.removeEventListener('click', onDir);
+    if (pauseB) pauseB.removeEventListener('click', onPause);
   };
 }
 
@@ -141,19 +163,19 @@ function mountRise(scope) {
   const dur = scope.querySelector('[data-fx-rise-dur]');
   const out = scope.querySelector('[data-fx-rise-v]');
   const btn = scope.querySelector('[data-fx-rise-replay]');
-  const onDur = () => { box.style.setProperty('--fx-rise-dur', dur.value + 'ms'); out.textContent = dur.value + 'ms'; };
+  const onDur = () => { if (dur && out) { box.style.setProperty('--fx-rise-dur', dur.value + 'ms'); out.textContent = dur.value + 'ms'; } };
   const onReplay = () => {
     if (reduced()) return;
     box.classList.add('rest');
     void box.offsetHeight;
     requestAnimationFrame(() => requestAnimationFrame(() => box.classList.remove('rest')));
   };
-  dur.addEventListener('input', onDur);
-  btn.addEventListener('click', onReplay);
-  onDur();
+  if (dur) dur.addEventListener('input', onDur);
+  if (btn) btn.addEventListener('click', onReplay);
+  if (dur) onDur();
   return () => {
-    dur.removeEventListener('input', onDur);
-    btn.removeEventListener('click', onReplay);
+    if (dur) dur.removeEventListener('input', onDur);
+    if (btn) btn.removeEventListener('click', onReplay);
   };
 }
 
@@ -161,3 +183,4 @@ export function mountFx(root) {
   const offs = [mountCells(root), mountShimmer(root), mountRise(root)];
   return () => offs.forEach((fn) => fn());
 }
+export { mountCells, mountShimmer, mountRise };

@@ -2,7 +2,7 @@
 :root {
   /* — DS docs-only tokens (never the site; scoped here so tokens.css stays site-pure) — */
   --text-ds-mark: 18px; --text-ds-lede: 15px; --text-ds-body: 13px; --text-ds-table: 12.5px;
-  --size-ds-side: 232px; --size-ds-main: 1152px; --size-ds-card: 260px; --size-ds-img: 190px; --size-ds-strip: 620px;
+  --size-ds-side: 232px; --size-ds-main: 1152px; --size-ds-card: 260px; --size-ds-img: 190px; --size-ds-strip: 620px; --size-ds-lab: 280px;
   --size-ds-demo-strip: 520px; --size-ds-scale-label: 132px; --size-ds-scale-val: 52px; --size-ds-gutter-max: 54px; --measure-ds-lede: 62ch;
 }
 body { padding-top: 0; }
