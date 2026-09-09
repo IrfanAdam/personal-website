@@ -25,7 +25,7 @@ body { padding-top: var(--header-h, var(--size-header)); }
 .theme-switch { display: flex; gap: var(--space-6); align-items: center; }
 .theme-switch .pill { font-family: var(--font-mono); font-size: var(--text-meta); padding: var(--space-4) var(--space-9); }
 @media (prefers-reduced-motion: reduce) { .top { transition: none; } }
-@media (max-width: 640px) {
+@media (max-width: 640px) /* --break-sm */ {
   .top {
     top: auto; bottom: 0; left: 0; right: 0; width: auto;
     border-bottom: none;

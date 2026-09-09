@@ -52,4 +52,4 @@
 }
 html.viewer-cursor-active .cols,
 html.viewer-cursor-active .cols * { cursor: none !important; }
-@media (max-width: 640px) { .viewer, .viewer-cursor, .viewer-lines { display: none; } html.viewer-cursor-active .cols, html.viewer-cursor-active .cols * { cursor: auto !important; } }
+@media (max-width: 640px) /* --break-sm */ { .viewer, .viewer-cursor, .viewer-lines { display: none; } html.viewer-cursor-active .cols, html.viewer-cursor-active .cols * { cursor: auto !important; } }

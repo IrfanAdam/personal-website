@@ -85,7 +85,7 @@
   .card-info { translate: none; }
 }
 /* mobile: no hover — linger instead. Scrim+title show while the card is in view. */
-@media (max-width: 640px) {
+@media (max-width: 640px) /* --break-sm */ {
   .card .scrim { opacity: 1; height: 42%; }
   .card-info { opacity: 1; translate: 0 0; }
   .card:not(.ready) .scrim, .card:not(.ready) .card-info { opacity: 0; }

@@ -30,4 +30,4 @@
 .fd-hover:hover { opacity: var(--opacity-hover); }
 .fd-grid-demo { height: var(--space-70); border: var(--border-hairline); background-color: var(--color-panel); background-image: var(--reveal-grid); margin: var(--space-10) 0; }
 .fd-rowbtns { display: flex; gap: var(--space-8); flex-wrap: wrap; margin: var(--space-10) 0; }
-@media (max-width: 900px) { .ds-tabs.vert { flex-direction: column; } .ds-tabs.vert .ds-tablist { position: static; width: 100%; } .fd-blurrow { grid-template-columns: 1fr; } .fd-dur, .fd-layrow { grid-template-columns: minmax(0, 1fr) 1fr auto; } }
+@media (max-width: 900px) /* --break-lg */ { .ds-tabs.vert { flex-direction: column; } .ds-tabs.vert .ds-tablist { position: static; width: 100%; } .fd-blurrow { grid-template-columns: 1fr; } .fd-dur, .fd-layrow { grid-template-columns: minmax(0, 1fr) 1fr auto; } }

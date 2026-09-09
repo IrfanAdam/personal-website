@@ -19,10 +19,10 @@
   .col { will-change: auto; transform: none; backface-visibility: visible; }
   .card canvas.gr { transition: none; }
 }
-@media (max-width: 900px) {
+@media (max-width: 900px) /* --break-lg */ {
   .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 640px) {
+@media (max-width: 640px) /* --break-sm */ {
   .hint { display: none; }
   .cols { grid-template-columns: 1fr; gap: var(--space-12); }
   .col { gap: var(--space-12); will-change: auto; transform: none !important; }

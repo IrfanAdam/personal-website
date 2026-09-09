@@ -5,12 +5,12 @@
 .case-media { padding: 0; line-height: 0; }
 .case-media img { width: 100%; height: auto; border-radius: var(--radius-none); border: none; display: block; }
 .wrap:has(> .case) { padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: var(--space-12); }
-@media (max-width: 800px) {
+@media (max-width: 800px) /* --break-md */ {
   .case-grid { grid-template-columns: 1fr; }
   .case-copy { padding-right: 0; padding-bottom: var(--gutter); }
   .wrap:has(> .case) { padding: var(--space-12); }
 }
-@media (max-width: 640px) {
+@media (max-width: 640px) /* --break-sm */ {
   .wrap:has(> .case) {
     padding: var(--space-12);
     padding-bottom: calc(var(--space-12) + env(safe-area-inset-bottom, 0px));

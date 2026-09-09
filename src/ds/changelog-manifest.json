@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T12:12:57.635Z",
+ "generated": "2026-09-09T12:17:29.092Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,6 +15,14 @@
   "2026-09-09_170854-design-system-update-4.md"
  ],
  "commits": [
+  {
+   "sha": "dba2975",
+   "full": "dba2975c6000a2e35a556a251d93a91f5a56870d",
+   "date": "2026-09-09",
+   "subject": "feat(ds): update 4 phases 1-2 — color story+matrix, type 700 cap+story",
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Phase-1-2"
+  },
   {
    "sha": "0287e39",
    "full": "0287e3946c48e9ce89f9cd0ec9aee5f743afc277",
@@ -178,17 +186,10 @@
  ],
  "wip": [
   "M src/ds/changelog-manifest.json",
-  "M src/ds/ds.css",
   "M src/ds/foundations.css",
   "M src/ds/foundations/pane-color.js",
   "M src/ds/foundations/pane-contract.js",
   "M src/ds/foundations/pane-shape.js",
-  "M src/ds/foundations/pane-space.js",
-  "M src/ds/foundations/pane-type.js",
-  "M src/ds/pages-foundations.js",
-  "M src/ds/pages-overview.js",
-  "M src/ds/pages-primitives.js",
-  "M src/ds/specimens.js",
-  "M src/styles/tokens.css"
+  "M src/ds/foundations/pane-space.js"
  ]
 }
