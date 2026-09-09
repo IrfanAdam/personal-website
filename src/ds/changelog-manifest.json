@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T09:53:52.840Z",
+ "generated": "2026-09-09T09:57:56.549Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,8 +15,16 @@
  ],
  "commits": [
   {
-   "sha": "84f8d34",
-   "full": "84f8d341bde92c5e578acb259650087ffc66d7c3",
+   "sha": "785d755",
+   "full": "785d755fa9fa882fd31dee37f518cb6ad858ad23",
+   "date": "2026-09-09",
+   "subject": "feat(ds): components uniform template — Button pilot + 8 primitives, index redirect",
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Phase 3 — Components"
+  },
+  {
+   "sha": "ce9dfc9",
+   "full": "ce9dfc96fa41e3dd7ee0d078cc99a1ea59f6ce19",
    "date": "2026-09-09",
    "subject": "feat(ds): overview narrative + moodboard — paper/ink/vermilion, mono-as-machine, 90° cuts",
    "plan": "2026-09-09_120000-ds-maturity.md",
@@ -148,11 +156,8 @@
   "M src/ds/ds.css",
   "M src/ds/ds.js",
   "M src/ds/fx-lab.js",
-  "M src/ds/pages-components.js",
   "M src/ds/pages-functions.js",
-  "M src/ds/pages-primitives.js",
   "M src/ds/specimens.css",
-  "?? src/ds/component.js",
   "?? src/ds/functions/"
  ]
 }
