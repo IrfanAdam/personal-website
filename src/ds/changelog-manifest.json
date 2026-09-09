@@ -1,0 +1,141 @@
+{
+ "generated": "2026-09-09T09:41:05.373Z",
+ "continuation": "20260909_145218_9888b1",
+ "plans": [
+  "2026-09-06_183401-portfolio-decap-completion.md",
+  "2026-09-07_113052-masonry-grid-opt.md",
+  "2026-09-07_140407-mobile-responsiveness.md",
+  "2026-09-07_170030-adam-ds-cleanup.md",
+  "2026-09-08-fx-functions-section.md",
+  "2026-09-08_135000-cyberpunk-viewer.md",
+  "2026-09-08_203300-hero-image-load-sequence.md",
+  "2026-09-09_120000-ds-maturity.md",
+  "2026-09-09_130000-ds-maturity.md",
+  "2026-09-09_145218-bidirectional-pipeline.md"
+ ],
+ "commits": [
+  {
+   "sha": "60af6a4",
+   "full": "60af6a4282c548697dd403efd14153033f4af01f",
+   "date": "2026-09-09",
+   "subject": "feat(ds): foundations sheets type/space/shape/motion via tokenTrace",
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Phase 2 — Foundations"
+  },
+  {
+   "sha": "171f2a6",
+   "full": "171f2a6c980d0a6489855f4a63a6ac5683998560",
+   "date": "2026-09-09",
+   "subject": "feat(ds): shared infra tabs + tokenTrace",
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Phase 1 — Shared infra"
+  },
+  {
+   "sha": "001f837",
+   "full": "001f83771b882b87ace25528beeb78ed3a55b2ac",
+   "date": "2026-09-09",
+   "subject": "feat(ds): maturity sprint — token hygiene, playground, landing set, motion graduation, live quality gates",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "5948e02",
+   "full": "5948e0285d31438bd8d3879bdf85431ca2d4382e",
+   "date": "2026-09-08",
+   "subject": "feat(cards): 18px card title step between h3 and h2",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "ffee0b1",
+   "full": "ffee0b15ea03b9ab63304004591e99a43155a39d",
+   "date": "2026-09-08",
+   "subject": "feat(masonry): rareui-style subdivision reveal, random splits, faster run, larger card type",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "9d2b13f",
+   "full": "9d2b13f7bb37599b682ca8c32575c98ed3e863bc",
+   "date": "2026-09-08",
+   "subject": "feat(viewer): thick tether, coupled threshold+idle, synced hide, rAF perf",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "3d974ae",
+   "full": "3d974ae0b1c1adea613d45d8e347ef1246950a5a",
+   "date": "2026-09-08",
+   "subject": "feat(viewer): framer mocks + glass portal + corner tethers, flat lines",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "487b974",
+   "full": "487b9745795e4393b2d81c9f6de7dbfa09740cf7",
+   "date": "2026-09-08",
+   "subject": "feat(viewer): cyberpunk expander (cursor+portal+spring tether, proximity flip, clamped)",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "c595a3e",
+   "full": "c595a3ebb0736bac72c6c838ff6b34c79c3f7418",
+   "date": "2026-09-08",
+   "subject": "feat(masonry): GridReveal cyberpunk viewer — mosaic shimmer, detail-first sharpen",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "7e4f047",
+   "full": "7e4f047cb17589dd05dfeb21487536cdaadee74d",
+   "date": "2026-09-07",
+   "subject": "feat: theme toggle (list-only) + Framer favicon restore",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "fa4eb0e",
+   "full": "fa4eb0e0a8457eb6ac54409689a567c4191781ed",
+   "date": "2026-09-07",
+   "subject": "feat(ds): adopt token-driven design system across site and docs",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "0d02406",
+   "full": "0d02406172b2827fc8cfa95491eca656e24e80e8",
+   "date": "2026-09-07",
+   "subject": "docs: add DESIGN.md tokens spec and masonry/mobile plans",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "940e158",
+   "full": "940e158c3af252b77236e6dbfd211cbe5f45f53c",
+   "date": "2026-09-07",
+   "subject": "feat: mobile — bottom-fixed header, single-column linger cards, 50/50 media",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "8b88207",
+   "full": "8b88207284180745dee444b50f30593fa7411214",
+   "date": "2026-09-07",
+   "subject": "feat: slick minimal header with sliding selection frame",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "c7303a2",
+   "full": "c7303a27bd1b1b522c8facf9d491d4767f19a110",
+   "date": "2026-09-06",
+   "subject": "feat: portfolio clone with decap cms",
+   "plan": null,
+   "anchor": null
+  }
+ ],
+ "wip": [
+  "M src/ds/changelog-manifest.json"
+ ]
+}
