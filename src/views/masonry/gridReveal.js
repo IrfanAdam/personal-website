@@ -61,12 +61,12 @@ function draw(ctx, root, W, H, s) {
   if (!s.done || s.now < s.t0) walk(root, seed, { pos: ((s.clock % 1.6) / 1.6) * 1.5, amp: s.sheen });
   if (s.sharp) {
     const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
-    const photo = pr * s.fade;
+    const photo = s.hasColors ? pr : s.fade;
     if (photo > 0.002) { ctx.globalAlpha = Math.min(1, photo); ctx.drawImage(s.sharp, 0, 0); ctx.globalAlpha = 1; }
-    if (s.done && pr > 0 && pr < 1) walk(root, seed, { pos: pr * 1.5, amp: s.sheen + 0.1 });
+    if (s.done && pr > 0 && pr < 1) walk(root, seed, { pos: pr * 1.5, amp: (s.sheen + 0.1) * (1 - pr) });
   }
 }
-export function attachGridReveal(box, img, delay = 0, hero = false) {
+export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) {
   const canvas = box.querySelector('canvas.gr'), ctx = canvas ? canvas.getContext('2d') : null;
   if (!canvas || !ctx) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -74,7 +74,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   const t = fx();
   const count = cellCount(box, t.target);
   const { root, branches } = buildTree(asp, count, t.morph, t.splitEnd);
-  const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), photoFrom: t.photoFrom, colorMs: t.colorMs, morph: t.morph, sheen: t.sheen, waitCap: t.waitCap, spanS: t.spanS };
+  const s = { W: 0, H: 0, gut: 1, dark: darkNow(), clock: 0, split: 0, eased: 0, elapsed: 0, fade: 0, done: false, hasColors: false, loadedAt: -1, sharp: null, now: 0, t0: performance.now() + Math.max(0, delay), holdMs: Math.max(0, holdMs), photoFrom: t.photoFrom, colorMs: t.colorMs, morph: t.morph, sheen: t.sheen, waitCap: t.waitCap, spanS: t.spanS };
 
   let finished = false;
   const finish = () => {
@@ -131,16 +131,21 @@ export function attachGridReveal(box, img, delay = 0, hero = false) {
   const tick = (now) => {
     raf = nextFrame(tick);
     const dt = Math.min(((now - (s.now || now)) / 1000) || 0, 0.05);
-    s.clock += dt; if (now > s.t0) s.elapsed += dt;
+    s.clock += dt;
+    if (now < s.t0) { render(now); return; } // stagger hold — skeleton shimmers, splits frozen
+    s.elapsed += dt;
     const target = s.done ? 1 : 0.9 * (1 - Math.exp(-s.elapsed / s.spanS));
     const easeK = 8, splitK = 6;
     s.eased += (target - s.eased) * (1 - Math.exp(-dt * easeK));
-    const wanted = Math.min(s.eased, s.done ? 1 : s.waitCap);
+    // post-load hold: each card settles by its own decode time + its slot,
+    // so slow images stay staggered instead of popping together on load.
+    const released = !s.done || now - s.loadedAt > s.holdMs;
+    const wanted = Math.min(s.eased, released ? 1 : s.waitCap);
     s.split += (wanted - s.split) * (1 - Math.exp(-dt * splitK));
     render(now);
-    if (s.done && s.eased > 0.99 && now - s.loadedAt > s.colorMs) {
+    if (s.done) {
       const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
-      if (pr > 0.99) { render(now); stopped = true; cancelFrame(raf); raf = 0; finish(); }
+      if (pr > 0.99 && s.split > 0.985) { render(now); stopped = true; cancelFrame(raf); raf = 0; finish(); }
     }
   };
   const start = () => { if (!stopped && !raf) raf = nextFrame(tick); };

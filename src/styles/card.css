@@ -21,7 +21,7 @@
   transition: opacity var(--dur-blur) var(--ease-standard), transform var(--dur-zoom) var(--ease-signature);
   will-change: transform;
 }
-.card.ready img { opacity: 1; }
+.card.ready img { opacity: 1; transition: transform var(--dur-zoom) var(--ease-signature); }
 .card:hover img { transform: scale(var(--scale-zoom)); }
 .card:focus-visible { outline: var(--size-frame) solid var(--color-ink); outline-offset: var(--space-2); }
 /* tags — visible by default, fade out on hover */

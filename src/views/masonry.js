@@ -40,14 +40,24 @@ function row(p) {
 function reveal(grid) {
   // Shimmer skeleton (half mosaic) → final splits, random order → photo
   // lands at the very end → final shimmer → ready.
-  // gridReveal owns reveal/ready timing. Uniform beat — no inter-card stagger.
+  // gridReveal owns reveal/ready timing. Shuffled stagger: the lead cards
+  // get distinct, randomly-dealt time slots — reads as varying load
+  // times (local images would otherwise finish together). Capped, so
+  // long grids don't cascade.
   const t0 = performance.now();
   const SKELETON_MS = fxMs('--fx-skeleton', 120);
+  const STAGGER_MS = fxMs('--fx-stagger', 140);
+  const STAGGER_CAP = 8;
   const cards = [...grid.querySelectorAll('.card')];
-  const offs = cards.map((el) => {
+  const slots = cards.map((_, i) => Math.min(i, STAGGER_CAP) * STAGGER_MS);
+  for (let i = slots.length - 1; i > 0; i--) {
+    const j = (Math.random() * (i + 1)) | 0;
+    [slots[i], slots[j]] = [slots[j], slots[i]];
+  }
+  const offs = cards.map((el, i) => {
     const box = el.querySelector('.img'), img = el.querySelector('img');
-    const delay = Math.max(0, SKELETON_MS - (performance.now() - t0));
-    return attachGridReveal(box, img, delay);
+    const delay = Math.max(0, SKELETON_MS - (performance.now() - t0)) + slots[i];
+    return attachGridReveal(box, img, delay, false, slots[i]);
   });
   return () => offs.forEach((fn) => fn());
 }
