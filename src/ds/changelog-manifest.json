@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T09:58:17.965Z",
+ "generated": "2026-09-09T10:40:46.965Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,8 +15,8 @@
  ],
  "commits": [
   {
-   "sha": "2950080",
-   "full": "2950080a3d663639126d6ad6d365edcae7aca1a1",
+   "sha": "ac91453",
+   "full": "ac91453edb2a100727b014b0fc1fdeb9bfa70dc5",
    "date": "2026-09-09",
    "subject": "feat(ds): functions split + GridReveal shared — 4 routes, compact lab, image texture",
    "plan": "2026-09-09_120000-ds-maturity.md",
@@ -160,6 +160,7 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json"
+  "M src/ds/changelog-manifest.json",
+  "M src/ds/pages-overview.js"
  ]
 }
