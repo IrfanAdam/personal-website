@@ -22,7 +22,7 @@ export function html() {
   + `<tr><td>44px targets</td><td>PASS</td><td>Touch audit (Task 16)</td></tr>`
   + `<tr><td>Theme parity light / dark</td><td>PASS</td><td>probeTheme matrices, toggle walkthrough</td></tr>`
   + `<tr><td>Keyboard walkthrough</td><td>GATE</td><td>Run on release: tab every demo control + ring visible</td></tr>`
-  + `<tr><td>Feedback roles (success / error / warning / info)</td><td>OPEN · owner: designer</td><td>Blocked on hue sign-off (Task 7)</td></tr>`
+  + `<tr><td>Feedback roles (success / error / warning / info)</td><td>PASS</td><td>Feedback group + live probe table (Task 7)</td></tr>`
   + `</table>`
   + `</div><div class="ds-sec"><h2>Audit state</h2><p class="sub">Live site today — fully adherent, enforced on every release.</p>`
   + code('PASS zero raw colors outside tokens.css — site + docs paint via var() only\nPASS border-radius: 100% var(--radius-*) across stylesheets\nPASS font-family: 100% var(--font-sans) / var(--font-mono) — no literal stacks\nPASS every stylesheet under 100 lines · npm run lint:tokens gates src/styles + src/ds\nPASS breakpoints tokenized --break-sm 640 / --break-md 800 / --break-lg 900 — @media rows carry /* --break-* */')

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T12:19:54.483Z",
+ "generated": "2026-09-09T12:38:01.821Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,6 +15,38 @@
   "2026-09-09_170854-design-system-update-4.md"
  ],
  "commits": [
+  {
+   "sha": "1efb5ac",
+   "full": "1efb5ac1a6a6ad22e2fcfc64a3a39a0ccefde234",
+   "date": "2026-09-09",
+   "subject": "feat(ds): update 4 phase 7 — component tier+viewer example, versioning policy, a11y gate",
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Phase-7"
+  },
+  {
+   "sha": "173f31f",
+   "full": "173f31fbb6ef83818fb5bead20623292e026c5f7",
+   "date": "2026-09-09",
+   "subject": "feat(ds): update 4 phase 6 — FX graduation story, plain token cards, per-demo token labels, viewer specimens",
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Phase-6"
+  },
+  {
+   "sha": "db8a47e",
+   "full": "db8a47ec41d095a9b03af4251b59be43a54a94a3",
+   "date": "2026-09-09",
+   "subject": "feat(ds): update 4 phase 5 — motion prescription+true-scale bars, easing story, depth ladder, reduced-motion contract",
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Phase-5"
+  },
+  {
+   "sha": "ffd2bae",
+   "full": "ffd2bae03407f2924936e96960b372a980e303ac",
+   "date": "2026-09-09",
+   "subject": "chore(ds): mark update-4 phases 1-4 shipped in plan",
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Shipped"
+  },
   {
    "sha": "7d3bcea",
    "full": "7d3bcea9443e45d68e4177c0e26a4d219157ede4",
@@ -192,5 +224,13 @@
    "anchor": null
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-manifest.json",
+  "M src/ds/ds.css",
+  "M src/ds/foundations/pane-color.js",
+  "M src/ds/foundations/pane-contract.js",
+  "M src/ds/pages-changelog.js",
+  "M src/ds/pages-foundations.js",
+  "M src/styles/tokens.css"
+ ]
 }

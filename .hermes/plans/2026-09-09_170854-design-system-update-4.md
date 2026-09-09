@@ -29,9 +29,9 @@
 
 ## Phase 1 — Color: primitives → semantic → story (revised)
 
-*Shipped in dba2975 · Tasks 1–6 · Task 7 deferred · Phase-1-2.*
+*Shipped in dba2975 · Tasks 1–6 · Phase-1-2; Task 7 shipped below.*
 
-*Neutral ramp stays, labeled in-swatch. Accent becomes its own ramp with room for future hues. Semantic rows regrouped by site purpose. Explorer tells ramp → meaning → play → proof. Feedback roles deferred to Task 7.*
+*Neutral ramp stays, labeled in-swatch, horizontal strip restored above every set. Accent becomes its own ramp with room for future hues. Three accents settled (Task 7): vermilion + amber + teal. Semantic rows regrouped by site purpose. Explorer tells ramp → meaning → play → proof.*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -41,7 +41,7 @@
 | 4 | Disabled + focus tokens | live ring specimen, test pass |
 | 5 | Explorer story | tab reads ramp → meaning → play → proof |
 | 6 | AA matrix | all pairs × both themes |
-| 7 | Feedback roles (deferred) | only after hue sign-off |
+| 7 | Feedback roles ✓ done | three accents settled, 8 tokens, live probe AA both themes |
 
 ### Task 1: Baseline inventory ✓ done
 **Objective:** Count today's semantic tokens vs traced rows, plus contrast-pair count and dark-mode coverage.
@@ -73,9 +73,9 @@
 **Files:** `pane-color.js`, `pages-foundations.js`.
 **Verify:** Full `--color-ink*` × canvas coverage × both themes; `npm run test` PASS.
 
-### Task 7 (deferred): Feedback roles
-**Objective:** Success / error / warning / info + on-colors, only after hue sign-off with proposed derivations.
-**Files:** `tokens.css` (additive), `pane-color.js`.
+### Task 7: Feedback roles ✓ done
+**Objective:** Success / error / warning / info + on-colors — DONE. Three accents settled: `--accent-*` vermilion (error), `--accent2-*` amber (warning), `--accent3-*` teal (success deepest step, info mid step + icon). Dual-use tokens (text-on-paper and fill-with-on-color), hand-tuned dark inversion, all pairs AA both themes.
+**Files:** `tokens.css` (additive), `pane-color.js`, `pages-foundations.js` (feedback proof table).
 **Verify:** Both themes via live probe; no existing value changed; `npm run test` PASS.
 
 ## Phase 2 — Type: capped scale + live samples + story

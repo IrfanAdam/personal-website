@@ -11,6 +11,7 @@ import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
 const INKS = ['--color-ink', '--color-ink-muted', '--color-ink-subtle', '--color-on-accent', '--color-on-media', '--color-overlay-muted'];
 const CANVASES = ['--color-bg', '--color-surface', '--color-surface-sunken', '--color-overlay', '--color-accent', '--color-chip'];
+const FEEDBACK = [['--color-success', '--color-bg'], ['--color-success', '--color-surface'], ['--color-on-success', '--color-success'], ['--color-error', '--color-bg'], ['--color-error', '--color-surface'], ['--color-on-error', '--color-error'], ['--color-warning', '--color-bg'], ['--color-warning', '--color-surface'], ['--color-on-warning', '--color-warning'], ['--color-info', '--color-bg'], ['--color-info', '--color-surface'], ['--color-on-info', '--color-info']];
 const inkShort = (t) => t.replace('--color-', '');
 /* Full AA matrix (Update 4 Task 6): every text ink × canvas, both themes.
    Token values are batched per theme inside one probeTheme flip (12 reads),
@@ -20,12 +21,20 @@ const contrastRows = () => ['light', 'dark'].map((theme) => {
   return `<tr><td colspan="4"><b>${theme}</b> — live probe</td></tr>`
   + INKS.map((a) => CANVASES.map((b) => { const r = ratio(v[a], v[b]); return `<tr><td>${inkShort(a)} on ${inkShort(b)}</td><td><span class="tok">${a}</span> on <span class="tok">${b}</span></td><td>${r} : 1</td><td>${verdict(r)}</td></tr>`; }).join('')).join('');
 }).join('');
+/* Feedback proof (Update 4 Task 7): each role as text on paper/surface
+   plus its on-color on the role fill — live probe, both themes. */
+const feedbackRows = () => ['light', 'dark'].map((theme) => {
+  const toks = [...new Set(FEEDBACK.flat())];
+  const v = probeTheme(theme, () => Object.fromEntries(toks.map((t) => [t, cssVar(t) || t])));
+  return `<tr><td colspan="4"><b>${theme}</b> — live probe</td></tr>`
+  + FEEDBACK.map(([a, b]) => { const r = ratio(v[a], v[b]); return `<tr><td>${inkShort(a)} on ${inkShort(b)}</td><td><span class="tok">${a}</span> on <span class="tok">${b}</span></td><td>${r} : 1</td><td>${verdict(r)}</td></tr>`; }).join('');
+}).join('');
 export function render() {
   const panes = [{ label: cL, html: cH() }, { label: tL, html: tH() }, { label: sL, html: sH() }, { label: hL, html: hH() }, { label: mL, html: mH() }, { label: fL, html: fH() }, { label: kL, html: kH() }];
   return `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1><p class="lede">Seven definitions feed every token. Swatches and values read live computed <span class="tok">var()</span> — click any card to copy.</p></div>` + tabs({ vertical: true, panes });
 }
 export function mount(root) {
-  const sw = root.querySelector('#mixSw'), ctrls = root.querySelector('#mixCtrls'), val = root.querySelector('#mixVal'), body = root.querySelector('#contrastBody');
+  const sw = root.querySelector('#mixSw'), ctrls = root.querySelector('#mixCtrls'), val = root.querySelector('#mixVal'), body = root.querySelector('#contrastBody'), fb = root.querySelector('#feedbackBody');
   const aSel = ctrls && ctrls.querySelector('[data-mix="a"]'), bSel = ctrls && ctrls.querySelector('[data-mix="b"]'), tIn = ctrls && ctrls.querySelector('[data-mix="t"]'), tOut = ctrls && ctrls.querySelector('[data-mix-v="t"]');
   const typeSample = root.querySelector('#typeSample'), typeCtrls = root.querySelector('#typeCtrls');
   const stage = root.querySelector('#easeStage'), easeCtrls = root.querySelector('#easeCtrls'), dot = stage && stage.querySelector('.fd-dot');
@@ -38,7 +47,7 @@ export function mount(root) {
     sw.style.background = hex; if (val) val.textContent = `${aSel.value} ↔ ${bSel.value} @ ${t.toFixed(2)} → ${hex} · var mix`;
     sw.dataset.hex = hex; sw.dataset.var = `color-mix(in srgb, var(${aSel.value}) ${Math.round((1 - t) * 100)}%, var(${bSel.value}))`;
   };
-  const refreshContrast = () => { if (body) body.innerHTML = contrastRows(); };
+  const refreshContrast = () => { if (body) body.innerHTML = contrastRows(); if (fb) fb.innerHTML = feedbackRows(); };
   const onMix = () => refreshMix();
   const onCopyVar = (e) => { const b = e.target.closest('[data-mix-copy]'); if (!b || !sw) return; const k = b.dataset.mixCopy === 'hex' ? sw.dataset.hex : sw.dataset.var; if (k) navigator.clipboard.writeText(k).catch(() => {}); };
   const onType = (e) => { const s = e.target; if (!s.dataset.type || !typeSample) return; if (s.dataset.type === 'size') typeSample.style.fontSize = s.value; if (s.dataset.type === 'leading') typeSample.style.lineHeight = s.value; if (s.dataset.type === 'tracking') typeSample.style.letterSpacing = s.value; };

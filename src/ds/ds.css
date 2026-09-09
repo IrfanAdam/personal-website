@@ -90,7 +90,7 @@ body { padding-top: 0; }
 .ds-pick { display: block; width: 100%; text-align: left; font: inherit; background: none; border: none; border-bottom: var(--border-hairline); padding: var(--space-8) var(--space-12); font-size: var(--text-ds-body); color: var(--color-ink); cursor: pointer; position: relative; }
 .ds-pick:last-child { border-bottom: none; }
 .ds-pick small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-2); }
-.ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); margin-right: var(--space-8); }
+.ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); margin-right: var(--space-8); } .ds-pick.is-open .ds-num { color: var(--color-ink-muted); }
 .ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); }
 .ds-pick.on small { color: var(--color-ink-muted); }
 .ds-tip { display: none; position: absolute; z-index: var(--z-ds-controls); top: 0; left: calc(100% + var(--space-8)); width: max-content; max-width: min(32ch, 70vw); font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-bg); background: var(--color-ink); padding: var(--space-8) var(--space-10); }

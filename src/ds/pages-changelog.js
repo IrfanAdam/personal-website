@@ -25,6 +25,7 @@ const state = (body) => {
   const d = (body.match(/- \[x\]/gi) || []).length; const t = (body.match(/- \[ \]/g) || []).length;
   return d + t ? `${d}/${d + t}` : '';
 };
+const done = (frac) => { const m = String(frac || '').match(/(\d+)\/(\d+)/); return !!m && Number(m[2]) > 0 && Number(m[1]) === Number(m[2]); };
 const iterState = (ss) => {
   let d = 0, t = 0; ss.forEach((s) => { const m = state(s.body).match(/(\d+)\/(\d+)/); if (m) { d += Number(m[1]); t += Number(m[2]); } });
   return t ? `${d}/${t}` : '';
@@ -67,9 +68,9 @@ export function render() {
     + `<div class="ds-miller"><div class="ds-col" data-col="plan"></div><div class="ds-col" data-col="sprint"></div><div class="ds-detail" data-col="detail"></div></div>`;
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-const btn = (label, subs, on, tip = '') => {
+const btn = (label, subs, on, tip = '', cls = '') => {
   const sm = (Array.isArray(subs) ? subs : subs ? [subs] : []).filter(Boolean).map((s) => `<small>${s}</small>`).join('');
-  return `<button class="ds-pick${on ? ' on' : ''}"><b>${label}</b>${sm}${tip ? `<span class="ds-tip" role="tooltip">${esc(tip)}</span>` : ''}</button>`;
+  return `<button class="ds-pick${on ? ' on' : ''}${cls ? ` ${cls}` : ''}"><b>${label}</b>${sm}${tip ? `<span class="ds-tip" role="tooltip">${esc(tip)}</span>` : ''}</button>`;
 };
 function paint(root) {
   const [pi, si] = sel; const plan = plans[pi] || plans[0]; const sprint = plan?.sprints[si] || plan?.sprints[0];
@@ -77,15 +78,17 @@ function paint(root) {
   root.querySelector('[data-col="plan"]').innerHTML = plans.map((p, i) => {
     const it = String(plans.length - i).padStart(2, '0');
     const num = p.id || it;
-    const line1 = [`${p.sprints.length} phases`, iterState(p.sprints)].filter(Boolean).join(' · ');
+    const frac = iterState(p.sprints);
+    const line1 = [`${p.sprints.length} phases`, frac].filter(Boolean).join('·');
     const d = fmtDate(p.date); const t = fmtTime(p.id);
-    const line2 = p.id && /^\d{6}$/.test(p.id) ? [`Iteration ${it}`, d, t].filter(Boolean).join(' · ') : [`Iteration ${it}`, d].filter(Boolean).join(' · ');
-    return btn(`<span class="ds-num">${num}</span>${p.label}`, [line1, line2], i === pi, p.goal);
+    const line2 = p.id && /^\d{6}$/.test(p.id) ? [`Iter ${it}`, d, t].filter(Boolean).join('·') : [`Iter ${it}`, d].filter(Boolean).join('·');
+    return btn(`<span class="ds-num">${num}</span>${p.label}`, [line2, line1], i === pi, p.goal, done(frac) ? '' : 'is-open');
   }).join('');
   root.querySelector('[data-col="sprint"]').innerHTML = plan.sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
-    const hs = hits(plan.file, s.body, i === 0); const has = hs.length ? ' · ' + hs.length + ' commit' + (hs.length > 1 ? 's' : '') : '';
-    return btn(`<span class="ds-num">Phase ${String(n).padStart(2, '0')}</span>${short(s.head)}`, state(s.body) + has, i === si);
+    const hs = hits(plan.file, s.body, i === 0); const has = hs.length ? '·' + hs.length + ' commit' + (hs.length > 1 ? 's' : '') : '';
+    const frac = state(s.body);
+    return btn(`<span class="ds-num">Phase ${String(n).padStart(2, '0')}</span>${short(s.head)}`, frac + has, i === si, '', done(frac) ? '' : 'is-open');
   }).join('');
   const hs = hits(plan.file, sprint.body, si === 0);
   const extra = (() => { const u = unlinked(texts); return /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`; })();
