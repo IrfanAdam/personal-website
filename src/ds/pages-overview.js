@@ -12,7 +12,7 @@ export function render() {
 .lc-hero-ink .lc-eyebrow{ color:var(--color-bg); }
 .lc-hero h1{ font-family:var(--font-sans); font-weight:800; font-size:clamp(42px,6.8vw,78px); line-height:0.86; letter-spacing:-0.05em; margin:var(--space-14) 0 var(--space-14); text-transform:uppercase; }
 .lc-hero h1 span{ display:block; }
-.lc-hero h1 .accent{ color:var(--color-accent); }
+.lc-hero h1 .accent{ color:var(--color-bg); } .lc-hero h1 .dot{ color:var(--color-accent); font-style:normal; }
 .lc-hero-ink .lede{ color:color-mix(in srgb, var(--color-bg) 72%, transparent); font-size:var(--text-body); line-height:var(--leading-prose); max-width:32ch; margin:0; }
 .lc-hero-paper .lede{ color:var(--color-ink-muted); font-size:13px; line-height:1.6; max-width:30ch; margin:0; }
 .lc-hero-cross{ position:absolute; top:0; left:50%; width:1px; height:100%; background:color-mix(in srgb, var(--color-line) 80%, transparent); }
@@ -29,8 +29,8 @@ export function render() {
 .lc-corner-btn.is-ink::before, .lc-corner-btn.is-ink::after, .lc-corner-btn.is-ink i::before, .lc-corner-btn.is-ink i::after{ border-color:var(--color-bg); }
 .lc-dots-v{ position:absolute; left:calc(100% - 14px); top:18px; width:42px; height:120px; background:radial-gradient(circle, var(--color-ink) 1.1px, transparent 1.2px); background-size:9px 9px; opacity:0.18; pointer-events:none; }
 .lc-dots-h{ position:absolute; bottom:-10px; left:18px; width:120px; height:42px; background:radial-gradient(circle, var(--color-ink) 1.1px, transparent 1.2px); background-size:9px 9px; opacity:0.13; pointer-events:none; }
-.lc-red-cut{ position:absolute; right:0; bottom:0; width:26%; height:15%; background:var(--color-accent); clip-path:polygon(38% 0, 100% 0, 100% 100%, 0 100%, 0 48%); opacity:0.98; }
-.lc-red-cut span{ position:absolute; bottom:14px; right:14px; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:var(--tracking-mono); text-transform:uppercase; color:var(--color-on-accent); }
+.lc-red-cut{ position:absolute; right:0; bottom:0; width:100%; height:var(--space-5); background:var(--color-accent); clip-path:none; opacity:1; }
+.lc-red-cut span{ position:absolute; bottom:12px; right:14px; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:var(--tracking-mono); text-transform:uppercase; color:var(--color-ink-muted); }
 .lc-status{ display:flex; gap:var(--space-8); flex-wrap:wrap; margin-top:var(--space-14); font-family:var(--font-mono); font-size:var(--text-label); }
 .lc-status i{ font-style:normal; border:var(--border-hairline); background:var(--color-surface); padding:var(--space-3) var(--space-8); }
 .lc-hero-ink .lc-status i{ color:var(--color-ink); border-color:var(--color-bg); }
@@ -39,12 +39,12 @@ export function render() {
 .lc-mood{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--space-12); margin:var(--space-16) 0 var(--space-8); position:relative; }
 .lc-tile{ border:var(--border-hairline); background:var(--color-surface); overflow:hidden; position:relative; display:flex; flex-direction:column; }
 .lc-tile .img{ position:relative; overflow:hidden; background:var(--color-panel); border-bottom:var(--border-hairline); display:block; }
-.lc-tile .img img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.12) contrast(1.04); transition:filter var(--dur-soft) var(--ease-standard), transform var(--dur-soft) var(--ease-standard); }
+.lc-tile .img img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0) contrast(1.05); transition:filter var(--dur-soft) var(--ease-standard), transform var(--dur-soft) var(--ease-standard); }
 .lc-tile:hover .img img{ filter:saturate(1) contrast(1); transform:scale(1.015); }
 .lc-tile .body{ padding:var(--space-12); flex:1; display:flex; flex-direction:column; gap:var(--space-6); }
 .lc-tile .kicker{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:var(--tracking-mono); text-transform:uppercase; color:var(--color-ink-muted); display:flex; align-items:center; gap:var(--space-6); }
 .lc-tile .kicker b{ color:var(--color-ink); font-weight:600; }
-.lc-tile .kicker::before{ content:""; width:7px; height:7px; background:var(--color-accent); display:inline-block; flex:none; }
+.lc-tile .kicker::before{ content:""; width:7px; height:7px; background:var(--color-ink); display:inline-block; flex:none; } .lc-tile.is-signal .kicker::before{ background:var(--color-accent); }
 .lc-tile .title{ font-family:var(--font-sans); font-weight:700; font-size:13px; line-height:1.25; letter-spacing:var(--tracking-heading); margin:0; }
 .lc-tile .copy{ font-family:var(--font-mono); font-size:11px; line-height:1.5; color:var(--color-ink-muted); margin:0; }
 .lc-tile .copy a{ color:var(--color-ink); text-decoration:none; border-bottom:var(--border-hairline); }
@@ -52,7 +52,7 @@ export function render() {
 .lc-tile .meta{ font-family:var(--font-mono); font-size:10px; letter-spacing:var(--tracking-mono); text-transform:uppercase; color:var(--color-ink-muted); margin-top:auto; padding-top:var(--space-8); border-top:var(--border-hairline); display:flex; justify-content:space-between; }
 .lc-tile.chamfer{ clip-path:polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%); }
 .lc-tile.tilt{ transform:rotate(-0.6deg); }
-.lc-tile.accent-left{ border-left:var(--size-frame) solid var(--color-accent); }
+.lc-tile.accent-left{ border-left:var(--size-frame) solid var(--color-ink); }
 .lc-over-dots{ position:absolute; pointer-events:none; background:radial-gradient(circle, var(--color-ink) 1.1px, transparent 1.25px); background-size:9px 9px; opacity:0.14; }
 .lc-specbar{ display:flex; gap:var(--space-8); flex-wrap:wrap; margin-top:var(--space-12); }
 .lc-specbar i{ flex:1 1 90px; height:28px; border:var(--border-hairline); display:flex; align-items:center; justify-content:space-between; padding:0 var(--space-8); font-family:var(--font-mono); font-size:9px; letter-spacing:var(--tracking-mono); text-transform:uppercase; }
@@ -62,7 +62,7 @@ export function render() {
   .lc-hero-cross{ display:none; }
   .lc-mood{ grid-template-columns:repeat(6,minmax(0,1fr)); }
   .lc-mood .lc-tile{ grid-column:span 6 !important; transform:none !important; }
-  .lc-red-cut{ width:100%; height:22%; clip-path:none; }
+  .lc-red-cut{ width:100%; height:var(--space-5); clip-path:none; }
   .lc-dots-v, .lc-dots-h{ display:none; }
 }
 </style>
@@ -71,7 +71,7 @@ export function render() {
   <div class="lc-hero-cross" aria-hidden="true"></div>
   <div class="lc-hero-ink">
     <div class="lc-eyebrow">00 // OVERVIEW — ADAM/DS</div>
-    <h1><span>LOSS—</span><span>LESS</span><span class="accent">CYBER—</span><span class="accent">PUNK</span></h1>
+    <h1><span>LOSS—</span><span>LESS</span><span>CYBER—</span><span>PUNK<i class="dot">.</i></span></h1>
     <p class="lede">Lossless is the fidelity — vector-sharp at any zoom, no compression bleed. Cyberpunk is the system — cold void, hard 90° cuts, one signal in the black. Paper texture + terminal logic. Zero radius. Hairline only.</p>
     <div class="lc-status" style="margin-top:var(--space-16)"><i>lossless <b>vector</b></i><i>radius <b>0</b></i><i>signal <b>once</b></i><i>build <b>✓</b></i></div>
     <div class="lc-dots-h" aria-hidden="true"></div>
@@ -81,7 +81,7 @@ export function render() {
     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-12);">
       <div class="lc-eyebrow" style="color:var(--color-ink-muted)">01 // MOODBOARD</div>
       <div class="lc-meta-row">
-        <a class="lc-corner-btn" href="#/tokens" style="text-decoration:none">Explore<i></i></a>
+        <a class="lc-corner-btn" href="#/foundations" style="text-decoration:none">Explore<i></i></a>
         <a class="lc-corner-btn is-ink" href="#/foundations" aria-label="Play" style="text-decoration:none; width:44px; height:44px; padding:0; justify-content:center;">▶<i></i></a>
       </div>
     </div>
@@ -98,7 +98,7 @@ export function render() {
 <div class="ds-sec"><h2>Principles</h2><p class="sub">Five rules every specimen obeys — now set in the lossless cyberpunk voice.</p>
 <div class="ds-grid c2">
   <div class="ds-cell" style="border-left:var(--size-frame) solid var(--color-ink)"><div class="nm">01 · Lossless, not lossy</div><div class="vl">Vector edges, paper grain, and topo lines stay razor at 400%. No blur, no JPEG halos. If it softens, it fails.</div></div>
-  <div class="ds-cell"><div class="nm">02 · Void is the ground</div><div class="vl">Surfaces are cold void (<span class="tok">--color-bg</span> → <span class="tok">--stone-950</span>). Ink is the figure. Dark is default — light is the inversion proof.</div></div>
+  <div class="ds-cell"><div class="nm">02 · Void is the ground</div><div class="vl">Paper and void are equal grounds — ink is the figure on either. Grayscale carries the chrome; <span class="tok">--color-accent</span> speaks only as signal.</div></div>
   <div class="ds-cell"><div class="nm">03 · Zero is the geometry</div><div class="vl">Every corner is <span class="tok">0</span>. Every radius token is <span class="tok">var(--radius-*)</span>. Chamfer cuts are clip-path, never radius.</div></div>
   <div class="ds-cell" style="border-left:var(--size-frame) solid var(--color-accent)"><div class="nm">04 · One signal, rarely</div><div class="vl"><span class="tok">--color-accent</span> is not chrome — only the alert in the void. Chrome is ink, line, and muted.</div></div>
 </div>
@@ -123,7 +123,7 @@ ${code('tokens.css (primitives → semantic → aliases)\\n    ▲ single source
 
   <div class="lc-mood">
     <!-- 01 NEON VOID — Blade Runner signal -->
-    <div class="lc-tile chamfer" style="grid-column:span 7;">
+    <div class="lc-tile chamfer is-signal" style="grid-column:span 7;">
       <span class="img" style="height:248px"><img src="/images/mood/neon-void.jpg" alt="Neon street at night — one signal in the void" loading="lazy" /></span>
       <div class="body">
         <div class="kicker"><b>01</b> Neon void — signal in the black</div>
@@ -156,7 +156,7 @@ ${code('tokens.css (primitives → semantic → aliases)\\n    ▲ single source
     </div>
 
     <!-- 04 BRUTAL SHELL — Braun ET66 -->
-    <div class="lc-tile chamfer" style="grid-column:span 4; border-left:var(--size-frame) solid var(--color-accent);">
+    <div class="lc-tile chamfer" style="grid-column:span 4; border-left:var(--size-frame) solid var(--color-ink);">
       <span class="img" style="height:208px"><img src="/images/mood/brutal-shell.jpg" alt="Braun ET66 calculator by Dieter Rams" loading="lazy" /></span>
       <div class="body" style="background:var(--color-ink); color:var(--color-bg);">
         <div class="kicker" style="color:var(--color-bg)"><b style="color:var(--color-accent)">04</b> Brutal shell — less but better</div>

@@ -54,7 +54,7 @@ const labelOf = (file, md) => {
   if (!h1) return pretty;
   return `${pretty} — ${h1.slice(0, 42)}`;
 };
-const entries = Object.entries(raws).sort(([a], [b]) => a.localeCompare(b));
+const entries = Object.entries(raws).sort(([a], [b]) => b.localeCompare(a));
 const texts = Object.fromEntries(entries.map(([p, md]) => [p.split('/').pop(), md]));
 const plans = entries.map(([p, md]) => {
   const file = p.split('/').pop(); const { date, id, slug } = parseMeta(file);
@@ -76,10 +76,11 @@ function paint(root) {
   if (!plan || !sprint) { root.querySelector('[data-col="detail"]').innerHTML = unlinked(texts); return; }
   root.querySelector('[data-col="plan"]').innerHTML = plans.map((p, i) => {
     const it = String(plans.length - i).padStart(2, '0');
-    const line1 = [`Iteration ${it} · ${p.sprints.length} phases`, iterState(p.sprints)].filter(Boolean).join(' · ');
+    const num = p.id || it;
+    const line1 = [`${p.sprints.length} phases`, iterState(p.sprints)].filter(Boolean).join(' · ');
     const d = fmtDate(p.date); const t = fmtTime(p.id);
-    const line2 = p.id && /^\d{6}$/.test(p.id) ? [p.id, d, t].filter(Boolean).join(' · ') : [p.id, d].filter(Boolean).join(' · ');
-    return btn(`<span class="ds-num">${it}</span>${p.label}`, [line1, line2], i === pi, p.goal);
+    const line2 = p.id && /^\d{6}$/.test(p.id) ? [`Iteration ${it}`, d, t].filter(Boolean).join(' · ') : [`Iteration ${it}`, d].filter(Boolean).join(' · ');
+    return btn(`<span class="ds-num">${num}</span>${p.label}`, [line1, line2], i === pi, p.goal);
   }).join('');
   root.querySelector('[data-col="sprint"]').innerHTML = plan.sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);

@@ -2,7 +2,6 @@
 import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
-import { render as tokens } from './pages-tokens.js';
 import { render as components } from './pages-components.js';
 import { render as patterns, mount as mountPatterns } from './pages-patterns.js';
 import { render as functions, mount as mountFunctions } from './pages-functions.js';
@@ -17,8 +16,7 @@ import { mountTabs } from './tabs.js';
 const routes = [
   { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview },
-  { hash: '#/foundations', label: 'Foundations', group: 'Foundations', render: foundations, mount: mountFoundations },
-  { hash: '#/tokens', label: 'Tokens', group: 'Foundations', render: tokens },
+  { hash: '#/foundations', label: 'Foundations · Tokens', group: 'Start', render: foundations, mount: mountFoundations },
   { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
   { hash: '#/components', label: 'Components', group: 'Components', render: components },
@@ -59,7 +57,8 @@ nav.innerHTML = routes.map((r) => {
 let cleanup = null;
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }
-  const h = location.hash || '#/';
+  let h = location.hash || '#/';
+  if (h === '#/tokens') { location.hash = '#/foundations'; h = '#/foundations'; }
   const i = Math.max(0, routes.findIndex((r) => r.hash === h));
   const r = routes[i];
   nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === r.hash));

@@ -1,0 +1,17 @@
+{
+  "continuation": "20260909_145218_9888b1",
+  "session_link": "@session:default/20260909_145218_9888b1",
+  "title": "Ensure bidirectional plan tracking in DS changelog",
+  "established": "2026-09-09T14:58:00Z",
+  "pipeline": {
+    "plans_glob": ".hermes/plans/*.md",
+    "manifest": "src/ds/changelog-manifest.json",
+    "tracker": "scripts/ds-track.mjs",
+    "renderer": "src/ds/pages-changelog.js",
+    "links": "src/ds/changelog-links.js",
+    "commit_trailer": "[plan:<file>#<anchor>]",
+    "build_hook": "node scripts/ds-track.mjs && vite build",
+    "predev_hook": "node scripts/ds-track.mjs || true"
+  },
+  "guarantee": "Every future scope (plan MD in .hermes/plans + DS commit touching src/ds|tokens.css|DESIGN.md) is auto-linked via manifest. Changelog Miller columns show per-phase commit badges; unlinked section surfaces missing trailers and wip."
+}

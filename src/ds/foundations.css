@@ -1,0 +1,33 @@
+/* ADAM/DS foundations — vertical tabs + live definition demos. Token-only. */
+.ds-tabs.vert { display: flex; gap: var(--space-12); align-items: flex-start; }
+.ds-tabs.vert .ds-tablist { flex: 0 0 auto; flex-direction: column; align-items: stretch; width: 24ch; min-width: 0; position: sticky; top: var(--space-12); margin-bottom: 0; gap: 0; border: var(--border-hairline); background: var(--color-surface); padding: 0; }
+.ds-tabs.vert .ds-tab { display: block; width: 100%; text-align: left; font: inherit; font-size: var(--text-ds-body); background: none; border: none; border-bottom: var(--border-hairline); border-radius: var(--radius-none); padding: var(--space-8) var(--space-12); color: var(--color-ink); cursor: pointer; }
+.ds-tabs.vert .ds-tab:last-child { border-bottom: none; }
+.ds-tabs.vert .ds-tab:hover { background: var(--color-panel); }
+.ds-tabs.vert .ds-tab.on { background: var(--color-panel); color: var(--color-ink); box-shadow: inset var(--space-2) 0 0 var(--color-accent); }
+.ds-tabs.vert .ds-panes { flex: 1 1 auto; min-width: 0; }
+.ds-tabs.vert .ds-pane > .ds-sec:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.fd-durs, .fd-lay { display: grid; gap: var(--space-8); margin: var(--space-10) 0; }
+.fd-dur, .fd-layrow { display: grid; grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val); gap: var(--space-12); align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.fd-dur b, .fd-layrow b { color: var(--color-ink); font-weight: 500; }
+.fd-dur output, .fd-layrow span:last-child { color: var(--color-ink); text-align: right; }
+.fd-track { height: var(--space-10); background: var(--color-panel); border: var(--border-hairline); }
+.fd-fill { height: 100%; background: var(--color-ink); }
+.fd-fill.accent { background: var(--color-accent); }
+.fd-stage { position: relative; height: var(--space-60); border: var(--border-hairline); background-color: var(--color-panel); background-image: var(--reveal-grid); overflow: hidden; margin: var(--space-10) 0; }
+.fd-dot { position: absolute; top: 50%; left: var(--space-8); width: var(--space-16); height: var(--space-16); background: var(--color-accent); margin-top: calc(var(--space-8) * -1); transition: left var(--fd-d, var(--dur-glide)) var(--fd-e, var(--ease-signature)); }
+.fd-stage.go .fd-dot { left: calc(100% - var(--space-26)); }
+.fd-blurrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-12); margin: var(--space-10) 0; }
+.fd-blur { min-height: var(--space-70); border: var(--border-hairline); display: grid; place-items: center; background-color: var(--color-panel); background-image: var(--reveal-grid); font-family: var(--font-mono); font-size: var(--text-micro); }
+.fd-blur i { font-style: normal; background: var(--color-header); border: var(--border-hairline); padding: var(--space-6) var(--space-10); }
+.fd-shapes { display: flex; gap: var(--space-14); flex-wrap: wrap; margin: var(--space-10) 0; }
+.fd-shape { width: var(--space-60); height: var(--space-60); background: var(--color-surface); border: var(--border-hairline); display: grid; place-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.fd-laybar { height: var(--space-12); background: var(--color-ink); max-width: 100%; }
+.fd-laybar.accent { background: var(--color-accent); }
+.fd-press { font-family: var(--font-mono); font-size: var(--text-meta); background: var(--color-ink); color: var(--color-bg); border: var(--border-hairline); padding: var(--space-8) var(--space-16); cursor: pointer; }
+.fd-press:active { scale: var(--scale-press); }
+.fd-hover { border: var(--border-hairline); background: var(--color-surface); padding: var(--space-10) var(--space-12); font-size: var(--text-ds-body); }
+.fd-hover:hover { opacity: var(--opacity-hover); }
+.fd-grid-demo { height: var(--space-70); border: var(--border-hairline); background-color: var(--color-panel); background-image: var(--reveal-grid); margin: var(--space-10) 0; }
+.fd-rowbtns { display: flex; gap: var(--space-8); flex-wrap: wrap; margin: var(--space-10) 0; }
+@media (max-width: 900px) { .ds-tabs.vert { flex-direction: column; } .ds-tabs.vert .ds-tablist { position: static; width: 100%; } .fd-blurrow { grid-template-columns: 1fr; } .fd-dur, .fd-layrow { grid-template-columns: minmax(0, 1fr) 1fr auto; } }
