@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T09:41:05.373Z",
+ "generated": "2026-09-09T09:53:52.840Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,8 +15,16 @@
  ],
  "commits": [
   {
-   "sha": "60af6a4",
-   "full": "60af6a4282c548697dd403efd14153033f4af01f",
+   "sha": "84f8d34",
+   "full": "84f8d341bde92c5e578acb259650087ffc66d7c3",
+   "date": "2026-09-09",
+   "subject": "feat(ds): overview narrative + moodboard — paper/ink/vermilion, mono-as-machine, 90° cuts",
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Phase 5 — Overview narrative + moodboard"
+  },
+  {
+   "sha": "ef43b3d",
+   "full": "ef43b3dea4fb4f852abd5c3ba40b95b3bfda0b9d",
    "date": "2026-09-09",
    "subject": "feat(ds): foundations sheets type/space/shape/motion via tokenTrace",
    "plan": "2026-09-09_120000-ds-maturity.md",
@@ -136,6 +144,15 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json"
+  "M src/ds/changelog-manifest.json",
+  "M src/ds/ds.css",
+  "M src/ds/ds.js",
+  "M src/ds/fx-lab.js",
+  "M src/ds/pages-components.js",
+  "M src/ds/pages-functions.js",
+  "M src/ds/pages-primitives.js",
+  "M src/ds/specimens.css",
+  "?? src/ds/component.js",
+  "?? src/ds/functions/"
  ]
 }
