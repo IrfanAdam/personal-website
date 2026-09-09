@@ -179,6 +179,8 @@
 
 ## Phase 5 — Motion · Depth: story + prescription + honest illustration
 
+*Shipped in db8a47e · Tasks 20–23 · Phase-5.*
+
 *Durations read as a menu with decorative bars. Each duration gets its sanctioned uses, bars go true-scale, easing gets its story, depth gets its ladder.*
 
 | # | Task | Done when |
@@ -188,27 +190,29 @@
 | 22 | Easing + press story | signature curve shown where used, live specimens not code |
 | 23 | Depth ladder | line+frost scale with specimens + helper text |
 
-### Task 20: Reduced-motion contract
+### Task 20: Reduced-motion contract ✓ done
 **Objective:** `prefers-reduced-motion` behavior spec (what collapses to instant, what survives) + live toggle or media-query demo.
 **Files:** `pane-motion.js`, `foundations.css` (media query only).
 **Verify:** Demo honors OS reduced-motion setting; `npm run test` PASS.
 
-### Task 21: Duration→use pairing + honest bars
+### Task 21: Duration→use pairing + honest bars ✓ done
 **Objective:** Table mapping each `--dur-*` to its sanctioned uses (frame, zoom, reveal, ambient) so durations read as prescription, not menu; bars computed true-scale to the longest duration instead of hardcoded widths.
 **Files:** `pane-motion.js`.
 **Verify:** Every `--dur-*` mapped; bars proportional to values; `npm run test` PASS.
 
-### Task 22: Easing + press story
+### Task 22: Easing + press story ✓ done
 **Objective:** Signature easing presented as story — what it feels like, the three places it runs (frame + zoom + reveal) — replay stage kept as proof; scale-press / opacity-hover graduate from the code string to live specimens.
 **Files:** `pane-motion.js`.
 **Verify:** No token behavior left in code strings; `npm run test` PASS.
 
-### Task 23: Depth doctrine + ladder
+### Task 23: Depth doctrine + ladder ✓ done
 **Objective:** Line+frost-not-shadow doctrine with a blur ladder specimen (header → scrim → placeholder), each step labeled with where-used; saturation tokens folded into the same story.
 **Files:** `pane-motion.js` (note + ladder specimen).
 **Verify:** Docs-only; `npm run test` PASS.
 
 ## Phase 6 — FX: graduation story + connected demos
+
+*Shipped in 173f31f · Task 24 · Phase-6.*
 
 *The token wall is numbers in color-swatch cards — meaningless. The tab leads with its concept (lab → token → site), then every demo names the tokens it runs on in plain language.*
 
@@ -216,24 +220,26 @@
 |---|------|-----------|
 | 24 | Graduation story + connected demos | concept stated, demos name tokens, zero blank cards |
 
-### Task 24: Graduation story + connected demos
+### Task 24: Graduation story + connected demos ✓ done
 **Objective:** Lead with the graduation concept (lab-local knobs vs graduated `--fx-*` tokens vs site consumption); number-valued rows move off the color-swatch renderer (shared Task 10 variant); each demo (grid, shimmer, rise, press, viewer spring) labels the exact tokens it runs on with plain-language meaning (wait = stagger pause, k/fr = spring stiffness/friction); viewer code string becomes labeled specimens.
 **Files:** `pane-fx.js`, `pane-contract.js` (one index line), `specimens.js` (shared fix).
 **Verify:** Concept + per-demo token labels + zero blank cards; `npm run test` PASS.
 
 ## Phase 7 — Tokens: third tier + policy + a11y gate
 
-### Task 25: Component-token tier
+*Shipped in 1efb5ac · Tasks 25–27 · Phase-7.*
+
+### Task 25: Component-token tier ✓ done
 **Objective:** Introduce the Evo third tier (`--<component>-*` overrides, e.g. viewer already implies `--viewer-border`) with naming convention + one worked example; forbid new semantic sprawl where a component token fits.
 **Files:** Modify: `src/styles/tokens.css` (convention comment), `src/ds/foundations/pane-contract.js` (index + Do/Don't).
 **Verify:** Convention documented with example; `npm run test` PASS.
 
-### Task 26: Versioning + deprecation policy
+### Task 26: Versioning + deprecation policy ✓ done
 **Objective:** Short policy: token rename/deprecate flow (alias → sunset), version bump rule, where it gets announced (changelog).
 **Files:** Modify: `src/ds/foundations/pane-contract.js`.
 **Verify:** Docs-only; `npm run test` PASS.
 
-### Task 27: A11y contract checklist + verification
+### Task 27: A11y contract checklist + verification ✓ done
 **Objective:** Contract-level checklist (contrast AA per matrix, visible focus, reduced motion, 44px targets, theme parity) with pass state per item; full `npm run test` + theme-toggle + keyboard walkthrough as the release gate (our MIND-gate equivalent).
 **Files:** Modify: `src/ds/foundations/pane-contract.js`.
 **Verify:** All items pass or are marked open with owner phase; `npm run test` PASS.
