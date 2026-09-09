@@ -1,4 +1,5 @@
 /* ADAM/DS app shell — hash router + theme toggle + section nav. */
+import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
 import { render as tokens } from './pages-tokens.js';
@@ -8,15 +9,17 @@ import { render as functions, mount as mountFunctions } from './pages-functions.
 import { render as primitives, mount as mountPrimitives } from './pages-primitives.js';
 import { render as library, mount as mountLibrary } from './pages-library.js';
 import { refreshLive } from './specimens.js';
+import { mountTabs } from './tabs.js';
 const routes = [
+  { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview },
   { hash: '#/foundations', label: 'Foundations', group: 'Foundations', render: foundations, mount: mountFoundations },
   { hash: '#/tokens', label: 'Tokens', group: 'Foundations', render: tokens },
-  { hash: '#/primitives', label: 'Primitives', group: 'Library', render: primitives, mount: mountPrimitives },
-  { hash: '#/library', label: 'Library · Landing', group: 'Library', render: library, mount: mountLibrary },
-  { hash: '#/components', label: 'Components', group: 'Library', render: components },
-  { hash: '#/patterns', label: 'Patterns · Quality', group: 'Library', render: patterns, mount: mountPatterns },
-  { hash: '#/functions', label: 'Functions', group: 'Library', render: functions, mount: mountFunctions },
+  { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
+  { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
+  { hash: '#/components', label: 'Components', group: 'Components', render: components },
+  { hash: '#/patterns', label: 'Patterns · Quality', group: 'Components', render: patterns, mount: mountPatterns },
+  { hash: '#/functions', label: 'Functions', group: 'Functions', render: functions, mount: mountFunctions },
 ];
 const main = document.getElementById('ds-main');
 const nav = document.getElementById('ds-nav');
@@ -56,7 +59,10 @@ function route() {
   const next = routes[(i + 1) % routes.length];
   main.innerHTML = r.render()
     + `<div class="ds-footnav"><a href="${prev.hash}"><small>← Prev</small>${prev.label}</a><a href="${next.hash}" style="text-align:right"><small>Next →</small>${next.label}</a></div>`;
-  if (r.mount) cleanup = r.mount(main) || null;
+  const cleanups = [];
+  if (r.mount) cleanups.push(r.mount(main));
+  cleanups.push(mountTabs(main));
+  cleanup = cleanups.length ? () => cleanups.forEach((fn) => { try { fn && fn(); } catch (_) {} }) : null;
   window.scrollTo(0, 0); refreshLive();
 }
 window.addEventListener('hashchange', route);

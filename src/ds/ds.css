@@ -52,8 +52,49 @@ body { padding-top: 0; }
 .ds-footnav a { text-decoration: none; font-weight: 600; font-size: var(--text-small); }
 .ds-footnav small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
 .ds-spec { border: var(--border-hairline); padding: var(--space-16); display: flex; flex-wrap: wrap; gap: var(--space-14); align-items: flex-start; margin: var(--space-10) 0; }
-.ds-spec > figure { margin: 0; min-width: 0; }
-.ds-spec figcaption { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-6); }
+.ds-spec > figure { margin: 0; min-width: 0; } .ds-spec figcaption { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-6); }
 .ds-spec.block { display: block; }
 @media (max-width: 900px) { .ds-shell { flex-direction: column; } .ds-side { position: static; width: auto; border-right: none; border-bottom: var(--border-hairline); } body { padding-bottom: 0; } .ds-main { margin-left: 0; padding: var(--space-22) var(--space-16) var(--space-70); } .ds-grid.c3, .ds-grid.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ds-controls { position: sticky; top: var(--space-8); justify-content: flex-end; margin-bottom: var(--space-10); background: var(--color-bg); padding: var(--space-6) 0; } }
 @media (max-width: 640px) { .ds-grid.c2 { grid-template-columns: 1fr; } .ds-hero h1 { overflow-wrap: break-word; } }
+/* tabs shell (Phase 1) — token-only, Preview-first */
+.ds-tabs { margin: var(--space-10) 0; }
+.ds-tablist { display: flex; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-10); }
+.ds-tab { font-family: var(--font-mono); font-size: var(--text-meta); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--space-4) var(--space-9); }
+.ds-tab.on { background: var(--color-ink); color: var(--color-bg); }
+.ds-pane[hidden] { display: none; }
+/* changelog archive — rendered plan markdown, token-only */
+.ds-md { font-size: var(--text-ds-body); line-height: var(--leading-prose); }
+.ds-md h1 { font-size: var(--text-h2); font-weight: 700; letter-spacing: var(--tracking-heading); margin: 0 0 var(--space-8); }
+.ds-md h2 { font-size: var(--text-h2); font-weight: 700; letter-spacing: var(--tracking-heading); margin: var(--space-22) 0 var(--space-8); }
+.ds-md h3 { font-size: var(--text-h3); font-weight: 600; margin: var(--space-16) 0 var(--space-6); }
+.ds-md ul { padding-left: var(--space-18); margin: var(--space-8) 0; }
+.ds-md li { margin-bottom: var(--space-4); }
+.ds-md code { font-family: var(--font-mono); font-size: var(--text-meta); background: var(--color-panel); border: var(--border-hairline); padding: var(--space-1) var(--space-5); }
+.ds-md pre { background: var(--color-surface); border: var(--border-hairline); padding: var(--space-10) var(--space-12); overflow-x: auto; }
+.ds-md pre code { background: none; border: none; padding: 0; }
+.ds-md table { width: 100%; border-collapse: collapse; font-size: var(--text-ds-table); margin: var(--space-10) 0; }
+.ds-md th, .ds-md td { text-align: left; padding: var(--space-6) var(--space-8); border-bottom: var(--border-hairline); vertical-align: top; }
+.ds-md a { color: inherit; }
+/* tasks — on-brand checkboxes (square, hairline, ink fill; replaces native blue) */
+.ds-md ul:has(input[type="checkbox"]) { list-style: none; padding-left: 0; }
+.ds-md input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: var(--space-14); height: var(--space-14); border: var(--border-hairline); border-radius: var(--radius-none); background: var(--color-surface); vertical-align: middle; margin: 0 var(--space-8) 0 0; position: relative; display: inline-grid; place-items: center; }
+.ds-md input[type="checkbox"]:checked { background: var(--color-ink); border-color: var(--color-ink); }
+.ds-md input[type="checkbox"]:checked::after { content: "✓"; color: var(--color-bg); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; line-height: 1; }
+/* miller columns — plans | sprints | detail */
+.ds-miller { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
+.ds-col { border: var(--border-hairline); background: var(--color-surface); flex: 1 1 24ch; min-width: 0; }
+.ds-col.wide { flex: 3 1 40ch; }
+.ds-col.wide .ds-md { padding: var(--space-12) var(--space-14); }
+.ds-col.wide .ds-md > :first-child { margin-top: 0; }
+.ds-done { display: inline-block; background: var(--color-ink); color: var(--color-bg); padding: 0 var(--space-5); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: var(--tracking-mono); font-weight: 700; line-height: 1.6; border-radius: var(--radius-none); }
+.ds-pick { display: block; width: 100%; text-align: left; font: inherit; background: none; border: none; border-bottom: var(--border-hairline); padding: var(--space-8) var(--space-12); font-size: var(--text-ds-body); color: var(--color-ink); cursor: pointer; position: relative; }
+.ds-pick:last-child { border-bottom: none; }
+.ds-pick small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-2); }
+.ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); margin-right: var(--space-8); }
+.ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); }
+.ds-pick.on small { color: var(--color-ink-muted); }
+.ds-tip { display: none; position: absolute; z-index: var(--z-ds-controls); top: 0; left: calc(100% + var(--space-8)); width: max-content; max-width: min(32ch, 70vw); font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-bg); background: var(--color-ink); padding: var(--space-8) var(--space-10); }
+.ds-pick:hover .ds-tip, .ds-pick:focus .ds-tip { display: block; }
+.ds-detail { flex: 3 1 40ch; min-width: 0; } .ds-hero.wide .lede { max-width: none; }
+.ds-commits { font-family: var(--font-mono); font-size: var(--text-micro); line-height: 1.7; color: var(--color-ink-muted); word-break: break-all; }
+.ds-commits a { color: var(--color-ink); text-decoration: underline; text-underline-offset: var(--space-2); } .ds-hr { border: none; border-top: var(--border-hairline); margin: var(--space-14) 0; }

@@ -50,3 +50,8 @@ export const refreshLive = () =>
 export const ramp = (tokens) => `<div class="ds-ramp">${tokens.map((s) => `<i style="background:var(${s})" title="${s}"></i>`).join('')}</div>`;
 export const typeRow = (demo, token, value) =>
   `<tr><td>${demo}</td><td><span class="tok">${token}</span></td><td style="font-family:var(--font-mono);font-size:var(--text-label);color:var(--color-ink-muted)">${value}</td></tr>`;
+/* — tokenTrace: ramp → semantic → usage in one renderer (Phase 1 shared infra).
+   rows: [[name, token, usage?]]; copy works via the [data-copy-token]
+   delegation above, live values via [data-live] + refreshLive. */
+export const tokenTrace = ({ ramp: rampTokens = [], rows = [] } = {}) =>
+  `${rampTokens.length ? ramp(rampTokens) : ''}${rows.length ? `<div class="ds-grid c4">${rows.map(([name, token, usage]) => `<div class="ds-cell" data-copy-token="${token}" title="Click to copy live value" style="cursor:pointer"><div class="ds-sw" style="background:var(${token})"></div><div class="nm">${name}</div><div class="vl"><span class="tok">${token}</span></div><div class="vl" data-live="${token}">${cssVar(token)}</div>${usage ? `<div class="vl">${usage}</div>` : ''}</div>`).join('')}</div>` : ''}`;
