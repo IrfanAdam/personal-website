@@ -15,7 +15,7 @@ const make = (x, y, w, h, parent) => ({
   x, y, w, h, r: 0, g: 0, b: 0,
   tone: hash(x + 3.1, y + 1.7, w * 31.7), detail: 0, splitAt: 0, parent, kids: null,
 });
-export function buildTree(aspect, count) {
+export function buildTree(aspect, count, morph = MORPH, splitEnd = LAST_SPLIT) {
   const root = make(0, 0, 1, 1, null);
   const leaves = [root], branches = [];
   while (leaves.length < count) {
@@ -35,7 +35,7 @@ export function buildTree(aspect, count) {
   // already split, so every visible cell divides exactly once more to finish
   const opening = Math.max(1, (leaves.length >> 1) - 1), rest = Math.max(1, branches.length - opening);
   branches.forEach((c, i) => {
-    c.splitAt = i < opening ? -MORPH : (LAST_SPLIT * (i - opening + 1)) / rest;
+    c.splitAt = i < opening ? -morph : (splitEnd * (i - opening + 1)) / rest;
   });
   return { root, branches };
 }

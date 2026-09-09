@@ -29,3 +29,9 @@
 .work-meta { color: var(--color-ink-muted); font-family: var(--font-mono); font-size: var(--text-meta); }
 .about { max-width: var(--measure-prose); padding: var(--space-18) var(--space-4); }
 .about blockquote { margin: var(--space-14) 0; padding-left: var(--space-14); border-left: var(--size-frame) solid var(--color-line); color: var(--color-ink-muted); }
+/* CTA band — landing composition (headline + ghost/primary on paper; accent once via left rule). */
+.cta-band { display: grid; gap: var(--space-14); padding: var(--space-30) var(--space-16); background: var(--color-surface); border: var(--border-hairline); }
+.cta-band h2 { font-size: var(--text-title); letter-spacing: var(--tracking-title); line-height: var(--leading-title); margin: 0; }
+.cta-band p { color: var(--color-ink-muted); max-width: var(--measure-copy); margin: 0; }
+.cta-band .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.cta-band--accent { border-left: var(--size-frame) solid var(--color-accent); }

@@ -1,6 +1,6 @@
 import { projects, bodies } from '../data/site.js';
 import { footer } from './shared.js';
-import { attachGridReveal } from './masonry/gridReveal.js';
+import { mountHeroRise } from './rise.js';
 import { marked } from 'marked';
 
 function renderBody(md) {
@@ -29,66 +29,9 @@ export function Project(slug) {
 }
 
 export function mountProject(root) {
-  const box = root.querySelector('.hero-box');
-  const img = box?.querySelector('img');
-  if (!box || !img) return () => {};
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    box.classList.add('ready');
-    return () => {};
-  }
-  if (img.src.startsWith('http') && !img.crossOrigin) {
+  const img = root.querySelector('.hero-box img');
+  if (img?.src.startsWith('http') && !img.crossOrigin) {
     try { img.crossOrigin = 'anonymous'; } catch {}
   }
-  const isMobile = matchMedia('(max-width: 640px)').matches;
-  if (isMobile) {
-    const w = parseFloat(box.dataset.w) || 3;
-    const h = parseFloat(box.dataset.h) || 4;
-    const asp = h / w;
-    const cw = box.getBoundingClientRect().width || window.innerWidth - 24;
-    const finalH = Math.round(cw * asp);
-    let placeholderH = Math.round(Math.min(420, Math.max(300, cw * 0.82)));
-    if (finalH - placeholderH < 28) placeholderH = Math.max(220, finalH - 80);
-    placeholderH = Math.min(placeholderH, finalH - 24);
-    if (placeholderH < 180) placeholderH = Math.min(220, finalH - 24);
-    box.style.aspectRatio = 'auto';
-    box.style.height = placeholderH + 'px';
-    box.classList.add('loading');
-    box.getBoundingClientRect();
-    box.style.transition = 'height 860ms cubic-bezier(0.32,0.72,0,1)';
-    box.style.willChange = 'height';
-    let done = false;
-    let tFallback = 0;
-    let offReveal = () => {};
-    const finishHeight = () => {
-      if (done) return;
-      done = true;
-      box.removeEventListener('transitionend', onEnd);
-      clearTimeout(tFallback);
-      box.style.height = '';
-      box.style.aspectRatio = 'var(--hero-aspect)';
-      box.style.transition = '';
-      box.style.willChange = '';
-      box.classList.remove('loading');
-      offReveal = attachGridReveal(box, img, 80, true);
-    };
-    const onEnd = (e) => { if (e.propertyName !== 'height') return; finishHeight(); };
-    box.addEventListener('transitionend', onEnd);
-    tFallback = setTimeout(finishHeight, 980);
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      if (!done) box.style.height = finalH + 'px';
-    }));
-    return () => {
-      done = true;
-      clearTimeout(tFallback);
-      box.removeEventListener('transitionend', onEnd);
-      box.classList.remove('loading');
-      box.style.height = '';
-      box.style.aspectRatio = '';
-      box.style.transition = '';
-      box.style.willChange = '';
-      offReveal();
-    };
-  }
-  const offReveal = attachGridReveal(box, img, 80, true);
-  return () => offReveal();
+  return mountHeroRise(root);
 }

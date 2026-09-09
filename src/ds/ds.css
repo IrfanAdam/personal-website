@@ -1,4 +1,10 @@
 /* ADAM/DS docs chrome — consumes the same token space as the site. */
+:root {
+  /* — DS docs-only tokens (never the site; scoped here so tokens.css stays site-pure) — */
+  --text-ds-mark: 18px; --text-ds-lede: 15px; --text-ds-body: 13px; --text-ds-table: 12.5px;
+  --size-ds-side: 232px; --size-ds-main: 1152px; --size-ds-card: 260px; --size-ds-img: 190px; --size-ds-strip: 620px;
+  --size-ds-demo-strip: 520px; --size-ds-scale-label: 132px; --size-ds-scale-val: 52px; --size-ds-gutter-max: 54px; --measure-ds-lede: 62ch;
+}
 body { padding-top: 0; }
 .ds-shell { display: flex; min-height: 100vh; align-items: stretch; }
 .ds-side { position: fixed; top: 0; bottom: 0; left: 0; width: var(--size-ds-side); box-sizing: border-box; padding: var(--space-18) var(--space-14) var(--space-14); border-right: var(--border-hairline); background: var(--color-bg); display: flex; flex-direction: column; gap: var(--space-16); overflow-y: auto; z-index: var(--z-ds-side); }

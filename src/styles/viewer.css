@@ -31,9 +31,7 @@
   opacity: 1; filter: blur(0);
   transition: opacity var(--dur-glide) var(--ease-signature), filter var(--dur-glide) var(--ease-signature);
 }
-/* Decoration layers hidden — hero stays clearly visible, no blur on top */
-.viewer-glass, .viewer-bar, .viewer-shimmer { display: none !important; }
-.viewer::before, .viewer::after { display: none !important; }
+/* Single clear hero — former glass/bar/shimmer overlays deleted in v1.1 (5.3). */
 .viewer img { display: block; width: 100%; height: auto; position: relative; z-index: 1; filter: none; }
 .viewer-lines { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: var(--z-viewer-lines); opacity: 0; will-change: opacity; contain: layout paint; transition: opacity var(--dur-glide) var(--ease-standard); }
 .viewer-lines.on { opacity: 1; transition: opacity var(--dur-glide) var(--ease-standard); }
@@ -46,13 +44,11 @@
 }
 .viewer-lines.on line { stroke-dashoffset: 0; transition-duration: var(--dur-viewer-line); }
 @keyframes viewerIn { from { opacity: 0; } to { opacity: 1; } }
-@supports not ((backdrop-filter: blur(var(--blur-viewer-1))) or (-webkit-backdrop-filter: blur(var(--blur-viewer-1)))) {
-  .viewer-glass, .viewer-bar { display: none; }
+@supports not ((backdrop-filter: blur(var(--blur-viewer))) or (-webkit-backdrop-filter: blur(var(--blur-viewer)))) {
   .viewer { background: var(--color-viewer-bg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .viewer-cursor, .viewer, .viewer-lines, .viewer-lines line { transition: none; animation: none; }
-  .viewer-shimmer { animation: none; display: none; }
 }
 html.viewer-cursor-active .cols,
 html.viewer-cursor-active .cols * { cursor: none !important; }

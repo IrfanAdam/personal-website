@@ -2,6 +2,7 @@ import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
 import { attachGridReveal } from './masonry/gridReveal.js';
+import { fxMs } from './fx-tokens.js';
 import { attachViewer } from './masonry/viewer.js';
 import { footer, aboutBlock } from './shared.js';
 
@@ -41,7 +42,7 @@ function reveal(grid) {
   // lands at the very end → final shimmer → ready.
   // gridReveal owns reveal/ready timing. Uniform beat — no inter-card stagger.
   const t0 = performance.now();
-  const SKELETON_MS = 120;
+  const SKELETON_MS = fxMs('--fx-skeleton', 120);
   const cards = [...grid.querySelectorAll('.card')];
   const offs = cards.map((el) => {
     const box = el.querySelector('.img'), img = el.querySelector('img');

@@ -35,3 +35,19 @@
 .ds-bar.accent { background: var(--color-accent); }
 .ds-ramp { display: flex; height: var(--space-42); border: var(--border-hairline); }
 .ds-ramp i { flex: 1; }
+/* Functions lab — DS-only controls + specimens (site untouched) */
+.fx-stage { width: 100%; aspect-ratio: 4 / 3; display: block; background: var(--color-panel); border: var(--border-hairline); }
+.fx-controls { display: grid; gap: var(--space-8); margin-top: var(--space-12); width: 100%; }
+.fx-row { display: grid; grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val); gap: var(--space-12); align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.fx-row output { color: var(--color-ink); text-align: right; }
+.fx-row input[type=range] { width: 100%; accent-color: var(--color-accent); }
+.fx-row select { font-family: var(--font-mono); font-size: var(--text-micro); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--space-3) var(--space-6); }
+.fx-btns { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+.fx-shimmer { position: relative; overflow: hidden; width: 100%; height: var(--size-ds-img); background-color: var(--color-panel); background-image: var(--reveal-grid); border: var(--border-hairline); }
+.fx-shimmer i { position: absolute; inset: 0; display: block; background: var(--shimmer-gradient); -webkit-mask-image: var(--shimmer-band); mask-image: var(--shimmer-band); animation: fx-sheen var(--fx-dur, var(--dur-shimmer)) linear infinite; }
+.fx-shimmer.rev i { animation-direction: reverse; }
+.fx-shimmer.off i { animation: none; }
+@keyframes fx-sheen { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+.fx-rise { width: 100%; height: var(--size-ds-img); background-color: var(--color-panel); background-image: var(--reveal-grid); border: var(--border-hairline); transition: height var(--fx-rise-dur, var(--dur-glide)) var(--ease-signature); }
+.fx-rise.rest { height: var(--space-90); }
+@media (prefers-reduced-motion: reduce) { .fx-shimmer i { animation: none; } .fx-rise { transition: none; } }

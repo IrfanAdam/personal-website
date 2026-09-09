@@ -1,0 +1,31 @@
+/* Form — field set: label (mono) + control (hairline, paper, ink focus ring) + error (accent). */
+.field { display: grid; gap: var(--space-6); }
+.field label { font-family: var(--font-mono); font-size: var(--text-meta); color: var(--color-ink-muted); letter-spacing: var(--tracking-label); text-transform: uppercase; line-height: var(--leading-mono); }
+.field input, .field textarea, .field select {
+  width: 100%; height: var(--size-input-h); padding: var(--space-8) var(--space-10);
+  background: var(--color-input-bg); color: var(--color-ink);
+  border: var(--border-hairline); border-color: var(--color-input-line);
+  border-radius: var(--radius-none);
+  font-family: var(--font-sans); font-size: var(--text-body); line-height: var(--leading-body);
+}
+.field textarea { height: auto; min-height: calc(var(--size-input-h) * 2); resize: vertical; padding-top: var(--space-10); }
+.field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--color-ink-muted) 50%), linear-gradient(135deg, var(--color-ink-muted) 50%, transparent 50%); background-position: calc(100% - var(--space-14)) 50%, calc(100% - var(--space-10)) 50%; background-size: var(--space-6) var(--space-6), var(--space-6) var(--space-6); background-repeat: no-repeat; padding-right: var(--space-30); }
+.field input::placeholder, .field textarea::placeholder { color: var(--color-ink-muted); }
+.field input:focus-visible, .field textarea:focus-visible, .field select:focus-visible { outline: var(--size-frame) solid var(--color-input-focus); outline-offset: var(--space-2); border-color: var(--color-input-focus); }
+.field input:disabled, .field textarea:disabled, .field select:disabled { opacity: 0.5; cursor: not-allowed; }
+.field--error input, .field--error textarea, .field--error select { border-color: var(--color-accent); }
+.field--error input:focus-visible, .field--error textarea:focus-visible, .field--error select:focus-visible { outline-color: var(--color-accent); }
+.field-error { font-family: var(--font-mono); font-size: var(--text-meta); color: var(--color-accent); line-height: var(--leading-mono); }
+.field-hint { font-family: var(--font-mono); font-size: var(--text-meta); color: var(--color-ink-muted); line-height: var(--leading-mono); }
+.toggle { display: inline-flex; align-items: center; gap: var(--space-8); cursor: pointer; font-family: var(--font-mono); font-size: var(--text-meta); color: var(--color-ink); }
+.toggle input { appearance: none; width: var(--space-42); height: var(--space-22); background: var(--color-surface); border: var(--border-hairline); border-radius: var(--radius-none); position: relative; cursor: pointer; transition: background var(--dur-soft) var(--ease-standard), border-color var(--dur-soft) var(--ease-standard); }
+.toggle input:checked { background: var(--color-ink); border-color: var(--color-ink); }
+.toggle input::after { content: ""; position: absolute; top: var(--space-2); left: var(--space-2); width: var(--space-18); height: var(--space-18); background: var(--color-ink); transition: translate var(--dur-soft) var(--ease-standard), background var(--dur-soft) var(--ease-standard); }
+.toggle input:checked::after { background: var(--color-bg); translate: var(--space-18) 0; }
+.toggle input:focus-visible { outline: var(--size-frame) solid var(--color-ink); outline-offset: var(--space-2); }
+.toggle input:disabled { opacity: 0.5; cursor: not-allowed; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; width: var(--size-tap); height: var(--size-tap); background: var(--color-panel); border: var(--border-hairline); color: var(--color-ink); font-family: var(--font-sans); font-weight: var(--weight-semibold); font-size: var(--text-small); overflow: hidden; border-radius: var(--radius-none); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar--sm { width: var(--space-30); height: var(--space-30); font-size: var(--text-meta); }
+.avatar--lg { width: var(--space-60); height: var(--space-60); font-size: var(--text-h3); }
+@media (prefers-reduced-motion: reduce) { .field input, .field textarea, .field select, .toggle input, .toggle input::after { transition: none; } }

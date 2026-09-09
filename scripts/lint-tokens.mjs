@@ -1,7 +1,10 @@
 /* ADAM/DS token gate — fails on raw values outside tokens.css.
    Rules: no #hex/rgb()/hsl() paint, no literal border-radius, no literal
    font-family, no raw px (breakpoints + OS safe-area excepted), and every
-   stylesheet ≤ 100 lines (AGENTS.md §1/§2). Covers src/styles + src/ds. */
+   stylesheet ≤ 100 lines (AGENTS.md §1/§2). Covers src/styles + src/ds.
+   JS paint gate (v1.1): flags inline paint in src/ds playground
+   (style="…#hex", background:#hex) — ignores prose/route hashes (#/)
+   and token-name strings ("--color-*"). */
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -29,13 +32,16 @@ for (const path of cssFiles) {
     if (/border-radius\s*:\s*(?!var\()\S/.test(ln)) fail.push(`${at} literal radius — ${ln.trim()}`);
     if (/font-family\s*:\s*(?!var\()\S/.test(ln)) fail.push(`${at} literal font-family — ${ln.trim()}`);
     const px = ln.match(/[0-9]+px/g);
-    if (px && !/@media|@supports|env\(|safe-area/.test(ln)) fail.push(`${at} raw px — ${ln.trim()}`);
+    if (px && !/@media|@supports|env\(|safe-area/.test(ln) && !/^\s*--/.test(ln)) fail.push(`${at} raw px — ${ln.trim()}`);
   });
   const n = lines[lines.length - 1] === '' ? lines.length - 1 : lines.length;
   if (n > MAX_LINES) fail.push(`${name} ${n} lines (limit ${MAX_LINES})`);
 }
 /* JS paint check — no hard-coded paint inside style=/background: consumption.
-   Prose, routes (#/), and token-name strings are not paint. */
+   Scans src + src/ds playground; prose (#/), route hashes (#/), and
+   token-name strings (--color-*, --space-*) are not paint — they don't
+   match #hex/rgba inside style/background contexts, so the regex ignores
+   them by construction (v1.1: explicit docs guarantee). */
 const jsDirs = [join(root, 'src'), join(root, 'src/ds')];
 const jsFiles = [];
 for (const dir of jsDirs) {

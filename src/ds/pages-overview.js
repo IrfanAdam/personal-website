@@ -2,7 +2,7 @@
 import { note, code } from './specimens.js';
 export const title = 'Overview';
 export function render() {
-  return `<p class="ds-crumb">ADAM/DS · v1.0.0</p><div class="ds-hero"><h1>Sharp editorial minimalism.</h1>
+  return `<p class="ds-crumb">ADAM/DS · v1.1.0</p><div class="ds-hero"><h1>Sharp editorial minimalism.</h1>
 <p class="lede">Warm paper, deep ink, hard 90° cuts. This system documents the existing portfolio styles — no new styles invented. Read-only: nothing here changes the live site.</p>
 <div class="ds-status"><i>tokens <b>1 source</b></i><i>radius <b>0 everywhere</b></i><i>build <b>✓</b></i><i>site <b>untouched</b></i></div></div>
 <div class="ds-sec"><h2>Principles</h2><p class="sub">Five rules every specimen on this site obeys.</p>

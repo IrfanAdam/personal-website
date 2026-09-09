@@ -1,16 +1,22 @@
 /* ADAM/DS app shell — hash router + theme toggle + section nav. */
 import { render as overview } from './pages-overview.js';
-import { render as foundations } from './pages-foundations.js';
+import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
 import { render as tokens } from './pages-tokens.js';
 import { render as components } from './pages-components.js';
-import { render as patterns } from './pages-patterns.js';
+import { render as patterns, mount as mountPatterns } from './pages-patterns.js';
+import { render as functions, mount as mountFunctions } from './pages-functions.js';
+import { render as primitives, mount as mountPrimitives } from './pages-primitives.js';
+import { render as library, mount as mountLibrary } from './pages-library.js';
 import { refreshLive } from './specimens.js';
 const routes = [
   { hash: '#/', label: 'Overview', group: 'Start', render: overview },
-  { hash: '#/foundations', label: 'Foundations', group: 'Foundations', render: foundations },
+  { hash: '#/foundations', label: 'Foundations', group: 'Foundations', render: foundations, mount: mountFoundations },
   { hash: '#/tokens', label: 'Tokens', group: 'Foundations', render: tokens },
+  { hash: '#/primitives', label: 'Primitives', group: 'Library', render: primitives, mount: mountPrimitives },
+  { hash: '#/library', label: 'Library · Landing', group: 'Library', render: library, mount: mountLibrary },
   { hash: '#/components', label: 'Components', group: 'Library', render: components },
-  { hash: '#/patterns', label: 'Patterns · Quality', group: 'Library', render: patterns },
+  { hash: '#/patterns', label: 'Patterns · Quality', group: 'Library', render: patterns, mount: mountPatterns },
+  { hash: '#/functions', label: 'Functions', group: 'Library', render: functions, mount: mountFunctions },
 ];
 const main = document.getElementById('ds-main');
 const nav = document.getElementById('ds-nav');
@@ -39,7 +45,9 @@ nav.innerHTML = routes.map((r) => {
   const h = r.group !== lastGroup ? `<div class="ds-nav-label">${r.group}</div>` : '';
   lastGroup = r.group; return `${h}<a href="${r.hash}">${r.label}</a>`;
 }).join('');
+let cleanup = null;
 function route() {
+  if (cleanup) { cleanup(); cleanup = null; }
   const h = location.hash || '#/';
   const i = Math.max(0, routes.findIndex((r) => r.hash === h));
   const r = routes[i];
@@ -48,6 +56,7 @@ function route() {
   const next = routes[(i + 1) % routes.length];
   main.innerHTML = r.render()
     + `<div class="ds-footnav"><a href="${prev.hash}"><small>← Prev</small>${prev.label}</a><a href="${next.hash}" style="text-align:right"><small>Next →</small>${next.label}</a></div>`;
+  if (r.mount) cleanup = r.mount(main) || null;
   window.scrollTo(0, 0); refreshLive();
 }
 window.addEventListener('hashchange', route);

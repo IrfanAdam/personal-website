@@ -1,4 +1,4 @@
-// Cyberpunk expander viewer — cursor viewfinder + floating portal + tethers.
+// Tamed editorial viewer — cursor viewfinder + floating portal + tethers.
 // Portal is position:fixed (collision-flip right→left); preview Y follows the
 // cursor with the Framer clamped spring; two SVG lines tether cursor→preview.
 // Perf: single rAF paints all (cursor transform + viewer spring + SVG lines);
@@ -7,6 +7,7 @@
 // coupled: viewer + lines share --dur-glide (380ms). Show uses
 // --dur-viewer-line (780ms) for lines to stay noticeable; hide uses --dur-glide
 // for both so lines never vanish before the window.
+import { fxNum, fxMs } from '../fx-tokens.js';
 export const clamp01 = (v) => Math.min(1, Math.max(0, v));
 export const smoothstep = (t) => { const c = clamp01(t); return c * c * (3 - 2 * c); };
 export const targetY = (y, rect, vh) => smoothstep((y - rect.top) / rect.height) * Math.max(0, rect.height - vh);
@@ -44,19 +45,23 @@ export function placeViewerNear(rect, cx, w = 180, gap = 10, pad = 20) {
 }
 const NS = 'http://www.w3.org/2000/svg';
 const HALF = 16, OFF = 4;
-const THRESHOLD = 12;
-const IDLE_MS = 850;
-const HIDE_DEBOUNCE = 70;
+/* Intent + spring + geometry graduate to --fx-viewer-* / --size-viewer-* (read in attachViewer). */
 export function attachViewer(grid) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   if (window.innerWidth <= 640 || matchMedia('(hover: none)').matches) return () => {};
   const cards = [...grid.querySelectorAll('.card')];
   if (!cards.length) return () => {};
+  /* Graduated viewer tokens — intent + spring + geometry, fallbacks shipped. */
+  const TH = fxNum('--fx-viewer-threshold', 12);
+  const IDLE = fxMs('--fx-viewer-idle', 850);
+  const HIDE = fxMs('--fx-viewer-debounce', 70);
+  const K = fxNum('--fx-viewer-k', 0.1), FR = fxNum('--fx-viewer-fr', 0.54);
+  const VW = fxNum('--size-viewer-w', 180), VGAP = fxNum('--size-viewer-gap', 10), VPAD = fxNum('--size-viewer-pad', 20);
   const cursorEl = document.createElement('div');
   cursorEl.className = 'viewer-cursor'; cursorEl.setAttribute('aria-hidden', 'true');
   const viewerEl = document.createElement('div');
   viewerEl.className = 'viewer'; viewerEl.setAttribute('aria-hidden', 'true');
-  viewerEl.innerHTML = '<div class="viewer-glass" aria-hidden="true"><i></i><i></i><i></i></div><img alt="" /><div class="viewer-bar" aria-hidden="true"></div><div class="viewer-shimmer" aria-hidden="true"></div>';
+  viewerEl.innerHTML = '<img alt="" />';
   const vimg = viewerEl.querySelector('img');
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('class', 'viewer-lines'); svg.setAttribute('aria-hidden', 'true');
@@ -80,7 +85,7 @@ export function attachViewer(grid) {
     }
     viewerEl.style.transform = `translate3d(${vx}px,${(rect.top + cur).toFixed(1)}px,0)`;
     cursorEl.style.transform = `translate3d(${(cx - HALF).toFixed(1)}px,${(cy - HALF).toFixed(1)}px,0)`;
-    const vy2 = rect.top + cur, vw = 180;
+    const vy2 = rect.top + cur, vw = VW;
     const cxSide = side === 'right' ? cx + HALF : cx - HALF;
     const vxSide = side === 'right' ? vx : vx + vw;
     setLine(l1, { x: cxSide, y: cy - HALF }, { x: vxSide, y: vy2 });
@@ -89,7 +94,7 @@ export function attachViewer(grid) {
   const tick = () => {
     raf = 0;
     if (!card || !rect) { paint(); return; }
-    const s = springStep(cur, vel, tgt, 0.1, 0.54);
+    const s = springStep(cur, vel, tgt, K, FR);
     cur = s.pos; vel = s.vel; paint();
     if (Math.abs(tgt - cur) > 0.1 || Math.abs(vel) > 0.1) {
       raf = requestAnimationFrame(tick);
@@ -106,7 +111,7 @@ export function attachViewer(grid) {
   const armIdle = () => {
     clearIdle();
     if (!portalOn) return;
-    idleTimer = setTimeout(() => hidePortal(), IDLE_MS);
+    idleTimer = setTimeout(() => hidePortal(), IDLE);
   };
   const showCursor = () => {
     if (hideTimer) { clearTimeout(hideTimer); hideTimer = 0; }
@@ -148,12 +153,12 @@ export function attachViewer(grid) {
     // keep last portal state for a11y? no-op
     void wasPortal;
   };
-  const scheduleHide = () => { if (hideTimer) return; hideTimer = setTimeout(hideAll, HIDE_DEBOUNCE); };
+  const scheduleHide = () => { if (hideTimer) return; hideTimer = setTimeout(hideAll, HIDE); };
   const cancelHide = () => { if (hideTimer) { clearTimeout(hideTimer); hideTimer = 0; } };
   const checkThreshold = () => {
     if (portalOn || !card) return;
     const d = Math.hypot(cx - enterX, cy - enterY);
-    if (d > THRESHOLD) showPortal();
+    if (d > TH) showPortal();
   };
   const enter = (e) => {
     const next = e.currentTarget;
@@ -166,7 +171,7 @@ export function attachViewer(grid) {
     cx = e.clientX; cy = e.clientY;
     enterX = cx; enterY = cy; portalOn = false;
     viewerEl.classList.remove('on'); svg.classList.remove('on');
-    const p = placeViewerNear(rect, cx, 180, 10, 20); vx = p.x; side = p.side;
+    const p = placeViewerNear(rect, cx, VW, VGAP, VPAD); vx = p.x; side = p.side;
     cur = tgt = targetY(cy, rect, vh); vel = 0;
     paint(); showCursor(); kick();
   };
@@ -198,7 +203,7 @@ export function attachViewer(grid) {
       refreshRaf = 0;
       if (!card) return;
       rect = card.getBoundingClientRect();
-      const p = placeViewerNear(rect, cx, 180, 10, 20); vx = p.x; side = p.side;
+      const p = placeViewerNear(rect, cx, VW, VGAP, VPAD); vx = p.x; side = p.side;
       vh = viewerEl.offsetHeight || vh; tgt = targetY(cy, rect, vh);
       paint(); kick();
     });

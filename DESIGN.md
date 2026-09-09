@@ -1,12 +1,12 @@
 ---
-version: alpha
+version: 1.1.0
 name: Irfan Adam — Personal Website
 description: Sharp editorial minimalism. Warm paper, deep ink, zero radius — every edge is a hard cut. No rounded corners anywhere.
 colors:
   primary: "#16130e"
   bg: "#f4f2ee"
   ink: "#16130e"
-  muted: "#7a756c"
+  muted: "#5c574e"
   card: "#ffffff"
   surface: "#ffffff"
   on-media: "#f6f3ec"
@@ -210,15 +210,15 @@ Editorial, warm-minimal portfolio for Irfan Adam. Framer masonry clone rebuilt a
 
 - **Bg (#f4f2ee / #141210 dark):** Warm paper, not pure white. Dark mode flips to near-black ink.
 - **Ink (#16130e / #f2ede4 dark):** Headlines, pills-on state, tab frame. High contrast on bg (~15:1).
-- **Muted (#7a756c):** Meta text, hints, labels. Stays muted in both themes.
+- **Muted (#5c574e):** Meta text, hints, labels. AA on paper in both themes (6.41 light / 6.86 dark) — retuned v1.1.1 from #7a756c (4.09 light, AA-large only).
 - **Line (rgba 10% ink):** Hairline borders on every card/thumb — no shadows, just stroke.
 - **Card (#fff / #1e1b17 dark):** Card and panel surface.
 - **Accent (#e8442e):** Reserved, not used for UI chrome — only editorial callouts. Contrast on accent is ~3.6:1, so accent grounds are large-text / graphics only (documented exception to AA).
 - **Chip (rgba 62% ink) + Chip-ink (#f6f3ec):** Overlay labels on media — tags rest on the image by default and fade out when the blur scrim + title fade in on hover. On-media-muted (#f6f3ec at 82%) is the secondary line under the title.
 
-Rule: never introduce a new hex outside `tokens.css` / `colors` above. Dark mode is a single `@media (prefers-color-scheme: dark)` swap in `tokens.css`, plus a manual `[data-theme="light"|"dark"]` override (used by the `/ds` docs theme toggle) that re-declares the same semantic tokens for its subtree.
+Rule: never introduce a new hex outside `tokens.css` / `colors` above. Dark mode is a single `@media (prefers-color-scheme: dark)` swap in `tokens.css`, plus a manual `[data-theme="light"|"dark"]` override (used by the `/ds` docs theme toggle) that re-declares the same semantic tokens for its subtree. **Docs-only tokens** (`--text-ds-*`, `--size-ds-*`, `--measure-ds-lede`) live in `src/ds/ds.css` under `:root` (docs-only sheet, never loaded on the site) — `tokens.css` stays site-pure.
 
-**Adoption:** the live site is now 100% token-adherent. `base.css`, `pages.css`, `masonry.css`, and `card.css` consume `var()` only — no raw color, radius, or font stack survives anywhere outside `tokens.css`. Verified by `npm run lint:tokens` (wired into `npm test`).
+**Adoption:** the live site is 100% token-adherent (`base.css`, `pages.css`, `masonry.css`, `card.css` consume `var()` only — no raw color/radius/font outside `tokens.css`). **v1.1 viewer verdict: tamed** — former cyberpunk overlays (`--viewer-neon/grid/scan`, `--viewer-mask-*`, `--blur-viewer-1/2/3`) deleted; viewer keeps only geometry + frosted hairline. **New slots v1.1:** `--fx-cell/wait/photo-from/morph/split-end/skeleton/sheen/grid-pitch`, `--dur-fx-color/span/hero-rise`, `--color-overlay(-muted)` (opaque, for canvas — never translucent `--color-panel`), `--size-input-h` (= `--size-tap`), `--color-input-*`. Verified by `npm run lint:tokens` (wired into `npm test`).
 
 ## Typography
 
@@ -264,11 +264,11 @@ If a future component needs softness, add a new token — do not hard-code a pix
 
 | File | Role | Lines |
 | --- | --- | --- |
-| `src/styles/tokens.css` | primitives → semantic → legacy aliases (only raw values) | ≤100 |
+| `src/styles/tokens.css` | primitives → semantic (+ fx/form/overlay/viewer-tamed) → legacy aliases | 63 |
 | `src/styles/base.css` | reset, header, wrap, pill, footer | ≤100 |
 | `src/styles/pages.css` | strip/tab-frame, work rows, case grid, prose, spec, next | ≤100 |
 | `src/styles/masonry.css` | grid + column parallax only | ≤100 |
 | `src/styles/card.css` | card, scrim, tags, card-info, mobile linger | ≤100 |
-| `src/ds/ds.css` | docs chrome (sidebar, tables, notes) — same token space | ≤100 |
+| `src/ds/ds.css` | docs chrome + DS-only tokens (`--text-ds-*`, `--size-ds-*`) — same token space | 59 |
 | `src/ds/specimens.css` | specimen framing over real site classes | ≤100 |
 | `src/ds/*` | docs site at `/ds` — foundations, tokens, components, patterns | — |
