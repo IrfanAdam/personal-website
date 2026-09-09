@@ -1,6 +1,6 @@
 /* ADAM/DS — Foundations: color · type · space · shape · motion · fx · tokens.
    Single route; definitions live on vertical tabs. Demos run on var(). */
-import { cssVar, toRGB, contrastRatio as ratio, verdictRatio as verdict } from './specimens.js';
+import { cssVar, toRGB, contrastRatio as ratio, verdictRatio as verdict, probeTheme } from './specimens.js';
 import { tabs } from './tabs.js';
 import { label as cL, html as cH } from './foundations/pane-color.js';
 import { label as tL, html as tH } from './foundations/pane-type.js';
@@ -9,8 +9,17 @@ import { label as hL, html as hH } from './foundations/pane-shape.js';
 import { label as mL, html as mH } from './foundations/pane-motion.js';
 import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
-const PAIRS = [['Ink on paper', '--color-ink', '--color-bg'], ['Muted on paper', '--color-ink-muted', '--color-bg'], ['On-media on chip', '--color-on-media', '--color-chip'], ['Accent on paper', '--color-accent', '--color-bg']];
-const contrastRows = () => PAIRS.map(([label, a, b]) => `<tr><td>${label}</td><td><span class="tok">${a}</span> on <span class="tok">${b}</span></td><td>${ratio(cssVar(a) || a, cssVar(b) || b)} : 1</td><td>${verdict(ratio(cssVar(a) || a, cssVar(b) || b))}</td></tr>`).join('');
+const INKS = ['--color-ink', '--color-ink-muted', '--color-ink-subtle', '--color-on-accent', '--color-on-media', '--color-overlay-muted'];
+const CANVASES = ['--color-bg', '--color-surface', '--color-surface-sunken', '--color-overlay', '--color-accent', '--color-chip'];
+const inkShort = (t) => t.replace('--color-', '');
+/* Full AA matrix (Update 4 Task 6): every text ink × canvas, both themes.
+   Token values are batched per theme inside one probeTheme flip (12 reads),
+   then ratios compute pure — no per-cell style recalc. */
+const contrastRows = () => ['light', 'dark'].map((theme) => {
+  const v = probeTheme(theme, () => Object.fromEntries([...INKS, ...CANVASES].map((t) => [t, cssVar(t) || t])));
+  return `<tr><td colspan="4"><b>${theme}</b> — live probe</td></tr>`
+  + INKS.map((a) => CANVASES.map((b) => { const r = ratio(v[a], v[b]); return `<tr><td>${inkShort(a)} on ${inkShort(b)}</td><td><span class="tok">${a}</span> on <span class="tok">${b}</span></td><td>${r} : 1</td><td>${verdict(r)}</td></tr>`; }).join('')).join('');
+}).join('');
 export function render() {
   const panes = [{ label: cL, html: cH() }, { label: tL, html: tH() }, { label: sL, html: sH() }, { label: hL, html: hH() }, { label: mL, html: mH() }, { label: fL, html: fH() }, { label: kL, html: kH() }];
   return `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1><p class="lede">Seven definitions feed every token. Swatches and values read live computed <span class="tok">var()</span> — click any card to copy.</p></div>` + tabs({ vertical: true, panes });

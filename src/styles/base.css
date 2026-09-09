@@ -42,7 +42,7 @@ body { padding-top: var(--header-h, var(--size-header)); }
   .hint { display: none; }
   .theme-switch .pill { padding: var(--space-4) var(--space-7); }
 }
-.logo { font-weight: var(--weight-extrabold); letter-spacing: var(--tracking-display); line-height: var(--leading-display); font-size: var(--text-logo); }
+.logo { font-weight: var(--weight-bold); letter-spacing: var(--tracking-display); line-height: var(--leading-display); font-size: var(--text-logo); }
 .logo small { display: block; font-size: var(--text-logo); }
 .pill {
   border: var(--border-hairline); background: transparent; color: var(--color-ink);

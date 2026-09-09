@@ -10,7 +10,7 @@ export function render() {
 .lc-hero-paper{ background:var(--color-bg); color:var(--color-ink); padding:var(--space-18) var(--space-18) var(--space-22); position:relative; display:flex; flex-direction:column; justify-content:flex-start; gap:var(--space-30); min-height:360px; }
 .lc-eyebrow{ font-family:var(--font-mono); font-size:var(--text-label); letter-spacing:var(--tracking-mono); text-transform:uppercase; opacity:0.7; }
 .lc-hero-ink .lc-eyebrow{ color:var(--color-bg); }
-.lc-hero h1{ font-family:var(--font-sans); font-weight:800; font-size:clamp(42px,6.8vw,78px); line-height:0.86; letter-spacing:-0.05em; margin:var(--space-14) 0 var(--space-14); text-transform:uppercase; }
+.lc-hero h1{ font-family:var(--font-sans); font-weight:var(--weight-bold); font-size:clamp(42px,6.8vw,78px); line-height:0.86; letter-spacing:-0.05em; margin:var(--space-14) 0 var(--space-14); text-transform:uppercase; }
 .lc-hero h1 span{ display:block; }
 .lc-hero h1 .accent{ color:var(--color-bg); } .lc-hero h1 .dot{ color:var(--color-accent); font-style:normal; }
 .lc-hero-ink .lede{ color:color-mix(in srgb, var(--color-bg) 72%, transparent); font-size:var(--text-body); line-height:var(--leading-prose); max-width:32ch; margin:0; }
@@ -56,7 +56,7 @@ export function render() {
 .lc-over-dots{ position:absolute; pointer-events:none; background:radial-gradient(circle, var(--color-ink) 1.1px, transparent 1.25px); background-size:9px 9px; opacity:0.14; }
 .lc-specbar{ display:flex; gap:var(--space-8); flex-wrap:wrap; margin-top:var(--space-12); }
 .lc-specbar i{ flex:1 1 90px; height:28px; border:var(--border-hairline); display:flex; align-items:center; justify-content:space-between; padding:0 var(--space-8); font-family:var(--font-mono); font-size:9px; letter-spacing:var(--tracking-mono); text-transform:uppercase; }
-@media (max-width:900px){
+@media (max-width:900px) /* --break-lg */{
   .lc-hero{ grid-template-columns:1fr; }
   .lc-hero-paper{ min-height:auto; }
   .lc-hero-cross{ display:none; }
@@ -88,7 +88,7 @@ export function render() {
     <div>
       <p class="lede">Six refs, one rule: steal the logic, not the look. Neon on void, Swiss grid, mono console, brutal shell, system docs + paper terrain. Images are fetched of the actual refs — not project thumbs — in <span class="tok">/images/mood</span>.</p>
       <div style="display:flex; gap:var(--space-8); margin-top:var(--space-14); flex-wrap:wrap; position:relative; z-index:1;">
-        <span class="tok">Inter Tight 800</span><span class="tok">Chivo Mono 500</span><span class="tok">--color-accent #E8442E</span><span class="tok">--radius-0</span>
+        <span class="tok">Inter Tight 700</span><span class="tok">Chivo Mono 500</span><span class="tok">--color-accent #E8442E</span><span class="tok">--radius-0</span>
       </div>
     </div>
     <div class="lc-red-cut" aria-hidden="true"><span>UI DESIGN — 2026</span></div>
@@ -198,11 +198,11 @@ ${code('tokens.css (primitives → semantic → aliases)\\n    ▲ single source
           <i style="background:var(--color-bg); color:var(--color-ink);">#F4F2EE <span style="opacity:0.6">paper</span></i>
           <i style="background:var(--stone-200); color:var(--color-ink);">#EAE7E0 <span style="opacity:0.6">sunken</span></i>
         </div>
-        <div class="copy" style="margin-top:var(--space-4)">Type: <span class="tok">Inter Tight 800</span> + <span class="tok">Chivo Mono 500</span> · Tracking <span class="tok">-0.04em</span> display · <span class="tok">0</span> radius everywhere — editorial cut, not soft UI.</div>
+        <div class="copy" style="margin-top:var(--space-4)">Type: <span class="tok">Inter Tight 700</span> + <span class="tok">Chivo Mono 500</span> · Tracking <span class="tok">-0.04em</span> display · <span class="tok">0</span> radius everywhere — editorial cut, not soft UI.</div>
       </div>
       <div style="flex:1 1 48%; padding:var(--space-12) var(--space-14); background:var(--color-panel); display:grid; place-content:center; text-align:center;">
         <div style="font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:var(--tracking-mono); text-transform:uppercase; color:var(--color-ink-muted)">Lossless proof</div>
-        <div style="font-family:var(--font-sans); font-weight:800; font-size:18px; letter-spacing:-0.03em; margin-top:var(--space-6);">ZOOM TO 400% — STILL SHARP</div>
+        <div style="font-family:var(--font-sans); font-weight:var(--weight-bold); font-size:18px; letter-spacing:-0.03em; margin-top:var(--space-6);">ZOOM TO 400% — STILL SHARP</div>
         <div style="font-family:var(--font-mono); font-size:10px; color:var(--color-ink-muted); margin-top:var(--space-4)">Vector hairline · clip-path chamfer · radial dot grid · no blur</div>
       </div>
     </div>

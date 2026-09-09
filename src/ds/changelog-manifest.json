@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T11:44:41.810Z",
+ "generated": "2026-09-09T12:12:57.635Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,6 +15,14 @@
   "2026-09-09_170854-design-system-update-4.md"
  ],
  "commits": [
+  {
+   "sha": "0287e39",
+   "full": "0287e3946c48e9ce89f9cd0ec9aee5f743afc277",
+   "date": "2026-09-09",
+   "subject": "chore(ds): checkpoint before design-system update 4",
+   "plan": null,
+   "anchor": null
+  },
   {
    "sha": "50c8050",
    "full": "50c8050b5c3f9e8bf05c35a0a1dca3ee48c38973",
@@ -170,13 +178,17 @@
  ],
  "wip": [
   "M src/ds/changelog-manifest.json",
-  "M src/ds/ds.js",
-  "M src/ds/pages-changelog.js",
+  "M src/ds/ds.css",
+  "M src/ds/foundations.css",
+  "M src/ds/foundations/pane-color.js",
+  "M src/ds/foundations/pane-contract.js",
+  "M src/ds/foundations/pane-shape.js",
+  "M src/ds/foundations/pane-space.js",
+  "M src/ds/foundations/pane-type.js",
   "M src/ds/pages-foundations.js",
   "M src/ds/pages-overview.js",
-  "D src/ds/pages-tokens.js",
-  "M src/ds/tabs.js",
-  "?? src/ds/foundations.css",
-  "?? src/ds/foundations/"
+  "M src/ds/pages-primitives.js",
+  "M src/ds/specimens.js",
+  "M src/styles/tokens.css"
  ]
 }

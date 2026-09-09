@@ -3,9 +3,11 @@
    Layers: primitives → semantic → legacy aliases. Consumption rule: UI
    consumes only semantic/component tokens (var(--color-*), --text-*,
    --space-*, --size-*, --border-*, --radius-*, --dur-*, --ease-*, --z-*,
-   --blur-*, --fx-*). Primitives are never consumed directly. Legacy names
-   (--bg, --ink, …) resolve via aliases until adoption completes.
+   --blur-*, --fx-*, --break-*). Primitives are never consumed directly.
    Docs-only tokens (--text-ds-*, --size-ds-*) live in src/ds/ds.css.
+   Naming: --space-N = raw px step · --size-* = named object ·
+   --measure-* = line length · --rhythm/--gutter = purpose aliases (prefer) ·
+   --break-* = viewport width (var() invalid in @media — keep raw px in sync).
    Docs: /ds · Spec: DESIGN.md · Version 1.1.0
    ========================================================================== */
 :root {
@@ -14,7 +16,7 @@
   --accent-100: #fbd9d1; --accent-300: #f19a8a; --accent-500: #e8442e; --accent-600: #cf3820; --accent-700: #a82a18; --accent-900: #5c150c;
   /* — Semantic · color (light) — */
   --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-surface-sunken: var(--stone-200); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(22, 19, 14, 0.1); --color-accent: var(--accent-500); --color-on-accent: #f6f3ec; --color-chip: rgba(20, 16, 10, 0.62); --color-on-media: #f6f3ec; --color-on-media-muted: rgba(246, 243, 236, 0.82); --color-panel: rgba(235, 235, 235, 0.32); --color-header: rgba(244, 242, 238, 0.75);
-  --color-overlay: var(--stone-0); --color-overlay-muted: var(--stone-600);
+  --color-overlay: var(--stone-0); --color-overlay-muted: var(--stone-600); --color-disabled-bg: var(--stone-200); --color-disabled-ink: var(--stone-400); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink);
   /* — Semantic · media scrims, gradients, on-image shadows — */
   --scrim-gradient: linear-gradient(to top, rgba(16,12,8,0.58) 0%, rgba(16,12,8,0.26) 42%, rgba(16,12,8,0) 100%); --scrim-fallback: linear-gradient(to top, rgba(16,12,8,0.62), rgba(16,12,8,0)); --scrim-mask: linear-gradient(to top, #000 0%, #000 38%, transparent 100%);
   --shimmer-gradient: linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 95%, transparent) 0%, color-mix(in srgb, var(--color-line) 30%, transparent) 58%, transparent 85%); --shimmer-band: linear-gradient(90deg, transparent 27%, #000 41%, #000 59%, transparent 73%); --reveal-grid: repeating-linear-gradient(to right, color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px, transparent 1px var(--fx-grid-pitch)), repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px, transparent 1px var(--fx-grid-pitch));
@@ -24,17 +26,21 @@
   --text-display: clamp(28px, 5vw, 54px); --text-title: clamp(26px, 4.5vw, 46px); --text-logo: 22px; --text-h2: 20px; --text-card-title: 18px; --text-h3: 16px; --text-body: 14px; --text-small: 13.5px; --text-meta: 12px; --text-label: 11px; --text-micro: 10.5px;
   --leading-display: 0.9; --leading-title: 1.1; --leading-snug: 1.25; --leading-body: 1.5; --leading-prose: 1.6; --leading-mono: 1.3;
   --tracking-display: -0.04em; --tracking-title: -0.03em; --tracking-heading: -0.02em; --tracking-body: -0.01em; --tracking-label: 0.12em; --tracking-mono: 0.1em;
-  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700; --weight-extrabold: 800;
-  /* — Spacing (px-named; 14px rhythm, 16px gutter) — */
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700; --weight-extrabold: 700; /* deprecated alias → bold; Inter Tight subset caps at 700 (Update 4 Task 8) */
+  /* — Spacing (px-named; 14px rhythm, 16px gutter — group by purpose in DS) — */
   --space-1: 1px; --space-2: 2px; --space-3: 3px; --space-4: 4px; --space-5: 5px; --space-6: 6px; --space-7: 7px; --space-8: 8px; --space-9: 9px; --space-10: 10px; --space-11: 11px; --space-12: 12px; --space-14: 14px; --space-16: 16px; --space-18: 18px;
   --space-22: 22px; --space-26: 26px; --space-28: 28px; --space-30: 30px; --space-42: 42px; --space-46: 46px; --space-60: 60px; --space-70: 70px; --space-90: 90px; --gutter: var(--space-16); --rhythm: var(--space-14);
   /* — Size & layout — */
   --size-wrap: 1600px; --size-header: 64px; --size-strip: 56px; --size-strip-tab: 58px; --measure-copy: 60ch; --measure-prose: 68ch; --size-hairline: 1px; --size-frame: 3px; --size-tap: 44px;
+  /* — Breakpoints (documented scale; var() invalid in @media — keep raw px in sync) — */
+  --break-sm: 640px; --break-md: 800px; --break-lg: 900px;
   /* — Form (size + color only; layout stays semantic) — */
   --size-input-h: var(--size-tap); --color-input-bg: var(--color-surface); --color-input-line: var(--color-line); --color-input-focus: var(--color-ink);
   /* — Borders / radius (zero is the doctrine — consume via var(), never a literal) — */
   --border-hairline: var(--size-hairline) solid var(--color-line); --border-frame: var(--size-frame) solid var(--color-ink); --border-dashed: var(--size-hairline) dashed var(--color-ink-muted);
   --radius-none: 0; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-pill: 0;
+  /* — Focus — */
+  --color-focus: var(--color-ink); --border-focus: var(--size-frame) solid var(--color-focus); --focus-offset: var(--space-2);
   /* — Motion — */
   --dur-fast: 150ms; --dur-base: 200ms; --dur-med: 220ms; --dur-soft: 250ms; --dur-slow: 280ms; --dur-glide: 380ms; --dur-reveal: 300ms; --dur-blur: 450ms; --dur-zoom: 650ms; --dur-shimmer: 2.2s; --ease-standard: ease; --ease-signature: cubic-bezier(0.32, 0.72, 0, 1);
   /* — FX · cell-grid, sheen, rise — graduated from gridReveal.js literals — */
@@ -55,11 +61,11 @@
 /* Dark theme — hand-tuned inversion, not a pure ramp swap. Exactly one source:
    applied via OS preference or manual [data-theme] override (site + DS toggles). */
 @media (prefers-color-scheme: dark) { :root {
-  --color-bg: #141210; --color-surface: #1e1b17; --color-ink: #f2ede4; --color-ink-muted: #a39c8f; --color-ink-subtle: #a39c8f; --color-line: rgba(242, 237, 228, 0.12); --color-panel: rgba(242, 237, 228, 0.06); --color-header: rgba(20, 18, 16, 0.6); --color-overlay: #1e1b17; --color-overlay-muted: #a39c8f; --shadow-viewer: 0 14px 36px rgba(0, 0, 0, 0.52), 0 3px 12px rgba(0, 0, 0, 0.42);
+  --color-bg: #141210; --color-surface: #1e1b17; --color-ink: #f2ede4; --color-ink-muted: #a39c8f; --color-ink-subtle: #a39c8f; --color-line: rgba(242, 237, 228, 0.12); --color-panel: rgba(242, 237, 228, 0.06); --color-header: rgba(20, 18, 16, 0.6); --color-overlay: #1e1b17; --color-overlay-muted: #a39c8f; --color-disabled-bg: var(--stone-700); --color-disabled-ink: var(--stone-500); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink); --shadow-viewer: 0 14px 36px rgba(0, 0, 0, 0.52), 0 3px 12px rgba(0, 0, 0, 0.42);
 } }
 [data-theme="dark"] {
-  --color-bg: #141210; --color-surface: #1e1b17; --color-ink: #f2ede4; --color-ink-muted: #a39c8f; --color-ink-subtle: #a39c8f; --color-line: rgba(242, 237, 228, 0.12); --color-panel: rgba(242, 237, 228, 0.06); --color-header: rgba(20, 18, 16, 0.6); --color-overlay: #1e1b17; --color-overlay-muted: #a39c8f; --shadow-viewer: 0 14px 36px rgba(0, 0, 0, 0.52), 0 3px 12px rgba(0, 0, 0, 0.42);
+  --color-bg: #141210; --color-surface: #1e1b17; --color-ink: #f2ede4; --color-ink-muted: #a39c8f; --color-ink-subtle: #a39c8f; --color-line: rgba(242, 237, 228, 0.12); --color-panel: rgba(242, 237, 228, 0.06); --color-header: rgba(20, 18, 16, 0.6); --color-overlay: #1e1b17; --color-overlay-muted: #a39c8f; --color-disabled-bg: var(--stone-700); --color-disabled-ink: var(--stone-500); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink); --shadow-viewer: 0 14px 36px rgba(0, 0, 0, 0.52), 0 3px 12px rgba(0, 0, 0, 0.42);
 }
 [data-theme="light"] {
-  --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(22, 19, 14, 0.1); --color-panel: rgba(235, 235, 235, 0.32); --color-header: rgba(244, 242, 238, 0.75); --color-overlay: #ffffff; --color-overlay-muted: #5c574e;
+  --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(22, 19, 14, 0.1); --color-panel: rgba(235, 235, 235, 0.32); --color-header: rgba(244, 242, 238, 0.75); --color-overlay: #ffffff; --color-overlay-muted: #5c574e; --color-disabled-bg: var(--stone-200); --color-disabled-ink: var(--stone-400); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink);
 }
