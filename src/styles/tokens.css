@@ -1,13 +1,15 @@
 /* ==========================================================================
    ADAM/DS — canonical token space (single source of truth) · v1.1.0
-   Layers: primitives → semantic → legacy aliases. Consumption rule: UI
-   consumes only semantic/component tokens (var(--color-*), --text-*,
+   Layers: primitives → semantic → component overrides (--<component>-*).
+   Consumption rule: UI consumes only semantic/component tokens (var(--color-*), --text-*,
    --space-*, --size-*, --border-*, --radius-*, --dur-*, --ease-*, --z-*,
-   --blur-*, --fx-*, --break-*). Primitives are never consumed directly.
+   --blur-*, --fx-*, --break-*, --viewer-*). Primitives are never consumed directly.
    Docs-only tokens (--text-ds-*, --size-ds-*) live in src/ds/ds.css.
    Naming: --space-N = raw px step · --size-* = named object ·
    --measure-* = line length · --rhythm/--gutter = purpose aliases (prefer) ·
-   --break-* = viewport width (var() invalid in @media — keep raw px in sync).
+   --break-* = viewport width (var() invalid in @media — keep raw px in sync) ·
+   --<component>-* = scoped override (pilot: --viewer-* — forbid new semantic
+   sprawl where a component token fits; see Tokens tab § component tier).
    Docs: /ds · Spec: DESIGN.md · Version 1.1.0
    ========================================================================== */
 :root {
