@@ -10,7 +10,7 @@
   ],
   "headers": [
     {
-      "source": "/(images|mocks|icons)/:path*",
+      "source": "/(images|mocks|icons|heroes)/:path*",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, must-revalidate" }]
     }
   ]

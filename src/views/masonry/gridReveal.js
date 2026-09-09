@@ -112,15 +112,21 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
     if (reduce) { s.split = 1; s.eased = 1; s.fade = 1; render(s.loadedAt + s.colorMs); finish(); }
   };
   const key = img.currentSrc || img.src;
-  // Heroes always play the reveal (new context, showcase); grid cards skip
-  // when already viewed this session or cached.
-  if (!hero && (seen.has(key) || (img.complete && img.naturalWidth))) {
+  // Grid cards skip when already viewed this session or cached. Heroes
+  // always replay on mobile (slow CDN made revisits look broken there);
+  // desktop heroes still skip when seen.
+  const mobile = matchMedia('(max-width: 640px)').matches;
+  if ((!hero || !mobile) && (seen.has(key) || (img.complete && img.naturalWidth))) {
     decode();
     // cached / already seen — skip the reveal entirely, show the photo
     s.split = 1; s.eased = 1; s.fade = 1; finish();
     return () => {};
   }
   img.addEventListener('load', decode, { once: true }); img.addEventListener('error', () => { s.done = true; s.loadedAt = performance.now(); if (reduce) { render(s.loadedAt); finish(); } }, { once: true });
+  // load timeout — a hanging response (common on mobile) must not shimmer
+  // forever: settle into tinted cells and finish photo-less. No-op when
+  // decode already ran; a late load still paints via the <img> itself.
+  setTimeout(() => { if (!s.done) { s.done = true; s.loadedAt = performance.now(); } }, fxMs('--fx-load-timeout', 9000));
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2), r = box.getBoundingClientRect();
     const W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));
