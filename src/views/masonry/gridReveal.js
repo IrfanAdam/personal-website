@@ -111,7 +111,10 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
     s.done = true; s.loadedAt = performance.now(); makeBuffers();
     if (reduce) { s.split = 1; s.eased = 1; s.fade = 1; render(s.loadedAt + s.colorMs); finish(); }
   };
-  if (seen.has(img.currentSrc || img.src) || (img.complete && img.naturalWidth)) {
+  const key = img.currentSrc || img.src;
+  // Heroes always play the reveal (new context, showcase); grid cards skip
+  // when already viewed this session or cached.
+  if (!hero && (seen.has(key) || (img.complete && img.naturalWidth))) {
     decode();
     // cached / already seen — skip the reveal entirely, show the photo
     s.split = 1; s.eased = 1; s.fade = 1; finish();
