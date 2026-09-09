@@ -112,17 +112,31 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
     if (reduce) { s.split = 1; s.eased = 1; s.fade = 1; render(s.loadedAt + s.colorMs); finish(); }
   };
   const key = img.currentSrc || img.src;
-  // Grid cards skip when already viewed this session or cached. Heroes
-  // always replay on mobile (slow CDN made revisits look broken there);
-  // desktop heroes still skip when seen.
+  // Grid cards skip when already viewed this session or cached. Mobile
+  // heroes always replay — but from measured state: an already-complete
+  // image never fires `load` again, so decode now instead of dead-waiting
+  // for it (that parked the reveal on the shimmer until the 9s timeout,
+  // then snapped the photo in with no crossfade). Desktop heroes still
+  // skip when seen.
   const mobile = matchMedia('(max-width: 640px)').matches;
-  if ((!hero || !mobile) && (seen.has(key) || (img.complete && img.naturalWidth))) {
+  const replay = hero && mobile;
+  if (seen.has(key) || (img.complete && img.naturalWidth)) {
     decode();
-    // cached / already seen — skip the reveal entirely, show the photo
-    s.split = 1; s.eased = 1; s.fade = 1; finish();
-    return () => {};
+    if (!replay || reduce) {
+      // cached / already seen — skip the reveal entirely, show the photo
+      s.split = 1; s.eased = 1; s.fade = 1; finish();
+      return () => {};
+    }
+    // mobile hero replay: fall through into the animated reveal —
+    // decode already measured colors + done/loadedAt, buffers rebuild
+    // on resize below.
+  } else if (img.complete) {
+    // settled but broken (404 / decode fail): no load/error will ever
+    // fire — finish photo-less instead of shimmering till the timeout.
+    s.done = true; s.loadedAt = performance.now();
+  } else {
+    img.addEventListener('load', decode, { once: true }); img.addEventListener('error', () => { s.done = true; s.loadedAt = performance.now(); if (reduce) { render(s.loadedAt); finish(); } }, { once: true });
   }
-  img.addEventListener('load', decode, { once: true }); img.addEventListener('error', () => { s.done = true; s.loadedAt = performance.now(); if (reduce) { render(s.loadedAt); finish(); } }, { once: true });
   // load timeout — a hanging response (common on mobile) must not shimmer
   // forever: settle into tinted cells and finish photo-less. No-op when
   // decode already ran; a late load still paints via the <img> itself.
@@ -136,13 +150,18 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
   };
   resize(); const ro = new ResizeObserver(resize); ro.observe(box);
   if (reduce) { render(performance.now()); return () => { ro.disconnect(); }; }
-  // RAF fallback for headless/hidden tabs where requestAnimationFrame is throttled
+  // RAF fallback for headless/hidden tabs where requestAnimationFrame is throttled.
+  // viaRaf remembers the schedule-time mechanism so cancel uses the matching
+  // canceller — re-checking visibilityState at cancel time leaks a loop on
+  // the detached DOM when the tab flips in between (route change while hidden).
+  let viaRaf = false;
   const nextFrame = (cb) => {
-    if (typeof requestAnimationFrame === 'function' && document.visibilityState === 'visible') return requestAnimationFrame(cb);
+    if (typeof requestAnimationFrame === 'function' && document.visibilityState === 'visible') { viaRaf = true; return requestAnimationFrame(cb); }
+    viaRaf = false;
     return setTimeout(() => cb(performance.now()), 16);
   };
   const cancelFrame = (id) => {
-    if (typeof cancelAnimationFrame === 'function' && document.visibilityState === 'visible') return cancelAnimationFrame(id);
+    if (viaRaf && typeof cancelAnimationFrame === 'function') return cancelAnimationFrame(id);
     return clearTimeout(id);
   };
   let raf = 0, visible = true, stopped = false;
