@@ -95,13 +95,15 @@
 
 ## Phase 4 — Grouped token list audit
 
+*Shipped in 0d54de5 · Tasks 9 · phase-4.*
+
 *The list you asked for: every color token grouped, every row with its tiny swatch.*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 9 | Swatch audit | zero color rows without a live swatch + hex |
 
-### Task 9: Swatch audit
+### Task 9: Swatch audit ✓ done
 **Objective:** Every `--color-*` under exactly one group with live swatch + hex via `tokenTrace`; fix any `plain:true` gaps or rows missing live values.
 **Files:** `pane-color.js`.
 **Verify:** Zero swatch-less color rows; `npm run test` PASS.
