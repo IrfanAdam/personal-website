@@ -47,7 +47,7 @@ export const swatch = (name, token) =>
   `<div class="ds-cell" data-copy-token="${token}" title="Click to copy live value" style="cursor:pointer"><div class="ds-sw" style="background:var(${token})"></div><div class="nm">${name}</div><div class="vl"><span class="tok">${token}</span></div><div class="vl" data-live="${token}">${cssVar(token)}</div></div>`;
 export const refreshLive = () =>
   document.querySelectorAll('[data-live]').forEach((el) => { el.textContent = cssVar(el.dataset.live); });
-export const ramp = (tokens) => `<div class="ds-ramp">${tokens.map((s) => `<i style="background:var(${s})" title="${s}"></i>`).join('')}</div>`;
+export const ramp = (tokens, mat = '', use = 'ref-only · click to copy') => `<div class="ds-ramp">${tokens.map((s) => `<i style="background:var(${s})" tabindex="0" data-copy-token="${s}" title="${s} — click to copy"><span class="tip"><b>${mat ? `${mat} · ` : ''}${s.split('-').pop()}</b><span class="tok">${s}</span><span data-live="${s}">${cssVar(s)}</span><em>${use}</em></span></i>`).join('')}</div>`;
 export const typeRow = (demo, token, value) =>
   `<tr><td>${demo}</td><td><span class="tok">${token}</span></td><td style="font-family:var(--font-mono);font-size:var(--text-label);color:var(--color-ink-muted)">${value}</td></tr>`;
 /* — specCells: trace rows WITHOUT color swatches (Update 4 Task 10 shared variant).

@@ -1,50 +1,61 @@
-/* ADAM/DS foundations · Color pane — ① primitives → ② semantic → ③ playground → ④ proof (Update 4 Phase 1 + Task 7). */
-import { tokenTrace, note } from '../specimens.js';
-const MIX = ['--color-ink', '--color-bg', '--color-accent', '--color-surface', '--color-surface-sunken', '--color-overlay', '--color-success', '--color-error', '--color-warning', '--color-info'];
-const STONE = ['--stone-0', '--stone-25', '--stone-50', '--stone-100', '--stone-200', '--stone-300', '--stone-400', '--stone-500', '--stone-600', '--stone-700', '--stone-800', '--stone-900', '--stone-950'];
-const ACCENT = ['--accent-100', '--accent-300', '--accent-500', '--accent-600', '--accent-700', '--accent-900'];
-const ACCENT2 = ['--accent2-100', '--accent2-300', '--accent2-500', '--accent2-600', '--accent2-700', '--accent2-900'];
-const ACCENT3 = ['--accent3-100', '--accent3-300', '--accent3-500', '--accent3-600', '--accent3-700', '--accent3-900'];
-const short = (t) => t.slice(2);
-const rampRows = (tokens, use) => tokens.map((t) => [short(t), t, use]);
-const badge = (nm, bg, fg, use) => `<div class="ds-cell"><div style="background:var(${bg});color:var(${fg});padding:var(--space-8) var(--space-14);font-size:var(--text-small);border:var(--border-hairline)">${nm} — live pair, both themes</div><div class="nm">${nm}</div><div class="vl"><span class="tok">${bg}</span> on <span class="tok">${fg}</span></div><div class="vl">${use}</div></div>`;
+/* ADAM/DS foundations · Color — ① materials (popover ramps) → ② pairs (AA inline) → ③ mixer. No proof tables: each pair proves AA inline, both themes. */
+import { ramp, note } from '../specimens.js';
+const MIX = ['--color-ink','--color-bg','--color-accent','--color-surface','--color-surface-sunken','--color-overlay','--color-success','--color-error','--color-warning','--color-info'];
+const STONE = ['--stone-0','--stone-25','--stone-50','--stone-100','--stone-200','--stone-300','--stone-400','--stone-500','--stone-600','--stone-700','--stone-800','--stone-900','--stone-950'];
+const PHOS = ['--accent-100','--accent-300','--accent-500','--accent-600','--accent-700','--accent-900'];
+const RESIN = ['--accent2-100','--accent2-300','--accent2-500','--accent2-600','--accent2-700','--accent2-900'];
+const GLASS = ['--accent3-100','--accent3-300','--accent3-500','--accent3-600','--accent3-700','--accent3-900'];
+const MATS = [
+['Frost Alloy','neutral 0–950 · --stone-*',STONE,'Matte hull plating under frost — every can (bg, surface, ink, line). Never consume a raw step.'],
+['Signal Phosphor','vermilion · --accent-*',PHOS,'One red phosphor that blooms once — CTA, badge, error. Production step --accent-500.'],
+['Caution Resin','amber · --accent2-*',RESIN,'Warm caution cell — warning text/fill (700 light / 300 dark); --accent2-500 decorative only.'],
+['Circuit Glass','teal · --accent3-*',GLASS,'Frosted circuit glass — success deepest (700/300) + info mid (600/100), split by icon.']
+];
+const CANVAS = [
+['Background','--color-bg','--color-ink','page + cards'],
+['Surface','--color-surface','--color-ink','cards + doc cells'],
+['Sunken','--color-surface-sunken','--color-ink','wells + sunken rows'],
+['Overlay','--color-overlay','--color-ink','viewer + modal'],
+['Muted','--color-bg','--color-ink-muted','meta + kickers + labels']
+];
+const FEED = [
+['Accent fill','--color-accent','--color-on-accent','CTA + badge · large-scale'],
+['Success fill','--color-success','--color-on-success','sent · ok'],
+['Success ink','--color-bg','--color-success','form ok on paper'],
+['Error fill','--color-error','--color-on-error','field error · failed'],
+['Error ink','--color-bg','--color-error','error text on paper'],
+['Warning fill','--color-warning','--color-on-warning','caution · unsaved'],
+['Warning ink','--color-bg','--color-warning','caution text on paper'],
+['Info fill','--color-info','--color-on-info','notice · hint'],
+['Info ink','--color-bg','--color-info','notice text on paper']
+];
+const DECOR = [
+['--color-line','hairlines + card borders · 10% ink'],
+['--color-header','sticky header veil'],
+['--color-panel','doc cells + hover wash'],
+['--color-chip','tags + filter pills · 62% ink'],
+['--color-input-bg / --color-input-line / --color-input-focus','field fill · border · focus edge'],
+['--color-on-media / --color-on-media-muted','card info + tags on image'],
+['--color-viewer-bg / --color-viewer-line / --color-viewer-shade / --color-viewer-tether','viewer panel · frost border · dim · connector'],
+['--color-shadow-media / --color-shadow-media-sm / --color-shadow-viewer / --color-shadow-viewer-soft','elevation washes · stone-950 at 45/40/24/12%'],
+['--color-disabled-bg / --color-disabled-ink / --color-disabled-line','disabled set · exempt, never interactive text'],
+['--color-focus','keyboard ring, all themes (+ --border-focus in Shape)'],
+['--color-ink-subtle','faintest meta · decorative only, never body text'],
+['--signal / --signal-amber / --signal-teal','ramp → slot → semantic · --color-accent follows the slot']
+];
+const pairs = (rows) => `<div style="overflow-x:auto"><table class="ds-table cl-table"><tr><th>Use</th><th>Pair</th><th>Light</th><th>Dark</th></tr>${rows.map(([n,bg,fg,u]) => `<tr data-bg="${bg}" data-fg="${fg}"><td>${n}<div class="cl-use">${u}</div></td><td><span class="tok">${fg}</span><div class="cl-use">on</div><span class="tok">${bg}</span></td>${['light','dark'].map((t) => `<td data-c="${t}"><span class="cl-demo" data-demo>Aa</span><br><span class="cl-aa" data-aa>…</span></td>`).join('')}</tr>`).join('')}</table></div>`;
+const decor = `<div style="overflow-x:auto"><table class="ds-table cl-table"><tr><th>Token</th><th>Use</th></tr>${DECOR.map(([t,u]) => `<tr><td>${t.split(' / ').map((x) => `<span class="tok">${x}</span>`).join(' ')}</td><td>${u}</td></tr>`).join('')}</table></div>`;
 export const label = 'Color';
 export function html() {
-  return `<div class="ds-sec"><h2>Color</h2><p class="sub">Stone ramp + three accents (vermilion · amber · teal). UI consumes semantic names, never the ramp. Feedback roles ride the ramps: error on vermilion, warning on amber, success + info on teal.</p>`
-  + `<h3>① Primitives — ref-only</h3><p class="sub">Horizontal strip first, every step labeled in-swatch below, both themes. Reference only — consume the semantic name, not the step.</p><h3>Stone · neutral 0–950</h3>`
-  + tokenTrace({ ramp: STONE, rows: rampRows(STONE, 'neutral primitive · never consume directly') })
-  + `<div class="ds-note"><b>Material — synthetic, not found matter</b> Locked: <b>Frost Alloy</b> (Candidate A). Every ramp is a synthetic material — values derive from imagined reflectance under cool light, never from real stone/paper. Names below feed Phase 3 swap-slot.</div>`
-  + `<h3>Material mapping · ramp → synthetic</h3><p class="sub">Every ramp carries a material identity; the story tells you when to use it. One hue per signal, frost holds the void.</p><table class="ds-table"><tr><th>Ramp</th><th>Material</th><th>Story</th><th>Use</th></tr><tr><td>Stone 0–950<br><span class="tok">--stone-*</span></td><td><b>Frost Alloy</b> · hull plating</td><td>Matte alloy under frost — cool blue-gray, low chroma (220°), matte reflectance holds structure and void</td><td>All cans: bg, surface, ink, line, panel, header, shadows — never consume raw step</td></tr><tr><td>Accent<br><span class="tok">--accent-*</span></td><td><b>Signal Phosphor</b> · alert phosphor</td><td>Single red phosphor that blooms once — high chroma vermilion, the one thing that can't be missed</td><td>CTA, badge, error (700/300 dual-use), focus accent</td></tr><tr><td>Accent2<br><span class="tok">--accent2-*</span></td><td><b>Caution Resin</b> · amber cell</td><td>Warm amber resin, caution light — glows, doesn't shout</td><td>Warning text/fill (700 light / 300 dark), cautions, unsaved</td></tr><tr><td>Accent3<br><span class="tok">--accent3-*</span></td><td><b>Circuit Glass</b> · teal circuit</td><td>Frosted circuit glass — cool teal, system feedback split by depth</td><td>Success deepest (700/300) + info mid (600/100), shared hue split by icon</td></tr></table>`
-  + `<h3>Accent · vermilion ramp (red / orange)</h3><p class="sub"><span class="tok">--accent-500</span> is the only production vermilion; the other steps exist for tints, shades, and error states.</p>`
-  + tokenTrace({ ramp: ACCENT, rows: rampRows(ACCENT, 'accent step · prefer --color-accent') })
-  + `<h3>Accent2 · amber ramp (yellow / neon)</h3><p class="sub">Warning family. Text + fill dual-use steps: <span class="tok">--accent2-700</span> on light, <span class="tok">--accent2-300</span> on dark. <span class="tok">--accent2-500</span> is decorative only (borders, large graphics).</p>`
-  + tokenTrace({ ramp: ACCENT2, rows: rampRows(ACCENT2, 'amber step · prefer --color-warning') })
-  + `<h3>Accent3 · teal ramp (blue / green)</h3><p class="sub">Success + info share one hue, split by depth + icon: success deepest (<span class="tok">-700</span> / <span class="tok">-300</span>), info mid (<span class="tok">-600</span> / <span class="tok">-100</span>).</p>`
-  + tokenTrace({ ramp: ACCENT3, rows: rampRows(ACCENT3, 'teal step · prefer --color-success / --color-info') })
-  + note('Do', 'Three accents, settled (Task 7): <span class="tok">--accent-*</span> vermilion · <span class="tok">--accent2-*</span> amber · <span class="tok">--accent3-*</span> teal. New hues stop here — anything else arrives as a component token, never a fourth ramp.')
-  + `<h3>② Semantic — light / dark</h3><p class="sub">Every <span class="tok">--color-*</span> under exactly one purpose group. Toggle the theme top-right to proof both.</p><h3>Canvas</h3>`
-  + tokenTrace({ rows: [['Background', '--color-bg', 'page + cards'], ['Surface', '--color-surface', 'cards + doc cells'], ['Surface sunken', '--color-surface-sunken', 'wells + sunken rows'], ['Overlay', '--color-overlay', 'viewer + modal'], ['Panel', '--color-panel', 'doc cells + hover']] })
-  + `<h3>Ink</h3>`
-  + tokenTrace({ rows: [['Ink', '--color-ink', 'headlines + primary buttons'], ['Muted', '--color-ink-muted', 'meta + kickers + labels'], ['Ink subtle', '--color-ink-subtle', 'faintest meta'], ['Overlay muted', '--color-overlay-muted', 'secondary on overlay']] })
-  + `<h3>Division</h3>`
-  + tokenTrace({ rows: [['Line · 10% ink', '--color-line', 'hairlines + card borders'], ['Header frost', '--color-header', 'sticky header']] })
-  + `<h3>Action</h3>`
-  + tokenTrace({ rows: [['Accent', '--color-accent', 'callouts + badge + CTA rule'], ['On accent', '--color-on-accent', 'text on accent'], ['Chip · 62% ink', '--color-chip', 'tags + filter pills'], ['Input bg', '--color-input-bg', 'field fill'], ['Input line', '--color-input-line', 'field border'], ['Input focus', '--color-input-focus', 'field focus edge']] })
-  + `<h3>Signal slot — ramp → slot → semantic (Phase 3)</h3><p class="sub">Additive middle tier — components keep consuming <span class="tok">--color-accent</span>; the slot repoints beneath: <span class="tok">--accent-500</span> → <span class="tok">--signal</span> → <span class="tok">--color-accent</span>. Future configurator writes to the middle layer only.</p>`
-  + tokenTrace({ rows: [['Signal · default', '--signal', '→ var(--accent-500) vermilion · Signal Phosphor'], ['Signal amber alt', '--signal-amber', '→ var(--accent2-600) amber · Caution Resin (AA-safe on --color-on-accent)'], ['Signal teal alt', '--signal-teal', '→ var(--accent3-500) teal · Circuit Glass']] })
-  + note('Do', 'Swap the slot, not the ramp: point <span class="tok">--signal</span> at <span class="tok">var(--accent2-600)</span> or <span class="tok">var(--accent3-500)</span> — <span class="tok">--color-accent</span> follows. Demo lives in the playground below.')
-  + `<h3>Media</h3>`
-  + tokenTrace({ rows: [['On media', '--color-on-media', 'card info + tags on image'], ['On-media muted', '--color-on-media-muted', 'secondary on image'], ['Viewer bg', '--color-viewer-bg', 'viewer panel'], ['Viewer line', '--color-viewer-line', 'viewer frosted border'], ['Viewer shade', '--color-viewer-shade', 'viewer dim'], ['Viewer tether', '--color-viewer-tether', 'viewer connector']] })
-  + `<h3>Elevation</h3>`
-  + tokenTrace({ rows: [['Media', '--color-shadow-media', 'on-media legibility · stone-950 at 45%'], ['Media sm', '--color-shadow-media-sm', 'small on-media · stone-950 at 40%'], ['Viewer', '--color-shadow-viewer', 'viewer lift · stone-950 at 24%'], ['Viewer soft', '--color-shadow-viewer-soft', 'viewer soft lift · stone-950 at 12%']] })
-  + `<h3>State</h3>`
-  + tokenTrace({ rows: [['Disabled bg', '--color-disabled-bg', 'disabled fill'], ['Disabled ink', '--color-disabled-ink', 'disabled text'], ['Disabled line', '--color-disabled-line', 'disabled border'], ['Focus', '--color-focus', 'keyboard ring, all themes']] })
-  + `<h3>Feedback (Task 7)</h3><p class="sub">One token doubles as text-on-paper and fill-with-on-color — each pair AA in both themes (proof table below, live probe).</p>`
-  + tokenTrace({ rows: [['Success', '--color-success', 'accent3-700 light / 300 dark · form ok + sent hints'], ['On success', '--color-on-success', 'text on success fill'], ['Error', '--color-error', 'accent-700 light / 300 dark · replaces bare --color-accent for errors'], ['On error', '--color-on-error', 'text on error fill'], ['Warning', '--color-warning', 'accent2-700 light / 300 dark · cautions'], ['On warning', '--color-on-warning', 'text on warning fill'], ['Info', '--color-info', 'accent3-600 light / 100 dark · neutral notices'], ['On info', '--color-on-info', 'text on info fill']] })
-  + `<div class="ds-grid c2">${badge('Success', '--color-success', '--color-on-success', 'sent · ok')}${badge('Error', '--color-error', '--color-on-error', 'field error · failed')}${badge('Warning', '--color-warning', '--color-on-warning', 'caution · unsaved')}${badge('Info', '--color-info', '--color-on-info', 'notice · hint')}</div>`
-  + `<div class="ds-grid c2"><div class="ds-cell"><div style="background:var(--color-disabled-bg);color:var(--color-disabled-ink);border:var(--space-1) solid var(--color-disabled-line);padding:var(--space-8) var(--space-14);font-size:var(--text-small)">Disabled specimen — not interactive</div><div class="nm">Disabled</div><div class="vl">bg + ink + line · both themes</div></div><div class="ds-cell"><div style="outline:var(--border-focus);outline-offset:var(--focus-offset);padding:var(--space-8) var(--space-14);font-size:var(--text-small)">Focus ring — Tab to any control to see it live</div><div class="nm">Focus ring</div><div class="vl"><span class="tok">--border-focus</span> + <span class="tok">--focus-offset</span> · full spec lives in Shape</div></div></div>`
-  + note('Do', 'Dark theme is a hand-tuned inversion (<span class="tok">prefers-color-scheme</span> + <span class="tok">[data-theme]</span> override), not a ramp swap. Toggle it top-right to proof every specimen.')
-  + `</div><div class="ds-sec"><h2>Color explorer</h2><p class="sub">Playground, demoted below the system. Mixer blends two opaque semantic tokens at <span class="tok">t</span>; proof reads live <span class="tok">var()</span> ratios.</p><h3>③ Playground — mixer, opaque tokens only</h3><div class="ds-spec block"><div id="mixSw" style="height:var(--space-60);border:var(--border-hairline);background:var(--color-ink)"></div><div class="fx-controls" id="mixCtrls"><label class="fx-row">A <select data-mix="a">${MIX.map((t) => `<option value="${t}">${t}</option>`).join('')}</select></label><label class="fx-row">B <select data-mix="b">${MIX.map((t) => `<option value="${t}"${t === '--color-accent' ? ' selected' : ''}>${t}</option>`).join('')}</select></label><label class="fx-row">t <input type="range" min="0" max="100" step="1" value="50" data-mix="t"><output data-mix-v="t">0.50</output></label><div class="fx-btns"><button class="tok" data-mix-copy="var">copy var()</button><button class="tok" data-mix-copy="hex">copy hex</button></div><div class="vl" id="mixVal" style="font-family:var(--font-mono);font-size:var(--text-micro)"></div></div></div>`
-  + `<h3>④ Proof — full contrast matrix, both themes</h3><p class="sub">Every text ink × canvas, probed live in light + dark via <span class="tok">probeTheme</span> — this table already shows both, no toggle needed.</p><table class="ds-table"><tr><th>Pair</th><th>Tokens</th><th>Ratio</th><th>Verdict</th></tr><tbody id="contrastBody"></tbody></table>`
-  + `<h3>Feedback proof — roles × paper, both themes</h3><p class="sub">Each role as text on paper/surface plus its on-color on the role fill — live probe, AA or better.</p><table class="ds-table"><tr><th>Pair</th><th>Tokens</th><th>Ratio</th><th>Verdict</th></tr><tbody id="feedbackBody"></tbody></table></div>`;
+  return `<div class="ds-sec"><h2>Color</h2><p class="sub">Four synthetic materials, named for what they are — never stone/accent ordinals. Hover any ramp step for its material name + live value (click to copy). Every pair proves its ratio inline, light + dark — a11y is embedded, no proof tables.</p>`
+  + `<h3>① Materials — ref-only</h3><p class="sub">Consume the semantic name, never the step.</p>`
+  + MATS.map(([m,r,t,s]) => `<h3>${m} · ${r}</h3><p class="sub">${s}</p>${ramp(t,m)}`).join('')
+  + note('Do','Three accents stop here: Phosphor · Resin · Glass. New hues arrive as component tokens, never a fourth ramp.')
+  + `<h3>② Pairs — light on dark · dark on light, AA inline</h3><p class="sub">Each line demos real text (<b>Aa</b>) on its real background, probed live in both themes with ratio + verdict beside it.</p><h3>Canvas · ink on paper</h3>`
+  + pairs(CANVAS)
+  + `<h3>Action + feedback · fill + ink</h3><p class="sub">Fill = light on dark (on-color on role) · Ink = dark on light (role on paper) — both directions, both themes.</p>`
+  + pairs(FEED)
+  + `<h3>Decorative + slots — no text pair</h3><p class="sub">Washes, edges and aliases: never body text, so no ratio. Slots repoint beneath semantics — swap the slot, not the ramp.</p>`
+  + decor
+  + `</div><div class="ds-sec"><h2>Color explorer</h2><p class="sub">Playground, demoted below the system. Mixer blends two opaque semantic tokens at <span class="tok">t</span>.</p><h3>③ Playground — mixer, opaque tokens only</h3><div class="ds-spec block"><div id="mixSw" style="height:var(--space-60);border:var(--border-hairline);background:var(--color-ink)"></div><div class="fx-controls" id="mixCtrls"><label class="fx-row">A <select data-mix="a">${MIX.map((t) => `<option value="${t}">${t}</option>`).join('')}</select></label><label class="fx-row">B <select data-mix="b">${MIX.map((t) => `<option value="${t}"${t === '--color-accent' ? ' selected' : ''}>${t}</option>`).join('')}</select></label><label class="fx-row">t <input type="range" min="0" max="100" step="1" value="50" data-mix="t"><output data-mix-v="t">0.50</output></label><div class="fx-btns"><button class="tok" data-mix-copy="var">copy var()</button><button class="tok" data-mix-copy="hex">copy hex</button></div><div class="vl" id="mixVal" style="font-family:var(--font-mono);font-size:var(--text-micro)"></div></div></div></div>`;
 }

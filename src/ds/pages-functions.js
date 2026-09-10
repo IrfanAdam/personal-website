@@ -6,6 +6,7 @@ const rows=[
   ['Shimmer — skeletal','#/functions/shimmer','token trio --shimmer-gradient / --shimmer-band / --dur-shimmer · case hero only'],
   ['Rise — hero placeholder','#/functions/rise','mobile rise via rise.js --dur-hero-rise --ease-signature · project + contact'],
   ['Viewer — tamed portal','#/functions/viewer','editorial hairline+paper · --fx-viewer-* + --size-viewer-* params'],
+  ['Glimmer orb — square voice orb','#/functions/glimmer-orb','idle/listening/thinking · square cells · --color-accent'],
 ];
 export function render(){
   return `<p class="ds-crumb">Functions · index</p><div class="ds-hero"><h1>Motion with a model.</h1><p class="lede">Cell-grid reveal, skeletal shimmer, hero rise, and the viewer portal — each its own route. Labs run on production geometry; the site stays untouched until a tuned value graduates to a token.</p></div>`
