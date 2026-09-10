@@ -79,7 +79,7 @@ const btn = (label, subs, on, tip = '', cls = '') => {
 };
 function paint(root) {
   const list = visiblePlans();
-  sel = [Math.min(sel[0], Math.max(list.length - 1, 0)), 0];
+  sel = [Math.min(sel[0], Math.max(list.length - 1, 0)), sel[1]];
   const plan = list[sel[0]]; const showAll = `<button class="ds-chip${active.size ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
   root.querySelector('[data-col="chips"]').innerHTML = showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
   if (!plan) { root.querySelector('[data-col="plan"]').innerHTML = '<p class="ds-note">No plans carry these tags yet.</p>'; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="detail"]').innerHTML = unlinked(texts); return; }
