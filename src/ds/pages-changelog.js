@@ -59,32 +59,33 @@ const plans = entries.map(([p, md]) => {
   return { file, date, id, slug, label: labelOf(file, md), goal: goal(md), sprints, tags: planTags(md, sprints), raw: md };
 }).filter((pl) => pl.sprints.length);
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
-let active = new Set(); let sel = [0, 0];
+let active = new Set(); let sel = [0, 0]; let open = false;
 const visiblePlans = () => (active.size ? plans.filter((p) => p.tags.some((t) => active.has(t))) : plans);
 const visibleSprints = (plan) => {
   const ss = active.size ? plan.sprints.filter((s) => s.tags.some((t) => active.has(t))) : plan.sprints;
   return ss.length ? ss : plan.sprints;
 };
+const cur = () => { const list = visiblePlans(); const pi = Math.min(sel[0], Math.max(list.length - 1, 0)); const plan = list[pi]; const sprints = plan ? visibleSprints(plan) : []; return { list, pi, plan, sprints, si: Math.min(sel[1], Math.max(sprints.length - 1, 0)) }; };
 export function render() {
   return `<p class="ds-crumb">Start · Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1>`
-    + `<p class="lede">Pick a phase — detail opens in the next column. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
+    + `<p class="lede">Pick a phase — detail slides in from the right. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
     + `<div class="ds-chips" data-col="chips"></div>`
-    + `<div class="ds-miller"><div class="ds-col" data-col="plan"></div><div class="ds-col" data-col="sprint"></div><div class="ds-detail" data-col="detail"></div></div>`;
+    + `<div class="ds-miller"><div class="ds-col" data-col="plan"></div><div class="ds-col" data-col="sprint"></div></div>`
+    + `<div class="ds-md" data-col="triage"></div>`
+    + `<div class="ds-scrim" data-scrim hidden></div><aside class="ds-drawer" data-drawer hidden aria-label="Phase detail"></aside>`;
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-const tagline = (tags) => (tags.length ? `<small>${tags.join(' · ')}</small>` : '');
 const btn = (label, subs, on, tip = '', cls = '') => {
   const sm = (Array.isArray(subs) ? subs : subs ? [subs] : []).filter(Boolean).map((s) => `<small>${s}</small>`).join('');
   return `<button class="ds-pick${on ? ' on' : ''}${cls ? ` ${cls}` : ''}"><b>${label}</b>${sm}${tip ? `<span class="ds-tip" role="tooltip">${esc(tip)}</span>` : ''}</button>`;
 };
 function paint(root) {
-  const list = visiblePlans();
-  sel = [Math.min(sel[0], Math.max(list.length - 1, 0)), sel[1]];
-  const plan = list[sel[0]]; const showAll = `<button class="ds-chip${active.size ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
+  const { list, pi, plan, sprints, si } = cur(); sel = [pi, si];
+  const showAll = `<button class="ds-chip${active.size ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
   root.querySelector('[data-col="chips"]').innerHTML = showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
-  if (!plan) { root.querySelector('[data-col="plan"]').innerHTML = '<p class="ds-note">No plans carry these tags yet.</p>'; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="detail"]').innerHTML = unlinked(texts); return; }
-  const sprints = visibleSprints(plan); sel[1] = Math.min(sel[1], sprints.length - 1);
-  const sprint = sprints[sel[1]];
+  const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
+  if (!plan) { root.querySelector('[data-col="plan"]').innerHTML = '<p class="ds-note">No plans carry these tags yet.</p>'; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
+  const sprint = sprints[si];
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const it = String(list.length - i).padStart(2, '0');
     const num = p.id || it; const frac = iterState(p.sprints);
@@ -100,18 +101,30 @@ function paint(root) {
     return btn(`<span class="ds-num">Phase ${String(n).padStart(2, '0')}</span>${short(s.head)}`, [frac + has, s.tags.join(' · ')], i === sel[1], '', done(frac) ? '' : 'is-open');
   }).join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
-  const extra = (() => { const u = unlinked(texts); return /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`; })();
-  root.querySelector('[data-col="detail"]').innerHTML = `<div class="ds-col wide"><div class="ds-md">${marked.parse(sprint.body)}${badges(hs)}${extra}</div></div>`;
+  const u = unlinked(texts);
+  root.querySelector('[data-col="triage"]').innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
+  if (!open) { drawer.hidden = true; scrim.hidden = true; return; }
+  drawer.innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
+    + `<button data-step="-1"${si <= 0 ? ' disabled' : ''} aria-label="Previous phase">← Prev</button>`
+    + `<button data-step="1"${si >= sprints.length - 1 ? ' disabled' : ''} aria-label="Next phase">Next →</button>`
+    + `<button data-close aria-label="Close detail">✕</button></div>`
+    + `<div class="ds-md">${marked.parse(sprint.body)}${badges(hs)}</div>`;
+  drawer.hidden = false; scrim.hidden = false;
 }
 export function mount(root) {
-  paint(root);
+  open = false; paint(root);
   const onClick = (e) => {
     const chip = e.target.closest('.ds-chip');
     if (chip) { const t = chip.dataset.tag; if (!t) active = new Set(); else { active.has(t) ? active.delete(t) : active.add(t); } sel = [0, 0]; paint(root); return; }
+    if (e.target.closest('[data-close]') || e.target.closest('[data-scrim]')) { open = false; paint(root); return; }
+    const st = e.target.closest('[data-step]');
+    if (st && !st.disabled) { const c = cur(); sel = [c.pi, Math.min(Math.max(c.si + Number(st.dataset.step), 0), c.sprints.length - 1)]; open = true; paint(root); return; }
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const i = [...b.parentElement.children].indexOf(b);
-    sel = b.parentElement.dataset.col === 'plan' ? [i, 0] : [sel[0], i]; paint(root);
+    if (b.parentElement.dataset.col === 'plan') sel = [i, 0]; else { sel = [sel[0], i]; open = true; }
+    paint(root);
   };
-  root.addEventListener('click', onClick);
-  return () => root.removeEventListener('click', onClick);
+  const onKey = (e) => { if (e.key === 'Escape' && open) { open = false; paint(root); } };
+  root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
+  return () => { root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey); };
 }

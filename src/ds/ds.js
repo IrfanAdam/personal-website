@@ -48,6 +48,11 @@ bar.addEventListener('click', (e) => {
   const b = e.target.closest('[data-theme-btn]'); if (b) { applyTheme(b.dataset.themeBtn); refreshLive(); }
 });
 applyTheme(saved);
+/* sidebar collapse — persisted like theme (desktop only; mobile stacks) */
+const sideBtn = document.getElementById('ds-side-toggle');
+const applySide = (c) => { document.body.classList.toggle('side-collapsed', c); localStorage.setItem('adam-ds-side', c ? '1' : '0'); sideBtn.textContent = c ? '▶' : '◀'; sideBtn.setAttribute('aria-expanded', String(!c)); };
+sideBtn.addEventListener('click', () => applySide(!document.body.classList.contains('side-collapsed')));
+applySide(localStorage.getItem('adam-ds-side') === '1');
 /* nav */
 let lastGroup = '';
 nav.innerHTML = routes.map((r) => {
