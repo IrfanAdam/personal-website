@@ -74,6 +74,8 @@
 
 ## Phase 3 — Swap-slot layer
 
+*Shipped in f12ea02 · Tasks 7–8 · phase-3.*
+
 *The middle tier: components keep consuming `--color-*`; slots repoint beneath them.*
 
 | # | Task | Done when |
@@ -81,12 +83,12 @@
 | 7 | Signal slot tokens | `--signal-*` slots feed `--color-accent`, alts on amber/teal |
 | 8 | Playground swap demo | rebind slot live, matrix stays AA |
 
-### Task 7: Signal slot tokens
+### Task 7: Signal slot tokens ✓ done
 **Objective:** Additive `--signal` slot tier: `--color-accent: var(--signal)` with `--signal` defaulting to vermilion; amber/teal alts defined. Success/error/warning/info stay as the messaging layer over the ramps.
 **Files:** `tokens.css` (additive only).
 **Verify:** Default render pixel-identical; `npm run test` PASS.
 
-### Task 8: Playground swap demo
+### Task 8: Playground swap demo ✓ done
 **Objective:** Mixer-area control repoints the slot live across the DS; contrast matrix re-proves on swap.
 **Files:** `pane-color.js` (demo + docs).
 **Verify:** Slot swap re-themes DS live, matrix AA; components untouched; `npm run test` PASS.

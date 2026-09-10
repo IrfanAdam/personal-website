@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T10:37:47.625Z",
+ "generated": "2026-09-10T10:43:58.060Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -16,6 +16,22 @@
   "2026-09-10_153555-color-cool-synthetic.md"
  ],
  "commits": [
+  {
+   "sha": "f12ea02",
+   "full": "f12ea028e1cb66c2114c46a8f467010bc3365ed1",
+   "date": "2026-09-10",
+   "subject": "feat(color): phase 3 swap-slot — signal indirection + live swap demo",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "36c2d82",
+   "full": "36c2d826d9cefdffe26e3dd050d1469175fba2e7",
+   "date": "2026-09-10",
+   "subject": "chore(plan): mark phases 1-2 shipped — Frost Alloy locked, tasks 1-6 ✓ done",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-2"
+  },
   {
    "sha": "5fcbdac",
    "full": "5fcbdac2407c66148387f129eef041e42d8d0650",
@@ -258,11 +274,10 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json",
+  "MM src/ds/changelog-manifest.json",
   "M src/ds/ds.js",
   "M src/ds/foundations.css",
   "M src/ds/foundations/pane-fx.js",
-  "M src/ds/pages-foundations.js",
   "M src/ds/pages-functions.js",
   "?? src/ds/functions/glimmer-orb.js"
  ]
