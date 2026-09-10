@@ -110,13 +110,15 @@
 
 ## Phase 5 — Site adoption
 
+*Shipped in e8defad · Tasks 10 · phase-5.*
+
 *The one pixel-changing step, deliberate and eyeballed.*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 10 | Live adoption + visual pass | site + DS read the new palette, light + dark |
 
-### Task 10: Live adoption + visual pass
+### Task 10: Live adoption + visual pass ✓ done
 **Objective:** Adopt the new values live (they already ship via `tokens.css`); fix any specimen that drifts; light + dark eyeball pass over site and DS.
 **Files:** Adoption fixes only if drift found.
 **Verify:** Full `npm test` PASS + eyeball pass.
