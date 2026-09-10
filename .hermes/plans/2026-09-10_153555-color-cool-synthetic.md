@@ -110,7 +110,7 @@
 
 ## Phase 5 — Site adoption
 
-*Shipped in e8defad · Tasks 10 · phase-5.*
+*Shipped in a48f9b4 · Tasks 10 · phase-5.*
 
 *The one pixel-changing step, deliberate and eyeballed.*
 
