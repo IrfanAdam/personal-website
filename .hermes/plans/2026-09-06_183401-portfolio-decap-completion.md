@@ -1,5 +1,7 @@
 # Personal Website — Portfolio Clone Completion Plan
 
+**Tags:** Tooling
+
 > **For Hermes:** Use subagent-driven-development skill to implement this plan task-by-task.
 
 **Goal:** Finish the Framer → self-hosted portfolio clone so the owner can edit all 14 case studies via a locked `/admin` and deploy to production with no database.

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T10:43:58.060Z",
+ "generated": "2026-09-10T14:35:25.735Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -13,9 +13,26 @@
   "2026-09-09_130000-ds-maturity.md",
   "2026-09-09_145218-bidirectional-pipeline.md",
   "2026-09-09_170854-design-system-update-4.md",
-  "2026-09-10_153555-color-cool-synthetic.md"
+  "2026-09-10_153555-color-cool-synthetic.md",
+  "2026-09-10_195043-smart-changelog.md"
  ],
  "commits": [
+  {
+   "sha": "0d54de5",
+   "full": "0d54de57c4e3eca898857e926a30975e547c5553",
+   "date": "2026-09-10",
+   "subject": "feat(color): phase 4 swatch audit — Elevation group owns shadow colors, FX/Shape drop dupes",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "7f881d9",
+   "full": "7f881d9f61fbf183f5831cd65fc0378775c91e7b",
+   "date": "2026-09-10",
+   "subject": "chore(plan): mark phase 3 shipped — signal slot live, tasks 7–8 ✓ done",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "f12ea02",
    "full": "f12ea028e1cb66c2114c46a8f467010bc3365ed1",
@@ -117,7 +134,7 @@
    "full": "0287e3946c48e9ce89f9cd0ec9aee5f743afc277",
    "date": "2026-09-09",
    "subject": "chore(ds): checkpoint before design-system update 4",
-   "plan": null,
+   "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": null
   },
   {
@@ -125,8 +142,8 @@
    "full": "50c8050b5c3f9e8bf05c35a0a1dca3ee48c38973",
    "date": "2026-09-09",
    "subject": "feat(ds): moodboard 6 refs + overview polish [session 155452]",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Moodboard strip"
   },
   {
    "sha": "ac91453",
@@ -173,112 +190,117 @@
    "full": "001f83771b882b87ace25528beeb78ed3a55b2ac",
    "date": "2026-09-09",
    "subject": "feat(ds): maturity sprint — token hygiene, playground, landing set, motion graduation, live quality gates",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_130000-ds-maturity.md",
+   "anchor": "Token hygiene"
   },
   {
    "sha": "5948e02",
    "full": "5948e0285d31438bd8d3879bdf85431ca2d4382e",
    "date": "2026-09-08",
    "subject": "feat(cards): 18px card title step between h3 and h2",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "capped scale"
   },
   {
    "sha": "ffee0b1",
    "full": "ffee0b15ea03b9ab63304004591e99a43155a39d",
    "date": "2026-09-08",
    "subject": "feat(masonry): rareui-style subdivision reveal, random splits, faster run, larger card type",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal"
   },
   {
    "sha": "9d2b13f",
    "full": "9d2b13f7bb37599b682ca8c32575c98ed3e863bc",
    "date": "2026-09-08",
    "subject": "feat(viewer): thick tether, coupled threshold+idle, synced hide, rAF perf",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal"
   },
   {
    "sha": "3d974ae",
    "full": "3d974ae0b1c1adea613d45d8e347ef1246950a5a",
    "date": "2026-09-08",
    "subject": "feat(viewer): framer mocks + glass portal + corner tethers, flat lines",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal"
   },
   {
    "sha": "487b974",
    "full": "487b9745795e4393b2d81c9f6de7dbfa09740cf7",
    "date": "2026-09-08",
    "subject": "feat(viewer): cyberpunk expander (cursor+portal+spring tether, proximity flip, clamped)",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal"
   },
   {
    "sha": "c595a3e",
    "full": "c595a3ebb0736bac72c6c838ff6b34c79c3f7418",
    "date": "2026-09-08",
    "subject": "feat(masonry): GridReveal cyberpunk viewer — mosaic shimmer, detail-first sharpen",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "blur-to-sharp"
   },
   {
    "sha": "7e4f047",
    "full": "7e4f047cb17589dd05dfeb21487536cdaadee74d",
    "date": "2026-09-07",
    "subject": "feat: theme toggle (list-only) + Framer favicon restore",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "favicon"
   },
   {
    "sha": "fa4eb0e",
    "full": "fa4eb0e0a8457eb6ac54409689a567c4191781ed",
    "date": "2026-09-07",
    "subject": "feat(ds): adopt token-driven design system across site and docs",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Baseline + IA skeleton"
   },
   {
    "sha": "0d02406",
    "full": "0d02406172b2827fc8cfa95491eca656e24e80e8",
    "date": "2026-09-07",
    "subject": "docs: add DESIGN.md tokens spec and masonry/mobile plans",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "one sheet per foundation"
   },
   {
    "sha": "940e158",
    "full": "940e158c3af252b77236e6dbfd211cbe5f45f53c",
    "date": "2026-09-07",
    "subject": "feat: mobile — bottom-fixed header, single-column linger cards, 50/50 media",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "bottom-fixed header"
   },
   {
    "sha": "8b88207",
    "full": "8b88207284180745dee444b50f30593fa7411214",
    "date": "2026-09-07",
    "subject": "feat: slick minimal header with sliding selection frame",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "sliding selection frame"
   },
   {
    "sha": "c7303a2",
    "full": "c7303a27bd1b1b522c8facf9d491d4767f19a110",
    "date": "2026-09-06",
    "subject": "feat: portfolio clone with decap cms",
-   "plan": null,
-   "anchor": null
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "decap cms"
   }
  ],
  "wip": [
-  "MM src/ds/changelog-manifest.json",
+  "M src/ds/changelog-manifest.json",
+  "A  src/ds/changelog-tags.js",
+  "M  src/ds/ds.css",
   "M src/ds/ds.js",
   "M src/ds/foundations.css",
-  "M src/ds/foundations/pane-fx.js",
+  "M src/ds/foundations/pane-color.js",
+  "M  src/ds/pages-changelog.js",
+  "M src/ds/pages-foundations.js",
   "M src/ds/pages-functions.js",
+  "M src/ds/specimens.js",
   "?? src/ds/functions/glimmer-orb.js"
  ]
 }

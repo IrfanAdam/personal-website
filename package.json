@@ -12,6 +12,7 @@
     "lint:tokens": "node scripts/lint-tokens.mjs",
     "test": "npm run lint:tokens && npm run build",
     "ds:track": "node scripts/ds-track.mjs",
+    "plan:suggest": "node scripts/plan-suggest.mjs",
     "predev": "node scripts/ds-track.mjs || true"
   },
   "devDependencies": {

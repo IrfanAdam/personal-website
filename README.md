@@ -14,3 +14,5 @@ a GitHub OAuth app for Vercel; local edits always work via `local_backend`.
 ## Deploy (Vercel)
 `npm run build` → `dist/` is ready for Vercel / Netlify / Cloudflare.
 Vercel: import folder, framework Vite, output `dist`.
+## DS conventions (standing — don't re-ask)
+- Trackability: every DS scope gets `.hermes/plans/<date>-<scope>.md` with `## Phase N` anchors; every DS commit cites `[plan:<file>#phase-N]`; verify via `npm run ds:track` + `npm test`.

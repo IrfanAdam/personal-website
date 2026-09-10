@@ -1,5 +1,7 @@
 # Mobile Responsiveness Implementation Plan
 
+**Tags:** Layout
+
 > **For Hermes:** Use subagent-driven-development skill to implement this plan task-by-task.
 
 **Goal:** Make the entire personal_website fully responsive on mobile (320px–900px) with a fixed, horizontally-scrollable header; audit and polish every breakpoint, interaction, and page without desktop regression.

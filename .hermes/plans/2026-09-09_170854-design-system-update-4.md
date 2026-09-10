@@ -1,5 +1,7 @@
 # Design System Update 4 — Foundations → Evo Parity
 
+**Tags:** Design System
+
 **Goal:** Close the structural gaps between ADAM/DS Foundations (7 tabs) and eBay Evo/Skin conventions — feedback color roles, paired type scale, breakpoint + composition tokens, focus-ring + reduced-motion contracts, and a third component-token tier — one phase per tab, without touching live-site pixels unless a new token is deliberately adopted.
 
 **Architecture:** Docs-only work in `src/ds/foundations/pane-*.js` + `src/styles/tokens.css` (additive tokens only); `src/ds/ds.js` untouched. Evo is the yardstick for *structure* (3-tier tokens, per-pair AA matrices, MIND-style gates), never for values — stone + vermilion + zero-radius doctrine stays.
@@ -226,6 +228,8 @@
 **Verify:** Concept + per-demo token labels + zero blank cards; `npm run test` PASS.
 
 ## Phase 7 — Tokens: third tier + policy + a11y gate
+
+*Tags: Design System*
 
 *Shipped in 1efb5ac · Tasks 25–27 · Phase-7.*
 

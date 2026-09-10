@@ -1,5 +1,7 @@
 # Color — Cool Synthetics + Swap-Slot Layer
 
+**Tags:** Design System
+
 **Goal:** Cooler neutral palette with a sci-fi synthetic material story; color consumed through a 3-hop chain (ramp → swap slot → semantic) so accents and messaging roles rebind without touching components. Pre-wires the future DS-as-configurator.
 
 **Architecture:** `material ramp` (raw values, never consumed) → `swap slot` (one active pick of N) → `--color-*` semantic (what components consume). Example: `--accent-500` → `--signal: var(--accent-500)` → `--color-accent: var(--signal)`. The future configurator writes to the middle layer only. Same shape planned for type.

@@ -32,9 +32,7 @@ body { padding-top: 0; }
 .ds-sec h3 { font-size: var(--text-h3); font-weight: 600; letter-spacing: var(--tracking-heading); margin: var(--space-22) 0 var(--space-8); }
 .ds-sec p { line-height: var(--leading-prose); }
 .ds-grid { display: grid; gap: var(--space-12); margin: var(--space-12) 0; }
-.ds-grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ds-grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.ds-grid.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ds-grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ds-grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .ds-grid.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .ds-cell { border: var(--border-hairline); background: var(--color-surface); padding: var(--space-12); min-width: 0; }
 .ds-sw { height: var(--space-60); border: var(--border-hairline); margin-bottom: var(--space-8); }
 .ds-cell .nm { font-family: var(--font-mono); font-size: var(--text-label); }
@@ -52,16 +50,17 @@ body { padding-top: 0; }
 .ds-footnav a { text-decoration: none; font-weight: 600; font-size: var(--text-small); }
 .ds-footnav small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
 .ds-spec { border: var(--border-hairline); padding: var(--space-16); display: flex; flex-wrap: wrap; gap: var(--space-14); align-items: flex-start; margin: var(--space-10) 0; }
-.ds-spec > figure { margin: 0; min-width: 0; } .ds-spec figcaption { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-6); }
-.ds-spec.block { display: block; }
+.ds-spec > figure { margin: 0; min-width: 0; } .ds-spec figcaption { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-6); } .ds-spec.block { display: block; }
 @media (max-width: 900px) /* --break-lg */ { .ds-shell { flex-direction: column; } .ds-side { position: static; width: auto; border-right: none; border-bottom: var(--border-hairline); } body { padding-bottom: 0; } .ds-main { margin-left: 0; padding: var(--space-22) var(--space-16) var(--space-70); } .ds-grid.c3, .ds-grid.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ds-controls { position: sticky; top: var(--space-8); justify-content: flex-end; margin-bottom: var(--space-10); background: var(--color-bg); padding: var(--space-6) 0; } }
 @media (max-width: 640px) /* --break-sm */ { .ds-grid.c2 { grid-template-columns: 1fr; } .ds-hero h1 { overflow-wrap: break-word; } }
 /* tabs shell (Phase 1) — token-only, Preview-first */
-.ds-tabs { margin: var(--space-10) 0; }
-.ds-tablist { display: flex; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-10); }
+.ds-tabs { margin: var(--space-10) 0; } .ds-tablist { display: flex; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-10); }
 .ds-tab { font-family: var(--font-mono); font-size: var(--text-meta); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--space-4) var(--space-9); }
-.ds-tab.on { background: var(--color-ink); color: var(--color-bg); }
-.ds-pane[hidden] { display: none; }
+.ds-tab.on { background: var(--color-ink); color: var(--color-bg); } .ds-pane[hidden] { display: none; }
+/* changelog filter chips — toggle buttons, token-only */
+.ds-chips { display: flex; gap: var(--space-8); flex-wrap: wrap; margin: 0 0 var(--space-12); }
+.ds-chip { font-family: var(--font-mono); font-size: var(--text-micro); background: var(--color-surface); color: var(--color-ink-muted); border: var(--border-hairline); padding: var(--space-4) var(--space-9); cursor: pointer; }
+.ds-chip.on { background: var(--color-ink); color: var(--color-bg); border-color: var(--color-ink); }
 /* changelog archive — rendered plan markdown, token-only */
 .ds-md { font-size: var(--text-ds-body); line-height: var(--leading-prose); }
 .ds-md h1 { font-size: var(--text-h2); font-weight: 700; letter-spacing: var(--tracking-heading); margin: 0 0 var(--space-8); }

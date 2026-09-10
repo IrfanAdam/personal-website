@@ -1,5 +1,7 @@
 # Bidirectional DS Pipeline — Continuation 20260909_145218_9888b1
 
+**Tags:** Tooling
+
 > **For Hermes:** this is the canonical anchor. Every future DS scope branches from session `@session:default/20260909_145218_9888b1`. Implement `plan → commit → changelog` in both directions.
 
 **Goal:** Guarantee that every future plan and every future DS execution is bidirectionally linked — plan file lists intent, commit cites plan, changelog renders commits per phase with wip/unlinked triage. Zero manual bookkeeping after this point.
