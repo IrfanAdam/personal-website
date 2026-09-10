@@ -39,16 +39,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }, { passive: true });
 }
 
-function syncThemeSwitch() {
-  const el = document.getElementById('themeSwitch');
-  if (!el) return;
-  const h = location.hash || '#/masonry';
-  const isMasonry = h === '#/masonry' || h === '#/';
-  el.style.display = isMasonry && masonryView === 'list' ? 'flex' : 'none';
-}
 function syncTabs() {
   vtabs.forEach((b) => b.classList.toggle('on', b.dataset.vtab === masonryView));
-  syncThemeSwitch();
   syncHeaderFrames();
 }
 
@@ -91,7 +83,6 @@ function route() {
     cleanup = mountMasonry(root);
   }
   syncTabs();
-  syncThemeSwitch();
   centerActiveThumb();
 }
 window.addEventListener('hashchange', route);
