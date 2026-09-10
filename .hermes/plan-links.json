@@ -1,0 +1,20 @@
+{
+  "_comment": "Retroactive plan links for pre-trailer commits — no history rewrite. sha -> {plan, anchor, note}. anchor must be a verbatim case-sensitive substring of exactly one ## Phase body (checked by audit); null attaches to the plan's first phase per convention. Read by scripts/ds-track.mjs.",
+  "links": {
+    "0287e39": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": null, "note": "prep checkpoint for update 4; first-phase attach per convention" },
+    "50c8050": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "Moodboard strip", "note": "moodboard refs + overview polish -> P5 overview/moodboard" },
+    "001f837": { "plan": "2026-09-09_130000-ds-maturity.md", "anchor": "Token hygiene", "note": "bundle spanning P1/P2/P4/P5/P6; badged on first area P1" },
+    "5948e02": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "capped scale", "note": "card-title type step -> P2 type scale" },
+    "ffee0b1": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "subdivision-reveal algorithm that became the shared function -> P4" },
+    "9d2b13f": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "viewer tether/perf iteration; viewer housed as function -> P4" },
+    "3d974ae": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "viewer mocks/portal iteration -> P4" },
+    "487b974": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "cyberpunk expander iteration -> P4" },
+    "c595a3e": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "blur-to-sharp", "note": "mosaic shimmer detail-first sharpen ~= dimension-first blur-to-sharp -> P2" },
+    "7e4f047": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "favicon", "note": "theme toggle + favicon restore; clone-completion leftover -> retro P1" },
+    "fa4eb0e": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "Baseline + IA skeleton", "note": "token-DS adoption across site+docs -> P0 baseline" },
+    "0d02406": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "one sheet per foundation", "note": "DESIGN.md tokens spec -> P2 foundations sheets" },
+    "940e158": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "bottom-fixed header", "note": "mobile header/cards/media -> retro P1" },
+    "8b88207": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "sliding selection frame", "note": "slick minimal header -> retro P1" },
+    "c7303a2": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "decap cms", "note": "initial clone -> retro P1" }
+  }
+}

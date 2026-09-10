@@ -283,3 +283,14 @@ ls dist/icons | wc -l    # expect 16
 - **Open:** Whether to add `deliverables`/`platform` fields — add only if owner wants them editable; otherwise keep `—` placeholder.
 - **Open:** Hosting choice — Netlify vs Vercel vs Cloudflare Pages — determines auth wiring; document both but implement chosen one.
 
+---
+
+## Phase 1 — Shipped: clone + CMS + chrome (retro)
+
+*Tags: Tooling*
+
+*Retroactive entry so pre-trailer commits have a home; work shipped 2026-09-06/07.*
+
+- [x] **portfolio clone with decap cms** — initial Framer → static Vite clone with Decap CMS.
+- [x] **theme toggle + favicon** — theme toggle (list-only) + Framer favicon restore.
+

@@ -522,3 +522,14 @@ All changes are CSS-first and reversible. If fixed header causes regression, rev
 ## Appendix: Immediate Next Action
 
 Await user confirmation on 5 open questions above; then proceed task-by-task with `subagent-driven-development` (fresh subagent per task, two-stage review). If user says "go with defaults, execute," start at Task 1.1 with Variant A top-fixed persistent card info image-first.
+
+---
+
+## Phase 1 — Shipped: responsive pass (retro)
+
+*Tags: Layout*
+
+*Retroactive entry so pre-trailer commits have a home; work shipped 2026-09-07.*
+
+- [x] **bottom-fixed header** — bottom-fixed header, single-column linger cards, 50/50 media.
+- [x] **sliding selection frame** — slick minimal header with sliding selection frame.

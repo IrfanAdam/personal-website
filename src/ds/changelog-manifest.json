@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T14:35:25.735Z",
+ "generated": "2026-09-10T14:36:37.905Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -17,6 +17,14 @@
   "2026-09-10_195043-smart-changelog.md"
  ],
  "commits": [
+  {
+   "sha": "d884568",
+   "full": "d8845688edcaeac941de95277a307448cf0147cc",
+   "date": "2026-09-10",
+   "subject": "feat(ds): smart changelog — tag taxonomy, chips, dynamic iters, plan SOP",
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Phase-3"
+  },
   {
    "sha": "0d54de5",
    "full": "0d54de57c4e3eca898857e926a30975e547c5553",
@@ -291,13 +299,9 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json",
-  "A  src/ds/changelog-tags.js",
-  "M  src/ds/ds.css",
   "M src/ds/ds.js",
   "M src/ds/foundations.css",
   "M src/ds/foundations/pane-color.js",
-  "M  src/ds/pages-changelog.js",
   "M src/ds/pages-foundations.js",
   "M src/ds/pages-functions.js",
   "M src/ds/specimens.js",
