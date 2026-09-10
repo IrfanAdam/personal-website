@@ -1,6 +1,6 @@
 /* ADAM/DS — Foundations: color · type · space · shape · motion · fx · tokens.
    Single route; definitions live on vertical tabs. Demos run on var(). */
-import { cssVar, toRGB, contrastRatio as ratio, verdictRatio as verdict, probeTheme } from './specimens.js';
+import { cssVar, toRGB, contrastRatio as ratio, verdictRatio as verdict, probeTheme, refreshLive } from './specimens.js';
 import { tabs } from './tabs.js';
 import { label as cL, html as cH } from './foundations/pane-color.js';
 import { label as tL, html as tH } from './foundations/pane-type.js';
@@ -47,7 +47,11 @@ export function mount(root) {
     sw.style.background = hex; if (val) val.textContent = `${aSel.value} ↔ ${bSel.value} @ ${t.toFixed(2)} → ${hex} · var mix`;
     sw.dataset.hex = hex; sw.dataset.var = `color-mix(in srgb, var(${aSel.value}) ${Math.round((1 - t) * 100)}%, var(${bSel.value}))`;
   };
-  const refreshContrast = () => { if (body) body.innerHTML = contrastRows(); if (fb) fb.innerHTML = feedbackRows(); };
+  const refreshContrast = () => { if (body) body.innerHTML = contrastRows(); if (fb) fb.innerHTML = feedbackRows(); refreshLive(); };
+  const signalCtrls = root.querySelector('#signalCtrls'), signalSw = root.querySelector('#signalSw'), signalVal = root.querySelector('#signalVal');
+  const SIGNAL = { vermilion: 'var(--accent-500)', amber: 'var(--accent2-600)', teal: 'var(--accent3-500)' };
+  const refreshSignal = () => { if (!signalVal) return; const cur = getComputedStyle(document.documentElement).getPropertyValue('--signal').trim() || cssVar('--signal') || 'var(--accent-500)'; const hex = cssVar('--color-accent') || cssVar('--signal'); signalVal.textContent = `--signal ${cur} → --color-accent ${hex}`; if (signalSw) signalSw.style.background = 'var(--color-accent)'; if (signalCtrls) { const k = cur.includes('accent2') ? 'amber' : cur.includes('accent3') ? 'teal' : 'vermilion'; signalCtrls.querySelectorAll('[data-signal]').forEach((x) => x.classList.toggle('on', x.dataset.signal === k)); } refreshLive(); };
+  const onSignal = (e) => { const b = e.target.closest('[data-signal]'); if (!b || !signalCtrls) return; const k = b.dataset.signal; const v = SIGNAL[k]; if (!v) return; document.documentElement.style.setProperty('--signal', v); signalCtrls.querySelectorAll('[data-signal]').forEach((x) => x.classList.toggle('on', x === b)); refreshSignal(); refreshContrast(); };
   const onMix = () => refreshMix();
   const onCopyVar = (e) => { const b = e.target.closest('[data-mix-copy]'); if (!b || !sw) return; const k = b.dataset.mixCopy === 'hex' ? sw.dataset.hex : sw.dataset.var; if (k) navigator.clipboard.writeText(k).catch(() => {}); };
   const onType = (e) => { const s = e.target; if (!s.dataset.type || !typeSample) return; if (s.dataset.type === 'size') typeSample.style.fontSize = s.value; if (s.dataset.type === 'leading') typeSample.style.lineHeight = s.value; if (s.dataset.type === 'tracking') typeSample.style.letterSpacing = s.value; };
@@ -62,15 +66,20 @@ export function mount(root) {
     if (e.target.closest('[data-rise-replay]') && rise) { rise.classList.add('rest'); void rise.offsetWidth; requestAnimationFrame(() => rise.classList.remove('rest')); }
   };
   if (ctrls) { ctrls.addEventListener('input', onMix); ctrls.addEventListener('click', onCopyVar); refreshMix(); }
-  if (body) { refreshContrast(); const obs = new MutationObserver(refreshContrast); obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); root.__foundObs = obs; }
+  if (signalCtrls) { signalCtrls.addEventListener('click', onSignal); refreshSignal(); }
+  if (body) { refreshContrast(); const obs = new MutationObserver(refreshContrast); obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); root.__foundObs = obs; } else {
+    const liveObs = new MutationObserver(refreshLive); liveObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); root.__liveObs = liveObs;
+  }
   if (typeCtrls) typeCtrls.addEventListener('change', onType);
   if (easeCtrls) easeCtrls.addEventListener('click', onEase), easeCtrls.addEventListener('change', onEase);
   root.addEventListener('click', onFx);
   return () => {
     if (ctrls) { ctrls.removeEventListener('input', onMix); ctrls.removeEventListener('click', onCopyVar); }
+    if (signalCtrls) signalCtrls.removeEventListener('click', onSignal);
     if (typeCtrls) typeCtrls.removeEventListener('change', onType);
     if (easeCtrls) { easeCtrls.removeEventListener('click', onEase); easeCtrls.removeEventListener('change', onEase); }
     root.removeEventListener('click', onFx);
     if (root.__foundObs) root.__foundObs.disconnect();
+    if (root.__liveObs) root.__liveObs.disconnect();
   };
 }

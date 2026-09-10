@@ -18,8 +18,10 @@
   --accent-100: #fbd9d1; --accent-300: #f19a8a; --accent-500: #e8442e; --accent-600: #cf3820; --accent-700: #a82a18; --accent-900: #5c150c;
   --accent2-100: #fbeed3; --accent2-300: #eec27a; --accent2-500: #c78a1b; --accent2-600: #9a6708; --accent2-700: #7a4d00; --accent2-900: #3d2700;
   --accent3-100: #d3e8e4; --accent3-300: #8fc2b8; --accent3-500: #2f7d6e; --accent3-600: #256557; --accent3-700: #1d5045; --accent3-900: #0f2a26;
+  /* — Signal slot (Phase 3) — ramp → signal → semantic — */
+  --signal: var(--accent-500); --signal-amber: var(--accent2-600); --signal-teal: var(--accent3-500);
   /* — Semantic · color (light) — */
-  --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-surface-sunken: var(--stone-200); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(21, 25, 31, 0.1); --color-accent: var(--accent-500); --color-on-accent: #f2f4f7; --color-chip: rgba(18, 21, 26, 0.62); --color-on-media: #f2f4f7; --color-on-media-muted: rgba(242, 244, 247, 0.82); --color-panel: rgba(236, 238, 242, 0.32); --color-header: rgba(236, 238, 242, 0.75);
+  --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-surface-sunken: var(--stone-200); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(21, 25, 31, 0.1); --color-accent: var(--signal); --color-on-accent: #f2f4f7; --color-chip: rgba(18, 21, 26, 0.62); --color-on-media: #f2f4f7; --color-on-media-muted: rgba(242, 244, 247, 0.82); --color-panel: rgba(236, 238, 242, 0.32); --color-header: rgba(236, 238, 242, 0.75);
   --color-overlay: var(--stone-0); --color-overlay-muted: var(--stone-600); --color-disabled-bg: var(--stone-200); --color-disabled-ink: var(--stone-400); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink);
   --color-success: var(--accent3-700); --color-on-success: #f2f4f7; --color-error: var(--accent-700); --color-on-error: #f2f4f7; --color-warning: var(--accent2-700); --color-on-warning: #f2f4f7; --color-info: var(--accent3-600); --color-on-info: #f2f4f7;
   /* — Semantic · media scrims, gradients, on-image shadows — */

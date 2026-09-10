@@ -30,6 +30,9 @@ export function html() {
   + tokenTrace({ rows: [['Line · 10% ink', '--color-line', 'hairlines + card borders'], ['Header frost', '--color-header', 'sticky header']] })
   + `<h3>Action</h3>`
   + tokenTrace({ rows: [['Accent', '--color-accent', 'callouts + badge + CTA rule'], ['On accent', '--color-on-accent', 'text on accent'], ['Chip · 62% ink', '--color-chip', 'tags + filter pills'], ['Input bg', '--color-input-bg', 'field fill'], ['Input line', '--color-input-line', 'field border'], ['Input focus', '--color-input-focus', 'field focus edge']] })
+  + `<h3>Signal slot — ramp → slot → semantic (Phase 3)</h3><p class="sub">Additive middle tier — components keep consuming <span class="tok">--color-accent</span>; the slot repoints beneath: <span class="tok">--accent-500</span> → <span class="tok">--signal</span> → <span class="tok">--color-accent</span>. Future configurator writes to the middle layer only.</p>`
+  + tokenTrace({ rows: [['Signal · default', '--signal', '→ var(--accent-500) vermilion · Signal Phosphor'], ['Signal amber alt', '--signal-amber', '→ var(--accent2-600) amber · Caution Resin (AA-safe on --color-on-accent)'], ['Signal teal alt', '--signal-teal', '→ var(--accent3-500) teal · Circuit Glass']] })
+  + note('Do', 'Swap the slot, not the ramp: point <span class="tok">--signal</span> at <span class="tok">var(--accent2-600)</span> or <span class="tok">var(--accent3-500)</span> — <span class="tok">--color-accent</span> follows. Demo lives in the playground below.')
   + `<h3>Media</h3>`
   + tokenTrace({ rows: [['On media', '--color-on-media', 'card info + tags on image'], ['On-media muted', '--color-on-media-muted', 'secondary on image'], ['Viewer bg', '--color-viewer-bg', 'viewer panel'], ['Viewer line', '--color-viewer-line', 'viewer frosted border'], ['Viewer shade', '--color-viewer-shade', 'viewer dim'], ['Viewer tether', '--color-viewer-tether', 'viewer connector']] })
   + `<h3>State</h3>`
