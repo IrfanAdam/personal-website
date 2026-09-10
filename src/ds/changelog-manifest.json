@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T15:45:26.151Z",
+ "generated": "2026-09-10T15:48:50.220Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -18,6 +18,22 @@
   "2026-09-10_201154-ds-nav-drawer.md"
  ],
  "commits": [
+  {
+   "sha": "72c8f05",
+   "full": "72c8f05c1e1ef616b8a27a22e3271b665d612f70",
+   "date": "2026-09-10",
+   "subject": "feat(ds): color pane materials + inline AA pairs + sync",
+   "plan": null,
+   "anchor": null
+  },
+  {
+   "sha": "557ffa6",
+   "full": "557ffa6d7e6ccc0eb1148d87c1a42740f083e750",
+   "date": "2026-09-10",
+   "subject": "fix(build): add missing glimmer-orb views — resolve vite Could not resolve",
+   "plan": null,
+   "anchor": null
+  },
   {
    "sha": "1160912",
    "full": "1160912678bf50b90143cd8f49de55b29292f112",
@@ -340,13 +356,6 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json",
-  "M src/ds/ds.js",
-  "M src/ds/foundations.css",
-  "M src/ds/foundations/pane-color.js",
-  "A  src/ds/functions/glimmer-orb.js",
-  "M src/ds/pages-foundations.js",
-  "M src/ds/pages-functions.js",
-  "M src/ds/specimens.js"
+  "M  src/ds/changelog-manifest.json"
  ]
 }
