@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T10:11:27.449Z",
+ "generated": "2026-09-10T10:31:08.862Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -16,6 +16,14 @@
   "2026-09-10_153555-color-cool-synthetic.md"
  ],
  "commits": [
+  {
+   "sha": "2671b8f",
+   "full": "2671b8ff34fa3f397032a2968f8f75ebcd407b31",
+   "date": "2026-09-10",
+   "subject": "feat(color): phase 1 cooler neutrals — alloy pick cool stone ramp + dark retune + AA proof",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "11a3293",
    "full": "11a3293906fdf3532d0fefcb4b3646a1242d96db",
@@ -234,7 +242,6 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json",
   "M src/ds/ds.js",
   "M src/ds/foundations.css",
   "M src/ds/foundations/pane-color.js",
