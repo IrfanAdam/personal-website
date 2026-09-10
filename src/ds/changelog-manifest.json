@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T10:31:08.862Z",
+ "generated": "2026-09-10T10:35:04.656Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -16,6 +16,14 @@
   "2026-09-10_153555-color-cool-synthetic.md"
  ],
  "commits": [
+  {
+   "sha": "5ebdac7",
+   "full": "5ebdac703a652c078fadd53308a0428bd3cc96c3",
+   "date": "2026-09-10",
+   "subject": "fix(color): switch phase 1 pick to Candidate A Frost per owner",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "2671b8f",
    "full": "2671b8ff34fa3f397032a2968f8f75ebcd407b31",
@@ -242,6 +250,7 @@
   }
  ],
  "wip": [
+  "M src/ds/changelog-manifest.json",
   "M src/ds/ds.js",
   "M src/ds/foundations.css",
   "M src/ds/foundations/pane-color.js",
@@ -249,7 +258,6 @@
   "M src/ds/pages-foundations.js",
   "M src/ds/pages-functions.js",
   "M src/ds/pages-overview.js",
-  "M src/styles/tokens.css",
   "?? src/ds/functions/glimmer-orb.js"
  ]
 }
