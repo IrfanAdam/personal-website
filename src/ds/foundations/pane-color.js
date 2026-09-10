@@ -35,6 +35,8 @@ export function html() {
   + note('Do', 'Swap the slot, not the ramp: point <span class="tok">--signal</span> at <span class="tok">var(--accent2-600)</span> or <span class="tok">var(--accent3-500)</span> — <span class="tok">--color-accent</span> follows. Demo lives in the playground below.')
   + `<h3>Media</h3>`
   + tokenTrace({ rows: [['On media', '--color-on-media', 'card info + tags on image'], ['On-media muted', '--color-on-media-muted', 'secondary on image'], ['Viewer bg', '--color-viewer-bg', 'viewer panel'], ['Viewer line', '--color-viewer-line', 'viewer frosted border'], ['Viewer shade', '--color-viewer-shade', 'viewer dim'], ['Viewer tether', '--color-viewer-tether', 'viewer connector']] })
+  + `<h3>Elevation</h3>`
+  + tokenTrace({ rows: [['Media', '--color-shadow-media', 'on-media legibility · stone-950 at 45%'], ['Media sm', '--color-shadow-media-sm', 'small on-media · stone-950 at 40%'], ['Viewer', '--color-shadow-viewer', 'viewer lift · stone-950 at 24%'], ['Viewer soft', '--color-shadow-viewer-soft', 'viewer soft lift · stone-950 at 12%']] })
   + `<h3>State</h3>`
   + tokenTrace({ rows: [['Disabled bg', '--color-disabled-bg', 'disabled fill'], ['Disabled ink', '--color-disabled-ink', 'disabled text'], ['Disabled line', '--color-disabled-line', 'disabled border'], ['Focus', '--color-focus', 'keyboard ring, all themes']] })
   + `<h3>Feedback (Task 7)</h3><p class="sub">One token doubles as text-on-paper and fill-with-on-color — each pair AA in both themes (proof table below, live probe).</p>`
