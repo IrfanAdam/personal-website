@@ -74,13 +74,9 @@ export function render() {
     + `<div class="ds-chips" data-col="chips"></div>`
     + `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div>`
     + `<div class="ds-md" data-col="triage"></div>`
-    + `<div class="ds-scrim" data-scrim hidden></div><aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail"><div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`;
+    + `<div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span><aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail"><div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`;
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-const btn = (label, subs, on, tip = '', cls = '') => {
-  const sm = (Array.isArray(subs) ? subs : subs ? [subs] : []).filter(Boolean).map((s) => `<small>${s}</small>`).join('');
-  return `<button class="ds-pick${on ? ' on' : ''}${cls ? ` ${cls}` : ''}"><b>${label}</b>${sm}${tip ? `<span class="ds-tip" role="tooltip">${esc(tip)}</span>` : ''}</button>`;
-};
 function paint(root) {
   const { list, pi, plan, sprints, si } = cur(); sel = [pi, si];
   const showAll = `<button class="ds-chip${active.size ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
@@ -88,27 +84,32 @@ function paint(root) {
   const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
   if (!plan) { root.querySelector('[data-col="plan"]').innerHTML = '<p class="ds-note">No plans carry these tags yet.</p>'; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
   const sprint = sprints[si];
+  const sprintDesc = (s) => {
+    const para = s.body.split(/\n\n+/).map((b) => b.trim()).find((b) => b && !/^(#|- |\* |\d\. )/.test(b)) || '';
+    return para.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*`_]/g, '').slice(0, 140);
+  };
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const it = String(list.length - i).padStart(2, '0');
     const num = p.id || it; const frac = iterState(p.sprints);
-    const line1 = [`${p.sprints.length} phases`, frac].filter(Boolean).join('·');
     const d = fmtDate(p.date); const t = fmtTime(p.id);
-    const line2 = [`Iter ${it}`, d, t].filter(Boolean).join('·');
-    return btn(`<span class="ds-num">${num}</span>${p.label}`, [line2, line1, p.tags.join(' · ')], i === sel[0], p.goal, done(frac) ? '' : 'is-open');
+    const line1 = [d, t, `${p.sprints.length} phases`, frac].filter(Boolean).join(' · ');
+    return `<button class="ds-pick${i === sel[0] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc(p.goal)}">`
+      + `<span class="ds-row"><span class="ds-num">${num}</span><b>${p.label}</b><span class="ds-tags">${p.tags.join(' · ')}</span></span>`
+      + `<small>${line1}</small></button>`;
   }).join('');
-  root.querySelector('[data-col="sprint"]').innerHTML = `<div class="ds-drawer-head"><b>Phases</b></div>`
-    + sprints.map((s, i) => {
-      const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
-      const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? '·' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
-      const frac = state(s.body);
-      return btn(`<span class="ds-num">P${String(n).padStart(2, '0')}</span>${short(s.head)}`, [frac + has, s.tags.join(' · ')], i === sel[1], '', done(frac) ? '' : 'is-open');
-    }).join('');
+  root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
+    const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
+    const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? '·' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
+    const frac = state(s.body);
+    return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc((s.tags.join(' · ')))}">`
+      + `<span class="ds-row"><span class="ds-num">P${String(n).padStart(2, '0')}</span><b>${short(s.head)}</b></span>`
+      + `<small>${[frac + has, s.tags.join(' · ')].filter(Boolean).join(' · ')}</small>`
+      + `<span class="ds-rail-foot">${esc(sprintDesc(s))}</span></button>`;
+  }).join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   root.querySelector('[data-col="tasks"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
-    + `<button data-step="-1"${si <= 0 ? ' disabled' : ''} aria-label="Previous phase">← Prev</button>`
-    + `<button data-step="1"${si >= sprints.length - 1 ? ' disabled' : ''} aria-label="Next phase">Next →</button>`
     + `<button data-close aria-label="Close detail">✕</button></div>`
-    + `<div class="ds-md">${stage === 'list' ? '<p class="ds-note">Select a phase ←</p>' : marked.parse(sprint.body) + badges(hs)}</div>`;
+    + `<div class="ds-md">${marked.parse(sprint.body) + badges(hs)}</div>`;
   const u = unlinked(texts);
   root.querySelector('[data-col="triage"]').innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
   if (open) { drawer.hidden = false; scrim.hidden = false; }
@@ -124,11 +125,23 @@ export function mount(root) {
     const st = e.target.closest('[data-step]');
     if (st && !st.disabled) { const c = cur(); sel = [c.pi, Math.min(Math.max(c.si + Number(st.dataset.step), 0), c.sprints.length - 1)]; open = true; paint(root); return; }
     const b = e.target.closest('.ds-pick'); if (!b) return;
-    const i = [...b.parentElement.children].indexOf(b);
-    if (b.parentElement.dataset.col === 'plan') { sel = [i, sel[1]]; open = true; stage = 'tasks'; } else { sel = [sel[0], i]; stage = 'tasks'; }
+    const col = b.closest('[data-col]'); const i = [...col.querySelectorAll('.ds-pick')].indexOf(b);
+    if (col.dataset.col === 'plan') { sel = [i, sel[1]]; open = true; stage = 'tasks'; } else { sel = [sel[0], i]; stage = 'tasks'; }
     paint(root);
   };
   const onKey = (e) => { if (e.key === 'Escape' && open) { open = false; paint(root); } };
+  const move = (e) => { // cursor-following popover for [data-tip]
+    const el = e.target.closest('[data-tip]'); const tip = root.querySelector('.ds-cursor-tip');
+    if (!tip) return;
+    if (!el) { tip.hidden = true; return; }
+    tip.textContent = el.dataset.tip; tip.hidden = false;
+    const pad = 14; let x = e.clientX + pad, y = e.clientY + pad;
+    const r = tip.getBoundingClientRect();
+    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - pad;
+    if (y + r.height > innerHeight - 8) y = e.clientY - r.height - pad;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  };
   root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
-  return () => { root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey); };
+  root.addEventListener('mousemove', move); document.addEventListener('mouseleave', () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; });
+  return () => { root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey); root.removeEventListener('mousemove', move); };
 }

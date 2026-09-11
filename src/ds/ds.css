@@ -2,7 +2,7 @@
 :root {
   /* — DS docs-only tokens (never the site; scoped here so tokens.css stays site-pure) — */
   --text-ds-mark: 18px; --text-ds-lede: 15px; --text-ds-body: 13px; --text-ds-table: 12.5px;
-  --size-ds-side: 232px; --size-ds-main: 1152px; --size-ds-card: 260px; --size-ds-img: 190px; --size-ds-strip: 620px; --size-ds-lab: 280px; --z-ds-scrim: 7; --z-ds-drawer: 8;
+  --size-ds-side: 232px; --size-ds-main: 1152px; --size-ds-card: 260px; --size-ds-img: 190px; --size-ds-strip: 620px; --size-ds-lab: 280px; --size-ds-drawer: 1100px; --z-ds-scrim: 7; --z-ds-drawer: 8;
   --size-ds-demo-strip: 520px; --size-ds-scale-label: 132px; --size-ds-scale-val: 52px; --size-ds-gutter-max: 54px; --measure-ds-lede: 62ch;
 }
 body { padding-top: 0; }
@@ -45,8 +45,7 @@ body.side-collapsed .ds-side { transform: translateX(calc(-1 * var(--size-ds-sid
 .ds-note { border-left: var(--size-frame) solid var(--color-ink); background: var(--color-panel); padding: var(--space-10) var(--space-12); font-size: var(--text-ds-body); margin: var(--space-12) 0; }
 .ds-note.dont { border-left-color: var(--color-accent); }
 .ds-note b { display: block; font-size: var(--text-meta); text-transform: uppercase; letter-spacing: var(--tracking-mono); font-family: var(--font-mono); margin-bottom: var(--space-3); }
-.ds-footnav { display: flex; justify-content: space-between; gap: var(--space-12); margin-top: var(--space-46); padding-top: var(--space-14); border-top: var(--border-hairline); } .ds-footnav a { text-decoration: none; font-weight: 600; font-size: var(--text-small); }
-.ds-footnav small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+.ds-footnav { display: flex; justify-content: space-between; gap: var(--space-12); margin-top: var(--space-46); padding-top: var(--space-14); border-top: var(--border-hairline); } .ds-footnav a { text-decoration: none; font-weight: 600; font-size: var(--text-small); } .ds-footnav small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
 .ds-spec { border: var(--border-hairline); padding: var(--space-16); display: flex; flex-wrap: wrap; gap: var(--space-14); align-items: flex-start; margin: var(--space-10) 0; }
 .ds-spec > figure { margin: 0; min-width: 0; } .ds-spec figcaption { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-6); } .ds-spec.block { display: block; }
 @media (max-width: 900px) /* --break-lg */ { .ds-shell { flex-direction: column; } .ds-side { position: static; width: auto; border-right: none; border-bottom: var(--border-hairline); } body { padding-bottom: 0; } .ds-main { margin-left: 0; padding: var(--space-22) var(--space-16) var(--space-70); } .ds-grid.c3, .ds-grid.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ds-controls { position: sticky; top: var(--space-8); justify-content: flex-end; margin-bottom: var(--space-10); background: var(--color-bg); padding: var(--space-6) 0; } body.side-collapsed .ds-side { transform: none; } .ds-side-toggle { display: none; } }
@@ -78,12 +77,16 @@ body.side-collapsed .ds-side { transform: translateX(calc(-1 * var(--size-ds-sid
 /* iterations — full-width plan cards; phases in a rail inside the drawer */
 .ds-plan-grid { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
 .ds-plan-grid .ds-col { flex: 1 1 100%; }
+.ds-row { display: flex; align-items: baseline; gap: var(--space-8); min-width: 0; } .ds-row b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 0 1 auto; } .ds-num { font-family: var(--font-mono); font-size: var(--text-micro); margin-right: var(--space-6); }
+.ds-tags { margin-left: auto; flex: 0 0 auto; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.ds-rail-foot { display: block; margin-top: var(--space-6); font-size: 0.92em; line-height: var(--leading-prose); color: var(--color-ink-muted); }
+.ds-cursor-tip { position: fixed; z-index: var(--z-ds-controls); max-width: min(40ch, 60vw); font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-bg); background: var(--color-ink); padding: var(--space-8) var(--space-10); pointer-events: none; }
 /* phase drawer — fixed right panel + click-catcher scrim · emerge + dim */
 .ds-scrim { position: fixed; inset: 0; z-index: var(--z-ds-scrim); cursor: pointer; background: var(--color-viewer-shade); } .ds-scrim[hidden], .ds-drawer[hidden] { display: none; }
 .ds-scrim:not([hidden]) { animation: ds-scrim-in var(--dur-soft) var(--ease-standard); }
-.ds-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(var(--size-ds-strip), 94vw); box-sizing: border-box; background: var(--color-bg); border-left: var(--border-hairline); z-index: var(--z-ds-drawer); overflow-y: auto; padding: var(--space-18) var(--space-16) var(--space-30); box-shadow: var(--shadow-viewer); display: flex; gap: var(--space-14); align-items: stretch; }
+.ds-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(72vw, var(--size-ds-drawer)); box-sizing: border-box; background: var(--color-bg); border-left: var(--border-hairline); z-index: var(--z-ds-drawer); overflow-y: auto; padding: var(--space-18) var(--space-16) var(--space-30); box-shadow: var(--shadow-viewer); display: flex; gap: var(--space-14); align-items: stretch; }
 /* two-pane drawer: slim phase rail (shrunk cards) left, task detail right */
-.ds-rail { flex: 0 0 20ch; min-width: 0; overflow-y: auto; border-right: var(--border-hairline); padding-right: var(--space-12); } .ds-rail .ds-pick { padding: var(--space-8); font-size: 0.86em; } .ds-rail .ds-pick small { display: block; }
+.ds-rail { flex: 0 0 36%; min-width: 0; overflow-y: auto; border-right: var(--border-hairline); padding-right: var(--space-12); } .ds-rail .ds-pick { padding: var(--space-8); font-size: 0.86em; } .ds-rail .ds-pick small { display: block; }
 .ds-task { flex: 1 1 auto; min-width: 0; overflow-y: auto; }
 .ds-drawer:not([hidden]) { animation: ds-drawer-in var(--dur-glide) var(--ease-signature); } @keyframes ds-drawer-in { from { transform: translateX(var(--space-30)); opacity: 0; } to { transform: none; opacity: 1; } } @keyframes ds-scrim-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .ds-drawer:not([hidden]), .ds-scrim:not([hidden]) { animation: none; } }
@@ -92,8 +95,6 @@ body.side-collapsed .ds-side { transform: translateX(calc(-1 * var(--size-ds-sid
 .ds-done { display: inline-block; background: var(--color-ink); color: var(--color-bg); padding: 0 var(--space-5); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: var(--tracking-mono); font-weight: 700; line-height: 1.6; border-radius: var(--radius-none); }
 .ds-pick { display: block; width: 100%; text-align: left; font: inherit; background: none; border: none; border-bottom: var(--border-hairline); padding: var(--space-8) var(--space-12); font-size: var(--text-ds-body); color: var(--color-ink); cursor: pointer; position: relative; } .ds-pick:last-child { border-bottom: none; }
 .ds-pick small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-2); }
-.ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); margin-right: var(--space-8); } .ds-pick.is-open .ds-num { color: var(--color-ink-muted); }
-.ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); } .ds-pick.on small { color: var(--color-ink-muted); }
-.ds-tip { display: none; position: absolute; z-index: var(--z-ds-controls); top: 0; left: calc(100% + var(--space-8)); width: max-content; max-width: min(32ch, 70vw); font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-bg); background: var(--color-ink); padding: var(--space-8) var(--space-10); } .ds-pick:hover .ds-tip, .ds-pick:focus .ds-tip { display: block; }
+.ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); } .ds-pick.on small { color: var(--color-ink-muted); } .ds-pick.is-open .ds-num { color: var(--color-ink-muted); }
 .ds-hero.wide .lede { max-width: none; }
 .ds-commits { font-family: var(--font-mono); font-size: var(--text-micro); line-height: 1.7; color: var(--color-ink-muted); word-break: break-all; } .ds-commits a { color: var(--color-ink); text-decoration: underline; text-underline-offset: var(--space-2); } .ds-hr { border: none; border-top: var(--border-hairline); margin: var(--space-14) 0; }
