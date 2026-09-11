@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T15:15:36.930Z",
+ "generated": "2026-09-11T15:20:36.578Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -18,6 +18,24 @@
   "2026-09-10_201154-ds-nav-drawer.md"
  ],
  "commits": [
+  {
+   "sha": "2ff10c5",
+   "full": "2ff10c5c516bfd1658641f9bf0c6bb6c8c2819c6",
+   "date": "2026-09-11",
+   "time": "20:50",
+   "subject": "feat(ds): timeline above tags, ±6-week window over logged + planned dates",
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Phase-5"
+  },
+  {
+   "sha": "fddf3a0",
+   "full": "fddf3a0b41a898439ad5f2ef9258cae9e5ca17f9",
+   "date": "2026-09-11",
+   "time": "20:46",
+   "subject": "chore(ds): track refresh for timeline graph + shipped note",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
   {
    "sha": "a828c9a",
    "full": "a828c9a066a942b9fd10f3302c284cbaa7e78475",
