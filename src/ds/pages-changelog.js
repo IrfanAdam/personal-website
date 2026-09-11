@@ -84,9 +84,10 @@ function paint(root) {
   const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
   if (!plan) { root.querySelector('[data-col="plan"]').innerHTML = '<p class="ds-note">No plans carry these tags yet.</p>'; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
   const sprint = sprints[si];
-  const sprintDesc = (s) => {
-    const para = s.body.split(/\n\n+/).map((b) => b.trim()).find((b) => b && !/^(#|- |\* |\d\. )/.test(b)) || '';
-    return para.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*`_]/g, '').slice(0, 140);
+  const sprintDesc = (s) => { // exactly what the hover popover showed: the sprint's italic description line, untruncated
+    const body = s.body.replace(/^## .*$/m, '');
+    const para = body.split(/\n\n+/).map((b) => b.trim()).find((b) => b && !/^(#|\*Tags\*?|\*Shipped|- |\* |\d\. |\|)/.test(b)) || '';
+    return para.replace(/^\*|\*$/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*`_]/g, '');
   };
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const it = String(list.length - i).padStart(2, '0');
@@ -101,11 +102,11 @@ function paint(root) {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
     const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? ' · ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
     const frac = state(s.body);
-    return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${done(frac) ? '' : ' is-open'}">`
-      + `<span class="ds-row"><span class="ds-num">P${String(n).padStart(2, '0')}</span><b>${short(s.head)}</b></span>`
+    return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc(sprintDesc(s))}">`
+      + `<span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span><b>${short(s.head)}</b></span>`
       + `<small>${[frac + has].filter(Boolean).join(' · ')}</small></button>`;
   }).join('')
-    + `<div class="ds-rail-foot" data-foot><b>${short(sprint.head)}</b>${esc(sprintDesc(sprint))}</div>`;
+    + `<div class="ds-rail-foot" data-foot>${esc(sprintDesc(sprint))}</div>`;
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   root.querySelector('[data-col="tasks"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
     + `<button data-close aria-label="Close detail">✕</button></div>`
