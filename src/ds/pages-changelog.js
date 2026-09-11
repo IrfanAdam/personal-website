@@ -61,7 +61,7 @@ const plans = entries.map(([p, md]) => {
   return { file, date, id, slug, label: labelOf(file, md), goal: goal(md), sprints, tags: planTags(md, sprints), raw: md };
 }).filter((pl) => pl.sprints.length);
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
-let active = new Set(); let sel = [0, 0]; let open = false;
+let active = new Set(); let sel = [0, 0]; let open = false; let stage = 'list'; // drawer: 'list' shows phases, 'tasks' shows a phase's detail
 const visiblePlans = () => (active.size ? plans.filter((p) => p.tags.some((t) => active.has(t))) : plans);
 const visibleSprints = (plan) => {
   const ss = active.size ? plan.sprints.filter((s) => s.tags.some((t) => active.has(t))) : plan.sprints;
@@ -70,11 +70,11 @@ const visibleSprints = (plan) => {
 const cur = () => { const list = visiblePlans(); const pi = Math.min(sel[0], Math.max(list.length - 1, 0)); const plan = list[pi]; const sprints = plan ? visibleSprints(plan) : []; return { list, pi, plan, sprints, si: Math.min(sel[1], Math.max(sprints.length - 1, 0)) }; };
 export function render() {
   return `<p class="ds-crumb">Start · Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1>`
-    + `<p class="lede">Pick a phase — detail slides in from the right. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
+    + `<p class="lede">Pick an iteration — phases slide in from the right. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
     + `<div class="ds-chips" data-col="chips"></div>`
-    + `<div class="ds-miller"><div class="ds-col" data-col="plan"></div><div class="ds-col" data-col="sprint"></div></div>`
+    + `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div>`
     + `<div class="ds-md" data-col="triage"></div>`
-    + `<div class="ds-scrim" data-scrim hidden></div><aside class="ds-drawer" data-drawer hidden aria-label="Phase detail"></aside>`;
+    + `<div class="ds-scrim" data-scrim hidden></div><aside class="ds-drawer" data-drawer hidden aria-label="Iteration phases"><div class="ds-col" data-col="sprint"></div></aside>`;
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const btn = (label, subs, on, tip = '', cls = '') => {
@@ -96,34 +96,42 @@ function paint(root) {
     const line2 = [`Iter ${it}`, d, t].filter(Boolean).join('·');
     return btn(`<span class="ds-num">${num}</span>${p.label}`, [line2, line1, p.tags.join(' · ')], i === sel[0], p.goal, done(frac) ? '' : 'is-open');
   }).join('');
-  root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
-    const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
-    const hs = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hs.length ? '·' + hs.length + ' commit' + (hs.length > 1 ? 's' : '') : '';
-    const frac = state(s.body);
-    return btn(`<span class="ds-num">Phase ${String(n).padStart(2, '0')}</span>${short(s.head)}`, [frac + has, s.tags.join(' · ')], i === sel[1], '', done(frac) ? '' : 'is-open');
-  }).join('');
+  root.querySelector('[data-col="sprint"]').innerHTML = `<div class="ds-drawer-head"><b>${short(plan.label)} · phases</b>`
+    + `<button data-close aria-label="Close detail">✕</button></div>`
+    + sprints.map((s, i) => {
+      const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
+      const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? '·' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
+      const frac = state(s.body);
+      return btn(`<span class="ds-num">Phase ${String(n).padStart(2, '0')}</span>${short(s.head)}`, [frac + has, s.tags.join(' · ')], i === sel[1], '', done(frac) ? '' : 'is-open');
+    }).join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   const u = unlinked(texts);
   root.querySelector('[data-col="triage"]').innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
   if (!open) { drawer.hidden = true; scrim.hidden = true; return; }
-  drawer.innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
-    + `<button data-step="-1"${si <= 0 ? ' disabled' : ''} aria-label="Previous phase">← Prev</button>`
+  if (stage === 'list') {
+    drawer.hidden = false; scrim.hidden = false; return; // phase list already painted into [data-col="sprint"] above
+  }
+  const hsS = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
+  const tasks = marked.parse(sprint.body);
+  root.querySelector('[data-col="sprint"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
+    + `<button data-back aria-label="Back to phases">↑ Phases</button>`
     + `<button data-step="1"${si >= sprints.length - 1 ? ' disabled' : ''} aria-label="Next phase">Next →</button>`
     + `<button data-close aria-label="Close detail">✕</button></div>`
-    + `<div class="ds-md">${marked.parse(sprint.body)}${badges(hs)}</div>`;
+    + `<div class="ds-md">${tasks}${badges(hsS)}</div>`;
   drawer.hidden = false; scrim.hidden = false;
 }
 export function mount(root) {
-  open = false; paint(root);
+  open = false; stage = 'list'; paint(root);
   const onClick = (e) => {
     const chip = e.target.closest('.ds-chip');
     if (chip) { const t = chip.dataset.tag; if (!t) active = new Set(); else { active.has(t) ? active.delete(t) : active.add(t); } sel = [0, 0]; paint(root); return; }
-    if (e.target.closest('[data-close]') || e.target.closest('[data-scrim]')) { open = false; paint(root); return; }
+    if (e.target.closest('[data-close]') || e.target.closest('[data-scrim]')) { open = false; stage = 'list'; paint(root); return; }
+    if (e.target.closest('[data-back]')) { stage = 'list'; paint(root); return; }
     const st = e.target.closest('[data-step]');
     if (st && !st.disabled) { const c = cur(); sel = [c.pi, Math.min(Math.max(c.si + Number(st.dataset.step), 0), c.sprints.length - 1)]; open = true; paint(root); return; }
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const i = [...b.parentElement.children].indexOf(b);
-    if (b.parentElement.dataset.col === 'plan') sel = [i, 0]; else { sel = [sel[0], i]; open = true; }
+    if (b.parentElement.dataset.col === 'plan') { sel = [i, sel[1] || 0]; open = true; stage = 'list'; } else { sel = [sel[0], i]; stage = 'tasks'; }
     paint(root);
   };
   const onKey = (e) => { if (e.key === 'Escape' && open) { open = false; paint(root); } };

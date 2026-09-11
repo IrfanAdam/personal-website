@@ -75,9 +75,10 @@ body.side-collapsed .ds-side { transform: translateX(calc(-1 * var(--size-ds-sid
 .ds-md input[type="checkbox"]:checked { background: var(--color-ink); border-color: var(--color-ink); } .ds-md input[type="checkbox"]:checked::after { content: "✓"; color: var(--color-bg); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; line-height: 1; }
 /* cancelled tasks — dulled ✗ instead of the done ✓; row dimmed */
 .ds-md li:has(.ds-cancelled) input[type="checkbox"]:checked { background: var(--color-surface); border-color: var(--border-hairline); } .ds-md li:has(.ds-cancelled) input[type="checkbox"]:checked::after { content: "✗"; color: var(--color-ink-muted); opacity: .55; } .ds-md li:has(.ds-cancelled) { opacity: .6; }
-/* miller columns — plans | sprints (detail lives in the drawer) */
-.ds-miller { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
-.ds-col { border: var(--border-hairline); background: var(--color-surface); flex: 1 1 24ch; min-width: 0; }
+/* iterations — full-width plan cards; phases live in the drawer */
+.ds-plan-grid { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
+.ds-plan-grid .ds-col { flex: 1 1 100%; }
+.ds-drawer .ds-col { border: none; background: none; }
 /* phase drawer — fixed right panel + click-catcher scrim · emerge + dim */
 .ds-scrim { position: fixed; inset: 0; z-index: var(--z-ds-scrim); cursor: pointer; background: var(--color-viewer-shade); } .ds-scrim[hidden], .ds-drawer[hidden] { display: none; }
 .ds-scrim:not([hidden]) { animation: ds-scrim-in var(--dur-soft) var(--ease-standard); }
