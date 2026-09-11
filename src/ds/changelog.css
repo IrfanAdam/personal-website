@@ -3,12 +3,14 @@
 .ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }
 .ds-graph-row { display: flex; gap: var(--space-4); width: max-content; }
 .ds-dows { display: flex; flex-direction: column; gap: var(--space-4); width: var(--space-26); flex: none; }
-.ds-dows span { height: var(--space-14); display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.ds-dows span { height: var(--space-16); display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 .ds-week { display: flex; flex-direction: column; gap: var(--space-4); }
 .ds-month { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); min-height: 1.2em; margin-bottom: var(--space-2); white-space: nowrap; overflow: visible; flex: none; }
-.ds-day { width: var(--space-14); height: var(--space-14); border: var(--border-hairline); background: transparent; padding: 0; }
-button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
-button.ds-day.lv1 { opacity: .3; } button.ds-day.lv2 { opacity: .5; } button.ds-day.lv3 { opacity: .75; } button.ds-day.lv4 { opacity: 1; }
+.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: transparent; padding: 0; font-family: var(--font-mono); font-size: var(--text-micro); line-height: 1; color: var(--color-ink-subtle); display: inline-flex; align-items: center; justify-content: center; }
+button.ds-day { cursor: pointer; background: transparent; border-color: transparent; color: var(--color-on-accent); position: relative; }
+button.ds-day::before { content: ""; position: absolute; inset: 0; background: var(--color-accent); opacity: var(--lv, 1); }
+button.ds-day.lv1 { --lv: .3; } button.ds-day.lv2 { --lv: .5; } button.ds-day.lv3 { --lv: .75; } button.ds-day.lv4 { --lv: 1; }
+button.ds-day > span { position: relative; z-index: 1; }
 .ds-day.on { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
 @keyframes ds-blip { 0% { box-shadow: 0 0 0 0 var(--color-accent); } 100% { box-shadow: 0 0 0 var(--space-6) transparent; } }
 @keyframes ds-glitch { 0%, 88%, 100% { transform: none; opacity: 1; } 89% { transform: translateX(calc(var(--space-1) * -1)); opacity: .5; } 91% { transform: translateX(var(--space-1)) skewX(-12deg); } 93% { transform: translateX(calc(var(--space-1) * -1)); opacity: .7; } 95% { transform: none; opacity: 1; } }
