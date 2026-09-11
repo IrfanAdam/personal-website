@@ -34,6 +34,6 @@ const commits = log.trim().split('\n').filter(Boolean).map((l) => {
 });
 commits.forEach((c) => { const r = retro[c.sha]; if (r) { c.plan = r.plan; c.anchor = r.anchor ?? null; } });
 const st = sh(`git status --short -- ${DS.join(' ')}`) || '';
-const wip = st.trim() ? st.trim().split('\n').map((l) => l.trim()).filter(Boolean) : [];
+const wip = st.trim() ? st.trim().split('\n').map((l) => l.trim()).filter(Boolean).filter((l) => !l.endsWith('src/ds/changelog-manifest.json')) : []; // manifest always rewrites itself at generation; listing it as wip is noise
 writeFileSync(out, JSON.stringify({ generated: new Date().toISOString(), continuation: CONTINUATION, plans, commits, wip }, null, 1) + '\n');
 console.log(`✓ ds-track — ${plans.length} plans (${tagged}/${phased.length} tagged) · ${commits.length} DS commits (${commits.filter((c) => c.plan).length} linked) · ${wip.length} wip · cont ${CONTINUATION}`);
