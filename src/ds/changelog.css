@@ -9,7 +9,7 @@
 .ds-day { width: var(--space-14); height: var(--space-14); border: var(--border-hairline); background: transparent; padding: 0; }
 button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
 button.ds-day.lv1 { opacity: .3; } button.ds-day.lv2 { opacity: .5; } button.ds-day.lv3 { opacity: .75; } button.ds-day.lv4 { opacity: 1; }
-.ds-day.on { outline: var(--space-1) solid var(--color-ink); outline-offset: 0; }
+.ds-day.on { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
 @keyframes ds-blip { 0% { box-shadow: 0 0 0 0 var(--color-accent); } 100% { box-shadow: 0 0 0 var(--space-6) transparent; } }
 @keyframes ds-glitch { 0%, 88%, 100% { transform: none; opacity: 1; } 89% { transform: translateX(calc(var(--space-1) * -1)); opacity: .5; } 91% { transform: translateX(var(--space-1)) skewX(-12deg); } 93% { transform: translateX(calc(var(--space-1) * -1)); opacity: .7; } 95% { transform: none; opacity: 1; } }
 .ds-day.is-today { position: relative; border-color: var(--color-ink); }

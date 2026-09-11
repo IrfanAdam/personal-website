@@ -96,8 +96,14 @@ const graph = () => {
   const weeks = []; const ws = new Date(start);
   while (ws <= end) { const col = []; for (let i = 0; i < 7; i++) { const d = new Date(ws); d.setDate(d.getDate() + i); col.push(d); } weeks.push(col); ws.setDate(ws.getDate() + 7); }
   const DOWS = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
-  const spans = []; // month owns the columns where it holds most days — span widths stay proportional, no crammed edge labels
-  weeks.forEach((col) => { const ct = {}; col.forEach((d) => { ct[d.getMonth()] = (ct[d.getMonth()] || 0) + 1; }); const mo = Number(Object.entries(ct).sort((a, b) => b[1] - a[1])[0][0]); const prev = spans[spans.length - 1]; if (prev && prev.mo === mo) prev.n++; else spans.push({ mo, n: 1 }); });
+  const spans = []; // a month labels only its start-of-month week; leading edge columns fold into the first month — no one-week stubs
+  let lead = 0;
+  weeks.forEach((col) => {
+    const first = col.find((d) => d.getDate() === 1);
+    if (first) { spans.push({ mo: first.getMonth(), n: lead + 1 }); lead = 0; }
+    else if (spans.length) spans[spans.length - 1].n++;
+    else lead++;
+  });
   const labels = spans.map((s) => `<span class="ds-month" style="width: calc(${s.n} * (var(--space-14) + var(--space-4)) - var(--space-4))">${MONTHS[s.mo]}</span>`).join('');
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
