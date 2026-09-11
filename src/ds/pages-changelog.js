@@ -99,12 +99,12 @@ const graph = () => {
   const cols = weeks.map((col) => {
     const mo = col[0].getMonth(); const lab = mo !== lastMo ? MONTHS[mo] : ''; lastMo = mo;
     const cells = col.map((d) => {
-      const k = isoDay(d);
+      const k = isoDay(d); const todayCls = k === isoDay(today) ? ' is-today' : '';
       if (d > today) return '<span class="ds-day is-future"></span>';
       const n = dc[k] || 0;
-      if (!n) return '<span class="ds-day"></span>';
+      if (!n) return `<span class="ds-day${todayCls}"></span>`;
       const lv = Math.min(4, Math.ceil((4 * n) / max));
-      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
+      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
     }).join('');
     return `<div class="ds-week"><span class="ds-month">${lab}</span>${cells}</div>`;
   }).join('');
