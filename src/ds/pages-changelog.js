@@ -71,8 +71,8 @@ const cur = () => { const list = visiblePlans(); const pi = Math.min(sel[0], Mat
 export function render() {
   return `<p class="ds-crumb">Start · Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1>`
     + `<p class="lede">Pick an iteration — phases slide in from the right. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
-    + `<div class="ds-chips" data-col="chips"></div>`
     + `<div class="ds-graph" data-col="graph"></div>`
+    + `<div class="ds-chips" data-col="chips"></div>`
     + `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div>`
     + `<div class="ds-md" data-col="triage"></div>`
     + `<div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span><aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail"><div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`;
@@ -84,15 +84,19 @@ const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,
 const graph = () => {
   const dc = {}; commits.forEach((c) => { if (c.date) dc[c.date] = (dc[c.date] || 0) + 1; });
   const keys = Object.keys(dc).sort();
-  if (!keys.length) return '';
-  const max = Math.max(...Object.values(dc));
+  const bounds = keys.concat(plans.map((p) => p.date).filter(Boolean)).sort(); // plan dates stretch the window over planned-ahead work
+  if (!bounds.length) return '';
+  const max = Math.max(...Object.values(dc), 1);
+  const pad = 6 * 7 * 864e5; // six quiet weeks either side
   const today = new Date(); today.setHours(0, 0, 0, 0);
-  const start = pDay(keys[0]); start.setDate(start.getDate() - start.getDay());
-  const end = new Date(today); end.setDate(end.getDate() + (6 - end.getDay()));
+  const first = pDay(bounds[0]); const last = pDay(bounds[bounds.length - 1]);
+  const start = new Date(first.getTime() - pad); start.setDate(start.getDate() - start.getDay());
+  const base = last > today ? last : today;
+  const end = new Date(base.getTime() + pad); end.setDate(end.getDate() + (6 - end.getDay()));
   const weeks = []; const ws = new Date(start);
   while (ws <= end) { const col = []; for (let i = 0; i < 7; i++) { const d = new Date(ws); d.setDate(d.getDate() + i); col.push(d); } weeks.push(col); ws.setDate(ws.getDate() + 7); }
   let lastMo = -1;
-  const cols = weeks.slice(-27).map((col) => {
+  const cols = weeks.map((col) => {
     const mo = col[0].getMonth(); const lab = mo !== lastMo ? MONTHS[mo] : ''; lastMo = mo;
     const cells = col.map((d) => {
       const k = isoDay(d);
