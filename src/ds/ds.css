@@ -77,7 +77,7 @@ body.side-collapsed .ds-side { transform: translateX(calc(-1 * var(--size-ds-sid
 /* iterations — full-width plan cards; phases in a rail inside the drawer */
 .ds-plan-grid { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
 .ds-plan-grid .ds-col { flex: 1 1 100%; }
-.ds-row { display: flex; align-items: baseline; gap: var(--space-8); min-width: 0; } .ds-row b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 0 1 auto; } .ds-num { font-family: var(--font-mono); font-size: var(--text-micro); margin-right: var(--space-6); color: var(--color-accent); }
+.ds-row { display: flex; align-items: baseline; gap: var(--space-8); min-width: 0; } .ds-row b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 0 1 auto; } .ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); } .ds-row .ds-num { flex: 0 0 auto; white-space: nowrap; }
 .ds-tags { margin-left: auto; flex: 0 0 auto; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 .ds-rail-foot { display: block; margin-top: var(--space-6); font-size: 0.92em; line-height: var(--leading-prose); color: var(--color-ink-muted); }
 .ds-cursor-tip { position: fixed; z-index: var(--z-ds-controls); max-width: min(40ch, 60vw); font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-bg); background: var(--color-ink); padding: var(--space-8) var(--space-10); pointer-events: none; }
