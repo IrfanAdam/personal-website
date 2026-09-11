@@ -16,9 +16,11 @@ const norm = (body) => {
   const items = parts.map((p) => {
     const lines = p.split('\n'); const title = lines.shift().trim();
     const m = title.match(/^Task\s+([\d-]+):\s*(.+)$/); const num = m ? m[1] : ''; let name = m ? m[2] : title;
-    const done = /✓/i.test(title); name = name.replace(/✓\s*done\s*—?/i, '').replace(/✓/g, '').trim().replace(/\.*$/, '.');
+    const cancelled = /✗/i.test(title); const done = /✓/i.test(title);
+    name = name.replace(/✓\s*done\s*—?/i, '').replace(/✗\s*cancelled\s*—?/i, '').replace(/[✓✗]/g, '').trim().replace(/\.*$/, '.');
     const detail = lines.join(' ').replace(/\s+/g, ' ').trim();
-    return `- [${done ? 'x' : ' '}] **${num} ${name}** ${done ? '✓ done — ' : ''}${detail}`;
+    const flag = cancelled ? '✗ cancelled — ' : (done ? '✓ done — ' : '');
+    return `- [${done || cancelled ? 'x' : ' '}] **${num} ${name}** ${flag}${detail}`;
   }); return head + items.join('\n');
 };
 const split = (md) => chunks(md).slice(1).map((s) => {

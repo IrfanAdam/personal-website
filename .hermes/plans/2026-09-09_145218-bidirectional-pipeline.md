@@ -31,9 +31,11 @@
 
 ## Phase 1 — Future scopes use this (no code)
 
-- [ ] **Author next plan** — create `.hermes/plans/<ts>-<slug>.md` with `## Phase N` sections; `npm run ds:track` makes it appear in Miller col 1 immediately.
-- [ ] **Commit with trailer** — each DS commit message ends with `[plan:<file>#<anchor>]`; `npm run build` moves it from “Unlinked” into its phase's badge.
-- [ ] **Triage** — if “Unlinked DS changes” is non-empty in `/ds/#/changelog`, the next commit must cite its plan; wip list shows uncommitted DS diffs.
+*In force · Tasks 1–3 · phase-1 — no-code; every scope since the continuation links via trailer or plan-links.json.*
+
+- [x] **Author next plan** ✓ done — create `.hermes/plans/<ts>-<slug>.md` with `## Phase N` sections; `npm run ds:track` makes it appear in Miller col 1 immediately.
+- [x] **Commit with trailer** ✓ done — each DS commit message ends with `[plan:<file>#<anchor>]`; `npm run build` moves it from “Unlinked” into its phase's badge.
+- [x] **Triage** ✓ done — if “Unlinked DS changes” is non-empty in `/ds/#/changelog`, the next commit must cite its plan; wip list shows uncommitted DS diffs.
 
 ## Tests / validation (every scope)
 
