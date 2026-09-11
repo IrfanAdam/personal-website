@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T14:51:14.498Z",
+ "generated": "2026-09-11T14:58:11.787Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -19,9 +19,19 @@
  ],
  "commits": [
   {
+   "sha": "c95229d",
+   "full": "c95229de88957db403900a8b480c0909fa9149e1",
+   "date": "2026-09-11",
+   "time": "20:21",
+   "subject": "fix(ds): phase/iter numbers no longer wrap — flex 0 0 auto + nowrap",
+   "plan": "2026-09-10_201154-ds-nav-drawer.md",
+   "anchor": "Phase-2"
+  },
+  {
    "sha": "e0e4d02",
    "full": "e0e4d024539169d3652e893c5f2783256a0926ee",
    "date": "2026-09-11",
+   "time": "20:19",
    "subject": "fix(ds): phases-pane footer = plan goal (popover text), not phase one-liner",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -30,6 +40,7 @@
    "sha": "8aadb9e",
    "full": "8aadb9e52be52ac747691e8600da2304f4fc01ef",
    "date": "2026-09-11",
+   "time": "20:17",
    "subject": "fix(ds): sprint-description footer as paragraph, Phase N restored w/ accent, sprint-level accent, drawer capped at 50vw",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -38,6 +49,7 @@
    "sha": "2caa1bd",
    "full": "2caa1bdd4d61b944b0b87ebcc6e9362859c7c3d9",
    "date": "2026-09-11",
+   "time": "20:10",
    "subject": "fix(ds): sprint description pulled to phases-pane footer, per-card footers/tags removed",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -46,6 +58,7 @@
    "sha": "6097791",
    "full": "6097791394705f74479fd0159040d4688fb88bde",
    "date": "2026-09-11",
+   "time": "20:05",
    "subject": "feat(ds): changelog feedback — tags right-aligned, phases stat on date line, wider rail with sprint footer, cursor-follow tips, remove prev/next, fix misindexed phase clicks",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -54,6 +67,7 @@
    "sha": "a943325",
    "full": "a943325104c5f3b07ed1fb75f57cb3e733ec26fb",
    "date": "2026-09-11",
+   "time": "19:50",
    "subject": "feat(ds): drawer two-pane — always-visible shrunk phase rail beside task detail",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -62,6 +76,7 @@
    "sha": "cd174ba",
    "full": "cd174ba27b695b25f2ade7c9f3a086e1cf081adb",
    "date": "2026-09-11",
+   "time": "19:42",
    "subject": "feat(ds): changelog phases live in drawer — full-width iteration cards, list/tasks stages",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -70,6 +85,7 @@
    "sha": "c33daa1",
    "full": "c33daa1fe84209f946096f271407c1148ed8e222",
    "date": "2026-09-11",
+   "time": "19:35",
    "subject": "fix(ds): cancelled tasks render dulled ✗ checkbox, dimmed row",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-3"
@@ -78,6 +94,7 @@
    "sha": "ce0b94a",
    "full": "ce0b94a7aa38b350a8303f5ce3469c0398b53467",
    "date": "2026-09-11",
+   "time": "19:32",
    "subject": "chore(plan): masonry-grid-opt — mark Tasks 0,3-7 done; Tasks 1-2 cancelled by user override",
    "plan": "2026-09-07_113052-masonry-grid-opt.md",
    "anchor": "phase-1"
@@ -86,6 +103,7 @@
    "sha": "37982f9",
    "full": "37982f93a0eea26e1b21c5147430e5b66fda0f8c",
    "date": "2026-09-10",
+   "time": "21:19",
    "subject": "chore(ds): ds-track manifest 0 wip",
    "plan": null,
    "anchor": null
@@ -94,6 +112,7 @@
    "sha": "69eac10",
    "full": "69eac10daf0c324277e27ab52973018ccccf7640",
    "date": "2026-09-10",
+   "time": "21:18",
    "subject": "chore(ds): ds-track manifest refresh [skip ci]",
    "plan": null,
    "anchor": null
@@ -102,6 +121,7 @@
    "sha": "72c8f05",
    "full": "72c8f05c1e1ef616b8a27a22e3271b665d612f70",
    "date": "2026-09-10",
+   "time": "21:18",
    "subject": "feat(ds): color pane materials + inline AA pairs + sync",
    "plan": null,
    "anchor": null
@@ -110,6 +130,7 @@
    "sha": "557ffa6",
    "full": "557ffa6d7e6ccc0eb1148d87c1a42740f083e750",
    "date": "2026-09-10",
+   "time": "21:15",
    "subject": "fix(build): add missing glimmer-orb views — resolve vite Could not resolve",
    "plan": null,
    "anchor": null
@@ -118,6 +139,7 @@
    "sha": "1160912",
    "full": "1160912678bf50b90143cd8f49de55b29292f112",
    "date": "2026-09-10",
+   "time": "21:03",
    "subject": "fix: phase drawer emerge + dim; site theme toggle always visible, instant",
    "plan": null,
    "anchor": null
@@ -126,6 +148,7 @@
    "sha": "409695a",
    "full": "409695a5c1c1242a95f43327fb33c928c444fdce",
    "date": "2026-09-10",
+   "time": "20:16",
    "subject": "feat(ds): collapsible sidebar + phase detail drawer with prev/next",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
    "anchor": "Phase-2"
@@ -134,6 +157,7 @@
    "sha": "02eb42a",
    "full": "02eb42a4160ddbab0512d8fa830fe8f4e8cde48d",
    "date": "2026-09-10",
+   "time": "20:09",
    "subject": "fix(ds): changelog sprint tabs keep selection instead of snapping to first",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-3"
@@ -142,6 +166,7 @@
    "sha": "0c464b1",
    "full": "0c464b18c15177ba0ffd3613d29f46d7f7fe8d70",
    "date": "2026-09-10",
+   "time": "20:06",
    "subject": "chore(ds): mark smart-changelog phases 1-4 shipped in plan",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Shipped"
@@ -150,6 +175,7 @@
    "sha": "4be6963",
    "full": "4be6963152c53b02e9437fb8b673c3792972b44a",
    "date": "2026-09-10",
+   "time": "20:06",
    "subject": "feat(ds): retro-link 15 pre-trailer commits to semantic phases",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-4"
@@ -158,6 +184,7 @@
    "sha": "d884568",
    "full": "d8845688edcaeac941de95277a307448cf0147cc",
    "date": "2026-09-10",
+   "time": "20:06",
    "subject": "feat(ds): smart changelog — tag taxonomy, chips, dynamic iters, plan SOP",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-3"
@@ -166,6 +193,7 @@
    "sha": "0d54de5",
    "full": "0d54de57c4e3eca898857e926a30975e547c5553",
    "date": "2026-09-10",
+   "time": "16:32",
    "subject": "feat(color): phase 4 swatch audit — Elevation group owns shadow colors, FX/Shape drop dupes",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-4"
@@ -174,6 +202,7 @@
    "sha": "7f881d9",
    "full": "7f881d9f61fbf183f5831cd65fc0378775c91e7b",
    "date": "2026-09-10",
+   "time": "16:14",
    "subject": "chore(plan): mark phase 3 shipped — signal slot live, tasks 7–8 ✓ done",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-3"
@@ -182,6 +211,7 @@
    "sha": "f12ea02",
    "full": "f12ea028e1cb66c2114c46a8f467010bc3365ed1",
    "date": "2026-09-10",
+   "time": "16:12",
    "subject": "feat(color): phase 3 swap-slot — signal indirection + live swap demo",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-3"
@@ -190,6 +220,7 @@
    "sha": "36c2d82",
    "full": "36c2d826d9cefdffe26e3dd050d1469175fba2e7",
    "date": "2026-09-10",
+   "time": "16:07",
    "subject": "chore(plan): mark phases 1-2 shipped — Frost Alloy locked, tasks 1-6 ✓ done",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-2"
@@ -198,6 +229,7 @@
    "sha": "5fcbdac",
    "full": "5fcbdac2407c66148387f129eef041e42d8d0650",
    "date": "2026-09-10",
+   "time": "16:05",
    "subject": "feat(color): lock Frost Alloy + phase 2 synthetic material story  [plan:2026-09-10_153555-color-cool-synthetic.md#phase-2]",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-1"
@@ -206,6 +238,7 @@
    "sha": "5ebdac7",
    "full": "5ebdac703a652c078fadd53308a0428bd3cc96c3",
    "date": "2026-09-10",
+   "time": "16:01",
    "subject": "fix(color): switch phase 1 pick to Candidate A Frost per owner",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-1"
@@ -214,6 +247,7 @@
    "sha": "2671b8f",
    "full": "2671b8ff34fa3f397032a2968f8f75ebcd407b31",
    "date": "2026-09-10",
+   "time": "15:41",
    "subject": "feat(color): phase 1 cooler neutrals — alloy pick cool stone ramp + dark retune + AA proof",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-1"
@@ -222,6 +256,7 @@
    "sha": "11a3293",
    "full": "11a3293906fdf3532d0fefcb4b3646a1242d96db",
    "date": "2026-09-09",
+   "time": "18:10",
    "subject": "feat(ds): update 4 task 7 — three accent ramps, feedback roles, ramp strips restored",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-1"
@@ -230,6 +265,7 @@
    "sha": "1efb5ac",
    "full": "1efb5ac1a6a6ad22e2fcfc64a3a39a0ccefde234",
    "date": "2026-09-09",
+   "time": "17:58",
    "subject": "feat(ds): update 4 phase 7 — component tier+viewer example, versioning policy, a11y gate",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-7"
@@ -238,6 +274,7 @@
    "sha": "173f31f",
    "full": "173f31fbb6ef83818fb5bead20623292e026c5f7",
    "date": "2026-09-09",
+   "time": "17:58",
    "subject": "feat(ds): update 4 phase 6 — FX graduation story, plain token cards, per-demo token labels, viewer specimens",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-6"
@@ -246,6 +283,7 @@
    "sha": "db8a47e",
    "full": "db8a47ec41d095a9b03af4251b59be43a54a94a3",
    "date": "2026-09-09",
+   "time": "17:58",
    "subject": "feat(ds): update 4 phase 5 — motion prescription+true-scale bars, easing story, depth ladder, reduced-motion contract",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-5"
@@ -254,6 +292,7 @@
    "sha": "ffd2bae",
    "full": "ffd2bae03407f2924936e96960b372a980e303ac",
    "date": "2026-09-09",
+   "time": "17:50",
    "subject": "chore(ds): mark update-4 phases 1-4 shipped in plan",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Shipped"
@@ -262,6 +301,7 @@
    "sha": "7d3bcea",
    "full": "7d3bcea9443e45d68e4177c0e26a4d219157ede4",
    "date": "2026-09-09",
+   "time": "17:47",
    "subject": "feat(ds): update 4 phases 3-4 — space usage+breakpoints+audit, shape doctrine+mapping+ring",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-3-4"
@@ -270,6 +310,7 @@
    "sha": "dba2975",
    "full": "dba2975c6000a2e35a556a251d93a91f5a56870d",
    "date": "2026-09-09",
+   "time": "17:43",
    "subject": "feat(ds): update 4 phases 1-2 — color story+matrix, type 700 cap+story",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-1-2"
@@ -278,6 +319,7 @@
    "sha": "0287e39",
    "full": "0287e3946c48e9ce89f9cd0ec9aee5f743afc277",
    "date": "2026-09-09",
+   "time": "17:36",
    "subject": "chore(ds): checkpoint before design-system update 4",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": null
@@ -286,6 +328,7 @@
    "sha": "50c8050",
    "full": "50c8050b5c3f9e8bf05c35a0a1dca3ee48c38973",
    "date": "2026-09-09",
+   "time": "16:21",
    "subject": "feat(ds): moodboard 6 refs + overview polish [session 155452]",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Moodboard strip"
@@ -294,6 +337,7 @@
    "sha": "ac91453",
    "full": "ac91453edb2a100727b014b0fc1fdeb9bfa70dc5",
    "date": "2026-09-09",
+   "time": "15:28",
    "subject": "feat(ds): functions split + GridReveal shared — 4 routes, compact lab, image texture",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Phase 4 — Functions"
@@ -302,6 +346,7 @@
    "sha": "ac69c09",
    "full": "ac69c099239f4bce40759c3dabcafb7a26f50c6d",
    "date": "2026-09-09",
+   "time": "15:27",
    "subject": "feat(ds): components uniform template — Button pilot + 8 primitives, index redirect",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Phase 3 — Components"
@@ -310,6 +355,7 @@
    "sha": "ce9dfc9",
    "full": "ce9dfc96fa41e3dd7ee0d078cc99a1ea59f6ce19",
    "date": "2026-09-09",
+   "time": "15:24",
    "subject": "feat(ds): overview narrative + moodboard — paper/ink/vermilion, mono-as-machine, 90° cuts",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Phase 5 — Overview narrative + moodboard"
@@ -318,6 +364,7 @@
    "sha": "ef43b3d",
    "full": "ef43b3dea4fb4f852abd5c3ba40b95b3bfda0b9d",
    "date": "2026-09-09",
+   "time": "15:11",
    "subject": "feat(ds): foundations sheets type/space/shape/motion via tokenTrace",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Phase 2 — Foundations"
@@ -326,6 +373,7 @@
    "sha": "171f2a6",
    "full": "171f2a6c980d0a6489855f4a63a6ac5683998560",
    "date": "2026-09-09",
+   "time": "15:10",
    "subject": "feat(ds): shared infra tabs + tokenTrace",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Phase 1 — Shared infra"
@@ -334,6 +382,7 @@
    "sha": "001f837",
    "full": "001f83771b882b87ace25528beeb78ed3a55b2ac",
    "date": "2026-09-09",
+   "time": "13:33",
    "subject": "feat(ds): maturity sprint — token hygiene, playground, landing set, motion graduation, live quality gates",
    "plan": "2026-09-09_130000-ds-maturity.md",
    "anchor": "Token hygiene"
@@ -342,6 +391,7 @@
    "sha": "5948e02",
    "full": "5948e0285d31438bd8d3879bdf85431ca2d4382e",
    "date": "2026-09-08",
+   "time": "17:12",
    "subject": "feat(cards): 18px card title step between h3 and h2",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "capped scale"
@@ -350,6 +400,7 @@
    "sha": "ffee0b1",
    "full": "ffee0b15ea03b9ab63304004591e99a43155a39d",
    "date": "2026-09-08",
+   "time": "17:09",
    "subject": "feat(masonry): rareui-style subdivision reveal, random splits, faster run, larger card type",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "GridReveal"
@@ -358,6 +409,7 @@
    "sha": "9d2b13f",
    "full": "9d2b13f7bb37599b682ca8c32575c98ed3e863bc",
    "date": "2026-09-08",
+   "time": "15:29",
    "subject": "feat(viewer): thick tether, coupled threshold+idle, synced hide, rAF perf",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "GridReveal"
@@ -366,6 +418,7 @@
    "sha": "3d974ae",
    "full": "3d974ae0b1c1adea613d45d8e347ef1246950a5a",
    "date": "2026-09-08",
+   "time": "14:09",
    "subject": "feat(viewer): framer mocks + glass portal + corner tethers, flat lines",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "GridReveal"
@@ -374,6 +427,7 @@
    "sha": "487b974",
    "full": "487b9745795e4393b2d81c9f6de7dbfa09740cf7",
    "date": "2026-09-08",
+   "time": "13:52",
    "subject": "feat(viewer): cyberpunk expander (cursor+portal+spring tether, proximity flip, clamped)",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "GridReveal"
@@ -382,6 +436,7 @@
    "sha": "c595a3e",
    "full": "c595a3ebb0736bac72c6c838ff6b34c79c3f7418",
    "date": "2026-09-08",
+   "time": "13:45",
    "subject": "feat(masonry): GridReveal cyberpunk viewer — mosaic shimmer, detail-first sharpen",
    "plan": "2026-09-07_113052-masonry-grid-opt.md",
    "anchor": "blur-to-sharp"
@@ -390,6 +445,7 @@
    "sha": "7e4f047",
    "full": "7e4f047cb17589dd05dfeb21487536cdaadee74d",
    "date": "2026-09-07",
+   "time": "20:38",
    "subject": "feat: theme toggle (list-only) + Framer favicon restore",
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "favicon"
@@ -398,6 +454,7 @@
    "sha": "fa4eb0e",
    "full": "fa4eb0e0a8457eb6ac54409689a567c4191781ed",
    "date": "2026-09-07",
+   "time": "17:44",
    "subject": "feat(ds): adopt token-driven design system across site and docs",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "Baseline + IA skeleton"
@@ -406,6 +463,7 @@
    "sha": "0d02406",
    "full": "0d02406172b2827fc8cfa95491eca656e24e80e8",
    "date": "2026-09-07",
+   "time": "15:26",
    "subject": "docs: add DESIGN.md tokens spec and masonry/mobile plans",
    "plan": "2026-09-09_120000-ds-maturity.md",
    "anchor": "one sheet per foundation"
@@ -414,6 +472,7 @@
    "sha": "940e158",
    "full": "940e158c3af252b77236e6dbfd211cbe5f45f53c",
    "date": "2026-09-07",
+   "time": "14:27",
    "subject": "feat: mobile — bottom-fixed header, single-column linger cards, 50/50 media",
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "bottom-fixed header"
@@ -422,6 +481,7 @@
    "sha": "8b88207",
    "full": "8b88207284180745dee444b50f30593fa7411214",
    "date": "2026-09-07",
+   "time": "12:24",
    "subject": "feat: slick minimal header with sliding selection frame",
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "sliding selection frame"
@@ -430,12 +490,14 @@
    "sha": "c7303a2",
    "full": "c7303a27bd1b1b522c8facf9d491d4767f19a110",
    "date": "2026-09-06",
+   "time": "18:45",
    "subject": "feat: portfolio clone with decap cms",
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "decap cms"
   }
  ],
  "wip": [
-  "M src/ds/ds.css"
+  "M src/ds/changelog-manifest.json",
+  "M src/ds/pages-changelog.js"
  ]
 }

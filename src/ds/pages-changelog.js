@@ -4,7 +4,7 @@
    Tags: closed taxonomy (changelog-tags.js); chips filter both columns (OR);
    Iter N derives from the FILTERED list — strictly client-side, dynamic. */
 import { marked } from 'marked';
-import { hits, badges, unlinked } from './changelog-links.js';
+import { hits, badges, unlinked, commits } from './changelog-links.js';
 import { TAGS, tagsFor, planTags, parseExplicit } from './changelog-tags.js';
 const raws = import.meta.glob('../../.hermes/plans/*.md', { query: '?raw', import: 'default', eager: true });
 const chunks = (md) => md.split(/^## /m);
@@ -92,8 +92,15 @@ function paint(root) {
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const it = String(list.length - i).padStart(2, '0');
     const num = p.id || it; const frac = iterState(p.sprints);
-    const d = fmtDate(p.date); const t = fmtTime(p.id);
-    const line1 = [d, t, `${p.sprints.length} phases`, frac].filter(Boolean).join(' · ');
+    // span: start date+time → end; end date only if it differs, else end time
+    const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
+    const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
+    const tagged = valid.filter((c) => c.date === p.date || (c.time && c.date >= p.date)); // day-precision: keep same plan-day or later
+    const last = tagged.length ? tagged.reduce((a, b) => (b.date + (b.time || '') > a.date + (a.time || '') ? b : a)) : null;
+    const sd = fmtDate(p.date); const st = fmtTime(p.id);
+    const endDate = last ? last.date : ''; const endTime = last && last.time ? fmtTime(last.time) : '';
+    const endTxt = !endDate ? '' : (endDate !== p.date ? ' – ' + fmtDate(endDate) : (endTime && endTime > st ? ' – ' + endTime : ''));
+    const line1 = [sd + (st ? ' ' + st : '') + (endTxt ? ' ' + endTxt.trim() : ''), `${p.sprints.length} phases`, frac].filter(Boolean).join(' · ');
     return `<button class="ds-pick${i === sel[0] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc(p.goal)}">`
       + `<span class="ds-row"><span class="ds-num">${num}</span><b>${p.label}</b><span class="ds-tags">${p.tags.join(' · ')}</span></span>`
       + `<small>${line1}</small></button>`;
