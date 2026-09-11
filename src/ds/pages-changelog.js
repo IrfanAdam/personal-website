@@ -112,7 +112,7 @@ const graph = () => {
       const n = dc[k] || 0;
       if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} · no changes">${num}</span>`;
       const lv = Math.min(4, Math.ceil((4 * n) / max));
-      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"><span>${num}</span></button>`;
+      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
     }).join('');
     return `<div class="ds-week">${cells}</div>`;
   }).join('');
@@ -122,7 +122,8 @@ const graph = () => {
 function paint(root) {
   const { list, pi, plan, sprints, si } = cur(); sel = [pi, si];
   const showAll = `<button class="ds-chip${(active.size || day) ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
-  root.querySelector('[data-col="chips"]').innerHTML = showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('') + (day ? `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">${fmtDate(day)} ✕</button>` : '');
+  const dayChip = day ? `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">${fmtDate(day)} ✕</button>` : '';
+  root.querySelector('[data-col="chips"]').innerHTML = dayChip + showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
   root.querySelector('[data-col="graph"]').innerHTML = graph();
   const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
   if (!plan) { const nf = [active.size ? 'these tags' : '', day ? fmtDate(day) : ''].filter(Boolean).join(' · '); root.querySelector('[data-col="plan"]').innerHTML = `<p class="ds-note">Nothing matches ${nf || 'the archive'} yet.</p>`; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
