@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T15:22:19.367Z",
+ "generated": "2026-09-11T15:28:35.707Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -18,6 +18,24 @@
   "2026-09-10_201154-ds-nav-drawer.md"
  ],
  "commits": [
+  {
+   "sha": "af1a9f4",
+   "full": "af1a9f48def9bbae3eb7c290639d70af85734ff7",
+   "date": "2026-09-11",
+   "time": "20:58",
+   "subject": "feat(ds): timeline row gutters, span month header, blip + glitch today",
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Phase-5"
+  },
+  {
+   "sha": "7ead514",
+   "full": "7ead514f32edbaa0ada3a437e5991d214059a594",
+   "date": "2026-09-11",
+   "time": "20:52",
+   "subject": "chore(ds): track refresh for timeline cells + pulse",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
   {
    "sha": "62feb65",
    "full": "62feb6575be9cb0c73e530673feff1c19239507a",
