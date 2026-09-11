@@ -107,10 +107,10 @@ const graph = () => {
   const labels = spans.map((s) => `<span class="ds-month" style="width: calc(${s.n} * (var(--space-16) + var(--space-4)) - var(--space-4))">${MONTHS[s.mo]}</span>`).join('');
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
-      const k = isoDay(d); const todayCls = k === isoDay(today) ? ' is-today' : ''; const num = d.getDate();
-      if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} · upcoming">${num}</span>`;
+      const k = isoDay(d); const todayCls = k === isoDay(today) ? ' is-today' : '';
+      if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} · upcoming"></span>`;
       const n = dc[k] || 0;
-      if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} · no changes">${num}</span>`;
+      if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} · no changes"></span>`;
       const lv = Math.min(4, Math.ceil((4 * n) / max));
       return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
     }).join('');
