@@ -2,14 +2,16 @@
    Single source: .hermes/plans/*.md via import.meta.glob + git manifest
    — bidirectional: plan file → commits via [plan:file#anchor] trailer.
    Tags: closed taxonomy (changelog-tags.js); chips filter both columns (OR);
-   Iter N derives from the FILTERED list — strictly client-side, dynamic. */
+   Iter N derives from the FILTERED list — strictly client-side, dynamic.
+   Titles: sentence-style via changelog-titles.js; raw file identity in drawer above footer. */
 import { marked } from 'marked';
 import { hits, badges, unlinked, commits } from './changelog-links.js';
 import { TAGS, tagsFor, planTags, parseExplicit } from './changelog-tags.js';
+import { h1Of, shortPhase as short, planSentence, phaseSentence, descOf, provenance } from './changelog-titles.js';
+import names from './changelog-names.json';
 const raws = import.meta.glob('../../.hermes/plans/*.md', { query: '?raw', import: 'default', eager: true });
 const chunks = (md) => md.split(/^## /m);
 const goal = (md) => (md.match(/\*\*Goal:\*\*\s*([\s\S]+?)(?:\n\s*\n|$)/) || [])[1]?.trim() || '';
-const short = (h) => h.replace(/^Phase \d+ [·—–-]\s*/, '').replace(/\s*\{#.*\}\s*$/, '');
 const norm = (body) => {
   if (/^- \[[ xX]\]/m.test(body)) return body;
   const parts = body.split(/^### /m); const head = parts.shift();
@@ -47,18 +49,14 @@ const fmtDate = (iso) => {
   if (!y || !mo || !d) return iso; return `${String(d).padStart(2,'0')} ${MONTHS[mo - 1]} ${y}`;
 };
 const fmtTime = (id) => (/^\d{6}$/.test(id) ? `${id.slice(0,2)}:${id.slice(2,4)}` : id);
-const labelOf = (file, md) => {
-  const h1 = (md.match(/^#\s+(.+)$/m) || [])[1] || '';
-  const pretty = parseMeta(file).slug.replace(/[_-]/g, ' ').trim();
-  return h1 ? `${pretty} — ${h1.slice(0, 42)}` : pretty;
-};
 const entries = Object.entries(raws).sort(([a], [b]) => b.localeCompare(a));
 const texts = Object.fromEntries(entries.map(([p, md]) => [p.split('/').pop(), md]));
 const plans = entries.map(([p, md]) => {
   const file = p.split('/').pop(); const { date, id, slug } = parseMeta(file);
+  const h1 = h1Of(md); const g = goal(md); const nm = names[file] || {};
   const sprints = split(md); const steer = parseExplicit(md.split(/^## /m)[0]);
   sprints.forEach((s) => { s.tags = tagsFor(s.head, s.body, steer); });
-  return { file, date, id, slug, label: labelOf(file, md), goal: goal(md), sprints, tags: planTags(md, sprints), raw: md };
+  return { file, date, id, slug, h1, title: nm.title || planSentence({ h1, goal: g, slug }), purpose: nm.purpose || '', goal: g, sprints, tags: planTags(md, sprints), raw: md };
 }).filter((pl) => pl.sprints.length);
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
 let active = new Set(); let day = ''; let sel = [0, 0]; let open = false; let stage = 'list'; // drawer: 'list' shows phases, 'tasks' shows a phase's detail
@@ -128,11 +126,7 @@ function paint(root) {
   const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
   if (!plan) { const nf = [active.size ? 'these tags' : '', day ? fmtDate(day) : ''].filter(Boolean).join(' · '); root.querySelector('[data-col="plan"]').innerHTML = `<p class="ds-note">Nothing matches ${nf || 'the archive'} yet.</p>`; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
   const sprint = sprints[si];
-  const sprintDesc = (s) => { // exactly what the hover popover showed: the sprint's italic description line, untruncated
-    const body = s.body.replace(/^## .*$/m, '');
-    const para = body.split(/\n\n+/).map((b) => b.trim()).find((b) => b && !/^(#|\*Tags\*?|\*Shipped|- |\* |\d\. |\|)/.test(b)) || '';
-    return para.replace(/^\*|\*$/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*`_]/g, '');
-  };
+  const sprintDesc = (s) => descOf(s.body);
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const it = String(list.length - i).padStart(2, '0');
     const num = p.id || it; const frac = iterState(p.sprints);
@@ -146,7 +140,7 @@ function paint(root) {
     const endTxt = !endDate ? '' : (endDate !== p.date ? ' – ' + fmtDate(endDate) + (endTime ? ' ' + endTime : '') : (endTime && endTime !== st ? ' – ' + endTime : ''));
     const line1 = [sd + (st ? ' ' + st : '') + (endTxt ? ' ' + endTxt.trim() : ''), `${p.sprints.length} phases`, frac].filter(Boolean).join(' · ');
     return `<button class="ds-pick${i === sel[0] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc(p.goal)}">`
-      + `<span class="ds-row"><span class="ds-num">${num}</span><b>${p.label}</b><span class="ds-tags">${p.tags.join(' · ')}</span></span>`
+      + `<span class="ds-row"><span class="ds-num">${num}</span><b>${esc(p.title)}</b><span class="ds-tags">${p.tags.join(' · ')}</span></span>`
       + `<small>${line1}</small></button>`;
   }).join('');
   root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
@@ -154,10 +148,10 @@ function paint(root) {
     const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? ' · ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
     const frac = state(s.body);
     return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc(sprintDesc(s))}">`
-      + `<span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span><b>${short(s.head)}</b></span>`
+      + `<span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span><b>${esc(phaseSentence(s.head, s.body))}</b></span>`
       + `<small>${[frac + has].filter(Boolean).join(' · ')}</small></button>`;
   }).join('')
-    + `<div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`;
+    + `<p class="ds-commits" data-prov>${esc(provenance(plan))}</p><div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`;
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   root.querySelector('[data-col="tasks"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
     + `<button data-close aria-label="Close detail">✕</button></div>`

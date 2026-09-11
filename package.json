@@ -13,6 +13,7 @@
     "test": "npm run lint:tokens && npm run build",
     "ds:track": "node scripts/ds-track.mjs",
     "plan:suggest": "node scripts/plan-suggest.mjs",
+    "plan:names": "node scripts/plan-names.mjs",
     "predev": "node scripts/ds-track.mjs || true"
   },
   "devDependencies": {
