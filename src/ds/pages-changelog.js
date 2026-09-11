@@ -99,13 +99,13 @@ function paint(root) {
   }).join('');
   root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
-    const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? '·' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
+    const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0); const has = hsS.length ? ' · ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '';
     const frac = state(s.body);
-    return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc((s.tags.join(' · ')))}">`
+    return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${done(frac) ? '' : ' is-open'}">`
       + `<span class="ds-row"><span class="ds-num">P${String(n).padStart(2, '0')}</span><b>${short(s.head)}</b></span>`
-      + `<small>${[frac + has, s.tags.join(' · ')].filter(Boolean).join(' · ')}</small>`
-      + `<span class="ds-rail-foot">${esc(sprintDesc(s))}</span></button>`;
-  }).join('');
+      + `<small>${[frac + has].filter(Boolean).join(' · ')}</small></button>`;
+  }).join('')
+    + `<div class="ds-rail-foot" data-foot><b>${short(sprint.head)}</b>${esc(sprintDesc(sprint))}</div>`;
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   root.querySelector('[data-col="tasks"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
     + `<button data-close aria-label="Close detail">✕</button></div>`

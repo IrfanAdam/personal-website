@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T14:35:04.051Z",
+ "generated": "2026-09-11T14:40:41.143Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -19,8 +19,16 @@
  ],
  "commits": [
   {
-   "sha": "d94b416",
-   "full": "d94b416ff62bc768f603b51dac787b138687340a",
+   "sha": "59dca10",
+   "full": "59dca10ddd78f0391be2a4dd797e338e77df74fb",
+   "date": "2026-09-11",
+   "subject": "fix(ds): sprint description pulled to phases-pane footer, per-card footers/tags removed",
+   "plan": "2026-09-10_201154-ds-nav-drawer.md",
+   "anchor": "Phase-2"
+  },
+  {
+   "sha": "6097791",
+   "full": "6097791394705f74479fd0159040d4688fb88bde",
    "date": "2026-09-11",
    "subject": "feat(ds): changelog feedback — tags right-aligned, phases stat on date line, wider rail with sprint footer, cursor-follow tips, remove prev/next, fix misindexed phase clicks",
    "plan": "2026-09-10_201154-ds-nav-drawer.md",
@@ -412,6 +420,7 @@
   }
  ],
  "wip": [
+  "M src/ds/changelog-manifest.json",
   "M src/ds/ds.css"
  ]
 }
