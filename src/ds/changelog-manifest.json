@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T15:20:36.578Z",
+ "generated": "2026-09-11T15:22:19.367Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -18,6 +18,24 @@
   "2026-09-10_201154-ds-nav-drawer.md"
  ],
  "commits": [
+  {
+   "sha": "62feb65",
+   "full": "62feb6575be9cb0c73e530673feff1c19239507a",
+   "date": "2026-09-11",
+   "time": "20:52",
+   "subject": "feat(ds): bigger timeline cells, wider gutters, pulsing today ring",
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Phase-5"
+  },
+  {
+   "sha": "001d47e",
+   "full": "001d47efb1694f9f98badd84bd0d9c48975d7695",
+   "date": "2026-09-11",
+   "time": "20:50",
+   "subject": "chore(ds): track refresh for padded timeline window",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
   {
    "sha": "2ff10c5",
    "full": "2ff10c5c516bfd1658641f9bf0c6bb6c8c2819c6",
