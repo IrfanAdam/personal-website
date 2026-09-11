@@ -95,9 +95,11 @@ const graph = () => {
   const end = new Date(base.getTime() + pad); end.setDate(end.getDate() + (6 - end.getDay()));
   const weeks = []; const ws = new Date(start);
   while (ws <= end) { const col = []; for (let i = 0; i < 7; i++) { const d = new Date(ws); d.setDate(d.getDate() + i); col.push(d); } weeks.push(col); ws.setDate(ws.getDate() + 7); }
-  let lastMo = -1;
+  const DOWS = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+  const spans = []; // month owns the columns where it holds most days — span widths stay proportional, no crammed edge labels
+  weeks.forEach((col) => { const ct = {}; col.forEach((d) => { ct[d.getMonth()] = (ct[d.getMonth()] || 0) + 1; }); const mo = Number(Object.entries(ct).sort((a, b) => b[1] - a[1])[0][0]); const prev = spans[spans.length - 1]; if (prev && prev.mo === mo) prev.n++; else spans.push({ mo, n: 1 }); });
+  const labels = spans.map((s) => `<span class="ds-month" style="width: calc(${s.n} * (var(--space-14) + var(--space-4)) - var(--space-4))">${MONTHS[s.mo]}</span>`).join('');
   const cols = weeks.map((col) => {
-    const mo = col[0].getMonth(); const lab = mo !== lastMo ? MONTHS[mo] : ''; lastMo = mo;
     const cells = col.map((d) => {
       const k = isoDay(d); const todayCls = k === isoDay(today) ? ' is-today' : '';
       if (d > today) return '<span class="ds-day is-future"></span>';
@@ -106,9 +108,10 @@ const graph = () => {
       const lv = Math.min(4, Math.ceil((4 * n) / max));
       return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
     }).join('');
-    return `<div class="ds-week"><span class="ds-month">${lab}</span>${cells}</div>`;
+    return `<div class="ds-week">${cells}</div>`;
   }).join('');
-  return `<div class="ds-graph-row" role="group" aria-label="Changes by day">${cols}</div><p class="ds-graph-cap">${commits.length} logged changes · click a day to filter${day ? ` · showing ${fmtDate(day)}` : ''}</p>`;
+  const dows = `<div class="ds-dows" aria-hidden="true">${DOWS.map((d) => `<span>${d}</span>`).join('')}</div>`;
+  return `<div class="ds-graph-labels">${labels}</div><div class="ds-graph-row" role="group" aria-label="Changes by day">${dows}${cols}</div><p class="ds-graph-cap">${commits.length} logged changes · click a day to filter${day ? ` · showing ${fmtDate(day)}` : ''}</p>`;
 };
 function paint(root) {
   const { list, pi, plan, sprints, si } = cur(); sel = [pi, si];
