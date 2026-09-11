@@ -73,6 +73,8 @@ body.side-collapsed .ds-side { transform: translateX(calc(-1 * var(--size-ds-sid
 /* tasks — on-brand checkboxes (square, hairline, ink fill; replaces native blue) */
 .ds-md ul:has(input[type="checkbox"]) { list-style: none; padding-left: 0; } .ds-md input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: var(--space-14); height: var(--space-14); border: var(--border-hairline); border-radius: var(--radius-none); background: var(--color-surface); vertical-align: middle; margin: 0 var(--space-8) 0 0; position: relative; display: inline-grid; place-items: center; }
 .ds-md input[type="checkbox"]:checked { background: var(--color-ink); border-color: var(--color-ink); } .ds-md input[type="checkbox"]:checked::after { content: "✓"; color: var(--color-bg); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; line-height: 1; }
+/* cancelled tasks — dulled ✗ instead of the done ✓; row dimmed */
+.ds-md li:has(.ds-cancelled) input[type="checkbox"]:checked { background: var(--color-surface); border-color: var(--border-hairline); } .ds-md li:has(.ds-cancelled) input[type="checkbox"]:checked::after { content: "✗"; color: var(--color-ink-muted); opacity: .55; } .ds-md li:has(.ds-cancelled) { opacity: .6; }
 /* miller columns — plans | sprints (detail lives in the drawer) */
 .ds-miller { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
 .ds-col { border: var(--border-hairline); background: var(--color-surface); flex: 1 1 24ch; min-width: 0; }

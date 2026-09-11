@@ -19,7 +19,7 @@ const norm = (body) => {
     const cancelled = /✗/i.test(title); const done = /✓/i.test(title);
     name = name.replace(/✓\s*done\s*—?/i, '').replace(/✗\s*cancelled\s*—?/i, '').replace(/[✓✗]/g, '').trim().replace(/\.*$/, '.');
     const detail = lines.join(' ').replace(/\s+/g, ' ').trim();
-    const flag = cancelled ? '✗ cancelled — ' : (done ? '✓ done — ' : '');
+    const flag = cancelled ? '<span class="ds-cancelled">✗ cancelled</span> — ' : (done ? '✓ done — ' : '');
     return `- [${done || cancelled ? 'x' : ' '}] **${num} ${name}** ${flag}${detail}`;
   }); return head + items.join('\n');
 };
