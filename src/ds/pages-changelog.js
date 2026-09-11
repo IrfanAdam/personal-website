@@ -99,7 +99,7 @@ function paint(root) {
     const last = tagged.length ? tagged.reduce((a, b) => (b.date + (b.time || '') > a.date + (a.time || '') ? b : a)) : null;
     const sd = fmtDate(p.date); const st = fmtTime(p.id);
     const endDate = last ? last.date : ''; const endTime = last && last.time ? fmtTime(last.time) : '';
-    const endTxt = !endDate ? '' : (endDate !== p.date ? ' – ' + fmtDate(endDate) : (endTime && endTime > st ? ' – ' + endTime : ''));
+    const endTxt = !endDate ? '' : (endDate !== p.date ? ' – ' + fmtDate(endDate) + (endTime ? ' ' + endTime : '') : (endTime && endTime !== st ? ' – ' + endTime : ''));
     const line1 = [sd + (st ? ' ' + st : '') + (endTxt ? ' ' + endTxt.trim() : ''), `${p.sprints.length} phases`, frac].filter(Boolean).join(' · ');
     return `<button class="ds-pick${i === sel[0] ? ' on' : ''}${done(frac) ? '' : ' is-open'}" data-tip="${esc(p.goal)}">`
       + `<span class="ds-row"><span class="ds-num">${num}</span><b>${p.label}</b><span class="ds-tags">${p.tags.join(' · ')}</span></span>`

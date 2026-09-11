@@ -15,6 +15,12 @@
     "0d02406": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "one sheet per foundation", "note": "DESIGN.md tokens spec -> P2 foundations sheets" },
     "940e158": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "bottom-fixed header", "note": "mobile header/cards/media -> retro P1" },
     "8b88207": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "sliding selection frame", "note": "slick minimal header -> retro P1" },
-    "c7303a2": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "decap cms", "note": "initial clone -> retro P1" }
+    "c7303a2": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "decap cms", "note": "initial clone -> retro P1" },
+    "ce0b94a": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "Phase 1", "note": "trailer cited lowercase phase-1; prune scope -> P1" },
+    "72c8f05": { "plan": "2026-09-10_153555-color-cool-synthetic.md", "anchor": "Material mapping", "note": "color pane material mapping + inline AA pairs -> P2" },
+    "557ffa6": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "glimmer-orb views build fix; function views -> P4" },
+    "1160912": { "plan": "2026-09-10_201154-ds-nav-drawer.md", "anchor": "Drawer open/close", "note": "drawer emerge+dim, toggle visibility -> P2 drawer" },
+    "37982f9": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" },
+    "69eac10": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" }
   }
 }
