@@ -1,0 +1,11 @@
+/* ADAM/DS — Changelog contribution timeline. Sun–Sat week columns, blobs on logged days. Token-only: no raw px, no literal radius. */
+.ds-graph { margin: 0 0 var(--space-12); overflow-x: auto; }
+.ds-graph-row { display: flex; gap: var(--space-3); width: max-content; }
+.ds-week { display: flex; flex-direction: column; gap: var(--space-3); }
+.ds-month { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); min-height: 1.2em; margin-bottom: var(--space-2); }
+.ds-day { width: var(--space-11); height: var(--space-11); border: var(--border-hairline); background: transparent; padding: 0; }
+button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
+button.ds-day.lv1 { opacity: .3; } button.ds-day.lv2 { opacity: .5; } button.ds-day.lv3 { opacity: .75; } button.ds-day.lv4 { opacity: 1; }
+.ds-day.on { outline: var(--border-focus); outline-offset: var(--focus-offset); }
+.ds-day.is-future { opacity: .3; }
+.ds-graph-cap { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-6); }

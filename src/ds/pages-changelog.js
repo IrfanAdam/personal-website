@@ -61,8 +61,8 @@ const plans = entries.map(([p, md]) => {
   return { file, date, id, slug, label: labelOf(file, md), goal: goal(md), sprints, tags: planTags(md, sprints), raw: md };
 }).filter((pl) => pl.sprints.length);
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
-let active = new Set(); let sel = [0, 0]; let open = false; let stage = 'list'; // drawer: 'list' shows phases, 'tasks' shows a phase's detail
-const visiblePlans = () => (active.size ? plans.filter((p) => p.tags.some((t) => active.has(t))) : plans);
+let active = new Set(); let day = ''; let sel = [0, 0]; let open = false; let stage = 'list'; // drawer: 'list' shows phases, 'tasks' shows a phase's detail
+const visiblePlans = () => plans.filter((p) => (!active.size || p.tags.some((t) => active.has(t))) && (!day || p.date === day || commits.some((c) => c.plan === p.file && c.date === day)));
 const visibleSprints = (plan) => {
   const ss = active.size ? plan.sprints.filter((s) => s.tags.some((t) => active.has(t))) : plan.sprints;
   return ss.length ? ss : plan.sprints;
@@ -72,17 +72,47 @@ export function render() {
   return `<p class="ds-crumb">Start · Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1>`
     + `<p class="lede">Pick an iteration — phases slide in from the right. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
     + `<div class="ds-chips" data-col="chips"></div>`
+    + `<div class="ds-graph" data-col="graph"></div>`
     + `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div>`
     + `<div class="ds-md" data-col="triage"></div>`
     + `<div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span><aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail"><div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`;
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+/* Contribution timeline: Sun–Sat week columns from the first logged day; blobs only where changes exist. */
+const pDay = (s) => { const [y, mo, d] = s.split('-').map(Number); return new Date(y, mo - 1, d); };
+const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const graph = () => {
+  const dc = {}; commits.forEach((c) => { if (c.date) dc[c.date] = (dc[c.date] || 0) + 1; });
+  const keys = Object.keys(dc).sort();
+  if (!keys.length) return '';
+  const max = Math.max(...Object.values(dc));
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const start = pDay(keys[0]); start.setDate(start.getDate() - start.getDay());
+  const end = new Date(today); end.setDate(end.getDate() + (6 - end.getDay()));
+  const weeks = []; const ws = new Date(start);
+  while (ws <= end) { const col = []; for (let i = 0; i < 7; i++) { const d = new Date(ws); d.setDate(d.getDate() + i); col.push(d); } weeks.push(col); ws.setDate(ws.getDate() + 7); }
+  let lastMo = -1;
+  const cols = weeks.slice(-27).map((col) => {
+    const mo = col[0].getMonth(); const lab = mo !== lastMo ? MONTHS[mo] : ''; lastMo = mo;
+    const cells = col.map((d) => {
+      const k = isoDay(d);
+      if (d > today) return '<span class="ds-day is-future"></span>';
+      const n = dc[k] || 0;
+      if (!n) return '<span class="ds-day"></span>';
+      const lv = Math.min(4, Math.ceil((4 * n) / max));
+      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
+    }).join('');
+    return `<div class="ds-week"><span class="ds-month">${lab}</span>${cells}</div>`;
+  }).join('');
+  return `<div class="ds-graph-row" role="group" aria-label="Changes by day">${cols}</div><p class="ds-graph-cap">${commits.length} logged changes · click a day to filter${day ? ` · showing ${fmtDate(day)}` : ''}</p>`;
+};
 function paint(root) {
   const { list, pi, plan, sprints, si } = cur(); sel = [pi, si];
-  const showAll = `<button class="ds-chip${active.size ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
-  root.querySelector('[data-col="chips"]').innerHTML = showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
+  const showAll = `<button class="ds-chip${(active.size || day) ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
+  root.querySelector('[data-col="chips"]').innerHTML = showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('') + (day ? `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">${fmtDate(day)} ✕</button>` : '');
+  root.querySelector('[data-col="graph"]').innerHTML = graph();
   const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
-  if (!plan) { root.querySelector('[data-col="plan"]').innerHTML = '<p class="ds-note">No plans carry these tags yet.</p>'; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
+  if (!plan) { const nf = [active.size ? 'these tags' : '', day ? fmtDate(day) : ''].filter(Boolean).join(' · '); root.querySelector('[data-col="plan"]').innerHTML = `<p class="ds-note">Nothing matches ${nf || 'the archive'} yet.</p>`; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
   const sprint = sprints[si];
   const sprintDesc = (s) => { // exactly what the hover popover showed: the sprint's italic description line, untruncated
     const body = s.body.replace(/^## .*$/m, '');
@@ -126,8 +156,11 @@ function paint(root) {
 export function mount(root) {
   open = false; stage = 'list'; paint(root);
   const onClick = (e) => {
+    if (e.target.closest('[data-day-clear]')) { day = ''; sel = [0, 0]; paint(root); return; }
+    const dd = e.target.closest('[data-day]');
+    if (dd) { day = day === dd.dataset.day ? '' : dd.dataset.day; sel = [0, 0]; paint(root); return; }
     const chip = e.target.closest('.ds-chip');
-    if (chip) { const t = chip.dataset.tag; if (!t) active = new Set(); else { active.has(t) ? active.delete(t) : active.add(t); } sel = [0, 0]; paint(root); return; }
+    if (chip) { const t = chip.dataset.tag; if (!t) { active = new Set(); day = ''; } else { active.has(t) ? active.delete(t) : active.add(t); } sel = [0, 0]; paint(root); return; }
     if (e.target.closest('[data-close]') || e.target.closest('[data-scrim]')) { open = false; stage = 'list'; paint(root); return; }
     if (e.target.closest('[data-back]')) { stage = 'list'; paint(root); return; } // retained for safety; drawer no longer has a back button
     const st = e.target.closest('[data-step]');
