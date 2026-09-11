@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T14:47:52.166Z",
+ "generated": "2026-09-11T14:49:47.878Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -18,6 +18,14 @@
   "2026-09-10_201154-ds-nav-drawer.md"
  ],
  "commits": [
+  {
+   "sha": "8aadb9e",
+   "full": "8aadb9e52be52ac747691e8600da2304f4fc01ef",
+   "date": "2026-09-11",
+   "subject": "fix(ds): sprint-description footer as paragraph, Phase N restored w/ accent, sprint-level accent, drawer capped at 50vw",
+   "plan": "2026-09-10_201154-ds-nav-drawer.md",
+   "anchor": "Phase-2"
+  },
   {
    "sha": "2caa1bd",
    "full": "2caa1bdd4d61b944b0b87ebcc6e9362859c7c3d9",
@@ -420,8 +428,6 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-manifest.json",
-  "M src/ds/ds.css",
   "M src/ds/pages-changelog.js"
  ]
 }

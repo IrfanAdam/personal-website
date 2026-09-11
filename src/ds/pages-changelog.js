@@ -106,7 +106,7 @@ function paint(root) {
       + `<span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span><b>${short(s.head)}</b></span>`
       + `<small>${[frac + has].filter(Boolean).join(' · ')}</small></button>`;
   }).join('')
-    + `<div class="ds-rail-foot" data-foot>${esc(sprintDesc(sprint))}</div>`;
+    + `<div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`;
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   root.querySelector('[data-col="tasks"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b>`
     + `<button data-close aria-label="Close detail">✕</button></div>`
