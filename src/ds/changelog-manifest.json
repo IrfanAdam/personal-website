@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T09:43:28.912Z",
+ "generated": "2026-09-12T09:58:13.369Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -19,6 +19,24 @@
   "2026-09-12_150255-glitch-sound.md"
  ],
  "commits": [
+  {
+   "sha": "020453b",
+   "full": "020453b56661dde4eede22fac6a8c19e7c19d251",
+   "date": "2026-09-12",
+   "time": "15:28",
+   "subject": "fix(fx): glitch sound audibility — base gain, unlock, hover proxy, lab test",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "579c025",
+   "full": "579c025ef387ac1238515bdeabcaf9489e0736c4",
+   "date": "2026-09-12",
+   "time": "15:13",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
   {
    "sha": "e52fd91",
    "full": "e52fd91e43f390920d59b05943facdccc5e70291",
