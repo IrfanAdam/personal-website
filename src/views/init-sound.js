@@ -14,34 +14,41 @@ try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) on = false; } 
 setEnabled(on);
 
 function syncUI() {
-  const v = on ? 'on' : 'off';
-  document.querySelectorAll('[data-sound-btn]').forEach((b) => {
-    b.classList.toggle('on', b.dataset.soundBtn === v);
-    b.setAttribute('aria-pressed', String(b.dataset.soundBtn === v));
+  document.querySelectorAll('[data-sound-toggle]').forEach((b) => {
+    const txt = on ? 'sound on' : 'sound off';
+    b.textContent = txt;
+    b.setAttribute('aria-label', txt);
+    b.setAttribute('aria-pressed', String(on));
+    b.classList.toggle('on', on);
   });
 }
-function apply(v) {
-  on = !!v;
+function apply() {
+  on = !on;
   try { localStorage.setItem('adam-sound', on ? 'on' : 'off'); } catch {}
   setEnabled(on);
   syncUI();
 }
 function ensureToggles() {
   const site = document.getElementById('stripbar');
-  if (site && !site.querySelector('[data-sound-btn]')) {
-    const meta = site.querySelector('.strip-meta');
-    const wrap = document.createElement('div');
-    wrap.className = 'sound-switch';
-    wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)';
-    wrap.innerHTML = '<button class="pill" data-sound-btn="on" aria-label="Sound on">sound on</button><button class="pill" data-sound-btn="off" aria-label="Sound off">sound off</button>';
-    (meta || site).appendChild(wrap);
+  if (site) {
+    const old = site.querySelectorAll('[data-sound-btn]');
+    old.forEach((n) => { const w = n.closest('.sound-switch'); (w || n).remove(); });
+    if (!site.querySelector('[data-sound-toggle]')) {
+      const meta = site.querySelector('.strip-meta');
+      const wrap = document.createElement('div');
+      wrap.className = 'sound-switch';
+      wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)';
+      wrap.innerHTML = '<button class="pill" data-sound-toggle aria-pressed="true">sound on</button>';
+      (meta || site).appendChild(wrap);
+    }
   }
   const ds = document.querySelector('.ds-controls');
-  if (ds && !ds.querySelector('[data-sound-btn]')) {
-    const wrap = document.createElement('span');
-    wrap.style.display = 'contents';
-    wrap.innerHTML = '<button class="pill" data-sound-btn="on" aria-label="Sound on">sound on</button><button class="pill" data-sound-btn="off" aria-label="Sound off">sound off</button>';
-    ds.appendChild(wrap);
+  if (ds) {
+    const old = ds.querySelectorAll('[data-sound-btn]');
+    old.forEach((n) => n.remove());
+    if (!ds.querySelector('[data-sound-toggle]')) {
+      ds.insertAdjacentHTML('beforeend', '<button class="pill" data-sound-toggle aria-pressed="true">sound on</button>');
+    }
   }
   syncUI();
 }
@@ -49,8 +56,8 @@ function scan(root = document) {
   root.querySelectorAll('[data-glitch-sound]').forEach((el) => attach(el));
 }
 document.addEventListener('click', (e) => {
-  const b = e.target.closest('[data-sound-btn]');
-  if (b) apply(b.dataset.soundBtn === 'on');
+  const b = e.target.closest('[data-sound-toggle]');
+  if (b) apply();
 });
 const mo = new MutationObserver((muts) => {
   ensureToggles();
