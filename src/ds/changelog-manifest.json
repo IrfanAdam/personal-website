@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T08:10:21.831Z",
+ "generated": "2026-09-12T09:42:17.615Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -15,9 +15,28 @@
   "2026-09-09_170854-design-system-update-4.md",
   "2026-09-10_153555-color-cool-synthetic.md",
   "2026-09-10_195043-smart-changelog.md",
-  "2026-09-10_201154-ds-nav-drawer.md"
+  "2026-09-10_201154-ds-nav-drawer.md",
+  "2026-09-12_150255-glitch-sound.md"
  ],
  "commits": [
+  {
+   "sha": "4cdd253",
+   "full": "4cdd25322ba908003f081b0a4798e8e2180fd2fb",
+   "date": "2026-09-12",
+   "time": "15:12",
+   "subject": "feat(fx): single-voice glitch sound engine + hard-off wiring",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "50a1d79",
+   "full": "50a1d79e6a1401b67ef34aa650846a209af33c7f",
+   "date": "2026-09-12",
+   "time": "13:41",
+   "subject": "fix(ds): ds-track merges over committed manifest so Vercel shallow clone keeps full history",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
   {
    "sha": "e6507a3",
    "full": "e6507a33a0640fba88f988cca44d68c52bbe4a6e",
@@ -676,5 +695,7 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/pages-changelog.js"
+ ]
 }

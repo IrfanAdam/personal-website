@@ -67,8 +67,8 @@ const visibleSprints = (plan) => {
 };
 const cur = () => { const list = visiblePlans(); const pi = Math.min(sel[0], Math.max(list.length - 1, 0)); const plan = list[pi]; const sprints = plan ? visibleSprints(plan) : []; return { list, pi, plan, sprints, si: Math.min(sel[1], Math.max(sprints.length - 1, 0)) }; };
 export function render() {
-  return `<p class="ds-crumb">Start · Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1>`
-    + `<p class="lede">Pick an iteration — phases slide in from the right. Source: the maturity plans, as-written. Commits cite <code>[plan:file#anchor]</code>.</p></div>`
+  return `<p class="ds-crumb">Start · Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`
+    + `<hr class="ds-hr">`
     + `<div class="ds-graph" data-col="graph"></div>`
     + `<div class="ds-chips" data-col="chips"></div>`
     + `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div>`
@@ -106,16 +106,17 @@ const graph = () => {
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
       const k = isoDay(d); const todayCls = k === isoDay(today) ? ' is-today' : '';
+      const sound = k === isoDay(today) ? ' data-glitch-sound="5000-9000"' : '';
       if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} · upcoming"></span>`;
       const n = dc[k] || 0;
-      if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} · no changes"></span>`;
-      const lv = Math.min(4, Math.ceil((4 * n) / max));
-      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}" data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
+      if (!n) return `<span class="ds-day${todayCls}"${sound} data-tip="${fmtDate(k)} · no changes"></span>`;
+      const lv = Math.min(4, Math.ceil(4 * Math.sqrt(n / max))); // sqrt: 1→1, 5–6→2, 15→3, 17+→4 (linear crushed 1–7 into lv1)
+      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}"${sound} data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} — filter list"></button>`;
     }).join('');
     return `<div class="ds-week">${cells}</div>`;
   }).join('');
   const dows = `<div class="ds-dows" aria-hidden="true">${DOWS.map((d) => `<span>${d}</span>`).join('')}</div>`;
-  return `<div class="ds-graph-labels">${labels}</div><div class="ds-graph-row" role="group" aria-label="Changes by day">${dows}${cols}</div><p class="ds-graph-cap">${commits.length} logged changes · click a day to filter${day ? ` · showing ${fmtDate(day)}` : ''}</p>`;
+  return `<div class="ds-graph-labels">${labels}</div><div class="ds-graph-row" role="group" aria-label="Changes by day">${dows}${cols}</div>`;
 };
 function paint(root) {
   const { list, pi, plan, sprints, si } = cur(); sel = [pi, si];
