@@ -35,5 +35,14 @@ const commits = log.trim().split('\n').filter(Boolean).map((l) => {
 commits.forEach((c) => { const r = retro[c.sha]; if (r) { c.plan = r.plan; c.anchor = r.anchor ?? null; } });
 const st = sh(`git status --short -- ${DS.join(' ')}`) || '';
 const wip = st.trim() ? st.trim().split('\n').map((l) => l.trim()).filter(Boolean).filter((l) => !l.endsWith('src/ds/changelog-manifest.json')) : []; // manifest always rewrites itself at generation; listing it as wip is noise
+/* Vercel builds from a shallow clone (--depth=10), so git log there only sees
+   the latest commits. Never let a truncated history overwrite the full one:
+   merge fresh commits over the last committed manifest (dedupe by sha). */
+let prev = [];
+try { prev = JSON.parse(readFileSync(out, 'utf8')).commits || []; } catch { prev = []; }
+const seen = new Set(commits.map((c) => c.sha));
+prev.forEach((c) => { if (!seen.has(c.sha)) { commits.push(c); seen.add(c.sha); } });
+const shallow = (sh(`git rev-parse --is-shallow-repository`) || '').trim() === 'true';
+if (shallow) console.log(`… ds-track: shallow clone detected, merged ${commits.length} commits (kept full history)`);
 writeFileSync(out, JSON.stringify({ generated: new Date().toISOString(), continuation: CONTINUATION, plans, commits, wip }, null, 1) + '\n');
 console.log(`✓ ds-track — ${plans.length} plans (${tagged}/${phased.length} tagged) · ${commits.length} DS commits (${commits.filter((c) => c.plan).length} linked) · ${wip.length} wip · cont ${CONTINUATION}`);
