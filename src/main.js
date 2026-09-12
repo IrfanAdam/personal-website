@@ -4,6 +4,7 @@ import { Contact, mountContact } from './views/contact.js';
 import { stripItems, viewTabs } from './views/shared.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initTheme } from './theme.js';
+import './views/init-sound.js';
 
 const root = document.getElementById('app');
 const header = document.querySelector('.top');

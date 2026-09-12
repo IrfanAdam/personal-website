@@ -57,6 +57,8 @@
   /* — FX · cell-grid, sheen, rise — graduated from gridReveal.js literals — */
   --fx-cell: 30; --fx-wait: 0.72; --fx-photo-from: 0.93; --fx-morph: 0.04; --fx-split-end: 0.92; --fx-skeleton: 120ms; --fx-sheen: 0.14; --fx-grid-pitch: 14px;
   --dur-fx-color: 240ms; --dur-fx-span: 0.6s; --dur-hero-rise: 860ms;
+  /* — FX · glitch — generic container glitch (any element) — */
+  --dur-glitch: 2.4s; --fx-glitch-x: var(--space-1); --fx-glitch-skew: -12deg; --fx-glitch-opacity: 0.5;
   /* — FX · viewer intent + spring (5.3: threshold/idle/debounce/spring as tokens) — */
   --fx-viewer-threshold: 12px; --fx-viewer-idle: 850ms; --fx-viewer-debounce: 70ms; --fx-viewer-k: 0.1; --fx-viewer-fr: 0.54;
   /* — Viewer (tamed editorial — only geometry + frosted border, no neon/grid/scan) — */

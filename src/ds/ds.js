@@ -12,7 +12,9 @@ import { render as shimmer, mount as mountShimmer } from './functions/shimmer.js
 import { render as rise, mount as mountRise } from './functions/rise.js';
 import { render as viewer, mount as mountViewer } from './functions/viewer.js';
 import { render as glimmer, mount as mountGlimmer } from './functions/glimmer-orb.js';
+import { render as glitch, mount as mountGlitch } from './functions/glitch.js';
 import { refreshLive } from './specimens.js';
+import '../views/init-sound.js';
 import { mountTabs } from './tabs.js';
 const routes = [
   { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
@@ -28,6 +30,7 @@ const routes = [
   { hash: '#/functions/rise', label: 'Rise', group: 'Functions', render: rise, mount: mountRise },
   { hash: '#/functions/viewer', label: 'Viewer', group: 'Functions', render: viewer, mount: mountViewer },
   { hash: '#/functions/glimmer-orb', label: 'Glimmer orb', group: 'Functions', render: glimmer, mount: mountGlimmer },
+  { hash: '#/functions/glitch', label: 'Glitch', group: 'Functions', render: glitch, mount: mountGlitch },
 ];
 const main = document.getElementById('ds-main');
 const nav = document.getElementById('ds-nav');

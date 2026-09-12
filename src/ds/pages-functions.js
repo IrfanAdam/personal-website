@@ -7,6 +7,7 @@ const rows=[
   ['Rise — hero placeholder','#/functions/rise','mobile rise via rise.js --dur-hero-rise --ease-signature · project + contact'],
   ['Viewer — tamed portal','#/functions/viewer','editorial hairline+paper · --fx-viewer-* + --size-viewer-* params'],
   ['Glimmer orb — square voice orb','#/functions/glimmer-orb','idle/listening/thinking · square cells · --color-accent'],
+  ['Glitch — generic container','#/functions/glitch','any container via .fx-glitch or attachGlitch(el) · --dur-glitch + --fx-glitch-*'],
 ];
 export function render(){
   return `<p class="ds-crumb">Functions · index</p><div class="ds-hero"><h1>Motion with a model.</h1><p class="lede">Cell-grid reveal, skeletal shimmer, hero rise, and the viewer portal — each its own route. Labs run on production geometry; the site stays untouched until a tuned value graduates to a token.</p></div>`
@@ -23,6 +24,7 @@ export function render(){
 +`<tr><td>sheen 0.14 / grid pitch 14px</td><td>✓ <span class="tok">--fx-sheen</span> · <span class="tok">--fx-grid-pitch</span></td></tr>`
 +`<tr><td>hero rise 860ms</td><td>✓ <span class="tok">--dur-hero-rise</span> via <span class="tok">rise.js</span></td></tr>`
 +`<tr><td>viewer threshold/idle/spring/geometry</td><td>✓ <span class="tok">--fx-viewer-*</span> · <span class="tok">--size-viewer-*</span></td></tr>`
++`<tr><td>glitch jitter 1px · skew -12deg · 2.4s</td><td>✓ <span class="tok">--dur-glitch</span> · <span class="tok">--fx-glitch-*</span> via <span class="tok">glitch.js</span></td></tr>`
 +`</table>${code("No lab value enters the site until it is a token consumed via var() — literals stay in the lab.")}</div>`
 +`<div class="ds-sec"><h2>Single source note</h2><p class="sub">GridReveal is the only shared function — see its page for the full source map (masonry card vs project hero).</p>`
 +`<a href="#/functions/grid-reveal" class="pill">Open GridReveal →</a></div>`;
