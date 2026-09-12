@@ -13,13 +13,19 @@ try {
 try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) on = false; } catch {}
 setEnabled(on);
 
+/* Speaker icon — waves (enabled) + slashed (muted); CSS swaps via .on. */
+const SND_ICON = '<svg class="ic-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6 6 0 0 1 0 9" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="square"/></svg><svg class="ic-off" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" fill="currentColor"/><path d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>';
+const SND_BTN = '<button class="pill snd-pill" data-sound-toggle aria-pressed="true" aria-label="sound on">' + SND_ICON + '</button>';
+
 function syncUI() {
   document.querySelectorAll('[data-sound-toggle]').forEach((b) => {
     const txt = on ? 'sound on' : 'sound off';
-    b.textContent = txt;
-    b.setAttribute('aria-label', txt);
-    b.setAttribute('aria-pressed', String(on));
-    b.classList.toggle('on', on);
+    // Icon-only switch: state reads via filled .on + aria. Attribute-only
+    // writes stay safe inside the childList MutationObserver below.
+    if (b.getAttribute('aria-label') !== txt) b.setAttribute('aria-label', txt);
+    const pressed = String(on);
+    if (b.getAttribute('aria-pressed') !== pressed) b.setAttribute('aria-pressed', pressed);
+    if (b.classList.contains('on') !== on) b.classList.toggle('on', on);
   });
 }
 function apply() {
@@ -38,7 +44,7 @@ function ensureToggles() {
       const wrap = document.createElement('div');
       wrap.className = 'sound-switch';
       wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)';
-      wrap.innerHTML = '<button class="pill" data-sound-toggle aria-pressed="true">sound on</button>';
+      wrap.innerHTML = SND_BTN;
       (meta || site).appendChild(wrap);
     }
   }
@@ -47,7 +53,7 @@ function ensureToggles() {
     const old = ds.querySelectorAll('[data-sound-btn]');
     old.forEach((n) => n.remove());
     if (!ds.querySelector('[data-sound-toggle]')) {
-      ds.insertAdjacentHTML('beforeend', '<button class="pill" data-sound-toggle aria-pressed="true">sound on</button>');
+      ds.insertAdjacentHTML('beforeend', SND_BTN);
     }
   }
   syncUI();

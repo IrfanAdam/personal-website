@@ -44,6 +44,12 @@
 .fx-row input[type=range] { width: 100%; accent-color: var(--color-accent); }
 .fx-row select { font-family: var(--font-mono); font-size: var(--text-micro); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--space-3) var(--space-6); }
 .fx-btns { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+/* Glitch lab — card left, sound panel right (stacks narrow). */
+.fx-split { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-16); align-items: start; }
+.fx-panel { border: var(--border-hairline); padding: var(--space-14); display: grid; gap: var(--space-8); align-content: start; }
+.fx-panel h3 { margin: 0; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); text-transform: uppercase; }
+.fx-status { margin: 0; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+@media (max-width: 640px) /* --break-sm */ { .fx-split { grid-template-columns: 1fr; } }
 .fx-shimmer { position: relative; overflow: hidden; width: 100%; height: var(--size-ds-img); background-color: var(--color-panel); background-image: var(--reveal-grid); border: var(--border-hairline); }
 .fx-shimmer i { position: absolute; inset: 0; display: block; background: var(--shimmer-gradient); -webkit-mask-image: var(--shimmer-band); mask-image: var(--shimmer-band); animation: fx-sheen var(--fx-dur, var(--dur-shimmer)) linear infinite; }
 .fx-shimmer.rev i { animation-direction: reverse; }

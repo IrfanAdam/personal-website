@@ -1,6 +1,6 @@
 /* ADAM/DS — Changelog contribution timeline. Sun–Sat week columns, blobs on logged days. Token-only: no raw px, no literal radius. */
 /* Glitch + blip now generalize via /src/styles/glitch.css (fx-glitch / fx-blip + ds- aliases). This file only maps today → fx. */
-.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-10) var(--space-4) var(--space-14); }
+.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-28); }
 .ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }
 .ds-graph-row { display: flex; gap: var(--space-4); width: max-content; }
 .ds-dows { display: flex; flex-direction: column; gap: var(--space-4); width: var(--space-26); flex: none; }
@@ -15,7 +15,7 @@ button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-of
 .ds-day.is-today { position: relative; border-color: var(--color-ink); }
 .ds-day.is-today::before { content: ""; position: absolute; inset: calc(var(--space-12) * -1); }
 .ds-day.is-today::after { content: ""; position: absolute; inset: 0; border: var(--space-1) solid var(--color-accent); animation: fx-blip 1.6s ease-out infinite; pointer-events: none; }
-button.ds-day.is-today { animation: ds-day-glitch var(--dur-glitch) steps(1) infinite; will-change: transform; }
+.ds-day.is-today { animation: ds-day-glitch var(--dur-glitch) steps(1) infinite; will-change: transform; }
 /* transform-only twin of fx-glitch: today keeps its lv1–lv4 fill, jitter only. Opacity untouched. */
 @keyframes ds-day-glitch {
   0%, 88%, 100% { transform: none; }
@@ -24,5 +24,5 @@ button.ds-day.is-today { animation: ds-day-glitch var(--dur-glitch) steps(1) inf
   93% { transform: translateX(calc(var(--fx-glitch-x) * -1)); }
   95% { transform: none; }
 }
-@media (prefers-reduced-motion: reduce) { .ds-day.is-today::after, button.ds-day.is-today { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .ds-day.is-today::after, .ds-day.is-today { animation: none; } }
 .ds-day.is-future { opacity: .6; }

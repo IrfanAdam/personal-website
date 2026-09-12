@@ -106,7 +106,7 @@ const graph = () => {
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
       const k = isoDay(d); const todayCls = k === isoDay(today) ? ' is-today' : '';
-      const sound = k === isoDay(today) ? ' data-glitch-sound="5000-9000"' : '';
+      const sound = k === isoDay(today) ? ' data-glitch-sound="5000-9000 hum"' : '';
       if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} · upcoming"></span>`;
       const n = dc[k] || 0;
       if (!n) return `<span class="ds-day${todayCls}"${sound} data-tip="${fmtDate(k)} · no changes"></span>`;
@@ -123,7 +123,15 @@ function paint(root) {
   const showAll = `<button class="ds-chip${(active.size || day) ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
   const dayChip = day ? `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">${fmtDate(day)} ✕</button>` : '';
   root.querySelector('[data-col="chips"]').innerHTML = dayChip + showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
-  root.querySelector('[data-col="graph"]').innerHTML = graph();
+  const gEl = root.querySelector('[data-col="graph"]');
+  if (!gEl.dataset.ready) { gEl.innerHTML = graph(); gEl.dataset.ready = '1'; }
+  else {
+    gEl.querySelectorAll('[data-day]').forEach((el) => {
+      const k = el.dataset.day; const on = k === day;
+      el.classList.toggle('on', on);
+      if (el.getAttribute('aria-pressed') !== String(on)) el.setAttribute('aria-pressed', String(on));
+    });
+  }
   const scrim = root.querySelector('[data-scrim]'); const drawer = root.querySelector('[data-drawer]');
   if (!plan) { const nf = [active.size ? 'these tags' : '', day ? fmtDate(day) : ''].filter(Boolean).join(' · '); root.querySelector('[data-col="plan"]').innerHTML = `<p class="ds-note">Nothing matches ${nf || 'the archive'} yet.</p>`; root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts); drawer.hidden = true; scrim.hidden = true; return; }
   const sprint = sprints[si];
