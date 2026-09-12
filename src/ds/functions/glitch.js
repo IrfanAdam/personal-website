@@ -2,6 +2,7 @@
    Demos run on ../../views/glitch.js + tokens --dur-glitch / --fx-glitch-*.
    Sound arrives via the glitch-sound plan; this lab stays silent. */
 import { attachGlitch, glitchOnce, pauseGlitch, resumeGlitch } from '../../views/glitch.js';
+import { tick as soundTick } from '../../views/glitch-sound.js';
 import { note } from '../specimens.js';
 export const title = 'Glitch';
 export function render() {
@@ -14,7 +15,7 @@ export function render() {
   + `<div class="fx-controls"><label class="fx-row">trigger <select data-ctl="trigger"><option value="auto">infinite</option><option value="hover">hover</option><option value="once">once</option></select></label>`
   + `<label class="fx-row">duration <input type="range" min="600" max="4800" step="100" value="2400" data-ctl="dur"><output data-ctl-v>2400ms</output></label>`
   + `<label class="fx-row">intensity <input type="range" min="1" max="8" step="1" value="1" data-ctl="int"><output data-ctl-i>1px</output></label>`
-  + `<div class="fx-btns"><button class="pill" data-ctl="fire">fire once</button><button class="pill" data-ctl="pause">pause / resume</button></div></div></div>`
+  + `<div class="fx-btns"><button class="pill" data-ctl="fire">fire once</button><button class="pill" data-ctl="pause">pause / resume</button><button class="pill" data-ctl="sound">test sound</button></div></div></div>`
   + `${note('Do', 'Glitch marks one thing at a time — today on the changelog, the primary CTA elsewhere. Groups stay static.')}</div>`;
 }
 export function mount(root) {
@@ -34,6 +35,8 @@ export function mount(root) {
   [trig, dur, int].forEach((c) => c && c.addEventListener('input', apply));
   const fire = root.querySelector('[data-ctl="fire"]');
   if (fire) fire.addEventListener('click', () => demos.forEach((el) => glitchOnce(el)));
+  const snd = root.querySelector('[data-ctl="sound"]');
+  if (snd) snd.addEventListener('click', () => { try { soundTick(); } catch {} });
   let paused = false;
   const pause = root.querySelector('[data-ctl="pause"]');
   if (pause) pause.addEventListener('click', () => { paused = !paused; demos.forEach((el) => (paused ? pauseGlitch(el) : resumeGlitch(el))); });

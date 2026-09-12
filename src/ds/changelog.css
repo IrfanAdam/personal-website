@@ -13,6 +13,7 @@ button.ds-day.lv1 { background: color-mix(in srgb, var(--color-accent) 30%, tran
 .ds-day.on { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
 button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
 .ds-day.is-today { position: relative; border-color: var(--color-ink); }
+.ds-day.is-today::before { content: ""; position: absolute; inset: calc(var(--space-12) * -1); }
 .ds-day.is-today::after { content: ""; position: absolute; inset: 0; border: var(--space-1) solid var(--color-accent); animation: fx-blip 1.6s ease-out infinite; pointer-events: none; }
 button.ds-day.is-today { animation: ds-day-glitch var(--dur-glitch) steps(1) infinite; will-change: transform; }
 /* transform-only twin of fx-glitch: today keeps its lv1–lv4 fill, jitter only. Opacity untouched. */
