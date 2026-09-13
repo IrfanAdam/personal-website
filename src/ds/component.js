@@ -1,75 +1,14 @@
-/* ADAM/DS — component template: Usage → Anatomy → Behaviour → tabs(Preview/Code/Tokens) → knobs.
-   One helper every primitive/component reuses. Preview-first tabs via tabs.js; knobs drive live preview+code. */
+/* ADAM/DS — ds/component · composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { tabs } from './tabs.js';
 import { copy } from './specimens.js';
+import { knobsHTML as knobControls } from './component/knobs.js';
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const reg = (window.__compReg = window.__compReg || {});
 export function component({ title, sub, anatomy, behaviour, knobs = [], render, code, tokens = [] }){
   const id = 'comp-' + Math.random().toString(36).slice(2,6);
   reg[id] = { knobs, render, code };
   const init = Object.fromEntries(knobs.map((k)=>[k.key,k.default]));
-  const knobsHTML = knobs.map((k)=>{
-    if(k.type==='select') return [
-      `<label class="fx-row">`,
-      k.label,
-      ` <select data-k="`,
-      k.key,
-      `" data-comp="`,
-      id,
-      `">`,
-      k.options.map((o)=>[
-        `<option value="`,
-        o.value,
-        `"`,
-        o.value===k.default?' selected':'',
-        `>`,
-        o.label,
-        `</option>`,
-      ].join('')).join(''),
-      `</select><output data-v="`,
-      k.key,
-      `">`,
-      k.default,
-      `</output></label>`,
-    ].join('');
-    if(k.type==='range') return [
-      `<label class="fx-row">`,
-      k.label,
-      ` <input type="range" min="`,
-      k.min,
-      `" max="`,
-      k.max,
-      `" step="`,
-      k.step,
-      `" value="`,
-      k.default,
-      `" data-k="`,
-      k.key,
-      `" data-comp="`,
-      id,
-      `"><output data-v="`,
-      k.key,
-      `">`,
-      k.default,
-      k.unit||'',
-      `</output></label>`,
-    ].join('');
-    return [
-      `<label class="fx-row">`,
-      k.label,
-      ` <input type="checkbox" `,
-      k.default?'checked':'',
-      ` data-k="`,
-      k.key,
-      `" data-comp="`,
-      id,
-      `"><output data-v="`,
-      k.key,
-      `">`,
-      k.default?'on':'off',
-      `</output></label>`,
-    ].join('');
-  }).join('');
+  const knobsHTML = knobControls(knobs, id);
   const tokHTML = tokens.length ? [
     `<div class="fx-btns" style="margin-top:var(--space-8)">`,
     tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
