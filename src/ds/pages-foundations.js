@@ -1,11 +1,13 @@
-/* ADAM/DS — Foundations: color · type · space · shape · motion · fx · tokens.
+/* ADAM/DS — Foundations composer: color · type · space · shape · motion · fx · tokens.
    Single route; definitions live on vertical tabs. Demos run on var(). */
+// Exports: render, mount — panes + mixer/sync/handlers stitching
 import { cssVar,
-  toRGB,
   contrastRatio as ratio,
   verdictRatio as verdict,
   probeTheme,
   refreshLive } from './specimens.js';
+import { makeMix } from './foundations-mix.js';
+import { makeHandlers } from './foundations-handlers.js';
 import { tabs } from './tabs.js';
 import { label as cL, html as cH } from './foundations/pane-color.js';
 import { label as tL, html as tH } from './foundations/pane-type.js';
@@ -39,35 +41,7 @@ export function mount(root) {
     easeCtrls = root.querySelector('#easeCtrls'),
     dot = stage && stage.querySelector('.fd-dot');
   const shimmer = root.querySelector('#fxShimmer'), rise = root.querySelector('#fxRise');
-  const refreshMix = () => {
-    if (!sw || !aSel || !bSel || !tIn) return;
-    const t = Number(tIn.value) / 100; if (tOut) tOut.textContent = t.toFixed(2);
-    const mc = [0,
-      1,
-      2].map((i) => toRGB(cssVar(aSel.value)
-          || '#16130e')[i] * (1 - t) + toRGB(cssVar(bSel.value)
-          || '#e8442e')[i] * t);
-    const hex = '#' + mc.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
-    sw.style.background = hex; if (val) val.textContent = [
-      aSel.value,
-      ` ↔ `,
-      bSel.value,
-      ` @ `,
-      t.toFixed(2),
-      ` → `,
-      hex,
-      ` · var mix`,
-    ].join('');
-    sw.dataset.hex = hex; sw.dataset.var = [
-      `color-mix(in srgb, var(`,
-      aSel.value,
-      `) `,
-      Math.round((1 - t) * 100),
-      `%, var(`,
-      bSel.value,
-      `))`,
-    ].join('');
-  };
+  const { refreshMix } = makeMix({ sw, aSel, bSel, tIn, tOut, val });
   const fillPairs = () => {
     const rows = [...root.querySelectorAll('tr[data-bg]')]; if (!rows.length) return;
     const toks = [...new Set(rows.flatMap((r) => [r.dataset.bg, r.dataset.fg]))];
@@ -83,81 +57,7 @@ export function mount(root) {
     }));
   };
   const onMix = () => refreshMix();
-  const onCopyVar = (e) => { const b = e.target.closest('[data-mix-copy]'); if (!b
-
-
-
-
-
-
-
-                    || !sw) return;
-                    const k = b
-                      .dataset
-                      .mixCopy === 'hex' ? sw
-                      .dataset
-                      .hex : sw
-                      .dataset
-                      .var;
-                    if (k) navigator
-                      .clipboard
-                      .writeText(k)
-                      .catch(() => {});
-                    };
-  const onType = (e) => { const s = e.target; if (!s.dataset.type
-
-
-
-
-
-
-
-                    || !typeSample) return;
-                    if (s.dataset.type === 'size') typeSample
-                      .style
-                      .fontSize = s
-                      .value;
-                    if (s.dataset.type === 'leading') typeSample
-                      .style
-                      .lineHeight = s
-                      .value;
-                    if (s.dataset.type === 'tracking') typeSample
-                      .style
-                      .letterSpacing = s
-                      .value;
-                    };
-  const onEase = (e) => {
-    if (e.target.closest('[data-ease-replay]')) { if (!stage) return;
-      stage
-        .classList
-        .remove('go');
-      void stage
-        .offsetWidth;
-      stage
-        .classList
-        .add('go');
-      return;
-    }
-    const s = e.target.closest('[data-ease]'); if (!s || !dot) return;
-    if (s.dataset.ease === 'd') dot.style.setProperty('--fd-d', s.value);
-    if (s.dataset.ease === 'e') dot.style.setProperty('--fd-e', s.value);
-  };
-  const onFx = (e) => {
-    if (e.target.closest('[data-shimmer-toggle]') && shimmer) shimmer.classList.toggle('off');
-    if (e.target.closest('[data-rise-replay]')
-
-
-
-
-
-
-
-                    && rise) { rise.classList.add('rest');
-                      void rise
-                        .offsetWidth;
-                      requestAnimationFrame(() => rise.classList.remove('rest'));
-                    }
-  };
+  const { onCopyVar, onType, onEase, onFx } = makeHandlers({ sw, typeSample, stage, dot, shimmer, rise });
   if (ctrls) { ctrls.addEventListener('input', onMix); ctrls.addEventListener('click', onCopyVar); }
   let syncing = false;
   const sync = () => { if (syncing) return;
