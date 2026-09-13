@@ -1,74 +1,12 @@
-/* ADAM/DS — playground shell. One infra every primitive plugs into.
-   Knobs → select/range/boolean drive state; preview renders REAL site class;
-   code + token list are copyable. Scoped var knobs use -- prefix. ≤100 lines */
+/* ADAM/DS — ds/playground · shell · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { copy } from './specimens.js';
+import { knobsHTML as knobControls } from './playground/knobs.js';
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const reg = (window.__pgReg = window.__pgReg || {});
 export function playground({ title, sub, knobs = [], render, code, tokens = [] }){
   const id = 'pg-' + Math.random().toString(36).slice(2,6);
   reg[id] = { knobs, render, code };
-  const knobsHTML = knobs.map((k)=>{
-    if(k.type==='select') return [
-      `<label class="fx-row">`,
-      k.label,
-      ` <select data-k="`,
-      k.key,
-      `" data-pg="`,
-      id,
-      `">`,
-      k.options.map((o)=>[
-        `<option value="`,
-        o.value,
-        `"`,
-        o.value===k.default?' selected':'',
-        `>`,
-        o.label,
-        `</option>`,
-      ].join('')).join(''),
-      `</select><output data-v="`,
-      k.key,
-      `">`,
-      k.default,
-      `</output></label>`,
-    ].join('');
-    if(k.type==='range') return [
-      `<label class="fx-row">`,
-      k.label,
-      ` <input type="range" min="`,
-      k.min,
-      `" max="`,
-      k.max,
-      `" step="`,
-      k.step,
-      `" value="`,
-      k.default,
-      `" data-k="`,
-      k.key,
-      `" data-pg="`,
-      id,
-      `"><output data-v="`,
-      k.key,
-      `">`,
-      k.default,
-      k.unit||'',
-      `</output></label>`,
-    ].join('');
-    return [
-      `<label class="fx-row">`,
-      k.label,
-      ` <input type="checkbox" `,
-      k.default?'checked':'',
-      ` data-k="`,
-      k.key,
-      `" data-pg="`,
-      id,
-      `"><output data-v="`,
-      k.key,
-      `">`,
-      k.default?'on':'off',
-      `</output></label>`,
-    ].join('');
-  }).join('');
+  const knobsHTML = knobControls(knobs, id);
   const tokHTML = tokens.length ? [
     `<div class="fx-btns" style="margin-top:var(--space-8)">`,
     tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
