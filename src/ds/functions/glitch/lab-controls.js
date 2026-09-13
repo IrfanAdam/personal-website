@@ -32,6 +32,11 @@ export function mountLabControls(root, snd) {
   const onTabs = (e) => {
     const b = e.target.closest('[data-tab]');
     if (!b || !tabBar) return;
+    tabBar.querySelectorAll('[data-tab]').forEach((x) => {
+      const on = x === b;
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
     root.querySelectorAll('[data-tab-panel]').forEach((pn) => {
       pn.hidden = pn.dataset.tabPanel !== b.dataset.tab;
     });

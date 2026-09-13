@@ -22,8 +22,8 @@ export function render() {
   ].join('')
   + [
     `<div class="ds-tablist ds-tablist--line" role="tablist" data-glitch-tabs>`,
-    `<button class="ds-tab on" role="tab" data-tab="lab">Lab</button>`,
-    `<button class="ds-tab" role="tab" data-tab="code">Code</button></div>`,
+    `<button class="ds-tab on" role="tab" aria-selected="true" data-tab="lab">Lab</button>`,
+    `<button class="ds-tab" role="tab" aria-selected="false" data-tab="code">Code</button></div>`,
   ].join('')
   + `<div data-tab-panel="lab"><div class="ds-sec">`
   + [
@@ -51,9 +51,10 @@ export function render() {
     `<div class="fx-btns"><button class="pill" data-ctl="fire">fire once</button>`,
     `<button class="pill" data-ctl="pause">pause / resume</button></div></div></div>`,
   ].join('')
+  + `</div>`
   + `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Code</h2>`
   + `${code(`import { attachGlitch } from '../views/glitch.js';\nattachGlitch(el, { trigger: 'hover' });`)}`
-  + `</div></div></div>`
+  + `</div></div>`
   + `${note('Do', 'Glitch marks one thing at a time.')}`;
 }
 
