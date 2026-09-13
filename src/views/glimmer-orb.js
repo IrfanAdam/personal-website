@@ -1,7 +1,8 @@
-/* ADAM/FX — views/glimmer-orb · glimmer orb effect · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/FX — views/glimmer-orb · glimmer orb effect · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 /* Glimmer orb — vanilla port of MatrixOrb. Square cells (fillRect, radius-none
    doctrine), states idle/listening/thinking, mic-level envelope, spring scale.
    Color defaults to --color-accent (no literals). Single source for DS lab. */
+import { parseColor, tokenColor } from './glimmer-color.js';
 const STATES = ['idle', 'listening', 'thinking'];
 const SCALE = { idle: 0.88, listening: 1, thinking: 0.92 };
 const ORBITERS = [
@@ -9,23 +10,6 @@ const ORBITERS = [
   { radius: 0.4, speed: -1.7, phase: 2.1, spread: 0.36 },
   { radius: 0.8, speed: 1.15, phase: 4, spread: 0.34 },
 ];
-const parseColor = (s) => {
-  s = String(s || '').trim();
-  let m = s.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
-  if (m) { let h = m[1]; if (h.length === 3) h = [...h].map((c) => c + c).join(''); const n = parseInt(h,
-      16); return [n >> 16 & 255,
-      n >> 8 & 255,
-      n & 255]; }
-  m = s.match(/rgba?\(([^)]+)\)/);
-  if (m) { const p = m[1].split(',').map(Number); return [p[0] || 0, p[1] || 0, p[2] || 0]; }
-  return [232, 68, 46];
-};
-const tokenColor = () => {
-  try { const v = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
-    if (v) return parseColor(v);
-  } catch (_) {}
-  return [232, 68, 46];
-};
 const envelope = (t) => {
   const slow = 0.5 + 0.5 * Math.sin(t * 0.62 + 0.4);
   const fast = 0.5 + 0.5 * Math.sin(t * 1.9 + 1.1);
