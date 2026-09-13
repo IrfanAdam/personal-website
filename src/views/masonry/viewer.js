@@ -1,8 +1,9 @@
-/* ADAM/PAGE — views/masonry/viewer · viewer · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/PAGE — views/masonry/viewer · viewer · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 // Exports: attachViewer — open/close orchestration, delegates markup + events
 import { fxNum, fxMs } from '../fx-tokens.js';
 import { createViewerDom, makePaint, springStep } from './viewer-markup.js';
 import { bindViewer } from './viewer-bind.js';
+import { makeVisibility } from './viewer-visibility.js';
 export { clamp01,
   smoothstep,
   targetY,
@@ -47,41 +48,8 @@ export function attachViewer(grid) {
     if (state.pendingRaf) return;
     state.pendingRaf = requestAnimationFrame(() => { state.pendingRaf = 0; paint(); kick(); });
   };
-  const clearIdle = () => { if (state.idleTimer) { clearTimeout(state.idleTimer); state.idleTimer = 0; } };
-  const armIdle = () => { clearIdle(); if (state.portalOn) state.idleTimer = setTimeout(() => hidePortal(),
-      cfg.IDLE); };
-  const showCursor = () => {
-    if (state.hideTimer) { clearTimeout(state.hideTimer); state.hideTimer = 0; }
-    if (state.cursorOn) return;
-    state.cursorOn = true;
-    els.cursorEl.classList.add('on');
-    document.documentElement.classList.add('viewer-cursor-active');
-    grid.style.cursor = 'none';
-  };
-  const showPortal = () => {
-    if (state.portalOn || !state.card) return;
-    state.portalOn = true;
-    els.viewerEl.classList.add('on'); els.svg.classList.add('on'); armIdle();
-  };
-  const hidePortal = () => {
-    if (!state.portalOn) return;
-    state.portalOn = false; clearIdle();
-    els.viewerEl.classList.remove('on'); els.svg.classList.remove('on');
-    state.enterX = state.cx; state.enterY = state.cy;
-  };
-  const hideAll = () => {
-    if (state.hideTimer) { clearTimeout(state.hideTimer); state.hideTimer = 0; }
-    clearIdle(); state.portalOn = false; state.cursorOn = false;
-    state.card = null; state.rect = null;
-    els.cursorEl.classList.remove('on');
-    els.viewerEl.classList.remove('on'); els.svg.classList.remove('on');
-    document.documentElement.classList.remove('viewer-cursor-active');
-    grid.style.cursor = '';
-    if (state.raf) { cancelAnimationFrame(state.raf); state.raf = 0; }
-    if (state.pendingRaf) { cancelAnimationFrame(state.pendingRaf); state.pendingRaf = 0; }
-  };
-  const scheduleHide = () => { if (state.hideTimer) return; state.hideTimer = setTimeout(hideAll, cfg.HIDE); };
-  const cancelHide = () => { if (state.hideTimer) { clearTimeout(state.hideTimer); state.hideTimer = 0; } };
+  const { clearIdle, armIdle, showCursor, showPortal, hidePortal, hideAll, scheduleHide, cancelHide } =
+    makeVisibility(state, els, cfg, grid);
   const checkThreshold = () => {
     if (state.portalOn || !state.card) return;
     if (Math.hypot(state.cx - state.enterX, state.cy - state.enterY) > cfg.TH) showPortal();
