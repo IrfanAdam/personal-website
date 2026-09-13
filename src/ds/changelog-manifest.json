@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T18:48:49.736Z",
+ "generated": "2026-09-13T18:50:46.189Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -22,6 +22,15 @@
   "2026-09-14_001100-graph-join-leak.md"
  ],
  "commits": [
+  {
+   "sha": "ccb8018",
+   "full": "ccb8018f4c767156313e48ae6e9481a7e9383d99",
+   "date": "2026-09-14",
+   "time": "00:18",
+   "subject": "chore(ds): track refresh after card-hide fix",
+   "plan": "2026-09-14_001100-graph-join-leak.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "cc83cea",
    "full": "cc83cea82bbc0e4a475f50e99111575cb471b354",
