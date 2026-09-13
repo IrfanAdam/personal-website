@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T15:15:01.326Z",
+ "generated": "2026-09-13T17:45:14.943Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,69 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "d46ebc7",
+   "full": "d46ebc7fede258746fa174195d36d6cfae12bb17",
+   "date": "2026-09-13",
+   "time": "23:15",
+   "subject": "refactor(primitives): split pages-primitives 568 into 11 sheet modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "c946b2b",
+   "full": "c946b2bd56d4b7bbc7ab6c89203e357023921bb0",
+   "date": "2026-09-13",
+   "time": "21:54",
+   "subject": "refactor(library): split landing sections into library/ sheet modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "36e4119",
+   "full": "36e4119ad861b3bfc19eaca9431d79da500509aa",
+   "date": "2026-09-13",
+   "time": "21:51",
+   "subject": "refactor(overview): split sections into overview/ modules, style array in two",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "0dac2de",
+   "full": "0dac2debec393d1ad2a9bf4f78c582a82c3e4a98",
+   "date": "2026-09-13",
+   "time": "21:45",
+   "subject": "style(readability): templates to joins, strings split, nested ternaries to maps/guards",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "8157b71",
+   "full": "8157b71cbd0c3945972c4ff51a1190887c82aa34",
+   "date": "2026-09-13",
+   "time": "21:11",
+   "subject": "style(readability): unpack JS one-liners via chain/comma/op splits",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "bf6ee97",
+   "full": "bf6ee9724895a68016c5e81b92951c4db673789e",
+   "date": "2026-09-13",
+   "time": "20:58",
+   "subject": "style(readability): expand CSS one-decl-per-line + split 9 sheets into 31",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "a829408",
+   "full": "a829408f14c90a591014e909848cffd703ab7737",
+   "date": "2026-09-13",
+   "time": "20:45",
+   "subject": "style(readability): rewrap 19 over-length ADAM headers",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "eeba6e1",
    "full": "eeba6e1388af80168f65e682b1f39a87b77a2b76",
