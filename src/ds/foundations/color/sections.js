@@ -1,4 +1,5 @@
-/* ADAM/DS — ds/foundations/color/sections · pair + decor table markup · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/foundations/color/sections · pair + decor table markup:
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { DECOR } from './data.js';
 export function pairs(rows){return [
   `<div style="overflow-x:auto"><table class="ds-table cl-table"><tr><th>Use</th><th>Pair</th><th>Light</th>`,
