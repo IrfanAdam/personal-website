@@ -1,4 +1,4 @@
-/* ADAM/FX — gridReveal · attach lifecycle · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/FX — gridReveal · attach lifecycle · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 // Exports: attachGridReveal — painter lives in gridReveal-draw.js
 // Paced port of rareui GridReveal — frame one is already half-subdivided,
 // subdivision with eased split morphs (random split order), gutters
@@ -8,31 +8,7 @@ import { draw } from './gridReveal-draw.js';
 import { makeTicker } from './gridReveal-tick.js';
 import { makeDecode, gateLoad } from './gridReveal-load.js';
 import { smoothstep } from './cells.js';
-import { fxNum, fxMs } from '../fx-tokens.js';
-/* Graduated motion tokens — getComputedStyle with shipped-literal fallback,
-   so first paint is pixel-identical with or without the token. Read once per
-   attach (never per-frame): getComputedStyle per cell costs. */
-const fx = () => ({
-  target: fxNum('--fx-cell', 30),
-  waitCap: fxNum('--fx-wait', 0.72),
-  photoFrom: fxNum('--fx-photo-from', 0.93),
-  colorMs: fxMs('--dur-fx-color', 240),
-  spanS: fxMs('--dur-fx-span', 600) / 1000,
-  morph: fxNum('--fx-morph', 0.04),
-  splitEnd: fxNum('--fx-split-end', 0.92),
-  sheen: fxNum('--fx-sheen', 0.14),
-});
-const darkNow = () => { const t = document.documentElement.dataset.theme;
-  return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)')
-    .matches;
-};
-// URLs decoded at least once this session — revisits skip the reveal
-// (grid rebuilds its <img> nodes per visit, so complete-at-attach misses).
-const cellCount = (box, target) => {
-  const r = box.getBoundingClientRect();
-  if (!r.width || !r.height) return 120;
-  return Math.min(180, Math.max(48, Math.round((r.width * r.height) / (target * target))));
-};
+import { fx, darkNow, cellCount } from './gridReveal-config.js';
 export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) {
   const canvas = box.querySelector('canvas.gr'), ctx = canvas ? canvas.getContext('2d') : null;
   if (!canvas || !ctx) return () => {};
