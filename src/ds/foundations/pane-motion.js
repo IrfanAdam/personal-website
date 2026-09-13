@@ -1,101 +1,18 @@
-/* ADAM/DS foundations · Motion + Depth pane — prescription, not menu.
-   Bars true-scale to the longest step; every --dur-* has a sanctioned use. */
+/* ADAM/DS — ds/foundations/pane-motion · composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { tokenTrace, note, code } from '../specimens.js';
-/* Widths proportional to ms over the longest step (shimmer 2200ms) — Task 21. */
-const DURS = [['Fast', '--dur-fast', '6.8%'],
-  ['Base', '--dur-base', '9.1%'],
-  ['Med', '--dur-med', '10%'],
-  ['Soft', '--dur-soft', '11.4%'],
-  ['Slow', '--dur-slow', '12.7%'],
-  ['Reveal', '--dur-reveal', '13.6%'],
-  ['Glide', '--dur-glide', '17.3%'],
-  ['Blur', '--dur-blur', '20.5%'],
-  ['Zoom', '--dur-zoom', '29.5%'],
-  ['Hero rise', '--dur-hero-rise', '39.1%'],
-  ['Shimmer', '--dur-shimmer', '100%']];
-const USES = [['Fast', '--dur-fast', '150ms · micro feedback — chip flip, toggle tick'],
-  ['Base', '--dur-base', '200ms · control response — press, tab switch'],
-  ['Med', '--dur-med', '220ms · small reveal — tooltip, menu'],
-  ['Soft', '--dur-soft', '250ms · panel settle — popover nudge'],
-  ['Slow', '--dur-slow', '280ms · card hover settle'],
-  ['Reveal', '--dur-reveal', '300ms · content reveal — cell tint, viewer open'],
-  ['Glide', '--dur-glide', '380ms · signature travel — frame, rise, dot'],
-  ['Blur', '--dur-blur', '450ms · frost settle — header blur-in'],
-  ['Zoom', '--dur-zoom', '650ms · image zoom settle'],
-  ['Hero rise', '--dur-hero-rise', '860ms · hero entrance'],
-  ['Shimmer', '--dur-shimmer', '2.2s · ambient skeleton sweep — freezable, stills under reduced motion'],
-  ['FX color', '--dur-fx-color', '240ms · cell tint sweep — demo in FX'],
-  ['FX span', '--dur-fx-span', '0.6s · cell sweep span — demo in FX'],
-  ['Viewer in', '--dur-viewer-in', '300ms · viewer open — demo in FX viewer'],
-  ['Viewer line', '--dur-viewer-line', '780ms · viewer tether draw — demo in FX viewer']];
-const BLURS = [['Header frost', '--blur-header', 'sticky header over scroll'],
-  ['Card scrim', '--blur-scrim', 'card scrim over photos'],
-  ['Placeholder', '--blur-placeholder', 'image placeholder wash']];
+import { bars, table, stage, blurs } from './motion/sections.js';
 export const label = 'Motion · Depth';
 export function html() {
-  const bars = [
-    `<div class="fd-durs">`,
-    DURS.map(([n, t, w]) => [
-      `<div class="fd-dur" data-copy="`,
-      t,
-      `" title="Click to copy `,
-      t,
-      `" style="cursor:pointer"><b>`,
-      n,
-      `</b><div class="fd-track"><div class="fd-fill" style="width:`,
-      w,
-      `"></div></div><output data-live="`,
-      t,
-      `">`,
-      t,
-      `</output></div>`,
-    ].join('')).join(''),
-    `</div>`,
-  ].join('');
-  const table = [
-    `<table class="ds-table"><tr><th>Step</th><th>Token</th><th>Sanctioned use</th></tr>`,
-    USES.map(([n, t, u]) => `<tr><td>${n}</td><td><span class="tok">${t}</span></td><td>${u}</td></tr>`).join(''),
-    `</table>`,
-  ].join('');
-  const stage = [
-    `<div class="fd-stage" id="easeStage"><div class="fd-dot"></div></div><div class="fx-controls" id="easeCtrls">`,
-    `<label class="fx-row">dur <select data-ease="d"><option value="var(--dur-fast)">fast</option>`,
-    `<option value="var(--dur-glide)" selected>glide 380ms</option>`,
-    `<option value="var(--dur-zoom)">zoom 650ms</option><option value="var(--dur-hero-rise)">hero rise</option>`,
-    `</select></label><label class="fx-row">ease <select data-ease="e">`,
-    `<option value="var(--ease-signature)" selected>signature</option>`,
-    `<option value="var(--ease-standard)">standard</option></select></label><div class="fd-rowbtns">`,
-    `<button class="tok" data-ease-replay>replay glide</button></div></div>`,
-  ].join('');
-  const blurs = [
-    `<div class="fd-blurrow">`,
-    BLURS.map(([n, t, u]) => [
-      `<div data-copy="`,
-      t,
-      `" title="Click to copy `,
-      t,
-      `" style="cursor:pointer"><div class="fd-blur"><i>`,
-      n,
-      ` · <span data-live="`,
-      t,
-      `">`,
-      t,
-      `</span></i></div><div class="vl">`,
-      u,
-      `</div></div>`,
-    ].join('')).join(''),
-    `</div>`,
-  ].join('');
   return [
     `<div class="ds-sec"><h2>Motion &amp; depth</h2>`,
     `<p class="sub">Durations are prescriptions — each step owns its uses. Bars are true-scale to the longest step; `,
     `values read live.</p>`,
   ].join('')
-  + `<h3>Durations — true-scale</h3>` + bars
+  + `<h3>Durations — true-scale</h3>` + bars()
   + [
     `<h3>Duration → use</h3>`,
     `<p class="sub">Reach for the use, not the number. FX and viewer steps demo in the FX tab.</p>`,
-  ].join('') + table
+  ].join('') + table()
   + [
     `<h3>Easing — signature curve</h3>`,
     `<p class="sub">One curve with a fast-out, soft-land feel runs all signature travel: header frame, image zoom, `,
@@ -103,7 +20,7 @@ export function html() {
   ].join('')
   + tokenTrace({ plain: true,
       rows: [['Signature', '--ease-signature', 'fast-out soft-land · frame + zoom + reveal'],
-        ['Standard', '--ease-standard', 'ease · ambient loops only']] }) + stage
+        ['Standard', '--ease-standard', 'ease · ambient loops only']] }) + stage()
   + [
     `<h3>Press · hover — live</h3>`,
     `<p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to `,
@@ -119,7 +36,7 @@ export function html() {
     `<h3>Depth — line + frost, never shadow</h3>`,
     `<p class="sub">Elevation is a 1px line plus frosted blur. Shadows exist only on-media and in the viewer — `,
     `never as UI depth. Frost recipe per step: blur below + saturate alongside.</p>`,
-  ].join('') + blurs
+  ].join('') + blurs()
   + tokenTrace({ plain: true,
       rows: [['Saturation header', '--sat-header', '1.6 · frosted header recipe'],
         ['Saturation scrim', '--sat-scrim', '1.35 · card scrim recipe']] })
