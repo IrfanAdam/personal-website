@@ -425,7 +425,9 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Result:** `npm test` ✓ (token lint + 262-module build) · `node scripts/smoke.mjs` ✓ on 5199 · 17 routes swept on a fresh document each (15 `/ds/#/…` + `/` + `/#/projects/helix`): **0 console errors** · control probes green: glitch Code tab (sibling panel, `aria-selected` swap), scramble typing + replay, grid-reveal canvas drawing, changelog drawer open → rail switch → Escape, masonry filter 14→8→14 with count, sound toggle `on/off`, viewer hover-open → leave-fade. Safari `:5173` manual pass stays with the human.
 
-*Shipped in dd35e44, bfa5a0b · Tasks 15–17 · phase-4.*
+Also caught by the archive check and fixed in this close-out: `changelog-parse.chunks()` split naively on `^## `, so the fenced AGENTS sample in this plan's Task 18 cut phase 5 down to one task (rail `0/1`, card `17/18`). Now fence-aware — phase 5 reads `0/3`, card `17/20`, and all 20 plans parse identically except that one phase.
+
+*Shipped in dd35e44, bfa5a0b, 8a97551 · Tasks 15–17 · phase-4.*
 
 ---
 

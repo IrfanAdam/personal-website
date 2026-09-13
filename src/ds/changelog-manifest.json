@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T19:34:01.839Z",
+ "generated": "2026-09-13T19:37:30.851Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,24 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "8a97551",
+   "full": "8a9755155c80647fd88794f6cefef34abf726842",
+   "date": "2026-09-14",
+   "time": "01:07",
+   "subject": "fix(ds): changelog chunks() is fence-aware — a fenced ## heading no longer splits a phase",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "0a489f3",
+   "full": "0a489f315c9d67e81a9ccab371b5061239611114",
+   "date": "2026-09-14",
+   "time": "01:04",
+   "subject": "chore(ds): track refresh + close phase 4 of the refactor",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
   {
    "sha": "bfa5a0b",
    "full": "bfa5a0b7d9a114bcc324337c596b142e84e6b74b",
