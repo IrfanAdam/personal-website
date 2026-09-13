@@ -27,7 +27,9 @@ export function mountPlayground(root){
     const state=Object.fromEntries(cfg.knobs.map((k)=>[k.key,k.default]));
     const refresh=()=>{
       preview.innerHTML=cfg.render(state);
-      Object.entries(state).forEach(([k,v])=>{ if(k.startsWith('--')&&preview.firstElementChild) preview.firstElementChild.style.setProperty(k,String(v)); });
+      Object.entries(state).forEach(([k,
+            v])=>{ if(k.startsWith('--')&&preview.firstElementChild) preview.firstElementChild.style.setProperty(k,
+            String(v)); });
       if(codeEl) codeEl.textContent=cfg.code(state);
       Object.entries(outs).forEach(([k,el])=>{
         const kn=cfg.knobs.find((x)=>x.key===k); const v=state[k];
@@ -45,7 +47,10 @@ export function mountPlayground(root){
     const onCopy=()=> copy(cfg.code(state), btn);
     ctrls.addEventListener('input', onInput); ctrls.addEventListener('change', onInput);
     if(btn) btn.addEventListener('click', onCopy);
-    offs.push(()=>{ ctrls.removeEventListener('input', onInput); ctrls.removeEventListener('change', onInput); if(btn) btn.removeEventListener('click', onCopy); });
+    offs.push(()=>{ ctrls.removeEventListener('input',
+          onInput); ctrls.removeEventListener('change',
+          onInput); if(btn) btn.removeEventListener('click',
+          onCopy); });
   });
   return ()=> offs.forEach((fn)=>fn());
 }

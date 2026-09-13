@@ -1,8 +1,18 @@
 /* ADAM/DS — Patterns · accessibility · migration. Contrast matrix is live in
    BOTH themes (probed, not claimed); motion + focus matrices cite source. */
 import { cardHTML, note, code, cssVar, probeTheme, contrastRatio, verdictRatio } from './specimens.js';
-const PAIRS=[['Ink on paper','--color-ink','--color-bg','headlines · body · frame'],['Muted on paper','--color-ink-muted','--color-bg','meta only · never body'],['On-media on chip','--color-on-media','--color-chip','over imagery + shadow'],['Accent on paper','--color-accent','--color-bg','large text / graphics only']];
-const MOTION=[['Cell-grid reveal','paints the final frame once — no RAF loop','<span class="tok">gridReveal.js</span> decode(): split=1 · eased=1 · fade=1 + finish()'],['Skeletal shimmer','keyframes off, placeholder at full opacity','<span class="tok">case.css</span> + <span class="tok">specimens.css</span> reduce blocks'],['Hero rise','no height morph — <span class="tok">.ready</span> straight to reveal','<span class="tok">rise.js</span>: box.ready + return'],['Viewer portal','never attaches — zero cursor/preview listeners','<span class="tok">viewer.js</span> early return · <span class="tok">viewer.css</span> kills transitions'],['Parallax + header hide','chase loop + hide-on-scroll never start','<span class="tok">parallax.js</span> · <span class="tok">main.js</span> reduce guards'],['Glide + transitions','tab frame, strip, cards, fields snap instantly','<span class="tok">pages.css</span> · <span class="tok">card.css</span> · <span class="tok">form.css</span> · <span class="tok">base.css</span> reduce blocks']];
+const PAIRS=[['Ink on paper','--color-ink','--color-bg','headlines · body · frame'],
+  ['Muted on paper','--color-ink-muted','--color-bg','meta only · never body'],
+  ['On-media on chip','--color-on-media','--color-chip','over imagery + shadow'],
+  ['Accent on paper','--color-accent','--color-bg','large text / graphics only']];
+const MOTION=[['Cell-grid reveal','paints the final frame once — no RAF loop','<span class="tok">gridReveal.js</span> decode(): split=1 · eased=1 · fade=1 + finish()'],
+  ['Skeletal shimmer','keyframes off, placeholder at full opacity','<span class="tok">case.css</span> + <span class="tok">specimens.css</span> reduce blocks'],
+  ['Hero rise','no height morph — <span class="tok">.ready</span> straight to reveal','<span class="tok">rise.js</span>: box.ready + return'],
+  ['Viewer portal','never attaches — zero cursor/preview listeners','<span class="tok">viewer.js</span> early return · <span class="tok">viewer.css</span> kills transitions'],
+  ['Parallax + header hide','chase loop + hide-on-scroll never start','<span class="tok">parallax.js</span> · <span class="tok">main.js</span> reduce guards'],
+  ['Glide + transitions',
+    'tab frame, strip, cards, fields snap instantly',
+    '<span class="tok">pages.css</span> · <span class="tok">card.css</span> · <span class="tok">form.css</span> · <span class="tok">base.css</span> reduce blocks']];
 function a11yRows() {
   return PAIRS.map(([label, a, b, use]) => {
     const L = probeTheme('light', () => contrastRatio(cssVar(a) || a, cssVar(b) || b));
@@ -39,12 +49,21 @@ export function mount(root) {
   const body = root.querySelector('#a11yBody');
   const obs = new MutationObserver(() => refresh());
   /* Probing flips [data-theme] — disconnect first or the observer re-fires forever. */
-  const refresh = () => { obs.disconnect(); if (body) body.innerHTML = a11yRows(); obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); };
+  const refresh = () => { obs.disconnect(); if (body) body.innerHTML = a11yRows(); obs.observe(document.documentElement,
+      { attributes: true, attributeFilter: ['data-theme'] }); };
   const mm = matchMedia('(prefers-color-scheme: dark)');
   const onSys = () => refresh();
-  const onDemo = (e) => { const b = e.target.closest('[data-focus-demo]'); if (!b) return; const t = root.querySelector(b.dataset.focusDemo); if (t) t.focus({ preventScroll: true }); };
+  const onDemo = (e) => { const b = e.target.closest('[data-focus-demo]');
+    if (!b) return;
+    const t = root
+      .querySelector(b.dataset.focusDemo);
+    if (t) t
+      .focus({ preventScroll: true });
+  };
   refresh();
   if (mm.addEventListener) mm.addEventListener('change', onSys);
   root.addEventListener('click', onDemo);
-  return () => { obs.disconnect(); if (mm.removeEventListener) mm.removeEventListener('change', onSys); root.removeEventListener('click', onDemo); };
+  return () => { obs.disconnect(); if (mm.removeEventListener) mm.removeEventListener('change',
+      onSys); root.removeEventListener('click',
+      onDemo); };
 }

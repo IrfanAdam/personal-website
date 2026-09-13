@@ -1,8 +1,29 @@
 /* ADAM/DS foundations · Color — ① materials (popover ramps) → ② pairs (AA inline) → ③ mixer
    No proof tables: each pair proves AA inline, both themes. */
 import { ramp, note } from '../specimens.js';
-const MIX = ['--color-ink','--color-bg','--color-accent','--color-surface','--color-surface-sunken','--color-overlay','--color-success','--color-error','--color-warning','--color-info'];
-const STONE = ['--stone-0','--stone-25','--stone-50','--stone-100','--stone-200','--stone-300','--stone-400','--stone-500','--stone-600','--stone-700','--stone-800','--stone-900','--stone-950'];
+const MIX = ['--color-ink',
+  '--color-bg',
+  '--color-accent',
+  '--color-surface',
+  '--color-surface-sunken',
+  '--color-overlay',
+  '--color-success',
+  '--color-error',
+  '--color-warning',
+  '--color-info'];
+const STONE = ['--stone-0',
+  '--stone-25',
+  '--stone-50',
+  '--stone-100',
+  '--stone-200',
+  '--stone-300',
+  '--stone-400',
+  '--stone-500',
+  '--stone-600',
+  '--stone-700',
+  '--stone-800',
+  '--stone-900',
+  '--stone-950'];
 const PHOS = ['--accent-100','--accent-300','--accent-500','--accent-600','--accent-700','--accent-900'];
 const RESIN = ['--accent2-100','--accent2-300','--accent2-500','--accent2-600','--accent2-700','--accent2-900'];
 const GLASS = ['--accent3-100','--accent3-300','--accent3-500','--accent3-600','--accent3-700','--accent3-900'];
@@ -10,7 +31,10 @@ const MATS = [
 ['Frost Alloy','neutral 0–950 · --stone-*',STONE,'Matte hull plating under frost — every can (bg, surface, ink, line). Never consume a raw step.'],
 ['Signal Phosphor','vermilion · --accent-*',PHOS,'One red phosphor that blooms once — CTA, badge, error. Production step --accent-500.'],
 ['Caution Resin','amber · --accent2-*',RESIN,'Warm caution cell — warning text/fill (700 light / 300 dark); --accent2-500 decorative only.'],
-['Circuit Glass','teal · --accent3-*',GLASS,'Frosted circuit glass — success deepest (700/300) + info mid (600/100), split by icon.']
+['Circuit Glass',
+  'teal · --accent3-*',
+  GLASS,
+  'Frosted circuit glass — success deepest (700/300) + info mid (600/100), split by icon.']
 ];
 const CANVAS = [
 ['Background','--color-bg','--color-ink','page + cards'],
@@ -51,7 +75,8 @@ export function html() {
   return `<div class="ds-sec"><h2>Color</h2><p class="sub">Four synthetic materials, named for what they are — never stone/accent ordinals. Hover any ramp step for its material name + live value (click to copy). Every pair proves its ratio inline, light + dark — a11y is embedded, no proof tables.</p>`
   + `<h3>① Materials — ref-only</h3><p class="sub">Consume the semantic name, never the step.</p>`
   + MATS.map(([m,r,t,s]) => `<h3>${m} · ${r}</h3><p class="sub">${s}</p>${ramp(t,m)}`).join('')
-  + note('Do','Three accents stop here: Phosphor · Resin · Glass. New hues arrive as component tokens, never a fourth ramp.')
+  + note('Do',
+    'Three accents stop here: Phosphor · Resin · Glass. New hues arrive as component tokens, never a fourth ramp.')
   + `<h3>② Pairs — light on dark · dark on light, AA inline</h3><p class="sub">Each line demos real text (<b>Aa</b>) on its real background, probed live in both themes with ratio + verdict beside it.</p><h3>Canvas · ink on paper</h3>`
   + pairs(CANVAS)
   + `<h3>Action + feedback · fill + ink</h3><p class="sub">Fill = light on dark (on-color on role) · Ink = dark on light (role on paper) — both directions, both themes.</p>`

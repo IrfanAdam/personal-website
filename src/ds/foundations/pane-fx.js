@@ -5,7 +5,22 @@ export const label = 'FX';
 export function html() {
   return `<div class="ds-sec"><h2>FX · graduated</h2><p class="sub">Three layers: <b>lab-local</b> knobs (cell count, gutter, order — experiments, never tokens) → <b>graduated</b> <span class="tok">--fx-*</span> tokens (knobs proven on the site) → <b>site</b> consumption (gridReveal reads the same vars). Tweak a token, every demo below follows.</p>`
   + `<h3>Graduated tokens — what each runs</h3><p class="sub">Numbers, not colors — click any card to copy the live value.</p>`
-  + tokenTrace({ plain: true, rows: [['Cell count', '--fx-cell', '30 · reveal grid count'], ['Stagger wait', '--fx-wait', '0.72 · pause between cell waves'], ['Photo from', '--fx-photo-from', '0.93 · photo settle start'], ['Morph', '--fx-morph', '0.04 · split ease'], ['Split end', '--fx-split-end', '0.92 · split end point'], ['Skeleton beat', '--fx-skeleton', '120ms · placeholder pulse'], ['Sheen band', '--fx-sheen', '0.14 · shimmer band width'], ['Grid pitch', '--fx-grid-pitch', '14px · reveal grid lines'], ['FX color', '--dur-fx-color', '240ms · cell tint sweep'], ['FX span', '--dur-fx-span', '0.6s · cell sweep span'], ['Hero rise', '--dur-hero-rise', '860ms · hero entrance'], ['Glitch dur', '--dur-glitch', '2.4s · generic glitch loop'], ['Glitch X', '--fx-glitch-x', 'var(--space-1) · jitter'], ['Glitch skew', '--fx-glitch-skew', '-12deg · shear'], ['Glitch α', '--fx-glitch-opacity', '0.5 · flicker']] })
+  + tokenTrace({ plain: true,
+      rows: [['Cell count', '--fx-cell', '30 · reveal grid count'],
+        ['Stagger wait', '--fx-wait', '0.72 · pause between cell waves'],
+        ['Photo from', '--fx-photo-from', '0.93 · photo settle start'],
+        ['Morph', '--fx-morph', '0.04 · split ease'],
+        ['Split end', '--fx-split-end', '0.92 · split end point'],
+        ['Skeleton beat', '--fx-skeleton', '120ms · placeholder pulse'],
+        ['Sheen band', '--fx-sheen', '0.14 · shimmer band width'],
+        ['Grid pitch', '--fx-grid-pitch', '14px · reveal grid lines'],
+        ['FX color', '--dur-fx-color', '240ms · cell tint sweep'],
+        ['FX span', '--dur-fx-span', '0.6s · cell sweep span'],
+        ['Hero rise', '--dur-hero-rise', '860ms · hero entrance'],
+        ['Glitch dur', '--dur-glitch', '2.4s · generic glitch loop'],
+        ['Glitch X', '--fx-glitch-x', 'var(--space-1) · jitter'],
+        ['Glitch skew', '--fx-glitch-skew', '-12deg · shear'],
+        ['Glitch α', '--fx-glitch-opacity', '0.5 · flicker']] })
   + `<h3>Grid pitch — live</h3><p class="sub">The reveal grid at <span class="tok" data-live="--fx-grid-pitch">--fx-grid-pitch</span>, painted by <span class="tok">--reveal-grid</span>. Full lab lives at <a href="#/functions/grid-reveal">GridReveal</a>.</p><div class="fd-grid-demo"></div>`
   + `<h3>Shimmer — live</h3><p class="sub">Skeleton sweep on <span class="tok">var(--dur-shimmer)</span> · band <span class="tok">var(--shimmer-band)</span> over <span class="tok">var(--shimmer-gradient)</span> · width <span class="tok">var(--fx-sheen)</span>. Toggle to freeze the band mid-flight.</p><div class="fx-shimmer" id="fxShimmer"><i></i></div><div class="fd-rowbtns"><button class="tok" data-shimmer-toggle>freeze / resume</button></div>`
   + `<h3>Rise — live</h3><p class="sub">Placeholder block settles on <span class="tok">var(--dur-glide)</span> with <span class="tok">var(--ease-signature)</span>. Replay the settle.</p><div class="fx-rise rest" id="fxRise"></div><div class="fd-rowbtns"><button class="tok" data-rise-replay>replay rise</button></div>`
@@ -18,14 +33,35 @@ export function html() {
   + `<div class="fd-elev fd-elev--media" data-copy-token=\"--shadow-on-media\" title=\"Click to copy live --shadow-on-media\" style=\"cursor:pointer\"><b style="text-shadow:var(--shadow-on-media)">O · on-media</b><span class="tok">--shadow-on-media</span><small>text keeps legible on chip / image<br><span class="tok">--space-1</span> / <span class="tok">--space-10</span> / <span class="tok">--space-12</span></small><code data-live=\"--shadow-on-media\">--shadow-on-media</code></div>`
   + `</div>`
   + `<p class="sub" style="margin-top:calc(var(--space-6) * -1);font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)">Tip: the media card shows <span class="tok">text-shadow</span> (not box-shadow) — dark chip behind the title does the real lifting, shadow is the 1px crispener. Travel always <span class="tok">var(--space-*)</span>; color never raw <span class="tok">rgba()</span>.</p>`
-  + tokenTrace({ plain: true, rows: [['Hairline', '--border-hairline', '0 flat — every card / thumb / pill'], ['Viewer', '--shadow-viewer', '0 var(--space-12) var(--space-32) + 0 var(--space-2) var(--space-10) · dark: 14/36 + 3/12'], ['On-media sm', '--shadow-on-media-sm', '0 var(--space-1) var(--space-10) · --color-shadow-media-sm'], ['On-media', '--shadow-on-media', '0 var(--space-1) var(--space-12) · --color-shadow-media']] })
+  + tokenTrace({ plain: true,
+      rows: [['Hairline', '--border-hairline', '0 flat — every card / thumb / pill'],
+        ['Viewer', '--shadow-viewer', '0 var(--space-12) var(--space-32) + 0 var(--space-2) var(--space-10) · dark: 14/36 + 3/12'],
+        ['On-media sm', '--shadow-on-media-sm', '0 var(--space-1) var(--space-10) · --color-shadow-media-sm'],
+        ['On-media', '--shadow-on-media', '0 var(--space-1) var(--space-12) · --color-shadow-media']] })
   + `<p class="sub" style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)">Shadow recipe: travel var(--space-*) + color via color-mix — the four colors live in Color → Elevation with live swatches; opacity knobs below.</p>`
-  + tokenTrace({ plain: true, rows: [['Opacity media', '--opacity-shadow-media', '45% · on-media lg'], ['Opacity media sm', '--opacity-shadow-media-sm', '40% · on-media sm'], ['Opacity viewer', '--opacity-shadow-viewer', '24% · lifted main (light+dark)'], ['Opacity viewer soft', '--opacity-shadow-viewer-soft', '12% · lifted soft (light+dark)']] })
+  + tokenTrace({ plain: true,
+      rows: [['Opacity media', '--opacity-shadow-media', '45% · on-media lg'],
+        ['Opacity media sm', '--opacity-shadow-media-sm', '40% · on-media sm'],
+        ['Opacity viewer', '--opacity-shadow-viewer', '24% · lifted main (light+dark)'],
+        ['Opacity viewer soft', '--opacity-shadow-viewer-soft', '12% · lifted soft (light+dark)']] })
   + `<h3>Viewer spring — live tokens</h3><p class="sub">Intent + spring the viewer route reads: threshold is intent travel, idle is dismiss wait, debounce settles the pointer, k / fr are spring stiffness / friction. Full lab at <a href="#/functions/viewer">Viewer</a>.</p>`
-  + tokenTrace({ plain: true, rows: [['Threshold', '--fx-viewer-threshold', '12px · intent travel'], ['Idle', '--fx-viewer-idle', '850ms · dismiss wait'], ['Debounce', '--fx-viewer-debounce', '70ms · pointer settle'], ['Stiffness k', '--fx-viewer-k', '0.1 · spring stiffness'], ['Friction fr', '--fx-viewer-fr', '0.54 · spring friction']] })
-  + tokenTrace({ plain: true, rows: [['Viewer border', '--viewer-border', 'frosted frame the viewer opens in'], ['Viewer shadow', '--shadow-viewer', 'lift off the page behind the frame'], ['Viewer in', '--dur-viewer-in', '300ms · open travel'], ['Viewer line', '--dur-viewer-line', '780ms · tether draw']] })
+  + tokenTrace({ plain: true,
+      rows: [['Threshold', '--fx-viewer-threshold', '12px · intent travel'],
+        ['Idle', '--fx-viewer-idle', '850ms · dismiss wait'],
+        ['Debounce', '--fx-viewer-debounce', '70ms · pointer settle'],
+        ['Stiffness k', '--fx-viewer-k', '0.1 · spring stiffness'],
+        ['Friction fr', '--fx-viewer-fr', '0.54 · spring friction']] })
+  + tokenTrace({ plain: true,
+      rows: [['Viewer border', '--viewer-border', 'frosted frame the viewer opens in'],
+        ['Viewer shadow', '--shadow-viewer', 'lift off the page behind the frame'],
+        ['Viewer in', '--dur-viewer-in', '300ms · open travel'],
+        ['Viewer line', '--dur-viewer-line', '780ms · tether draw']] })
   + `<h3>Glitch — generic container</h3><p class="sub">Today's timeline tick, now for any block. CSS class <span class="tok">.fx-glitch</span> (or <span class="tok">attachGlitch(el)</span> in JS) reads <span class="tok">--dur-glitch</span> + <span class="tok">--fx-glitch-*</span>. Full lab at <a href="#/functions/glitch">Glitch</a>.</p>`
-  + tokenTrace({ plain: true, rows: [['Glitch duration', '--dur-glitch', '2.4s · loop'], ['Glitch jitter', '--fx-glitch-x', 'var(--space-1) · X shift'], ['Glitch skew', '--fx-glitch-skew', '-12deg · shear'], ['Glitch flicker', '--fx-glitch-opacity', '0.5 · 89% opacity']] })
+  + tokenTrace({ plain: true,
+      rows: [['Glitch duration', '--dur-glitch', '2.4s · loop'],
+        ['Glitch jitter', '--fx-glitch-x', 'var(--space-1) · X shift'],
+        ['Glitch skew', '--fx-glitch-skew', '-12deg · shear'],
+        ['Glitch flicker', '--fx-glitch-opacity', '0.5 · 89% opacity']] })
   + note('Do', 'Graduate knobs through tokens — lab-local count / gutter / order stay out of the contract.')
   + `</div>`;
 }

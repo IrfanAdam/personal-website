@@ -46,7 +46,9 @@ export function html() {
     + `<div class="ds-cell" data-copy="--size-frame" style="cursor:pointer"><div style="border:var(--size-frame) solid var(--color-ink);padding:var(--space-10);font-family:var(--font-mono);font-size:var(--text-micro);text-align:center">frame · <span data-live="--size-frame">3px</span> solid ink</div><div class="nm">Frame</div><div class="vl"><span class="tok">--size-frame</span> · 3px · focus frame</div></div>`
     + `</div>`;
   const measures = `<h3>Measure — live prose widths</h3><p class="sub">Two line-length tokens — capped paragraphs, not color swatches. Resize the viewport to feel the widths.</p>`
-    + tokenTrace({ plain: true, rows: [['Copy', '--measure-copy', '60ch · narrow columns, copy blocks'], ['Prose', '--measure-prose', '68ch · long read']] })
+    + tokenTrace({ plain: true,
+        rows: [['Copy', '--measure-copy', '60ch · narrow columns, copy blocks'],
+          ['Prose', '--measure-prose', '68ch · long read']] })
     + `<div class="ds-spec block" style="display:grid;gap:var(--space-14)"><p style="max-width:var(--measure-copy);font-size:var(--text-body);line-height:var(--leading-prose);margin:0">Copy measure — this paragraph is capped at <span class="tok">var(--measure-copy)</span> (60ch). Narrow columns hold attention on cards and side copy.</p><p style="max-width:var(--measure-prose);font-size:var(--text-body);line-height:var(--leading-prose);margin:0">Prose measure — this paragraph is capped at <span class="tok">var(--measure-prose)</span> (68ch). Long-read case narratives get the wider allowance.</p></div>`;
   const convention = `<h3>Naming — how to pick</h3><div class="ds-code"><pre>--space-N  = raw px step (pick by size: --space-1 … --space-90 — no rounding)
 --size-*   = named object (wrap, header, strip, strip-tab, hairline, frame, tap)
@@ -54,7 +56,10 @@ export function html() {
 --rhythm / --gutter = purpose aliases — prefer over raw --space-14/16 when it fits the purpose
 Alias discipline: no rename without alias + deprecate flow (Phase 7). Confusing pair: strip vs strip-tab — 56px thumb is the image row, 58px tab is the list/grid toggle row; not interchangeable.</pre></div>`;
   const breaks = `<h3>Breakpoints — documented scale</h3><p class="sub">Tokens live in <span class="tok">tokens.css</span>; <span class="tok">var()</span> is invalid in <span class="tok">@media</span> so queries keep the raw px in sync by value. Click to copy the token — the comment in each query names the token.</p>`
-    + tokenTrace({ plain: true, rows: [['Small', '--break-sm', '640px · 1 col + mobile cards'], ['Medium', '--break-md', '800px · case 1fr 1fr → 1fr'], ['Large', '--break-lg', '900px · masonry 4 → 2 cols + docs sidebar collapse']] });
+    + tokenTrace({ plain: true,
+        rows: [['Small', '--break-sm', '640px · 1 col + mobile cards'],
+          ['Medium', '--break-md', '800px · case 1fr 1fr → 1fr'],
+          ['Large', '--break-lg', '900px · masonry 4 → 2 cols + docs sidebar collapse']] });
   const recipe = code('break-sm  640px  → masonry 1 col, mobile linger, footer 1 col\nbreak-md  800px  → case-grid 1fr 1fr → 1fr, cols single rule\nbreak-lg  900px  → masonry 4 → 2 cols, DS sidebar stacks\nrhythm    --space-14 / gutter --space-16 / wrap --size-wrap 1600px\ncols 4 → 2 @900px → 1 @640px · case 1fr 1fr → 1fr @800px');
   const audit = `<h3>Touch-target audit — <span class="tok">--size-tap 44px</span></h3><p class="sub">All interactive docs specimens meet the 44px minimum on at least one axis.</p><table class="ds-table"><tr><th>Specimen</th><th>Size</th><th>Verdict</th></tr>`
     + `<tr><td>.pill (filter)</td><td>var(--space-6) pad + line-height → 32px box, hit padded to <span class="tok">44px</span> via layout</td><td>Pass — tap height via parent row</td></tr>`

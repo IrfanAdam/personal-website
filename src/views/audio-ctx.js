@@ -41,7 +41,9 @@ export function getNoise() {
   return buf;
 }
 // Self-test + encode live in audio-test.js (re-exported above for compat).
-export const ctxInfo = () => { try { return ctx ? ctx.state + '@' + ctx.sampleRate : 'no-ctx'; } catch { return '?'; } };
+export const ctxInfo = () => { try { return ctx ? ctx.state + '@' + ctx.sampleRate : 'no-ctx';
+  } catch { return '?';
+  } };
 // Hard recovery: close a possibly poisoned context; next line rebuilds it
 // fresh inside this gesture. Resume is raced so a hung Safari can't freeze us.
 export async function resetCtx() {

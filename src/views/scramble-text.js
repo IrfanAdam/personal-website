@@ -4,7 +4,9 @@
    - chars: "upperCase"|"lowerCase"|"upperAndLowerCase"|custom string. speed: 1 = refresh ~30ms.
    - delimiter: "" char-by-char, " " word-by-word. rightToLeft, tweenLength (true), newClass/oldClass.
    Respects prefers-reduced-motion. Returns { kill, promise }. Also: killScramble(el). */
-const MAP = { upperCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', lowerCase: 'abcdefghijklmnopqrstuvwxyz', upperAndLowerCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' };
+const MAP = { upperCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  lowerCase: 'abcdefghijklmnopqrstuvwxyz',
+  upperAndLowerCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' };
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const charsFor = (c) => MAP[c] || (typeof c==='string' && c.length ? c : MAP.upperCase);
 const rnd = (cs) => cs[Math.floor(Math.random()*cs.length)];
@@ -26,7 +28,8 @@ export function scrambleText(el, opts){
   const newClass = o.newClass||null, oldClass=o.oldClass||null, onUpdate=o.onUpdate, onComplete=o.onComplete;
   const interval = Math.max(14, 36 / speed);
   const durMs = dur*1000, delayMs = delay*1000;
-  if(reduced() || durMs<=16){ el.textContent = target; try{ onComplete&&onComplete(); }catch{} return { kill(){}, promise: Promise.resolve() }; }
+  if(reduced() || durMs<=16){ el.textContent = target; try{ onComplete&&onComplete(); }catch{} return { kill(){},
+      promise: Promise.resolve() }; }
   let raf=0, dead=false, lastRefresh=0, lastRevealed=-1, start=performance.now();
   let resolve; const promise = new Promise((r)=> resolve=r);
   const kill = ()=> { dead=true; if(raf) cancelAnimationFrame(raf); active.delete(el); };
@@ -37,8 +40,12 @@ export function scrambleText(el, opts){
   // scramble stores
   let wordScrams = isWord ? words.map((w)=> Array.from({length:w.length},()=> rnd(cs))) : null;
   let charScram = !isWord ? Array.from({length: Math.max(original.length, target.length)},()=> rnd(cs)) : null;
-  const ensureLen = (n)=> { if(!charScram) return; if(charScram.length<n) charScram.push(...Array.from({length:n-charScram.length},()=> rnd(cs))); if(charScram.length>n) charScram.length=n; };
-  const refresh = ()=> { if(isWord) wordScrams = words.map((w)=> Array.from({length:w.length},()=> rnd(cs))); else for(let i=0;i<charScram.length;i++) charScram[i]=rnd(cs); };
+  const ensureLen = (n)=> { if(!charScram) return;
+    if(charScram.length<n) charScram
+      .push(...Array.from({length:n-charScram.length},
+        ()=> rnd(cs))); if(charScram.length>n) charScram.length=n; };
+  const refresh = ()=> { if(isWord) wordScrams = words.map((w)=> Array.from({length:w.length},
+        ()=> rnd(cs))); else for(let i=0;i<charScram.length;i++) charScram[i]=rnd(cs); };
   let lastOut='';
   const build = (revealed, curLen)=>{
     if(isWord){
@@ -46,13 +53,23 @@ export function scrambleText(el, opts){
       if(newClass||oldClass){
         let h=''; for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed; const w=esc(words[i]); h += rev ? (newClass? `<span class="${newClass}">${w}</span>`: w) : (oldClass? `<span class="${oldClass}">${wordScrams[i].map(esc).join('')}</span>`: wordScrams[i].map(esc).join('')); if(i<tot-1) h+=escDelim; } return { html:h, isHtml:true };
       }
-      let t=''; for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed; t += rev ? words[i] : wordScrams[i].join(''); if(i<tot-1) t+=delim; } return { html:t, isHtml:false };
+      let t='';
+      for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
+        t += rev ? words[i] : wordScrams[i]
+          .join('');
+        if(i<tot-1) t+=delim;
+      } return { html:t,
+        isHtml:false };
     }
     const tot = curLen;
     if(newClass||oldClass){
       let h=''; for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed; const ch = rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs)); const cls = rev? newClass: oldClass; h += cls ? `<span class="${cls}">${esc(ch)}</span>` : esc(ch); } return { html:h, isHtml:true };
     }
-    let t=''; for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed; t += rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs)); } return { html:t, isHtml:false };
+    let t='';
+    for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
+      t += rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs));
+    } return { html:t,
+      isHtml:false };
   };
   const frame = (now)=>{
     if(dead) return;
@@ -66,10 +83,14 @@ export function scrambleText(el, opts){
       try{ onComplete&&onComplete(); }catch{}
       active.delete(el); resolve(); return;
     }
-    let curLen = isWord ? words.length : (tweenLen ? Math.round(original.length + (target.length - original.length)*prog) : target.length);
+    let curLen = isWord ? words
+      .length : (tweenLen ? Math.round(original.length + (target.length - original.length)*prog) : target.length);
     if(!isWord) { curLen = Math.max(0,curLen); ensureLen(curLen); }
     let revealed=0;
-    if(elapsed >= delayMs){ const eff = Math.min(1, Math.max(0,(elapsed - delayMs)/Math.max(1,durMs - delayMs))); const tot = isWord ? words.length : curLen; revealed = Math.floor(eff * tot); }
+    if(elapsed >= delayMs){ const eff = Math.min(1,
+        Math.max(0,
+          (elapsed - delayMs)/Math.max(1,
+            durMs - delayMs))); const tot = isWord ? words.length : curLen; revealed = Math.floor(eff * tot); }
     const needRefresh = (now - lastRefresh >= interval) || revealed !== lastRevealed;
     if(needRefresh){ refresh(); lastRefresh = now; }
     const shouldRender = needRefresh || lastRevealed!==revealed;

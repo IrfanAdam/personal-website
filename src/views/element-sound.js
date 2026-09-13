@@ -31,7 +31,8 @@ export async function playVoice(voice, opts) {
   if (isMuted()) return 'muted';
   const o = opts || {};
   let v = voice;
-  if (v === 'random' || !TYPES.includes(v)) v = v === 'random' ? RANDOMS[Math.floor(Math.random() * RANDOMS.length)] : 'hum';
+  if (v === 'random'
+    || !TYPES.includes(v)) v = v === 'random' ? RANDOMS[Math.floor(Math.random() * RANDOMS.length)] : 'hum';
   const ms = Math.max(60, Math.min(1500, o.ms || 320));
   const gain = o.gain != null ? Math.max(0, Math.min(1, o.gain)) : 0.6;
   try {
@@ -40,7 +41,8 @@ export async function playVoice(voice, opts) {
     const c = new OC(1, Math.ceil(RATE * (ms / 1000 + 0.1)), RATE);
     synth(c, noiseBuffer(c), v, 1, { ms, freq: o.freq });
     const rendered = await c.startRendering();
-    const url = URL.createObjectURL(new Blob([encodeWavBuffer(rendered.getChannelData(0), RATE)], { type: 'audio/wav' }));
+    const url = URL.createObjectURL(new Blob([encodeWavBuffer(rendered.getChannelData(0), RATE)],
+        { type: 'audio/wav' }));
     const r = await fire(new Audio(url), url, gain);
     return r === 'played' ? 'played:' + v : r;
   } catch { return 'error'; }

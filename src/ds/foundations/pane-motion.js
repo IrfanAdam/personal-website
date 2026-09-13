@@ -2,9 +2,35 @@
    Bars true-scale to the longest step; every --dur-* has a sanctioned use. */
 import { tokenTrace, note, code } from '../specimens.js';
 /* Widths proportional to ms over the longest step (shimmer 2200ms) — Task 21. */
-const DURS = [['Fast', '--dur-fast', '6.8%'], ['Base', '--dur-base', '9.1%'], ['Med', '--dur-med', '10%'], ['Soft', '--dur-soft', '11.4%'], ['Slow', '--dur-slow', '12.7%'], ['Reveal', '--dur-reveal', '13.6%'], ['Glide', '--dur-glide', '17.3%'], ['Blur', '--dur-blur', '20.5%'], ['Zoom', '--dur-zoom', '29.5%'], ['Hero rise', '--dur-hero-rise', '39.1%'], ['Shimmer', '--dur-shimmer', '100%']];
-const USES = [['Fast', '--dur-fast', '150ms · micro feedback — chip flip, toggle tick'], ['Base', '--dur-base', '200ms · control response — press, tab switch'], ['Med', '--dur-med', '220ms · small reveal — tooltip, menu'], ['Soft', '--dur-soft', '250ms · panel settle — popover nudge'], ['Slow', '--dur-slow', '280ms · card hover settle'], ['Reveal', '--dur-reveal', '300ms · content reveal — cell tint, viewer open'], ['Glide', '--dur-glide', '380ms · signature travel — frame, rise, dot'], ['Blur', '--dur-blur', '450ms · frost settle — header blur-in'], ['Zoom', '--dur-zoom', '650ms · image zoom settle'], ['Hero rise', '--dur-hero-rise', '860ms · hero entrance'], ['Shimmer', '--dur-shimmer', '2.2s · ambient skeleton sweep — freezable, stills under reduced motion'], ['FX color', '--dur-fx-color', '240ms · cell tint sweep — demo in FX'], ['FX span', '--dur-fx-span', '0.6s · cell sweep span — demo in FX'], ['Viewer in', '--dur-viewer-in', '300ms · viewer open — demo in FX viewer'], ['Viewer line', '--dur-viewer-line', '780ms · viewer tether draw — demo in FX viewer']];
-const BLURS = [['Header frost', '--blur-header', 'sticky header over scroll'], ['Card scrim', '--blur-scrim', 'card scrim over photos'], ['Placeholder', '--blur-placeholder', 'image placeholder wash']];
+const DURS = [['Fast', '--dur-fast', '6.8%'],
+  ['Base', '--dur-base', '9.1%'],
+  ['Med', '--dur-med', '10%'],
+  ['Soft', '--dur-soft', '11.4%'],
+  ['Slow', '--dur-slow', '12.7%'],
+  ['Reveal', '--dur-reveal', '13.6%'],
+  ['Glide', '--dur-glide', '17.3%'],
+  ['Blur', '--dur-blur', '20.5%'],
+  ['Zoom', '--dur-zoom', '29.5%'],
+  ['Hero rise', '--dur-hero-rise', '39.1%'],
+  ['Shimmer', '--dur-shimmer', '100%']];
+const USES = [['Fast', '--dur-fast', '150ms · micro feedback — chip flip, toggle tick'],
+  ['Base', '--dur-base', '200ms · control response — press, tab switch'],
+  ['Med', '--dur-med', '220ms · small reveal — tooltip, menu'],
+  ['Soft', '--dur-soft', '250ms · panel settle — popover nudge'],
+  ['Slow', '--dur-slow', '280ms · card hover settle'],
+  ['Reveal', '--dur-reveal', '300ms · content reveal — cell tint, viewer open'],
+  ['Glide', '--dur-glide', '380ms · signature travel — frame, rise, dot'],
+  ['Blur', '--dur-blur', '450ms · frost settle — header blur-in'],
+  ['Zoom', '--dur-zoom', '650ms · image zoom settle'],
+  ['Hero rise', '--dur-hero-rise', '860ms · hero entrance'],
+  ['Shimmer', '--dur-shimmer', '2.2s · ambient skeleton sweep — freezable, stills under reduced motion'],
+  ['FX color', '--dur-fx-color', '240ms · cell tint sweep — demo in FX'],
+  ['FX span', '--dur-fx-span', '0.6s · cell sweep span — demo in FX'],
+  ['Viewer in', '--dur-viewer-in', '300ms · viewer open — demo in FX viewer'],
+  ['Viewer line', '--dur-viewer-line', '780ms · viewer tether draw — demo in FX viewer']];
+const BLURS = [['Header frost', '--blur-header', 'sticky header over scroll'],
+  ['Card scrim', '--blur-scrim', 'card scrim over photos'],
+  ['Placeholder', '--blur-placeholder', 'image placeholder wash']];
 export const label = 'Motion · Depth';
 export function html() {
   const bars = `<div class="fd-durs">${DURS.map(([n, t, w]) => `<div class="fd-dur" data-copy="${t}" title="Click to copy ${t}" style="cursor:pointer"><b>${n}</b><div class="fd-track"><div class="fd-fill" style="width:${w}"></div></div><output data-live="${t}">${t}</output></div>`).join('')}</div>`;
@@ -15,14 +41,24 @@ export function html() {
   + `<h3>Durations — true-scale</h3>` + bars
   + `<h3>Duration → use</h3><p class="sub">Reach for the use, not the number. FX and viewer steps demo in the FX tab.</p>` + table
   + `<h3>Easing — signature curve</h3><p class="sub">One curve with a fast-out, soft-land feel runs all signature travel: header frame, image zoom, content reveal. Standard <span class="tok">ease</span> is ambient-only. Replay the dot to feel it.</p>`
-  + tokenTrace({ plain: true, rows: [['Signature', '--ease-signature', 'fast-out soft-land · frame + zoom + reveal'], ['Standard', '--ease-standard', 'ease · ambient loops only']] }) + stage
+  + tokenTrace({ plain: true,
+      rows: [['Signature', '--ease-signature', 'fast-out soft-land · frame + zoom + reveal'],
+        ['Standard', '--ease-standard', 'ease · ambient loops only']] }) + stage
   + `<h3>Press · hover — live</h3><p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to <span class="tok">var(--opacity-hover)</span>); images settle at <span class="tok">var(--scale-zoom)</span>.</p><div class="fd-rowbtns"><button class="fd-press">press me</button></div><div class="fd-hover">hover me — unselected rows dim</div>`
-  + tokenTrace({ plain: true, rows: [['Press squash', '--scale-press', '0.94 · button press'], ['Hover dim', '--opacity-hover', '0.55 · unselected row hover'], ['Zoom settle', '--scale-zoom', '1.015 · image hover zoom']] })
+  + tokenTrace({ plain: true,
+      rows: [['Press squash', '--scale-press', '0.94 · button press'],
+        ['Hover dim', '--opacity-hover', '0.55 · unselected row hover'],
+        ['Zoom settle', '--scale-zoom', '1.015 · image hover zoom']] })
   + `<h3>Depth — line + frost, never shadow</h3><p class="sub">Elevation is a 1px line plus frosted blur. Shadows exist only on-media and in the viewer — never as UI depth. Frost recipe per step: blur below + saturate alongside.</p>` + blurs
-  + tokenTrace({ plain: true, rows: [['Saturation header', '--sat-header', '1.6 · frosted header recipe'], ['Saturation scrim', '--sat-scrim', '1.35 · card scrim recipe']] })
+  + tokenTrace({ plain: true,
+      rows: [['Saturation header', '--sat-header', '1.6 · frosted header recipe'],
+        ['Saturation scrim', '--sat-scrim', '1.35 · card scrim recipe']] })
   + `<h3>Reduced motion — contract</h3><p class="sub">The OS setting is honored live: flip <span class="tok">prefers-reduced-motion</span> and every demo on this page goes static. The shimmer freeze button previews the same end-state.</p>`
   + code('collapse → instant: shimmer sweep (frozen) · rise / glide / dot travel (none) · grid reveal (instant — guarded in main.js + fx-lab)\nsurvives: end-states apply instantly (opacity, layout) · theme toggle · nothing is motion-only')
-  + note('Do', 'Durations read live <span class="tok">var(--dur-*)</span>; travel runs <span class="tok">var(--ease-signature)</span> unless you prove otherwise.')
-  + note('Don’t', 'No raw <span class="tok">ms</span> or cubic-bezier literals outside <span class="tok">tokens.css</span>.', 'dont')
+  + note('Do',
+    'Durations read live <span class="tok">var(--dur-*)</span>; travel runs <span class="tok">var(--ease-signature)</span> unless you prove otherwise.')
+  + note('Don’t',
+    'No raw <span class="tok">ms</span> or cubic-bezier literals outside <span class="tok">tokens.css</span>.',
+    'dont')
   + `</div>`;
 }

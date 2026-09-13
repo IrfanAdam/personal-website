@@ -10,10 +10,42 @@ import { getRefs } from './bind-refs.js';
 export function mount(root){
   const lab = root.querySelector('[data-scramble-lab]'); if(!lab) return ()=>{};
   const R = getRefs(lab, root);
-  const { preview, inp, charsSel, customRow, customInp, dur, outDur, speed, outSpeed, delay, outDelay, delim, rtlBtn, tweenBtn, fontSel, soundBtn, voiceSel, kindSel, fileSel, replayBtn, hoverBtn, playLoadBtn, outChars, outFont, status, stage, alignBtns, alignGroup, tabBar } = R;
+  const { preview,
+    inp,
+    charsSel,
+    customRow,
+    customInp,
+    dur,
+    outDur,
+    speed,
+    outSpeed,
+    delay,
+    outDelay,
+    delim,
+    rtlBtn,
+    tweenBtn,
+    fontSel,
+    soundBtn,
+    voiceSel,
+    kindSel,
+    fileSel,
+    replayBtn,
+    hoverBtn,
+    playLoadBtn,
+    outChars,
+    outFont,
+    status,
+    stage,
+    alignBtns,
+    alignGroup,
+    tabBar } = R;
   let rtl=false, tween=true, soundOn=true, hoverOn=false;
   const refs = {};
-  Object.assign(refs, { get voiceSel() { return voiceSel; }, get kindSel() { return kindSel; }, get fileSel() { return fileSel; }, soundOn: () => soundOn });
+  Object.assign(refs,
+    { get voiceSel() { return voiceSel; },
+      get kindSel() { return kindSel; },
+      get fileSel() { return fileSel; },
+      soundOn: () => soundOn });
   let lastText = inp ? inp.value : preview.textContent;
   const sound = makeSound(refs, status);
   const muted = sound.muted;
@@ -49,23 +81,55 @@ export function mount(root){
     const dl = delay ? +delay.value : 0;
     const dm = delim ? delim.value : '';
     const label = `scramble · ${key}${key==='custom' ? ':'+cs.slice(0,10):''} · ${d.toFixed(1)}s · ${dm ? 'words' : 'chars'}${rtl?' · rtl':''}`;
-    if(status) status.textContent = label + (soundOn && !muted() ? ' · ♪ '+ (()=>{ const s=getSource('scramble'); return s.kind==='file' ? 'file '+s.file : (voiceSel?voiceSel.value:'random'); })() : '');
+    if(status) status.textContent = label + (soundOn
+      
+        
+          
+            
+              
+                
+                  
+                    && !muted() ? ' · ♪ '+ (()=>{ const s=getSource('scramble'); return s.kind==='file' ? 'file '+s.file : (voiceSel?voiceSel.value:'random'); })() : '');
     // sound synced
     playScramble(d*1000);
     // animate
     try{
       document.documentElement.style.setProperty('--dur-scramble', d.toFixed(1)+'s');
-      scrambleText(preview, { text, chars: cs, duration: d, speed: sp, revealDelay: dl, delimiter: dm, rightToLeft: rtl, tweenLength: tween,
+      scrambleText(preview,
+        { text, chars: cs, duration: d, speed: sp, revealDelay: dl, delimiter: dm, rightToLeft: rtl, tweenLength: tween,
       });
     }catch{}
   };
   let tmr=null;
   const onText = () => { clearTimeout(tmr); tmr=setTimeout(doScramble, 180); };
-  const onChars = () => { if(customRow) customRow.style.display = (charsSel.value==='custom')?'':'none'; syncOutputs(); doScramble(); };
+  const onChars = () => { if(customRow) customRow.style.display = (charsSel.value==='custom')?'':'none';
+    syncOutputs();
+    doScramble();
+  };
   const onDur = () => { syncOutputs(); };
   const onSpeed = () => { syncOutputs(); };
   const onDelay = () => { syncOutputs(); };
-  const uiOff = mountUi({ get rtl() { return rtl; }, set rtl(v) { rtl = v; }, get tween() { return tween; }, set tween(v) { tween = v; }, get soundOn() { return soundOn; }, set soundOn(v) { soundOn = v; }, get hoverOn() { return hoverOn; }, set hoverOn(v) { hoverOn = v; }, rtlBtn, tweenBtn, soundBtn, hoverBtn, alignBtns, preview, alignGroup, fontSel, stage, tabBar, root, doScramble, applyFont });
+  const uiOff = mountUi({ get rtl() { return rtl; },
+      set rtl(v) { rtl = v; },
+      get tween() { return tween; },
+      set tween(v) { tween = v; },
+      get soundOn() { return soundOn; },
+      set soundOn(v) { soundOn = v; },
+      get hoverOn() { return hoverOn; },
+      set hoverOn(v) { hoverOn = v; },
+      rtlBtn,
+      tweenBtn,
+      soundBtn,
+      hoverBtn,
+      alignBtns,
+      preview,
+      alignGroup,
+      fontSel,
+      stage,
+      tabBar,
+      root,
+      doScramble,
+      applyFont });
   if(fontSel) fontSel.addEventListener('change', ()=> { applyFont(); doScramble(); });
   if(stage) stage.addEventListener('pointerenter', onStageEnter);
   if(tabBar) tabBar.addEventListener('click', onTabs);

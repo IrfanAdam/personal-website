@@ -17,7 +17,8 @@ export function mountTabs(root) {
     const panes = [...box.querySelectorAll(`[data-pane][data-tabs="${id}"]`)];
     if (!btns.length) return;
     const select = (n) => {
-      btns.forEach((b, i) => { b.classList.toggle('on', i === n); b.setAttribute('aria-selected', i === n ? 'true' : 'false'); });
+      btns.forEach((b,
+          i) => { b.classList.toggle('on', i === n); b.setAttribute('aria-selected', i === n ? 'true' : 'false'); });
       panes.forEach((p, i) => { if (i === n) p.removeAttribute('hidden'); else p.setAttribute('hidden', ''); });
     };
     const onClick = (e) => {

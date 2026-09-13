@@ -33,7 +33,9 @@ export function graph({ plans, day }) {
   const labels = spans.map((s) => `<span class="ds-month" style="width: calc(${s.n} * (var(--space-16) + var(--space-4)) - var(--space-4))">${MONTHS[s.mo]}</span>`).join('');
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
-      const k = isoDay(d), todayCls = k === isoDay(today) ? ' is-today' : '', sound = k === isoDay(today) ? ' data-glitch-sound="5000-9000 hum"' : '';
+      const k = isoDay(d),
+        todayCls = k === isoDay(today) ? ' is-today' : '',
+        sound = k === isoDay(today) ? ' data-glitch-sound="5000-9000 hum"' : '';
       if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} \u00b7 upcoming"></span>`;
       const n = dc[k] || 0;
       if (!n) return `<span class="ds-day${todayCls}"${sound} data-tip="${fmtDate(k)} \u00b7 no changes"></span>`;
@@ -52,12 +54,20 @@ export function paint(root, ctx) {
   root.querySelector('[data-col="chips"]').innerHTML = dayChip + showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
   const gEl = root.querySelector('[data-col="graph"]');
   if (!gEl.dataset.ready) { gEl.innerHTML = graph({ plans, day }); gEl.dataset.ready = '1'; }
-  else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day, on = k === day; el.classList.toggle('on', on); if (el.getAttribute('aria-pressed') !== String(on)) el.setAttribute('aria-pressed', String(on)); }); }
+  else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day,
+        on = k === day; el.classList.toggle('on',
+          on); if (el.getAttribute('aria-pressed') !== String(on)) el.setAttribute('aria-pressed',
+          String(on)); }); }
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   if (!plan) {
     const nf = [active.size ? 'these tags' : '', day ? fmtDate(day) : ''].filter(Boolean).join(' \u00b7 ');
     root.querySelector('[data-col="plan"]').innerHTML = `<p class="ds-note">Nothing matches ${nf || 'the archive'} yet.</p>`;
-    root.querySelector('[data-col="sprint"]').innerHTML = ''; root.querySelector('[data-col="triage"]').innerHTML = unlinked(texts);
+    root
+      .querySelector('[data-col="sprint"]')
+      .innerHTML = '';
+    root
+      .querySelector('[data-col="triage"]')
+      .innerHTML = unlinked(texts);
     drawer.hidden = true; scrim.hidden = true; return;
   }
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
@@ -66,14 +76,22 @@ export function paint(root, ctx) {
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
     const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
     const tagged = valid.filter((c) => c.date === p.date || (c.time && c.date >= p.date));
-    const last = tagged.length ? tagged.reduce((a, b) => (b.date + (b.time || '') > a.date + (a.time || '') ? b : a)) : null;
-    const sd = fmtDate(p.date), st = fmtTime(p.id), endDate = last ? last.date : '', endTime = last && last.time ? fmtTime(last.time) : '';
-    const endTxt = !endDate ? '' : (endDate !== p.date ? ' \u2013 ' + fmtDate(endDate) + (endTime ? ' ' + endTime : '') : (endTime && endTime !== st ? ' \u2013 ' + endTime : ''));
+    const last = tagged.length ? tagged.reduce((a,
+        b) => (b.date + (b.time || '') > a.date + (a.time || '') ? b : a)) : null;
+    const sd = fmtDate(p.date),
+      st = fmtTime(p.id),
+      endDate = last ? last.date : '',
+      endTime = last && last.time ? fmtTime(last.time) : '';
+    const endTxt = !endDate ? '' : (endDate !== p.date ? ' \u2013 ' + fmtDate(endDate) + (endTime ? ' ' + endTime : '') : (endTime
+        && endTime !== st ? ' \u2013 ' + endTime : ''));
     const line1 = [sd + (st ? ' ' + st : '') + (endTxt ? ' ' + endTxt.trim() : ''), `${p.sprints.length} phases`, frac].filter(Boolean).join(' \u00b7 ');
     return `<button class="ds-pick${i === sel[0] ? ' on' : ''}${isDone(frac) ? '' : ' is-open'}" data-tip="${esc(p.goal)}"><span class="ds-row"><span class="ds-num">${num}</span><b>${esc(p.title)}</b><span class="ds-tags">${p.tags.join(' \u00b7 ')}</span></span><small>${line1}</small></button>`;
   }).join('');
   root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
-    const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1), hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0), has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '', frac = state(s.body);
+    const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
+      hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
+      has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
+      frac = state(s.body);
     return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${isDone(frac) ? '' : ' is-open'}" data-tip="${esc(sprintDesc(s))}"><span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span><b>${esc(short(s.head))}</b></span><small>${[frac + has].filter(Boolean).join(' \u00b7 ')}</small></button>`;
   }).join('') + `<p class="ds-commits" data-prov>${esc(provenance(plan))}</p><div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`;
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);

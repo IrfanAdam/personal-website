@@ -18,7 +18,11 @@ export const norm = (body) => {
     let name = m ? m[2] : title;
     const cancelled = /✗/i.test(title);
     const done = /✓/i.test(title);
-    name = name.replace(/✓\s*done\s*—?/i, '').replace(/✗\s*cancelled\s*—?/i, '').replace(/[✓✗]/g, '').trim().replace(/\.*$/, '.');
+    name = name.replace(/✓\s*done\s*—?/i,
+      '').replace(/✗\s*cancelled\s*—?/i,
+      '').replace(/[✓✗]/g,
+      '').trim().replace(/\.*$/,
+      '.');
     const detail = lines.join(' ').replace(/\s+/g, ' ').trim();
     const flag = cancelled ? '<span class="ds-cancelled">✗ cancelled</span> — ' : (done ? '✓ done — ' : '');
     return `- [${done || cancelled ? 'x' : ' '}] **${num} ${name}** ${flag}${detail}`;

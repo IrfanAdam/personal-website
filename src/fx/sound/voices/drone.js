@@ -6,7 +6,11 @@ import { oscEnv } from './helpers.js';
 export function hum(ctx, gain, ms) {
   const dur = (ms || 320) / 1000, t0 = ctx.currentTime;
   const base = 62;
-  const parts = [[1, 'triangle', 0.34, 0], [1, 'triangle', 0.34, 14], [2, 'sine', 0.2, 0], [3, 'sine', 0.12, 0], [4, 'sine', 0.07, 0]];
+  const parts = [[1, 'triangle', 0.34, 0],
+    [1, 'triangle', 0.34, 14],
+    [2, 'sine', 0.2, 0],
+    [3, 'sine', 0.12, 0],
+    [4, 'sine', 0.07, 0]];
   parts.forEach(([mult, type, lvl, det]) => {
     const { o, g } = oscEnv(ctx, type, base * mult, gain * lvl, ms, det);
     const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1100;
@@ -64,8 +68,13 @@ export function createHumLoop(ctx, initialGain = 0) {
     gain,
     setGain(v, ramp = 0.14) {
       const t = ctx.currentTime;
-      try { gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value, t); gain.gain.linearRampToValueAtTime(Math.max(0, Math.min(0.45, v)), t + ramp); } catch {}
+      try { gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value,
+          t); gain.gain.linearRampToValueAtTime(Math.max(0, Math.min(0.45, v)),
+          t + ramp); } catch {}
     },
-    stop() { try { nodes.forEach((n) => { try { n.o.stop(); } catch {} try { n.o.disconnect(); } catch {} try { n.lp.disconnect(); } catch {} }); gain.disconnect(); } catch {} },
+    stop() { try { nodes.forEach((n) => { try { n.o.stop(); } catch {} try { n.o.disconnect(); } catch {} try { n.lp.disconnect(); } catch {} });
+        gain
+          .disconnect();
+      } catch {} },
   };
 }

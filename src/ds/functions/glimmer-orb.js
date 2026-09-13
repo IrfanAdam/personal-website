@@ -38,9 +38,15 @@ export function mount(root){
   const live = (e) => {
     const k = e.target.dataset.k; if (!k) return;
     if (k === 'state' && stop.setState) { stop.setState(e.target.value); show('state', e.target.value); return; }
-    if (k === 'level' && stop.setLevel) { const v = +e.target.value; stop.setLevel(v === 0 ? undefined : v / 100); show('level', v === 0 ? 'auto' : (v / 100).toFixed(2)); return; }
+    if (k === 'level' && stop.setLevel) { const v = +e.target.value;
+      stop
+        .setLevel(v === 0 ? undefined : v / 100);
+      show('level',
+        v === 0 ? 'auto' : (v / 100).toFixed(2)); return; }
     restart();
   };
   if (ctl) { ctl.addEventListener('input', live); ctl.addEventListener('change', live); }
-  return () => { if (ctl) { ctl.removeEventListener('input', live); ctl.removeEventListener('change', live); } try { stop(); } catch (_) {} };
+  return () => { if (ctl) { ctl.removeEventListener('input',
+        live); ctl.removeEventListener('change',
+        live); } try { stop(); } catch (_) {} };
 }

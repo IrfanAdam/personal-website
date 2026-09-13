@@ -57,7 +57,10 @@ bar.addEventListener('click', (e) => {
 applyTheme(saved);
 /* sidebar collapse — persisted like theme (desktop only; mobile stacks) */
 const sideBtn = document.getElementById('ds-side-toggle');
-const applySide = (c) => { document.body.classList.toggle('side-collapsed', c); localStorage.setItem('adam-ds-side', c ? '1' : '0'); sideBtn.textContent = c ? '▶' : '◀'; sideBtn.setAttribute('aria-expanded', String(!c)); };
+const applySide = (c) => { document.body.classList.toggle('side-collapsed',
+    c); localStorage.setItem('adam-ds-side',
+    c ? '1' : '0'); sideBtn.textContent = c ? '▶' : '◀'; sideBtn.setAttribute('aria-expanded',
+    String(!c)); };
 sideBtn.addEventListener('click', () => applySide(!document.body.classList.contains('side-collapsed')));
 applySide(localStorage.getItem('adam-ds-side') === '1');
 /* nav */

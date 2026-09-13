@@ -15,7 +15,11 @@ export function makeDecode(img, root, branches, s, makeBuffers, render, finish, 
     const btx = buf.getContext('2d', { willReadFrequently: true });
     if (btx && img.naturalWidth) {
       const sc = Math.max(SAMPLE / img.naturalWidth, SAMPLE / img.naturalHeight);
-      btx.drawImage(img, (SAMPLE - img.naturalWidth * sc) / 2, (SAMPLE - img.naturalHeight * sc) / 2, img.naturalWidth * sc, img.naturalHeight * sc);
+      btx.drawImage(img,
+        (SAMPLE - img.naturalWidth * sc) / 2,
+        (SAMPLE - img.naturalHeight * sc) / 2,
+        img.naturalWidth * sc,
+        img.naturalHeight * sc);
       try {
         measureTree(root, btx.getImageData(0, 0, SAMPLE, SAMPLE).data, SAMPLE);
         orderRandom(branches, s.split);

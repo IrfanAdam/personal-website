@@ -12,7 +12,9 @@ export function mountCells(scope) {
   const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none' };
   let root = null, branches = [], split = 0, playing = false, raf = 0, last = 0;
   let texImg = null, hasTex = false;
-  const readPal = () => ({ bg: css('--color-surface', [255, 255, 255]), ink: css('--color-ink', [22, 19, 14]), accent: css('--color-accent', [232, 68, 46]) });
+  const readPal = () => ({ bg: css('--color-surface', [255, 255, 255]),
+      ink: css('--color-ink', [22, 19, 14]),
+      accent: css('--color-accent', [232, 68, 46]) });
   let pal = readPal();
   const imgMap = { helix: '/images/helix.png', fluxx: '/images/fluxx.jpg', 'tas-35': '/images/tas-35.jpg' };
   const sampleTex = () => {
@@ -20,7 +22,11 @@ export function mountCells(scope) {
     const c = document.createElement('canvas'); c.width = SAMPLE; c.height = SAMPLE;
     const x = c.getContext('2d', { willReadFrequently: true }); if (!x) return;
     const sc = Math.max(SAMPLE / texImg.naturalWidth, SAMPLE / texImg.naturalHeight);
-    x.drawImage(texImg, (SAMPLE - texImg.naturalWidth * sc) / 2, (SAMPLE - texImg.naturalHeight * sc) / 2, texImg.naturalWidth * sc, texImg.naturalHeight * sc);
+    x.drawImage(texImg,
+      (SAMPLE - texImg.naturalWidth * sc) / 2,
+      (SAMPLE - texImg.naturalHeight * sc) / 2,
+      texImg.naturalWidth * sc,
+      texImg.naturalHeight * sc);
     try { measureTree(root, x.getImageData(0, 0, SAMPLE, SAMPLE).data, SAMPLE); hasTex = true; } catch {}
   };
   const rebuild = () => {
@@ -52,7 +58,8 @@ export function mountCells(scope) {
     if (split < 1 && playing) raf = requestAnimationFrame(tick);
     else { playing = false; raf = 0; }
   };
-  const play = () => { if (playing || reduced()) return; playing = true; last = performance.now(); raf = requestAnimationFrame(tick); };
+  const play = () => { if (playing
+      || reduced()) return; playing = true; last = performance.now(); raf = requestAnimationFrame(tick); };
   const replay = () => { pal = readPal(); stop(); split = reduced() ? 1 : 0; draw(); play(); };
   const outs = {};
   if (ctl) ctl.querySelectorAll('[data-v]').forEach((o) => { outs[o.dataset.v] = o; });

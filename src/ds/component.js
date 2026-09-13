@@ -17,7 +17,9 @@ export function component({ title, sub, anatomy, behaviour, knobs = [], render, 
   const previewHTML = `<div data-comp-preview="${id}">${render(init)}</div>`;
   const codeHTML = `<div class="ds-code" data-comp-code="${id}"><pre>${esc(code(init))}</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="${id}">copy code</button></div>`;
   const tokensHTML = tokens.length ? `${tokHTML}<p class="sub" style="margin-top:var(--space-8)">Click any <span class="tok">var()</span> to copy. All values read live <span class="tok">var()</span> — no literals.</p>` : '<p class="sub">No component tokens — inherits global rhythm.</p>';
-  const tabsHTML = tabs({ panes: [{ label:'Preview', html: previewHTML },{ label:'Code', html: codeHTML },{ label:'Tokens', html: tokensHTML }] });
+  const tabsHTML = tabs({ panes: [{ label:'Preview', html: previewHTML },
+        { label:'Code', html: codeHTML },
+        { label:'Tokens', html: tokensHTML }] });
   return `<div class="ds-sec" data-comp-root="${id}"><h2>${title}</h2>${sub?`<p class="sub">${sub}</p>`:''}${anatomy?`<h3>Anatomy</h3><p class="sub">${anatomy}</p>`:''}${behaviour?`<h3>Behaviour</h3><p class="sub">${behaviour}</p>`:''}${tabsHTML}<div class="fx-controls" data-comp-ctrl="${id}">${knobsHTML}</div></div>`;
 }
 export function mountComponent(root){
@@ -49,7 +51,10 @@ export function mountComponent(root){
     const onCopy=()=> copy(cfg.code(state), btn);
     ctrls.addEventListener('input', onInput); ctrls.addEventListener('change', onInput);
     if(btn) btn.addEventListener('click', onCopy);
-    offs.push(()=>{ ctrls.removeEventListener('input', onInput); ctrls.removeEventListener('change', onInput); if(btn) btn.removeEventListener('click', onCopy); });
+    offs.push(()=>{ ctrls.removeEventListener('input',
+          onInput); ctrls.removeEventListener('change',
+          onInput); if(btn) btn.removeEventListener('click',
+          onCopy); });
   });
   return ()=> offs.forEach((fn)=>fn());
 }

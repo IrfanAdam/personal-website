@@ -39,7 +39,10 @@ export function mountSourcePanel(root) {
     const l = getSource('load');
     const g = getSource('glitch');
     if (srcStatus) srcStatus.textContent = `load: ${l.kind} ${l.kind === 'file' ? l.file : l.voice} · glitch: ${g.kind} ${g.kind === 'file' ? g.file : g.voice}`;
-    const pairs = [['load-voice', l.kind === 'file'], ['load-file', l.kind !== 'file'], ['glitch-voice', g.kind === 'file'], ['glitch-file', g.kind !== 'file']];
+    const pairs = [['load-voice', l.kind === 'file'],
+      ['load-file', l.kind !== 'file'],
+      ['glitch-voice', g.kind === 'file'],
+      ['glitch-file', g.kind !== 'file']];
     pairs.forEach(([id, dis]) => {
       const el = sel(id);
       if (el) el.disabled = dis;
@@ -80,7 +83,12 @@ export function mountSourcePanel(root) {
     } catch {}
     const l = getSource('load');
     const g = getSource('glitch');
-    const vals = [['load-kind', l.kind], ['load-voice', l.voice], ['load-file', l.file], ['glitch-kind', g.kind], ['glitch-voice', g.voice], ['glitch-file', g.file]];
+    const vals = [['load-kind', l.kind],
+      ['load-voice', l.voice],
+      ['load-file', l.file],
+      ['glitch-kind', g.kind],
+      ['glitch-voice', g.voice],
+      ['glitch-file', g.file]];
     vals.forEach(([id, v]) => {
       const el = sel(id);
       if (el) el.value = v;

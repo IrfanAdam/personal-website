@@ -11,7 +11,17 @@ export { createHumLoop };
 
 export function synth(ctx, buf, type, gain, opts) {
   const t = TYPES.includes(type) ? type : 'hum';
-  const ms = opts && opts.ms > 0 ? opts.ms : (t === 'static' ? 180 : t === 'blip' ? 140 : t === 'chime' ? 420 : t === 'hum' ? 320 : t === 'data' ? 280 : t === 'scanner' ? 520 : t === 'zap' ? 150 : t === 'zapscan' ? 260 : 100);
+  const ms = opts
+    
+      
+        
+          
+            
+              
+                
+                  && opts
+                    .ms > 0 ? opts
+                    .ms : (t === 'static' ? 180 : t === 'blip' ? 140 : t === 'chime' ? 420 : t === 'hum' ? 320 : t === 'data' ? 280 : t === 'scanner' ? 520 : t === 'zap' ? 150 : t === 'zapscan' ? 260 : 100);
   const freq = opts && opts.freq > 0 ? opts.freq : (t === 'tick' ? 2100 : t === 'blip' ? 880 : 0);
   const g = Math.max(0, Math.min(1, gain * (opts && opts.gain > 0 ? Math.min(1, opts.gain) : 1)));
   if (t === 'tick') tick(ctx, buf, g, freq * (0.95 + Math.random() * 0.1), ms);

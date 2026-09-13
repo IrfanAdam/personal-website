@@ -5,7 +5,9 @@
 import { scrambleText } from './scramble-text.js';
 import { playSlot } from './slot-sound.js';
 const SEL = '.hero h1, .case-copy h1';
-const reduced = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch { return false; } };
+const reduced = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch { return false;
+  } };
 function lock(el) { try { const h = el.offsetHeight; if (h > 0) el.style.minHeight = h + 'px'; } catch {} }
 function unlock(el) { try { el.style.minHeight = ''; } catch {} }
 function reveal(el, idx) {
@@ -14,12 +16,20 @@ function reveal(el, idx) {
     const hs = lines.map((ln) => {
       try {
         const multi = /\s/.test(ln.textContent || '');
-        return scrambleText(ln, { chars: 'upperAndLowerCase', duration: 0.7, speed: 1, delimiter: multi ? ' ' : '', revealDelay: idx * 0.05 + 0.09 * lines.indexOf(ln), tweenLength: false });
+        return scrambleText(ln,
+          { chars: 'upperAndLowerCase',
+            duration: 0.7,
+            speed: 1,
+            delimiter: multi ? ' ' : '',
+            revealDelay: idx * 0.05 + 0.09 * lines.indexOf(ln),
+            tweenLength: false });
       } catch { return { kill() {}, promise: Promise.resolve() }; }
     });
-    return { done: Promise.all(hs.map((h) => h.promise)), kill() { hs.forEach((h) => { try { h.kill(); } catch {} }); } };
+    return { done: Promise.all(hs.map((h) => h.promise)),
+      kill() { hs.forEach((h) => { try { h.kill(); } catch {} }); } };
   }
-  try { return scrambleText(el, { chars: 'upperAndLowerCase', duration: 0.9, speed: 1, delimiter: ' ', tweenLength: false }); }
+  try { return scrambleText(el,
+      { chars: 'upperAndLowerCase', duration: 0.9, speed: 1, delimiter: ' ', tweenLength: false }); }
   catch { return { kill() {}, promise: Promise.resolve() }; }
 }
 export function mountTitleReveal(root, opts) {

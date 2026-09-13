@@ -14,7 +14,13 @@ const RULES = [
 export const parseExplicit = (text) => {
   const m = String(text).match(/^>?\s*\*{1,2}Tags:\*{0,2}\s*(.+?)\s*\*{0,2}\s*$/m);
   if (!m) return [];
-  return m[1].split(/[,;|]/).map((s) => TAGS.find((c) => c.toLowerCase() === s.trim().replace(/\.*$/, '').toLowerCase()) || null).filter(Boolean).filter((t, i, a) => a.indexOf(t) === i);
+  return m[1]
+    .split(/[,;|]/)
+    .map((s) => TAGS.find((c) => c.toLowerCase() === s.trim().replace(/\.*$/, '').toLowerCase()) || null)
+    .filter(Boolean)
+    .filter((t,
+      i,
+      a) => a.indexOf(t) === i);
 };
 export const infer = (text) => {
   const found = RULES.filter(([, re]) => re.test(String(text))).map(([t]) => t);

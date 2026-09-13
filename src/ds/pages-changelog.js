@@ -17,11 +17,23 @@ const plans = entries.map(([p, md]) => {
   const h1 = h1Of(md), g = goal(md), nm = names[file] || {};
   const sprints = split(md), steer = parseExplicit(md.split(/^## /m)[0]);
   sprints.forEach((s) => { s.tags = tagsFor(s.head, s.body, steer); });
-  return { file, date, id, slug, h1, title: nm.title || planSentence({ h1, goal: g, slug }), purpose: nm.purpose || '', goal: g, sprints, tags: planTags(md, sprints), raw: md };
+  return { file,
+    date,
+    id,
+    slug,
+    h1,
+    title: nm.title || planSentence({ h1, goal: g, slug }),
+    purpose: nm.purpose || '',
+    goal: g,
+    sprints,
+    tags: planTags(md, sprints),
+    raw: md };
 }).filter((pl) => pl.sprints.length);
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
 let active = new Set(), day = '', sel = [0, 0], open = false, stage = 'list';
-const visiblePlans = () => plans.filter((p) => (!active.size || p.tags.some((t) => active.has(t))) && (!day || p.date === day || commits.some((c) => c.plan === p.file && c.date === day)));
+const visiblePlans = () => plans
+  .filter((p) => (!active.size || p.tags.some((t) => active.has(t)))
+    && (!day || p.date === day || commits.some((c) => c.plan === p.file && c.date === day)));
 const visibleSprints = (plan) => {
   const ss = active.size ? plan.sprints.filter((s) => s.tags.some((t) => active.has(t))) : plan.sprints;
   return ss.length ? ss : plan.sprints;
@@ -43,15 +55,29 @@ export function mount(root) {
   open = false; stage = 'list'; doPaint(root);
   const onClick = (e) => {
     if (e.target.closest('[data-day-clear]')) { day = ''; sel = [0, 0]; doPaint(root); return; }
-    const dd = e.target.closest('[data-day]'); if (dd) { day = day === dd.dataset.day ? '' : dd.dataset.day; sel = [0, 0]; doPaint(root); return; }
-    const chip = e.target.closest('.ds-chip'); if (chip) { const t = chip.dataset.tag; if (!t) { active = new Set(); day = ''; } else { active.has(t) ? active.delete(t) : active.add(t); } sel = [0, 0]; doPaint(root); return; }
-    if (e.target.closest('[data-close]') || e.target.closest('[data-scrim]')) { open = false; stage = 'list'; doPaint(root); return; }
+    const dd = e.target.closest('[data-day]'); if (dd) { day = day === dd.dataset.day ? '' : dd.dataset.day; sel = [0,
+        0]; doPaint(root); return; }
+    const chip = e
+      .target
+      .closest('.ds-chip');
+    if (chip) { const t = chip.dataset.tag;
+      if (!t) { active = new Set();
+        day = '';
+      } else { active.has(t) ? active.delete(t) : active.add(t);
+      } sel = [0,
+        0]; doPaint(root); return; }
+    if (e.target.closest('[data-close]')
+      || e.target.closest('[data-scrim]')) { open = false; stage = 'list'; doPaint(root); return; }
     if (e.target.closest('[data-back]')) { stage = 'list'; doPaint(root); return; }
     const st = e.target.closest('[data-step]');
-    if (st && !st.disabled) { const c = cur(); sel = [c.pi, Math.min(Math.max(c.si + Number(st.dataset.step), 0), c.sprints.length - 1)]; open = true; doPaint(root); return; }
+    if (st && !st.disabled) { const c = cur(); sel = [c.pi,
+        Math.min(Math.max(c.si + Number(st.dataset.step), 0),
+          c.sprints.length - 1)]; open = true; doPaint(root); return; }
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const col = b.closest('[data-col]'), i = [...col.querySelectorAll('.ds-pick')].indexOf(b);
-    if (col.dataset.col === 'plan') { sel = [i, sel[1]]; open = true; stage = 'tasks'; } else { sel = [sel[0], i]; stage = 'tasks'; }
+    if (col.dataset.col === 'plan') { sel = [i,
+        sel[1]]; open = true; stage = 'tasks'; } else { sel = [sel[0],
+        i]; stage = 'tasks'; }
     doPaint(root);
   };
   const onKey = (e) => { if (e.key === 'Escape' && open) { open = false; doPaint(root); } };
@@ -67,6 +93,11 @@ export function mount(root) {
     tip.style.left = x + 'px'; tip.style.top = y + 'px';
   };
   root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
-  root.addEventListener('mousemove', move); document.addEventListener('mouseleave', () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; });
-  return () => { root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey); root.removeEventListener('mousemove', move); };
+  root.addEventListener('mousemove',
+    move); document.addEventListener('mouseleave',
+    () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; });
+  return () => { root.removeEventListener('click',
+      onClick); document.removeEventListener('keydown',
+      onKey); root.removeEventListener('mousemove',
+      move); };
 }

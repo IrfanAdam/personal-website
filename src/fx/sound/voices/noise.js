@@ -15,7 +15,17 @@ export function tick(ctx, buf, gain, freq, ms) {
 export function staticNoise(ctx, buf, gain, ms) {
   const src = ctx.createBufferSource(); src.buffer = buf;
   const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 420;
-  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 950 + Math.random() * 180; bp.Q.value = 0.85;
+  const bp = ctx
+    .createBiquadFilter();
+  bp
+    .type = 'bandpass';
+  bp
+    .frequency
+    .value = 950 + Math
+    .random() * 180;
+  bp
+    .Q
+    .value = 0.85;
   const g = ctx.createGain();
   const t0 = ctx.currentTime, dur = ms / 1000;
   g.gain.setValueAtTime(0, t0);
@@ -23,7 +33,9 @@ export function staticNoise(ctx, buf, gain, ms) {
   g.gain.linearRampToValueAtTime(gain * 0.42, t0 + dur * 0.35);
   g.gain.linearRampToValueAtTime(gain * 0.15, t0 + dur * 0.75);
   g.gain.linearRampToValueAtTime(0, t0 + dur);
-  if (dur > 0.08) { g.gain.setValueAtTime(gain * 0.3, t0 + dur * 0.18); g.gain.linearRampToValueAtTime(gain * 0.45, t0 + dur * 0.2); }
+  if (dur > 0.08) { g.gain.setValueAtTime(gain * 0.3,
+      t0 + dur * 0.18); g.gain.linearRampToValueAtTime(gain * 0.45,
+      t0 + dur * 0.2); }
   src.connect(hp); hp.connect(bp); bp.connect(g); g.connect(ctx.destination);
   src.start(); src.stop(t0 + dur + 0.02);
 }

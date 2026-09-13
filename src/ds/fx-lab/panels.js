@@ -9,7 +9,8 @@ export function mountShimmer(scope) {
   const out = scope.querySelector('[data-fx-dur-v]');
   const dirB = scope.querySelector('[data-fx-dir]');
   const pauseB = scope.querySelector('[data-fx-pause]');
-  const onDur = () => { const s = (+dur.value / 10).toFixed(1); box.style.setProperty('--fx-dur', s + 's'); if (out) out.textContent = s + 's'; };
+  const onDur = () => { const s = (+dur.value / 10).toFixed(1); box.style.setProperty('--fx-dur',
+      s + 's'); if (out) out.textContent = s + 's'; };
   const onDir = () => { if (dirB) dirB.textContent = box.classList.toggle('rev') ? 'forward' : 'reverse'; };
   const onPause = () => { if (pauseB) pauseB.textContent = box.classList.toggle('off') ? 'play' : 'pause'; };
   if (dur) dur.addEventListener('input', onDur);
@@ -29,7 +30,8 @@ export function mountRise(scope) {
   const dur = scope.querySelector('[data-fx-rise-dur]');
   const out = scope.querySelector('[data-fx-rise-v]');
   const btn = scope.querySelector('[data-fx-rise-replay]');
-  const onDur = () => { if (dur && out) { box.style.setProperty('--fx-rise-dur', dur.value + 'ms'); out.textContent = dur.value + 'ms'; } };
+  const onDur = () => { if (dur && out) { box.style.setProperty('--fx-rise-dur',
+        dur.value + 'ms'); out.textContent = dur.value + 'ms'; } };
   const onReplay = () => {
     if (reduced()) return;
     box.classList.add('rest');

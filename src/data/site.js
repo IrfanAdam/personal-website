@@ -17,5 +17,18 @@ export const contact = settings.contact || { hero: [], now: '', past: '', bio2: 
 export const profileImage = settings.profileImage || '/images/irfan-profile.jpg';
 export const bodies = Object.fromEntries(items.map((p) => [p.slug, p.body || '']));
 export const projects = items.map((p) =>
-  [p.slug, p.title, p.catA || '', p.catB || '', p.date, p.timeline, p.role, p.tag, p.image, p.deliverables || '—', p.platform || '—', ...(dims[p.slug] || [3, 4]), p.mock || p.image, p.hero || p.mock || p.image]);
+  [p.slug,
+    p.title,
+    p.catA || '',
+    p.catB || '',
+    p.date,
+    p.timeline,
+    p.role,
+    p.tag,
+    p.image,
+    p.deliverables || '—',
+    p.platform || '—',
+    ...(dims[p.slug] || [3, 4]),
+    p.mock || p.image,
+    p.hero || p.mock || p.image]);
 export const iconFor = (slug) => `/icons/${slug === 'apparel-manufacturing-system-reimagined' ? 'apparel' : slug}.jpg`;

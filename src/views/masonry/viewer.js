@@ -3,7 +3,15 @@
 import { fxNum, fxMs } from '../fx-tokens.js';
 import { createViewerDom, makePaint, springStep } from './viewer-markup.js';
 import { bindViewer } from './viewer-bind.js';
-export { clamp01, smoothstep, targetY, offsetPoint, springStep, placeViewer, placeViewerNear, HALF, OFF } from './viewer-markup.js';
+export { clamp01,
+  smoothstep,
+  targetY,
+  offsetPoint,
+  springStep,
+  placeViewer,
+  placeViewerNear,
+  HALF,
+  OFF } from './viewer-markup.js';
 export function attachViewer(grid) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   if (window.innerWidth <= 640 || matchMedia('(hover: none)').matches) return () => {};
@@ -40,7 +48,8 @@ export function attachViewer(grid) {
     state.pendingRaf = requestAnimationFrame(() => { state.pendingRaf = 0; paint(); kick(); });
   };
   const clearIdle = () => { if (state.idleTimer) { clearTimeout(state.idleTimer); state.idleTimer = 0; } };
-  const armIdle = () => { clearIdle(); if (state.portalOn) state.idleTimer = setTimeout(() => hidePortal(), cfg.IDLE); };
+  const armIdle = () => { clearIdle(); if (state.portalOn) state.idleTimer = setTimeout(() => hidePortal(),
+      cfg.IDLE); };
   const showCursor = () => {
     if (state.hideTimer) { clearTimeout(state.hideTimer); state.hideTimer = 0; }
     if (state.cursorOn) return;
