@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T19:19:18.125Z",
+ "generated": "2026-09-13T19:34:01.839Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,33 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "bfa5a0b",
+   "full": "bfa5a0b7d9a114bcc324337c596b142e84e6b74b",
+   "date": "2026-09-14",
+   "time": "01:03",
+   "subject": "fix(ds): color/sections header wraps — the new width check flagged it",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "dd35e44",
+   "full": "dd35e448528658c05af00c7fe4ab36c0edff62af",
+   "date": "2026-09-14",
+   "time": "01:03",
+   "subject": "feat(ds): lint-manage v2 catches the Phase-3 regressions",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "10b60e9",
+   "full": "10b60e986c6a8ed6d7094c25c360df6d5806cc69",
+   "date": "2026-09-14",
+   "time": "00:49",
+   "subject": "chore(ds): track refresh + close the split-repair phases",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "9b6f615",
    "full": "9b6f615b1b4fda8fee16cf39c8ce16f370cfae19",

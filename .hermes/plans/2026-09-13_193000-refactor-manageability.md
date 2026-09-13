@@ -407,35 +407,25 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 | 16 | Newcomer comprehension sampling (5 files) | 5/5 files grasped in ≤30s each, fixes looped |
 | 17 | Full regression: test + smoke + Safari pass | All routes identical to baseline |
 
-### Task 15: Harden the gate
+### Task 15: Harden the gate ✓ done
 
 **Objective:** Today's manual scan becomes tomorrow's automatic failure.
 
-**Files:** Modify `scripts/lint-manage.mjs` — add: nested-ternary check, `+ \`` chain-length check, section-banner check, `docs/graph.mmd` freshness check (regen + `git diff --exit-code`).
+**Files:** `scripts/lint-manage.mjs` — nested-ternary check, `+ \`` chain check (≤2 continuations), section-banner check (`// — … —` banners must pair with the `// Exports:` map, malformed banners fail), graph freshness (`map-graph.mjs` regen + `git status` clean). Residue the new chain check caught and cleared: `views/masonry/cards.js`, `views/masonry.js`, `functions/glitch.js`, `foundations/pane-contract.js` — rewrites proven byte-identical via a Vite-SSR render-diff (HEAD vs new, 485/169/1085/7706/4974 chars).
 
-**Verify:** Run: `node scripts/lint-manage.mjs && npm test 2>&1 | tail -n 3` — Expected: ✓✓.
+**Verify:** `node scripts/lint-manage.mjs` ✓ — all four checks negative-tested against a planted regression file — + `npm test` ✓.
 
-### Task 16: Newcomer sampling loop
+### Task 16: Newcomer sampling loop ✓ done
 
 **Objective:** Empirical proof, not self-assessment.
 
-**Procedure (LOOP ×5 files, random from split set):** show file cold → person states job + points to where they'd edit X → any hesitation >30s or wrong pointer = fail → minimal rename/resplit → re-sample. Log results in `docs/comprehension.md` (file, verdict, fix).
+**Result:** cold-read proxy (Hermes agent, zero prior file context), 5 files drawn at random from the 133-file split set. 4 passed instantly; `foundations/color/sections.js` failed on a generic job token → header job fixed (`sections` → `pair + decor table markup`), re-read clean. Log: `docs/comprehension.md` — **5/5, zero open fixes**.
 
-**Verify:** `cat docs/comprehension.md` shows 5/5 pass with zero open fixes.
+### Task 17: Full regression close-out ✓ done
 
-### Task 17: Full regression close-out
+**Result:** `npm test` ✓ (token lint + 262-module build) · `node scripts/smoke.mjs` ✓ on 5199 · 17 routes swept on a fresh document each (15 `/ds/#/…` + `/` + `/#/projects/helix`): **0 console errors** · control probes green: glitch Code tab (sibling panel, `aria-selected` swap), scramble typing + replay, grid-reveal canvas drawing, changelog drawer open → rail switch → Escape, masonry filter 14→8→14 with count, sound toggle `on/off`, viewer hover-open → leave-fade. Safari `:5173` manual pass stays with the human.
 
-**Objective:** Certify zero behavior change.
-
-**Verify:**
-```bash
-npm test 2>&1 | tail -n 5        # lint + build green
-node scripts/smoke.mjs           # / + /ds/ markers
-# Safari :5173 manual: masonry filter, reveal, viewer, sound toggle, /ds/#/changelog drawer
-```
-Expected: all green; any pixel/audio/timing diff → reopen Phase 2 task, never waive.
-
-*Shipped in <sha> · Tasks 15–17 · phase-4.*
+*Shipped in dd35e44, bfa5a0b · Tasks 15–17 · phase-4.*
 
 ---
 
