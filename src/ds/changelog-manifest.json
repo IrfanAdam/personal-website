@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T14:24:33.063Z",
+ "generated": "2026-09-13T14:33:05.687Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,24 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "f677501",
+   "full": "f67750118a0426525b97e2a8839f831ca0417e43",
+   "date": "2026-09-13",
+   "time": "20:02",
+   "subject": "chore(nomenclature): ADAM headers everywhere",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "c52a905",
+   "full": "c52a9051fb49a4eded3de7bd7eb79929e3e4cdbe",
+   "date": "2026-09-13",
+   "time": "19:54",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-0"
+  },
   {
    "sha": "5d033ce",
    "full": "5d033ce907f5fb59e0050f7d478b70e41d7a3b0f",

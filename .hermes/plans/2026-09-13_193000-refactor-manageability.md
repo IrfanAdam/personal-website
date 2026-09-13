@@ -190,7 +190,7 @@ git commit -m "feat(tool): route smoke for refactor safety [plan:2026-09-13_1930
 | 5 | Barrel pass: `fx/sound/` + `fx/visual/` barrels | Old import paths still work, new paths documented |
 | 6 | Header pass: ADAM headers on all `src/**/*.js` | `lint-manage` header failures → 0 (line failures remain) |
 
-### Task 4: Import graph generator
+### Task 4: Import graph generator ✓ done
 
 **Objective:** Make organization visible as a node diagram.
 
@@ -214,7 +214,7 @@ git add scripts/map-graph.mjs docs/graph.mmd
 git commit -m "feat(tool): import graph for node diagram [plan:2026-09-13_193000-refactor-manageability.md#phase-1]"
 ```
 
-### Task 5: Barrel scaffolding for new nests
+### Task 5: Barrel scaffolding for new nests ✓ done
 
 **Objective:** New folders resolve before any code moves, so splits are pure moves.
 
@@ -240,7 +240,7 @@ git add src/fx/visual/index.js src/fx/sound/index.js
 git commit -m "feat(fx): barrel nests for visual/sound split [plan:2026-09-13_193000-refactor-manageability.md#phase-1]"
 ```
 
-### Task 6: ADAM header pass
+### Task 6: ADAM header pass ✓ done
 
 **Objective:** Every file self-identifies its nest and job.
 
@@ -264,7 +264,7 @@ git add src/
 git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193000-refactor-manageability.md#phase-1]"
 ```
 
-*Shipped in <sha> · Tasks 4–6 · phase-1.*
+*Shipped in d36a17e, 5affee9, f677501 · Tasks 4–6 · phase-1.*
 
 ---
 
