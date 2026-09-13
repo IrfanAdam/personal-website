@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T14:23:36.834Z",
+ "generated": "2026-09-13T14:24:33.063Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,15 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "5d033ce",
+   "full": "5d033ce907f5fb59e0050f7d478b70e41d7a3b0f",
+   "date": "2026-09-13",
+   "time": "19:53",
+   "subject": "chore(ds): SOP compliance — names + manifest + project rules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-0"
+  },
   {
    "sha": "05d70ef",
    "full": "05d70ef6c3bdf4dcdbf7018f757c8ab556605e54",
@@ -804,7 +813,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-names.json"
- ]
+ "wip": []
 }
