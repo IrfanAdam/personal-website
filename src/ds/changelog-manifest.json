@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T14:33:05.687Z",
+ "generated": "2026-09-13T14:35:10.216Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,15 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "97fcd38",
+   "full": "97fcd38d16f715489760d37b16e39c323687d795",
+   "date": "2026-09-13",
+   "time": "20:03",
+   "subject": "docs(plan): mark refactor phase-1 done",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "f677501",
    "full": "f67750118a0426525b97e2a8839f831ca0417e43",

@@ -257,6 +257,8 @@ Expected: list shrinks to zero after pass.
 Run: `node scripts/lint-manage.mjs 2>&1 | grep -c "missing ADAM" || echo 0`
 Expected: `0` (line-count failures remain — correct for this phase).
 
+**Guardrail (standing — applies to every phase):** never join two lines into one to satisfy a line budget. Overflow is fixed by extraction (move the block to its proper home, verbatim, multiline intact), never by packing. Redo 2026-09-13: a footer collapse in `base.css` was reverted; the `.contact-hero` block moved `base.css` → `pages.css` instead (base 101→87, pages 38→52).
+
 **Step 3: Commit**
 
 ```bash
@@ -377,6 +379,8 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Objective:** `ds.css`/`base.css`/`card.css` sit at 96–99 lines via packed one-liners — restore one-rule-per-line by moving page chrome into per-page stylesheets (per plan-traceability §5: never just append).
 
+**Multiline law (styles, scripts, everywhere):** nested blocks keep their lines — one declaration / one statement per line, always. A block that fits on one line today stays expanded if expansion is its readable shape; the budget is met by moving blocks out, never by collapsing them in. Pre-existing packed one-liners (e.g. `base.css` header/strip rules) get unpacked as their block moves to its proper home.
+
 **Files:** Create `src/ds/changelog-drawer.css` (or per-page equivalent), slim `ds.css`; same for `styles/` if needed.
 
 **Verify:** `wc -l src/ds/*.css src/styles/*.css` all ≤100 AND `npm run lint:tokens` ✓.
@@ -451,7 +455,7 @@ Append to `AGENTS.md` (mirror into `.cursorrules`, which currently does not exis
 ## 5. File Budget — Max 100 lines, all languages (JS+CSS+scripts)
 Every source file ≤100 lines incl. comments. CI (`lint-manage.mjs`) fails the build over budget. Split via extract-module + barrel re-export; never via minification/packing.
 ## 6. Readability — Scannable, no one-line hacks
-One statement per line; no nested ternaries; no `+` template chains >2 continuations; max 120 chars/line; every file opens with `/* ADAM/<AREA> — <path> · <job> */` + 2-line export map + `// — Section —` banners.
+One statement per line; no nested ternaries; no `+` template chains >2 continuations; max 120 chars/line; nested blocks keep their lines in styles/scripts everywhere (one CSS declaration per line); the line budget is met by extraction, never by collapsing — packing lines to pass the gate is a violation, not a fix. Every file opens with `/* ADAM/<AREA> — <path> · <job> */` + 2-line export map + `// — Section —` banners.
 ## 7. Nomenclature & Nesting — Retrievability guarantee
 kebab-case files, noun-first; folders by job (app/pages/shared/fx/{visual,sound}/ds/styles); AREA tags APP|PAGE|SHARED|FX|SOUND|DS|STYLE|TOOL. New module must appear on `docs/graph.mmd` (`node scripts/map-graph.mjs`) with no orphans/cycles.
 ## 8. Traceability — Every block cites its phase
