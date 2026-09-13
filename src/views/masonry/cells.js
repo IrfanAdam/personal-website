@@ -1,4 +1,7 @@
-/* ADAM/PAGE — views/masonry/cells · grid cell builders · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/PAGE — views/masonry/cells · cell builders · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+// Exports: buildTree, buildSquare, measureTree, MORPH, smoothstep, clamp01, mix, easeOut
+// Order policies live in cells-order.js — import from there, not here.
+export { orderByDetail, orderRandom } from './cells-order.js';
 // Binary-split cell tree + square mosaic (single tone · varying opacity).
 // buildTree keeps legacy rectangular path; buildSquare gives square pixels
 // for the new shimmer: cols=√(n·aspect), rows=cols/aspect, 1:1 in px.
@@ -78,33 +81,4 @@ export function measureTree(root, px, size) {
     return { n, r, g, b, l, l2 };
   };
   gather(root);
-}
-export function orderByDetail(branches, at) {
-  const pending = branches.filter((c) => c.splitAt > at);
-  if (pending.length < 2) return;
-  const slots = pending.map((c) => c.splitAt).sort((a, b) => a - b);
-  const queue = pending.filter((c) => !c.parent || c.parent.splitAt <= at);
-  let next = 0;
-  while (queue.length && next < slots.length) {
-    let pick = 0;
-    for (let i = 1; i < queue.length; i++) if (queue[i].detail > queue[pick].detail) pick = i;
-    const c = queue.splice(pick, 1)[0];
-    c.splitAt = slots[next++];
-    for (const k of c.kids ?? []) if (k.kids) queue.push(k);
-  }
-}
-// Same slots and pacing as orderByDetail, but shuffled — splits resolve in
-// random order instead of busy-first. Hierarchy still holds (kids queue only
-// after their parent is eligible), so pacing is identical run to run.
-export function orderRandom(branches, at) {
-  const pending = branches.filter((c) => c.splitAt > at);
-  if (pending.length < 2) return;
-  const slots = pending.map((c) => c.splitAt).sort((a, b) => a - b);
-  const queue = pending.filter((c) => !c.parent || c.parent.splitAt <= at);
-  let next = 0;
-  while (queue.length && next < slots.length) {
-    const c = queue.splice((Math.random() * queue.length) | 0, 1)[0];
-    c.splitAt = slots[next++];
-    for (const k of c.kids ?? []) if (k.kids) queue.push(k);
-  }
 }

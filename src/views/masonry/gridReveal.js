@@ -1,13 +1,17 @@
-/* ADAM/FX — views/masonry/gridReveal · binary-subdivision reveal · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/FX — gridReveal · attach lifecycle · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+// Exports: attachGridReveal — painter lives in gridReveal-draw.js
 // Paced port of rareui GridReveal — frame one is already half-subdivided,
 // subdivision with eased split morphs (random split order), gutters
 // recess as the mosaic refines, the photo fading in only at the very end.
-import { buildTree, measureTree, orderRandom, clamp01, mix, easeOut, smoothstep } from './cells.js';
+import { buildTree } from './cells.js';
+import { draw } from './gridReveal-draw.js';
+import { makeTicker } from './gridReveal-tick.js';
+import { makeDecode, gateLoad } from './gridReveal-load.js';
+import { smoothstep } from './cells.js';
 import { fxNum, fxMs } from '../fx-tokens.js';
 /* Graduated motion tokens — getComputedStyle with shipped-literal fallback,
    so first paint is pixel-identical with or without the token. Read once per
    attach (never per-frame): getComputedStyle per cell costs. */
-const SAMPLE = 128;
 const fx = () => ({
   target: fxNum('--fx-cell', 30),
   waitCap: fxNum('--fx-wait', 0.72),
@@ -21,55 +25,11 @@ const fx = () => ({
 const darkNow = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
 // URLs decoded at least once this session — revisits skip the reveal
 // (grid rebuilds its <img> nodes per visit, so complete-at-attach misses).
-const seen = new Set();
-const greyOf = (tone, dark, clock) => (dark ? 30 : 228) + tone * 13 + Math.sin(clock * 1.5 + tone * 6.28) * 3;
 const cellCount = (box, target) => {
   const r = box.getBoundingClientRect();
   if (!r.width || !r.height) return 120;
   return Math.min(180, Math.max(48, Math.round((r.width * r.height) / (target * target))));
 };
-function patch(ctx, p, W, H, gut, tint, dark, clock, white) {
-  const x = Math.round(p.x), y = Math.round(p.y);
-  const w = Math.round(p.x + p.w) - x, h = Math.round(p.y + p.h) - y;
-  const l = x <= 0 ? 0 : gut, t = y <= 0 ? 0 : gut;
-  const iw = w - l - (x + w >= W ? 0 : gut), ih = h - t - (y + h >= H ? 0 : gut);
-  if (iw <= 0 || ih <= 0) return;
-  if (white == null) {
-    const g = greyOf(p.tone, dark, clock);
-    ctx.fillStyle = `rgb(${Math.round(mix(g, p.r, tint))},${Math.round(mix(g, p.g, tint))},${Math.round(mix(g, p.b, tint))})`;
-  } else ctx.fillStyle = `rgba(255,255,255,${white.toFixed(3)})`;
-  ctx.fillRect(x + l, y + t, iw, ih);
-}
-function draw(ctx, root, W, H, s) {
-  const tint = s.hasColors ? s.fade : 0;
-  const base = greyOf(root.tone, s.dark, s.clock);
-  ctx.fillStyle = `rgb(${Math.round(mix(base, root.r, tint) * 0.92)},${Math.round(mix(base, root.g, tint) * 0.92)},${Math.round(mix(base, root.b, tint) * 0.92)})`;
-  ctx.fillRect(0, 0, W, H);
-  const gut = s.gut * (1 - smoothstep(0.35, 0.75, s.split));
-  const seed = { x: 0, y: 0, w: W, h: H, r: root.r, g: root.g, b: root.b, tone: root.tone };
-  const walk = (c, p, gl) => {
-    if (!c.kids || s.split < c.splitAt) {
-      if (!gl) { patch(ctx, p, W, H, gut, tint, s.dark, s.clock); return; }
-      const band = gl.pos - ((p.x + p.y) / (W + H)) * 0.9 - p.tone * 0.25;
-      const a = Math.max(0, 1 - Math.abs(band) * 4) * gl.amp;
-      if (a > 0.01) patch(ctx, p, W, H, 0, 0, false, 0, a);
-      return;
-    }
-    const t = easeOut(clamp01((s.split - c.splitAt) / s.morph));
-    for (const k of c.kids) walk(k, {
-      x: mix(p.x, k.x * W, t), y: mix(p.y, k.y * H, t), w: mix(p.w, k.w * W, t), h: mix(p.h, k.h * H, t),
-      r: mix(p.r, k.r, t), g: mix(p.g, k.g, t), b: mix(p.b, k.b, t), tone: mix(p.tone, k.tone, t),
-    }, gl);
-  };
-  walk(root, seed);
-  if (!s.done || s.now < s.t0) walk(root, seed, { pos: ((s.clock % 1.6) / 1.6) * 1.5, amp: s.sheen });
-  if (s.sharp) {
-    const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
-    const photo = s.hasColors ? pr : s.fade;
-    if (photo > 0.002) { ctx.globalAlpha = Math.min(1, photo); ctx.drawImage(s.sharp, 0, 0); ctx.globalAlpha = 1; }
-    if (s.done && pr > 0 && pr < 1) walk(root, seed, { pos: pr * 1.5, amp: (s.sheen + 0.1) * (1 - pr) });
-  }
-}
 export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) {
   const canvas = box.querySelector('canvas.gr'), ctx = canvas ? canvas.getContext('2d') : null;
   if (!canvas || !ctx) return () => {};
@@ -100,48 +60,8 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
     x.drawImage(img, (s.W - img.naturalWidth * sc) / 2, (s.H - img.naturalHeight * sc) / 2, img.naturalWidth * sc, img.naturalHeight * sc);
     s.sharp = c;
   };
-  const decode = () => {
-    const buf = document.createElement('canvas'); buf.width = SAMPLE; buf.height = SAMPLE;
-    const btx = buf.getContext('2d', { willReadFrequently: true });
-    if (btx && img.naturalWidth) {
-      const sc = Math.max(SAMPLE / img.naturalWidth, SAMPLE / img.naturalHeight);
-      btx.drawImage(img, (SAMPLE - img.naturalWidth * sc) / 2, (SAMPLE - img.naturalHeight * sc) / 2, img.naturalWidth * sc, img.naturalHeight * sc);
-      try { measureTree(root, btx.getImageData(0, 0, SAMPLE, SAMPLE).data, SAMPLE); orderRandom(branches, s.split); s.hasColors = true; } catch {}
-    }
-    seen.add(img.currentSrc || img.src);
-    s.done = true; s.loadedAt = performance.now(); makeBuffers();
-    if (reduce) { s.split = 1; s.eased = 1; s.fade = 1; render(s.loadedAt + s.colorMs); finish(); }
-  };
-  const key = img.currentSrc || img.src;
-  // Grid cards skip when already viewed this session or cached. Mobile
-  // heroes always replay — but from measured state: an already-complete
-  // image never fires `load` again, so decode now instead of dead-waiting
-  // for it (that parked the reveal on the shimmer until the 9s timeout,
-  // then snapped the photo in with no crossfade). Desktop heroes still
-  // skip when seen.
-  const mobile = matchMedia('(max-width: 640px)').matches;
-  const replay = hero && mobile;
-  if (seen.has(key) || (img.complete && img.naturalWidth)) {
-    decode();
-    if (!replay || reduce) {
-      // cached / already seen — skip the reveal entirely, show the photo
-      s.split = 1; s.eased = 1; s.fade = 1; finish();
-      return () => {};
-    }
-    // mobile hero replay: fall through into the animated reveal —
-    // decode already measured colors + done/loadedAt, buffers rebuild
-    // on resize below.
-  } else if (img.complete) {
-    // settled but broken (404 / decode fail): no load/error will ever
-    // fire — finish photo-less instead of shimmering till the timeout.
-    s.done = true; s.loadedAt = performance.now();
-  } else {
-    img.addEventListener('load', decode, { once: true }); img.addEventListener('error', () => { s.done = true; s.loadedAt = performance.now(); if (reduce) { render(s.loadedAt); finish(); } }, { once: true });
-  }
-  // load timeout — a hanging response (common on mobile) must not shimmer
-  // forever: settle into tinted cells and finish photo-less. No-op when
-  // decode already ran; a late load still paints via the <img> itself.
-  setTimeout(() => { if (!s.done) { s.done = true; s.loadedAt = performance.now(); } }, fxMs('--fx-load-timeout', 9000));
+  const decode = makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce);
+  if (gateLoad(img, hero, reduce, s, decode, render, finish)) return () => {};
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2), r = box.getBoundingClientRect();
     const W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));
@@ -151,43 +71,9 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
   };
   resize(); const ro = new ResizeObserver(resize); ro.observe(box);
   if (reduce) { render(performance.now()); return () => { ro.disconnect(); }; }
-  // RAF fallback for headless/hidden tabs where requestAnimationFrame is throttled.
-  // viaRaf remembers the schedule-time mechanism so cancel uses the matching
-  // canceller — re-checking visibilityState at cancel time leaks a loop on
-  // the detached DOM when the tab flips in between (route change while hidden).
-  let viaRaf = false;
-  const nextFrame = (cb) => {
-    if (typeof requestAnimationFrame === 'function' && document.visibilityState === 'visible') { viaRaf = true; return requestAnimationFrame(cb); }
-    viaRaf = false;
-    return setTimeout(() => cb(performance.now()), 16);
-  };
-  const cancelFrame = (id) => {
-    if (viaRaf && typeof cancelAnimationFrame === 'function') return cancelAnimationFrame(id);
-    return clearTimeout(id);
-  };
-  let raf = 0, visible = true, stopped = false;
-  const tick = (now) => {
-    raf = nextFrame(tick);
-    const dt = Math.min(((now - (s.now || now)) / 1000) || 0, 0.05);
-    s.clock += dt;
-    if (now < s.t0) { render(now); return; } // stagger hold — skeleton shimmers, splits frozen
-    s.elapsed += dt;
-    const target = s.done ? 1 : 0.9 * (1 - Math.exp(-s.elapsed / s.spanS));
-    const easeK = 8, splitK = 6;
-    s.eased += (target - s.eased) * (1 - Math.exp(-dt * easeK));
-    // post-load hold: each card settles by its own decode time + its slot,
-    // so slow images stay staggered instead of popping together on load.
-    const released = !s.done || now - s.loadedAt > s.holdMs;
-    const wanted = Math.min(s.eased, released ? 1 : s.waitCap);
-    s.split += (wanted - s.split) * (1 - Math.exp(-dt * splitK));
-    render(now);
-    if (s.done) {
-      const pr = s.hasColors ? smoothstep(s.photoFrom, 1, s.split) : s.fade;
-      if (pr > 0.99 && s.split > 0.985) { render(now); stopped = true; cancelFrame(raf); raf = 0; finish(); }
-    }
-  };
-  const start = () => { if (!stopped && !raf) raf = nextFrame(tick); };
-  const io = hero ? null : ('IntersectionObserver' in window ? new IntersectionObserver(([e]) => { if (e.isIntersecting === visible) return; visible = e.isIntersecting; if (visible) start(); else { cancelFrame(raf); raf = 0; } }, { rootMargin: '150px' }) : null);
+  const ticker = makeTicker(s, render, finish);
+  const start = () => ticker.start();
+  const io = hero ? null : ('IntersectionObserver' in window ? new IntersectionObserver(([e]) => ticker.setVisible(e.isIntersecting), { rootMargin: '150px' }) : null);
   if (io) io.observe(box); start();
-  return () => { cancelFrame(raf); ro.disconnect(); if (io) io.disconnect(); };
+  return () => { ticker.stop(); ro.disconnect(); if (io) io.disconnect(); };
 }

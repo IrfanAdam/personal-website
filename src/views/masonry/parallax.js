@@ -1,137 +1,58 @@
-/* ADAM/PAGE — views/masonry/parallax · scroll parallax · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
-// Column bottom-alignment parallax: short columns drift down as you scroll so
-// all column bottoms align at the end of the page scroll.
-// Smooth chase: target scroll progress is chased with a frame-rate
-// independent exponential decay (critically damped, no overshoot).
-// That removes the underdamped spring's wobble/stutter and feels
-// butter-smooth even on variable refresh (60→120Hz) and momentum scroll.
-// Gate: parallax stays at 0 until the grid's top reaches the header edge
-// so short columns visibly hit the top before they start drifting.
+/* ADAM/PAGE — parallax · attach + measure · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+// Exports: attachParallax — chase in parallax-chase, math in calc/measure
+import { syncBounds as calcBounds, progress as calcProgress } from './parallax-calc.js';
+import { measureDeficits, gateOnImages } from './parallax-measure.js';
+import { makeChase } from './parallax-chase.js';
+
 export function attachParallax(grid) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   if (window.innerWidth <= 640) return () => {};
   const cols = [...grid.querySelectorAll('.col')];
   if (cols.length < 2) return () => {};
-
   let deficits = [];
   let maxScroll = 1;
   let gridStart = 0;
-  let target = 0, current = 0, rafId = 0, last = 0;
-
-  // λ controls chase speed: 10 ≈ 300ms settle, 14 ≈ 210ms.
-  // 10–12 feels fluid without lag; no overshoot by construction.
-  const LAMBDA = 11;
-
-  function syncBounds() {
-    maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const topEl = document.querySelector('.top');
-    const hdr = topEl ? topEl.offsetHeight : 0;
-    const rectTop = grid.getBoundingClientRect().top + window.scrollY;
-    gridStart = Math.max(0, rectTop - hdr);
-  }
-
-  function progress() {
-    if (maxScroll <= 40) return 0;
-    const range = maxScroll - gridStart;
-    if (range <= 40) return 0;
-    return Math.min(1, Math.max(0, (window.scrollY - gridStart) / range));
-  }
-
-  function render() {
-    for (let i = 0; i < cols.length; i++) {
-      const y = deficits[i] * current;
-      // Keep a composited layer at all times — 'none' drops the layer and
-      // causes a hitch when the first non-zero frame promotes it.
-      cols[i].style.transform = y < 0.05 ? 'translate3d(0,0,0)' : `translate3d(0,${y.toFixed(2)}px,0)`;
-    }
-  }
-
-  function tick(now) {
-    const dt = Math.min(0.033, (now - last) / 1000 || 0.016);
-    last = now;
-    const delta = target - current;
-    if (Math.abs(delta) < 0.00035) {
-      current = target;
-      render();
-      rafId = 0;
-      return;
-    }
-    // frame-rate independent exponential: independent of dt, no overshoot
-    current += delta * (1 - Math.exp(-LAMBDA * dt));
-    render();
-    rafId = requestAnimationFrame(tick);
-  }
-
-  function kick() {
-    target = progress();
-    if (!rafId) {
-      last = performance.now();
-      rafId = requestAnimationFrame(tick);
-    }
-  }
-
+  const syncBounds = () => {
+    const b = calcBounds(grid);
+    maxScroll = b.maxScroll;
+    gridStart = b.gridStart;
+  };
+  const progress = () => calcProgress(maxScroll, gridStart);
+  const chase = makeChase(cols, () => deficits, progress);
+  const kick = () => chase.kick();
   function measure() {
     if (window.innerWidth <= 640) {
       cols.forEach((c) => { c.style.transform = 'translate3d(0,0,0)'; });
-      if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
-      current = target = 0;
+      chase.reset();
       return;
     }
     syncBounds();
-    // read heights in one batch before writing transforms
-    const hs = cols.map((c) => c.getBoundingClientRect().height);
-    const tallest = Math.max(...hs);
-    deficits = hs.map((h) => Math.max(0, tallest - h));
+    deficits = measureDeficits(cols);
     cols.forEach((c, i) => (c.dataset.deficit = String(Math.round(deficits[i]))));
-    target = progress();
-    // snap current on first measure so first paint isn't offset-zero → jump
-    if (!rafId && Math.abs(current - target) > 0.002) {
-      // if we haven't animated yet, jump to near target to avoid visible snap
-      // but still let the decay smooth subsequent scrolls
-      const atTop = window.scrollY < gridStart + 2;
-      if (atTop) current = target;
-    }
+    chase.snapAtTop(gridStart);
     kick();
   }
-
   let measureRaf = 0;
-  function onResize() {
+  const onResize = () => {
     if (measureRaf) return;
     measureRaf = requestAnimationFrame(() => {
       measureRaf = 0;
       measure();
     });
-  }
-
-  const imgs = [...grid.querySelectorAll('img')];
-  let pending = imgs.length;
-  const afterImages = () => { if (pending <= 0) measure(); };
-  if (pending === 0) requestAnimationFrame(measure);
-  else {
-    imgs.forEach((img) => {
-      if (img.complete) pending--;
-      else {
-        img.addEventListener('load', () => { pending--; afterImages(); }, { once: true });
-        img.addEventListener('error', () => { pending--; afterImages(); }, { once: true });
-      }
-    });
-    requestAnimationFrame(measure);
-    if (pending <= 0) measure();
-  }
-
+  };
+  gateOnImages(grid, measure);
   syncBounds();
   window.addEventListener('scroll', kick, { passive: true });
   window.addEventListener('resize', onResize);
   const ro = new ResizeObserver(onResize);
   ro.observe(grid);
   requestAnimationFrame(measure);
-
   return () => {
     window.removeEventListener('scroll', kick);
     window.removeEventListener('resize', onResize);
     ro.disconnect();
     if (measureRaf) cancelAnimationFrame(measureRaf);
-    cancelAnimationFrame(rafId);
+    chase.reset();
     cols.forEach((c) => { c.style.transform = ''; c.removeAttribute('data-deficit'); });
   };
 }
