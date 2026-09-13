@@ -1,66 +1,13 @@
-/* ADAM/FX — Glitch sound · multi-voice palette (tick/static/blip/chime/hum/data)
-   Hum 320ms, proximity-scaled per glitch. */
+/* ADAM/FX — views/glitch-sound · composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { TYPES, synth } from './sound-palette.js';
-import { getCtx, getNoise, ctxInfo } from './audio-ctx.js';
+import { getCtx, ctxInfo } from './audio-ctx.js';
+import { pickKind, parseAttr } from './glitch-sound/parse.js';
+import { prox, isOver } from './glitch-sound/geom.js';
+import { getBuf, red, untilGlitch } from './glitch-sound/timing.js';
 export { ctxInfo };
 let el, timer = null, phase = null, last = 0, mx = -1e4, my = -1e4, on = true;
 let lo = 5000, hi = 9000, kind = 'hum';
-const R = 260, FLOOR = 600, HOVER_R = 18, AT = 0.88;
-const red = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch { return false; } };
-function getBuf() { return getNoise(); }
-function prox() { if (!el) return 0.6;
-  if (mx < -5e3) return 0.6;
-  const r = el
-    .getBoundingClientRect();
-  const dx = Math
-    .max(r.left - mx, 0, mx - r.right);
-  const dy = Math
-    .max(r.top - my, 0, my - r.bottom);
-  const d = Math
-    .hypot(dx, dy);
-  if (d >= R) return 0;
-  return 1 - d / R;
-}
-function pickKind(raw) { if (!raw) return kind;
-  const v = String(raw)
-    .toLowerCase();
-  const found = v
-    .split(/[\s,|]+/)
-    .map((s) => s.trim())
-    .filter((s) => TYPES.includes(s));
-  if (found.length === 0) return kind;
-  if (found.length === 1) return found[0];
-  return found[Math.floor(Math.random() * found.length)];
-}
-function durMs() { try { if (!el) return 2400;
-    const r = getComputedStyle(el)
-      .getPropertyValue('--dur-glitch')
-      .trim() || '2.4s';
-    if (r.endsWith('ms')) return parseFloat(r) || 2400;
-    if (r.endsWith('s')) return (parseFloat(r) || 2.4) * 1000;
-    return 2400;
-  } catch { return 2400;
-  } }
-function untilGlitch() { try { if (!el || !el.isConnected || !el.getAnimations) return 0;
-    const anims = el
-      .getAnimations();
-    const g = anims
-      .find((a) => String(a.animationName || '').toLowerCase().includes('glitch'));
-    if (!g || g.playState === 'paused') return 0;
-    let dur = null;
-    try { dur = g.effect.getTiming().duration;
-    } catch {} if (typeof dur === 'string') dur = parseFloat(dur);
-    dur = Number(dur);
-    if (!dur || !isFinite(dur)) dur = durMs();
-    const cur = Number(g.currentTime);
-    if (!isFinite(cur)) return 0;
-    const at = dur * AT;
-    const mod = ((cur % dur) + dur) % dur;
-    let d = at - mod;
-    if (d < 20) d += dur;
-    return d > 0 ? d : 0;
-  } catch { return 0;
-  } }
+const FLOOR = 600;
 async function play(manual, opts) {
   if (red()) return 'reduced'; if (!on) return 'muted';
   if (!manual && el && !el.isConnected) { clearTimeout(timer);
@@ -77,12 +24,12 @@ async function play(manual, opts) {
       } catch {} } if (c.state !== 'running') { if (manual) last = 0;
       return 'blocked';
     } }
-  const p = prox(); const g = manual ? 0.72 + 0.28 * p : 0.34 + 0.56 * p;
+  const p = prox(el, mx, my); const g = manual ? 0.72 + 0.28 * p : 0.34 + 0.56 * p;
   if (g <= 0.08) { if (!manual) schedule(); return 'far'; }
   const jitter = 0.9 + Math.random() * 0.2;
-  let type = pickKind(kind);
-  if (o.type) type = pickKind(o.type);
-  else if (manual && o.voice) type = pickKind(o.voice);
+  let type = pickKind(kind, kind);
+  if (o.type) type = pickKind(o.type, kind);
+  else if (manual && o.voice) type = pickKind(o.voice, kind);
   const lvl = o.gain > 0 ? Math.min(1, o.gain) : 1;
   synth(c, b, type, g * jitter * 0.8 * lvl, o);
   last = now; schedule(); return 'played';
@@ -93,21 +40,9 @@ function schedule() {
   const wait = lo + Math.random() * (hi - lo);
   timer = setTimeout(async () => {
     const c = getCtx(); if (c && c.state === 'suspended') { try { await c.resume(); } catch {} }
-    const d = untilGlitch(); if (d > 32) phase = setTimeout(() => { phase = null; play(false); }, d); else play(false);
+    const d = untilGlitch(el); if (d > 32) phase = setTimeout(() => { phase = null; play(false); }, d); else play(false);
   }, wait);
 }
-function isOver(px, py) { if (!el) return false;
-  const r = el
-    .getBoundingClientRect();
-  const cx = r
-    .left + r
-    .width / 2, cy = r
-    .top + r
-    .height / 2;
-  return Math
-    .hypot(px - cx, py - cy) < HOVER_R || (px >= r.left && px <= r.right && py >= r.top && py <= r.bottom);
-}
-function tryHover(px, py) { if (isOver(px, py)) play(true); }
 async function unlock(e) { const c = getCtx();
   if (!c) return;
   if (c.state === 'suspended') { try { await c.resume();
@@ -116,24 +51,11 @@ async function unlock(e) { const c = getCtx();
       .clientX : mx, y = e && e
       .clientY != null ? e
       .clientY : my;
-  if (on && isOver(x, y)) play(true);
-}
-function parseAttr(v) { const s = String(v || '').trim().toLowerCase();
-  const m = s
-    .match(/(\d+)\s*-\s*(\d+)/);
-  if (m) { lo = Math.max(500, +m[1]);
-    hi = Math
-      .max(lo + 500, +m[2]);
-  } const toks = s
-    .split(/[\s,|]+/)
-    .filter((t) => TYPES.includes(t));
-  if (toks.length === 1) kind = toks[0];
-  else if (toks.length > 1) kind = toks
-    .join(',');
+  if (on && isOver(el, x, y)) play(true);
 }
 export function attach(node) { if (!node || !(node instanceof Element)) return;
   if (el && el.isConnected) return;
-  parseAttr(node.getAttribute('data-glitch-sound'));
+  ({ lo, hi, kind } = parseAttr(node.getAttribute('data-glitch-sound'), { lo, hi, kind }));
   el = node;
   node
     .addEventListener('mouseenter', () => play(true));
@@ -164,7 +86,7 @@ export function setEnabled(v) { on = !!v;
       phase = null;
     } } }
 try { addEventListener('pointermove',
-    (e) => { mx = e.clientX; my = e.clientY; if (el && on) tryHover(e.clientX, e.clientY); },
+    (e) => { mx = e.clientX; my = e.clientY; if (el && on && isOver(el, e.clientX, e.clientY)) play(true); },
     { passive: true });
   addEventListener('pointerdown', unlock);
   addEventListener('click', unlock);
