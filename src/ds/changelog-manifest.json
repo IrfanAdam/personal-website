@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T18:23:08.401Z",
+ "generated": "2026-09-13T18:38:32.253Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -17,9 +17,82 @@
   "2026-09-10_195043-smart-changelog.md",
   "2026-09-10_201154-ds-nav-drawer.md",
   "2026-09-12_150255-glitch-sound.md",
-  "2026-09-13_193000-refactor-manageability.md"
+  "2026-09-13_193000-refactor-manageability.md",
+  "2026-09-13_235413-over-limit-splits.md"
  ],
  "commits": [
+  {
+   "sha": "46cadca",
+   "full": "46cadca4b3f81572edc2e62af4f5023d0bebc535",
+   "date": "2026-09-14",
+   "time": "00:08",
+   "subject": "style(ds): wrap long lines + headers to 120ch budget",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "9244672",
+   "full": "924467253aaabf45c2a442fbfe5835c1e67da7b2",
+   "date": "2026-09-14",
+   "time": "00:07",
+   "subject": "refactor(grid-reveal): split ds section 122 into lab/docs modules",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "ed0106c",
+   "full": "ed0106c1b5df3b2a03b10416e60a5f9151572e8b",
+   "date": "2026-09-13",
+   "time": "23:59",
+   "subject": "refactor(changelog): split page 110 into composer/events modules",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "a4a31ee",
+   "full": "a4a31ee3f5901932d59885aa1e05ea4649a481c2",
+   "date": "2026-09-13",
+   "time": "23:59",
+   "subject": "refactor(patterns): split page 169 into data/layouts/quality modules",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "a276746",
+   "full": "a276746eb387d0d910ad2bb55a6f559171fdbf4b",
+   "date": "2026-09-13",
+   "time": "23:58",
+   "subject": "refactor(foundations): split page 184 into composer/mix/handlers",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "7490a89",
+   "full": "7490a89d3faceb565119194c3b5287a4e98fd641",
+   "date": "2026-09-13",
+   "time": "23:57",
+   "subject": "refactor(lab): split cells 102 into engine/texture modules",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "5997d3f",
+   "full": "5997d3f1481af4c55fa74733a3934dda6ff4ad84",
+   "date": "2026-09-13",
+   "time": "23:56",
+   "subject": "refactor(glitch): split source-panel 133 into markup/bind modules",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "5a465e0",
+   "full": "5a465e0a1f11dab4e0dfdf90d262dd7fe81ce78f",
+   "date": "2026-09-13",
+   "time": "23:53",
+   "subject": "chore(ds): track refresh after phase-3 close",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "1ed81cc",
    "full": "1ed81ccc1980b7536811ad677ff2f28c20b4a618",
@@ -1083,5 +1156,7 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-names.json"
+ ]
 }
