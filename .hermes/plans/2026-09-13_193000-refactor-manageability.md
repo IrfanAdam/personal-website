@@ -352,7 +352,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 | 13 | Section banners + export maps | Every split file has `// — Section —` + top export list |
 | 14 | CSS de-pack (ds.css/styles at cap) | Each stylesheet ≤100 AND one-selector-per-line restored |
 
-### Task 12: Unpack one-liners
+### Task 12: Unpack one-liners ✓ done
 
 **Objective:** Eliminate density hacks without changing output.
 
@@ -364,7 +364,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** Run: `grep -rn "?.*:.*?.*:" src/fx src/views src/ds --include="*.js" | head` — Expected: empty (no nested ternaries). `npm test` green.
 
-### Task 13: Section banners + traceability comments
+### Task 13: Section banners + traceability comments ✓ done
 
 **Objective:** Any file scannable in 30 seconds.
 
@@ -379,7 +379,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** spot-check 3 files cold; newcomer states each file's job in one sentence.
 
-### Task 14: CSS readability restore
+### Task 14: CSS readability restore ✓ done
 
 **Objective:** `ds.css`/`base.css`/`card.css` sit at 96–99 lines via packed one-liners — restore one-rule-per-line by moving page chrome into per-page stylesheets (per plan-traceability §5: never just append).
 
@@ -389,7 +389,9 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** `wc -l src/ds/*.css src/styles/*.css` all ≤100 AND `npm run lint:tokens` ✓.
 
-*Shipped in <sha> · Tasks 12–14 · phase-3.*
+*Shipped in 1ed81cc · Tasks 12–14 · phase-3.*
+
+*Note: 11 files remain over 100 lines (Phase 2 residue, e.g. pages-foundations 184, pages-patterns 169); carried to a future split scope — lint-manage still flags them. Closed done-on-evidence per user override.*
 
 ---
 
