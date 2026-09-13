@@ -45,13 +45,27 @@ export function mount(root){
       root,
       doScramble: F.doScramble,
       applyFont: F.applyFont });
-  if(R.fontSel) R.fontSel.addEventListener('change', ()=> { F.applyFont(); F.doScramble(); });
-  if(R.stage) R.stage.addEventListener('pointerenter', onStageEnter);
-  if(R.tabBar) R.tabBar.addEventListener('click', onTabs);
+  /* mountUi owns rtl/tween/sound/hover/align/font/stage/tabs — bind only what is left */
+  const offs = [];
+  const on = (el, ev, fn) => {
+    if (!el) return;
+    el.addEventListener(ev, fn);
+    offs.push(() => el.removeEventListener(ev, fn));
+  };
+  on(R.inp, 'input', F.onText);
+  on(R.charsSel, 'change', F.onChars);
+  on(R.customInp, 'input', () => { F.syncOutputs(); F.doScramble(); });
+  on(R.dur, 'input', F.onDur); on(R.speed, 'input', F.onSpeed); on(R.delay, 'input', F.onDelay);
+  [R.dur, R.speed, R.delay, R.delim].forEach((c) => on(c, 'change', F.doScramble));
+  on(R.voiceSel, 'change', sound.onVoice);
+  on(R.kindSel, 'change', sound.onKind);
+  on(R.fileSel, 'change', sound.onFile);
+  on(R.replayBtn, 'click', F.doScramble);
+  on(R.playLoadBtn, 'click', sound.onPlayLoad);
   // init
-  F.applyFont(); F.syncOutputs(); syncSrcCtl();
+  F.applyFont(); F.syncOutputs(); sound.syncSrcCtl();
   if(R.customRow) R.customRow.style.display='none';
   // first run
   setTimeout(F.doScramble, 260);
-  return teardown({R, F, uiOff, get tmr() { return tmr; }});
+  return teardown({ uiOff, offs, get tmr() { return tmr; }});
 }

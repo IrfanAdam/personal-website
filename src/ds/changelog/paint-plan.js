@@ -1,6 +1,6 @@
 /* ADAM/DS — ds/changelog/paint-plan · build cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { fmtDate, fmtTime, buildState, isDone } from '../changelog-parse.js';
-import { hits, commits } from '../changelog-links.js';
+import { hits, commits, unlinked } from '../changelog-links.js';
 import { descOf } from '../changelog-titles.js';
 import { esc } from './esc.js';
 export function paintPlan(root, ctx){

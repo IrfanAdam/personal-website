@@ -1,5 +1,9 @@
 /* ADAM/DS — library/contact.js · Contact · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { playground } from '../playground.js';
+/* tokens this composition consumes — read by the playground's Tokens tab */
+const contactTokens=['--size-input-h','--color-input-bg','--color-input-line','--color-input-focus','--color-accent',
+  '--color-ink-muted','--font-mono','--text-meta','--space-6','--space-8','--border-hairline','--radius-none',
+  '--gutter'];
 function sendLabel(loading, done) {
   if (loading) return 'Sending…';
   if (done) return 'Sent ✓';

@@ -1,6 +1,6 @@
 /* ADAM/DS — fx-lab/cells-draw · mosaic painter · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: makeDraw(ctx, canvas, get) — verbatim lab painter, no logic change
-import { clamp01, easeOut } from '../../views/masonry/cells.js';
+import { clamp01, easeOut, mix } from '../../views/masonry/cells.js';
 import { rgb, mix3 } from './color.js';
 
 // — Factory: getters keep split/pal/root live —
