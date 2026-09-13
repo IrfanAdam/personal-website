@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T11:50:51.938Z",
+ "generated": "2026-09-13T13:07:38.706Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -19,6 +19,15 @@
   "2026-09-12_150255-glitch-sound.md"
  ],
  "commits": [
+  {
+   "sha": "34b2614",
+   "full": "34b2614b5930e024e6ff41160ce698890645a612",
+   "date": "2026-09-12",
+   "time": "17:20",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
   {
    "sha": "c323b71",
    "full": "c323b718481888a4ad04280a25625e81605120f7",
@@ -785,5 +794,12 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/ds.css",
+  "M src/ds/ds.js",
+  "M src/ds/functions/glitch.js",
+  "M src/ds/pages-functions.js",
+  "M src/styles/tokens.css",
+  "?? src/ds/functions/scramble.js"
+ ]
 }

@@ -5,6 +5,7 @@ import { attachGridReveal } from './masonry/gridReveal.js';
 import { fxMs } from './fx-tokens.js';
 import { attachViewer } from './masonry/viewer.js';
 import { footer, aboutBlock } from './shared.js';
+import { mountTitleReveal } from './title-reveal.js';
 
 let filter = 'all';
 const cols = 4;
@@ -173,8 +174,10 @@ export function mountMasonry(root) {
   root.addEventListener('click', onFilter);
   redraw = () => draw(root);
   redraw();
+  const offTitle = mountTitleReveal(root);
   return () => {
     root.removeEventListener('click', onFilter);
+    try { offTitle(); } catch {}
     if (parallaxOff) { parallaxOff(); parallaxOff = null; }
     if (lingerOff) { lingerOff(); lingerOff = null; }
     if (revealOff) { revealOff(); revealOff = null; }

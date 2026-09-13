@@ -8,6 +8,7 @@ const rows=[
   ['Viewer — tamed portal','#/functions/viewer','editorial hairline+paper · --fx-viewer-* + --size-viewer-* params'],
   ['Glimmer orb — square voice orb','#/functions/glimmer-orb','idle/listening/thinking · square cells · --color-accent'],
   ['Glitch — generic container','#/functions/glitch','any container via .fx-glitch or attachGlitch(el) · --dur-glitch + --fx-glitch-*'],
+  ['Scramble — decoding text','#/functions/scramble','GSAP ScrambleText parity · chars/speed/revealDelay/delimiter/rtl · --dur-scramble + font switch + synced sound'],
 ];
 export function render(){
   return `<p class="ds-crumb">Functions · index</p><div class="ds-hero"><h1>Motion with a model.</h1><p class="lede">Cell-grid reveal, skeletal shimmer, hero rise, and the viewer portal — each its own route. Labs run on production geometry; the site stays untouched until a tuned value graduates to a token.</p></div>`

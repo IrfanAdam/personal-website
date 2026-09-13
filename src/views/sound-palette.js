@@ -1,5 +1,5 @@
 /* ADAM/FX — Sound palette · procedural cyberpunk voices (WebAudio, no samples). */
-export const TYPES = ['tick', 'static', 'blip', 'chime', 'hum', 'data'];
+export const TYPES = ['tick', 'static', 'blip', 'chime', 'hum', 'data', 'scanner', 'zap', 'zapscan'];
 
 function noiseTick(ctx, buf, gain, freq, ms) {
   const src = ctx.createBufferSource(); src.buffer = buf;
@@ -68,13 +68,15 @@ function chime(ctx, gain, ms) {
 
 function hum(ctx, gain, ms) {
   const dur = (ms || 320) / 1000, t0 = ctx.currentTime;
-  const base = 62; // warm sub — city bed
-  [0, 1.15].forEach((det) => {
-    const { o, g } = oscEnv(ctx, 'triangle', base, gain * 0.45, ms, det * 12);
-    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 380;
+  const base = 62; // warm sub — city bed (+ harmonics so it reads on small speakers)
+  // [mult, type, level, detuneCents] — fundamental pair detuned, harmonics sine
+  const parts = [[1, 'triangle', 0.34, 0], [1, 'triangle', 0.34, 14], [2, 'sine', 0.2, 0], [3, 'sine', 0.12, 0], [4, 'sine', 0.07, 0]];
+  parts.forEach(([mult, type, lvl, det]) => {
+    const { o, g } = oscEnv(ctx, type, base * mult, gain * lvl, ms, det);
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1100;
     const att = Math.min(0.045, dur * 0.18), rel = Math.min(0.14, dur * 0.42);
-    g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(gain * 0.34, t0 + att);
-    g.gain.setValueAtTime(gain * 0.34, t0 + Math.max(att + 0.01, dur - rel));
+    g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(gain * lvl, t0 + att);
+    g.gain.setValueAtTime(gain * lvl, t0 + Math.max(att + 0.01, dur - rel));
     g.gain.linearRampToValueAtTime(0.001, t0 + dur);
     o.connect(lp); lp.connect(g); g.connect(ctx.destination);
     o.start(t0); o.stop(t0 + dur + 0.05);
@@ -96,9 +98,119 @@ function dataPips(ctx, gain, ms) {
   });
 }
 
+
+function zap(ctx, gain, ms) {
+  // Falling saw — 880Hz drops to 110Hz, 150ms. Snappy UI zap.
+  const dur = Math.max(0.05, Math.min(0.6, (ms || 150) / 1000)), t0 = ctx.currentTime;
+  const o = ctx.createOscillator(); o.type = 'sawtooth';
+  o.frequency.setValueAtTime(880, t0);
+  o.frequency.exponentialRampToValueAtTime(110, t0 + dur);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(Math.min(0.5, gain), t0);
+  g.gain.exponentialRampToValueAtTime(0.01, t0 + dur);
+  // tame harsh top with a tracking lowpass
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2;
+  lp.frequency.setValueAtTime(5200, t0);
+  lp.frequency.exponentialRampToValueAtTime(500, t0 + dur);
+  o.connect(lp); lp.connect(g); g.connect(ctx.destination);
+  o.start(t0); o.stop(t0 + dur + 0.02);
+}
+
+function zapscan(ctx, gain, ms) {
+  // Glass descent — same falling 880→110Hz flow + 9Hz wobble as zap, but struck-glass texture: sine inharmonic partials instead of saw.
+  const dur = Math.max(0.12, Math.min(0.8, (ms || 260) / 1000)), t0 = ctx.currentTime;
+  const f0 = 880, f1 = 110, peak = Math.min(0.5, gain);
+  // shared wobble: one 9Hz LFO, depth scaled per partial so vibrato stays proportional
+  let lfo = null;
+  try {
+    lfo = ctx.createOscillator(); lfo.type = 'sine'; lfo.frequency.value = 9;
+    lfo.start(t0); lfo.stop(t0 + dur + 0.02);
+  } catch { lfo = null; }
+  const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 250;
+  hp.connect(ctx.destination);
+  // [ratio, level, decay fraction] — inharmonic stack, shimmer dies top-down like struck glass
+  [[1, 0.5, 1], [2.76, 0.2, 0.7], [5.4, 0.09, 0.45]].forEach(([ratio, lvl, dec]) => {
+    const o = ctx.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(Math.max(40, f0 * ratio), t0);
+    o.frequency.exponentialRampToValueAtTime(Math.max(40, f1 * ratio), t0 + dur);
+    if (lfo) {
+      try {
+        const depth = ctx.createGain(); depth.gain.value = 55 * ratio;
+        lfo.connect(depth); depth.connect(o.frequency);
+      } catch {}
+    }
+    const g = ctx.createGain(), end = t0 + dur * dec;
+    g.gain.setValueAtTime(0, t0);
+    g.gain.linearRampToValueAtTime(peak * lvl, t0 + 0.008);
+    g.gain.exponentialRampToValueAtTime(0.001, end);
+    o.connect(g); g.connect(hp);
+    o.start(t0); o.stop(end + 0.02);
+  });
+  // strike transient — short high ping, the clink attack
+  try {
+    const p = ctx.createOscillator(); p.type = 'sine'; p.frequency.value = 3100;
+    const pg = ctx.createGain();
+    pg.gain.setValueAtTime(0, t0);
+    pg.gain.linearRampToValueAtTime(peak * 0.22, t0 + 0.004);
+    pg.gain.exponentialRampToValueAtTime(0.001, t0 + 0.045);
+    p.connect(pg); pg.connect(hp);
+    p.start(t0); p.stop(t0 + 0.07);
+  } catch {}
+}
+
+function scanner(ctx, gain, ms, buf) {
+  // Scanner pass — rising sweep + tracking noise band + lock ping. dur follows the animation.
+  const dur = Math.max(0.15, Math.min(1.5, (ms || 520) / 1000)), t0 = ctx.currentTime;
+  const f0 = 340, f1 = 1180, end = t0 + dur;
+  const sweep = (param) => { param.setValueAtTime(f0, t0); param.exponentialRampToValueAtTime(f1, t0 + dur * 0.85); };
+  // sweep tone
+  const o = ctx.createOscillator(); o.type = 'sine'; sweep(o.frequency);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t0);
+  g.gain.linearRampToValueAtTime(gain * 0.5, t0 + dur * 0.08);
+  g.gain.setValueAtTime(gain * 0.5, t0 + dur * 0.7);
+  g.gain.exponentialRampToValueAtTime(0.001, end);
+  o.connect(g); g.connect(ctx.destination);
+  o.start(t0); o.stop(end + 0.05);
+  // octave shimmer riding the same sweep
+  const o2 = ctx.createOscillator(); o2.type = 'sine';
+  o2.frequency.setValueAtTime(f0 * 2, t0);
+  o2.frequency.exponentialRampToValueAtTime(f1 * 2, t0 + dur * 0.85);
+  const g2 = ctx.createGain();
+  g2.gain.setValueAtTime(0, t0 + dur * 0.05);
+  g2.gain.linearRampToValueAtTime(gain * 0.09, t0 + dur * 0.5);
+  g2.gain.exponentialRampToValueAtTime(0.001, end);
+  o2.connect(g2); g2.connect(ctx.destination);
+  o2.start(t0); o2.stop(end + 0.05);
+  // scan band — noise tracking the sweep, the moving head
+  try {
+    if (buf) {
+      const src = ctx.createBufferSource(); src.buffer = buf; src.loop = True;
+      src.playbackRate.value = 0.7;
+      const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 7; sweep(bp.frequency);
+      const ng = ctx.createGain();
+      ng.gain.setValueAtTime(0, t0 + dur * 0.04);
+      ng.gain.linearRampToValueAtTime(gain * 0.2, t0 + dur * 0.4);
+      ng.gain.exponentialRampToValueAtTime(0.001, t0 + dur * 0.92);
+      src.connect(bp); bp.connect(ng); ng.connect(ctx.destination);
+      src.start(t0); src.stop(end + 0.05);
+    }
+  } catch {}
+  // lock ping at the end of the pass
+  try {
+    const p = ctx.createOscillator(); p.type = 'sine'; p.frequency.value = f1 * 1.5;
+    const pg = ctx.createGain(); const pa = t0 + dur * 0.88;
+    pg.gain.setValueAtTime(0, pa);
+    pg.gain.linearRampToValueAtTime(gain * 0.22, pa + 0.012);
+    pg.gain.exponentialRampToValueAtTime(0.001, pa + 0.14);
+    p.connect(pg); pg.connect(ctx.destination);
+    p.start(pa); p.stop(pa + 0.2);
+  } catch {}
+}
+
 export function synth(ctx, buf, type, gain, opts) {
   const t = TYPES.includes(type) ? type : 'hum';
-  const ms = opts && opts.ms > 0 ? opts.ms : (t === 'static' ? 180 : t === 'blip' ? 140 : t === 'chime' ? 420 : t === 'hum' ? 320 : t === 'data' ? 280 : 100);
+  const ms = opts && opts.ms > 0 ? opts.ms : (t === 'static' ? 180 : t === 'blip' ? 140 : t === 'chime' ? 420 : t === 'hum' ? 320 : t === 'data' ? 280 : t === 'scanner' ? 520 : t === 'zap' ? 150 : t === 'zapscan' ? 260 : 100);
   const freq = opts && opts.freq > 0 ? opts.freq : (t === 'tick' ? 2100 : t === 'blip' ? 880 : 0);
   const g = Math.max(0, Math.min(1, gain * (opts && opts.gain > 0 ? Math.min(1, opts.gain) : 1)));
   if (t === 'tick') noiseTick(ctx, buf, g, freq * (0.95 + Math.random() * 0.1), ms);
@@ -107,6 +219,9 @@ export function synth(ctx, buf, type, gain, opts) {
   else if (t === 'chime') chime(ctx, g, ms);
   else if (t === 'hum') hum(ctx, g, ms);
   else if (t === 'data') dataPips(ctx, g, ms);
+  else if (t === 'scanner') scanner(ctx, g, ms, buf);
+  else if (t === 'zap') zap(ctx, g, ms);
+  else if (t === 'zapscan') zapscan(ctx, g, ms);
 }
 export function createHumLoop(ctx, initialGain = 0) {
   const gain = ctx.createGain(); gain.gain.value = 0;

@@ -1,6 +1,7 @@
 import { projects, bodies } from '../data/site.js';
 import { footer } from './shared.js';
 import { mountHeroRise } from './rise.js';
+import { mountTitleReveal } from './title-reveal.js';
 import { marked } from 'marked';
 
 function renderBody(md) {
@@ -33,5 +34,7 @@ export function mountProject(root) {
   if (img?.src.startsWith('http') && !img.crossOrigin) {
     try { img.crossOrigin = 'anonymous'; } catch {}
   }
-  return mountHeroRise(root);
+  const offRise = mountHeroRise(root);
+  const offTitle = mountTitleReveal(root);
+  return () => { try { offRise(); } catch {} try { offTitle(); } catch {} };
 }

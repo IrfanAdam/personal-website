@@ -1,6 +1,7 @@
 import { contact, about, profileImage } from '../data/site.js';
 import { footer } from './shared.js';
 import { mountHeroRise } from './rise.js';
+import { mountTitleReveal } from './title-reveal.js';
 
 // profile image dims: 1400x1181
 const PW = 1400, PH = 1181;
@@ -23,5 +24,7 @@ export function Contact() {
 }
 
 export function mountContact(root) {
-  return mountHeroRise(root);
+  const offRise = mountHeroRise(root);
+  const offTitle = mountTitleReveal(root);
+  return () => { try { offRise(); } catch {} try { offTitle(); } catch {} };
 }
