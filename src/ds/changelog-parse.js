@@ -1,5 +1,5 @@
 /* ADAM/DS — changelog-parse · parse helpers · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: MONTHS, chunks, goal, norm, split, state, isDone, iterState, parseMeta, fmtDate, fmtTime, pDay, isoDay
+// Exports: MONTHS, chunks, goal, norm, split, state, isDone, buildState, parseMeta, fmtDate, fmtTime, pDay, isoDay
 export const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 export const chunks = (md) => md.split(/^## /m);
@@ -48,7 +48,7 @@ export const isDone = (frac) => {
   return !!m && Number(m[2]) > 0 && Number(m[1]) === Number(m[2]);
 };
 
-export const iterState = (ss) => {
+export const buildState = (ss) => {
   let d = 0, t = 0;
   ss.forEach((s) => {
     const m = state(s.body).match(/(\d+)\/(\d+)/);

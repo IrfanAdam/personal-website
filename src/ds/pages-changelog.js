@@ -13,7 +13,7 @@ import { bindChangelogEvents } from './changelog-events.js';
 const raws = import.meta.glob('../../.hermes/plans/*.md', { query: '?raw', import: 'default', eager: true });
 const entries = Object.entries(raws).sort(([a], [b]) => b.localeCompare(a));
 const texts = Object.fromEntries(entries.map(([p, md]) => [p.split('/').pop(), md]));
-const HIDDEN = /<!--\s*changelog:\s*hide\s*-->/;
+const HIDDEN = /<!--\s*(?:changelog|builds):\s*hide\s*-->/;
 const plans = entries.map(([p, md]) => {
   const file = p.split('/').pop();
   const { date, id, slug } = parseMeta(file);
@@ -48,11 +48,11 @@ const cur = () => {
 };
 export function render() {
   return [
-    `<p class="ds-crumb">Start \u00b7 Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
+    `<p class="ds-crumb">Start \u00b7 Changelog</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
     `<hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div>`,
     `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage">`,
     `</div><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
-    `<aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail">`,
+    `<aside class="ds-drawer" data-drawer hidden aria-label="Build detail">`,
     `<div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`,
   ].join('');
 }

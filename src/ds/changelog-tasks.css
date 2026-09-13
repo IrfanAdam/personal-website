@@ -1,4 +1,4 @@
-/* ADAM/DS — changelog-tasks · tasks + iterations + tip · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — changelog-tasks · tasks + builds + tip · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 /* tasks — on-brand checkboxes (square, hairline, ink fill; replaces native blue) */
 .ds-md ul:has(input[type="checkbox"]) { list-style: none; padding-left: 0; }
 .ds-md input[type="checkbox"] {
@@ -35,7 +35,7 @@
   opacity: .55;
 }
 .ds-md li:has(.ds-cancelled) { opacity: .6; }
-/* iterations — full-width plan cards; phases in a rail inside the drawer */
+/* builds — full-width plan cards; phases in a rail inside the drawer */
 .ds-plan-grid { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
 .ds-plan-grid .ds-col { flex: 1 1 100%; }
 .ds-row { display: flex; align-items: baseline; gap: var(--space-8); min-width: 0; }

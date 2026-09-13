@@ -37,6 +37,6 @@ Anchored at `20260909_145218_9888b1` (`continuation` in `.hermes/continuation.js
 - `npm run plan:names` → 0 missing names
 - `npm run ds:track` → tagged count matches phased count, 0 wip (except new plan before first commit is 1 wip, expected), `cont 20260909_145218_9888b1`
 - `npm test` (`lint:tokens` + `build`) green
-- Visual: `/ds/#/changelog` Miller columns + drawer badges resolve per phase; `Iter N` recomputes on filtered list client-side.
+- Visual: `/ds/#/changelog` Miller columns + drawer badges resolve per phase; `Build N` recomputes on filtered list client-side.
 
 **Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never skip `ds-track` before commit, never ship a phase with unchecked tasks. This section is law — agents enforce it without being asked.

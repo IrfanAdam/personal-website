@@ -1,5 +1,5 @@
-/* ADAM/DS — ds/changelog/paint-plan · iteration cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
-import { fmtDate, fmtTime, iterState, isDone } from '../changelog-parse.js';
+/* ADAM/DS — ds/changelog/paint-plan · build cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+import { fmtDate, fmtTime, buildState, isDone } from '../changelog-parse.js';
 import { hits, commits } from '../changelog-links.js';
 import { descOf } from '../changelog-titles.js';
 import { esc } from './esc.js';
@@ -13,7 +13,7 @@ export function paintPlan(root, ctx){
     ].filter(Boolean).join(' \u00b7 ');
     root.querySelector('[data-col="plan"]').innerHTML = [
       `<p class="ds-note">Nothing matches `,
-      nf || 'the archive',
+      nf || 'the changelog',
       ` yet.</p>`,
     ].join('');
     root
@@ -26,7 +26,7 @@ export function paintPlan(root, ctx){
   }
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
-    const it = String(list.length - i).padStart(2, '0'), num = p.id || it, frac = iterState(p.sprints);
+    const seq = String(list.length - i).padStart(2, '0'), num = p.id || seq, frac = buildState(p.sprints);
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
     const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
     const tagged = valid.filter((c) => c.date === p.date || (c.time && c.date >= p.date));
