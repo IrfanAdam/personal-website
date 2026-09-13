@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T19:05:43.156Z",
+ "generated": "2026-09-13T19:19:18.125Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,9 +20,37 @@
   "2026-09-13_193000-refactor-manageability.md",
   "2026-09-13_235413-over-limit-splits.md",
   "2026-09-14_001100-graph-join-leak.md",
-  "2026-09-14_003212-builds-nomenclature.md"
+  "2026-09-14_003212-builds-nomenclature.md",
+  "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "9b6f615",
+   "full": "9b6f615b1b4fda8fee16cf39c8ce16f370cfae19",
+   "date": "2026-09-14",
+   "time": "00:48",
+   "subject": "fix(ds): glitch code panel is a sibling of the lab panel + tab state",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "00a0a94",
+   "full": "00a0a94d02d8ef4da6e8340d526daf498fcf67e2",
+   "date": "2026-09-14",
+   "time": "00:48",
+   "subject": "fix(ds): restore the handlers the splits orphaned — scramble, library, grid-reveal, changelog",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "bb00cfa",
+   "full": "bb00cfa73b91fe5e796f136bdf44f1000d143c6e",
+   "date": "2026-09-14",
+   "time": "00:35",
+   "subject": "chore(ds): track refresh after builds nomenclature",
+   "plan": "2026-09-14_003212-builds-nomenclature.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "28e2e3b",
    "full": "28e2e3b4c82dfec5c22493eff230cde52f727290",
