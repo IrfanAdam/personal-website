@@ -1,3 +1,4 @@
+/* ADAM/FX — views/scramble-text · orchestration · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 /* ADAM/FX — ScrambleText · GSAP-like decoder (no GSAP, no deps). Token-driven.
    API: scrambleText(el, { text, chars, duration, revealDelay, speed, delimiter, rightToLeft, tweenLength, newClass,
      oldClass, onUpdate, onComplete })
@@ -5,15 +6,8 @@
    - chars: "upperCase"|"lowerCase"|"upperAndLowerCase"|custom string. speed: 1 = refresh ~30ms.
    - delimiter: "" char-by-char, " " word-by-word. rightToLeft, tweenLength (true), newClass/oldClass.
    Respects prefers-reduced-motion. Returns { kill, promise }. Also: killScramble(el). */
-const MAP = { upperCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-  lowerCase: 'abcdefghijklmnopqrstuvwxyz',
-  upperAndLowerCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' };
-const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const charsFor = (c) => MAP[c] || (typeof c==='string' && c.length ? c : MAP.upperCase);
-const rnd = (cs) => cs[Math.floor(Math.random()*cs.length)];
-const reduced = () => { try{ return matchMedia('(prefers-reduced-motion: reduce)').matches }catch{ return false } };
-const active = new WeakMap();
-export function killScramble(el){ const a=active.get(el); if(a) a.kill(); }
+import { charsFor, reduced, active, esc, rnd } from './scramble/helpers.js';
+import { buildScramble } from './scramble/build.js';
 export function scrambleText(el, opts){
   if(!el || !(el instanceof Element)) return { kill(){}, promise: Promise.resolve() };
   const prev = active.get(el); if(prev) prev.kill();
@@ -47,56 +41,10 @@ export function scrambleText(el, opts){
         ()=> rnd(cs))); if(charScram.length>n) charScram.length=n; };
   const refresh = ()=> { if(isWord) wordScrams = words.map((w)=> Array.from({length:w.length},
         ()=> rnd(cs))); else for(let i=0;i<charScram.length;i++) charScram[i]=rnd(cs); };
+  const st = {isWord, words, newClass, oldClass, rtl,
+    get wordScrams(){return wordScrams;}, get charScram(){return charScram;},
+    escDelim, delim, target, cs};
   let lastOut='';
-  const build = (revealed, curLen)=>{
-    if(isWord){
-      const tot = words.length;
-      if(newClass||oldClass){
-        let h='';
-        for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
-          const w=esc(words[i]);
-          h += rev ? (newClass? [
-          `<span class="`,
-          newClass,
-          `">`,
-          w,
-          `</span>`,
-        ].join(''): w) : (oldClass? [
-          `<span class="`,
-          oldClass,
-          `">`,
-          wordScrams[i].map(esc).join(''),
-          `</span>`,
-        ].join(''): wordScrams[i].map(esc).join('')); if(i<tot-1) h+=escDelim; } return { html:h, isHtml:true };
-      }
-      let t='';
-      for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
-        t += rev ? words[i] : wordScrams[i]
-          .join('');
-        if(i<tot-1) t+=delim;
-      } return { html:t,
-        isHtml:false };
-    }
-    const tot = curLen;
-    if(newClass||oldClass){
-      let h='';
-      for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
-        const ch = rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs));
-        const cls = rev? newClass: oldClass;
-        h += cls ? [
-        `<span class="`,
-        cls,
-        `">`,
-        esc(ch),
-        `</span>`,
-      ].join('') : esc(ch); } return { html:h, isHtml:true };
-    }
-    let t='';
-    for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
-      t += rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs));
-    } return { html:t,
-      isHtml:false };
-  };
   const frame = (now)=>{
     if(dead) return;
     const elapsed = now - start, prog = Math.min(1, elapsed / durMs);
@@ -133,13 +81,14 @@ export function scrambleText(el, opts){
     if(needRefresh){ refresh(); lastRefresh = now; }
     const shouldRender = needRefresh || lastRevealed!==revealed;
     if(shouldRender){
-      const { html, isHtml } = build(revealed, curLen);
+      const { html, isHtml } = buildScramble(st, revealed, curLen);
       if(html!==lastOut){ if(isHtml) el.innerHTML = html; else el.textContent = html; lastOut = html; }
       try{ onUpdate&&onUpdate({progress:prog,revealed,total:isWord?words.length:curLen}); }catch{}
       lastRevealed = revealed;
     }
     raf = requestAnimationFrame(frame);
   };
+  raf = requestAnimationFrame(frame);
   raf = requestAnimationFrame(frame);
   return { kill, promise };
 }
