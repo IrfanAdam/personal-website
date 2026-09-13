@@ -1,0 +1,70 @@
+/* ADAM/STYLE — styles/base-actions · logo, pills, sound · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+.logo {
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  font-size: var(--text-logo);
+}
+.logo small { display: block; font-size: var(--text-logo); }
+.pill {
+  border: var(--border-hairline); background: transparent; color: var(--color-ink);
+  border-radius: var(--radius-none);
+    padding: var(--space-6) var(--space-10);
+    cursor: pointer;
+    font-weight: var(--weight-semibold);
+  text-decoration: none; transition: background var(--dur-soft) var(--ease-standard),
+    color var(--dur-soft) var(--ease-standard);
+}
+.pill:hover { background: var(--color-ink); color: var(--color-bg); }
+.pill.on { background: var(--color-ink); color: var(--color-bg); }
+.pill.on:hover, .pill:focus-visible { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-2); }
+/* filled pills can't invert — outline instead */
+.pill:active { transform: translateY(var(--space-1)); }
+/* Sound toggle — pill shell (matches row) + speaker icon: waves when .on, slashed when off. */
+.snd-pill { display: inline-flex; align-items: center; }
+.snd-pill svg { width: var(--space-14); height: var(--space-14); display: block; }
+.snd-pill .ic-off, .snd-pill:not(.on) .ic-on { display: none; }
+.snd-pill:not(.on) .ic-off { display: block; }
+/* Button — canonical action (pill stays for filters/tabs). Variants: primary ink-fill, secondary hairline, ghost
+  text-only; sm/md via --size-tap. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  border: var(--border-hairline);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  padding: var(--space-8) var(--space-14);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-small);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--radius-none);
+  transition: background var(--dur-soft) var(--ease-standard),
+    color var(--dur-soft) var(--ease-standard),
+    opacity var(--dur-fast) var(--ease-standard);
+}
+.btn--primary { background: var(--color-ink); color: var(--color-bg); border-color: var(--color-ink); }
+.btn--primary:hover { opacity: 0.92; }
+.btn--secondary { background: transparent; color: var(--color-ink); }
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-ink);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+.btn--ghost:hover { background: var(--color-panel); }
+.btn--sm { padding: var(--space-6) var(--space-10); font-size: var(--text-meta); }
+.btn--md { padding: var(--space-8) var(--space-14); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+.btn:focus-visible { outline: var(--size-frame) solid var(--color-ink); outline-offset: var(--space-2); }
+.spacer { flex: 1; } .hint { color: var(--color-ink-muted); font-size: var(--text-meta); }
+.wrap { max-width: var(--size-wrap); margin: 0 auto; padding: var(--gutter); }
+.filters { display: flex; gap: var(--space-8); align-items: center; margin: var(--space-6) 0 var(--space-14); }
+.hero { padding: var(--space-26) var(--space-4) var(--space-10); }
+.hero h1 { font-size: var(--text-display); letter-spacing: var(--tracking-display); margin: 0; }
+.hero p { color: var(--color-ink-muted); max-width: var(--measure-copy); }

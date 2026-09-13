@@ -1,0 +1,69 @@
+/* ADAM/STYLE — styles/case-prose · case copy, spec · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+.case .kicker { font-family: var(--font-mono); color: var(--color-ink-muted); font-size: var(--text-meta); }
+.case h1 {
+  font-size: var(--text-title);
+  letter-spacing: var(--tracking-title);
+  margin: var(--space-6) 0 var(--space-14);
+}
+.hero-img { width: 100%; border-radius: var(--radius-sm); border: var(--border-hairline); }
+.todo {
+  background: var(--color-surface);
+  border: var(--border-dashed);
+  border-radius: var(--radius-sm);
+  padding: var(--space-12) var(--space-14);
+}
+.prose { line-height: var(--leading-prose); }
+.prose h2 {
+  margin: var(--space-18) 0 var(--space-8);
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-heading);
+}
+.prose h3 { margin: var(--space-16) 0 var(--space-8); font-size: var(--text-h3); }
+.prose p { margin: var(--space-10) 0; }
+.prose a { text-decoration: underline; text-underline-offset: var(--space-3); }
+.prose img { max-width: 100%; border-radius: var(--radius-sm); border: var(--border-hairline); }
+.prose ul, .prose ol { padding-left: var(--space-18); margin: var(--space-10) 0; }
+.prose blockquote {
+  margin: var(--space-14) 0;
+  padding-left: var(--space-14);
+  border-left: var(--size-frame) solid var(--color-line);
+  color: var(--color-ink-muted);
+}
+.spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-14) var(--space-10);
+  padding: 0;
+  margin: var(--space-18) 0 0;
+}
+.spec div { border-top: var(--border-hairline); padding-top: var(--space-8); }
+.spec dt {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-muted);
+}
+.spec dd { margin: var(--space-2) 0 0; font-weight: var(--weight-semibold); }
+.next {
+  display: block;
+  margin: var(--space-26) 0 var(--space-6);
+  padding: var(--space-18);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  text-decoration: none;
+}
+.next small {
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  font-size: var(--text-label);
+}
+.next b {
+  display: block;
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-heading);
+  margin: var(--space-4) 0;
+}
+.top nav { display: flex; gap: var(--space-6); }
+.top nav a { text-decoration: none; }

@@ -15,73 +15,37 @@
    ========================================================================== */
 :root {
   /* — Primitives · stone + three accents (500 = production step; feedback text uses 700/300) — */
-  --stone-0: #ffffff; --stone-25: #f8f9fb; --stone-50: #f2f4f7; --stone-100: #eceef2; --stone-200: #e2e6ea; --stone-300: #d0d6dc; --stone-400: #9aa5b1; --stone-500: #737e8a; --stone-600: #56606d; --stone-700: #353d46; --stone-800: #1e2329; --stone-900: #15191f; --stone-950: #12151a;
-  --accent-100: #fbd9d1; --accent-300: #f19a8a; --accent-500: #e8442e; --accent-600: #cf3820; --accent-700: #a82a18; --accent-900: #5c150c;
-  --accent2-100: #fbeed3; --accent2-300: #eec27a; --accent2-500: #c78a1b; --accent2-600: #9a6708; --accent2-700: #7a4d00; --accent2-900: #3d2700;
-  --accent3-100: #d3e8e4; --accent3-300: #8fc2b8; --accent3-500: #2f7d6e; --accent3-600: #256557; --accent3-700: #1d5045; --accent3-900: #0f2a26;
+  --stone-0: #ffffff;
+    --stone-25: #f8f9fb;
+    --stone-50: #f2f4f7;
+    --stone-100: #eceef2;
+    --stone-200: #e2e6ea;
+    --stone-300: #d0d6dc;
+    --stone-400: #9aa5b1;
+    --stone-500: #737e8a;
+    --stone-600: #56606d;
+    --stone-700: #353d46;
+    --stone-800: #1e2329;
+    --stone-900: #15191f;
+    --stone-950: #12151a;
+  --accent-100: #fbd9d1;
+    --accent-300: #f19a8a;
+    --accent-500: #e8442e;
+    --accent-600: #cf3820;
+    --accent-700: #a82a18;
+    --accent-900: #5c150c;
+  --accent2-100: #fbeed3;
+    --accent2-300: #eec27a;
+    --accent2-500: #c78a1b;
+    --accent2-600: #9a6708;
+    --accent2-700: #7a4d00;
+    --accent2-900: #3d2700;
+  --accent3-100: #d3e8e4;
+    --accent3-300: #8fc2b8;
+    --accent3-500: #2f7d6e;
+    --accent3-600: #256557;
+    --accent3-700: #1d5045;
+    --accent3-900: #0f2a26;
   /* — Signal slot (Phase 3) — ramp → signal → semantic — */
   --signal: var(--accent-500); --signal-amber: var(--accent2-600); --signal-teal: var(--accent3-500);
-  /* — Semantic · color (light) — */
-  --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-surface-sunken: var(--stone-200); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(21, 25, 31, 0.1); --color-accent: var(--signal); --color-on-accent: #f2f4f7; --color-chip: rgba(18, 21, 26, 0.62); --color-on-media: #f2f4f7; --color-on-media-muted: rgba(242, 244, 247, 0.82); --color-panel: rgba(236, 238, 242, 0.32); --color-header: rgba(236, 238, 242, 0.75);
-  --color-overlay: var(--stone-0); --color-overlay-muted: var(--stone-600); --color-disabled-bg: var(--stone-200); --color-disabled-ink: var(--stone-400); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink);
-  --color-success: var(--accent3-700); --color-on-success: #f2f4f7; --color-error: var(--accent-700); --color-on-error: #f2f4f7; --color-warning: var(--accent2-700); --color-on-warning: #f2f4f7; --color-info: var(--accent3-600); --color-on-info: #f2f4f7;
-  /* — Semantic · media scrims, gradients, on-image shadows — */
-  --scrim-gradient: linear-gradient(to top, rgba(18,21,26,0.58) 0%, rgba(18,21,26,0.26) 42%, rgba(18,21,26,0) 100%); --scrim-fallback: linear-gradient(to top, rgba(18,21,26,0.62), rgba(18,21,26,0)); --scrim-mask: linear-gradient(to top, #000 0%, #000 38%, transparent 100%);
-  --shimmer-gradient: linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 95%, transparent) 0%, color-mix(in srgb, var(--color-line) 30%, transparent) 58%, transparent 85%); --shimmer-band: linear-gradient(90deg, transparent 27%, #000 41%, #000 59%, transparent 73%); --reveal-grid: repeating-linear-gradient(to right, color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px, transparent 1px var(--fx-grid-pitch)), repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px, transparent 1px var(--fx-grid-pitch));
-  /* — Elevation · shadow color + opacity (token-adherent: stone ink + opacity %) — */
-  --opacity-shadow-media: 45%; --opacity-shadow-media-sm: 40%; --opacity-shadow-viewer: 24%; --opacity-shadow-viewer-soft: 12%;
-  --color-shadow-media: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-media), transparent); --color-shadow-media-sm: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-media-sm), transparent); --color-shadow-viewer: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-viewer), transparent); --color-shadow-viewer-soft: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-viewer-soft), transparent);
-  /* — Elevation · shadows (travel from --space-* primitives, color+opacity from above) — */
-  --shadow-on-media: 0 var(--space-1) var(--space-12) var(--color-shadow-media); --shadow-on-media-sm: 0 var(--space-1) var(--space-10) var(--color-shadow-media-sm);
-  /* — Typography — */
-  --font-sans: 'Inter Tight', Inter, system-ui, sans-serif; --font-mono: 'Chivo Mono', ui-monospace, 'SF Mono', monospace;
-  --text-display: clamp(28px, 5vw, 54px); --text-title: clamp(26px, 4.5vw, 46px); --text-logo: 22px; --text-h2: 20px; --text-card-title: 18px; --text-h3: 16px; --text-body: 14px; --text-small: 13.5px; --text-meta: 12px; --text-label: 11px; --text-micro: 10.5px;
-  --leading-display: 0.9; --leading-title: 1.1; --leading-snug: 1.25; --leading-body: 1.5; --leading-prose: 1.6; --leading-mono: 1.3;
-  --tracking-display: -0.04em; --tracking-title: -0.03em; --tracking-heading: -0.02em; --tracking-body: -0.01em; --tracking-label: 0.12em; --tracking-mono: 0.1em;
-  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700; --weight-extrabold: 700; /* deprecated alias → bold; Inter Tight subset caps at 700 (Update 4 Task 8) */
-  /* — Spacing (px-named; 14px rhythm, 16px gutter — group by purpose in DS) — */
-  --space-1: 1px; --space-2: 2px; --space-3: 3px; --space-4: 4px; --space-5: 5px; --space-6: 6px; --space-7: 7px; --space-8: 8px; --space-9: 9px; --space-10: 10px; --space-11: 11px; --space-12: 12px; --space-14: 14px; --space-16: 16px; --space-18: 18px;
-  --space-22: 22px; --space-26: 26px; --space-28: 28px; --space-30: 30px; --space-32: 32px; --space-36: 36px; --space-42: 42px; --space-46: 46px; --space-60: 60px; --space-70: 70px; --space-90: 90px; --gutter: var(--space-16); --rhythm: var(--space-14);
-  /* — Size & layout — */
-  --size-wrap: 1600px; --size-header: 64px; --size-strip: 56px; --size-strip-tab: 58px; --measure-copy: 60ch; --measure-prose: 68ch; --size-hairline: 1px; --size-frame: 3px; --size-tap: 44px;
-  /* — Breakpoints (documented scale; var() invalid in @media — keep raw px in sync) — */
-  --break-sm: 640px; --break-md: 800px; --break-lg: 900px;
-  /* — Form (size + color only; layout stays semantic) — */
-  --size-input-h: var(--size-tap); --color-input-bg: var(--color-surface); --color-input-line: var(--color-line); --color-input-focus: var(--color-ink);
-  /* — Borders / radius (zero is the doctrine — consume via var(), never a literal) — */
-  --border-hairline: var(--size-hairline) solid var(--color-line); --border-frame: var(--size-frame) solid var(--color-ink); --border-dashed: var(--size-hairline) dashed var(--color-ink-muted);
-  --radius-none: 0; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-pill: 0;
-  /* — Focus — */
-  --color-focus: var(--color-ink); --border-focus: var(--size-frame) solid var(--color-focus); --focus-offset: var(--space-2);
-  /* — Motion — */
-  --dur-fast: 150ms; --dur-base: 200ms; --dur-med: 220ms; --dur-soft: 250ms; --dur-slow: 280ms; --dur-glide: 380ms; --dur-reveal: 300ms; --dur-blur: 450ms; --dur-zoom: 650ms; --dur-shimmer: 2.2s; --ease-standard: ease; --ease-signature: cubic-bezier(0.32, 0.72, 0, 1);
-  /* — FX · cell-grid, sheen, rise — graduated from gridReveal.js literals — */
-  --fx-cell: 30; --fx-wait: 0.72; --fx-photo-from: 0.93; --fx-morph: 0.04; --fx-split-end: 0.92; --fx-skeleton: 120ms; --fx-sheen: 0.14; --fx-grid-pitch: 14px;
-  --dur-fx-color: 240ms; --dur-fx-span: 0.6s; --dur-hero-rise: 860ms;
-  /* — FX · scramble — decoding text — */
-  --dur-scramble: 0.9s; --fx-scramble-chars: upperCase;
-  /* — FX · glitch — generic container glitch (any element) — */
-  --dur-glitch: 2.4s; --fx-glitch-x: var(--space-1); --fx-glitch-skew: -12deg; --fx-glitch-opacity: 0.5;
-  /* — FX · viewer intent + spring (5.3: threshold/idle/debounce/spring as tokens) — */
-  --fx-viewer-threshold: 12px; --fx-viewer-idle: 850ms; --fx-viewer-debounce: 70ms; --fx-viewer-k: 0.1; --fx-viewer-fr: 0.54;
-  /* — Viewer (tamed editorial — only geometry + frosted border, no neon/grid/scan) — */
-  --size-viewer-w: 180px; --size-viewer-gap: 10px; --size-viewer-pad: 20px; --size-cursor: 32px; --blur-viewer: 2px; --blur-cursor: 4px; --blur-micro: 1px;
-  --color-viewer-shade: rgba(0, 0, 0, 0.32); --color-viewer-bg: var(--color-surface); --color-viewer-line: var(--stone-0); --color-viewer-tether: color-mix(in srgb, var(--stone-0) 68%, transparent); --size-viewer-tether: var(--space-2);
-  --viewer-border: var(--size-viewer-tether) solid var(--color-viewer-line); --shadow-viewer: 0 var(--space-12) var(--space-32) var(--color-shadow-viewer), 0 var(--space-2) var(--space-10) var(--color-shadow-viewer-soft); --dur-viewer-in: 300ms; --dur-viewer-line: 780ms; --z-viewer: 15; --z-viewer-lines: 14;
-  /* — Elevation, blur, opacity, scale / z-index — */
-  --blur-header: 18px; --blur-scrim: 18px; --blur-placeholder: 14px; --sat-header: 1.6; --sat-scrim: 1.35; --opacity-hover: 0.55; --scale-press: 0.94; --scale-zoom: 1.015;
-  --z-media: 1; --z-frame: 2; --z-ds-side: 5; --z-ds-controls: 6; --z-header: 20;
-  /* — Legacy aliases (pre-adoption bridge; do NOT use in new code) — */
-  --bg: var(--color-bg); --ink: var(--color-ink); --muted: var(--color-ink-muted); --card: var(--color-surface); --chip: var(--color-chip); --chip-ink: var(--color-on-media); --line: var(--color-line); --panel: var(--color-panel); --header-bg: var(--color-header); --accent: var(--color-accent);
-}
-/* Dark theme — hand-tuned inversion, not a pure ramp swap. Exactly one source:
-   applied via OS preference or manual [data-theme] override (site + DS toggles). */
-@media (prefers-color-scheme: dark) { :root {
-  --color-bg: #12151a; --color-surface: #1e2329; --color-ink: #f2f4f7; --color-ink-muted: #9aa5b1; --color-ink-subtle: #9aa5b1; --color-line: rgba(242, 244, 247, 0.12); --color-panel: rgba(242, 244, 247, 0.06); --color-header: rgba(18, 21, 26, 0.6); --color-overlay: #1e2329; --color-overlay-muted: #9aa5b1; --color-disabled-bg: var(--stone-700); --color-disabled-ink: var(--stone-500); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink); --color-success: var(--accent3-300); --color-on-success: #12151a; --color-error: var(--accent-300); --color-on-error: #12151a; --color-warning: var(--accent2-300); --color-on-warning: #12151a; --color-info: var(--accent3-100); --color-on-info: #12151a; --opacity-shadow-viewer: 24%; --opacity-shadow-viewer-soft: 12%; --shadow-viewer: 0 var(--space-14) var(--space-36) var(--color-shadow-viewer), 0 var(--space-3) var(--space-12) var(--color-shadow-viewer-soft);
-} }
-[data-theme="dark"] {
-  --color-bg: #12151a; --color-surface: #1e2329; --color-ink: #f2f4f7; --color-ink-muted: #9aa5b1; --color-ink-subtle: #9aa5b1; --color-line: rgba(242, 244, 247, 0.12); --color-panel: rgba(242, 244, 247, 0.06); --color-header: rgba(18, 21, 26, 0.6); --color-overlay: #1e2329; --color-overlay-muted: #9aa5b1; --color-disabled-bg: var(--stone-700); --color-disabled-ink: var(--stone-500); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink); --color-success: var(--accent3-300); --color-on-success: #12151a; --color-error: var(--accent-300); --color-on-error: #12151a; --color-warning: var(--accent2-300); --color-on-warning: #12151a; --color-info: var(--accent3-100); --color-on-info: #12151a; --opacity-shadow-viewer: 24%; --opacity-shadow-viewer-soft: 12%; --shadow-viewer: 0 var(--space-14) var(--space-36) var(--color-shadow-viewer), 0 var(--space-3) var(--space-12) var(--color-shadow-viewer-soft);
-}
-[data-theme="light"] {
-  --color-bg: var(--stone-100); --color-surface: var(--stone-0); --color-ink: var(--stone-900); --color-ink-muted: var(--stone-600); --color-ink-subtle: var(--stone-400); --color-line: rgba(21, 25, 31, 0.1); --color-panel: rgba(236, 238, 242, 0.32); --color-header: rgba(236, 238, 242, 0.75); --color-overlay: #ffffff; --color-overlay-muted: #56606d; --color-disabled-bg: var(--stone-200); --color-disabled-ink: var(--stone-400); --color-disabled-line: var(--color-line); --color-focus: var(--color-ink); --color-success: var(--accent3-700); --color-on-success: #f2f4f7; --color-error: var(--accent-700); --color-on-error: #f2f4f7; --color-warning: var(--accent2-700); --color-on-warning: #f2f4f7; --color-info: var(--accent3-600); --color-on-info: #f2f4f7;
 }

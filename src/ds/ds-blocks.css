@@ -1,0 +1,100 @@
+/* ADAM/DS — ds-blocks · grids, tables, code, notes · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+.ds-grid { display: grid; gap: var(--space-12); margin: var(--space-12) 0; }
+.ds-grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ds-grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ds-grid.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ds-cell { border: var(--border-hairline); background: var(--color-surface); padding: var(--space-12); min-width: 0; }
+.ds-sw { height: var(--space-60); border: var(--border-hairline); margin-bottom: var(--space-8); }
+.ds-cell .nm { font-family: var(--font-mono); font-size: var(--text-label); }
+.ds-cell .vl {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-2);
+}
+.ds-table { width: 100%; border-collapse: collapse; font-size: var(--text-ds-table); margin: var(--space-10) 0; }
+.ds-table th {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-muted);
+  text-align: left;
+  padding: var(--space-6) var(--space-8);
+  border-bottom: var(--border-hairline);
+}
+.ds-table td {
+  padding: var(--space-7) var(--space-8);
+  border-bottom: var(--border-hairline);
+  vertical-align: top;
+  line-height: var(--leading-body);
+}
+.tok {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  background: var(--color-panel);
+  border: var(--border-hairline);
+  padding: var(--space-1) var(--space-5);
+  white-space: nowrap;
+}
+.ds-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  line-height: var(--leading-mono);
+  background: var(--color-surface);
+  border: var(--border-hairline);
+  padding: var(--space-10) var(--space-12);
+  overflow-x: auto;
+  margin: var(--space-10) 0;
+}
+.ds-code pre { margin: 0; white-space: pre; }
+.ds-note {
+  border-left: var(--size-frame) solid var(--color-ink);
+  background: var(--color-panel);
+  padding: var(--space-10) var(--space-12);
+  font-size: var(--text-ds-body);
+  margin: var(--space-12) 0;
+}
+.ds-note.dont { border-left-color: var(--color-accent); }
+.ds-note b {
+  display: block;
+  font-size: var(--text-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-3);
+}
+.ds-footnav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-12);
+  margin-top: var(--space-46);
+  padding-top: var(--space-14);
+  border-top: var(--border-hairline);
+}
+.ds-footnav a { text-decoration: none; font-weight: 600; font-size: var(--text-small); }
+.ds-footnav small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+}
+.ds-spec {
+  border: var(--border-hairline);
+  padding: var(--space-16);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-14);
+  align-items: flex-start;
+  margin: var(--space-10) 0;
+}
+.ds-spec > figure { margin: 0; min-width: 0; }
+.ds-spec figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-6);
+}
+.ds-spec.block { display: block; }

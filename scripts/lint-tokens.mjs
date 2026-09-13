@@ -1,7 +1,9 @@
-/* ADAM/DS token gate — fails on raw values outside tokens.css.
+/* ADAM/DS token gate — fails on raw values outside the tokens* family.
    Rules: no #hex/rgb()/hsl() paint, no literal border-radius, no literal
    font-family, no raw px (breakpoints + OS safe-area excepted), and every
    stylesheet ≤ 100 lines (AGENTS.md §1/§2). Covers src/styles + src/ds.
+   Token-source family (tokens.css + tokens-color/type/fx/overrides) holds
+   raw ramp values by design — Phase 3 layer split, one source per layer.
    JS paint gate (v1.1): flags inline paint in src/ds playground
    (style="…#hex", background:#hex) — ignores prose/route hashes (#/)
    and token-name strings ("--color-*"). */
@@ -12,13 +14,14 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const styleDirs = [join(root, 'src/styles'), join(root, 'src/ds')];
 const MAX_LINES = 100;
-const EXEMPT = new Set(['tokens.css']);
+const EXEMPT_PREFIX = 'tokens';
+const isExempt = (f) => f === 'tokens.css' || f.startsWith(EXEMPT_PREFIX + '-') || f.startsWith(EXEMPT_PREFIX + '.');
 
 const fail = [];
 const cssFiles = [];
 for (const dir of styleDirs) {
   for (const f of readdirSync(dir).filter((f) => f.endsWith('.css'))) {
-    if (EXEMPT.has(f)) continue;
+    if (isExempt(f)) continue;
     cssFiles.push(join(dir, f));
   }
 }

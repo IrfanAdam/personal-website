@@ -1,0 +1,22 @@
+/* ADAM/DS — ds-responsive · responsive overrides · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+@media (max-width: 900px) /* --break-lg */ {
+  .ds-shell { flex-direction: column; }
+  .ds-side { position: static; width: auto; border-right: none; border-bottom: var(--border-hairline); }
+  body { padding-bottom: 0; }
+  .ds-main { margin-left: 0; padding: var(--space-22) var(--space-16) var(--space-70); }
+  .ds-grid.c3, .ds-grid.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ds-controls {
+    position: sticky;
+    top: var(--space-8);
+    justify-content: flex-end;
+    margin-bottom: var(--space-10);
+    background: var(--color-bg);
+    padding: var(--space-6) 0;
+  }
+  body.side-collapsed .ds-side { transform: none; }
+  .ds-side-toggle { display: none; }
+}
+@media (max-width: 640px) /* --break-sm */ {
+  .ds-grid.c2 { grid-template-columns: 1fr; }
+  .ds-hero h1 { overflow-wrap: break-word; }
+}

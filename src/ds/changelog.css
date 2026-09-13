@@ -1,21 +1,59 @@
 /* ADAM/DS — Changelog contribution timeline
    Sun–Sat week columns, blobs on logged days. Token-only: no raw px, no literal radius. */
-/* Glitch + blip now generalize via /src/styles/glitch.css (fx-glitch / fx-blip + ds- aliases). This file only maps today → fx. */
+/* Glitch + blip now generalize via /src/styles/glitch.css (fx-glitch / fx-blip + ds- aliases). This file only maps
+  today → fx. */
 .ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-28); }
-.ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }
+.ds-graph-labels {
+  display: flex;
+  gap: var(--space-4);
+  width: max-content;
+  margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4));
+}
 .ds-graph-row { display: flex; gap: var(--space-4); width: max-content; }
 .ds-dows { display: flex; flex-direction: column; gap: var(--space-4); width: var(--space-26); flex: none; }
-.ds-dows span { height: var(--space-16); display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.ds-dows span {
+  height: var(--space-16);
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+}
 .ds-week { display: flex; flex-direction: column; gap: var(--space-4); }
-.ds-month { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); min-height: 1.2em; margin-bottom: var(--space-2); white-space: nowrap; overflow: visible; flex: none; }
-.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: transparent; padding: 0; }
+.ds-month {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  min-height: 1.2em;
+  margin-bottom: var(--space-2);
+  white-space: nowrap;
+  overflow: visible;
+  flex: none;
+}
+.ds-day {
+  width: var(--space-16);
+  height: var(--space-16);
+  border: var(--border-hairline);
+  background: transparent;
+  padding: 0;
+}
 button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
-button.ds-day.lv1 { background: color-mix(in srgb, var(--color-accent) 30%, transparent); } button.ds-day.lv2 { background: color-mix(in srgb, var(--color-accent) 50%, transparent); } button.ds-day.lv3 { background: color-mix(in srgb, var(--color-accent) 75%, transparent); } button.ds-day.lv4 { background: var(--color-accent); }
+button.ds-day.lv1 { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+button.ds-day.lv2 { background: color-mix(in srgb, var(--color-accent) 50%, transparent); }
+button.ds-day.lv3 { background: color-mix(in srgb, var(--color-accent) 75%, transparent); }
+button.ds-day.lv4 { background: var(--color-accent); }
 .ds-day.on { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
 button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
 .ds-day.is-today { position: relative; border-color: var(--color-ink); }
 .ds-day.is-today::before { content: ""; position: absolute; inset: calc(var(--space-12) * -1); }
-.ds-day.is-today::after { content: ""; position: absolute; inset: 0; border: var(--space-1) solid var(--color-accent); animation: fx-blip 1.6s ease-out infinite; pointer-events: none; }
+.ds-day.is-today::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--space-1) solid var(--color-accent);
+  animation: fx-blip 1.6s ease-out infinite;
+  pointer-events: none;
+}
 .ds-day.is-today { animation: ds-day-glitch var(--dur-glitch) steps(1) infinite; will-change: transform; }
 /* transform-only twin of fx-glitch: today keeps its lv1–lv4 fill, jitter only. Opacity untouched. */
 @keyframes ds-day-glitch {

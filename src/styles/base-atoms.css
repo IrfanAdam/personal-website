@@ -1,0 +1,31 @@
+/* ADAM/STYLE — styles/base-atoms · kicker, divider · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+.kicker {
+  font-family: var(--font-mono);
+  color: var(--color-ink-muted);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.divider { border: none; border-top: var(--border-hairline); margin: var(--space-14) 0; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-8);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  border-radius: var(--radius-none);
+}
+.badge--muted { background: var(--color-ink); color: var(--color-bg); }
+footer {
+  border-top: var(--border-hairline);
+    margin-top: var(--space-30);
+    padding: var(--space-22) var(--space-4) var(--space-60);
+  display: grid; gap: var(--space-14); color: var(--color-ink-muted);
+}
+footer nav { display: flex; flex-wrap: wrap; gap: var(--space-14); }
+footer nav a { text-decoration: none; border-bottom: var(--border-hairline); }

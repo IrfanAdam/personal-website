@@ -1,0 +1,59 @@
+/* ADAM/STYLE — tokens-color · semantic color · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+:root {
+  /* — Semantic · color (light) — */
+  --color-bg: var(--stone-100);
+    --color-surface: var(--stone-0);
+    --color-surface-sunken: var(--stone-200);
+    --color-ink: var(--stone-900);
+    --color-ink-muted: var(--stone-600);
+    --color-ink-subtle: var(--stone-400);
+    --color-line: rgba(21, 25, 31, 0.1);
+    --color-accent: var(--signal);
+    --color-on-accent: #f2f4f7;
+    --color-chip: rgba(18, 21, 26, 0.62);
+    --color-on-media: #f2f4f7;
+    --color-on-media-muted: rgba(242, 244, 247, 0.82);
+    --color-panel: rgba(236, 238, 242, 0.32);
+    --color-header: rgba(236, 238, 242, 0.75);
+  --color-overlay: var(--stone-0);
+    --color-overlay-muted: var(--stone-600);
+    --color-disabled-bg: var(--stone-200);
+    --color-disabled-ink: var(--stone-400);
+    --color-disabled-line: var(--color-line);
+    --color-focus: var(--color-ink);
+  --color-success: var(--accent3-700);
+    --color-on-success: #f2f4f7;
+    --color-error: var(--accent-700);
+    --color-on-error: #f2f4f7;
+    --color-warning: var(--accent2-700);
+    --color-on-warning: #f2f4f7;
+    --color-info: var(--accent3-600);
+    --color-on-info: #f2f4f7;
+  /* — Semantic · media scrims, gradients, on-image shadows — */
+  --scrim-gradient: linear-gradient(to top, rgba(18,21,26,0.58) 0%, rgba(18,21,26,0.26) 42%, rgba(18,21,26,0) 100%);
+    --scrim-fallback: linear-gradient(to top, rgba(18,21,26,0.62), rgba(18,21,26,0));
+    --scrim-mask: linear-gradient(to top, #000 0%, #000 38%, transparent 100%);
+  --shimmer-gradient: linear-gradient(to bottom,
+    color-mix(in srgb, var(--color-line) 95%, transparent) 0%,
+    color-mix(in srgb, var(--color-line) 30%, transparent) 58%,
+    transparent 85%);
+    --shimmer-band: linear-gradient(90deg, transparent 27%, #000 41%, #000 59%, transparent 73%);
+    --reveal-grid: repeating-linear-gradient(to right,
+      color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px,
+      transparent var(--space-1) var(--fx-grid-pitch)),;
+    repeating-linear-gradient(to bottom,
+      color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px,
+      transparent var(--space-1) var(--fx-grid-pitch));
+  /* — Elevation · shadow color + opacity (token-adherent: stone ink + opacity %) — */
+  --opacity-shadow-media: 45%;
+    --opacity-shadow-media-sm: 40%;
+    --opacity-shadow-viewer: 24%;
+    --opacity-shadow-viewer-soft: 12%;
+  --color-shadow-media: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-media), transparent);
+    --color-shadow-media-sm: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-media-sm), transparent);
+    --color-shadow-viewer: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-viewer), transparent);
+    --color-shadow-viewer-soft: color-mix(in srgb, var(--stone-950) var(--opacity-shadow-viewer-soft), transparent);
+  /* — Elevation · shadows (travel from --space-* primitives, color+opacity from above) — */
+  --shadow-on-media: 0 var(--space-1) var(--space-12) var(--color-shadow-media);
+    --shadow-on-media-sm: 0 var(--space-1) var(--space-10) var(--color-shadow-media-sm);
+}

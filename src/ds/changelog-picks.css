@@ -1,0 +1,67 @@
+/* ADAM/DS — changelog-picks · drawer head, picks · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+.ds-drawer-head { display: flex; gap: var(--space-8); align-items: center; margin-bottom: var(--space-12); }
+.ds-drawer-head b {
+  flex: 1 1 auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-muted);
+}
+.ds-drawer-head button {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: var(--border-hairline);
+  padding: var(--space-4) var(--space-9);
+  cursor: pointer;
+}
+.ds-drawer-head button:disabled { opacity: 0.4; cursor: default; }
+.ds-done {
+  display: inline-block;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 0 var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  font-weight: 700;
+  line-height: 1.6;
+  border-radius: var(--radius-none);
+}
+.ds-pick {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  background: none;
+  border: none;
+  border-bottom: var(--border-hairline);
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--text-ds-body);
+  color: var(--color-ink);
+  cursor: pointer;
+  position: relative;
+}
+.ds-pick:last-child { border-bottom: none; }
+.ds-pick small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-2);
+}
+.ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); }
+.ds-pick.on small { color: var(--color-ink-muted); }
+.ds-pick.is-open .ds-num { color: var(--color-ink-muted); }
+.ds-hero.wide .lede { max-width: none; }
+.ds-commits {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+  word-break: break-all;
+}
+.ds-commits a { color: var(--color-ink); text-decoration: underline; text-underline-offset: var(--space-2); }
+.ds-hr { border: none; border-top: var(--border-hairline); margin: var(--space-14) 0; }

@@ -1,0 +1,36 @@
+/* ADAM/DS — ds-tabs · tabs shell, Preview-first · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* tabs shell (Phase 1) — token-only, Preview-first */
+.ds-tabs { margin: var(--space-10) 0; }
+.ds-tablist { display: flex; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-10); }
+.ds-tab {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: var(--border-hairline);
+  padding: var(--space-4) var(--space-9);
+}
+.ds-tab.on { background: var(--color-ink); color: var(--color-bg); }
+.ds-pane[hidden] { display: none; }
+.ds-tablist--line {
+  display: flex;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+  border-bottom: var(--border-hairline);
+  margin-bottom: var(--space-10);
+}
+.ds-tablist--line .ds-tab {
+  background: transparent;
+  border: none;
+  border-bottom: var(--space-2) solid transparent;
+  padding: var(--space-6) var(--space-8);
+  margin-bottom: calc(var(--space-1) * -1);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+.ds-tablist--line .ds-tab:hover { color: var(--color-ink); }
+.ds-tablist--line .ds-tab.on {
+  background: transparent;
+  color: var(--color-ink);
+  border-bottom-color: var(--color-accent);
+}

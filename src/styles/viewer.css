@@ -34,7 +34,18 @@
 }
 /* Single clear hero — former glass/bar/shimmer overlays deleted in v1.1 (5.3). */
 .viewer img { display: block; width: 100%; height: auto; position: relative; z-index: 1; filter: none; }
-.viewer-lines { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: var(--z-viewer-lines); opacity: 0; will-change: opacity; contain: layout paint; transition: opacity var(--dur-glide) var(--ease-standard); }
+.viewer-lines {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-viewer-lines);
+  opacity: 0;
+  will-change: opacity;
+  contain: layout paint;
+  transition: opacity var(--dur-glide) var(--ease-standard);
+}
 .viewer-lines.on { opacity: 1; transition: opacity var(--dur-glide) var(--ease-standard); }
 .viewer-lines line {
   stroke: var(--color-viewer-tether); stroke-width: var(--size-viewer-tether);
@@ -53,4 +64,7 @@
 }
 html.viewer-cursor-active .cols,
 html.viewer-cursor-active .cols * { cursor: none !important; }
-@media (max-width: 640px) /* --break-sm */ { .viewer, .viewer-cursor, .viewer-lines { display: none; } html.viewer-cursor-active .cols, html.viewer-cursor-active .cols * { cursor: auto !important; } }
+@media (max-width: 640px) /* --break-sm */ {
+  .viewer, .viewer-cursor, .viewer-lines { display: none; }
+  html.viewer-cursor-active .cols, html.viewer-cursor-active .cols * { cursor: auto !important; }
+}

@@ -1,0 +1,82 @@
+/* ADAM/STYLE — tokens-fx · motion + fx + viewer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+:root {
+  /* — Breakpoints (documented scale; var() invalid in @media — keep raw px in sync) — */
+  --break-sm: 640px; --break-md: 800px; --break-lg: 900px;
+  /* — Form (size + color only; layout stays semantic) — */
+  --size-input-h: var(--size-tap);
+    --color-input-bg: var(--color-surface);
+    --color-input-line: var(--color-line);
+    --color-input-focus: var(--color-ink);
+  /* — Borders / radius (zero is the doctrine — consume via var(), never a literal) — */
+  --border-hairline: var(--size-hairline) solid var(--color-line);
+    --border-frame: var(--size-frame) solid var(--color-ink);
+    --border-dashed: var(--size-hairline) dashed var(--color-ink-muted);
+  --radius-none: 0; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-pill: 0;
+  /* — Focus — */
+  --color-focus: var(--color-ink);
+    --border-focus: var(--size-frame) solid var(--color-focus);
+    --focus-offset: var(--space-2);
+  /* — Motion — */
+  --dur-fast: 150ms;
+    --dur-base: 200ms;
+    --dur-med: 220ms;
+    --dur-soft: 250ms;
+    --dur-slow: 280ms;
+    --dur-glide: 380ms;
+    --dur-reveal: 300ms;
+    --dur-blur: 450ms;
+    --dur-zoom: 650ms;
+    --dur-shimmer: 2.2s;
+    --ease-standard: ease;
+    --ease-signature: cubic-bezier(0.32, 0.72, 0, 1);
+  /* — FX · cell-grid, sheen, rise — graduated from gridReveal.js literals — */
+  --fx-cell: 30;
+    --fx-wait: 0.72;
+    --fx-photo-from: 0.93;
+    --fx-morph: 0.04;
+    --fx-split-end: 0.92;
+    --fx-skeleton: 120ms;
+    --fx-sheen: 0.14;
+    --fx-grid-pitch: 14px;
+  --dur-fx-color: 240ms; --dur-fx-span: 0.6s; --dur-hero-rise: 860ms;
+  /* — FX · scramble — decoding text — */
+  --dur-scramble: 0.9s; --fx-scramble-chars: upperCase;
+  /* — FX · glitch — generic container glitch (any element) — */
+  --dur-glitch: 2.4s; --fx-glitch-x: var(--space-1); --fx-glitch-skew: -12deg; --fx-glitch-opacity: 0.5;
+  /* — FX · viewer intent + spring (5.3: threshold/idle/debounce/spring as tokens) — */
+  --fx-viewer-threshold: 12px;
+    --fx-viewer-idle: 850ms;
+    --fx-viewer-debounce: 70ms;
+    --fx-viewer-k: 0.1;
+    --fx-viewer-fr: 0.54;
+  /* — Viewer (tamed editorial — only geometry + frosted border, no neon/grid/scan) — */
+  --size-viewer-w: 180px;
+    --size-viewer-gap: 10px;
+    --size-viewer-pad: 20px;
+    --size-cursor: 32px;
+    --blur-viewer: 2px;
+    --blur-cursor: 4px;
+    --blur-micro: 1px;
+  --color-viewer-shade: rgba(0, 0, 0, 0.32);
+    --color-viewer-bg: var(--color-surface);
+    --color-viewer-line: var(--stone-0);
+    --color-viewer-tether: color-mix(in srgb, var(--stone-0) 68%, transparent);
+    --size-viewer-tether: var(--space-2);
+  --viewer-border: var(--size-viewer-tether) solid var(--color-viewer-line);
+    --shadow-viewer: 0 var(--space-12) var(--space-32) var(--color-shadow-viewer),;
+    0 var(--space-2) var(--space-10) var(--color-shadow-viewer-soft);
+      --dur-viewer-in: 300ms;
+      --dur-viewer-line: 780ms;
+      --z-viewer: 15;
+      --z-viewer-lines: 14;
+  /* — Elevation, blur, opacity, scale / z-index — */
+  --blur-header: 18px;
+    --blur-scrim: 18px;
+    --blur-placeholder: 14px;
+    --sat-header: 1.6;
+    --sat-scrim: 1.35;
+    --opacity-hover: 0.55;
+    --scale-press: 0.94;
+    --scale-zoom: 1.015;
+  --z-media: 1; --z-frame: 2; --z-ds-side: 5; --z-ds-controls: 6; --z-header: 20;
+}

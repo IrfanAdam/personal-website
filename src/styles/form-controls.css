@@ -1,0 +1,56 @@
+/* ADAM/STYLE — styles/form-controls · toggle, avatar · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--color-ink);
+}
+.toggle input {
+  appearance: none;
+  width: var(--space-42);
+  height: var(--space-22);
+  background: var(--color-surface);
+  border: var(--border-hairline);
+  border-radius: var(--radius-none);
+  position: relative;
+  cursor: pointer;
+  transition: background var(--dur-soft) var(--ease-standard), border-color var(--dur-soft) var(--ease-standard);
+}
+.toggle input:checked { background: var(--color-ink); border-color: var(--color-ink); }
+.toggle input::after {
+  content: "";
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  width: var(--space-18);
+  height: var(--space-18);
+  background: var(--color-ink);
+  transition: translate var(--dur-soft) var(--ease-standard), background var(--dur-soft) var(--ease-standard);
+}
+.toggle input:checked::after { background: var(--color-bg); translate: var(--space-18) 0; }
+.toggle input:focus-visible { outline: var(--size-frame) solid var(--color-ink); outline-offset: var(--space-2); }
+.toggle input:disabled { opacity: 0.5; cursor: not-allowed; }
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-tap);
+  height: var(--size-tap);
+  background: var(--color-panel);
+  border: var(--border-hairline);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-small);
+  overflow: hidden;
+  border-radius: var(--radius-none);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar--sm { width: var(--space-30); height: var(--space-30); font-size: var(--text-meta); }
+.avatar--lg { width: var(--space-60); height: var(--space-60); font-size: var(--text-h3); }
+@media (prefers-reduced-motion: reduce) {
+  .field input, .field textarea, .field select, .toggle input, .toggle input::after { transition: none; }
+}
