@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T14:39:05.577Z",
+ "generated": "2026-09-13T14:48:16.756Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,15 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "3d8a108",
+   "full": "3d8a1081b33bd8b870f67c4f3e388d41391e548b",
+   "date": "2026-09-13",
+   "time": "20:09",
+   "subject": "refactor(sound): split sound-palette into voice families",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
   {
    "sha": "9b687c0",
    "full": "9b687c03b65c9f529b705c377dbdb2ae0b75c1ab",
@@ -850,6 +859,7 @@
   }
  ],
  "wip": [
+  "M src/ds/pages-changelog.js",
   "M src/ds/pages-overview.js",
   "?? src/ds/changelog-paint.js",
   "?? src/ds/changelog-parse.js",
