@@ -1,79 +1,14 @@
-/* ADAM/DS app shell — hash router + theme toggle + section nav. */
-import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
-import { render as overview, mount as mountOverview } from './pages-overview.js';
-import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
-import { render as components } from './pages-components.js';
-import { render as patterns, mount as mountPatterns } from './pages-patterns.js';
-import { render as functions, mount as mountFunctions } from './pages-functions.js';
-import { render as primitives, mount as mountPrimitives } from './pages-primitives.js';
-import { render as library, mount as mountLibrary } from './pages-library.js';
-import { render as gridReveal, mount as mountGrid } from './functions/grid-reveal.js';
-import { render as shimmer, mount as mountShimmer } from './functions/shimmer.js';
-import { render as rise, mount as mountRise } from './functions/rise.js';
-import { render as viewer, mount as mountViewer } from './functions/viewer.js';
-import { render as glimmer, mount as mountGlimmer } from './functions/glimmer-orb.js';
-import { render as glitch, mount as mountGlitch } from './functions/glitch.js';
-import { render as scramble, mount as mountScramble } from './functions/scramble.js';
+/* ADAM/DS — ds/ds · app shell · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+import { routes } from './routes.js';
+import { mountTheme } from './theme.js';
+import { mountSidebar } from './sidebar.js';
 import { refreshLive } from './specimens.js';
 import '../views/init-sound.js';
 import { mountTabs } from './tabs.js';
-const routes = [
-  { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
-  { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
-  { hash: '#/foundations',
-    label: 'Foundations · Tokens',
-    group: 'Start',
-    render: foundations,
-    mount: mountFoundations },
-  { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
-  { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
-  { hash: '#/components', label: 'Components', group: 'Components', render: components },
-  { hash: '#/patterns', label: 'Patterns · Quality', group: 'Components', render: patterns, mount: mountPatterns },
-  { hash: '#/functions', label: 'Functions', group: 'Functions', render: functions, mount: mountFunctions },
-  { hash: '#/functions/grid-reveal', label: 'GridReveal', group: 'Functions', render: gridReveal, mount: mountGrid },
-  { hash: '#/functions/shimmer', label: 'Shimmer', group: 'Functions', render: shimmer, mount: mountShimmer },
-  { hash: '#/functions/rise', label: 'Rise', group: 'Functions', render: rise, mount: mountRise },
-  { hash: '#/functions/viewer', label: 'Viewer', group: 'Functions', render: viewer, mount: mountViewer },
-  { hash: '#/functions/glimmer-orb', label: 'Glimmer orb', group: 'Functions', render: glimmer, mount: mountGlimmer },
-  { hash: '#/functions/glitch', label: 'Glitch', group: 'Functions', render: glitch, mount: mountGlitch },
-  { hash: '#/functions/scramble', label: 'Scramble', group: 'Functions', render: scramble, mount: mountScramble },
-];
 const main = document.getElementById('ds-main');
 const nav = document.getElementById('ds-nav');
-/* theme: system / light / dark, persisted — shared with site (adam-theme) */
-const root = document.documentElement;
-const saved = localStorage.getItem('adam-theme') || localStorage.getItem('adam-ds-theme') || 'system';
-const bar = document.createElement('div');
-bar.className = 'ds-controls';
-bar.innerHTML = ['system', 'light', 'dark'].map((m) => [
-  `<button class="pill" data-theme-btn="`,
-  m,
-  `\">`,
-  m,
-  `</button>`,
-].join('')).join('');
-document.body.prepend(bar);
-function applyTheme(m) {
-  root.removeAttribute('data-theme');
-  if (m === 'light') root.setAttribute('data-theme', 'light');
-  if (m === 'dark') root.setAttribute('data-theme', 'dark');
-  localStorage.setItem('adam-theme', m);
-  localStorage.setItem('adam-ds-theme', m);
-  bar.querySelectorAll('[data-theme-btn]').forEach((b) => b.classList.toggle('on', b.dataset.themeBtn === m));
-}
-bar.addEventListener('click', (e) => {
-  const b = e.target.closest('[data-theme-btn]'); if (b) { applyTheme(b.dataset.themeBtn); refreshLive(); }
-});
-applyTheme(saved);
-/* sidebar collapse — persisted like theme (desktop only; mobile stacks) */
-const sideBtn = document.getElementById('ds-side-toggle');
-const applySide = (c) => { document.body.classList.toggle('side-collapsed',
-    c); localStorage.setItem('adam-ds-side', c ? '1' : '0');
-  sideBtn.textContent = c ? '▶' : '◀';
-  sideBtn.setAttribute('aria-expanded',
-    String(!c)); };
-sideBtn.addEventListener('click', () => applySide(!document.body.classList.contains('side-collapsed')));
-applySide(localStorage.getItem('adam-ds-side') === '1');
+mountTheme();
+mountSidebar();
 /* nav */
 let lastGroup = '';
 nav.innerHTML = routes.map((r) => {
