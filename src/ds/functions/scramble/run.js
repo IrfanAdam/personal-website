@@ -60,7 +60,8 @@ export function createRunner(S){
     try{
       document.documentElement.style.setProperty('--dur-scramble', d.toFixed(1)+'s');
       scrambleText(preview,
-        { text, chars: cs, duration: d, speed: sp, revealDelay: dl, delimiter: dm, rightToLeft: S.rtl, tweenLength: S.tween,
+        { text, chars: cs, duration: d, speed: sp, revealDelay: dl, delimiter: dm,
+          rightToLeft: S.rtl, tweenLength: S.tween,
       });
     }catch{}
   };
