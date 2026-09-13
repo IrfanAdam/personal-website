@@ -8,8 +8,26 @@ const RULES = [
   ['Function', /function|grid-?reveal|shimmer|glimmer|viewer|expander|tether|fx-?lab|rise/i],
   ['Motion', /motion|easing|transition|animation|reveal|load sequence|parallax|spring|graduation/i],
   ['Layout', /layout|masonry|responsive|mobile|breakpoint|landing|shortest-column|progressive load/i],
-  ['Tooling', /pipeline|tracker|manifest|changelog|trailer|continuation|miller|subagent|sop|suggest|checkpoint|freeze/i],
-  ['Design System', /design.?system|token|foundation|ramp|semantic|overview|moodboard|color|type|shape|material|swap.?slot|evo|parity|narrative/i],
+  ['Tooling',
+    /pipeline|tracker|manifest|changelog|trailer|continuation|miller|subagent|sop|suggest|checkpoint|freeze/i],
+  ['Design System',
+    new RegExp([
+      'design.?system',
+      'token',
+      'foundation',
+      'ramp',
+      'semantic',
+      'overview',
+      'moodboard',
+      'color',
+      'type',
+      'shape',
+      'material',
+      'swap.?slot',
+      'evo',
+      'parity',
+      'narrative',
+    ].join('|'), 'i')],
 ];
 export const parseExplicit = (text) => {
   const m = String(text).match(/^>?\s*\*{1,2}Tags:\*{0,2}\s*(.+?)\s*\*{0,2}\s*$/m);

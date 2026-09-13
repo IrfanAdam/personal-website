@@ -9,18 +9,106 @@ export function component({ title, sub, anatomy, behaviour, knobs = [], render, 
   reg[id] = { knobs, render, code };
   const init = Object.fromEntries(knobs.map((k)=>[k.key,k.default]));
   const knobsHTML = knobs.map((k)=>{
-    if(k.type==='select') return `<label class="fx-row">${k.label} <select data-k="${k.key}" data-comp="${id}">${k.options.map((o)=>`<option value="${o.value}"${o.value===k.default?' selected':''}>${o.label}</option>`).join('')}</select><output data-v="${k.key}">${k.default}</output></label>`;
-    if(k.type==='range') return `<label class="fx-row">${k.label} <input type="range" min="${k.min}" max="${k.max}" step="${k.step}" value="${k.default}" data-k="${k.key}" data-comp="${id}"><output data-v="${k.key}">${k.default}${k.unit||''}</output></label>`;
-    return `<label class="fx-row">${k.label} <input type="checkbox" ${k.default?'checked':''} data-k="${k.key}" data-comp="${id}"><output data-v="${k.key}">${k.default?'on':'off'}</output></label>`;
+    if(k.type==='select') return [
+      `<label class="fx-row">`,
+      k.label,
+      ` <select data-k="`,
+      k.key,
+      `" data-comp="`,
+      id,
+      `">`,
+      k.options.map((o)=>[
+        `<option value="`,
+        o.value,
+        `"`,
+        o.value===k.default?' selected':'',
+        `>`,
+        o.label,
+        `</option>`,
+      ].join('')).join(''),
+      `</select><output data-v="`,
+      k.key,
+      `">`,
+      k.default,
+      `</output></label>`,
+    ].join('');
+    if(k.type==='range') return [
+      `<label class="fx-row">`,
+      k.label,
+      ` <input type="range" min="`,
+      k.min,
+      `" max="`,
+      k.max,
+      `" step="`,
+      k.step,
+      `" value="`,
+      k.default,
+      `" data-k="`,
+      k.key,
+      `" data-comp="`,
+      id,
+      `"><output data-v="`,
+      k.key,
+      `">`,
+      k.default,
+      k.unit||'',
+      `</output></label>`,
+    ].join('');
+    return [
+      `<label class="fx-row">`,
+      k.label,
+      ` <input type="checkbox" `,
+      k.default?'checked':'',
+      ` data-k="`,
+      k.key,
+      `" data-comp="`,
+      id,
+      `"><output data-v="`,
+      k.key,
+      `">`,
+      k.default?'on':'off',
+      `</output></label>`,
+    ].join('');
   }).join('');
-  const tokHTML = tokens.length ? `<div class="fx-btns" style="margin-top:var(--space-8)">${tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join('')}</div>` : '';
+  const tokHTML = tokens.length ? [
+    `<div class="fx-btns" style="margin-top:var(--space-8)">`,
+    tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
+    `</div>`,
+  ].join('') : '';
   const previewHTML = `<div data-comp-preview="${id}">${render(init)}</div>`;
-  const codeHTML = `<div class="ds-code" data-comp-code="${id}"><pre>${esc(code(init))}</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="${id}">copy code</button></div>`;
-  const tokensHTML = tokens.length ? `${tokHTML}<p class="sub" style="margin-top:var(--space-8)">Click any <span class="tok">var()</span> to copy. All values read live <span class="tok">var()</span> — no literals.</p>` : '<p class="sub">No component tokens — inherits global rhythm.</p>';
+  const codeHTML = [
+    `<div class="ds-code" data-comp-code="`,
+    id,
+    `"><pre>`,
+    esc(code(init)),
+    `</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="`,
+    id,
+    `">copy code</button></div>`,
+  ].join('');
+  const tokensHTML = tokens.length ? [
+    tokHTML,
+    `<p class="sub" style="margin-top:var(--space-8)">Click any <span class="tok">var()</span> to copy. All values `,
+    `read live <span class="tok">var()</span> — no literals.</p>`,
+  ].join('') : '<p class="sub">No component tokens — inherits global rhythm.</p>';
   const tabsHTML = tabs({ panes: [{ label:'Preview', html: previewHTML },
         { label:'Code', html: codeHTML },
         { label:'Tokens', html: tokensHTML }] });
-  return `<div class="ds-sec" data-comp-root="${id}"><h2>${title}</h2>${sub?`<p class="sub">${sub}</p>`:''}${anatomy?`<h3>Anatomy</h3><p class="sub">${anatomy}</p>`:''}${behaviour?`<h3>Behaviour</h3><p class="sub">${behaviour}</p>`:''}${tabsHTML}<div class="fx-controls" data-comp-ctrl="${id}">${knobsHTML}</div></div>`;
+  return [
+    `<div class="ds-sec" data-comp-root="`,
+    id,
+    `"><h2>`,
+    title,
+    `</h2>`,
+    sub?`<p class="sub">${sub}</p>`:'',
+    anatomy?`<h3>Anatomy</h3><p class="sub">${anatomy}</p>`:'',
+    behaviour?`<h3>Behaviour</h3><p class="sub">${behaviour}</p>`:'',
+    tabsHTML,
+    `<div class="fx-controls" data-comp-ctrl="`,
+    id,
+    `">`,
+    knobsHTML,
+    `</div></div>`,
+  ].join('');
 }
 export function mountComponent(root){
   const offs=[];

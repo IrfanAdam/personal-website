@@ -24,7 +24,9 @@ export const norm = (body) => {
       '').trim().replace(/\.*$/,
       '.');
     const detail = lines.join(' ').replace(/\s+/g, ' ').trim();
-    const flag = cancelled ? '<span class="ds-cancelled">✗ cancelled</span> — ' : (done ? '✓ done — ' : '');
+    let flag = '';
+    if (cancelled) flag = '<span class="ds-cancelled">✗ cancelled</span> — ';
+    else if (done) flag = '✓ done — ';
     return `- [${done || cancelled ? 'x' : ' '}] **${num} ${name}** ${flag}${detail}`;
   });
   return head + items.join('\n');
@@ -77,4 +79,10 @@ export const pDay = (s) => {
   return new Date(y, mo - 1, d);
 };
 
-export const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+export const isoDay = (d) => [
+  d.getFullYear(),
+  `-`,
+  String(d.getMonth() + 1).padStart(2, '0'),
+  `-`,
+  String(d.getDate()).padStart(2, '0'),
+].join('');

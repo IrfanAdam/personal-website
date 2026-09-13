@@ -16,8 +16,14 @@ try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) on = false; } 
 setEnabled(on);
 
 /* Speaker icon — waves (enabled) + slashed (muted); CSS swaps via .on. */
-const SND_ICON = '<svg class="ic-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6 6 0 0 1 0 9" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="square"/></svg><svg class="ic-off" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" fill="currentColor"/><path d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>';
-const SND_BTN = '<button class="pill snd-pill" data-sound-toggle aria-pressed="true" aria-label="sound on">' + SND_ICON + '</button>';
+const SND_ICON = ['<svg class="ic-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" ',
+  'fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6 6 0 0 1 0 9" stroke="currentColor" ',
+  'fill="none" stroke-width="1.6" stroke-linecap="square"/></svg><svg class="ic-off" viewBox="0 0 16 16" ',
+  'aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" fill="currentColor"/><path d="M11 6l4 4M15 6l-4 4" ',
+  'stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>'].join('');
+const SND_BTN =
+  '<button class="pill snd-pill" data-sound-toggle aria-pressed="true" aria-label="sound on">'
+  + SND_ICON + '</button>';
 
 function syncUI() {
   document.querySelectorAll('[data-sound-toggle]').forEach((b) => {

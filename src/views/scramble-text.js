@@ -1,5 +1,6 @@
 /* ADAM/FX — ScrambleText · GSAP-like decoder (no GSAP, no deps). Token-driven.
-   API: scrambleText(el, { text, chars, duration, revealDelay, speed, delimiter, rightToLeft, tweenLength, newClass, oldClass, onUpdate, onComplete })
+   API: scrambleText(el, { text, chars, duration, revealDelay, speed, delimiter, rightToLeft, tweenLength, newClass,
+     oldClass, onUpdate, onComplete })
    - text: string | "{original}" (default original). duration: seconds (default 1). revealDelay: seconds (0).
    - chars: "upperCase"|"lowerCase"|"upperAndLowerCase"|custom string. speed: 1 = refresh ~30ms.
    - delimiter: "" char-by-char, " " word-by-word. rightToLeft, tweenLength (true), newClass/oldClass.
@@ -51,7 +52,22 @@ export function scrambleText(el, opts){
     if(isWord){
       const tot = words.length;
       if(newClass||oldClass){
-        let h=''; for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed; const w=esc(words[i]); h += rev ? (newClass? `<span class="${newClass}">${w}</span>`: w) : (oldClass? `<span class="${oldClass}">${wordScrams[i].map(esc).join('')}</span>`: wordScrams[i].map(esc).join('')); if(i<tot-1) h+=escDelim; } return { html:h, isHtml:true };
+        let h='';
+        for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
+          const w=esc(words[i]);
+          h += rev ? (newClass? [
+          `<span class="`,
+          newClass,
+          `">`,
+          w,
+          `</span>`,
+        ].join(''): w) : (oldClass? [
+          `<span class="`,
+          oldClass,
+          `">`,
+          wordScrams[i].map(esc).join(''),
+          `</span>`,
+        ].join(''): wordScrams[i].map(esc).join('')); if(i<tot-1) h+=escDelim; } return { html:h, isHtml:true };
       }
       let t='';
       for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
@@ -63,7 +79,17 @@ export function scrambleText(el, opts){
     }
     const tot = curLen;
     if(newClass||oldClass){
-      let h=''; for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed; const ch = rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs)); const cls = rev? newClass: oldClass; h += cls ? `<span class="${cls}">${esc(ch)}</span>` : esc(ch); } return { html:h, isHtml:true };
+      let h='';
+      for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
+        const ch = rev ? (i<target.length? target[i]:'') : (charScram[i]||rnd(cs));
+        const cls = rev? newClass: oldClass;
+        h += cls ? [
+        `<span class="`,
+        cls,
+        `">`,
+        esc(ch),
+        `</span>`,
+      ].join('') : esc(ch); } return { html:h, isHtml:true };
     }
     let t='';
     for(let i=0;i<tot;i++){ const rev = rtl ? i >= tot - revealed : i < revealed;
@@ -76,8 +102,20 @@ export function scrambleText(el, opts){
     const elapsed = now - start, prog = Math.min(1, elapsed / durMs);
     if(prog>=1){
       if(newClass||oldClass){
-        if(isWord){ const h = words.map((w)=> newClass? `<span class="${newClass}">${esc(w)}</span>`: esc(w)).join(escDelim); el.innerHTML = h; }
-        else { let h=''; for(let i=0;i<target.length;i++) h+= newClass? `<span class="${newClass}">${esc(target[i])}</span>`: esc(target[i]); el.innerHTML = h; if(!h) el.textContent = target; }
+        if(isWord){ const h = words.map((w)=> newClass? [
+          `<span class="`,
+          newClass,
+          `">`,
+          esc(w),
+          `</span>`,
+        ].join(''): esc(w)).join(escDelim); el.innerHTML = h; }
+        else { let h=''; for(let i=0;i<target.length;i++) h+= newClass? [
+          `<span class="`,
+          newClass,
+          `">`,
+          esc(target[i]),
+          `</span>`,
+        ].join(''): esc(target[i]); el.innerHTML = h; if(!h) el.textContent = target; }
       } else el.textContent = target;
       try{ onUpdate&&onUpdate({progress:1,revealed:isWord?words.length:target.length}); }catch{}
       try{ onComplete&&onComplete(); }catch{}

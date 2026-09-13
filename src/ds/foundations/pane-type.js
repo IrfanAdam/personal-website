@@ -1,16 +1,42 @@
 /* ADAM/DS foundations · Type pane — ① scale → ② voice → ③ playground (Update 4 Phase 2). */
 import { typeRow, specCells, note, code } from '../specimens.js';
 export const label = 'Type';
-const leadDemo = (tok) => `<div style="font-size:var(--text-body);line-height:var(${tok})">Ag — three lines<br>set solid<br>to show rhythm</div>`;
-const leadDemoMono = (tok) => `<div style="font-family:var(--font-mono);font-size:var(--text-meta);line-height:var(${tok})">code lines<br>set solid<br>to show rhythm</div>`;
-const trackDemo = (tok, mono) => `<div style="${mono ? 'font-family:var(--font-mono);' : ''}font-size:var(--text-h3);font-weight:600;letter-spacing:var(${tok})">SPACING</div>`;
+const leadDemo = (tok) => [
+  `<div style="font-size:var(--text-body);line-height:var(`,
+  tok,
+  `)">Ag — three lines<br>set solid<br>to show rhythm</div>`,
+].join('');
+const leadDemoMono = (tok) => [
+  `<div style="font-family:var(--font-mono);font-size:var(--text-meta);line-height:var(`,
+  tok,
+  `)">code lines<br>set solid<br>to show rhythm</div>`,
+].join('');
+const trackDemo = (tok, mono) => [
+  `<div style="`,
+  mono ? 'font-family:var(--font-mono);' : '',
+  `font-size:var(--text-h3);font-weight:600;letter-spacing:var(`,
+  tok,
+  `)">SPACING</div>`,
+].join('');
 export function html() {
-  return `<div class="ds-sec"><h2>Typography</h2><p class="sub">Inter Tight for voice · Chivo Mono for metadata. Title parity: contact hero and case h1 share <span class="tok">--text-title</span>. Every sample is live <span class="tok">var()</span> type. Weight caps at <span class="tok">700</span> — no heavier step ships.</p>`
-  + `<h3>① Scale — every size with its partners</h3><p class="sub">Pick a size and its leading + tracking come with it — never set a bare <span class="tok">font-size</span>.</p><table class="ds-table"><tr><th>Sample</th><th>Token</th><th>Partners</th></tr>`
-  + typeRow('<b style="font-size:var(--text-display);font-weight:700;letter-spacing:var(--tracking-display);line-height:var(--leading-display)">Display</b>',
+  return [
+    `<div class="ds-sec"><h2>Typography</h2>`,
+    `<p class="sub">Inter Tight for voice · Chivo Mono for metadata. Title parity: contact hero and case h1 share `,
+    `<span class="tok">--text-title</span>. Every sample is live <span class="tok">var()</span> type. Weight caps `,
+    `at <span class="tok">700</span> — no heavier step ships.</p>`,
+  ].join('')
+  + [
+    `<h3>① Scale — every size with its partners</h3>`,
+    `<p class="sub">Pick a size and its leading + tracking come with it — never set a bare <span `,
+    `class="tok">font-size</span>.</p><table class="ds-table"><tr><th>Sample</th><th>Token</th><th>Partners</th>`,
+    `</tr>`,
+  ].join('')
+  + typeRow(['<b style="font-size:var(--text-display);font-weight:700;letter-spacing:var(--tracking-display);',
+    'line-height:var(--leading-display)">Display</b>'].join(''),
     '--text-display',
     'clamp(28,5vw,54) · --leading-display 0.9 · --tracking-display −0.04 · 700')
-  + typeRow('<b style="font-size:var(--text-title);font-weight:700;letter-spacing:var(--tracking-title);line-height:var(--leading-title)">Title · h1</b>',
+  + typeRow(['<b style="font-size:var(--text-title);font-weight:700;letter-spacing:var(--tracking-title);',
+    'line-height:var(--leading-title)">Title · h1</b>'].join(''),
     '--text-title',
     'clamp(26,4.5vw,46) · --leading-title 1.1 · --tracking-title −0.03 · 700')
   + typeRow('<b style="font-size:var(--text-logo);font-weight:700;letter-spacing:var(--tracking-display)">Logo</b>',
@@ -34,17 +60,27 @@ export function html() {
   + typeRow('<span style="font-family:var(--font-mono);font-size:var(--text-meta)">MONO META · 12PX</span>',
     '--text-meta',
     'Chivo Mono · --leading-mono · --tracking-mono · 500')
-  + typeRow('<span style="font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:var(--tracking-label)">LABEL · 11PX · TRACK .1</span>',
+  + typeRow(['<span ',
+    'style="font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:var(--tracking-label)">LABEL ',
+    '· 11PX · TRACK .1</span>'].join(''),
     '--text-label',
     'Chivo Mono · --leading-mono · --tracking-label 0.12 · 500')
-  + typeRow('<span style="font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-mono)">MICRO · 10.5PX</span>',
+  + typeRow(['<span ',
+    'style="font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-mono)">MICRO · ',
+    '10.5PX</span>'].join(''),
     '--text-micro',
     'Chivo Mono · --leading-mono · --tracking-mono 0.1 · 500')
   + `</table>`
-  + code('--text-display: clamp(28px, 5vw, 54px); /* floor 28 · fluid 5vw · cap 54 */\n--text-title: clamp(26px, 4.5vw, 46px); /* floor 26 · fluid 4.5vw · cap 46 */\nall other steps are fixed px — they never shrink below their floor.')
+  + code(['--text-display: clamp(28px, 5vw, 54px); /* floor 28 · fluid 5vw · cap 54 */\n--text-title: clamp(26px, ',
+    '4.5vw, 46px); /* floor 26 · fluid 4.5vw · cap 46 */\nall other steps are fixed px — they never shrink below ',
+    'their floor.'].join(''))
   + note('Do',
-    'Minimum sizes are the clamp floors: display never under 28px, title never under 26px. At 200% zoom layouts reflow and measures hold 60–68ch — text wraps, never clips.')
-  + `<h3>Leading + tracking — live specimens</h3><p class="sub">Unitless values get type specimens, not color swatches — zero blank cards.</p>`
+    ['Minimum sizes are the clamp floors: display never under 28px, title never under 26px. At 200% zoom layouts ',
+      'reflow and measures hold 60–68ch — text wraps, never clips.'].join(''))
+  + [
+    `<h3>Leading + tracking — live specimens</h3>`,
+    `<p class="sub">Unitless values get type specimens, not color swatches — zero blank cards.</p>`,
+  ].join('')
   + specCells([['Leading display', '--leading-display', '0.9 · hero', leadDemo('--leading-display')],
       ['Leading title', '--leading-title', '1.1 · h1', leadDemo('--leading-title')],
       ['Leading snug', '--leading-snug', '1.25 · cards', leadDemo('--leading-snug')],
@@ -57,11 +93,38 @@ export function html() {
       ['Tracking body', '--tracking-body', '-0.01em · text', trackDemo('--tracking-body')],
       ['Tracking label', '--tracking-label', '0.12em · labels', trackDemo('--tracking-label', true)],
       ['Tracking mono', '--tracking-mono', '0.1em · mono', trackDemo('--tracking-mono', true)]])
-  + `<h3>② Voice — Inter Tight speaks, Chivo Mono labels</h3><p class="sub">Hierarchy first, tester last: hero → h1 → section → card → meta.</p>`
-  + code('hero Display → h1 Title → section h2 → card card-title / small → meta meta / label / micro (mono)\nInter Tight: voice (headlines, body, cards) · Chivo Mono: metadata (kickers, tags, specs, captions)')
+  + [
+    `<h3>② Voice — Inter Tight speaks, Chivo Mono labels</h3>`,
+    `<p class="sub">Hierarchy first, tester last: hero → h1 → section → card → meta.</p>`,
+  ].join('')
+  + code(['hero Display → h1 Title → section h2 → card card-title / small → meta meta / label / micro (mono)\nInter ',
+    'Tight: voice (headlines, body, cards) · Chivo Mono: metadata (kickers, tags, specs, captions)'].join(''))
   + note('Do',
-    'Pair sizes with their leading + tracking tokens — never set a bare <span class="tok">font-size</span> without its line-height.')
-  + `<h3>③ Playground — type tester, live</h3><p class="sub">Editable proof of the scale above — pick size, leading, tracking and type.</p><div class="ds-spec block"><div id="typeSample" contenteditable="true" style="font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body);letter-spacing:var(--tracking-body);border:var(--border-hairline);padding:var(--space-12);background:var(--color-surface);min-height:var(--space-60)">The quick brown fox — edit me. Inter Tight renders voice.</div><div class="fx-controls" id="typeCtrls"><label class="fx-row">size <select data-type="size"><option value="var(--text-small)">small 13.5</option><option value="var(--text-body)" selected>body 14</option><option value="var(--text-h3)">h3 16</option><option value="var(--text-title)">title</option><option value="var(--text-display)">display</option></select></label><label class="fx-row">leading <select data-type="leading"><option value="var(--leading-body)">body 1.5</option><option value="var(--leading-snug)">snug 1.25</option><option value="var(--leading-prose)">prose 1.6</option><option value="var(--leading-display)">display 0.9</option></select></label><label class="fx-row">tracking <select data-type="tracking"><option value="var(--tracking-body)" selected>body -.01</option><option value="var(--tracking-heading)">heading -.02</option><option value="var(--tracking-title)">title -.03</option><option value="var(--tracking-display)">display -.04</option><option value="var(--tracking-label)">label .12</option><option value="var(--tracking-mono)">mono .1</option></select></label></div></div>`
+    ['Pair sizes with their leading + tracking tokens — never set a bare <span class="tok">font-size</span> ',
+      'without its line-height.'].join(''))
+  + [
+    `<h3>③ Playground — type tester, live</h3>`,
+    `<p class="sub">Editable proof of the scale above — pick size, leading, tracking and type.</p>`,
+    `<div class="ds-spec block">`,
+    `<div id="typeSample" contenteditable="true" `,
+    `style="font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body);letter-spacing:v`,
+    `ar(--tracking-body);border:var(--border-hairline);padding:var(--space-12);background:var(--color-surface);min-h`,
+    `eight:var(--space-60)">The quick brown fox — edit me. Inter Tight renders voice.</div>`,
+    `<div class="fx-controls" id="typeCtrls"><label class="fx-row">size <select data-type="size">`,
+    `<option value="var(--text-small)">small 13.5</option><option value="var(--text-body)" selected>body 14</option>`,
+    `<option value="var(--text-h3)">h3 16</option><option value="var(--text-title)">title</option>`,
+    `<option value="var(--text-display)">display</option></select></label>`,
+    `<label class="fx-row">leading <select data-type="leading"><option value="var(--leading-body)">body 1.5</option>`,
+    `<option value="var(--leading-snug)">snug 1.25</option><option value="var(--leading-prose)">prose 1.6</option>`,
+    `<option value="var(--leading-display)">display 0.9</option></select></label>`,
+    `<label class="fx-row">tracking <select data-type="tracking">`,
+    `<option value="var(--tracking-body)" selected>body -.01</option>`,
+    `<option value="var(--tracking-heading)">heading -.02</option>`,
+    `<option value="var(--tracking-title)">title -.03</option>`,
+    `<option value="var(--tracking-display)">display -.04</option>`,
+    `<option value="var(--tracking-label)">label .12</option><option value="var(--tracking-mono)">mono .1</option>`,
+    `</select></label></div></div>`,
+  ].join('')
   + code('weight — regular 400 · medium 500 · semibold 600 · bold 700 (cap) · --weight-extrabold deprecated → bold')
   + `</div>`;
 }

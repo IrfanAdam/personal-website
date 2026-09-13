@@ -5,9 +5,43 @@ const reg = (window.__tabsReg = window.__tabsReg || {});
 export function tabs({ panes = [], initial = 0, vertical = false } = {}) {
   const id = 'tabs-' + Math.random().toString(36).slice(2, 6);
   reg[id] = { panes, initial };
-  const btns = panes.map((p, i) => `<button class="ds-tab${i === initial ? ' on' : ''}" role="tab" aria-selected="${i === initial}" data-tab="${i}" data-tabs="${id}">${p.label}</button>`).join('');
-  const bodies = panes.map((p, i) => `<div class="ds-pane" role="tabpanel" data-pane="${i}" data-tabs="${id}"${i === initial ? '' : ' hidden'}>${p.html}</div>`).join('');
-  return `<div class="ds-tabs${vertical ? ' vert' : ''}" data-tabs-root="${id}"><div class="ds-tablist" role="tablist"${vertical ? ' aria-orientation="vertical"' : ''}>${btns}</div><div class="ds-panes">${bodies}</div></div>`;
+  const btns = panes.map((p, i) => [
+    `<button class="ds-tab`,
+    i === initial ? ' on' : '',
+    `" role="tab" aria-selected="`,
+    i === initial,
+    `" data-tab="`,
+    i,
+    `" data-tabs="`,
+    id,
+    `">`,
+    p.label,
+    `</button>`,
+  ].join('')).join('');
+  const bodies = panes.map((p, i) => [
+    `<div class="ds-pane" role="tabpanel" data-pane="`,
+    i,
+    `" data-tabs="`,
+    id,
+    `"`,
+    i === initial ? '' : ' hidden',
+    `>`,
+    p.html,
+    `</div>`,
+  ].join('')).join('');
+  return [
+    `<div class="ds-tabs`,
+    vertical ? ' vert' : '',
+    `" data-tabs-root="`,
+    id,
+    `"><div class="ds-tablist" role="tablist"`,
+    vertical ? ' aria-orientation="vertical"' : '',
+    `>`,
+    btns,
+    `</div><div class="ds-panes">`,
+    bodies,
+    `</div></div>`,
+  ].join('');
 }
 export function mountTabs(root) {
   const offs = [];

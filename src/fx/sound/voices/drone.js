@@ -72,7 +72,27 @@ export function createHumLoop(ctx, initialGain = 0) {
           t); gain.gain.linearRampToValueAtTime(Math.max(0, Math.min(0.45, v)),
           t + ramp); } catch {}
     },
-    stop() { try { nodes.forEach((n) => { try { n.o.stop(); } catch {} try { n.o.disconnect(); } catch {} try { n.lp.disconnect(); } catch {} });
+    stop() {
+      try {
+        nodes
+          .forEach((n) => {
+          try {
+            n
+              .o
+              .stop();
+          } catch {
+          } try {
+            n
+              .o
+              .disconnect();
+          } catch {
+          } try {
+            n
+              .lp
+              .disconnect();
+          } catch {
+          }
+        });
         gain
           .disconnect();
       } catch {} },

@@ -30,7 +30,13 @@ export function graph({ plans, day }) {
     if (f) { spans.push({ mo: f.getMonth(), n: lead + 1 }); lead = 0; }
     else if (spans.length) spans[spans.length - 1].n++; else lead++;
   });
-  const labels = spans.map((s) => `<span class="ds-month" style="width: calc(${s.n} * (var(--space-16) + var(--space-4)) - var(--space-4))">${MONTHS[s.mo]}</span>`).join('');
+  const labels = spans.map((s) => [
+    `<span class="ds-month" style="width: calc(`,
+    s.n,
+    ` * (var(--space-16) + var(--space-4)) - var(--space-4))">`,
+    MONTHS[s.mo],
+    `</span>`,
+  ].join('')).join('');
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
       const k = isoDay(d),
@@ -40,18 +46,71 @@ export function graph({ plans, day }) {
       const n = dc[k] || 0;
       if (!n) return `<span class="ds-day${todayCls}"${sound} data-tip="${fmtDate(k)} \u00b7 no changes"></span>`;
       const lv = Math.min(4, Math.ceil(4 * Math.sqrt(n / max)));
-      return `<button class="ds-day lv${lv}${day === k ? ' on' : ''}${todayCls}"${sound} data-day="${k}" data-tip="${n} change${n > 1 ? 's' : ''} \u00b7 ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${n} changes on ${fmtDate(k)} \u2014 filter list"></button>`;
+      return [
+        `<button class="ds-day lv`,
+        lv,
+        day === k ? ' on' : '',
+        todayCls,
+        `"`,
+        sound,
+        ` data-day="`,
+        k,
+        `" data-tip="`,
+        n,
+        ` change`,
+        n > 1 ? 's' : '',
+        ` \u00b7 `,
+        fmtDate(k),
+        `" aria-pressed="`,
+        day === k,
+        `" aria-label="`,
+        n,
+        ` changes on `,
+        fmtDate(k),
+        ` \u2014 filter list"></button>[
+        `,
+      ].join('');
     }).join('');
-    return `<div class="ds-week">${cells}</div>`;
+    return `,
+      ].join('')<div class="ds-week">${cells}</div>`;
   }).join('');
   const dows = `<div class="ds-dows" aria-hidden="true">${DOWS.map((d) => `<span>${d}</span>`).join('')}</div>`;
-  return `<div class="ds-graph-labels">${labels}</div><div class="ds-graph-row" role="group" aria-label="Changes by day">${dows}${cols}</div>`;
+  return [
+    `<div class="ds-graph-labels">`,
+    labels,
+    `</div><div class="ds-graph-row" role="group" aria-label="Changes by day">`,
+    dows,
+    cols,
+    `</div>`,
+  ].join('');
 }
 export function paint(root, ctx) {
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
-  const showAll = `<button class="ds-chip${(active.size || day) ? '' : ' on'}" data-tag="">All (${plans.length})</button>`;
-  const dayChip = day ? `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">${fmtDate(day)} \u2715</button>` : '';
-  root.querySelector('[data-col="chips"]').innerHTML = dayChip + showAll + counts.map(([t, n]) => `<button class="ds-chip${active.has(t) ? ' on' : ''}" data-tag="${t}" aria-pressed="${active.has(t)}">${t} (${n})</button>`).join('');
+  const showAll = [
+    `<button class="ds-chip`,
+    (active.size || day) ? '' : ' on',
+    `" data-tag="">All (`,
+    plans.length,
+    `)</button>`,
+  ].join('');
+  const dayChip = day ? [
+    `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">`,
+    fmtDate(day),
+    ` \u2715</button>`,
+  ].join('') : '';
+  root.querySelector('[data-col="chips"]').innerHTML = dayChip + showAll + counts.map(([t, n]) => [
+    `<button class="ds-chip`,
+    active.has(t) ? ' on' : '',
+    `" data-tag="`,
+    t,
+    `" aria-pressed="`,
+    active.has(t),
+    `">`,
+    t,
+    ` (`,
+    n,
+    `)</button>`,
+  ].join('')).join('');
   const gEl = root.querySelector('[data-col="graph"]');
   if (!gEl.dataset.ready) { gEl.innerHTML = graph({ plans, day }); gEl.dataset.ready = '1'; }
   else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day,
@@ -60,8 +119,15 @@ export function paint(root, ctx) {
           String(on)); }); }
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   if (!plan) {
-    const nf = [active.size ? 'these tags' : '', day ? fmtDate(day) : ''].filter(Boolean).join(' \u00b7 ');
-    root.querySelector('[data-col="plan"]').innerHTML = `<p class="ds-note">Nothing matches ${nf || 'the archive'} yet.</p>`;
+    const nf = [
+      active.size ? 'these tags' : '',
+      day ? fmtDate(day) : '',
+    ].filter(Boolean).join(' \u00b7 ');
+    root.querySelector('[data-col="plan"]').innerHTML = [
+      `<p class="ds-note">Nothing matches `,
+      nf || 'the archive',
+      ` yet.</p>`,
+    ].join('');
     root
       .querySelector('[data-col="sprint"]')
       .innerHTML = '';
@@ -82,20 +148,70 @@ export function paint(root, ctx) {
       st = fmtTime(p.id),
       endDate = last ? last.date : '',
       endTime = last && last.time ? fmtTime(last.time) : '';
-    const endTxt = !endDate ? '' : (endDate !== p.date ? ' \u2013 ' + fmtDate(endDate) + (endTime ? ' ' + endTime : '') : (endTime
-        && endTime !== st ? ' \u2013 ' + endTime : ''));
-    const line1 = [sd + (st ? ' ' + st : '') + (endTxt ? ' ' + endTxt.trim() : ''), `${p.sprints.length} phases`, frac].filter(Boolean).join(' \u00b7 ');
-    return `<button class="ds-pick${i === sel[0] ? ' on' : ''}${isDone(frac) ? '' : ' is-open'}" data-tip="${esc(p.goal)}"><span class="ds-row"><span class="ds-num">${num}</span><b>${esc(p.title)}</b><span class="ds-tags">${p.tags.join(' \u00b7 ')}</span></span><small>${line1}</small></button>`;
+    let endTxt = '';
+    if (endDate && endDate !== p.date) {
+      endTxt = ' \u2013 ' + fmtDate(endDate);
+      if (endTime) endTxt += ' ' + endTime;
+    } else if (endTime && endTime !== st) {
+      endTxt = ' \u2013 ' + endTime;
+    }
+    const stBit = st ? ' ' + st : '';
+    const endBit = endTxt ? ' ' + endTxt.trim() : '';
+    const line1 = [sd + stBit + endBit, [
+      p.sprints.length,
+      ` phases`,
+    ].join(''), frac].filter(Boolean).join(' \u00b7 ');
+    return [
+      `<button class="ds-pick`,
+      i === sel[0] ? ' on' : '',
+      isDone(frac) ? '' : ' is-open',
+      `" data-tip="`,
+      esc(p.goal),
+      `"><span class="ds-row"><span class="ds-num">`,
+      num,
+      `</span><b>`,
+      esc(p.title),
+      `</b><span class="ds-tags">`,
+      p.tags.join(' \u00b7 '),
+      `</span></span><small>`,
+      line1,
+      `</small></button>`,
+    ].join('');
   }).join('');
   root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
       hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
       has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
       frac = state(s.body);
-    return `<button class="ds-pick${i === sel[1] ? ' on' : ''}${isDone(frac) ? '' : ' is-open'}" data-tip="${esc(sprintDesc(s))}"><span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span><b>${esc(short(s.head))}</b></span><small>${[frac + has].filter(Boolean).join(' \u00b7 ')}</small></button>`;
-  }).join('') + `<p class="ds-commits" data-prov>${esc(provenance(plan))}</p><div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`;
+    return [
+      `<button class="ds-pick`,
+      i === sel[1] ? ' on' : '',
+      isDone(frac) ? '' : ' is-open',
+      `" data-tip="`,
+      esc(sprintDesc(s)),
+      `"><span class="ds-row"><span class="ds-num">Phase `,
+      String(n).padStart(2, '0'),
+      `</span><b>`,
+      esc(short(s.head)),
+      `</b></span><small>`,
+      [frac + has].filter(Boolean).join(' \u00b7 '),
+      `</small></button>`,
+    ].join('');
+  }).join('') + [
+    `<p class="ds-commits" data-prov>`,
+    esc(provenance(plan)),
+    `</p><div class="ds-rail-foot" data-foot>`,
+    esc(plan.goal || sprintDesc(sprint)),
+    `</div>`,
+  ].join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
-  root.querySelector('[data-col="tasks"]').innerHTML = `<div class="ds-drawer-head"><b>${short(sprint.head)}</b><button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">${marked.parse(sprint.body) + badges(hs)}</div>`;
+  root.querySelector('[data-col="tasks"]').innerHTML = [
+    `<div class="ds-drawer-head"><b>`,
+    short(sprint.head),
+    `</b><button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
+    marked.parse(sprint.body) + badges(hs),
+    `</div>`,
+  ].join('');
   const u = unlinked(texts);
   root.querySelector('[data-col="triage"]').innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
   if (open) { drawer.hidden = false; scrim.hidden = false; } else { drawer.hidden = true; scrim.hidden = true; }

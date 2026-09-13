@@ -18,7 +18,15 @@ export function patch(ctx, p, W, H, gut, tint, dark, clock, white) {
   if (iw <= 0 || ih <= 0) return;
   if (white == null) {
     const g = greyOf(p.tone, dark, clock);
-    ctx.fillStyle = `rgb(${Math.round(mix(g, p.r, tint))},${Math.round(mix(g, p.g, tint))},${Math.round(mix(g, p.b, tint))})`;
+    ctx.fillStyle = [
+      `rgb(`,
+      Math.round(mix(g, p.r, tint)),
+      `,`,
+      Math.round(mix(g, p.g, tint)),
+      `,`,
+      Math.round(mix(g, p.b, tint)),
+      `)`,
+    ].join('');
   } else {
     ctx.fillStyle = `rgba(255,255,255,${white.toFixed(3)})`;
   }
@@ -29,7 +37,15 @@ export function patch(ctx, p, W, H, gut, tint, dark, clock, white) {
 export function draw(ctx, root, W, H, s) {
   const tint = s.hasColors ? s.fade : 0;
   const base = greyOf(root.tone, s.dark, s.clock);
-  ctx.fillStyle = `rgb(${Math.round(mix(base, root.r, tint) * 0.92)},${Math.round(mix(base, root.g, tint) * 0.92)},${Math.round(mix(base, root.b, tint) * 0.92)})`;
+  ctx.fillStyle = [
+    `rgb(`,
+    Math.round(mix(base, root.r, tint) * 0.92),
+    `,`,
+    Math.round(mix(base, root.g, tint) * 0.92),
+    `,`,
+    Math.round(mix(base, root.b, tint) * 0.92),
+    `)`,
+  ].join('');
   ctx.fillRect(0, 0, W, H);
   const gut = s.gut * (1 - smoothstep(0.35, 0.75, s.split));
   const seed = { x: 0, y: 0, w: W, h: H, r: root.r, g: root.g, b: root.b, tone: root.tone };

@@ -44,7 +44,14 @@ const cur = () => {
   return { list, pi, plan, sprints, si: Math.min(sel[1], Math.max(sprints.length - 1, 0)) };
 };
 export function render() {
-  return `<p class="ds-crumb">Start \u00b7 Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div><hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div><div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage"></div><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span><aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail"><div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`;
+  return [
+    `<p class="ds-crumb">Start \u00b7 Archive</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
+    `<hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div>`,
+    `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage">`,
+    `</div><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
+    `<aside class="ds-drawer" data-drawer hidden aria-label="Iteration detail">`,
+    `<div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`,
+  ].join('');
 }
 function doPaint(root) {
   const { list, pi, plan, sprints, si } = cur();

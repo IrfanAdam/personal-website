@@ -1,9 +1,18 @@
 /* ADAM/FX — Sound files · vendored from IrfanAdam/web-sounds (starting with load).
    Local first (/sounds/*), remote raw URL as fallback. One cached buffer per id. */
 export const FILES = [
-  { id: 'load.wav', url: '/sounds/load.wav', remote: 'https://raw.githubusercontent.com/IrfanAdam/web-sounds/main/load.wav', desc: 'load snap · 117ms stereo' },
-  { id: 'loading.mp3', url: '/sounds/loading.mp3', remote: 'https://raw.githubusercontent.com/IrfanAdam/web-sounds/main/loading.mp3', desc: 'loading · mp3 bed' },
-  { id: 'scifi-weapon.wav', url: '/sounds/scifi-weapon.wav', remote: 'https://raw.githubusercontent.com/IrfanAdam/web-sounds/main/scifi%20weapon.wav', desc: 'scifi sweep · 886ms stereo' },
+  { id: 'load.wav',
+    url: '/sounds/load.wav',
+    remote: 'https://raw.githubusercontent.com/IrfanAdam/web-sounds/main/load.wav',
+    desc: 'load snap · 117ms stereo' },
+  { id: 'loading.mp3',
+    url: '/sounds/loading.mp3',
+    remote: 'https://raw.githubusercontent.com/IrfanAdam/web-sounds/main/loading.mp3',
+    desc: 'loading · mp3 bed' },
+  { id: 'scifi-weapon.wav',
+    url: '/sounds/scifi-weapon.wav',
+    remote: 'https://raw.githubusercontent.com/IrfanAdam/web-sounds/main/scifi%20weapon.wav',
+    desc: 'scifi sweep · 886ms stereo' },
 ];
 const cache = new Map();
 async function loadBuf(ctx, f) {

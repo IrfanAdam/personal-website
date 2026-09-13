@@ -102,8 +102,11 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
   if (reduce) { render(performance.now()); return () => { ro.disconnect(); }; }
   const ticker = makeTicker(s, render, finish);
   const start = () => ticker.start();
-  const io = hero ? null : ('IntersectionObserver' in window ? new IntersectionObserver(([e]) => ticker.setVisible(e.isIntersecting),
-      { rootMargin: '150px' }) : null);
+  let io = null;
+  if (!hero && 'IntersectionObserver' in window) {
+    io = new IntersectionObserver(([e]) => ticker.setVisible(e.isIntersecting),
+      { rootMargin: '150px' });
+  }
   if (io) io.observe(box); start();
   return () => { ticker.stop(); ro.disconnect(); if (io) io.disconnect(); };
 }

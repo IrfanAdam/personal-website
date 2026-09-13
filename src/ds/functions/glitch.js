@@ -12,17 +12,45 @@ export const title = 'Glitch';
 
 // — Markup —
 export function render() {
-  return `<p class="ds-crumb">Functions · Glitch</p><div class="ds-hero"><h1>Glitch — any container.</h1><p class="lede">Visual <span class="tok">.fx-glitch</span> + procedural audio palette: ${TYPES.join(' · ')}. Rendered with WebAudio, played back through audio elements. Default is <span class="tok">hum 320ms</span> with proximity-loud gain (near = louder); other voices via <span class="tok">data-glitch-sound="chime"</span> or <span class="tok">playSound('hum')</span>.</p></div>`
-  + `<div class="ds-tablist ds-tablist--line" role="tablist" data-glitch-tabs><button class="ds-tab on" role="tab" data-tab="lab">Lab</button><button class="ds-tab" role="tab" data-tab="code">Code</button></div>`
+  return [
+    `<p class="ds-crumb">Functions · Glitch</p><div class="ds-hero"><h1>Glitch — any container.</h1>`,
+    `<p class="lede">Visual <span class="tok">.fx-glitch</span> + procedural audio palette: `,
+    TYPES.join(' · '),
+    `. Rendered with WebAudio, played back through audio elements. Default is <span class="tok">hum 320ms</span> `,
+    `with proximity-loud gain (near = louder); other voices via <span class="tok">data-glitch-sound="chime"</span> `,
+    `or <span class="tok">playSound('hum')</span>.</p></div>`,
+  ].join('')
+  + [
+    `<div class="ds-tablist ds-tablist--line" role="tablist" data-glitch-tabs>`,
+    `<button class="ds-tab on" role="tab" data-tab="lab">Lab</button>`,
+    `<button class="ds-tab" role="tab" data-tab="code">Code</button></div>`,
+  ].join('')
   + `<div data-tab-panel="lab"><div class="ds-sec">`
-  + `<div class="ds-spec block"><div class="fx-split"><div data-lab="grid-card" style="max-width:320px">${cardHTML('Helix — sales telemetry', 'helix · 2024', '/images/helix.png', ['Sales CRM'], '')}</div>`
+  + [
+    `<div class="ds-spec block"><div class="fx-split"><div data-lab="grid-card" style="max-width:320px">`,
+    cardHTML('Helix — sales telemetry', 'helix · 2024', '/images/helix.png', ['Sales CRM'], ''),
+    `</div>`,
+  ].join('')
   + renderSoundPanel()
   + `</div></div>`
   + renderSourcePanel()
-  + `<div class="fx-controls"><label class="fx-row">trigger <select data-ctl="trigger"><option value="auto">infinite</option><option value="hover">hover</option><option value="once">once</option></select></label>`
-  + `<label class="fx-row">duration <input type="range" min="600" max="4800" step="100" value="2400" data-ctl="dur"><output data-ctl-v>2400ms</output></label>`
-  + `<label class="fx-row">intensity <input type="range" min="1" max="8" step="1" value="1" data-ctl="int"><output data-ctl-i>1px</output></label>`
-  + `<div class="fx-btns"><button class="pill" data-ctl="fire">fire once</button><button class="pill" data-ctl="pause">pause / resume</button></div></div></div>`
+  + [
+    `<div class="fx-controls"><label class="fx-row">trigger <select data-ctl="trigger">`,
+    `<option value="auto">infinite</option><option value="hover">hover</option><option value="once">once</option>`,
+    `</select></label>`,
+  ].join('')
+  + [
+    `<label class="fx-row">duration <input type="range" min="600" max="4800" step="100" value="2400" data-ctl="dur">`,
+    `<output data-ctl-v>2400ms</output></label>`,
+  ].join('')
+  + [
+    `<label class="fx-row">intensity <input type="range" min="1" max="8" step="1" value="1" data-ctl="int">`,
+    `<output data-ctl-i>1px</output></label>`,
+  ].join('')
+  + [
+    `<div class="fx-btns"><button class="pill" data-ctl="fire">fire once</button>`,
+    `<button class="pill" data-ctl="pause">pause / resume</button></div></div></div>`,
+  ].join('')
   + `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Code</h2>`
   + `${code(`import { attachGlitch } from '../views/glitch.js';\nattachGlitch(el, { trigger: 'hover' });`)}`
   + `</div></div></div>`

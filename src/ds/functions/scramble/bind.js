@@ -80,16 +80,25 @@ export function mount(root){
     const sp = speed ? +speed.value : 1;
     const dl = delay ? +delay.value : 0;
     const dm = delim ? delim.value : '';
-    const label = `scramble · ${key}${key==='custom' ? ':'+cs.slice(0,10):''} · ${d.toFixed(1)}s · ${dm ? 'words' : 'chars'}${rtl?' · rtl':''}`;
-    if(status) status.textContent = label + (soundOn
-      
-        
-          
-            
-              
-                
-                  
-                    && !muted() ? ' · ♪ '+ (()=>{ const s=getSource('scramble'); return s.kind==='file' ? 'file '+s.file : (voiceSel?voiceSel.value:'random'); })() : '');
+    const label = [
+      `scramble · `,
+      key,
+      key==='custom' ? ':'+cs.slice(0,10):'',
+      ` · `,
+      d.toFixed(1),
+      `s · `,
+      dm ? 'words' : 'chars',
+      rtl?' · rtl':'',
+    ].join('');
+    const sourceLabel = () => {
+      const s = getSource('scramble');
+      if (s.kind === 'file') return 'file ' + s.file;
+      return voiceSel ? voiceSel.value : 'random';
+    };
+    if (status) {
+      const soundBit = soundOn && !muted() ? ' · ♪ ' + sourceLabel() : '';
+      status.textContent = label + soundBit;
+    }
     // sound synced
     playScramble(d*1000);
     // animate
@@ -143,7 +152,12 @@ export function mount(root){
     if(inp) inp.removeEventListener('input', onText);
     if(charsSel) charsSel.removeEventListener('change', onChars);
     if(customInp) customInp.removeEventListener('input', doScramble);
-    [dur,speed,delay].forEach(c=> c && c.removeEventListener('input', c===dur?onDur:c===speed?onSpeed:onDelay));
+    const onInputFor = (c) => {
+      if (c === dur) return onDur;
+      if (c === speed) return onSpeed;
+      return onDelay;
+    };
+    [dur,speed,delay].forEach(c=> c && c.removeEventListener('input', onInputFor(c)));
     [dur,speed,delay].forEach(c=> c && c.removeEventListener('change', doScramble));
     if(delim) delim.removeEventListener('change', doScramble);
     if(voiceSel) voiceSel.removeEventListener('change', onVoice);

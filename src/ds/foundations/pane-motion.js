@@ -33,30 +33,107 @@ const BLURS = [['Header frost', '--blur-header', 'sticky header over scroll'],
   ['Placeholder', '--blur-placeholder', 'image placeholder wash']];
 export const label = 'Motion · Depth';
 export function html() {
-  const bars = `<div class="fd-durs">${DURS.map(([n, t, w]) => `<div class="fd-dur" data-copy="${t}" title="Click to copy ${t}" style="cursor:pointer"><b>${n}</b><div class="fd-track"><div class="fd-fill" style="width:${w}"></div></div><output data-live="${t}">${t}</output></div>`).join('')}</div>`;
-  const table = `<table class="ds-table"><tr><th>Step</th><th>Token</th><th>Sanctioned use</th></tr>${USES.map(([n, t, u]) => `<tr><td>${n}</td><td><span class="tok">${t}</span></td><td>${u}</td></tr>`).join('')}</table>`;
-  const stage = `<div class="fd-stage" id="easeStage"><div class="fd-dot"></div></div><div class="fx-controls" id="easeCtrls"><label class="fx-row">dur <select data-ease="d"><option value="var(--dur-fast)">fast</option><option value="var(--dur-glide)" selected>glide 380ms</option><option value="var(--dur-zoom)">zoom 650ms</option><option value="var(--dur-hero-rise)">hero rise</option></select></label><label class="fx-row">ease <select data-ease="e"><option value="var(--ease-signature)" selected>signature</option><option value="var(--ease-standard)">standard</option></select></label><div class="fd-rowbtns"><button class="tok" data-ease-replay>replay glide</button></div></div>`;
-  const blurs = `<div class="fd-blurrow">${BLURS.map(([n, t, u]) => `<div data-copy="${t}" title="Click to copy ${t}" style="cursor:pointer"><div class="fd-blur"><i>${n} · <span data-live="${t}">${t}</span></i></div><div class="vl">${u}</div></div>`).join('')}</div>`;
-  return `<div class="ds-sec"><h2>Motion &amp; depth</h2><p class="sub">Durations are prescriptions — each step owns its uses. Bars are true-scale to the longest step; values read live.</p>`
+  const bars = [
+    `<div class="fd-durs">`,
+    DURS.map(([n, t, w]) => [
+      `<div class="fd-dur" data-copy="`,
+      t,
+      `" title="Click to copy `,
+      t,
+      `" style="cursor:pointer"><b>`,
+      n,
+      `</b><div class="fd-track"><div class="fd-fill" style="width:`,
+      w,
+      `"></div></div><output data-live="`,
+      t,
+      `">`,
+      t,
+      `</output></div>`,
+    ].join('')).join(''),
+    `</div>`,
+  ].join('');
+  const table = [
+    `<table class="ds-table"><tr><th>Step</th><th>Token</th><th>Sanctioned use</th></tr>`,
+    USES.map(([n, t, u]) => `<tr><td>${n}</td><td><span class="tok">${t}</span></td><td>${u}</td></tr>`).join(''),
+    `</table>`,
+  ].join('');
+  const stage = [
+    `<div class="fd-stage" id="easeStage"><div class="fd-dot"></div></div><div class="fx-controls" id="easeCtrls">`,
+    `<label class="fx-row">dur <select data-ease="d"><option value="var(--dur-fast)">fast</option>`,
+    `<option value="var(--dur-glide)" selected>glide 380ms</option>`,
+    `<option value="var(--dur-zoom)">zoom 650ms</option><option value="var(--dur-hero-rise)">hero rise</option>`,
+    `</select></label><label class="fx-row">ease <select data-ease="e">`,
+    `<option value="var(--ease-signature)" selected>signature</option>`,
+    `<option value="var(--ease-standard)">standard</option></select></label><div class="fd-rowbtns">`,
+    `<button class="tok" data-ease-replay>replay glide</button></div></div>`,
+  ].join('');
+  const blurs = [
+    `<div class="fd-blurrow">`,
+    BLURS.map(([n, t, u]) => [
+      `<div data-copy="`,
+      t,
+      `" title="Click to copy `,
+      t,
+      `" style="cursor:pointer"><div class="fd-blur"><i>`,
+      n,
+      ` · <span data-live="`,
+      t,
+      `">`,
+      t,
+      `</span></i></div><div class="vl">`,
+      u,
+      `</div></div>`,
+    ].join('')).join(''),
+    `</div>`,
+  ].join('');
+  return [
+    `<div class="ds-sec"><h2>Motion &amp; depth</h2>`,
+    `<p class="sub">Durations are prescriptions — each step owns its uses. Bars are true-scale to the longest step; `,
+    `values read live.</p>`,
+  ].join('')
   + `<h3>Durations — true-scale</h3>` + bars
-  + `<h3>Duration → use</h3><p class="sub">Reach for the use, not the number. FX and viewer steps demo in the FX tab.</p>` + table
-  + `<h3>Easing — signature curve</h3><p class="sub">One curve with a fast-out, soft-land feel runs all signature travel: header frame, image zoom, content reveal. Standard <span class="tok">ease</span> is ambient-only. Replay the dot to feel it.</p>`
+  + [
+    `<h3>Duration → use</h3>`,
+    `<p class="sub">Reach for the use, not the number. FX and viewer steps demo in the FX tab.</p>`,
+  ].join('') + table
+  + [
+    `<h3>Easing — signature curve</h3>`,
+    `<p class="sub">One curve with a fast-out, soft-land feel runs all signature travel: header frame, image zoom, `,
+    `content reveal. Standard <span class="tok">ease</span> is ambient-only. Replay the dot to feel it.</p>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Signature', '--ease-signature', 'fast-out soft-land · frame + zoom + reveal'],
         ['Standard', '--ease-standard', 'ease · ambient loops only']] }) + stage
-  + `<h3>Press · hover — live</h3><p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to <span class="tok">var(--opacity-hover)</span>); images settle at <span class="tok">var(--scale-zoom)</span>.</p><div class="fd-rowbtns"><button class="fd-press">press me</button></div><div class="fd-hover">hover me — unselected rows dim</div>`
+  + [
+    `<h3>Press · hover — live</h3>`,
+    `<p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to `,
+    `<span class="tok">var(--opacity-hover)</span>); images settle at <span `,
+    `class="tok">var(--scale-zoom)</span>.</p><div class="fd-rowbtns"><button class="fd-press">press me</button>`,
+    `</div><div class="fd-hover">hover me — unselected rows dim</div>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Press squash', '--scale-press', '0.94 · button press'],
         ['Hover dim', '--opacity-hover', '0.55 · unselected row hover'],
         ['Zoom settle', '--scale-zoom', '1.015 · image hover zoom']] })
-  + `<h3>Depth — line + frost, never shadow</h3><p class="sub">Elevation is a 1px line plus frosted blur. Shadows exist only on-media and in the viewer — never as UI depth. Frost recipe per step: blur below + saturate alongside.</p>` + blurs
+  + [
+    `<h3>Depth — line + frost, never shadow</h3>`,
+    `<p class="sub">Elevation is a 1px line plus frosted blur. Shadows exist only on-media and in the viewer — `,
+    `never as UI depth. Frost recipe per step: blur below + saturate alongside.</p>`,
+  ].join('') + blurs
   + tokenTrace({ plain: true,
       rows: [['Saturation header', '--sat-header', '1.6 · frosted header recipe'],
         ['Saturation scrim', '--sat-scrim', '1.35 · card scrim recipe']] })
-  + `<h3>Reduced motion — contract</h3><p class="sub">The OS setting is honored live: flip <span class="tok">prefers-reduced-motion</span> and every demo on this page goes static. The shimmer freeze button previews the same end-state.</p>`
-  + code('collapse → instant: shimmer sweep (frozen) · rise / glide / dot travel (none) · grid reveal (instant — guarded in main.js + fx-lab)\nsurvives: end-states apply instantly (opacity, layout) · theme toggle · nothing is motion-only')
+  + [
+    `<h3>Reduced motion — contract</h3>`,
+    `<p class="sub">The OS setting is honored live: flip <span class="tok">prefers-reduced-motion</span> and every `,
+    `demo on this page goes static. The shimmer freeze button previews the same end-state.</p>`,
+  ].join('')
+  + code(['collapse → instant: shimmer sweep (frozen) · rise / glide / dot travel (none) · grid reveal (instant — ',
+    'guarded in main.js + fx-lab)\nsurvives: end-states apply instantly (opacity, layout) · theme toggle · ',
+    'nothing is motion-only'].join(''))
   + note('Do',
-    'Durations read live <span class="tok">var(--dur-*)</span>; travel runs <span class="tok">var(--ease-signature)</span> unless you prove otherwise.')
+    ['Durations read live <span class="tok">var(--dur-*)</span>; travel runs <span ',
+      'class="tok">var(--ease-signature)</span> unless you prove otherwise.'].join(''))
   + note('Don’t',
     'No raw <span class="tok">ms</span> or cubic-bezier literals outside <span class="tok">tokens.css</span>.',
     'dont')

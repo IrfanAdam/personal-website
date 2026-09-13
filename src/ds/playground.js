@@ -8,13 +8,98 @@ export function playground({ title, sub, knobs = [], render, code, tokens = [] }
   const id = 'pg-' + Math.random().toString(36).slice(2,6);
   reg[id] = { knobs, render, code };
   const knobsHTML = knobs.map((k)=>{
-    if(k.type==='select') return `<label class="fx-row">${k.label} <select data-k="${k.key}" data-pg="${id}">${k.options.map((o)=>`<option value="${o.value}"${o.value===k.default?' selected':''}>${o.label}</option>`).join('')}</select><output data-v="${k.key}">${k.default}</output></label>`;
-    if(k.type==='range') return `<label class="fx-row">${k.label} <input type="range" min="${k.min}" max="${k.max}" step="${k.step}" value="${k.default}" data-k="${k.key}" data-pg="${id}"><output data-v="${k.key}">${k.default}${k.unit||''}</output></label>`;
-    return `<label class="fx-row">${k.label} <input type="checkbox" ${k.default?'checked':''} data-k="${k.key}" data-pg="${id}"><output data-v="${k.key}">${k.default?'on':'off'}</output></label>`;
+    if(k.type==='select') return [
+      `<label class="fx-row">`,
+      k.label,
+      ` <select data-k="`,
+      k.key,
+      `" data-pg="`,
+      id,
+      `">`,
+      k.options.map((o)=>[
+        `<option value="`,
+        o.value,
+        `"`,
+        o.value===k.default?' selected':'',
+        `>`,
+        o.label,
+        `</option>`,
+      ].join('')).join(''),
+      `</select><output data-v="`,
+      k.key,
+      `">`,
+      k.default,
+      `</output></label>`,
+    ].join('');
+    if(k.type==='range') return [
+      `<label class="fx-row">`,
+      k.label,
+      ` <input type="range" min="`,
+      k.min,
+      `" max="`,
+      k.max,
+      `" step="`,
+      k.step,
+      `" value="`,
+      k.default,
+      `" data-k="`,
+      k.key,
+      `" data-pg="`,
+      id,
+      `"><output data-v="`,
+      k.key,
+      `">`,
+      k.default,
+      k.unit||'',
+      `</output></label>`,
+    ].join('');
+    return [
+      `<label class="fx-row">`,
+      k.label,
+      ` <input type="checkbox" `,
+      k.default?'checked':'',
+      ` data-k="`,
+      k.key,
+      `" data-pg="`,
+      id,
+      `"><output data-v="`,
+      k.key,
+      `">`,
+      k.default?'on':'off',
+      `</output></label>`,
+    ].join('');
   }).join('');
-  const tokHTML = tokens.length ? `<div class="fx-btns" style="margin-top:var(--space-8)">${tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join('')}</div>` : '';
+  const tokHTML = tokens.length ? [
+    `<div class="fx-btns" style="margin-top:var(--space-8)">`,
+    tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
+    `</div>`,
+  ].join('') : '';
   const init = Object.fromEntries(knobs.map((k)=>[k.key,k.default]));
-  return `<div class="ds-sec" data-pg-root="${id}"><h2>${title}</h2>${sub?`<p class="sub">${sub}</p>`:''}<div class="ds-spec block"><div data-pg-preview="${id}">${render(init)}</div></div><div class="fx-controls" data-pg-ctrl="${id}">${knobsHTML}<div class="fx-btns"><button class="pill" data-pg-copy="${id}">copy code</button></div></div><div class="ds-code" data-pg-code="${id}"><pre>${esc(code(init))}</pre></div>${tokHTML}</div>`;
+  return [
+    `<div class="ds-sec" data-pg-root="`,
+    id,
+    `"><h2>`,
+    title,
+    `</h2>`,
+    sub?`<p class="sub">${sub}</p>`:'',
+    `<div class="ds-spec block"><div data-pg-preview="`,
+    id,
+    `">`,
+    render(init),
+    `</div></div><div class="fx-controls" data-pg-ctrl="`,
+    id,
+    `">`,
+    knobsHTML,
+    `<div class="fx-btns"><button class="pill" data-pg-copy="`,
+    id,
+    `">copy code</button></div></div><div class="ds-code" data-pg-code="`,
+    id,
+    `"><pre>`,
+    esc(code(init)),
+    `</pre></div>`,
+    tokHTML,
+    `</div>`,
+  ].join('');
 }
 export function mountPlayground(root){
   const offs=[];

@@ -3,8 +3,16 @@
 import { tokenTrace, note } from '../specimens.js';
 export const label = 'FX';
 export function html() {
-  return `<div class="ds-sec"><h2>FX · graduated</h2><p class="sub">Three layers: <b>lab-local</b> knobs (cell count, gutter, order — experiments, never tokens) → <b>graduated</b> <span class="tok">--fx-*</span> tokens (knobs proven on the site) → <b>site</b> consumption (gridReveal reads the same vars). Tweak a token, every demo below follows.</p>`
-  + `<h3>Graduated tokens — what each runs</h3><p class="sub">Numbers, not colors — click any card to copy the live value.</p>`
+  return [
+    `<div class="ds-sec"><h2>FX · graduated</h2>`,
+    `<p class="sub">Three layers: <b>lab-local</b> knobs (cell count, gutter, order — experiments, never tokens) → `,
+    `<b>graduated</b> <span class="tok">--fx-*</span> tokens (knobs proven on the site) → <b>site</b> consumption `,
+    `(gridReveal reads the same vars). Tweak a token, every demo below follows.</p>`,
+  ].join('')
+  + [
+    `<h3>Graduated tokens — what each runs</h3>`,
+    `<p class="sub">Numbers, not colors — click any card to copy the live value.</p>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Cell count', '--fx-cell', '30 · reveal grid count'],
         ['Stagger wait', '--fx-wait', '0.72 · pause between cell waves'],
@@ -21,30 +29,103 @@ export function html() {
         ['Glitch X', '--fx-glitch-x', 'var(--space-1) · jitter'],
         ['Glitch skew', '--fx-glitch-skew', '-12deg · shear'],
         ['Glitch α', '--fx-glitch-opacity', '0.5 · flicker']] })
-  + `<h3>Grid pitch — live</h3><p class="sub">The reveal grid at <span class="tok" data-live="--fx-grid-pitch">--fx-grid-pitch</span>, painted by <span class="tok">--reveal-grid</span>. Full lab lives at <a href="#/functions/grid-reveal">GridReveal</a>.</p><div class="fd-grid-demo"></div>`
-  + `<h3>Shimmer — live</h3><p class="sub">Skeleton sweep on <span class="tok">var(--dur-shimmer)</span> · band <span class="tok">var(--shimmer-band)</span> over <span class="tok">var(--shimmer-gradient)</span> · width <span class="tok">var(--fx-sheen)</span>. Toggle to freeze the band mid-flight.</p><div class="fx-shimmer" id="fxShimmer"><i></i></div><div class="fd-rowbtns"><button class="tok" data-shimmer-toggle>freeze / resume</button></div>`
-  + `<h3>Rise — live</h3><p class="sub">Placeholder block settles on <span class="tok">var(--dur-glide)</span> with <span class="tok">var(--ease-signature)</span>. Replay the settle.</p><div class="fx-rise rest" id="fxRise"></div><div class="fd-rowbtns"><button class="tok" data-rise-replay>replay rise</button></div>`
-  + `<h3>Press · hover — live</h3><p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to <span class="tok">var(--opacity-hover)</span>). Definitions live in Motion · Depth.</p><div class="fd-rowbtns"><button class="fd-press">press me</button></div><div class="fd-hover">hover me — unselected rows dim to 0.55</div>`
-  + `<h3>Elevation — live (hairline first)</h3><p class="sub">No UI card casts a shadow. Elevation is <span class="tok">--border-hairline</span> + surface, plus only two shadow jobs: keep type legible on media and lift the viewer. Toggle theme — <span class="tok">--shadow-viewer</span> flips from soft editorial (light) to heavier cut (dark). All shadow values are token-adherent: <span class="tok">travel = --space-*</span>, <span class="tok">color = --stone-950</span>, <span class="tok">opacity = --opacity-shadow-*</span> → <span class="tok">--color-shadow-*</span> via <span class="tok">color-mix</span>. Click any card to copy its live value.</p>`
+  + [
+    `<h3>Grid pitch — live</h3>`,
+    `<p class="sub">The reveal grid at <span class="tok" data-live="--fx-grid-pitch">--fx-grid-pitch</span>, `,
+    `painted by <span class="tok">--reveal-grid</span>. Full lab lives at <a `,
+    `href="#/functions/grid-reveal">GridReveal</a>.</p><div class="fd-grid-demo"></div>`,
+  ].join('')
+  + [
+    `<h3>Shimmer — live</h3>`,
+    `<p class="sub">Skeleton sweep on <span class="tok">var(--dur-shimmer)</span> · band <span `,
+    `class="tok">var(--shimmer-band)</span> over <span class="tok">var(--shimmer-gradient)</span> · width <span `,
+    `class="tok">var(--fx-sheen)</span>. Toggle to freeze the band mid-flight.</p>`,
+    `<div class="fx-shimmer" id="fxShimmer"><i></i></div><div class="fd-rowbtns">`,
+    `<button class="tok" data-shimmer-toggle>freeze / resume</button></div>`,
+  ].join('')
+  + [
+    `<h3>Rise — live</h3>`,
+    `<p class="sub">Placeholder block settles on <span class="tok">var(--dur-glide)</span> with <span `,
+    `class="tok">var(--ease-signature)</span>. Replay the settle.</p><div class="fx-rise rest" id="fxRise"></div>`,
+    `<div class="fd-rowbtns"><button class="tok" data-rise-replay>replay rise</button></div>`,
+  ].join('')
+  + [
+    `<h3>Press · hover — live</h3>`,
+    `<p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to `,
+    `<span class="tok">var(--opacity-hover)</span>). Definitions live in Motion · Depth.</p><div class="fd-rowbtns">`,
+    `<button class="fd-press">press me</button></div>`,
+    `<div class="fd-hover">hover me — unselected rows dim to 0.55</div>`,
+  ].join('')
+  + [
+    `<h3>Elevation — live (hairline first)</h3>`,
+    `<p class="sub">No UI card casts a shadow. Elevation is <span class="tok">--border-hairline</span> + surface, `,
+    `plus only two shadow jobs: keep type legible on media and lift the viewer. Toggle theme — <span `,
+    `class="tok">--shadow-viewer</span> flips from soft editorial (light) to heavier cut (dark). All shadow values `,
+    `are token-adherent: <span class="tok">travel = --space-*</span>, <span class="tok">color = --stone-950</span>, `,
+    `<span class="tok">opacity = --opacity-shadow-*</span> → <span class="tok">--color-shadow-*</span> via <span `,
+    `class="tok">color-mix</span>. Click any card to copy its live value.</p>`,
+  ].join('')
   + `<div class="fd-elev-row">`
-  + `<div class="fd-elev" data-copy-token=\"--border-hairline\" title=\"Click to copy live --border-hairline\" style=\"cursor:pointer\"><b>0 · flat</b><span class="tok">--border-hairline</span><small>every card / pill / thumb<br>surface on paper, 1px line</small><code data-live=\"--border-hairline\">--border-hairline</code></div>`
-  + `<div class="fd-elev" data-copy-token=\"--color-surface-sunken\" title=\"Click to copy live --color-surface-sunken\" style=\"cursor:pointer;background:var(--color-surface-sunken)\"><b>–1 · sunken</b><span class="tok">--color-surface-sunken</span><small>inset ground — no shadow<br>disabled / well on paper</small><code data-live=\"--color-surface-sunken\">--color-surface-sunken</code></div>`
-  + `<div class="fd-elev fd-elev--viewer" data-copy-token=\"--shadow-viewer\" title=\"Click to copy live --shadow-viewer\" style=\"cursor:pointer\"><b>1 · lifted</b><span class="tok">--shadow-viewer</span><small>viewer frame only<br><span class="tok">--space-12</span> / <span class="tok">--space-32</span> + <span class="tok">--space-2</span> / <span class="tok">--space-10</span> · theme 12→14 / 32→36</small><code data-live=\"--shadow-viewer\">--shadow-viewer</code></div>`
-  + `<div class="fd-elev fd-elev--media" data-copy-token=\"--shadow-on-media\" title=\"Click to copy live --shadow-on-media\" style=\"cursor:pointer\"><b style="text-shadow:var(--shadow-on-media)">O · on-media</b><span class="tok">--shadow-on-media</span><small>text keeps legible on chip / image<br><span class="tok">--space-1</span> / <span class="tok">--space-10</span> / <span class="tok">--space-12</span></small><code data-live=\"--shadow-on-media\">--shadow-on-media</code></div>`
+  + [
+    `<div class="fd-elev" data-copy-token=\"--border-hairline\" title=\"Click to copy live --border-hairline\" `,
+    `style=\"cursor:pointer\"><b>0 · flat</b><span class="tok">--border-hairline</span>`,
+    `<small>every card / pill / thumb<br>surface on paper, 1px line</small>`,
+    `<code data-live=\"--border-hairline\">--border-hairline</code></div>`,
+  ].join('')
+  + [
+    `<div class="fd-elev" data-copy-token=\"--color-surface-sunken\" title=\"Click to copy live `,
+    `--color-surface-sunken\" style=\"cursor:pointer;background:var(--color-surface-sunken)\"><b>–1 · sunken</b>`,
+    `<span class="tok">--color-surface-sunken</span>`,
+    `<small>inset ground — no shadow<br>disabled / well on paper</small>`,
+    `<code data-live=\"--color-surface-sunken\">--color-surface-sunken</code></div>`,
+  ].join('')
+  + [
+    `<div class="fd-elev fd-elev--viewer" data-copy-token=\"--shadow-viewer\" title=\"Click to copy live `,
+    `--shadow-viewer\" style=\"cursor:pointer\"><b>1 · lifted</b><span class="tok">--shadow-viewer</span>`,
+    `<small>viewer frame only<br>`,
+    `<span class="tok">--space-12</span> / <span class="tok">--space-32</span> + <span class="tok">--space-2</span> `,
+    `/ <span class="tok">--space-10</span> · theme 12→14 / 32→36</small>`,
+    `<code data-live=\"--shadow-viewer\">--shadow-viewer</code></div>`,
+  ].join('')
+  + [
+    `<div class="fd-elev fd-elev--media" data-copy-token=\"--shadow-on-media\" title=\"Click to copy live `,
+    `--shadow-on-media\" style=\"cursor:pointer\"><b style="text-shadow:var(--shadow-on-media)">O · on-media</b>`,
+    `<span class="tok">--shadow-on-media</span><small>text keeps legible on chip / image<br>`,
+    `<span class="tok">--space-1</span> / <span class="tok">--space-10</span> / <span class="tok">--space-12</span>`,
+    `</small><code data-live=\"--shadow-on-media\">--shadow-on-media</code></div>`,
+  ].join('')
   + `</div>`
-  + `<p class="sub" style="margin-top:calc(var(--space-6) * -1);font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)">Tip: the media card shows <span class="tok">text-shadow</span> (not box-shadow) — dark chip behind the title does the real lifting, shadow is the 1px crispener. Travel always <span class="tok">var(--space-*)</span>; color never raw <span class="tok">rgba()</span>.</p>`
+  + [
+    `<p class="sub" style="margin-top:calc(var(--space-6) * `,
+    `-1);font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)">Tip: the media card `,
+    `shows <span class="tok">text-shadow</span> (not box-shadow) — dark chip behind the title does the real `,
+    `lifting, shadow is the 1px crispener. Travel always <span class="tok">var(--space-*)</span>; color never raw `,
+    `<span class="tok">rgba()</span>.</p>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Hairline', '--border-hairline', '0 flat — every card / thumb / pill'],
-        ['Viewer', '--shadow-viewer', '0 var(--space-12) var(--space-32) + 0 var(--space-2) var(--space-10) · dark: 14/36 + 3/12'],
+        ['Viewer',
+          '--shadow-viewer',
+          '0 var(--space-12) var(--space-32) + 0 var(--space-2) var(--space-10) · dark: 14/36 + 3/12'],
         ['On-media sm', '--shadow-on-media-sm', '0 var(--space-1) var(--space-10) · --color-shadow-media-sm'],
         ['On-media', '--shadow-on-media', '0 var(--space-1) var(--space-12) · --color-shadow-media']] })
-  + `<p class="sub" style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)">Shadow recipe: travel var(--space-*) + color via color-mix — the four colors live in Color → Elevation with live swatches; opacity knobs below.</p>`
+  + [
+    `<p class="sub" `,
+    `style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)">Shadow recipe: `,
+    `travel var(--space-*) + color via color-mix — the four colors live in Color → Elevation with live swatches; `,
+    `opacity knobs below.</p>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Opacity media', '--opacity-shadow-media', '45% · on-media lg'],
         ['Opacity media sm', '--opacity-shadow-media-sm', '40% · on-media sm'],
         ['Opacity viewer', '--opacity-shadow-viewer', '24% · lifted main (light+dark)'],
         ['Opacity viewer soft', '--opacity-shadow-viewer-soft', '12% · lifted soft (light+dark)']] })
-  + `<h3>Viewer spring — live tokens</h3><p class="sub">Intent + spring the viewer route reads: threshold is intent travel, idle is dismiss wait, debounce settles the pointer, k / fr are spring stiffness / friction. Full lab at <a href="#/functions/viewer">Viewer</a>.</p>`
+  + [
+    `<h3>Viewer spring — live tokens</h3>`,
+    `<p class="sub">Intent + spring the viewer route reads: threshold is intent travel, idle is dismiss wait, `,
+    `debounce settles the pointer, k / fr are spring stiffness / friction. Full lab at <a `,
+    `href="#/functions/viewer">Viewer</a>.</p>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Threshold', '--fx-viewer-threshold', '12px · intent travel'],
         ['Idle', '--fx-viewer-idle', '850ms · dismiss wait'],
@@ -56,7 +137,12 @@ export function html() {
         ['Viewer shadow', '--shadow-viewer', 'lift off the page behind the frame'],
         ['Viewer in', '--dur-viewer-in', '300ms · open travel'],
         ['Viewer line', '--dur-viewer-line', '780ms · tether draw']] })
-  + `<h3>Glitch — generic container</h3><p class="sub">Today's timeline tick, now for any block. CSS class <span class="tok">.fx-glitch</span> (or <span class="tok">attachGlitch(el)</span> in JS) reads <span class="tok">--dur-glitch</span> + <span class="tok">--fx-glitch-*</span>. Full lab at <a href="#/functions/glitch">Glitch</a>.</p>`
+  + [
+    `<h3>Glitch — generic container</h3>`,
+    `<p class="sub">Today's timeline tick, now for any block. CSS class <span class="tok">.fx-glitch</span> (or `,
+    `<span class="tok">attachGlitch(el)</span> in JS) reads <span class="tok">--dur-glitch</span> + <span `,
+    `class="tok">--fx-glitch-*</span>. Full lab at <a href="#/functions/glitch">Glitch</a>.</p>`,
+  ].join('')
   + tokenTrace({ plain: true,
       rows: [['Glitch duration', '--dur-glitch', '2.4s · loop'],
         ['Glitch jitter', '--fx-glitch-x', 'var(--space-1) · X shift'],

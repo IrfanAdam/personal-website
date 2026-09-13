@@ -80,7 +80,9 @@ async function play(manual, opts) {
   const p = prox(); const g = manual ? 0.72 + 0.28 * p : 0.34 + 0.56 * p;
   if (g <= 0.08) { if (!manual) schedule(); return 'far'; }
   const jitter = 0.9 + Math.random() * 0.2;
-  const type = o.type ? pickKind(o.type) : (manual && o.voice ? pickKind(o.voice) : pickKind(kind));
+  let type = pickKind(kind);
+  if (o.type) type = pickKind(o.type);
+  else if (manual && o.voice) type = pickKind(o.voice);
   const lvl = o.gain > 0 ? Math.min(1, o.gain) : 1;
   synth(c, b, type, g * jitter * 0.8 * lvl, o);
   last = now; schedule(); return 'played';

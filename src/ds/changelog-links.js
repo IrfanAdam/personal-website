@@ -16,7 +16,8 @@ export const unlinked = (texts) => {
   const xs = commits.filter((c) => !c.plan || !texts[c.plan] || (c.anchor && !texts[c.plan].includes(c.anchor)));
   if (!xs.length
     && !wip.length) return '<h2>Unlinked DS changes</h2><p>All tracked — every DS commit cites its plan.</p>';
-  return '<h2>Unlinked DS changes</h2><p>These cite no plan — link next time via <code>[plan:&lt;file&gt;#&lt;anchor&gt;]</code>.</p>'
+  return ['<h2>Unlinked DS changes</h2><p>These cite no plan — link next time via ',
+    '<code>[plan:&lt;file&gt;#&lt;anchor&gt;]</code>.</p>'].join('')
     + (xs.length ? `<ul>${xs.map((c) => `<li>${badge(c)}</li>`).join('')}</ul>` : '')
     + (wip.length ? `<p>Uncommitted:</p><ul>${wip.map((w) => `<li><code>${esc(w)}</code></li>`).join('')}</ul>` : '');
 };

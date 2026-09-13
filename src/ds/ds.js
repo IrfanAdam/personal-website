@@ -20,7 +20,11 @@ import { mountTabs } from './tabs.js';
 const routes = [
   { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
-  { hash: '#/foundations', label: 'Foundations · Tokens', group: 'Start', render: foundations, mount: mountFoundations },
+  { hash: '#/foundations',
+    label: 'Foundations · Tokens',
+    group: 'Start',
+    render: foundations,
+    mount: mountFoundations },
   { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
   { hash: '#/components', label: 'Components', group: 'Components', render: components },
@@ -41,7 +45,13 @@ const root = document.documentElement;
 const saved = localStorage.getItem('adam-theme') || localStorage.getItem('adam-ds-theme') || 'system';
 const bar = document.createElement('div');
 bar.className = 'ds-controls';
-bar.innerHTML = ['system', 'light', 'dark'].map((m) => `<button class="pill" data-theme-btn="${m}\">${m}</button>`).join('');
+bar.innerHTML = ['system', 'light', 'dark'].map((m) => [
+  `<button class="pill" data-theme-btn="`,
+  m,
+  `\">`,
+  m,
+  `</button>`,
+].join('')).join('');
 document.body.prepend(bar);
 function applyTheme(m) {
   root.removeAttribute('data-theme');
@@ -58,8 +68,9 @@ applyTheme(saved);
 /* sidebar collapse — persisted like theme (desktop only; mobile stacks) */
 const sideBtn = document.getElementById('ds-side-toggle');
 const applySide = (c) => { document.body.classList.toggle('side-collapsed',
-    c); localStorage.setItem('adam-ds-side',
-    c ? '1' : '0'); sideBtn.textContent = c ? '▶' : '◀'; sideBtn.setAttribute('aria-expanded',
+    c); localStorage.setItem('adam-ds-side', c ? '1' : '0');
+  sideBtn.textContent = c ? '▶' : '◀';
+  sideBtn.setAttribute('aria-expanded',
     String(!c)); };
 sideBtn.addEventListener('click', () => applySide(!document.body.classList.contains('side-collapsed')));
 applySide(localStorage.getItem('adam-ds-side') === '1');
@@ -80,7 +91,17 @@ function route() {
   const prev = routes[(i - 1 + routes.length) % routes.length];
   const next = routes[(i + 1) % routes.length];
   main.innerHTML = r.render()
-    + `<div class="ds-footnav"><a href="${prev.hash}"><small>← Prev</small>${prev.label}</a><a href="${next.hash}" style="text-align:right"><small>Next →</small>${next.label}</a></div>`;
+    + [
+      `<div class="ds-footnav"><a href="`,
+      prev.hash,
+      `"><small>← Prev</small>`,
+      prev.label,
+      `</a><a href="`,
+      next.hash,
+      `" style="text-align:right"><small>Next →</small>`,
+      next.label,
+      `</a></div>`,
+    ].join('');
   const cleanups = [];
   if (r.mount) cleanups.push(r.mount(main));
   cleanups.push(mountTabs(main));

@@ -19,16 +19,20 @@ function glide(frame, target) {
 
 export function syncHeaderFrames() {
   const strip = document.getElementById('strip');
+  const SEL_TAB = ':scope > a.on';
+  const SEL_VTAB = ':scope > .vtab.on';
   const active = strip
-    ? strip.querySelector(':scope > a.on') ?? strip.querySelector(':scope > .vtab.on')
+    ? strip.querySelector(SEL_TAB) ?? strip.querySelector(SEL_VTAB)
     : null;
   glide(document.getElementById('tabframe'), active);
 }
 
 export function centerActiveThumb() {
   const strip = document.getElementById('strip');
+  const SEL_TAB = ':scope > a.on';
+  const SEL_VTAB = ':scope > .vtab.on';
   const active = strip
-    ? strip.querySelector(':scope > a.on') ?? strip.querySelector(':scope > .vtab.on')
+    ? strip.querySelector(SEL_TAB) ?? strip.querySelector(SEL_VTAB)
     : null;
   if (!strip || !active) return;
   const left = active.offsetLeft - 8;

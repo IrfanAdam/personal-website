@@ -22,7 +22,11 @@ export function render() {
     { label: mL, html: mH() },
     { label: fL, html: fH() },
     { label: kL, html: kH() }];
-  return `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1><p class="lede">Seven definitions feed every token. Swatches and values read live computed <span class="tok">var()</span> — click any card to copy.</p></div>` + tabs({ vertical: true, panes });
+  return [
+    `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
+    `<p class="lede">Seven definitions feed every token. Swatches and values read live computed <span `,
+    `class="tok">var()</span> — click any card to copy.</p></div>`,
+  ].join('') + tabs({ vertical: true, panes });
 }
 export function mount(root) {
   const sw = root.querySelector('#mixSw'), ctrls = root.querySelector('#mixCtrls'), val = root.querySelector('#mixVal');
@@ -44,8 +48,25 @@ export function mount(root) {
           || '#16130e')[i] * (1 - t) + toRGB(cssVar(bSel.value)
           || '#e8442e')[i] * t);
     const hex = '#' + mc.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
-    sw.style.background = hex; if (val) val.textContent = `${aSel.value} ↔ ${bSel.value} @ ${t.toFixed(2)} → ${hex} · var mix`;
-    sw.dataset.hex = hex; sw.dataset.var = `color-mix(in srgb, var(${aSel.value}) ${Math.round((1 - t) * 100)}%, var(${bSel.value}))`;
+    sw.style.background = hex; if (val) val.textContent = [
+      aSel.value,
+      ` ↔ `,
+      bSel.value,
+      ` @ `,
+      t.toFixed(2),
+      ` → `,
+      hex,
+      ` · var mix`,
+    ].join('');
+    sw.dataset.hex = hex; sw.dataset.var = [
+      `color-mix(in srgb, var(`,
+      aSel.value,
+      `) `,
+      Math.round((1 - t) * 100),
+      `%, var(`,
+      bSel.value,
+      `))`,
+    ].join('');
   };
   const fillPairs = () => {
     const rows = [...root.querySelectorAll('tr[data-bg]')]; if (!rows.length) return;
@@ -63,13 +84,13 @@ export function mount(root) {
   };
   const onMix = () => refreshMix();
   const onCopyVar = (e) => { const b = e.target.closest('[data-mix-copy]'); if (!b
-      
-        
-          
-            
-              
-                
-                  
+
+
+
+
+
+
+
                     || !sw) return;
                     const k = b
                       .dataset
@@ -84,13 +105,13 @@ export function mount(root) {
                       .catch(() => {});
                     };
   const onType = (e) => { const s = e.target; if (!s.dataset.type
-      
-        
-          
-            
-              
-                
-                  
+
+
+
+
+
+
+
                     || !typeSample) return;
                     if (s.dataset.type === 'size') typeSample
                       .style
@@ -124,13 +145,13 @@ export function mount(root) {
   const onFx = (e) => {
     if (e.target.closest('[data-shimmer-toggle]') && shimmer) shimmer.classList.toggle('off');
     if (e.target.closest('[data-rise-replay]')
-      
-        
-          
-            
-              
-                
-                  
+
+
+
+
+
+
+
                     && rise) { rise.classList.add('rest');
                       void rise
                         .offsetWidth;

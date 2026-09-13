@@ -5,20 +5,62 @@ import { note, code } from '../specimens.js';
 import { attachGlimmerOrb } from '../../views/glimmer-orb.js';
 export const title = 'Glimmer orb';
 export function render(){
-  return `<p class="ds-crumb">Functions · Glimmer orb</p><div class="ds-hero"><h1>Glimmer orb — square cells.</h1><p class="lede">Voice-state orb: <span class="tok">idle</span> breathes, <span class="tok">listening</span> ripples with mic level, <span class="tok">thinking</span> runs three orbiters. Cells are squares (<span class="tok">fillRect</span>), color is <span class="tok">--color-accent</span>.</p></div>`
-+`<div class="ds-sec"><h2>Lab</h2><p class="sub">State retargets live (no restart); level empty = auto envelope. Reduced-motion paints one static frame.</p>`
-+`<div class="ds-spec block"><canvas data-fx-glimmer width="240" height="240" style="width:var(--size-ds-orb,240px);height:var(--size-ds-orb,240px)" aria-label="Glimmer orb lab"></canvas>`
+  return [
+    `<p class="ds-crumb">Functions · Glimmer orb</p><div class="ds-hero"><h1>Glimmer orb — square cells.</h1>`,
+    `<p class="lede">Voice-state orb: <span class="tok">idle</span> breathes, <span class="tok">listening</span> `,
+    `ripples with mic level, <span class="tok">thinking</span> runs three orbiters. Cells are squares (<span `,
+    `class="tok">fillRect</span>), color is <span class="tok">--color-accent</span>.</p></div>`,
+  ].join('')
++[
+  `<div class="ds-sec"><h2>Lab</h2>`,
+  `<p class="sub">State retargets live (no restart); level empty = auto envelope. Reduced-motion paints one static `,
+  `frame.</p>`,
+].join('')
++[
+  `<div class="ds-spec block">`,
+  `<canvas data-fx-glimmer width="240" height="240" `,
+  `style="width:var(--size-ds-orb,240px);height:var(--size-ds-orb,240px)" aria-label="Glimmer orb lab"></canvas>`,
+].join('')
 +`<div class="fx-controls" data-fx-glimmer-ctl>`
-+`<label class="fx-row">state <select data-k="state"><option value="idle">idle</option><option value="listening" selected>listening</option><option value="thinking">thinking</option></select><output data-v="state">listening</output></label>`
-+`<label class="fx-row">dots <input type="range" min="5" max="15" step="2" value="11" data-k="dots"><output data-v="dots">11</output></label>`
-+`<label class="fx-row">level <input type="range" min="0" max="100" step="5" value="0" data-k="level"><output data-v="level">auto</output></label>`
-+`</div><figure><figcaption>square cells · spring scale 0.88/1/0.92 · dpr ≤ 4 · sub-pixel cells skipped</figcaption></figure></div>`
-+`${code("import { attachGlimmerOrb } from '../views/glimmer-orb.js'\\nconst stop = attachGlimmerOrb(canvas, { state: 'listening' }) // color: --color-accent\\nstop.setState('thinking'); stop.setLevel(0.6); stop();")}`
-+`${note('Do','Tune states here; graduate only via tokens — cell color stays <span class="tok">--color-accent</span>, never a literal.')}`
++[
+  `<label class="fx-row">state <select data-k="state"><option value="idle">idle</option>`,
+  `<option value="listening" selected>listening</option><option value="thinking">thinking</option></select>`,
+  `<output data-v="state">listening</output></label>`,
+].join('')
++[
+  `<label class="fx-row">dots <input type="range" min="5" max="15" step="2" value="11" data-k="dots">`,
+  `<output data-v="dots">11</output></label>`,
+].join('')
++[
+  `<label class="fx-row">level <input type="range" min="0" max="100" step="5" value="0" data-k="level">`,
+  `<output data-v="level">auto</output></label>`,
+].join('')
++[
+  `</div><figure>`,
+  `<figcaption>square cells · spring scale 0.88/1/0.92 · dpr ≤ 4 · sub-pixel cells skipped</figcaption></figure>`,
+  `</div>`,
+].join('')
++[
+  code(["import { attachGlimmerOrb } from '../views/glimmer-orb.js'\\nconst stop = attachGlimmerOrb(canvas, { state: ",
+    "'listening' }) // color: --color-accent\\nstop.setState('thinking'); stop.setLevel(0.6); stop();"].join('')),
+].join('')
++[
+  note('Do',
+    ['Tune states here; graduate only via tokens — cell color stays <span class="tok">--color-accent</span>, never ',
+    'a literal.'].join('')),
+].join('')
 +`</div>`
-+`<div class="ds-sec"><h2>Single source</h2><p class="sub">One engine, one consumer (this lab). No React — vanilla canvas, same math as the MatrixOrb draft.</p>`
++[
+  `<div class="ds-sec"><h2>Single source</h2>`,
+  `<p class="sub">One engine, one consumer (this lab). No React — vanilla canvas, same math as the MatrixOrb `,
+  `draft.</p>`,
+].join('')
 +`<table class="ds-table"><tr><th>Module</th><th>Exports</th><th>Consumers</th></tr>`
-+`<tr><td><span class="tok">views/glimmer-orb.js</span></td><td><span class="tok">attachGlimmerOrb</span>(canvas, { state, level, size, dots, color })</td><td>lab (only)</td></tr></table></div>`;
++[
+  `<tr><td><span class="tok">views/glimmer-orb.js</span></td><td>`,
+  `<span class="tok">attachGlimmerOrb</span>(canvas, { state, level, size, dots, color })</td><td>lab (only)</td>`,
+  `</tr></table></div>`,
+].join('');
 }
 export function mount(root){
   const canvas = root.querySelector('[data-fx-glimmer]');
