@@ -1,8 +1,10 @@
-/* ADAM/DS — fx-lab/cells · mosaic lab engine · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: mountCells — lab-local renderer + controls
-import { buildTree, measureTree, orderRandom } from '../../views/masonry/cells.js';
-import { css, tok, reduced, SAMPLE } from './color.js';
+/* ADAM/DS — fx-lab/cells · mosaic lab engine composer ·
+   [plan:2026-09-13_235413-over-limit-splits.md#phase-1] */
+// Exports: mountCells — lab-local renderer + controls (texture lives in cells-texture.js)
+import { buildTree, orderRandom } from '../../views/masonry/cells.js';
+import { css, tok, reduced } from './color.js';
 import { makeDraw } from './cells-draw.js';
+import { makeTexture } from './cells-texture.js';
 
 export function mountCells(scope) {
   const canvas = scope.querySelector('[data-fx-stage]');
@@ -11,37 +13,22 @@ export function mountCells(scope) {
   const ctl = scope.querySelector('[data-fx-cells]');
   const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none' };
   let root = null, branches = [], split = 0, playing = false, raf = 0, last = 0;
-  let texImg = null, hasTex = false;
+  const tex = makeTexture({
+    getRoot: () => root,
+    rebuild: () => rebuild(),
+    draw: () => draw(),
+    play: () => play(),
+    playing: () => playing,
+  });
   const readPal = () => ({ bg: css('--color-surface', [255, 255, 255]),
       ink: css('--color-ink', [22, 19, 14]),
       accent: css('--color-accent', [232, 68, 46]) });
   let pal = readPal();
-  const imgMap = { helix: '/images/helix.png', fluxx: '/images/fluxx.jpg', 'tas-35': '/images/tas-35.jpg' };
-  const sampleTex = () => {
-    if (!texImg || !texImg.complete || !texImg.naturalWidth || !root) return;
-    const c = document.createElement('canvas'); c.width = SAMPLE; c.height = SAMPLE;
-    const x = c.getContext('2d', { willReadFrequently: true }); if (!x) return;
-    const sc = Math.max(SAMPLE / texImg.naturalWidth, SAMPLE / texImg.naturalHeight);
-    x.drawImage(texImg,
-      (SAMPLE - texImg.naturalWidth * sc) / 2,
-      (SAMPLE - texImg.naturalHeight * sc) / 2,
-      texImg.naturalWidth * sc,
-      texImg.naturalHeight * sc);
-    try { measureTree(root, x.getImageData(0, 0, SAMPLE, SAMPLE).data, SAMPLE); hasTex = true; } catch {}
-  };
   const rebuild = () => {
     const r = buildTree(4 / 3, P.count); root = r.root; branches = r.branches;
-    hasTex = false;
-    if (texImg && texImg.complete && texImg.naturalWidth) sampleTex();
+    tex.clear();
+    if (tex.img && tex.img.complete && tex.img.naturalWidth) tex.sampleTex();
     if (P.order === 'rnd') orderRandom(branches, split);
-  };
-  const loadImage = (key) => {
-    hasTex = false; texImg = null;
-    const src = imgMap[key];
-    if (!src) { rebuild(); draw(); return; }
-    const im = new Image(); im.crossOrigin = 'anonymous'; im.src = src;
-    im.onload = () => { texImg = im; hasTex = false; rebuild(); draw(); if (playing) play(); else draw(); };
-    im.onerror = () => { texImg = null; hasTex = false; rebuild(); draw(); };
   };
   const size = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -49,7 +36,7 @@ export function mountCells(scope) {
     canvas.width = Math.max(1, Math.round(r.width * dpr));
     canvas.height = Math.max(1, Math.round((r.height || r.width * 0.75) * dpr));
   };
-  const draw = makeDraw(ctx, canvas, () => ({ root, P, split, pal, hasTex }));
+  const draw = makeDraw(ctx, canvas, () => ({ root, P, split, pal, hasTex: tex.has }));
   const stop = () => { playing = false; if (raf) cancelAnimationFrame(raf); raf = 0; };
   const tick = (now) => {
     const dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
@@ -79,7 +66,7 @@ export function mountCells(scope) {
     else if (k === 'gut') P.gut = +v;
     else if (k === 'span') { P.span = (+v) / 10; tok('--dur-fx-span', P.span.toFixed(1) + 's'); }
     else if (k === 'order') { P.order = v; rebuild(); }
-    else if (k === 'image') { P.image = v; loadImage(v); show(); return; }
+    else if (k === 'image') { P.image = v; tex.loadImage(v); show(); return; }
     show(); draw();
   };
   const replayBtn = scope.querySelector('[data-fx-replay]');
