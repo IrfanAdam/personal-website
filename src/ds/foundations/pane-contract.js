@@ -64,12 +64,15 @@ export function html() {
     `walkthrough. Nothing ships with an open item and no owner.</p><table class="ds-table"><tr><th>Check</th>`,
     `<th>State</th><th>Proof</th></tr>`,
   ].join('')
-  + `<tr><td>Contrast AA per pair × both themes</td><td>PASS</td><td>Color matrix (Phase 1)</td></tr>`
-  + `<tr><td>Visible focus ring, both themes</td><td>PASS</td><td>State group + Shape ring (Tasks 4/19)</td></tr>`
-  + `<tr><td>Reduced motion honored</td><td>PASS</td><td>Motion contract (Phase 5) + site guards</td></tr>`
-  + `<tr><td>44px targets</td><td>PASS</td><td>Touch audit (Task 16)</td></tr>`
-  + `<tr><td>Theme parity light / dark</td><td>PASS</td><td>probeTheme matrices, toggle walkthrough</td></tr>`
-  + `<tr><td>Keyboard walkthrough</td><td>GATE</td><td>Run on release: tab every demo control + ring visible</td></tr>`
+  + [
+    `<tr><td>Contrast AA per pair × both themes</td><td>PASS</td><td>Color matrix (Phase 1)</td></tr>`,
+    `<tr><td>Visible focus ring, both themes</td><td>PASS</td><td>State group + Shape ring (Tasks 4/19)</td></tr>`,
+    `<tr><td>Reduced motion honored</td><td>PASS</td><td>Motion contract (Phase 5) + site guards</td></tr>`,
+    `<tr><td>44px targets</td><td>PASS</td><td>Touch audit (Task 16)</td></tr>`,
+    `<tr><td>Theme parity light / dark</td><td>PASS</td><td>probeTheme matrices, toggle walkthrough</td></tr>`,
+    `<tr><td>Keyboard walkthrough</td><td>GATE</td><td>Run on release: tab every demo control `
+      + `+ ring visible</td></tr>`,
+  ].join('')
   + [
     `<tr><td>Feedback roles (success / error / warning / info)</td><td>PASS</td>`,
     `<td>Feedback group + live probe table (Task 7)</td></tr>`,

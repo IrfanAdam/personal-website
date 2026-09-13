@@ -52,10 +52,12 @@ export function render() {
     `<button class="pill" data-ctl="pause">pause / resume</button></div></div></div>`,
   ].join('')
   + `</div>`
-  + `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Code</h2>`
-  + `${code(`import { attachGlitch } from '../views/glitch.js';\nattachGlitch(el, { trigger: 'hover' });`)}`
-  + `</div></div>`
-  + `${note('Do', 'Glitch marks one thing at a time.')}`;
+  + [
+    `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Code</h2>`,
+    code(`import { attachGlitch } from '../views/glitch.js';\nattachGlitch(el, { trigger: 'hover' });`),
+    `</div></div>`,
+    note('Do', 'Glitch marks one thing at a time.'),
+  ].join('');
 }
 
 // — Bind —

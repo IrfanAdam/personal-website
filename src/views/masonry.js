@@ -43,12 +43,14 @@ function draw(root) {
   if (count) count.textContent = `${list.length} stories`;
 }
 export function Masonry() {
-  return `<section class="hero"><h1>Working on stories that last</h1>`
-  + `<p>Masonry view. Edit stories in <code>src/data/site.js</code>.</p></section>`
-  + `<div class="filters"><button class="pill on" data-filter="all">All</button>`
-  + `<button class="pill" data-filter="crm">Sales CRM</button>`
-  + `<button class="pill" data-filter="goals">Sales Goals</button></div>`
-  + `<main id="grid"></main>${footer()}`;
+  return [
+    `<section class="hero"><h1>Working on stories that last</h1>`,
+    `<p>Masonry view. Edit stories in <code>src/data/site.js</code>.</p></section>`,
+    `<div class="filters"><button class="pill on" data-filter="all">All</button>`,
+    `<button class="pill" data-filter="crm">Sales CRM</button>`,
+    `<button class="pill" data-filter="goals">Sales Goals</button></div>`,
+    `<main id="grid"></main>${footer()}`,
+  ].join('');
 }
 export function mountMasonry(root) {
   const onFilter = (e) => {
