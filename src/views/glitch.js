@@ -1,26 +1,7 @@
-/* ADAM/FX — Glitch · generic container function. Any element, no assumptions.
-   Token-driven (var(--dur-glitch) + --fx-glitch-*), reduced-motion safe, zero deps.
-   CSS provides the animation; this module is the ergonomic JS wrapper.
-
-   Usage — CSS only:
-     <div class="fx-glitch">glitches forever</div>
-     <div class="fx-glitch--hover">glitches on hover</div>
-     <div class="fx-glitch--once">one burst</div>
-
-   Usage — JS (any container):
-     import { attachGlitch, detachGlitch, glitchOnce } from '../views/glitch.js'
-     const stop = attachGlitch(el)                 // infinite
-     const stop2 = attachGlitch(el, { trigger: 'hover' })
-     glitchOnce(el)                                // single burst
-     detachGlitch(el)                              // remove
-
-   Data-attr auto-init (optional):
-     <div data-glitch> or <div data-glitch="hover"> or <div data-glitch="once">
-     call initGlitch(root) once after mount.
-
-   Tokens (tokens.css): --dur-glitch (2.4s) · --fx-glitch-x (--space-1)
-                        --fx-glitch-skew (-12deg) · --fx-glitch-opacity (0.5)
-*/
+/* ADAM/FX — glitch · generic container fn · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+// Exports: attachGlitch, detachGlitch, glitchOnce, pauseGlitch, resumeGlitch
+// Auto-init lives in glitch-init.js — import from there, not here.
+export { initGlitch } from './glitch-init.js';
 const REDUCED = () => {
   try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch { return false; }
 };
@@ -95,16 +76,4 @@ export function pauseGlitch(el) {
 export function resumeGlitch(el) {
   if (!el) return;
   el.classList.remove('fx-glitch--paused');
-}
-
-/** Auto-init any [data-glitch] descendants. Returns cleanup. */
-export function initGlitch(root = document) {
-  if (!root || !root.querySelectorAll) return () => {};
-  const nodes = [...root.querySelectorAll('[data-glitch]')];
-  const stops = nodes.map((el) => {
-    const v = (el.getAttribute('data-glitch') || 'auto').trim().toLowerCase();
-    const trigger = v === '' ? 'auto' : v === 'hover' ? 'hover' : v === 'once' ? 'once' : 'auto';
-    return attachGlitch(el, { trigger });
-  });
-  return () => stops.forEach((fn) => { try { fn(); } catch {} });
 }
