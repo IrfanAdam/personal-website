@@ -14,7 +14,8 @@
     "ds:track": "node scripts/ds-track.mjs",
     "plan:suggest": "node scripts/plan-suggest.mjs",
     "plan:names": "node scripts/plan-names.mjs",
-    "predev": "node scripts/ds-track.mjs || true"
+    "predev": "node scripts/ds-track.mjs || true",
+    "lint:manage": "node scripts/lint-manage.mjs"
   },
   "devDependencies": {
     "concurrently": "^10.0.5",
