@@ -1,3 +1,4 @@
+/* ADAM/SHARED — views/shared · footer + strip items · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 import { socials, about, projects, iconFor } from '../data/site.js';
 export function footer() {
   return `<footer><nav>${socials.map(([n, u]) => `<a href="${u}" target="_blank" rel="noreferrer">${n}</a>`).join('')}</nav>

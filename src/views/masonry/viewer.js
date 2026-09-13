@@ -1,3 +1,4 @@
+/* ADAM/PAGE — views/masonry/viewer · hover expander viewer · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Tamed editorial viewer — cursor viewfinder + floating portal + tethers.
 // Portal is position:fixed (collision-flip right→left); preview Y follows the
 // cursor with the Framer clamped spring; two SVG lines tether cursor→preview.

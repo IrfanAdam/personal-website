@@ -1,3 +1,4 @@
+/* ADAM/APP — app boot · router + strip + theme init · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 import { Masonry, mountMasonry, setView } from './views/masonry.js';
 import { Project, mountProject } from './views/project.js';
 import { Contact, mountContact } from './views/contact.js';

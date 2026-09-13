@@ -1,3 +1,4 @@
+/* ADAM/STYLE — styles/viewer · hover expander viewer · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Viewer — cursor viewfinder + floating preview + tethers. Light borders, clear hero. */
 .viewer-cursor {
   position: fixed; left: 0; top: 0; width: var(--size-cursor); height: var(--size-cursor);

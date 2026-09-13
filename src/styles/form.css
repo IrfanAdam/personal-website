@@ -1,3 +1,4 @@
+/* ADAM/STYLE — styles/form · contact form · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Form — field set: label (mono) + control (hairline, paper, ink focus ring) + error (accent). */
 .field { display: grid; gap: var(--space-6); }
 .field label { font-family: var(--font-mono); font-size: var(--text-meta); color: var(--color-ink-muted); letter-spacing: var(--tracking-label); text-transform: uppercase; line-height: var(--leading-mono); }

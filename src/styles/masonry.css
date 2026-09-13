@@ -1,3 +1,4 @@
+/* ADAM/STYLE — styles/masonry · grid layout · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Masonry grid — column layout + parallax. Mosaic canvas lives here; card internals in card.css. */
 .cols {
   display: grid;

@@ -1,3 +1,4 @@
+/* ADAM/PAGE — views/masonry/cells · grid cell builders · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Binary-split cell tree + square mosaic (single tone · varying opacity).
 // buildTree keeps legacy rectangular path; buildSquare gives square pixels
 // for the new shimmer: cols=√(n·aspect), rows=cols/aspect, 1:1 in px.

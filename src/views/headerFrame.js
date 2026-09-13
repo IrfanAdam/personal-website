@@ -1,3 +1,4 @@
+/* ADAM/SHARED — views/headerFrame · gliding tab selection frame · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // One selection frame glides across every header tab — the list/grid
 // switcher and the project thumbs share the same row and animation.
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;

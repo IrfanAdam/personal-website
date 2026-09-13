@@ -1,3 +1,4 @@
+/* ADAM/APP — data/site · CMS-backed project tuples + settings · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Content lives in /content/*.json so Decap CMS (/admin) can edit it.
 // Tuple: [slug, title, catA, catB, date, timeline, role, tag, image, deliverables, platform, w, h, mock, hero]
 // w/h come from content/dims.json (node scripts/dims.mjs); fallback 3:4.

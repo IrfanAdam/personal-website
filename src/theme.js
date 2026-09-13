@@ -1,3 +1,4 @@
+/* ADAM/APP — theme · system/light/dark switch · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 const KEY = 'adam-theme';
 const LEGACY = 'adam-ds-theme';
 

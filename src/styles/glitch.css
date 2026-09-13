@@ -1,3 +1,4 @@
+/* ADAM/STYLE — styles/glitch · glitch visual effect · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Glitch — generic container FX. Any element can glitch via .fx-glitch or attachGlitch(el).
    Token-driven: --dur-glitch · --fx-glitch-x · --fx-glitch-skew · --fx-glitch-opacity.
    Respects prefers-reduced-motion. Pair with .fx-blip for the today-blip halo. */

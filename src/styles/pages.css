@@ -1,3 +1,4 @@
+/* ADAM/STYLE — styles/pages · static pages · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 .strip { position: relative; display: flex; gap: var(--space-8); align-items: center; overflow-x: auto; overflow-y: hidden; padding: var(--space-6) var(--space-4); scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scroll-padding-inline: var(--space-12); }
 .strip::-webkit-scrollbar { display: none; }
 .strip a { flex: 0 0 var(--size-strip); border: var(--border-hairline); border-radius: var(--radius-none); overflow: hidden; background: var(--color-surface); }

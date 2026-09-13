@@ -1,3 +1,4 @@
+/* ADAM/FX — views/masonry/gridReveal · binary-subdivision reveal · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Paced port of rareui GridReveal — frame one is already half-subdivided,
 // subdivision with eased split morphs (random split order), gutters
 // recess as the mosaic refines, the photo fading in only at the very end.

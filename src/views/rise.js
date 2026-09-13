@@ -1,3 +1,4 @@
+/* ADAM/FX — views/rise · scroll rise effect · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Shared mobile hero rise — placeholder height → final aspect height on
    --dur-hero-rise / --ease-signature, then cell-grid reveal. Reduced-motion
    and desktop pass straight through to the reveal. (5.2 dedup: project.js +

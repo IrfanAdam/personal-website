@@ -1,3 +1,4 @@
+/* ADAM/PAGE — views/masonry · grid composer + filter state · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';

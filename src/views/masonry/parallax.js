@@ -1,3 +1,4 @@
+/* ADAM/PAGE — views/masonry/parallax · scroll parallax · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Column bottom-alignment parallax: short columns drift down as you scroll so
 // all column bottoms align at the end of the page scroll.
 // Smooth chase: target scroll progress is chased with a frame-rate

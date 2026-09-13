@@ -1,3 +1,4 @@
+/* ADAM/PAGE — views/contact · contact page · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 import { contact, about, profileImage } from '../data/site.js';
 import { footer } from './shared.js';
 import { mountHeroRise } from './rise.js';

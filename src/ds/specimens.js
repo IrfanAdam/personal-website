@@ -1,3 +1,4 @@
+/* ADAM/DS — ds/specimens · specimen builders (note/card/code) · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Specimen builders — render REAL site classes (base/pages/masonry), unmodified,
    inside doc framing. This is what makes the DS pixel-true: dogfooding. */
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

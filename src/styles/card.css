@@ -1,3 +1,4 @@
+/* ADAM/STYLE — styles/card · masonry card · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Card — masonry item: hairline frame, image-only surface, tags ↔ blur scrim
    swap. Extracted from masonry.css during DS adoption. Tokens only. */
 .card {

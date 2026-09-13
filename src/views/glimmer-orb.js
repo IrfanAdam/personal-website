@@ -1,3 +1,4 @@
+/* ADAM/FX — views/glimmer-orb · glimmer orb effect · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Glimmer orb — vanilla port of MatrixOrb. Square cells (fillRect, radius-none
    doctrine), states idle/listening/thinking, mic-level envelope, spring scale.
    Color defaults to --color-accent (no literals). Single source for DS lab. */
