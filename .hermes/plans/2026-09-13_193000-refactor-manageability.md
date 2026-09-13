@@ -98,7 +98,7 @@ git add docs/baseline.md
 git commit -m "docs(baseline): over-limit inventory [plan:2026-09-13_193000-refactor-manageability.md#phase-0]"
 ```
 
-### Task 2: Add lint-manage gate (lines + readability + nomenclature)
+### Task 2: Add lint-manage gate (lines + readability + nomenclature) ✓ done
 
 **Objective:** Automate the user's five rules so loops have an objective exit.
 
@@ -151,7 +151,7 @@ git add scripts/lint-manage.mjs
 git commit -m "feat(tool): manageability lint gate [plan:2026-09-13_193000-refactor-manageability.md#phase-0]"
 ```
 
-### Task 3: Route-smoke checklist (behavior freeze proof)
+### Task 3: Route-smoke checklist (behavior freeze proof) ✓ done
 
 **Objective:** One repeatable command that proves "nothing broke" after every split.
 
@@ -174,7 +174,7 @@ git add scripts/smoke.mjs
 git commit -m "feat(tool): route smoke for refactor safety [plan:2026-09-13_193000-refactor-manageability.md#phase-0]"
 ```
 
-*Shipped in <sha> · Tasks 1–3 · phase-0.*
+*Shipped in 0419eab · Tasks 1–3 · phase-0.*
 
 ---
 
