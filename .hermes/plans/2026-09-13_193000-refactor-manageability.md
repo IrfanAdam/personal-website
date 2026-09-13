@@ -342,6 +342,8 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 *Lines are short now; make them readable. Mechanical, file-by-file, looped.*
 
+***No-collapsing rule (plain version):** collapsing code onto one line to fit the 100-line budget is forbidden — it hides the logic instead of organizing it. If a block reads better expanded, it stays expanded; the budget is met by moving the block to its proper file, never by squeezing it. `wc -l` going down because lines were joined is a fail, not a fix.*
+
 *Tags: Component*
 
 | # | Task | Done when |
@@ -357,6 +359,8 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 **Files:** all files touched in Phase 2.
 
 **Rules applied:** one statement per line; ternaries only for assignment, never nested; template literals built via named `const` parts then joined (max 2 `+` continuations); WebAudio envelopes one param per line.
+
+**Forbidden (fails the task even if `wc -l` passes):** joining two statements with `;`, stuffing a block onto one line, or chaining `+ \`...\`` / ternaries / CSS declarations to dodge the budget. Example of the hack — `const a = 1; const b = 2;` on one line, or `.x{color:red;background:blue}` on one line — must be split back out, then the overflow fixed by extraction. When in doubt: expanded and honest beats short and squeezed.
 
 **Verify:** Run: `grep -rn "?.*:.*?.*:" src/fx src/views src/ds --include="*.js" | head` — Expected: empty (no nested ternaries). `npm test` green.
 
