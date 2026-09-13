@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T18:50:46.189Z",
+ "generated": "2026-09-13T19:05:43.156Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -19,9 +19,28 @@
   "2026-09-12_150255-glitch-sound.md",
   "2026-09-13_193000-refactor-manageability.md",
   "2026-09-13_235413-over-limit-splits.md",
-  "2026-09-14_001100-graph-join-leak.md"
+  "2026-09-14_001100-graph-join-leak.md",
+  "2026-09-14_003212-builds-nomenclature.md"
  ],
  "commits": [
+  {
+   "sha": "28e2e3b",
+   "full": "28e2e3b4c82dfec5c22493eff230cde52f727290",
+   "date": "2026-09-14",
+   "time": "00:35",
+   "subject": "refactor(ds): the changelog keeps its name — its entries are builds",
+   "plan": "2026-09-14_003212-builds-nomenclature.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "7e2d09b",
+   "full": "7e2d09b8289b2c7ab997eceb909e4e2f128109ef",
+   "date": "2026-09-14",
+   "time": "00:20",
+   "subject": "chore(ds): track refresh after split-hide fix",
+   "plan": "2026-09-14_001100-graph-join-leak.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "ccb8018",
    "full": "ccb8018f4c767156313e48ae6e9481a7e9383d99",
