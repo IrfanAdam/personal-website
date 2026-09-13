@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T17:45:14.943Z",
+ "generated": "2026-09-13T18:23:08.401Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,123 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "1ed81cc",
+   "full": "1ed81ccc1980b7536811ad677ff2f28c20b4a618",
+   "date": "2026-09-13",
+   "time": "23:49",
+   "subject": "refactor(ds): split ds.js 113 into routes/theme/sidebar",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "76548b7",
+   "full": "76548b7e47dc4ee854e2490214b2033f9a77a2ef",
+   "date": "2026-09-13",
+   "time": "23:45",
+   "subject": "refactor(playground): split knobs builder 141 into module",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "4247f25",
+   "full": "4247f252973e066847521a51d3982391b9253b62",
+   "date": "2026-09-13",
+   "time": "23:44",
+   "subject": "refactor(component): split knobs builder 148 into module",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "cbf2595",
+   "full": "cbf259561fe75ccc591ecec774e0c7dcda7f7645",
+   "date": "2026-09-13",
+   "time": "23:38",
+   "subject": "style(readability): wrap long scrambleText options line",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "674934b",
+   "full": "674934b0acf21d27a6de4bbd014f564b2edbfd47",
+   "date": "2026-09-13",
+   "time": "23:37",
+   "subject": "refactor(scramble-panel): split panel 177 into 4 section modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "3adda2f",
+   "full": "3adda2f2102ea86381396de319b67fa4c8499a6d",
+   "date": "2026-09-13",
+   "time": "23:36",
+   "subject": "refactor(scramble-bind): split bind 170 into run factory + teardown",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "29084a3",
+   "full": "29084a3dd4c3bf143432546fc26b8ab7304fa1e9",
+   "date": "2026-09-13",
+   "time": "23:32",
+   "subject": "refactor(fx): split pane-fx 153 into 4 section modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "040fb14",
+   "full": "040fb14b3a91c8938576275e08d46ffcd7ff25f3",
+   "date": "2026-09-13",
+   "time": "23:32",
+   "subject": "refactor(type): split pane-type 130 into 4 section modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "197d679",
+   "full": "197d679374b0e88d9916f27d7bace61538d82ca7",
+   "date": "2026-09-13",
+   "time": "23:31",
+   "subject": "refactor(panes): split color/motion/shape into 9 section modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "70beac0",
+   "full": "70beac083eaffcf1a65e96bda3d72334b5c12e11",
+   "date": "2026-09-13",
+   "time": "23:26",
+   "subject": "refactor(space): split pane-space 213 into 4 section modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "e914181",
+   "full": "e914181475e360a508dac92c9900aa845dbaa184",
+   "date": "2026-09-13",
+   "time": "23:25",
+   "subject": "refactor(changelog): split changelog-paint 218 into 5 paint modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "0510b7d",
+   "full": "0510b7d125afc798c98de0e0ee4be067edb63a65",
+   "date": "2026-09-13",
+   "time": "23:18",
+   "subject": "refactor(specimens): split specimens 222 into 5 modules + barrel",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "1a60044",
+   "full": "1a600443d01f1b3410617775206c06962c3b4b2e",
+   "date": "2026-09-13",
+   "time": "23:15",
+   "subject": "chore(ds): track refresh after primitives split",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "d46ebc7",
    "full": "d46ebc7fede258746fa174195d36d6cfae12bb17",
