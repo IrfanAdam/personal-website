@@ -5,6 +5,7 @@ import { Contact, mountContact } from './views/contact.js';
 import { stripItems, viewTabs } from './views/shared.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initTheme } from './theme.js';
+import { initChrome } from './boot-chrome.js';
 import './views/init-sound.js';
 
 const root = document.getElementById('app');
@@ -29,28 +30,7 @@ const stripLinks = [...stripbar.querySelectorAll('.strip a')];
 let cleanup = null;
 let masonryView = 'grid'; // 'grid' | 'list'
 
-function setHeaderH() {
-  document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
-}
-setHeaderH();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderH);
-window.addEventListener('resize', setHeaderH);
-new ResizeObserver(setHeaderH).observe(header);
-
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  let lastY = window.scrollY;
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      header.classList.toggle('hide', y > 120 && y > lastY);
-      lastY = y;
-      ticking = false;
-    });
-  }, { passive: true });
-}
+initChrome(header);
 
 function syncTabs() {
   vtabs.forEach((b) => b.classList.toggle('on', b.dataset.vtab === masonryView));
