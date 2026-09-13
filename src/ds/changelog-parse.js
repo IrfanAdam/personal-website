@@ -2,7 +2,17 @@
 // Exports: MONTHS, chunks, goal, norm, split, state, isDone, buildState, parseMeta, fmtDate, fmtTime, pDay, isoDay
 export const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-export const chunks = (md) => md.split(/^## /m);
+export const chunks = (md) => {
+  const out = [''];
+  let at = 0;
+  let fence = false;
+  for (const ln of md.split('\n')) {
+    if (!fence && /^## /.test(ln)) out[++at] = ln.slice(3);
+    else out[at] += (out[at] ? '\n' : '') + ln;
+    if (/^\s*```/.test(ln)) fence = !fence;
+  }
+  return out;
+};
 
 export const goal = (md) => (md.match(/\*\*Goal:\*\*\s*([\s\S]+?)(?:\n\s*\n|$)/) || [])[1]?.trim() || '';
 
