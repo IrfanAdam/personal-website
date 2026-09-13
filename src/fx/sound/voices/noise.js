@@ -1,4 +1,5 @@
-/* ADAM/SOUND — src/fx/sound/voices/noise.js · tick + static noise voices · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/SOUND — src/fx/sound/voices/noise.js · tick + static noise voices ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: tick, staticNoise
 
 export function tick(ctx, buf, gain, freq, ms) {

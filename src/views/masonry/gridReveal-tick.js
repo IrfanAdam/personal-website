@@ -1,4 +1,5 @@
-/* ADAM/FX — gridReveal-tick · frame scheduler + split ticker · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/FX — gridReveal-tick · frame scheduler + split ticker ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: makeTicker(s, render, finish) — RAF fallback + eased split chase
 import { smoothstep } from './cells.js';
 

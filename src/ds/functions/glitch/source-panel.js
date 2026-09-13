@@ -1,4 +1,5 @@
-/* ADAM/DS — src/ds/functions/glitch/source-panel.js · source picker markup + binding · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/DS — src/ds/functions/glitch/source-panel.js · source picker markup + binding ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: renderSourcePanel, mountSourcePanel
 import { getSource, setSource, resetSources } from '../../../views/sound-source.js';
 import { playFileId, playVoice } from '../../../views/element-sound.js';

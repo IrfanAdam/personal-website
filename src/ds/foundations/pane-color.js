@@ -1,4 +1,5 @@
-/* ADAM/DS foundations · Color — ① materials (popover ramps) → ② pairs (AA inline) → ③ mixer. No proof tables: each pair proves AA inline, both themes. */
+/* ADAM/DS foundations · Color — ① materials (popover ramps) → ② pairs (AA inline) → ③ mixer
+   No proof tables: each pair proves AA inline, both themes. */
 import { ramp, note } from '../specimens.js';
 const MIX = ['--color-ink','--color-bg','--color-accent','--color-surface','--color-surface-sunken','--color-overlay','--color-success','--color-error','--color-warning','--color-info'];
 const STONE = ['--stone-0','--stone-25','--stone-50','--stone-100','--stone-200','--stone-300','--stone-400','--stone-500','--stone-600','--stone-700','--stone-800','--stone-900','--stone-950'];

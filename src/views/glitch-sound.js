@@ -1,4 +1,5 @@
-/* ADAM/FX — Glitch sound · multi-voice palette (tick/static/blip/chime/hum/data). Hum 320ms, proximity-scaled per glitch. */
+/* ADAM/FX — Glitch sound · multi-voice palette (tick/static/blip/chime/hum/data)
+   Hum 320ms, proximity-scaled per glitch. */
 import { TYPES, synth } from './sound-palette.js';
 import { getCtx, getNoise, ctxInfo } from './audio-ctx.js';
 export { ctxInfo };

@@ -1,4 +1,5 @@
-/* ADAM/SOUND — src/fx/sound/voices/scan.js · scanner + zapscan glass voices · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/SOUND — src/fx/sound/voices/scan.js · scanner + zapscan glass voices ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: scanner, zapscan
 
 export function zapscan(ctx, gain, ms) {

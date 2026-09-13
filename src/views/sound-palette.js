@@ -1,4 +1,5 @@
-/* ADAM/SOUND — src/views/sound-palette.js · dispatcher to voice families · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/SOUND — src/views/sound-palette.js · dispatcher to voice families ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: TYPES, synth, createHumLoop
 import { tick, staticNoise } from '../fx/sound/voices/noise.js';
 import { blip, chime } from '../fx/sound/voices/tone.js';

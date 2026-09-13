@@ -1,4 +1,5 @@
-/* ADAM/FX — views/fx-tokens · motion tokens with fallbacks · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/FX — views/fx-tokens · motion tokens with fallbacks ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 /* Graduated motion tokens — getComputedStyle with shipped-literal fallback,
    so first paint is pixel-identical with or without the token. Read at
    attach/call time (never per-frame): getComputedStyle per cell costs. */

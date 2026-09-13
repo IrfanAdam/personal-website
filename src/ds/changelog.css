@@ -1,4 +1,5 @@
-/* ADAM/DS — Changelog contribution timeline. Sun–Sat week columns, blobs on logged days. Token-only: no raw px, no literal radius. */
+/* ADAM/DS — Changelog contribution timeline
+   Sun–Sat week columns, blobs on logged days. Token-only: no raw px, no literal radius. */
 /* Glitch + blip now generalize via /src/styles/glitch.css (fx-glitch / fx-blip + ds- aliases). This file only maps today → fx. */
 .ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-28); }
 .ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }

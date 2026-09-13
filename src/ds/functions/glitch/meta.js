@@ -1,4 +1,5 @@
-/* ADAM/DS — src/ds/functions/glitch/meta.js · TYPE_META + option builders · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/DS — src/ds/functions/glitch/meta.js · TYPE_META + option builders ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: TYPE_META, VOICE_DEFAULTS, buildTypeOpts, buildChips, buildFileOpts, buildKindOpts, buildVoiceOpts
 import { TYPES } from '../../../views/glitch-sound.js';
 import { FILES } from '../../../views/sound-files.js';

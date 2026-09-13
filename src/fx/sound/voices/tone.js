@@ -1,4 +1,5 @@
-/* ADAM/SOUND — src/fx/sound/voices/tone.js · blip + chime tonal voices · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/SOUND — src/fx/sound/voices/tone.js · blip + chime tonal voices ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: blip, chime
 import { oscEnv } from './helpers.js';
 

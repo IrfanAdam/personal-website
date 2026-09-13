@@ -1,4 +1,5 @@
-/* ADAM/SOUND — src/fx/sound/voices/helpers.js · shared WebAudio helpers · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/SOUND — src/fx/sound/voices/helpers.js · shared WebAudio helpers ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: oscEnv
 
 export function oscEnv(ctx, type, freq, gain, ms, detune) {
