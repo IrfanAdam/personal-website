@@ -284,7 +284,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 | 10 | Split `ds/pages-overview.js` 227 + `pages-changelog.js` 205 | pages-overview/{sections} + changelog/{parse,paint,badges} |
 | 11 | Split remaining 6 (scramble 217, gridReveal 192, fx-lab 186, parallax 136, glitch 110, cells 109, audio-ctx 107) | `lint-manage` line failures → 0 |
 
-### Task 7: Split glitch lab monolith
+### Task 7: Split glitch lab monolith ✓ done
 
 **Objective:** Separate demo markup, sound wiring, source picker — the three jobs currently fused.
 
@@ -296,7 +296,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** Run: `wc -l src/ds/functions/glitch*.js src/ds/functions/glitch/*.js && node scripts/smoke.mjs` — Expected: each ≤100, smoke ✓.
 
-### Task 8: Split sound palette into voices
+### Task 8: Split sound palette into voices ✓ done
 
 **Objective:** `sound-palette.js` becomes a dispatcher; each synthesis family owns its envelope.
 
@@ -306,7 +306,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** `wc -l src/fx/sound/voices/*.js src/views/sound-palette.js && npm test 2>&1 | tail -n 3` — Expected: all ≤100, build ✓, lab sound unchanged.
 
-### Task 9: Split masonry viewer + grid composer
+### Task 9: Split masonry viewer + grid composer ✓ done
 
 **Objective:** Viewer (246) and grid composer (192) each become three scannable units.
 
@@ -316,7 +316,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** masonry filter, reveal animation, viewer open/close pass on smoke + manual Safari check; each file ≤100.
 
-### Task 10: Split DS overview + changelog renderer
+### Task 10: Split DS overview + changelog renderer ✓ done
 
 **Objective:** Overview sections and changelog parse/paint separated (renderer keeps eager glob + `hits()` contract — do not regress per plan-traceability §3).
 
@@ -326,7 +326,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** `/ds/#/changelog` Miller columns + drawer + badges identical; `node scripts/ds-track.mjs` output unchanged.
 
-### Task 11: Split remaining six over-limit files
+### Task 11: Split remaining six over-limit files ✓ done
 
 **Objective:** Close the line-count backlog in one swept task (each sub-split ≤30 min, separate commits).
 
@@ -334,7 +334,7 @@ git commit -m "chore(nomenclature): ADAM headers everywhere [plan:2026-09-13_193
 
 **Verify:** Run: `node scripts/lint-manage.mjs` — Expected: `✓ manage lint` (0 failures). Then `npm test`.
 
-*Shipped in <sha> · Tasks 7–11 · phase-2.*
+*Shipped in 5780e3b · Tasks 7–11 · phase-2.*
 
 ---
 

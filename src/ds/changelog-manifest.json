@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T14:48:16.756Z",
+ "generated": "2026-09-13T15:01:28.330Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -20,6 +20,42 @@
   "2026-09-13_193000-refactor-manageability.md"
  ],
  "commits": [
+  {
+   "sha": "5780e3b",
+   "full": "5780e3b0edb223114471c14c66da994401821c84",
+   "date": "2026-09-13",
+   "time": "20:30",
+   "subject": "refactor(fxlab): split cells panels color draw",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "8c67c05",
+   "full": "8c67c059484f01b4e79801ea3ac5c839008b658f",
+   "date": "2026-09-13",
+   "time": "20:30",
+   "subject": "refactor(scramble): split lab into meta panel bind",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "1f6d220",
+   "full": "1f6d2208e04b0565792ce7c1d4062caedd0f8bd3",
+   "date": "2026-09-13",
+   "time": "20:19",
+   "subject": "refactor(glitch): split lab monolith into modules",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "a43485d",
+   "full": "a43485d1d425e91fcff556c6fd951fa7b78f275c",
+   "date": "2026-09-13",
+   "time": "20:18",
+   "subject": "refactor(ds): split overview + changelog renderer",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
   {
    "sha": "3d8a108",
    "full": "3d8a1081b33bd8b870f67c4f3e388d41391e548b",
@@ -858,12 +894,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/pages-changelog.js",
-  "M src/ds/pages-overview.js",
-  "?? src/ds/changelog-paint.js",
-  "?? src/ds/changelog-parse.js",
-  "?? src/ds/functions/glitch/",
-  "?? src/ds/overview-sections.js"
- ]
+ "wip": []
 }
