@@ -13,6 +13,7 @@ import { bindChangelogEvents } from './changelog-events.js';
 const raws = import.meta.glob('../../.hermes/plans/*.md', { query: '?raw', import: 'default', eager: true });
 const entries = Object.entries(raws).sort(([a], [b]) => b.localeCompare(a));
 const texts = Object.fromEntries(entries.map(([p, md]) => [p.split('/').pop(), md]));
+const HIDDEN = /<!--\s*changelog:\s*hide\s*-->/;
 const plans = entries.map(([p, md]) => {
   const file = p.split('/').pop();
   const { date, id, slug } = parseMeta(file);
@@ -30,7 +31,7 @@ const plans = entries.map(([p, md]) => {
     sprints,
     tags: planTags(md, sprints),
     raw: md };
-}).filter((pl) => pl.sprints.length);
+}).filter((pl) => pl.sprints.length && !HIDDEN.test(pl.raw));
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
 const st = { active: new Set(), day: '', sel: [0, 0], open: false, stage: 'list' };
 const visiblePlans = () => plans
