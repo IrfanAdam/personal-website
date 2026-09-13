@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS ESM, Vite build, lint-manage + lint:tokens gates.
 **Tags:** Component, Function
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Glitch lab + cells {#phase-1}
