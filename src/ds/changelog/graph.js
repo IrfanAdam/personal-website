@@ -64,12 +64,10 @@ export function graph({ plans, day }) {
         n,
         ` changes on `,
         fmtDate(k),
-        ` \u2014 filter list"></button>[
-        `,
+        ` \u2014 filter list"></button>`,
       ].join('');
     }).join('');
-    return `,
-      ].join('')<div class="ds-week">${cells}</div>`;
+    return `<div class="ds-week">${cells}</div>`;
   }).join('');
   const dows = `<div class="ds-dows" aria-hidden="true">${DOWS.map((d) => `<span>${d}</span>`).join('')}</div>`;
   return [
