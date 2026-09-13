@@ -5,8 +5,9 @@ export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
   const onClick = (e) => {
     if (e.target.closest('[data-day-clear]')) { st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
-    const dd = e.target.closest('[data-day]'); if (dd) { st.day = st.day === dd.dataset.day ? '' : dd.dataset.day; st.sel = [0,
-        0]; doPaint(root); return; }
+    const dd = e.target.closest('[data-day]');
+    if (dd) { st.day = st.day === dd.dataset.day ? '' : dd.dataset.day;
+      st.sel = [0, 0]; doPaint(root); return; }
     const chip = e
       .target
       .closest('.ds-chip');

@@ -1,4 +1,5 @@
-/* ADAM/DS — Functions · GridReveal (shared). Lab + single-source docs. · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
+/* ADAM/DS — Functions · GridReveal (shared) · composer ·
+   [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 import { mountCells } from '../fx-lab.js';
 import { labSection } from './grid-reveal-lab.js';
 import { docsSections } from './grid-reveal-docs.js';

@@ -1,4 +1,5 @@
-/* ADAM/FX — masonry/gridReveal-config · reveal tokens + geometry · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
+/* ADAM/FX — masonry/gridReveal-config · reveal tokens ·
+   [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 // Exports: fx, darkNow, cellCount — token readers + cell geometry helper
 import { fxNum, fxMs } from '../fx-tokens.js';
 /* Graduated motion tokens — getComputedStyle with shipped-literal fallback,

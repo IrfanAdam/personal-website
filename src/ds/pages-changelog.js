@@ -58,7 +58,8 @@ export function render() {
 function doPaint(root) {
   const { list, pi, plan, sprints, si } = cur();
   st.sel = [pi, si];
-  paint(root, { list, pi, plan, sprints, si, active: st.active, day: st.day, sel: st.sel, open: st.open, stage: st.stage, counts, plans, texts });
+  paint(root, { list, pi, plan, sprints, si, active: st.active, day: st.day,
+    sel: st.sel, open: st.open, stage: st.stage, counts, plans, texts });
 }
 export function mount(root) {
   st.open = false; st.stage = 'list'; doPaint(root);

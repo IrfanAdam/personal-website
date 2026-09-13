@@ -1,4 +1,5 @@
-/* ADAM/PAGE — views/masonry/viewer-visibility · cursor+portal show/hide · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
+/* ADAM/PAGE — views/masonry/viewer-visibility · show/hide ·
+   [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 // Exports: makeVisibility — idle/cursor/portal cluster over shared state
 export function makeVisibility(state, els, cfg, grid) {
   function clearIdle() { if (state.idleTimer) { clearTimeout(state.idleTimer); state.idleTimer = 0; } }
