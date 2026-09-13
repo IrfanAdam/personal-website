@@ -2,7 +2,9 @@
 import { getNoise } from '../audio-ctx.js';
 const AT = 0.88;
 export function getBuf() { return getNoise(); }
-export const red = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch { return false; } };
+export const red = () => {
+  try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch { return false; }
+};
 export function durMs(el) { try { if (!el) return 2400;
     const r = getComputedStyle(el)
       .getPropertyValue('--dur-glitch')

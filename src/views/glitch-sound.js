@@ -40,7 +40,9 @@ function schedule() {
   const wait = lo + Math.random() * (hi - lo);
   timer = setTimeout(async () => {
     const c = getCtx(); if (c && c.state === 'suspended') { try { await c.resume(); } catch {} }
-    const d = untilGlitch(el); if (d > 32) phase = setTimeout(() => { phase = null; play(false); }, d); else play(false);
+    const d = untilGlitch(el);
+    if (d > 32) phase = setTimeout(() => { phase = null; play(false); }, d);
+    else play(false);
   }, wait);
 }
 async function unlock(e) { const c = getCtx();
