@@ -1,132 +1,22 @@
-/* ADAM/PAGE — views/masonry · grid composer + filter state · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/PAGE — views/masonry · masonry · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
-import { attachGridReveal } from './masonry/gridReveal.js';
-import { fxMs } from './fx-tokens.js';
+import { card, row } from './masonry/cards.js';
+import { reveal, attachLinger } from './masonry/reveal.js';
 import { attachViewer } from './masonry/viewer.js';
 import { footer, aboutBlock } from './shared.js';
 import { mountTitleReveal } from './title-reveal.js';
-
 let filter = 'all';
 const cols = 4;
-let view = 'grid'; // 'grid' | 'list'
+let view = 'grid';
 let redraw = null;
 let parallaxOff = null;
 let lingerOff = null;
 let revealOff = null;
 let viewerOff = null;
-const TEXT_H = 0; // overlay — no extra text block height
-
+const TEXT_H = 0;
 const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filter);
-
-function card(p, i) {
-  const [slug, title, a, b, date, , , , img, , , w = 3, h = 4, mock] = p;
-  const tags = [a, b].filter(Boolean).map((c) => `<i>${c}</i>`).join('');
-  return `<a class="card" href="#/projects/${slug}" data-mock="${mock || img}">`
-    + `<span class="img" style="aspect-ratio:${w}/${h}">`
-    + `<canvas class="gr" aria-hidden="true"></canvas>`
-    + `<img loading="lazy" decoding="async" width="${w}" height="${h}" src="${img}" alt="${title}" /></span>`
-    + `<span class="tags">${tags}</span>`
-    + `<span class="scrim" aria-hidden="true"></span>`
-    + `<span class="card-info"><b>${title}</b><small>${slug} · ${date}</small></span></a>`;
-}
-
-function row(p) {
-  const [slug, title, a, b, date] = p;
-  const cats = [a, b].filter(Boolean).join(' · ');
-  return `<a class="work" href="#/projects/${slug}"><span class="work-title">${title}</span>`
-    + `<span class="work-meta">${cats ? cats + ' · ' : ''}${slug} · ${date}</span></a>`;
-}
-
-function reveal(grid) {
-  // Shimmer skeleton (half mosaic) → final splits, random order → photo
-  // lands at the very end → final shimmer → ready.
-  // gridReveal owns reveal/ready timing. Shuffled stagger: the lead cards
-  // get distinct, randomly-dealt time slots — reads as varying load
-  // times (local images would otherwise finish together). Capped, so
-  // long grids don't cascade.
-  const t0 = performance.now();
-  const SKELETON_MS = fxMs('--fx-skeleton', 120);
-  const STAGGER_MS = fxMs('--fx-stagger', 140);
-  const STAGGER_CAP = 8;
-  const cards = [...grid.querySelectorAll('.card')];
-  const slots = cards.map((_, i) => Math.min(i, STAGGER_CAP) * STAGGER_MS);
-  for (let i = slots.length - 1; i > 0; i--) {
-    const j = (Math.random() * (i + 1)) | 0;
-    [slots[i], slots[j]] = [slots[j], slots[i]];
-  }
-  const offs = cards.map((el, i) => {
-    const box = el.querySelector('.img'), img = el.querySelector('img');
-    const delay = Math.max(0, SKELETON_MS - (performance.now() - t0)) + slots[i];
-    return attachGridReveal(box, img, delay, false, slots[i]);
-  });
-  return () => offs.forEach((fn) => fn());
-}
-
-function attachLinger(grid) {
-  // mobile 1-col: info shows only when WHOLE card is visible, lingers in + out.
-  const cards = [...grid.querySelectorAll('.card')];
-  if (!cards.length) return () => {};
-  const isMobile = () => window.innerWidth <= 640;
-  if (!isMobile() || !('IntersectionObserver' in window)) {
-    if (isMobile()) cards.forEach((c) => c.classList.add('in-view'));
-    return () => {};
-  }
-  const LINGER_IN = 60, LINGER_OUT = 480;
-  const showTimers = new Map(), hideTimers = new Map();
-  const topEl = document.querySelector('.top');
-  const hdr = () => (topEl ? topEl.offsetHeight : 56);
-  // threshold ≈ 80% visible — forgiving while still requiring most of card
-  // in viewport (not just peeking). root shrinks viewport by bottom bar.
-  const buildIO = () => new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        const el = e.target;
-        const whole = e.isIntersecting && e.intersectionRatio >= 0.8;
-        if (whole) {
-          if (hideTimers.has(el)) { clearTimeout(hideTimers.get(el)); hideTimers.delete(el); }
-          if (el.classList.contains('in-view') || showTimers.has(el)) return;
-          const t = setTimeout(() => {
-            showTimers.delete(el);
-            if (el.isConnected && isMobile()) el.classList.add('in-view');
-          }, LINGER_IN);
-          showTimers.set(el, t);
-        } else {
-          if (showTimers.has(el)) { clearTimeout(showTimers.get(el)); showTimers.delete(el); }
-          if (!el.classList.contains('in-view') || hideTimers.has(el)) return;
-          const t = setTimeout(() => {
-            hideTimers.delete(el);
-            el.classList.remove('in-view');
-          }, LINGER_OUT);
-          hideTimers.set(el, t);
-        }
-      });
-    },
-    { rootMargin: `0px 0px -${hdr() + 12}px 0px`, threshold: [0, 0.8, 1] }
-  );
-  let io = buildIO();
-  cards.forEach((c) => io.observe(c));
-  const onResize = () => {
-    if (!isMobile()) {
-      showTimers.forEach((t) => clearTimeout(t)); hideTimers.forEach((t) => clearTimeout(t));
-      showTimers.clear(); hideTimers.clear();
-      cards.forEach((c) => c.classList.remove('in-view'));
-      io.disconnect(); window.removeEventListener('resize', onResize);
-      return;
-    }
-    // header height may have changed — rebuild observer with new rootMargin
-    io.disconnect(); io = buildIO(); cards.forEach((c) => io.observe(c));
-  };
-  window.addEventListener('resize', onResize);
-  return () => {
-    showTimers.forEach((t) => clearTimeout(t)); hideTimers.forEach((t) => clearTimeout(t));
-    showTimers.clear(); hideTimers.clear();
-    io.disconnect(); window.removeEventListener('resize', onResize);
-    cards.forEach((c) => c.classList.remove('in-view'));
-  };
-}
-
 function draw(root) {
   const grid = root.querySelector('#grid');
   const count = document.getElementById('count');
@@ -144,16 +34,14 @@ function draw(root) {
     const buckets = distribute(cols, heights);
     grid.className = 'cols';
     grid.style.setProperty('--cols', cols);
-    grid.innerHTML = buckets.map((b) => `<div class="col">${b.map((i) => card(list[i], i)).join('')}</div>`).join('');
+    grid.innerHTML = buckets.map((b) => `<div class="col">${b.map((i) => card(list[i])).join('')}</div>`).join('');
     revealOff = reveal(grid);
-    // parallax aligns short-column bottoms as you scroll
     parallaxOff = attachParallax(grid);
     lingerOff = attachLinger(grid);
     if (window.innerWidth > 640) viewerOff = attachViewer(grid);
   }
   if (count) count.textContent = `${list.length} stories`;
 }
-
 export function Masonry() {
   return `<section class="hero"><h1>Working on stories that last</h1>`
   + `<p>Masonry view. Edit stories in <code>src/data/site.js</code>.</p></section>`
@@ -162,7 +50,6 @@ export function Masonry() {
   + `<button class="pill" data-filter="goals">Sales Goals</button></div>`
   + `<main id="grid"></main>${footer()}`;
 }
-
 export function mountMasonry(root) {
   const onFilter = (e) => {
     const b = e.target.closest('[data-filter]');
@@ -186,8 +73,4 @@ export function mountMasonry(root) {
     redraw = null;
   };
 }
-
-export function setView(v) {
-  view = v;
-  if (redraw) redraw();
-}
+export function setView(v) { view = v; if (redraw) redraw(); }
