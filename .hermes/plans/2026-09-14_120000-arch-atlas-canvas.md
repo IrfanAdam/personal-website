@@ -449,27 +449,37 @@ Verified: `npm run check:map` reports `48 nodes · 65 edges · 7 groups, every i
 
 **Files:** `src/views/map/*`, `src/styles/map.css`, `package.json` (smoke list), `docs/arch-audit.md` (§Public map paragraph).
 
-### Task 28: Flow narrative footer
+### Task 28: Flow narrative footer ✓ done
 
 **Verify:** Footer text differs per mode; syncs on select change without remount.
 
-### Task 29: Mode switch
+Verified: footer swaps per mode without remount — `functions` shows `<strong>Flow:</strong> boot → theme → route → view mount → layout → reveal → fx · sound`; `ia` derives its chain from the lane order (`shell → layout → views → motion → fx panes → sound → tokens hub → repo gates`). The canvas element identity survived the switch (`sameCanvas: true`), i.e. the stage is repainted, never re-mounted.
+
+### Task 29: Mode switch ✓ done
 
 **Verify:** Select swap re-layouts in place (selection cleared, refit framed); choice persists like clicker `mechanics:mode`.
 
-### Task 30: Legend + emphasis parity
+Verified: `#mapMode` swaps the dataset in place — meta goes `48 modules · 65 relations · 7 groups` → `48 modules · 16 relations · 8 layers`, legend pills 17 → 18 (lanes relabelled), canvas pixel hash changes per mode and returns to the exact base hash when switched back (positions reset), selection/pin cleared; `localStorage['map:mode'] = 'ia'` persists across `location.reload()` (boots straight into ia).
+
+### Task 30: Legend + emphasis parity ✓ done
 
 **Verify:** Edge-kind legend pills carry same hover tips as atlas; pin/dim behavior matches.
 
-### Task 31: Sound + reduced motion
+Verified: legend pills answer with the shared stage tip (`Boot → app entry · chrome · routing`, hidden on pointerout); lanes row relabels per mode. Pin/dim parity re-proved in both modes: clicking `boot-chrome` pins (tip survives `pointerleave` + far pointermove, 2 relation rows listed), dims the rest (canvas hash `4146259730 → 2966193722`), and an empty-canvas click restores the exact base hash. Lane drag (+140/+110) moves the box (tip answers at the new spot, not the old) and dblclick restores the base hash.
+
+### Task 31: Sound + reduced motion ✓ done
 
 **Verify:** With site sound on, hovering plays one soft tick; reduced-motion suppresses; default silent.
 
-### Task 32: Ship gate
+Verified by counting `Audio` constructions in the page: fresh visitor (no `adam-sound` key) → 0 ticks; explicit `off` → 0; explicit `on` → ticks (2 across a 6-stop hover sweep, 140 ms floor); `on` + `prefers-reduced-motion: reduce` (CDP emulation) → 0. Public-map default stays silent.
+
+### Task 32: Ship gate ✓ done
 
 **Verify:** `node scripts/smoke.mjs` on 5199 green (add/adjust markers for the new route only if required — never break existing assertions); browser sweep listed above. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8]`.
 
-*Shipped in <sha> · Tasks 28–32 · phase-8.*
+Verified: `lint:manage` clean (graph committed), `lint:tokens` 35 stylesheets + 33 JS, `npm run build` ✓, `check:map` 48 nodes · 65 edges · 7 groups · 8 ia lanes, `node scripts/smoke.mjs` on 5199 ✓. Fresh-load sweep — main page, `/#/lab/architecture`, `/#/minimal-lab`, `/ds/#/atlas` + the other 15 ds routes — zero console errors, and the ds routes each render distinct content (no router fallback).
+
+*Shipped in 62a0fe1 · Tasks 28–32 · phase-8.*
 
 ---
 
@@ -484,6 +494,7 @@ Verified: `npm run check:map` reports `48 nodes · 65 edges · 7 groups, every i
 | 33 | Wire regeneration into build + predev | Fresh clone + `npm run build` regenerates schema; dev picks it up |
 | 34 | Graph + docs update for atlas modules | `docs/graph.mmd` shows atlas nodes, no orphans/cycles |
 | 35 | Full gate + browser sweep + ship | lint-manage + lint:tokens + build + smoke green; all routes err-free |
+
 
 ### Task 33: Wire regeneration into build + predev
 
