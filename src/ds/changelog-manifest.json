@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T07:21:24.910Z",
+ "generated": "2026-09-14T07:21:59.466Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,15 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "5b347e4",
+   "full": "5b347e42e6d3fa9bd4937e95e1d872d4d1f17328",
+   "date": "2026-09-14",
+   "time": "12:51",
+   "subject": "docs(plan): hide subset builds from changelog — 004508 + 003212 are refactor hygiene",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "4b00986",
    "full": "4b0098661514c49e634f7b1551e554ca6f3167cb",
