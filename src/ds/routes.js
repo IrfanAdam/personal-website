@@ -14,6 +14,7 @@ import { render as viewer, mount as mountViewer } from './functions/viewer.js';
 import { render as glimmer, mount as mountGlimmer } from './functions/glimmer-orb.js';
 import { render as glitch, mount as mountGlitch } from './functions/glitch.js';
 import { render as scramble, mount as mountScramble } from './functions/scramble.js';
+import { render as atlas, mount as mountAtlas } from './pages-atlas.js';
 export const routes = [
   { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
@@ -22,6 +23,7 @@ export const routes = [
     group: 'Start',
     render: foundations,
     mount: mountFoundations },
+  { hash: '#/atlas', label: 'Atlas', group: 'Start', render: atlas, mount: mountAtlas },
   { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
   { hash: '#/components', label: 'Components', group: 'Components', render: components },

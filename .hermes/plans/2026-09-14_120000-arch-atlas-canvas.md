@@ -139,6 +139,8 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** `npm test` green; `git status` clean after commit except expected manifest refresh; open `docs/graph.mmd` head — new atlas modules (Phase 3+) absent yet, which is correct.
 
+*Shipped in 2969440 · Tasks 4–6 · phase-2.*
+
 ---
 
 ## Phase 3 — Atlas canvas route, one switchable view {#phase-3}
@@ -153,7 +155,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 | 8 | Layered SVG canvas with toggles + layout switch | Functions/Components/Foundations toggle independently; layered + radial layouts |
 | 9 | Pan/zoom + node click → inspector hook | Clicking a node shows its connectors; Esc/scrim closes |
 
-### Task 7: Atlas route + shell
+### Task 7: Atlas route + shell ✓ done
 
 **Objective:** Route exists in table + nav without breaking existing 16 routes.
 
@@ -166,7 +168,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** `npm test` green; open `http://127.0.0.1:5199/ds/#/atlas` (dev on 5199, never 5173) — toolbar + empty canvas + inspector stub visible, no console errors.
 
-### Task 8: Layered SVG canvas with toggles + layout switch
+### Task 8: Layered SVG canvas with toggles + layout switch ✓ done
 
 **Objective:** Deterministic column layout (one column per layer) + radial mode; three toggle pills filter nodes; hover = outline/border only (never color/opacity).
 
@@ -178,7 +180,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** With all toggles on, node count equals schema node count; toggling Foundations off removes exactly its nodes; switching layout keeps node count; `npm run lint:tokens` clean (no raw px/hex in `atlas.css`).
 
-### Task 9: Pan/zoom + node click inspector hook
+### Task 9: Pan/zoom + node click inspector hook ✓ done
 
 **Objective:** Canvas pans (drag) + zooms (wheel, 0.4–2.5 clamp); clicking a node opens inspector with its id/path/layer/route; Esc/scrim/✕ close.
 

@@ -19,14 +19,27 @@ export function layerFor(rootRel) {
 }
 export function routeLinks(root) {
   const src = readFileSync(join(root, 'src/ds/routes.js'), 'utf8');
-  const imps = [...src.matchAll(/^import .* from '\.\/([^']+)'/gm)].map((m) => m[1]);
-  const hashes = [...src.matchAll(/hash:\s*'([^']+)'/g)].map((m) => m[1]);
-  const labels = [...src.matchAll(/label:\s*'([^']+)'/g)].map((m) => m[1]);
+  const impMap = new Map();
+  for (const m of src.matchAll(/import\s+\{[^}]*render\s+as\s+(\w+)[^}]*\}\s+from\s+'\.\/([^']+)'/g)) {
+    const v = m[1];
+    const p = m[2];
+    const abs = resolve(join(root, 'src/ds'), p);
+    impMap.set(v, relative(root, abs));
+  }
+  for (const m of src.matchAll(/import\s+\{\s*render\s+as\s+(\w+)\s*\}\s+from\s+'\.\/([^']+)'/g)) {
+    const v = m[1];
+    const p = m[2];
+    const abs = resolve(join(root, 'src/ds'), p);
+    if (!impMap.has(v)) impMap.set(v, relative(root, abs));
+  }
   const out = new Map();
-  const n = Math.min(imps.length, hashes.length, labels.length);
-  for (let i = 0; i < n; i += 1) {
-    const abs = resolve(join(root, 'src/ds'), imps[i]);
-    out.set(relative(root, abs), { route: hashes[i], title: labels[i] });
+  const routeRe = /\{\s*hash:\s*'([^']+)'[^}]*?label:\s*'([^']+)'[^}]*?render:\s*(\w+)/gs;
+  for (const m of src.matchAll(routeRe)) {
+    const hash = m[1];
+    const label = m[2];
+    const renderVar = m[3];
+    const rel = impMap.get(renderVar);
+    if (rel) out.set(rel, { route: hash, title: label });
   }
   return out;
 }

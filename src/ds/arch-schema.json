@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T08:23:03.191Z",
+  "generated": "2026-09-14T09:59:09.827Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -14,6 +14,41 @@
       "layer": "component",
       "route": null,
       "title": "site"
+    },
+    {
+      "id": "ds_atlas",
+      "path": "src/ds/atlas.css",
+      "layer": "style",
+      "route": null,
+      "title": "atlas"
+    },
+    {
+      "id": "ds_atlas_canvas",
+      "path": "src/ds/atlas/canvas.js",
+      "layer": "component",
+      "route": null,
+      "title": "canvas"
+    },
+    {
+      "id": "ds_atlas_layout",
+      "path": "src/ds/atlas/layout.js",
+      "layer": "component",
+      "route": null,
+      "title": "layout"
+    },
+    {
+      "id": "ds_atlas_panel",
+      "path": "src/ds/atlas/panel.js",
+      "layer": "component",
+      "route": null,
+      "title": "panel"
+    },
+    {
+      "id": "ds_atlas_schema",
+      "path": "src/ds/atlas/schema.js",
+      "layer": "component",
+      "route": null,
+      "title": "schema"
     },
     {
       "id": "ds_changelog",
@@ -786,6 +821,13 @@
       "title": "style b"
     },
     {
+      "id": "ds_pages_atlas",
+      "path": "src/ds/pages-atlas.js",
+      "layer": "component",
+      "route": "#/atlas",
+      "title": "Atlas"
+    },
+    {
       "id": "ds_pages_changelog",
       "path": "src/ds/pages-changelog.js",
       "layer": "component",
@@ -796,8 +838,8 @@
       "id": "ds_pages_components",
       "path": "src/ds/pages-components.js",
       "layer": "component",
-      "route": "#/primitives",
-      "title": "Primitives"
+      "route": "#/components",
+      "title": "Components"
     },
     {
       "id": "ds_pages_foundations",
@@ -810,15 +852,15 @@
       "id": "ds_pages_functions",
       "path": "src/ds/pages-functions.js",
       "layer": "function",
-      "route": "#/components",
-      "title": "Components"
+      "route": "#/functions",
+      "title": "Functions"
     },
     {
       "id": "ds_pages_library",
       "path": "src/ds/pages-library.js",
       "layer": "component",
-      "route": "#/functions",
-      "title": "Functions"
+      "route": "#/library",
+      "title": "Library · Landing"
     },
     {
       "id": "ds_pages_overview",
@@ -831,15 +873,15 @@
       "id": "ds_pages_patterns",
       "path": "src/ds/pages-patterns.js",
       "layer": "component",
-      "route": "#/library",
-      "title": "Library · Landing"
+      "route": "#/patterns",
+      "title": "Patterns · Quality"
     },
     {
       "id": "ds_pages_primitives",
       "path": "src/ds/pages-primitives.js",
       "layer": "component",
-      "route": "#/patterns",
-      "title": "Patterns · Quality"
+      "route": "#/primitives",
+      "title": "Primitives"
     },
     {
       "id": "ds_patterns_data",
@@ -1613,6 +1655,21 @@
     }
   ],
   "edges": [
+    {
+      "from": "ds_atlas_canvas",
+      "to": "ds_atlas_layout",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_panel",
+      "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
     {
       "from": "ds_changelog_archive",
       "to": "styles_tokens",
@@ -2709,6 +2766,21 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_canvas",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_panel",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
       "from": "ds_pages_changelog",
       "to": "ds_changelog_events",
       "kind": "imports"
@@ -3111,6 +3183,11 @@
     {
       "from": "ds_routes",
       "to": "ds_functions_viewer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_atlas",
       "kind": "imports"
     },
     {

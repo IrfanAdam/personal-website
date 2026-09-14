@@ -1,4 +1,6 @@
 graph TD
+ds_atlas_canvas --> ds_atlas_layout
+ds_atlas_panel --> ds_atlas_schema
 ds_changelog_graph --> ds_changelog_links
 ds_changelog_graph --> ds_changelog_parse
 ds_changelog_paint --> ds_changelog_paint_chips
@@ -158,6 +160,9 @@ ds_overview_sections --> ds_overview_principles
 ds_overview_sections --> ds_overview_reading
 ds_overview_sections --> ds_overview_style_a
 ds_overview_sections --> ds_overview_style_b
+ds_pages_atlas --> ds_atlas_canvas
+ds_pages_atlas --> ds_atlas_panel
+ds_pages_atlas --> ds_atlas_schema
 ds_pages_changelog --> ds_changelog_events
 ds_pages_changelog --> ds_changelog_links
 ds_pages_changelog --> ds_changelog_paint
@@ -230,6 +235,7 @@ ds_routes --> ds_functions_rise
 ds_routes --> ds_functions_scramble
 ds_routes --> ds_functions_shimmer
 ds_routes --> ds_functions_viewer
+ds_routes --> ds_pages_atlas
 ds_routes --> ds_pages_changelog
 ds_routes --> ds_pages_components
 ds_routes --> ds_pages_foundations
