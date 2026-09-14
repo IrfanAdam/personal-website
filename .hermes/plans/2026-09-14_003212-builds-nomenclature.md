@@ -5,6 +5,8 @@
 **Tech Stack:** Vite · vanilla ESM renderer · marked · node ds-track
 **Tags:** Design System, Tooling
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Changelog page + build vocabulary {#phase-1}
