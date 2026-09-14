@@ -328,8 +328,13 @@ views_map_canvas --> views_map_data
 views_map_canvas --> views_map_hits
 views_map_canvas --> views_map_render
 views_map_canvas --> views_map_wires
+views_map_chunk --> views_map_geom
+views_map_data --> views_map_focus
+views_map_data --> views_map_geom
+views_map_data --> views_map_store
 views_map_drag --> views_map_data
 views_map_drag --> views_map_route
+views_map_focus --> views_map_store
 views_map_hits --> views_map_data
 views_map_hits --> views_map_route
 views_map_index --> views_map_canvas
@@ -337,6 +342,9 @@ views_map_index --> views_map_data
 views_map_index --> views_map_paint
 views_map_index --> views_map_pointer
 views_map_index --> views_map_route
+views_map_index --> views_map_sound
+views_map_index --> views_map_tips
+views_map_index --> views_map_ui
 views_map_pointer --> views_map_data
 views_map_pointer --> views_map_drag
 views_map_pointer --> views_map_popover
@@ -344,6 +352,12 @@ views_map_pointer --> views_map_route
 views_map_popover --> views_map_data
 views_map_render --> views_map_data
 views_map_render --> views_map_paint
+views_map_sound --> views_element_sound
+views_map_store --> views_map_chunk
+views_map_store --> views_map_geom
+views_map_tips --> views_map_popover
+views_map_ui --> views_map_data
+views_map_ui --> views_map_store
 views_map_wires --> views_map_data
 views_map_wires --> views_map_paint
 views_map_wires --> views_map_route

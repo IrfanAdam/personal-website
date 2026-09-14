@@ -1,6 +1,6 @@
 /* ADAM/PAGE — views/map/drag · gesture lifecycle: group drag, row reorder, pan
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-7] */
-import { layoutGroup, reorder } from './data.js';
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8] */
+import { layoutGroup, membersOf, reorderNode } from './data.js';
 import { clearRoutes } from './route.js';
 // Exports: makeGesture
 const SLOP = 5;
@@ -21,14 +21,14 @@ export function makeGesture(map) {
       const g = live.drag.g;
       g.x = live.drag.gx + (p.x - live.drag.px);
       g.y = live.drag.gy + (p.y - live.drag.py);
-      layoutGroup(g);
+      layoutGroup(g, membersOf(g));
       clearRoutes();
       map.draw();
       return true;
     }
     if (live.dragNode) {
       live.moved = true;
-      reorder(live.dragNode, p.y);
+      reorderNode(live.dragNode, p.y);
       map.draw();
       return true;
     }

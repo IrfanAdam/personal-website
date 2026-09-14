@@ -75,3 +75,23 @@ Composer: `#/foundations` ← `pages-foundations.js` (+ `foundations-mix.js`,
 Token sources (single source of truth, read by everything above):
 `styles/tokens.css` + `tokens-color/type/fx/overrides.css`, all `<link>`ed
 in `ds/index.html` → every `tokens` edge terminates at `styles/tokens*`.
+
+## Public map — `#/lab/architecture`
+
+Viewer-facing map of the site itself (`src/views/map/*`, `src/styles/map.css` +
+`map-controls.css`, entry card on `#/minimal-lab`). One curated dataset
+(`src/data/arch-map.json`, 48 nodes · 65 relations) drives two modes; every
+curated id is validated against `arch-schema.json` by `scripts/check-arch-map.mjs`
+in the build chain, so a renamed module fails the build instead of shipping dead.
+
+- **functions** — module families (shell · pages · masonry · fx · sound ·
+  foundations · gates), wires are `call` / `data` / `signal` between modules.
+- **ia** — the same 48 modules re-chunked into 8 lanes (shell → layout → views →
+  motion → fx panes → sound → tokens hub → repo gates) laid out as a wrapped lane
+  flow; wires roll up to lane→lane counts, so the canvas reads as the IA blueprint.
+
+The choice persists in `localStorage['map:mode']`; switching resets positions,
+clears the pin and refits in place (no remount). Legend pills carry hover tips via
+the shared stage tip, lanes relabel per mode, and a hover plays one soft tick only
+when site sound is explicitly on (`adam-sound = on`) and never under
+`prefers-reduced-motion` — a fresh visitor gets a silent map.

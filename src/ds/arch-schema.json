@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T12:19:49.286Z",
+  "generated": "2026-09-14T12:59:55.175Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2615,6 +2615,28 @@
       ]
     },
     {
+      "id": "styles_map_controls",
+      "path": "src/styles/map-controls.css",
+      "layer": "style",
+      "route": null,
+      "title": "map controls",
+      "tokens": [
+        "--border-focus",
+        "--border-hairline",
+        "--color-ink",
+        "--color-ink-subtle",
+        "--color-surface",
+        "--focus-offset",
+        "--font-mono",
+        "--size-map-leg",
+        "--space-4",
+        "--space-6",
+        "--text-micro",
+        "--tracking-label",
+        "--tracking-mono"
+      ]
+    },
+    {
       "id": "styles_masonry",
       "path": "src/styles/masonry.css",
       "layer": "style",
@@ -2982,6 +3004,14 @@
       "tokens": []
     },
     {
+      "id": "views_map_chunk",
+      "path": "src/views/map/chunk.js",
+      "layer": "view",
+      "route": null,
+      "title": "chunk",
+      "tokens": []
+    },
+    {
       "id": "views_map_data",
       "path": "src/views/map/data.js",
       "layer": "view",
@@ -2995,6 +3025,22 @@
       "layer": "view",
       "route": null,
       "title": "drag",
+      "tokens": []
+    },
+    {
+      "id": "views_map_focus",
+      "path": "src/views/map/focus.js",
+      "layer": "view",
+      "route": null,
+      "title": "focus",
+      "tokens": []
+    },
+    {
+      "id": "views_map_geom",
+      "path": "src/views/map/geom.js",
+      "layer": "view",
+      "route": null,
+      "title": "geom",
       "tokens": []
     },
     {
@@ -3051,6 +3097,38 @@
       "layer": "view",
       "route": null,
       "title": "route",
+      "tokens": []
+    },
+    {
+      "id": "views_map_sound",
+      "path": "src/views/map/sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "sound",
+      "tokens": []
+    },
+    {
+      "id": "views_map_store",
+      "path": "src/views/map/store.js",
+      "layer": "view",
+      "route": null,
+      "title": "store",
+      "tokens": []
+    },
+    {
+      "id": "views_map_tips",
+      "path": "src/views/map/tips.js",
+      "layer": "view",
+      "route": null,
+      "title": "tips",
+      "tokens": []
+    },
+    {
+      "id": "views_map_ui",
+      "path": "src/views/map/ui.js",
+      "layer": "view",
+      "route": null,
+      "title": "ui",
       "tokens": []
     },
     {
@@ -5249,6 +5327,11 @@
       "kind": "tokens"
     },
     {
+      "from": "styles_map_controls",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "styles_map",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -5439,6 +5522,26 @@
       "kind": "imports"
     },
     {
+      "from": "views_map_chunk",
+      "to": "views_map_geom",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_data",
+      "to": "views_map_focus",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_data",
+      "to": "views_map_geom",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_data",
+      "to": "views_map_store",
+      "kind": "imports"
+    },
+    {
       "from": "views_map_drag",
       "to": "views_map_data",
       "kind": "imports"
@@ -5446,6 +5549,11 @@
     {
       "from": "views_map_drag",
       "to": "views_map_route",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_focus",
+      "to": "views_map_store",
       "kind": "imports"
     },
     {
@@ -5484,6 +5592,21 @@
       "kind": "imports"
     },
     {
+      "from": "views_map_index",
+      "to": "views_map_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_tips",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_ui",
+      "kind": "imports"
+    },
+    {
       "from": "views_map_pointer",
       "to": "views_map_data",
       "kind": "imports"
@@ -5516,6 +5639,36 @@
     {
       "from": "views_map_render",
       "to": "views_map_paint",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_sound",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_store",
+      "to": "views_map_chunk",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_store",
+      "to": "views_map_geom",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_tips",
+      "to": "views_map_popover",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_ui",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_ui",
+      "to": "views_map_store",
       "kind": "imports"
     },
     {

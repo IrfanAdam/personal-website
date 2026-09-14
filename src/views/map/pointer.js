@@ -1,6 +1,6 @@
 /* ADAM/PAGE — views/map/pointer · hover, zoom, pin + reset wiring
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-7] */
-import { GROUPS, layoutGroup } from './data.js';
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8] */
+import { resetGroup } from './data.js';
 import { clearRoutes } from './route.js';
 import { makeGesture } from './drag.js';
 import { nodeTipHTML, edgeTipHTML, groupTipHTML } from './popover.js';
@@ -12,7 +12,7 @@ const cursorFor = (g, n, edge) => {
   if (edge) return 'pointer';
   return 'grab';
 };
-export function bindPointer(canvas, map) {
+export function bindPointer(canvas, map, opts = {}) {
   const { view, sel, live } = map;
   const gesture = makeGesture(map);
   map.canvas = canvas;
@@ -27,6 +27,7 @@ export function bindPointer(canvas, map) {
     live.hoverGroup = g;
     live.hover = n;
     live.hoverEdge = edge;
+    if (opts.onHover) opts.onHover(n || edge || g);
     canvas.style.cursor = cursorFor(g, n, edge);
     map.draw();
     if (g) map.showTip(groupTipHTML(g), g.x + g.w / 2, g.y + HEADER);
@@ -62,9 +63,7 @@ export function bindPointer(canvas, map) {
   const dbl = (e) => {
     const g = map.hits.group(map.world(e));
     if (!g) return;
-    g.x = g.base.x;
-    g.y = g.base.y;
-    layoutGroup(g);
+    resetGroup(g);
     clearRoutes();
     map.draw();
   };
@@ -72,6 +71,7 @@ export function bindPointer(canvas, map) {
     live.hover = null;
     live.hoverEdge = null;
     live.hoverGroup = null;
+    if (opts.onHover) opts.onHover(null);
     if (!sel.node && !sel.edge) map.hideTip();
     map.draw();
   };

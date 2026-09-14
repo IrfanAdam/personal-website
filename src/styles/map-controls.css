@@ -1,0 +1,26 @@
+/* ADAM/STYLE — styles/map-controls · mode switch + lane legend + pill hover tips
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8] */
+.map-mode { display: flex; align-items: center; gap: var(--space-6); margin-left: auto; }
+.map-mode-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink-subtle);
+}
+.map-select {
+  padding: var(--space-4) var(--space-6);
+  border: var(--border-hairline);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.map-select:hover, .map-select:focus-visible { outline: var(--border-focus); outline-offset: var(--focus-offset); }
+.map-pill { pointer-events: auto; cursor: help; }
+.map-pill:hover, .map-pill:focus-visible { outline: var(--border-focus); outline-offset: var(--focus-offset); }
+.map-leg-label { min-width: var(--size-map-leg); }
+.map-foot strong, .map-foot #mapFlow strong { color: var(--color-ink); }

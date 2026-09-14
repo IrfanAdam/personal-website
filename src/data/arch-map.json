@@ -3,45 +3,55 @@
  "kinds": {
   "boot": {
    "label": "Boot",
-   "color": "--color-ink"
+   "color": "--color-ink",
+   "tip": "app entry \u00b7 chrome \u00b7 routing"
   },
   "page": {
    "label": "Page",
-   "color": "--color-accent"
+   "color": "--color-accent",
+   "tip": "route views rendered into the shell"
   },
   "core": {
    "label": "Engine",
-   "color": "--color-info"
+   "color": "--color-info",
+   "tip": "masonry engine internals"
   },
   "fx": {
    "label": "Effect",
-   "color": "--color-warning"
+   "color": "--color-warning",
+   "tip": "visual specimens in the fx registry"
   },
   "sound": {
    "label": "Sound",
-   "color": "--color-success"
+   "color": "--color-success",
+   "tip": "procedural voices + unlock"
   },
   "style": {
    "label": "Stylesheet",
-   "color": "--color-ink-muted"
+   "color": "--color-ink-muted",
+   "tip": "stylesheet a view reads"
   },
   "tool": {
    "label": "Gate",
-   "color": "--color-ink-subtle"
+   "color": "--color-ink-subtle",
+   "tip": "repo gate or generator"
   }
  },
  "edgeKinds": {
   "call": {
    "label": "call",
-   "color": "--color-ink-muted"
+   "color": "--color-ink-muted",
+   "tip": "module imports or invokes the target"
   },
   "data": {
    "label": "data",
-   "color": "--color-info"
+   "color": "--color-info",
+   "tip": "reads tokens or a stylesheet"
   },
   "signal": {
    "label": "signal",
-   "color": "--color-warning"
+   "color": "--color-warning",
+   "tip": "listens to a browser event"
   }
  },
  "groups": [
@@ -941,5 +951,121 @@
    "kind": "signal",
    "label": "pointer gesture"
   }
- ]
+ ],
+ "ia": {
+  "groups": [
+   {
+    "id": "ia_shell",
+    "label": "Shell",
+    "sub": "chrome \u00b7 routing",
+    "tint": "--color-ink",
+    "members": [
+     "boot_chrome",
+     "main",
+     "theme",
+     "views_headerFrame",
+     "views_shared"
+    ]
+   },
+   {
+    "id": "ia_layout",
+    "label": "Layout",
+    "sub": "grid \u00b7 columns \u00b7 css",
+    "tint": "--color-info",
+    "members": [
+     "views_masonry_layout",
+     "views_masonry_cards",
+     "views_masonry_cells",
+     "styles_masonry"
+    ]
+   },
+   {
+    "id": "ia_views",
+    "label": "Views",
+    "sub": "routes and content",
+    "tint": "--color-accent",
+    "members": [
+     "views_masonry",
+     "views_project",
+     "views_contact",
+     "data_site",
+     "views_masonry_viewer"
+    ]
+   },
+   {
+    "id": "ia_motion",
+    "label": "Motion",
+    "sub": "reveal \u00b7 chase",
+    "tint": "--color-warning",
+    "members": [
+     "views_masonry_reveal",
+     "views_masonry_gridReveal",
+     "views_masonry_parallax",
+     "views_title_reveal"
+    ]
+   },
+   {
+    "id": "ia_panes",
+    "label": "Fx panes",
+    "sub": "specimen registry",
+    "tint": "--color-success",
+    "members": [
+     "views_glitch",
+     "views_glitch_sound",
+     "views_glimmer_orb",
+     "views_rise",
+     "views_scramble_text",
+     "fx_visual_index",
+     "views_element_sound"
+    ]
+   },
+   {
+    "id": "ia_sound",
+    "label": "Sound",
+    "sub": "voices \u00b7 unlock",
+    "tint": "--color-warning",
+    "members": [
+     "fx_sound_index",
+     "views_init_sound",
+     "views_audio_ctx",
+     "views_sound_palette",
+     "fx_sound_voices_tone",
+     "fx_sound_voices_noise",
+     "fx_sound_voices_drone",
+     "fx_sound_voices_scan"
+    ]
+   },
+   {
+    "id": "ia_tokens",
+    "label": "Tokens hub",
+    "sub": "foundations",
+    "tint": "--color-ink-muted",
+    "members": [
+     "styles_tokens",
+     "styles_tokens_color",
+     "styles_tokens_type",
+     "styles_tokens_fx",
+     "styles_tokens_overrides",
+     "styles_base",
+     "styles_pages",
+     "styles_card",
+     "styles_case"
+    ]
+   },
+   {
+    "id": "ia_gates",
+    "label": "Repo gates",
+    "sub": "generators and checks",
+    "tint": "--color-ink-subtle",
+    "members": [
+     "scripts_map_graph",
+     "scripts_graph_schema",
+     "scripts_ds_track",
+     "scripts_lint_tokens",
+     "scripts_lint_manage",
+     "scripts_smoke"
+    ]
+   }
+  ]
+ }
 }

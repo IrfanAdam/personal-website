@@ -1,6 +1,6 @@
-/* ADAM/PAGE — views/map/popover · cursor tooltip markup (node + edge)
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-7] */
-import { EDGES, KINDS, byId, groupOf, membersOf } from './data.js';
+/* ADAM/PAGE — views/map/popover · cursor tooltip markup (node + edge + lane)
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8] */
+import { LINKS, KINDS, byId, groupOf, membersOf } from './data.js';
 // Exports: nodeTipHTML, edgeTipHTML
 const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const kindLabel = (k) => (KINDS[k] || {}).label || k;
@@ -18,8 +18,8 @@ const list = (title, rows) => {
 };
 export function nodeTipHTML(n) {
   const g = groupOf(n);
-  const out = EDGES.filter((e) => e.from === n.id).map((e) => rel(e, 'out'));
-  const inn = EDGES.filter((e) => e.to === n.id).map((e) => rel(e, 'in'));
+  const out = LINKS.filter((e) => e.from === n.id).map((e) => rel(e, 'out'));
+  const inn = LINKS.filter((e) => e.to === n.id).map((e) => rel(e, 'in'));
   const head = `<strong>${esc(n.label)}</strong><em>${esc(n.desc)}</em>`;
   const meta = `<em>${esc(n.file)} · ${esc(kindLabel(n.kind))} · ${esc(g ? g.label : n.group)} — ${esc(n.sub)}</em>`;
   return `${head}<span class="map-rels">${list('wires out', out)}${list('wires in', inn)}</span>${meta}`;

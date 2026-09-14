@@ -1,38 +1,16 @@
 /* ADAM/PAGE — views/map/index · fullscreen architecture map view + mount
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-7] */
-import { GROUPS, NODES, EDGES, KINDS, EDGE_KINDS, layoutGroup } from './data.js';
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8] */
+import { getMode, resetAll } from './data.js';
 import { createMap } from './canvas.js';
 import { bindPointer } from './pointer.js';
 import { clearRoutes } from './route.js';
 import { resetTokens } from './paint.js';
+import { barHTML, stageHTML, paintChrome, bindMode } from './ui.js';
+import { bindLegendTips } from './tips.js';
+import { makeHoverTick } from './sound.js';
 // Exports: MapView, mountMap
-const pill = (attr, key, label) => `<span class="map-pill"><i ${attr}="${key}"></i>${label}</span>`;
-const legends = () => [
-  '<div class="map-legends">',
-  '<div class="map-leg"><span class="map-leg-label">modules</span>',
-  Object.entries(KINDS).map(([k, v]) => pill('data-kind', k, v.label)).join(''),
-  '</div>',
-  '<div class="map-leg"><span class="map-leg-label">wires</span>',
-  Object.entries(EDGE_KINDS).map(([k, v]) => pill('data-edge', k, v.label)).join(''),
-  '</div></div>',
-].join('');
 export function MapView() {
-  return [
-    '<div class="map-view">',
-    '<div class="map-bar"><a class="map-back" id="mapBack" href="#/masonry">← back to work</a>',
-    '<span class="map-title">Architecture map</span>',
-    `<span class="map-meta">${NODES.length} modules · ${EDGES.length} relations · `,
-    `${GROUPS.length} groups</span>`,
-    '<button class="map-chip" type="button" id="mapReset">reset layout</button></div>',
-    '<div class="map-stage" id="mapStage">',
-    '<canvas id="mapCanvas" aria-label="Architecture map of this site"></canvas>',
-    '<div class="map-tip" id="mapTip" hidden></div>',
-    legends(),
-    '<div class="map-foot"><span><strong>Flow:</strong> boot → route → view → layout → reveal → fx · sound</span>',
-    '<span>drag a group header to move it · drag a row to reorder · double-click a header to reset · ',
-    'scroll to zoom · drag the canvas to pan · esc to leave</span></div>',
-    '</div></div>',
-  ].join('');
+  return ['<div class="map-view">', barHTML(), stageHTML(), '</div>'].join('');
 }
 export function mountMap(root) {
   const canvas = root.querySelector('#mapCanvas');
@@ -42,13 +20,27 @@ export function mountMap(root) {
   resetTokens();
   clearRoutes();
   const map = createMap(canvas, tipEl);
-  const unbindPointer = bindPointer(canvas, map);
+  const unbindPointer = bindPointer(canvas, map, { onHover: makeHoverTick() });
+  const unbindTips = bindLegendTips(root, map);
+  const refit = () => {
+    map.sel.node = null;
+    map.sel.edge = null;
+    map.live.hover = null;
+    map.live.hoverEdge = null;
+    map.live.hoverGroup = null;
+    map.hideTip();
+    clearRoutes();
+    map.fit();
+    map.draw();
+  };
+  const onMode = (next) => {
+    paintChrome(root, next);
+    refit();
+  };
+  paintChrome(root, getMode());
+  const unbindMode = bindMode(root, onMode);
   const onReset = () => {
-    GROUPS.forEach((g) => {
-      g.x = g.base.x;
-      g.y = g.base.y;
-      layoutGroup(g);
-    });
+    resetAll();
     clearRoutes();
     map.fit();
     map.draw();
@@ -65,6 +57,8 @@ export function mountMap(root) {
   back.focus();
   return () => {
     unbindPointer();
+    unbindTips();
+    unbindMode();
     document.removeEventListener('keydown', onKey);
     window.removeEventListener('resize', onResize);
     reset.removeEventListener('click', onReset);
