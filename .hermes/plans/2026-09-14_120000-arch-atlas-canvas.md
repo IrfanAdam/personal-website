@@ -496,7 +496,7 @@ Verified: `lint:manage` clean (graph committed), `lint:tokens` 35 stylesheets + 
 | 35 | Full gate + browser sweep + ship | lint-manage + lint:tokens + build + smoke green; all routes err-free |
 
 
-### Task 33: Wire regeneration into build + predev
+### Task 33: Wire regeneration into build + predev ✓ done
 
 **Objective:** Single place owns freshness — `package.json` chains `map-graph` before `ds-track`.
 
@@ -505,7 +505,9 @@ Verified: `lint:manage` clean (graph committed), `lint:tokens` 35 stylesheets + 
 
 **Verify:** `npm run arch` regenerates both outputs; `git status` after `npm run build` shows at most timestamp noise (discard if only `generated` changed).
 
-### Task 34: Graph + docs update for atlas modules
+Verified: `build` was already `map-graph → check-arch-map → ds-track → vite build` (map-graph precedes ds-track, and the drift guard sits between them); this phase closed the remaining gaps — added `"arch": "node scripts/map-graph.mjs"` and chained `map-graph` into `predev` before `ds-track`. `npm run arch` prints `✓ graph — 218 modules · 412 edges → docs/graph.mmd + arch-schema.json` (both outputs), and after a full `npm run build` the only working-tree noise is the `generated` timestamp in `arch-schema.json` (discarded).
+
+### Task 34: Graph + docs update for atlas modules ✓ done
 
 **Objective:** Retrievability guarantee covers the atlas + public-map modules.
 
@@ -515,7 +517,9 @@ Verified: `lint:manage` clean (graph committed), `lint:tokens` 35 stylesheets + 
 
 **Verify:** `grep -c atlas docs/graph.mmd` ≥ 5; manual scan: no orphan (every atlas node has ≥1 edge), no cycle introduced.
 
-### Task 35: Full gate + browser sweep + ship
+Verified: `grep -c atlas docs/graph.mmd` = 26 (≥5); all 13 atlas nodes carry edges (no orphans, none with ≤1 edge) and the atlas subgraph is acyclic (`ds_routes → ds_pages_atlas → atlas modules → schema/layout/camera`). The only cycle in the graph is the pre-existing `views_audio_ctx ↔ views_audio_test` diagnostics re-export pair, present in the committed graph before this phase and untouched here. `docs/arch-audit.md` gained §Atlas (route, module map, dock controls, emphasis contract, dense-label rule).
+
+### Task 35: Full gate + browser sweep + ship ✓ done
 
 **Objective:** Atlas joins the standing definition of done.
 
@@ -527,6 +531,11 @@ Verified: `lint:manage` clean (graph committed), `lint:tokens` 35 stylesheets + 
 - `npm test` green; `node scripts/smoke.mjs` on 5199 green
 - Fresh-load sweep: `/ds/#/atlas` + `/#/lab/architecture` + all 16 existing routes, zero console errors, Atlas toggles/layouts/inspector re-verified post-reload (HMR state lies — reload first)
 - Mark all Phase 9 tasks `✓ done`, append `*Shipped in <sha> · Tasks 33–35 · phase-9.*` per phase as each ships
+
+Verified: `plan:names` 21 names · 0 missing; `ds:track` 17/17 tagged · 173 DS commits (173 linked) · cont `20260909_145218_9888b1` · wip = the sibling stream's two uncommitted files only; `npm test` green (`lint:tokens` 35 stylesheets + 33 JS, `✓ built`); `check:map` 48 nodes · 65 edges · 7 groups · 8 ia lanes; `smoke` on 5199 ✓. Fresh-load sweep, zero console errors on every route: main page, `/#/lab/architecture`, `/#/minimal-lab`, `/ds/#/atlas` + the other 15 ds routes. Atlas re-verified post-reload with real clicks: component chip off → `57 nodes · 53 edges`, on → `150 nodes · 244 edges`; `radial` switch changes the canvas (svg 100630 → 100258) and `layered` restores; clicking `Glimmer orb` pins the inspector (path/layer/route/Schema/lab files/production, 5 connector rows), ✕ and Escape both unpin.
+
+
+*Shipped in 9540e71 · Tasks 33–35 · phase-9.*
 
 ---
 
