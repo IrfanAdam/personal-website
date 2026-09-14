@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T14:04:08.998Z",
+ "generated": "2026-09-14T14:40:01.954Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -26,6 +26,24 @@
   "2026-09-14_192124-atlas-fullscreen.md"
  ],
  "commits": [
+  {
+   "sha": "9196057",
+   "full": "9196057108326275f69277b08cda4d5eb9b2c04b",
+   "date": "2026-09-14",
+   "time": "20:09",
+   "subject": "feat(ds): changelog hum via the element engine — proximity hover on today",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "63f7002",
+   "full": "63f7002fece734c0e8d9920a885b44a6f3660e07",
+   "date": "2026-09-14",
+   "time": "19:34",
+   "subject": "chore(ds): track refresh — manifest 177 · atlas phases 10-11",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase11"
+  },
   {
    "sha": "0b1d0ff",
    "full": "0b1d0ff0c984e054997c1d4f8087416fc6bc6df9",
@@ -1621,7 +1639,6 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-events.js",
-  "M src/ds/changelog/graph.js"
+  "M src/ds/arch-schema.json"
  ]
 }
