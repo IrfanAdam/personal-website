@@ -12,9 +12,10 @@
   "lint:tokens": "node scripts/lint-tokens.mjs",
   "test": "npm run lint:tokens && npm run build",
   "ds:track": "node scripts/ds-track.mjs",
+  "arch": "node scripts/map-graph.mjs",
   "plan:suggest": "node scripts/plan-suggest.mjs",
   "plan:names": "node scripts/plan-names.mjs",
-  "predev": "node scripts/ds-track.mjs || true",
+  "predev": "node scripts/map-graph.mjs && node scripts/ds-track.mjs || true",
   "lint:manage": "node scripts/lint-manage.mjs",
   "smoke": "node scripts/smoke.mjs",
   "check:map": "node scripts/check-arch-map.mjs"
