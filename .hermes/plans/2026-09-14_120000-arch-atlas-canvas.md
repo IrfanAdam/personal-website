@@ -89,6 +89,8 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** Counts match tree (11 + 11 + panes/submodules); commit docs with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-1]`.
 
+*Shipped in 7cb18f9 · Tasks 1–3 · phase-1.*
+
 ---
 
 ## Phase 2 — Maintained architecture schema {#phase-2}
@@ -103,7 +105,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 | 5 | Classify layers + route links | Every node carries `layer` (function/component/foundation/view/style/tool) + `route` where one exists |
 | 6 | Prove no orphans/cycles drift | `docs/graph.mmd` + schema regenerate clean; `npm test` green |
 
-### Task 4: Extend map-graph to emit arch-schema.json
+### Task 4: Extend map-graph to emit arch-schema.json ✓ done
 
 **Objective:** One generator, two outputs: existing `docs/graph.mmd` + new `src/ds/arch-schema.json` (`{generated, nodes:[{id,path,layer,route,title}], edges:[{from,to,kind}]}`), edge kinds `imports|styles|tokens`.
 
@@ -117,7 +119,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** Run `node scripts/map-graph.mjs` — expected: `✓ graph — M modules · E edges → docs/graph.mmd + arch-schema.json`; `python3 -c "import json; d=json.load(open('src/ds/arch-schema.json')); print(len(d['nodes']), len(d['edges']))"` prints sane counts (>100 nodes, >200 edges).
 
-### Task 5: Classify layers + route links
+### Task 5: Classify layers + route links ✓ done
 
 **Objective:** Every node queryable by canvas layer toggles; every routable node deep-links.
 
@@ -129,7 +131,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** `python3 -c` assert every node has `layer`, and all 7 lab routes resolve: grep schema for `#/functions/` count == 7.
 
-### Task 6: Prove no orphans/cycles drift
+### Task 6: Prove no orphans/cycles drift ✓ done
 
 **Objective:** Retrievability guarantee holds for the new outputs.
 

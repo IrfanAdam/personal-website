@@ -1,0 +1,3807 @@
+{
+  "generated": "2026-09-14T08:23:03.191Z",
+  "nodes": [
+    {
+      "id": "boot_chrome",
+      "path": "src/boot-chrome.js",
+      "layer": "view",
+      "route": null,
+      "title": "boot chrome"
+    },
+    {
+      "id": "data_site",
+      "path": "src/data/site.js",
+      "layer": "component",
+      "route": null,
+      "title": "site"
+    },
+    {
+      "id": "ds_changelog",
+      "path": "src/ds/changelog.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog"
+    },
+    {
+      "id": "ds_changelog_archive",
+      "path": "src/ds/changelog-archive.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog archive"
+    },
+    {
+      "id": "ds_changelog_drawer",
+      "path": "src/ds/changelog-drawer.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog drawer"
+    },
+    {
+      "id": "ds_changelog_esc",
+      "path": "src/ds/changelog/esc.js",
+      "layer": "component",
+      "route": null,
+      "title": "esc"
+    },
+    {
+      "id": "ds_changelog_events",
+      "path": "src/ds/changelog-events.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog events"
+    },
+    {
+      "id": "ds_changelog_graph",
+      "path": "src/ds/changelog/graph.js",
+      "layer": "component",
+      "route": null,
+      "title": "graph"
+    },
+    {
+      "id": "ds_changelog_links",
+      "path": "src/ds/changelog-links.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog links"
+    },
+    {
+      "id": "ds_changelog_paint",
+      "path": "src/ds/changelog-paint.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog paint"
+    },
+    {
+      "id": "ds_changelog_paint_chips",
+      "path": "src/ds/changelog/paint-chips.js",
+      "layer": "component",
+      "route": null,
+      "title": "paint chips"
+    },
+    {
+      "id": "ds_changelog_paint_detail",
+      "path": "src/ds/changelog/paint-detail.js",
+      "layer": "component",
+      "route": null,
+      "title": "paint detail"
+    },
+    {
+      "id": "ds_changelog_paint_plan",
+      "path": "src/ds/changelog/paint-plan.js",
+      "layer": "component",
+      "route": null,
+      "title": "paint plan"
+    },
+    {
+      "id": "ds_changelog_parse",
+      "path": "src/ds/changelog-parse.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog parse"
+    },
+    {
+      "id": "ds_changelog_picks",
+      "path": "src/ds/changelog-picks.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog picks"
+    },
+    {
+      "id": "ds_changelog_tags",
+      "path": "src/ds/changelog-tags.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog tags"
+    },
+    {
+      "id": "ds_changelog_tasks",
+      "path": "src/ds/changelog-tasks.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog tasks"
+    },
+    {
+      "id": "ds_changelog_titles",
+      "path": "src/ds/changelog-titles.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog titles"
+    },
+    {
+      "id": "ds_component",
+      "path": "src/ds/component.js",
+      "layer": "component",
+      "route": null,
+      "title": "component"
+    },
+    {
+      "id": "ds_component_knobs",
+      "path": "src/ds/component/knobs.js",
+      "layer": "component",
+      "route": null,
+      "title": "knobs"
+    },
+    {
+      "id": "ds_ds",
+      "path": "src/ds/ds.js",
+      "layer": "component",
+      "route": null,
+      "title": "ds"
+    },
+    {
+      "id": "ds_ds",
+      "path": "src/ds/ds.css",
+      "layer": "style",
+      "route": null,
+      "title": "ds"
+    },
+    {
+      "id": "ds_ds_blocks",
+      "path": "src/ds/ds-blocks.css",
+      "layer": "style",
+      "route": null,
+      "title": "ds blocks"
+    },
+    {
+      "id": "ds_ds_content",
+      "path": "src/ds/ds-content.css",
+      "layer": "style",
+      "route": null,
+      "title": "ds content"
+    },
+    {
+      "id": "ds_ds_lab",
+      "path": "src/ds/ds-lab.css",
+      "layer": "style",
+      "route": null,
+      "title": "ds lab"
+    },
+    {
+      "id": "ds_ds_responsive",
+      "path": "src/ds/ds-responsive.css",
+      "layer": "style",
+      "route": null,
+      "title": "ds responsive"
+    },
+    {
+      "id": "ds_ds_tabs",
+      "path": "src/ds/ds-tabs.css",
+      "layer": "style",
+      "route": null,
+      "title": "ds tabs"
+    },
+    {
+      "id": "ds_foundations",
+      "path": "src/ds/foundations.css",
+      "layer": "style",
+      "route": null,
+      "title": "foundations"
+    },
+    {
+      "id": "ds_foundations_color",
+      "path": "src/ds/foundations-color.css",
+      "layer": "style",
+      "route": null,
+      "title": "foundations color"
+    },
+    {
+      "id": "ds_foundations_color_data",
+      "path": "src/ds/foundations/color/data.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "data"
+    },
+    {
+      "id": "ds_foundations_color_sections",
+      "path": "src/ds/foundations/color/sections.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "sections"
+    },
+    {
+      "id": "ds_foundations_demo",
+      "path": "src/ds/foundations-demo.css",
+      "layer": "style",
+      "route": null,
+      "title": "foundations demo"
+    },
+    {
+      "id": "ds_foundations_elev",
+      "path": "src/ds/foundations-elev.css",
+      "layer": "style",
+      "route": null,
+      "title": "foundations elev"
+    },
+    {
+      "id": "ds_foundations_fx_demos",
+      "path": "src/ds/foundations/fx/demos.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "demos"
+    },
+    {
+      "id": "ds_foundations_fx_elev",
+      "path": "src/ds/foundations/fx/elev.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "elev"
+    },
+    {
+      "id": "ds_foundations_fx_spring",
+      "path": "src/ds/foundations/fx/spring.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "spring"
+    },
+    {
+      "id": "ds_foundations_fx_tokens",
+      "path": "src/ds/foundations/fx/tokens.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "tokens"
+    },
+    {
+      "id": "ds_foundations_handlers",
+      "path": "src/ds/foundations-handlers.js",
+      "layer": "component",
+      "route": null,
+      "title": "foundations handlers"
+    },
+    {
+      "id": "ds_foundations_mix",
+      "path": "src/ds/foundations-mix.js",
+      "layer": "component",
+      "route": null,
+      "title": "foundations mix"
+    },
+    {
+      "id": "ds_foundations_motion_data",
+      "path": "src/ds/foundations/motion/data.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "data"
+    },
+    {
+      "id": "ds_foundations_motion_sections",
+      "path": "src/ds/foundations/motion/sections.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "sections"
+    },
+    {
+      "id": "ds_foundations_pane_color",
+      "path": "src/ds/foundations/pane-color.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane color"
+    },
+    {
+      "id": "ds_foundations_pane_contract",
+      "path": "src/ds/foundations/pane-contract.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane contract"
+    },
+    {
+      "id": "ds_foundations_pane_fx",
+      "path": "src/ds/foundations/pane-fx.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane fx"
+    },
+    {
+      "id": "ds_foundations_pane_motion",
+      "path": "src/ds/foundations/pane-motion.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane motion"
+    },
+    {
+      "id": "ds_foundations_pane_shape",
+      "path": "src/ds/foundations/pane-shape.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane shape"
+    },
+    {
+      "id": "ds_foundations_pane_space",
+      "path": "src/ds/foundations/pane-space.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane space"
+    },
+    {
+      "id": "ds_foundations_pane_type",
+      "path": "src/ds/foundations/pane-type.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane type"
+    },
+    {
+      "id": "ds_foundations_shape_borders",
+      "path": "src/ds/foundations/shape/borders.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "borders"
+    },
+    {
+      "id": "ds_foundations_shape_doctrine",
+      "path": "src/ds/foundations/shape/doctrine.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "doctrine"
+    },
+    {
+      "id": "ds_foundations_shape_focus",
+      "path": "src/ds/foundations/shape/focus.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "focus"
+    },
+    {
+      "id": "ds_foundations_shape_radius",
+      "path": "src/ds/foundations/shape/radius.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "radius"
+    },
+    {
+      "id": "ds_foundations_space_audit",
+      "path": "src/ds/foundations/space/audit.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "audit"
+    },
+    {
+      "id": "ds_foundations_space_layout",
+      "path": "src/ds/foundations/space/layout.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "layout"
+    },
+    {
+      "id": "ds_foundations_space_scale",
+      "path": "src/ds/foundations/space/scale.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "scale"
+    },
+    {
+      "id": "ds_foundations_space_tables",
+      "path": "src/ds/foundations/space/tables.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "tables"
+    },
+    {
+      "id": "ds_foundations_type_demos",
+      "path": "src/ds/foundations/type/demos.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "demos"
+    },
+    {
+      "id": "ds_foundations_type_playground",
+      "path": "src/ds/foundations/type/playground.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "playground"
+    },
+    {
+      "id": "ds_foundations_type_scale",
+      "path": "src/ds/foundations/type/scale.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "scale"
+    },
+    {
+      "id": "ds_foundations_type_voice",
+      "path": "src/ds/foundations/type/voice.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "voice"
+    },
+    {
+      "id": "ds_functions_glimmer_orb",
+      "path": "src/ds/functions/glimmer-orb.js",
+      "layer": "function",
+      "route": "#/functions/glimmer-orb",
+      "title": "Glimmer orb"
+    },
+    {
+      "id": "ds_functions_glitch",
+      "path": "src/ds/functions/glitch.js",
+      "layer": "function",
+      "route": "#/functions/glitch",
+      "title": "Glitch"
+    },
+    {
+      "id": "ds_functions_glitch_lab_controls",
+      "path": "src/ds/functions/glitch/lab-controls.js",
+      "layer": "function",
+      "route": null,
+      "title": "lab controls"
+    },
+    {
+      "id": "ds_functions_glitch_meta",
+      "path": "src/ds/functions/glitch/meta.js",
+      "layer": "function",
+      "route": null,
+      "title": "meta"
+    },
+    {
+      "id": "ds_functions_glitch_sound_bind",
+      "path": "src/ds/functions/glitch/sound-bind.js",
+      "layer": "function",
+      "route": null,
+      "title": "sound bind"
+    },
+    {
+      "id": "ds_functions_glitch_sound_panel",
+      "path": "src/ds/functions/glitch/sound-panel.js",
+      "layer": "function",
+      "route": null,
+      "title": "sound panel"
+    },
+    {
+      "id": "ds_functions_glitch_sound_play",
+      "path": "src/ds/functions/glitch/sound-play.js",
+      "layer": "function",
+      "route": null,
+      "title": "sound play"
+    },
+    {
+      "id": "ds_functions_glitch_source_markup",
+      "path": "src/ds/functions/glitch/source/markup.js",
+      "layer": "function",
+      "route": null,
+      "title": "markup"
+    },
+    {
+      "id": "ds_functions_glitch_source_panel",
+      "path": "src/ds/functions/glitch/source-panel.js",
+      "layer": "function",
+      "route": null,
+      "title": "source panel"
+    },
+    {
+      "id": "ds_functions_grid_reveal",
+      "path": "src/ds/functions/grid-reveal.js",
+      "layer": "function",
+      "route": "#/functions/grid-reveal",
+      "title": "GridReveal"
+    },
+    {
+      "id": "ds_functions_grid_reveal_docs",
+      "path": "src/ds/functions/grid-reveal-docs.js",
+      "layer": "function",
+      "route": null,
+      "title": "grid reveal docs"
+    },
+    {
+      "id": "ds_functions_grid_reveal_lab",
+      "path": "src/ds/functions/grid-reveal-lab.js",
+      "layer": "function",
+      "route": null,
+      "title": "grid reveal lab"
+    },
+    {
+      "id": "ds_functions_rise",
+      "path": "src/ds/functions/rise.js",
+      "layer": "function",
+      "route": "#/functions/rise",
+      "title": "Rise"
+    },
+    {
+      "id": "ds_functions_scramble",
+      "path": "src/ds/functions/scramble.js",
+      "layer": "function",
+      "route": "#/functions/scramble",
+      "title": "Scramble"
+    },
+    {
+      "id": "ds_functions_scramble_bind",
+      "path": "src/ds/functions/scramble/bind.js",
+      "layer": "function",
+      "route": null,
+      "title": "bind"
+    },
+    {
+      "id": "ds_functions_scramble_bind_refs",
+      "path": "src/ds/functions/scramble/bind-refs.js",
+      "layer": "function",
+      "route": null,
+      "title": "bind refs"
+    },
+    {
+      "id": "ds_functions_scramble_bind_sound",
+      "path": "src/ds/functions/scramble/bind-sound.js",
+      "layer": "function",
+      "route": null,
+      "title": "bind sound"
+    },
+    {
+      "id": "ds_functions_scramble_bind_ui",
+      "path": "src/ds/functions/scramble/bind-ui.js",
+      "layer": "function",
+      "route": null,
+      "title": "bind ui"
+    },
+    {
+      "id": "ds_functions_scramble_code_tab",
+      "path": "src/ds/functions/scramble/code-tab.js",
+      "layer": "function",
+      "route": null,
+      "title": "code tab"
+    },
+    {
+      "id": "ds_functions_scramble_lab_sound",
+      "path": "src/ds/functions/scramble/lab-sound.js",
+      "layer": "function",
+      "route": null,
+      "title": "lab sound"
+    },
+    {
+      "id": "ds_functions_scramble_lab_text",
+      "path": "src/ds/functions/scramble/lab-text.js",
+      "layer": "function",
+      "route": null,
+      "title": "lab text"
+    },
+    {
+      "id": "ds_functions_scramble_meta",
+      "path": "src/ds/functions/scramble/meta.js",
+      "layer": "function",
+      "route": null,
+      "title": "meta"
+    },
+    {
+      "id": "ds_functions_scramble_opts",
+      "path": "src/ds/functions/scramble/opts.js",
+      "layer": "function",
+      "route": null,
+      "title": "opts"
+    },
+    {
+      "id": "ds_functions_scramble_panel",
+      "path": "src/ds/functions/scramble/panel.js",
+      "layer": "function",
+      "route": null,
+      "title": "panel"
+    },
+    {
+      "id": "ds_functions_scramble_run",
+      "path": "src/ds/functions/scramble/run.js",
+      "layer": "function",
+      "route": null,
+      "title": "run"
+    },
+    {
+      "id": "ds_functions_scramble_teardown",
+      "path": "src/ds/functions/scramble/teardown.js",
+      "layer": "function",
+      "route": null,
+      "title": "teardown"
+    },
+    {
+      "id": "ds_functions_shimmer",
+      "path": "src/ds/functions/shimmer.js",
+      "layer": "function",
+      "route": "#/functions/shimmer",
+      "title": "Shimmer"
+    },
+    {
+      "id": "ds_functions_viewer",
+      "path": "src/ds/functions/viewer.js",
+      "layer": "function",
+      "route": "#/functions/viewer",
+      "title": "Viewer"
+    },
+    {
+      "id": "ds_fx_lab",
+      "path": "src/ds/fx-lab.js",
+      "layer": "component",
+      "route": null,
+      "title": "fx lab"
+    },
+    {
+      "id": "ds_fx_lab_cells",
+      "path": "src/ds/fx-lab/cells.js",
+      "layer": "component",
+      "route": null,
+      "title": "cells"
+    },
+    {
+      "id": "ds_fx_lab_cells_draw",
+      "path": "src/ds/fx-lab/cells-draw.js",
+      "layer": "component",
+      "route": null,
+      "title": "cells draw"
+    },
+    {
+      "id": "ds_fx_lab_cells_texture",
+      "path": "src/ds/fx-lab/cells-texture.js",
+      "layer": "component",
+      "route": null,
+      "title": "cells texture"
+    },
+    {
+      "id": "ds_fx_lab_color",
+      "path": "src/ds/fx-lab/color.js",
+      "layer": "component",
+      "route": null,
+      "title": "color"
+    },
+    {
+      "id": "ds_fx_lab_panels",
+      "path": "src/ds/fx-lab/panels.js",
+      "layer": "component",
+      "route": null,
+      "title": "panels"
+    },
+    {
+      "id": "ds_library_card",
+      "path": "src/ds/library/card.js",
+      "layer": "component",
+      "route": null,
+      "title": "card"
+    },
+    {
+      "id": "ds_library_contact",
+      "path": "src/ds/library/contact.js",
+      "layer": "component",
+      "route": null,
+      "title": "contact"
+    },
+    {
+      "id": "ds_library_cta",
+      "path": "src/ds/library/cta.js",
+      "layer": "component",
+      "route": null,
+      "title": "cta"
+    },
+    {
+      "id": "ds_library_filters",
+      "path": "src/ds/library/filters.js",
+      "layer": "component",
+      "route": null,
+      "title": "filters"
+    },
+    {
+      "id": "ds_library_footer",
+      "path": "src/ds/library/footer.js",
+      "layer": "component",
+      "route": null,
+      "title": "footer"
+    },
+    {
+      "id": "ds_library_header",
+      "path": "src/ds/library/header.js",
+      "layer": "component",
+      "route": null,
+      "title": "header"
+    },
+    {
+      "id": "ds_library_hero",
+      "path": "src/ds/library/hero.js",
+      "layer": "component",
+      "route": null,
+      "title": "hero"
+    },
+    {
+      "id": "ds_library_next",
+      "path": "src/ds/library/next.js",
+      "layer": "component",
+      "route": null,
+      "title": "next"
+    },
+    {
+      "id": "ds_library_spec",
+      "path": "src/ds/library/spec.js",
+      "layer": "component",
+      "route": null,
+      "title": "spec"
+    },
+    {
+      "id": "ds_library_strip",
+      "path": "src/ds/library/strip.js",
+      "layer": "component",
+      "route": null,
+      "title": "strip"
+    },
+    {
+      "id": "ds_library_work",
+      "path": "src/ds/library/work.js",
+      "layer": "component",
+      "route": null,
+      "title": "work"
+    },
+    {
+      "id": "ds_overview_hero",
+      "path": "src/ds/overview/hero.js",
+      "layer": "component",
+      "route": null,
+      "title": "hero"
+    },
+    {
+      "id": "ds_overview_mood",
+      "path": "src/ds/overview/mood.js",
+      "layer": "component",
+      "route": null,
+      "title": "mood"
+    },
+    {
+      "id": "ds_overview_principles",
+      "path": "src/ds/overview/principles.js",
+      "layer": "component",
+      "route": null,
+      "title": "principles"
+    },
+    {
+      "id": "ds_overview_reading",
+      "path": "src/ds/overview/reading.js",
+      "layer": "component",
+      "route": null,
+      "title": "reading"
+    },
+    {
+      "id": "ds_overview_sections",
+      "path": "src/ds/overview-sections.js",
+      "layer": "component",
+      "route": null,
+      "title": "overview sections"
+    },
+    {
+      "id": "ds_overview_style_a",
+      "path": "src/ds/overview/style-a.js",
+      "layer": "component",
+      "route": null,
+      "title": "style a"
+    },
+    {
+      "id": "ds_overview_style_b",
+      "path": "src/ds/overview/style-b.js",
+      "layer": "component",
+      "route": null,
+      "title": "style b"
+    },
+    {
+      "id": "ds_pages_changelog",
+      "path": "src/ds/pages-changelog.js",
+      "layer": "component",
+      "route": "#/changelog",
+      "title": "Changelog"
+    },
+    {
+      "id": "ds_pages_components",
+      "path": "src/ds/pages-components.js",
+      "layer": "component",
+      "route": "#/primitives",
+      "title": "Primitives"
+    },
+    {
+      "id": "ds_pages_foundations",
+      "path": "src/ds/pages-foundations.js",
+      "layer": "foundation",
+      "route": "#/foundations",
+      "title": "Foundations · Tokens"
+    },
+    {
+      "id": "ds_pages_functions",
+      "path": "src/ds/pages-functions.js",
+      "layer": "function",
+      "route": "#/components",
+      "title": "Components"
+    },
+    {
+      "id": "ds_pages_library",
+      "path": "src/ds/pages-library.js",
+      "layer": "component",
+      "route": "#/functions",
+      "title": "Functions"
+    },
+    {
+      "id": "ds_pages_overview",
+      "path": "src/ds/pages-overview.js",
+      "layer": "component",
+      "route": "#/",
+      "title": "Overview"
+    },
+    {
+      "id": "ds_pages_patterns",
+      "path": "src/ds/pages-patterns.js",
+      "layer": "component",
+      "route": "#/library",
+      "title": "Library · Landing"
+    },
+    {
+      "id": "ds_pages_primitives",
+      "path": "src/ds/pages-primitives.js",
+      "layer": "component",
+      "route": "#/patterns",
+      "title": "Patterns · Quality"
+    },
+    {
+      "id": "ds_patterns_data",
+      "path": "src/ds/patterns-data.js",
+      "layer": "component",
+      "route": null,
+      "title": "patterns data"
+    },
+    {
+      "id": "ds_patterns_layouts",
+      "path": "src/ds/patterns-layouts.js",
+      "layer": "component",
+      "route": null,
+      "title": "patterns layouts"
+    },
+    {
+      "id": "ds_patterns_quality",
+      "path": "src/ds/patterns-quality.js",
+      "layer": "component",
+      "route": null,
+      "title": "patterns quality"
+    },
+    {
+      "id": "ds_playground",
+      "path": "src/ds/playground.js",
+      "layer": "component",
+      "route": null,
+      "title": "playground"
+    },
+    {
+      "id": "ds_playground_knobs",
+      "path": "src/ds/playground/knobs.js",
+      "layer": "component",
+      "route": null,
+      "title": "knobs"
+    },
+    {
+      "id": "ds_primitives_avatar",
+      "path": "src/ds/primitives/avatar.js",
+      "layer": "component",
+      "route": null,
+      "title": "avatar"
+    },
+    {
+      "id": "ds_primitives_badge",
+      "path": "src/ds/primitives/badge.js",
+      "layer": "component",
+      "route": null,
+      "title": "badge"
+    },
+    {
+      "id": "ds_primitives_btn",
+      "path": "src/ds/primitives/btn.js",
+      "layer": "component",
+      "route": null,
+      "title": "btn"
+    },
+    {
+      "id": "ds_primitives_divider",
+      "path": "src/ds/primitives/divider.js",
+      "layer": "component",
+      "route": null,
+      "title": "divider"
+    },
+    {
+      "id": "ds_primitives_field",
+      "path": "src/ds/primitives/field.js",
+      "layer": "component",
+      "route": null,
+      "title": "field"
+    },
+    {
+      "id": "ds_primitives_field_code",
+      "path": "src/ds/primitives/field-code.js",
+      "layer": "component",
+      "route": null,
+      "title": "field code"
+    },
+    {
+      "id": "ds_primitives_field_meta",
+      "path": "src/ds/primitives/field-meta.js",
+      "layer": "component",
+      "route": null,
+      "title": "field meta"
+    },
+    {
+      "id": "ds_primitives_kicker",
+      "path": "src/ds/primitives/kicker.js",
+      "layer": "component",
+      "route": null,
+      "title": "kicker"
+    },
+    {
+      "id": "ds_primitives_logo",
+      "path": "src/ds/primitives/logo.js",
+      "layer": "component",
+      "route": null,
+      "title": "logo"
+    },
+    {
+      "id": "ds_primitives_tag",
+      "path": "src/ds/primitives/tag.js",
+      "layer": "component",
+      "route": null,
+      "title": "tag"
+    },
+    {
+      "id": "ds_primitives_toggle",
+      "path": "src/ds/primitives/toggle.js",
+      "layer": "component",
+      "route": null,
+      "title": "toggle"
+    },
+    {
+      "id": "ds_routes",
+      "path": "src/ds/routes.js",
+      "layer": "component",
+      "route": null,
+      "title": "routes"
+    },
+    {
+      "id": "ds_sidebar",
+      "path": "src/ds/sidebar.js",
+      "layer": "component",
+      "route": null,
+      "title": "sidebar"
+    },
+    {
+      "id": "ds_specimens",
+      "path": "src/ds/specimens.js",
+      "layer": "component",
+      "route": null,
+      "title": "specimens"
+    },
+    {
+      "id": "ds_specimens",
+      "path": "src/ds/specimens.css",
+      "layer": "style",
+      "route": null,
+      "title": "specimens"
+    },
+    {
+      "id": "ds_specimens_color",
+      "path": "src/ds/specimens/color.js",
+      "layer": "component",
+      "route": null,
+      "title": "color"
+    },
+    {
+      "id": "ds_specimens_copy",
+      "path": "src/ds/specimens/copy.js",
+      "layer": "component",
+      "route": null,
+      "title": "copy"
+    },
+    {
+      "id": "ds_specimens_grids",
+      "path": "src/ds/specimens/grids.js",
+      "layer": "component",
+      "route": null,
+      "title": "grids"
+    },
+    {
+      "id": "ds_specimens_markup",
+      "path": "src/ds/specimens/markup.js",
+      "layer": "component",
+      "route": null,
+      "title": "markup"
+    },
+    {
+      "id": "ds_specimens_trace",
+      "path": "src/ds/specimens/trace.js",
+      "layer": "component",
+      "route": null,
+      "title": "trace"
+    },
+    {
+      "id": "ds_tabs",
+      "path": "src/ds/tabs.js",
+      "layer": "component",
+      "route": null,
+      "title": "tabs"
+    },
+    {
+      "id": "ds_theme",
+      "path": "src/ds/theme.js",
+      "layer": "component",
+      "route": null,
+      "title": "theme"
+    },
+    {
+      "id": "fx_sound_index",
+      "path": "src/fx/sound/index.js",
+      "layer": "component",
+      "route": null,
+      "title": "index"
+    },
+    {
+      "id": "fx_sound_voices_drone",
+      "path": "src/fx/sound/voices/drone.js",
+      "layer": "component",
+      "route": null,
+      "title": "drone"
+    },
+    {
+      "id": "fx_sound_voices_helpers",
+      "path": "src/fx/sound/voices/helpers.js",
+      "layer": "component",
+      "route": null,
+      "title": "helpers"
+    },
+    {
+      "id": "fx_sound_voices_noise",
+      "path": "src/fx/sound/voices/noise.js",
+      "layer": "component",
+      "route": null,
+      "title": "noise"
+    },
+    {
+      "id": "fx_sound_voices_scan",
+      "path": "src/fx/sound/voices/scan.js",
+      "layer": "component",
+      "route": null,
+      "title": "scan"
+    },
+    {
+      "id": "fx_sound_voices_tone",
+      "path": "src/fx/sound/voices/tone.js",
+      "layer": "component",
+      "route": null,
+      "title": "tone"
+    },
+    {
+      "id": "fx_visual_index",
+      "path": "src/fx/visual/index.js",
+      "layer": "component",
+      "route": null,
+      "title": "index"
+    },
+    {
+      "id": "main",
+      "path": "src/main.js",
+      "layer": "view",
+      "route": null,
+      "title": "main"
+    },
+    {
+      "id": "scripts_dims",
+      "path": "scripts/dims.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "dims"
+    },
+    {
+      "id": "scripts_ds_track",
+      "path": "scripts/ds-track.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "ds track"
+    },
+    {
+      "id": "scripts_graph_schema",
+      "path": "scripts/graph-schema.js",
+      "layer": "tool",
+      "route": null,
+      "title": "graph schema"
+    },
+    {
+      "id": "scripts_lint_manage",
+      "path": "scripts/lint-manage.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "lint manage"
+    },
+    {
+      "id": "scripts_lint_tokens",
+      "path": "scripts/lint-tokens.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "lint tokens"
+    },
+    {
+      "id": "scripts_map_graph",
+      "path": "scripts/map-graph.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "map graph"
+    },
+    {
+      "id": "scripts_plan_names",
+      "path": "scripts/plan-names.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "plan names"
+    },
+    {
+      "id": "scripts_plan_suggest",
+      "path": "scripts/plan-suggest.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "plan suggest"
+    },
+    {
+      "id": "scripts_smoke",
+      "path": "scripts/smoke.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "smoke"
+    },
+    {
+      "id": "styles_base",
+      "path": "src/styles/base.css",
+      "layer": "style",
+      "route": null,
+      "title": "base"
+    },
+    {
+      "id": "styles_base_actions",
+      "path": "src/styles/base-actions.css",
+      "layer": "style",
+      "route": null,
+      "title": "base actions"
+    },
+    {
+      "id": "styles_base_atoms",
+      "path": "src/styles/base-atoms.css",
+      "layer": "style",
+      "route": null,
+      "title": "base atoms"
+    },
+    {
+      "id": "styles_card",
+      "path": "src/styles/card.css",
+      "layer": "style",
+      "route": null,
+      "title": "card"
+    },
+    {
+      "id": "styles_card_info",
+      "path": "src/styles/card-info.css",
+      "layer": "style",
+      "route": null,
+      "title": "card info"
+    },
+    {
+      "id": "styles_case",
+      "path": "src/styles/case.css",
+      "layer": "style",
+      "route": null,
+      "title": "case"
+    },
+    {
+      "id": "styles_case_prose",
+      "path": "src/styles/case-prose.css",
+      "layer": "style",
+      "route": null,
+      "title": "case prose"
+    },
+    {
+      "id": "styles_form",
+      "path": "src/styles/form.css",
+      "layer": "style",
+      "route": null,
+      "title": "form"
+    },
+    {
+      "id": "styles_form_controls",
+      "path": "src/styles/form-controls.css",
+      "layer": "style",
+      "route": null,
+      "title": "form controls"
+    },
+    {
+      "id": "styles_glitch",
+      "path": "src/styles/glitch.css",
+      "layer": "style",
+      "route": null,
+      "title": "glitch"
+    },
+    {
+      "id": "styles_masonry",
+      "path": "src/styles/masonry.css",
+      "layer": "style",
+      "route": null,
+      "title": "masonry"
+    },
+    {
+      "id": "styles_pages",
+      "path": "src/styles/pages.css",
+      "layer": "style",
+      "route": null,
+      "title": "pages"
+    },
+    {
+      "id": "styles_pages_sections",
+      "path": "src/styles/pages-sections.css",
+      "layer": "style",
+      "route": null,
+      "title": "pages sections"
+    },
+    {
+      "id": "styles_tokens",
+      "path": "src/styles/tokens.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens"
+    },
+    {
+      "id": "styles_tokens_color",
+      "path": "src/styles/tokens-color.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens color"
+    },
+    {
+      "id": "styles_tokens_fx",
+      "path": "src/styles/tokens-fx.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens fx"
+    },
+    {
+      "id": "styles_tokens_overrides",
+      "path": "src/styles/tokens-overrides.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens overrides"
+    },
+    {
+      "id": "styles_tokens_type",
+      "path": "src/styles/tokens-type.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens type"
+    },
+    {
+      "id": "styles_viewer",
+      "path": "src/styles/viewer.css",
+      "layer": "style",
+      "route": null,
+      "title": "viewer"
+    },
+    {
+      "id": "theme",
+      "path": "src/theme.js",
+      "layer": "view",
+      "route": null,
+      "title": "theme"
+    },
+    {
+      "id": "views_audio_ctx",
+      "path": "src/views/audio-ctx.js",
+      "layer": "view",
+      "route": null,
+      "title": "audio ctx"
+    },
+    {
+      "id": "views_audio_test",
+      "path": "src/views/audio-test.js",
+      "layer": "view",
+      "route": null,
+      "title": "audio test"
+    },
+    {
+      "id": "views_contact",
+      "path": "src/views/contact.js",
+      "layer": "view",
+      "route": null,
+      "title": "contact"
+    },
+    {
+      "id": "views_element_sound",
+      "path": "src/views/element-sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "element sound"
+    },
+    {
+      "id": "views_fx_tokens",
+      "path": "src/views/fx-tokens.js",
+      "layer": "view",
+      "route": null,
+      "title": "fx tokens"
+    },
+    {
+      "id": "views_glimmer_color",
+      "path": "src/views/glimmer-color.js",
+      "layer": "view",
+      "route": null,
+      "title": "glimmer color"
+    },
+    {
+      "id": "views_glimmer_orb",
+      "path": "src/views/glimmer-orb.js",
+      "layer": "view",
+      "route": null,
+      "title": "glimmer orb"
+    },
+    {
+      "id": "views_glitch",
+      "path": "src/views/glitch.js",
+      "layer": "view",
+      "route": null,
+      "title": "glitch"
+    },
+    {
+      "id": "views_glitch_init",
+      "path": "src/views/glitch-init.js",
+      "layer": "view",
+      "route": null,
+      "title": "glitch init"
+    },
+    {
+      "id": "views_glitch_sound",
+      "path": "src/views/glitch-sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "glitch sound"
+    },
+    {
+      "id": "views_glitch_sound_geom",
+      "path": "src/views/glitch-sound/geom.js",
+      "layer": "view",
+      "route": null,
+      "title": "geom"
+    },
+    {
+      "id": "views_glitch_sound_parse",
+      "path": "src/views/glitch-sound/parse.js",
+      "layer": "view",
+      "route": null,
+      "title": "parse"
+    },
+    {
+      "id": "views_glitch_sound_timing",
+      "path": "src/views/glitch-sound/timing.js",
+      "layer": "view",
+      "route": null,
+      "title": "timing"
+    },
+    {
+      "id": "views_headerFrame",
+      "path": "src/views/headerFrame.js",
+      "layer": "view",
+      "route": null,
+      "title": "headerFrame"
+    },
+    {
+      "id": "views_init_sound",
+      "path": "src/views/init-sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "init sound"
+    },
+    {
+      "id": "views_init_sound_load",
+      "path": "src/views/init-sound-load.js",
+      "layer": "view",
+      "route": null,
+      "title": "init sound load"
+    },
+    {
+      "id": "views_masonry",
+      "path": "src/views/masonry.js",
+      "layer": "view",
+      "route": null,
+      "title": "masonry"
+    },
+    {
+      "id": "views_masonry_cards",
+      "path": "src/views/masonry/cards.js",
+      "layer": "view",
+      "route": null,
+      "title": "cards"
+    },
+    {
+      "id": "views_masonry_cells",
+      "path": "src/views/masonry/cells.js",
+      "layer": "view",
+      "route": null,
+      "title": "cells"
+    },
+    {
+      "id": "views_masonry_cells_order",
+      "path": "src/views/masonry/cells-order.js",
+      "layer": "view",
+      "route": null,
+      "title": "cells order"
+    },
+    {
+      "id": "views_masonry_gridReveal",
+      "path": "src/views/masonry/gridReveal.js",
+      "layer": "view",
+      "route": null,
+      "title": "gridReveal"
+    },
+    {
+      "id": "views_masonry_gridReveal_config",
+      "path": "src/views/masonry/gridReveal-config.js",
+      "layer": "view",
+      "route": null,
+      "title": "gridReveal config"
+    },
+    {
+      "id": "views_masonry_gridReveal_draw",
+      "path": "src/views/masonry/gridReveal-draw.js",
+      "layer": "view",
+      "route": null,
+      "title": "gridReveal draw"
+    },
+    {
+      "id": "views_masonry_gridReveal_load",
+      "path": "src/views/masonry/gridReveal-load.js",
+      "layer": "view",
+      "route": null,
+      "title": "gridReveal load"
+    },
+    {
+      "id": "views_masonry_gridReveal_tick",
+      "path": "src/views/masonry/gridReveal-tick.js",
+      "layer": "view",
+      "route": null,
+      "title": "gridReveal tick"
+    },
+    {
+      "id": "views_masonry_layout",
+      "path": "src/views/masonry/layout.js",
+      "layer": "view",
+      "route": null,
+      "title": "layout"
+    },
+    {
+      "id": "views_masonry_parallax",
+      "path": "src/views/masonry/parallax.js",
+      "layer": "view",
+      "route": null,
+      "title": "parallax"
+    },
+    {
+      "id": "views_masonry_parallax_calc",
+      "path": "src/views/masonry/parallax-calc.js",
+      "layer": "view",
+      "route": null,
+      "title": "parallax calc"
+    },
+    {
+      "id": "views_masonry_parallax_chase",
+      "path": "src/views/masonry/parallax-chase.js",
+      "layer": "view",
+      "route": null,
+      "title": "parallax chase"
+    },
+    {
+      "id": "views_masonry_parallax_measure",
+      "path": "src/views/masonry/parallax-measure.js",
+      "layer": "view",
+      "route": null,
+      "title": "parallax measure"
+    },
+    {
+      "id": "views_masonry_reveal",
+      "path": "src/views/masonry/reveal.js",
+      "layer": "view",
+      "route": null,
+      "title": "reveal"
+    },
+    {
+      "id": "views_masonry_viewer",
+      "path": "src/views/masonry/viewer.js",
+      "layer": "view",
+      "route": null,
+      "title": "viewer"
+    },
+    {
+      "id": "views_masonry_viewer_bind",
+      "path": "src/views/masonry/viewer-bind.js",
+      "layer": "view",
+      "route": null,
+      "title": "viewer bind"
+    },
+    {
+      "id": "views_masonry_viewer_markup",
+      "path": "src/views/masonry/viewer-markup.js",
+      "layer": "view",
+      "route": null,
+      "title": "viewer markup"
+    },
+    {
+      "id": "views_masonry_viewer_visibility",
+      "path": "src/views/masonry/viewer-visibility.js",
+      "layer": "view",
+      "route": null,
+      "title": "viewer visibility"
+    },
+    {
+      "id": "views_project",
+      "path": "src/views/project.js",
+      "layer": "view",
+      "route": null,
+      "title": "project"
+    },
+    {
+      "id": "views_rise",
+      "path": "src/views/rise.js",
+      "layer": "view",
+      "route": null,
+      "title": "rise"
+    },
+    {
+      "id": "views_scramble_build",
+      "path": "src/views/scramble/build.js",
+      "layer": "view",
+      "route": null,
+      "title": "build"
+    },
+    {
+      "id": "views_scramble_helpers",
+      "path": "src/views/scramble/helpers.js",
+      "layer": "view",
+      "route": null,
+      "title": "helpers"
+    },
+    {
+      "id": "views_scramble_text",
+      "path": "src/views/scramble-text.js",
+      "layer": "view",
+      "route": null,
+      "title": "scramble text"
+    },
+    {
+      "id": "views_shared",
+      "path": "src/views/shared.js",
+      "layer": "view",
+      "route": null,
+      "title": "shared"
+    },
+    {
+      "id": "views_slot_sound",
+      "path": "src/views/slot-sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "slot sound"
+    },
+    {
+      "id": "views_sound_files",
+      "path": "src/views/sound-files.js",
+      "layer": "view",
+      "route": null,
+      "title": "sound files"
+    },
+    {
+      "id": "views_sound_palette",
+      "path": "src/views/sound-palette.js",
+      "layer": "view",
+      "route": null,
+      "title": "sound palette"
+    },
+    {
+      "id": "views_sound_source",
+      "path": "src/views/sound-source.js",
+      "layer": "view",
+      "route": null,
+      "title": "sound source"
+    },
+    {
+      "id": "views_title_reveal",
+      "path": "src/views/title-reveal.js",
+      "layer": "view",
+      "route": null,
+      "title": "title reveal"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ds_changelog_archive",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_drawer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_graph",
+      "to": "ds_changelog_links",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_graph",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_graph",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_paint_chips",
+      "to": "ds_changelog_graph",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_chips",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_links",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_titles",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_plan",
+      "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_plan",
+      "to": "ds_changelog_links",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_plan",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_plan",
+      "to": "ds_changelog_titles",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint",
+      "to": "ds_changelog_paint_chips",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint",
+      "to": "ds_changelog_paint_detail",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint",
+      "to": "ds_changelog_paint_plan",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_picks",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_tasks",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_component",
+      "to": "ds_component_knobs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_component",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_component",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_component",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_ds_blocks",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_ds_content",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_ds_lab",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_ds_responsive",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_ds_tabs",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_ds",
+      "to": "ds_routes",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_ds",
+      "to": "ds_sidebar",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_ds",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_ds",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_ds",
+      "to": "ds_theme",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_ds",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_color_sections",
+      "to": "ds_foundations_color_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_color",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_demo",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_elev",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_fx_demos",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_fx_elev",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_fx_elev",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_fx_spring",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_fx_spring",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_fx_tokens",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_fx_tokens",
+      "to": "styles_tokens",
+      "kind": "styles"
+    },
+    {
+      "from": "ds_foundations_fx_tokens",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_mix",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_motion_sections",
+      "to": "ds_foundations_motion_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_motion_sections",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_pane_color",
+      "to": "ds_foundations_color_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_color",
+      "to": "ds_foundations_color_sections",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_color",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_color",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_pane_contract",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_contract",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_pane_fx",
+      "to": "ds_foundations_fx_demos",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_fx",
+      "to": "ds_foundations_fx_elev",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_fx",
+      "to": "ds_foundations_fx_spring",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_fx",
+      "to": "ds_foundations_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_motion",
+      "to": "ds_foundations_motion_sections",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_motion",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_motion",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_pane_shape",
+      "to": "ds_foundations_shape_borders",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_shape",
+      "to": "ds_foundations_shape_doctrine",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_shape",
+      "to": "ds_foundations_shape_focus",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_shape",
+      "to": "ds_foundations_shape_radius",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_shape",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_shape",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_pane_space",
+      "to": "ds_foundations_space_audit",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_space",
+      "to": "ds_foundations_space_layout",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_space",
+      "to": "ds_foundations_space_scale",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_space",
+      "to": "ds_foundations_space_tables",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_space",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_space",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_pane_type",
+      "to": "ds_foundations_type_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_type",
+      "to": "ds_foundations_type_scale",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_type",
+      "to": "ds_foundations_type_voice",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_shape_borders",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_shape_borders",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_shape_doctrine",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_shape_focus",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_shape_focus",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_shape_radius",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_shape_radius",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_space_audit",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_space_layout",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_space_tables",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_space_tables",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_type_demos",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_type_playground",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_type_playground",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_type_scale",
+      "to": "ds_foundations_type_demos",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_type_scale",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_type_scale",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_type_voice",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_glimmer_orb",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glimmer_orb",
+      "to": "ds_views_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glimmer_orb",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_glimmer_orb",
+      "to": "views_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_lab_controls",
+      "to": "views_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_meta",
+      "to": "views_glitch_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_meta",
+      "to": "views_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_bind",
+      "to": "ds_functions_glitch_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_bind",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_bind",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_bind",
+      "to": "views_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_bind",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_panel",
+      "to": "ds_functions_glitch_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_panel",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_glitch_sound_play",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_play",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_play",
+      "to": "views_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_sound_play",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_source_markup",
+      "to": "ds_functions_glitch_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_source_markup",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_source_panel",
+      "to": "ds_functions_glitch_source_markup",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_source_panel",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch_source_panel",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_functions_glitch_lab_controls",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_functions_glitch_sound_bind",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_functions_glitch_sound_panel",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_functions_glitch_sound_play",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_functions_glitch_source_panel",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "ds_views_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "styles_glitch",
+      "kind": "styles"
+    },
+    {
+      "from": "ds_functions_glitch",
+      "to": "views_glitch_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal_docs",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal_docs",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_grid_reveal_lab",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal_lab",
+      "to": "ds_views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal_lab",
+      "to": "ds_views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal_lab",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_grid_reveal",
+      "to": "ds_functions_grid_reveal_docs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal",
+      "to": "ds_functions_grid_reveal_lab",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal",
+      "to": "ds_fx_lab",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_rise",
+      "to": "ds_fx_lab",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_rise",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind_sound",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind_sound",
+      "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind_sound",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind",
+      "to": "ds_functions_scramble_bind_refs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind",
+      "to": "ds_functions_scramble_bind_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind",
+      "to": "ds_functions_scramble_bind_ui",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind",
+      "to": "ds_functions_scramble_run",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_bind",
+      "to": "ds_functions_scramble_teardown",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_code_tab",
+      "to": "ds_functions_views_scramble_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_code_tab",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_code_tab",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_scramble_lab_sound",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_lab_sound",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_scramble_lab_text",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_scramble_meta",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_scramble_opts",
+      "to": "ds_functions_scramble_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_opts",
+      "to": "views_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_opts",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_panel",
+      "to": "ds_functions_scramble_code_tab",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_panel",
+      "to": "ds_functions_scramble_lab_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_panel",
+      "to": "ds_functions_scramble_lab_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_panel",
+      "to": "ds_functions_scramble_opts",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_run",
+      "to": "ds_functions_scramble_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_run",
+      "to": "views_scramble_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble_run",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble",
+      "to": "ds_functions_scramble_bind",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble",
+      "to": "ds_functions_scramble_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_scramble",
+      "to": "ds_functions_scramble_panel",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_shimmer",
+      "to": "ds_fx_lab",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_shimmer",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_shimmer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_functions_viewer",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_viewer",
+      "to": "styles_viewer",
+      "kind": "styles"
+    },
+    {
+      "from": "ds_fx_lab_cells_draw",
+      "to": "ds_fx_lab_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells_draw",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells_texture",
+      "to": "ds_fx_lab_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells_texture",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells",
+      "to": "ds_fx_lab_cells_draw",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells",
+      "to": "ds_fx_lab_cells_texture",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells",
+      "to": "ds_fx_lab_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_color",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_color",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab",
+      "to": "ds_fx_lab_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab",
+      "to": "ds_fx_lab_panels",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_card",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_card",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_card",
+      "to": "styles_card",
+      "kind": "styles"
+    },
+    {
+      "from": "ds_library_contact",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_contact",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_library_cta",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_filters",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_footer",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_footer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_library_header",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_header",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_library_hero",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_hero",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_library_next",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_spec",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_spec",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_strip",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_strip",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_library_work",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_library_work",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_hero",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_overview_mood",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_overview_principles",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_principles",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_overview_reading",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_hero",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_mood",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_principles",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_reading",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_style_a",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_style_b",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_style_a",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_overview_style_b",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_events",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_links",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_paint",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_tags",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_titles",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_components",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_handlers",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_mix",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_contract",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_fx",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_motion",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_shape",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_space",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_type",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_functions",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_card",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_contact",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_cta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_filters",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_footer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_header",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_hero",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_next",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_spec",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_strip",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_library_work",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_playground",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_library",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_overview",
+      "to": "ds_overview_sections",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_overview",
+      "to": "views_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_patterns",
+      "to": "ds_patterns_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_patterns",
+      "to": "ds_patterns_layouts",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_patterns",
+      "to": "ds_patterns_quality",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_avatar",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_badge",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_btn",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_divider",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_field",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_kicker",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_logo",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_tag",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_primitives_toggle",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_primitives",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_patterns_data",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_patterns_layouts",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_patterns_layouts",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_patterns_quality",
+      "to": "ds_patterns_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_patterns_quality",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_patterns_quality",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_playground",
+      "to": "ds_playground_knobs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_playground",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_playground",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_primitives_avatar",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_avatar",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_primitives_badge",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_btn",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_btn",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_primitives_divider",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_divider",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_primitives_field",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_field",
+      "to": "ds_primitives_field_code",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_field",
+      "to": "ds_primitives_field_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_field",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_primitives_kicker",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_logo",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_logo",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_primitives_tag",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_toggle",
+      "to": "ds_component",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_primitives_toggle",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_grid_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_rise",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_scramble",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_shimmer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_viewer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_changelog",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_components",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_foundations",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_functions",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_library",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_overview",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_patterns",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_primitives",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens_copy",
+      "to": "ds_specimens_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens_copy",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_specimens_grids",
+      "to": "ds_specimens_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens_trace",
+      "to": "ds_specimens_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens_trace",
+      "to": "ds_specimens_grids",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens_trace",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_specimens",
+      "to": "ds_specimens_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens",
+      "to": "ds_specimens_copy",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens",
+      "to": "ds_specimens_grids",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens",
+      "to": "ds_specimens_markup",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens",
+      "to": "ds_specimens_trace",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_theme",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_glitch_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_init_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_sound_palette",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_index",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_voices_drone",
+      "to": "fx_sound_voices_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_sound_voices_tone",
+      "to": "fx_sound_voices_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_visual_index",
+      "to": "views_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_visual_index",
+      "to": "views_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_visual_index",
+      "to": "views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_visual_index",
+      "to": "views_rise",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_visual_index",
+      "to": "views_scramble_text",
+      "kind": "imports"
+    },
+    {
+      "from": "fx_visual_index",
+      "to": "views_title_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "boot_chrome",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "theme",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_contact",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_headerFrame",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_masonry",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_project",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_shared",
+      "kind": "imports"
+    },
+    {
+      "from": "styles_base_actions",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_base_atoms",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_base",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_card_info",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_card",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_case_prose",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_case",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_form_controls",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_form",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_glitch",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_masonry",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_pages_sections",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_pages",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_tokens_color",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_tokens_fx",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_tokens_overrides",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_tokens_type",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_viewer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "views_audio_ctx",
+      "to": "views_audio_test",
+      "kind": "imports"
+    },
+    {
+      "from": "views_audio_test",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_contact",
+      "to": "data_site",
+      "kind": "imports"
+    },
+    {
+      "from": "views_contact",
+      "to": "views_rise",
+      "kind": "imports"
+    },
+    {
+      "from": "views_contact",
+      "to": "views_shared",
+      "kind": "imports"
+    },
+    {
+      "from": "views_contact",
+      "to": "views_title_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_element_sound",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_element_sound",
+      "to": "views_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "views_element_sound",
+      "to": "views_sound_palette",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glimmer_orb",
+      "to": "views_glimmer_color",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_init",
+      "to": "views_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound_parse",
+      "to": "views_sound_palette",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound_timing",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound",
+      "to": "views_glitch_sound_geom",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound",
+      "to": "views_glitch_sound_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound",
+      "to": "views_glitch_sound_timing",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch_sound",
+      "to": "views_sound_palette",
+      "kind": "imports"
+    },
+    {
+      "from": "views_glitch",
+      "to": "styles_glitch",
+      "kind": "styles"
+    },
+    {
+      "from": "views_glitch",
+      "to": "views_glitch_init",
+      "kind": "imports"
+    },
+    {
+      "from": "views_init_sound_load",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_init_sound_load",
+      "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_init_sound",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "views_init_sound",
+      "to": "views_glitch_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_init_sound",
+      "to": "views_init_sound_load",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_cells",
+      "to": "views_masonry_cells_order",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal_config",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal_draw",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal_load",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal_load",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal_tick",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal",
+      "to": "views_masonry_cells",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal",
+      "to": "views_masonry_gridReveal_config",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal",
+      "to": "views_masonry_gridReveal_draw",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal",
+      "to": "views_masonry_gridReveal_load",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_gridReveal",
+      "to": "views_masonry_gridReveal_tick",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_parallax",
+      "to": "views_masonry_parallax_calc",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_parallax",
+      "to": "views_masonry_parallax_chase",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_parallax",
+      "to": "views_masonry_parallax_measure",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_reveal",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_reveal",
+      "to": "views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer_bind",
+      "to": "views_masonry_viewer_markup",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer",
+      "to": "styles_viewer",
+      "kind": "styles"
+    },
+    {
+      "from": "views_masonry_viewer",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer",
+      "to": "views_masonry_viewer_bind",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer",
+      "to": "views_masonry_viewer_markup",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer",
+      "to": "views_masonry_viewer_visibility",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "data_site",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "styles_masonry",
+      "kind": "styles"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_masonry_cards",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_masonry_layout",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_masonry_parallax",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_masonry_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_masonry_viewer",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_shared",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_title_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
+      "to": "data_site",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
+      "to": "views_rise",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
+      "to": "views_shared",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
+      "to": "views_title_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_rise",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "views_rise",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_rise",
+      "to": "views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_scramble_build",
+      "to": "views_scramble_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "views_scramble_text",
+      "to": "views_scramble_build",
+      "kind": "imports"
+    },
+    {
+      "from": "views_scramble_text",
+      "to": "views_scramble_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "views_shared",
+      "to": "data_site",
+      "kind": "imports"
+    },
+    {
+      "from": "views_slot_sound",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_slot_sound",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_slot_sound",
+      "to": "views_sound_source",
+      "kind": "imports"
+    },
+    {
+      "from": "views_sound_palette",
+      "to": "fx_sound_voices_drone",
+      "kind": "imports"
+    },
+    {
+      "from": "views_sound_palette",
+      "to": "fx_sound_voices_noise",
+      "kind": "imports"
+    },
+    {
+      "from": "views_sound_palette",
+      "to": "fx_sound_voices_scan",
+      "kind": "imports"
+    },
+    {
+      "from": "views_sound_palette",
+      "to": "fx_sound_voices_tone",
+      "kind": "imports"
+    },
+    {
+      "from": "views_title_reveal",
+      "to": "views_scramble_text",
+      "kind": "imports"
+    },
+    {
+      "from": "views_title_reveal",
+      "to": "views_slot_sound",
+      "kind": "imports"
+    }
+  ]
+}
