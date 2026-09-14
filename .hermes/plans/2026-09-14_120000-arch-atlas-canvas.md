@@ -243,7 +243,7 @@ Verified: panel shows page link `Primitives` (`#/primitives`), tokens `--border-
 
 Verified: pane-color panel shows pane, own tokens, importers (`Foundations · Tokens`); wired edges colored by kind (kind pills pre-existing); schema verify — only `imports` edges span visible-layer node pairs (styles/tokens edges land on style-layer nodes outside the canvas), so kind toggles are consistent no-ops today; count 142·224 matches schema for visible nodes exactly. Fixed in passing: SVG nodes also carry `data-layer`/`data-kind`, so node clicks bubbled to the toolbar handler and toggled layer pills off — toolbar selectors now scoped to `.atlas-bar`.
 
-*Shipped in <sha> · Tasks 10–12 · phase-4.*
+*Shipped in 685c6ce · Tasks 10–12 · phase-4.*
 
 ---
 
