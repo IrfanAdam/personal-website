@@ -443,7 +443,7 @@ Also caught by the archive check and fixed in this close-out: `changelog-parse.c
 | 19 | README operator section + graph link | Any dev finds folders + diagram in 60s |
 | 20 | Final `ds:track` + plan close-out + push | Manifest fresh, all tasks marked, main pushed |
 
-### Task 18: Promote best-practice rules
+### Task 18: Promote best-practice rules ✓ done
 
 **Objective:** Persist the refactor's lessons as enforceable law (repo files, not memory).
 
@@ -464,7 +464,7 @@ Draft → lint-manage → lint:tokens → test → smoke → 30s newcomer scan �
 
 **Verify:** `node scripts/lint-manage.mjs && npm run lint:tokens` green with new rules in force.
 
-### Task 19: README operator section
+### Task 19: README operator section ✓ done
 
 **Objective:** A new person grasps the structure in 60 seconds.
 
@@ -472,7 +472,7 @@ Append `README.md` § "Code map": folder table (folder → job → example), hea
 
 **Verify:** cold-read README; stranger points to correct folder for "change glitch sound" without help.
 
-### Task 20: Final track + close-out + push
+### Task 20: Final track + close-out + push ✓ done
 
 **Objective:** Bidirectional traceability close-out per plan-traceability §9.
 
@@ -487,7 +487,7 @@ git ls-remote origin main | grep $(git rev-parse HEAD)
 
 Mark every `### Task N:` in this plan `✓ done` (or `✗ cancelled` + `> **Cancelled by user override** — reason`), add `*Shipped in*` lines per phase, commit plan doc as `docs(plan)` with `[plan:<file>#phase-5]`, then push.
 
-*Shipped in <sha> · Tasks 18–20 · phase-5.*
+*Shipped in 7025e93 · Tasks 18–20 · phase-5.*
 
 ---
 
