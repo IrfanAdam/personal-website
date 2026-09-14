@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T07:21:59.466Z",
+ "generated": "2026-09-14T07:24:14.708Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,15 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "ff20296",
+   "full": "ff2029689a6f63b559ed1d9a69f55e9080baa185",
+   "date": "2026-09-14",
+   "time": "12:52",
+   "subject": "chore(ds): track refresh after hiding subset builds",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "5b347e4",
    "full": "5b347e42e6d3fa9bd4937e95e1d872d4d1f17328",

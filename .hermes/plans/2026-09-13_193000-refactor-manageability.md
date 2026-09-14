@@ -491,6 +491,157 @@ Mark every `### Task N:` in this plan `✓ done` (or `✗ cancelled` + `> **Canc
 
 ---
 
+## Phase 6 — Dead handlers after the splits {#phase-6}
+
+*Names the splits orphaned: `onStageEnter`/`onTabs`/`syncSrcCtl` (Scramble mount throws), `contactTokens` (Library render throws), `mix` (GridReveal canvas throws), `unlinked` (changelog empty state throws). Subset of refactor — originally 004508 Phase 1.*
+
+*Tags: Component, Function, Tooling*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 21 | Scramble lab wiring restored | typing/sliders/chars/delimiter respond, sound selects + ↻/load buttons act, no console error on mount, teardown removes every listener |
+| 22 | Library contact sheet renders | `/ds/#/library` renders with `contactTokens` moved into `library/contact.js`, ≤100 lines |
+| 23 | GridReveal + changelog one-liners | `mix` imported in `fx-lab/cells-draw.js`; `unlinked` imported in `changelog/paint-plan.js`; empty filter shows "Nothing matches…" |
+
+### Task 21: Scramble lab wiring restored ✓ done
+
+**Objective:** `mount()` no longer references free identifiers: font/stage/tabs stay owned by `mountUi`, the text + timing + sound controls are attached in `bind.js` through one `offs` list, and `teardown` unwinds exactly that list.
+
+**Files:** src/ds/functions/scramble/bind.js, src/ds/functions/scramble/teardown.js.
+
+**Verify:** fresh load of `#/functions/scramble` → 0 console errors; typing in the text field re-runs the scramble; duration slider updates its output; `voice` select plays; `↻ scramble` re-runs.
+
+### Task 22: Library contact sheet renders ✓ done
+
+**Objective:** `contactTokens` belongs to the contact sheet — move the list out of `cta.js` (which only uses `ctaTokens`) into `library/contact.js`, compacted to keep the file ≤100 lines.
+
+**Files:** src/ds/library/contact.js, src/ds/library/cta.js.
+
+**Verify:** `/ds/#/library` renders the contact playground (knobs + preview + code + tokens) with no console error.
+
+### Task 23: GridReveal + changelog one-liners ✓ done
+
+**Objective:** Import the two names the splits dropped: `mix` for the fx-lab painter, `unlinked` for the changelog's no-match branch.
+
+**Files:** src/ds/fx-lab/cells-draw.js, src/ds/changelog/paint-plan.js.
+
+**Verify:** `#/functions/grid-reveal` animates with no `mix is not defined`; filtering the changelog to an empty list renders the note instead of throwing.
+
+*Shipped in 00a0a94 · Tasks 21–23 · phase-6.*
+
+---
+
+## Phase 7 — Glitch lab: Code tab + tab state {#phase-7}
+
+*A stray close left the Code panel nested inside the Lab panel, so hiding Lab hid the code. Subset — originally 004508 Phase 2.*
+
+*Tags: Component*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 24 | Code panel becomes a sibling | `[data-tab-panel="code"]` is a direct child of `#ds-main`, visible after the Code click |
+| 25 | Tab state is explicit | Lab/Code buttons carry `aria-selected` and swap `.on` on click, matching the Scramble lab |
+
+### Task 24: Code panel becomes a sibling ✓ done
+
+**Objective:** Rebalance the render() template: close the Lab panel before opening `[data-tab-panel="code"]` and drop the now-extra close at the tail.
+
+**Files:** src/ds/functions/glitch.js.
+
+**Verify:** on `#/functions/glitch`, clicking Code shows the snippet (non-zero box, no hidden ancestor).
+
+### Task 25: Tab state is explicit ✓ done
+
+**Objective:** Give the glitch tablist the same contract as the other labs — `aria-selected` in the markup, `.on` + `aria-selected` toggled by the handler.
+
+**Files:** src/ds/functions/glitch.js, src/ds/functions/glitch/lab-controls.js.
+
+**Verify:** clicking each tab moves `.on` and `aria-selected`, and the panel swap follows.
+
+*Shipped in 9b6f615 · Tasks 24–25 · phase-7.*
+
+---
+
+## Phase 8 — Sweep the rest of the refactor {#phase-8}
+
+*Same class, other files: a free-identifier scan plus a fresh-page sweep per route, then the standing gates. Subset — originally 004508 Phase 3.*
+
+*Tags: Tooling*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 26 | Static sweep clean | free-identifier scan of `src/` reports only known globals / re-exports |
+| 27 | Browser sweep clean | every `/ds/#/…` route loads with 0 console errors on a fresh document; labs' controls respond |
+| 28 | Gates green + tracked | `plan:names` 0 missing · `ds:track` tagged = phased, 0 wip · `npm test` + `lint:manage` green |
+
+### Task 26: Static sweep clean ✓ done
+
+**Objective:** Re-run the free-identifier scan (`/tmp/free-idents.mjs`) over `src/` and triage every remaining hit until only globals, multi-declarators and re-exports remain.
+
+**Files:** (scan only — no repo file).
+
+**Verify:** output reviewed line by line; each real hit fixed or explained.
+
+### Task 27: Browser sweep clean ✓ done
+
+**Objective:** Full route sweep on a fresh document per route (`?p=N` cache-buster), capturing `error`/`unhandledrejection`/`console.error`, then per-lab control probes.
+
+**Files:** .hermes/plans/2026-09-14_004508-refactor-bugfix.md.
+
+**Verify:** 0 errors on all 15 routes; scramble + glitch + grid-reveal mechanics respond.
+
+### Task 28: Gates green + tracked ✓ done
+
+**Objective:** Standing gate trio plus manifest refresh, then close the phase.
+
+**Files:** src/ds/changelog-manifest.json, .hermes/plans/2026-09-14_004508-refactor-bugfix.md.
+
+**Verify:** `npm run plan:names`, `npm run ds:track`, `npm run lint:tokens`, `npm run build`, `npm run lint:manage` all green; `/ds/#/changelog` shows this scope 8/8.
+
+*Shipped in 10b60e9 · Tasks 26–28 · phase-8.*
+
+---
+
+## Phase 9 — Changelog keeps its name; every entry is a build {#phase-9}
+
+*One vocabulary across ADAM/DS: the page is the changelog, every entry is a build. Subset — originally 003212 Phase 1.*
+
+*Tags: Design System, Tooling*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 29 | Restore the Changelog page identity | sidebar + route read `Changelog`, crumb `Start · Changelog`, `#/builds` redirects, drawer reads "Build detail" |
+| 30 | Rename the entry vocabulary to build | no `iteration`/`iterState` left under `src/ds`; `Build N` in README/AGENTS/.cursorrules; names JSON title updated |
+| 31 | Gates + browser proof | `plan:names` 0 missing · `ds:track` N/N tagged · `npm test` green · :5199 changelog + drawer cycle pass |
+
+### Task 29: Restore the Changelog page identity ✓ done
+
+**Objective:** Undo the page rename from the interrupted session: nav label, route hash and crumb go back to `Changelog`; the abandoned `#/builds` URL keeps working as a redirect.
+
+**Files:** src/ds/routes.js, src/ds/ds.js, src/ds/pages-changelog.js, src/ds/foundations/pane-contract.js.
+
+**Verify:** `#/builds` lands on `#/changelog`; sidebar shows `Changelog`; docs pane copy reads "Announced in the changelog."
+
+### Task 30: Rename the entry vocabulary to build ✓ done
+
+**Objective:** Every place that names the unit calls it a build: `iterState` → `buildState`, paint/CSS comments, the empty-state noun, the curated card title, and the `Iter N` line in the standing convention files.
+
+**Files:** src/ds/changelog-parse.js, src/ds/changelog/paint-plan.js, src/ds/changelog-tasks.css, src/ds/changelog-names.json, README.md, AGENTS.md, .cursorrules.
+
+**Verify:** no `iteration`/`Iter N` left in `src/ds`, README, AGENTS.md or .cursorrules outside git history and the manifest; `npm run plan:names` still 0 missing.
+
+### Task 31: Gates + browser proof ✓ done
+
+**Objective:** Full gate plus a real-browser pass on 5199: changelog renders, chips filter, a card opens the drawer, Escape and scrim close it.
+
+**Files:** .hermes/plans/2026-09-14_003212-builds-nomenclature.md, src/ds/changelog-manifest.json.
+
+**Verify:** `npm run lint:tokens` clean · `npm run build` green · :5199 pass.
+
+*Shipped in 28e2e3b · Tasks 29–31 · phase-9.*
+
+---
+
 ## Risks / tradeoffs / open questions
 
 - **Import churn:** ~40 files import `views/*` ↔ `ds/functions/*` crosswise. Mitigation: barrels preserve old paths during migration; delete old path only after `grep` shows 0 importers + build + smoke + dist check.
