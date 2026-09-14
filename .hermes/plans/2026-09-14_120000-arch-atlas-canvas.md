@@ -369,7 +369,7 @@ Verified: BFS over the 355 `imports` edges, keyed in `schema.js` at load. Shift-
 
 Verified: the 16 route-bearing nodes (routes resolved by `graph-schema.js` from `src/ds/routes.js`, so a link is never invented) show `#/functions/glitch` inline in the trailing tip; non-route nodes (`canvas`, `pane color`) show none. Clicking the link in the pinned tip routes (`hash → #/functions/glitch`, Glitch page renders, atlas clears up with no listeners left) and `#/atlas` remounts clean (150 nodes, refit 55%, single sidebar, 0 console errors); the tip's ✕ closes and clears the overlay. Left the trailing tip itself `pointer-events: none` — it tracks the cursor, so a follow-tip link can never be hit; the pinned panel is where the link becomes live (clicking it does not trip the canvas click-to-clear).
 
-*Shipped in <sha> · Tasks 19–22 · phase-6.*
+*Shipped in 803ee31 · Tasks 19–22 · phase-6.*
 
 ---
 
