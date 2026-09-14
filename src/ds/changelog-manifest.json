@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T10:28:50.635Z",
+ "generated": "2026-09-14T11:20:17.550Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -25,6 +25,24 @@
   "2026-09-14_120000-arch-atlas-canvas.md"
  ],
  "commits": [
+  {
+   "sha": "b5b29ce",
+   "full": "b5b29ce848e466fe906c2f4d0370176a9fc74eaa",
+   "date": "2026-09-14",
+   "time": "16:46",
+   "subject": "chore(ds): phase 4.5 plan — atlas dock polish + public map",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-4-5"
+  },
+  {
+   "sha": "685c6ce",
+   "full": "685c6cee0b3116cc1a9319764d786fc68ea7550e",
+   "date": "2026-09-14",
+   "time": "16:00",
+   "subject": "feat(ds): atlas layer schemas + token evidence in inspector",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-4"
+  },
   {
    "sha": "8593ca1",
    "full": "8593ca1b37307d2def5b52f56ed386cba6908d3a",
@@ -1467,9 +1485,6 @@
   }
  ],
  "wip": [
-  "M src/ds/arch-schema.json",
-  "M src/ds/atlas/panel.js",
-  "M src/ds/atlas/schema.js",
-  "M src/ds/pages-atlas.js"
+  "M src/ds/changelog-names.json"
  ]
 }

@@ -82,9 +82,5 @@
   "2026-09-14_120000-arch-atlas-canvas.md": {
     "title": "Architecture atlas canvas with live schema",
     "purpose": "arch map"
-  },
-  "2026-09-14_164047-atlas-polish-public-map.md": {
-    "title": "Atlas dock on canvas + public site map",
-    "purpose": "atlas ux, public map"
   }
 }

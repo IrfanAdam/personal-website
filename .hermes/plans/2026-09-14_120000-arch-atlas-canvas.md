@@ -2,13 +2,13 @@
 
 > **For Hermes:** Use subagent-driven-development skill to implement this plan task-by-task.
 
-**Goal:** Ship a single switchable Atlas canvas (`/ds/#/atlas`) showing Functions, Components, and Foundations schemas with their connectors, backed by a maintained schema that regenerates on every change.
+**Goal:** Ship a single switchable Atlas canvas (`/ds/#/atlas`) showing Functions, Components, and Foundations schemas with their connectors, backed by a maintained schema that regenerates on every change; then polish it into a genuinely useful tool (floating dock, emphasis, insight layer) and expose a distilled viewer-facing architecture map on the main portfolio page, before closing out with real-time upkeep.
 
-**Architecture:** Audit the tree into evidence first, then extend `map-graph.mjs` to emit a machine schema (`arch-schema.json`) alongside `graph.mmd`, then build one SVG Atlas route with layer toggles + inspector, then wire regeneration into build/predev so views stay real-time.
+**Architecture:** Audit the tree into evidence first, then extend `map-graph.mjs` to emit a machine schema (`arch-schema.json`) alongside `graph.mmd`, then build one SVG Atlas route with layer toggles + inspector, then wire regeneration into build/predev so views stay real-time. New Phases 5–8: atlas canvas polish (floating dock, fit, emphasis, routing, tooltips), insight layer (search, focus, shortest-path), curated public map on the main site (clicker mechanics-map pattern), and its insight parity — schema regeneration/close-out moves to Phase 9.
 
-**Tech Stack:** Vite 5 ESM, vanilla JS + inline SVG (no deps), existing gates (`lint-manage.mjs`, `lint-tokens.mjs`, `ds-track.mjs`, `map-graph.mjs`, `smoke.mjs` on 5199)
+**Tech Stack:** Vite 5 ESM, vanilla JS, SVG (atlas) + Canvas2D (public map, port of clicker `mechanics/render.js`), inline SVG (no deps), existing gates (`lint-manage.mjs`, `lint-tokens.mjs`, `ds-track.mjs`, `map-graph.mjs`, `smoke.mjs` on 5199)
 
-**Tags:** Design System, Component, Function, Tooling
+**Tags:** Design System, Component, Function, Motion, Layout, Tooling
 
 ---
 
@@ -26,8 +26,10 @@
 ## Risks / open questions
 
 - SVG canvas scope creep (force-layout physics) — mitigated: deterministic layered columns + one radial mode, no physics engine.
-- Schema drift if regeneration is manual — mitigated: Phase 5 wires it into `build` + `predev` (Phase 5 owns the `package.json` edit, single place).
+- Schema drift if regeneration is manual — mitigated: Phase 9 wires it into `build` + `predev` (Phase 9 owns the `package.json` edit, single place).
 - `atlas.css` vs 100-line cap — mitigated: reuse `.ds-table`/`.ds-pick` chrome, new file capped, counted after each edit.
+- Atlas polish phases (5–8) touch visual chrome that broke under `light` theme once — every phase verifies under system/light/dark.
+- Public map needs curated human-readable data — Phase 7 keys every curated node id to a real `arch-schema.json` module path with a build-time drift guard.
 
 ---
 
@@ -107,7 +109,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 ### Task 4: Extend map-graph to emit arch-schema.json ✓ done
 
-**Objective:** One generator, two outputs: existing `docs/graph.mmd` + new `src/ds/arch-schema.json` (`{generated, nodes:[{id,path,layer,route,title}], edges:[{from,to,kind}]}`), edge kinds `imports|styles|tokens`.
+**Objective:** One generator, two outputs: existing `docs/graph.mmd` + new `src/ds/arch-schema.json` (`{generated, nodes:[{id,path,layer,route,title,tokens}], edges:[{from,to,kind}]}`), edge kinds `imports|styles|tokens`.
 
 **Files:**
 - Modify: `scripts/map-graph.mjs` (add schema emit; keep ≤100 lines — extract helper to `scripts/graph-schema.js` if over)
@@ -247,7 +249,183 @@ Verified: pane-color panel shows pane, own tokens, importers (`Foundations · To
 
 ---
 
-## Phase 5 — Real-time upkeep + close-out {#phase-5}
+## Phase 5 — Atlas canvas polish: dock on canvas, fit, emphasis, routing {#phase-5}
+
+*Make the `/ds/#/atlas` canvas genuinely usable before adding insight — the screenshot (2026-09-14 16:36) shows full-width stacked control bars, an unusable canvas scale, and a detached empty inspector.*
+
+*Tags: Design System, Layout*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 13 | Auto-fit + zoom UX | Fresh load frames all 142 nodes with margin; wheel zoom centered on cursor (0.15–3.5 clamp); double-click empty canvas re-fits; zoom % shown |
+| 14 | Node/edge emphasis | Hover a node = its edges brighten + all other nodes dim to muted fill; selection persists on click; hover outline rule (border/outline only) respected |
+| 15 | Edge routing | Inter-column edges drawn as curved paths (quadratic, control at column midpoint); edges merge per (from,to) pair; per-kind stroke tokens in `atlas.css` stay |
+| 16 | Floating control dock | One glass dock top-right ON the canvas (mode select, layer pills, layout pills, kind pills as compact square-dot chips); stacked-bar toolbar removed |
+| 17 | Legend strip | Bottom-left in-canvas: layer color dots + edge-kind swatches (mech-pill style, `var()` only) |
+| 18 | Hover/click tooltip | Cursor-follow tooltip: title, path, layer; click pins inspector content into it; Esc/blank-click clears |
+
+**Files:** `src/ds/atlas.css` (restyle chrome as `.atlas-dock`), `src/ds/atlas/canvas.js` (routing + emphasis + fit), `src/ds/atlas/layout.js` (no change unless routing needs col midpoints), `src/ds/pages-atlas.js` (dock markup, tooltip, fit on mount).
+
+Reference: clicker mechanics map `clicker_test/src/js/mechanics/{canvas.js,popover.js}` + `clicker_test/index.html` float-controls/legend markup — port the pattern (glass float top-right, legends bottom-left, cursor tooltip), adapt colors to tokens.
+
+### Task 13: Auto-fit + zoom UX
+
+**Objective:** Graph always framed on load; zoom anchored at the cursor.
+
+**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas/canvas.js`
+
+**Verify:** `open /ds/#/atlas` fresh — full graph framed without scrolling; dblclick empty area re-frames; zoom % readout updates.
+
+### Task 14: Node/edge emphasis
+
+**Files:** `src/ds/atlas/canvas.js`, `src/ds/atlas.css`
+
+**Verify:** Hover `glitch` — its 10 edges full-ink, rest muted, other dots fill `var(--color-surface)`; leaving restores.
+
+### Task 15: Edge routing
+
+**Files:** `src/ds/atlas/canvas.js`
+
+**Verify:** No straight hairlines crossing mid-canvas; curves arc through column gaps; edge count unchanged (224 in layered mode).
+
+### Task 16: Floating dock + legend strip
+
+**Files:** `src/ds/pages-atlas.js` (markup), `src/ds/atlas.css` (dock shell)
+
+**Verify:** No full-width bars anywhere; all controls inside the canvas viewport; keyboard focusable; legible under system/light/dark themes.
+
+### Task 17: Legend strip
+
+**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas.css`
+
+**Verify:** Layer dots + edge-kind swatches visible in-canvas without scrolling; `npm run lint:tokens` clean.
+
+### Task 18: Hover/click tooltip
+
+**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas/panel.js` (reuse render), `src/ds/atlas.css`
+
+**Verify:** Trail cursor near `ds_functions_glitch`; click pins and inspector stays synced; Esc unpins. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5]`.
+
+*Shipped in <sha> · Tasks 13–18 · phase-5.*
+
+---
+
+## Phase 6 — Atlas insight layer: search, focus, paths {#phase-6}
+
+*Surface paths, not just toggles — this is what makes the atlas insightful rather than just pretty.*
+
+*Tags: Function, Design System*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 19 | Node search + jump | Type-to-filter dock input: matches title/path; Enter centers + selects first hit; match count shown |
+| 20 | Focus mode | Clicking a node dims everything not in its 1-hop neighborhood and draws connectors' labels; second click restores |
+| 21 | Shortest-path highlight | Click A, shift-click B → BFS path over `imports` edges highlights; hops listed in inspector |
+| 22 | Route deep-links in tooltip | Route-bearing nodes show `#/functions/…` link inline; click navigates without breaking tooltip intent |
+
+**Files:** `src/ds/atlas/schema.js` (pathBetween BFS), `src/ds/pages-atlas.js` (search input + shift-select + path state), `src/ds/atlas/canvas.js` (path stroke emphasis), `src/ds/atlas.css` (search input chrome).
+
+### Task 19: Node search + jump
+
+**Verify:** Type `glitch` → 8 matches; Enter selects + centers `ds_functions_glitch`; count shows `8` in dock.
+
+### Task 20: Focus mode
+
+**Verify:** Click `ds_functions_glitch`; non-neighbors dim beyond Phase-5 emphasis; neighbor labels stay readable at default zoom.
+
+### Task 21: Shortest-path highlight
+
+**Verify:** Click `ds_functions_glitch`, shift-click `ds_foundations_pane_color` → shortest import chain highlighted; inspector lists hops.
+
+### Task 22: Route deep-links in tooltip
+
+**Verify:** Tooltip on Glitch shows `#/functions/glitch`; clicking it routes (hash changes, no crash). Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6]`.
+
+*Shipped in <sha> · Tasks 19–22 · phase-6.*
+
+---
+
+## Phase 7 — Public architecture map on the main site (viewer-facing) {#phase-7}
+
+*Distill the machine schema into a curated, human-readable map served on the main portfolio, in the clicker mechanics-map style. This is the "map on the main page" deliverable — NOT the admin `/ds` tool.*
+
+*Tags: Component, Function*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 23 | Curated public dataset | `src/data/arch-map.json` ≤50 nodes (entry clusters, core functions, tokens/foundations hub, page/component groups) with `title, desc, group, kind`; edges `kind: call/data/signal` + `label`; every id traces to a real module |
+| 24 | Canvas engine port | Port clicker `mechanics/render.js` + `canvas.js` essence: groups with draggable headers, node rows, orthogonal edge routing, pan/zoom, cursor tooltip, pinned selection |
+| 25 | Map view + URL | `/#/lab/architecture` fullscreen map (topbar, canvas, floating controls + legends, footer flow line, Esc/popstate back, body-scroll lock) |
+| 26 | Entry points | `/#/minimal-lab` shows an "Architecture map" link/card; visible without auth |
+| 27 | Regeneration guard | Build validates curated ids exist in `arch-schema.json`; build fails on drift |
+
+**Files:** create `src/views/map/{index.js,data.js,render.js,canvas.js,popover.js}` + `src/styles/map.css` (all ≤100 lines, no `#hex`), `<link>` + `<script>` in root `index.html`, entry-card on minimal-lab module, drift check hooked into `package.json` build chain.
+
+### Task 23: Curated public dataset
+
+**Verify:** Build passes with curated ids matching `arch-schema` module paths (spot-check 10); edge labels relate to real imports.
+
+### Task 24: Canvas engine port
+
+**Verify:** ~40 curated nodes render as boxed groups; drag group header moves it; reorder node inside group; dblclick header resets; pan + wheel zoom; cursor tooltip with node desc; click pins wiring; edge hover shows from → to label.
+
+### Task 25: Map view + URL
+
+**Verify:** Fresh load `/#/lab/architecture` → fullscreen map, zero console errors; Esc returns; scroll re-lock works ×3 open/close.
+
+### Task 26: Entry points
+
+**Verify:** From `/#/minimal-lab` the link opens the map; hover outline only.
+
+### Task 27: Regeneration guard
+
+**Verify:** Break one curated id → `npm run build` fails with a clear drift message; restore → green. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-7]`.
+
+*Shipped in <sha> · Tasks 23–27 · phase-7.*
+
+---
+
+## Phase 8 — Public map insight + polish parity {#phase-8}
+
+*The public map gets the same insight the atlas got: mode switch, flow narrative, emphasis parity, sound.*
+
+*Tags: Component, Function, Motion*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 28 | Flow narrative footer | Footer auto-describes mode like clicker's syncModeUI ("Flow: boot → theme → route → view mount", "IA: shell → layout → sections → fx panes → tokens hub") |
+| 29 | Mode switch | functions / IA mode select re-chunks curated data (two layouts like clicker `graphData.ia.js`); positions reset on switch; choice persisted |
+| 30 | Legend + emphasis parity | Edge-kind legend pills match atlas; hover/pin emphasis identical rules; lane legend updates per mode |
+| 31 | Sound + reduced motion | Hover plays one soft tick only when site sound already enabled; `prefers-reduced-motion` suppresses; default silent on public page |
+| 32 | Ship gate | lint-manage + lint:tokens + build + smoke on 5199 green; fresh-load sweep: main page, `/#/lab/architecture`, `/ds/#/atlas` + 16 ds routes — zero console errors |
+
+**Files:** `src/views/map/*`, `src/styles/map.css`, `package.json` (smoke list), `docs/arch-audit.md` (§Public map paragraph).
+
+### Task 28: Flow narrative footer
+
+**Verify:** Footer text differs per mode; syncs on select change without remount.
+
+### Task 29: Mode switch
+
+**Verify:** Select swap re-layouts in place (selection cleared, refit framed); choice persists like clicker `mechanics:mode`.
+
+### Task 30: Legend + emphasis parity
+
+**Verify:** Edge-kind legend pills carry same hover tips as atlas; pin/dim behavior matches.
+
+### Task 31: Sound + reduced motion
+
+**Verify:** With site sound on, hovering plays one soft tick; reduced-motion suppresses; default silent.
+
+### Task 32: Ship gate
+
+**Verify:** `node scripts/smoke.mjs` on 5199 green (add/adjust markers for the new route only if required — never break existing assertions); browser sweep listed above. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-8]`.
+
+*Shipped in <sha> · Tasks 28–32 · phase-8.*
+
+---
+
+## Phase 9 — Real-time upkeep + close-out {#phase-9}
 
 *Schema regenerates on every change; Atlas verified as part of the standard gate.*
 
@@ -255,11 +433,11 @@ Verified: pane-color panel shows pane, own tokens, importers (`Foundations · To
 
 | # | Task | Done when |
 |---|------|-----------|
-| 13 | Wire regeneration into build + predev | Fresh clone + `npm run build` regenerates schema; dev picks it up |
-| 14 | Graph + docs update for atlas modules | `docs/graph.mmd` shows atlas nodes, no orphans/cycles |
-| 15 | Full gate + browser sweep + ship | lint-manage + lint:tokens + build + smoke green; all routes err-free |
+| 33 | Wire regeneration into build + predev | Fresh clone + `npm run build` regenerates schema; dev picks it up |
+| 34 | Graph + docs update for atlas modules | `docs/graph.mmd` shows atlas nodes, no orphans/cycles |
+| 35 | Full gate + browser sweep + ship | lint-manage + lint:tokens + build + smoke green; all routes err-free |
 
-### Task 13: Wire regeneration into build + predev
+### Task 33: Wire regeneration into build + predev
 
 **Objective:** Single place owns freshness — `package.json` chains `map-graph` before `ds-track`.
 
@@ -268,9 +446,9 @@ Verified: pane-color panel shows pane, own tokens, importers (`Foundations · To
 
 **Verify:** `npm run arch` regenerates both outputs; `git status` after `npm run build` shows at most timestamp noise (discard if only `generated` changed).
 
-### Task 14: Graph + docs update for atlas modules
+### Task 34: Graph + docs update for atlas modules
 
-**Objective:** Retrievability guarantee covers the 5 new atlas modules.
+**Objective:** Retrievability guarantee covers the atlas + public-map modules.
 
 **Files:**
 - Modify: `docs/graph.mmd` (regenerated — verify `pages_atlas`, `atlas_schema/layout/canvas/panel` present)
@@ -278,15 +456,24 @@ Verified: pane-color panel shows pane, own tokens, importers (`Foundations · To
 
 **Verify:** `grep -c atlas docs/graph.mmd` ≥ 5; manual scan: no orphan (every atlas node has ≥1 edge), no cycle introduced.
 
-### Task 15: Full gate + browser sweep + ship
+### Task 35: Full gate + browser sweep + ship
 
 **Objective:** Atlas joins the standing definition of done.
 
-**Files:** none (verification) + final commit `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5]`
+**Files:** none (verification) + final commit `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-9]`
 
 **Verify:**
 - `npm run plan:names` → 0 missing
 - `npm run ds:track` → tagged == phased, 0 wip, `cont 20260909_145218_9888b1`
 - `npm test` green; `node scripts/smoke.mjs` on 5199 green
-- Fresh-load sweep: `/ds/#/atlas` + all 16 existing routes, zero console errors, Atlas toggles/layouts/inspector re-verified post-reload (HMR state lies — reload first)
-- Mark all Phase 5 tasks `✓ done`, append `*Shipped in <sha> · Tasks 13–15 · phase-5.*` per phase as each ships
+- Fresh-load sweep: `/ds/#/atlas` + `/#/lab/architecture` + all 16 existing routes, zero console errors, Atlas toggles/layouts/inspector re-verified post-reload (HMR state lies — reload first)
+- Mark all Phase 9 tasks `✓ done`, append `*Shipped in <sha> · Tasks 33–35 · phase-9.*` per phase as each ships
+
+---
+
+## Notes for implementer (polish phases 5–8)
+
+- `atlas.css` and any new stylesheets must stay ≤100 lines; public-map styles are a NEW file (`src/styles/map.css`), never appended to a full atlas.css.
+- Dock must degrade gracefully under `system`/`light`/`dark` — the original pills broke in `light` theme (surface = near-black); check all three each phase.
+- SVG nodes carry `data-layer`/`data-kind` too — any delegation matching bare `[data-layer]` catches node clicks; scope toolbar selectors to the dock container.
+- Clicker's `mechanics.css` uses raw px in places (their repo) — port patterns only, express every value via `--space-*`/`--size-*`/`--blur-*` tokens.
