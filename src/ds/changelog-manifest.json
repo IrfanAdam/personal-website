@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T07:27:19.565Z",
+ "generated": "2026-09-14T07:27:23.497Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,15 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "8e74433",
+   "full": "8e74433e8dab89ff1df8485e8db28d4dcf69020a",
+   "date": "2026-09-14",
+   "time": "12:57",
+   "subject": "docs(plan): order refactor phases 6–9 by first execution + timestamps",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-6"
+  },
   {
    "sha": "8afdb08",
    "full": "8afdb08feef45f7c5b4e4a721f1c74bc3f22dca1",
