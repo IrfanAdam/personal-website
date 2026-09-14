@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T07:24:16.834Z",
+ "generated": "2026-09-14T07:27:19.565Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,15 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "8afdb08",
+   "full": "8afdb08feef45f7c5b4e4a721f1c74bc3f22dca1",
+   "date": "2026-09-14",
+   "time": "12:54",
+   "subject": "chore(ds): track refresh after refactor phases 6–9",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-9"
+  },
   {
    "sha": "199d77e",
    "full": "199d77e61d63c2b57c8df3c55d4e71e7cd3a7409",
