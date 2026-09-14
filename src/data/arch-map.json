@@ -1,0 +1,945 @@
+{
+ "source": "src/ds/arch-schema.json",
+ "kinds": {
+  "boot": {
+   "label": "Boot",
+   "color": "--color-ink"
+  },
+  "page": {
+   "label": "Page",
+   "color": "--color-accent"
+  },
+  "core": {
+   "label": "Engine",
+   "color": "--color-info"
+  },
+  "fx": {
+   "label": "Effect",
+   "color": "--color-warning"
+  },
+  "sound": {
+   "label": "Sound",
+   "color": "--color-success"
+  },
+  "style": {
+   "label": "Stylesheet",
+   "color": "--color-ink-muted"
+  },
+  "tool": {
+   "label": "Gate",
+   "color": "--color-ink-subtle"
+  }
+ },
+ "edgeKinds": {
+  "call": {
+   "label": "call",
+   "color": "--color-ink-muted"
+  },
+  "data": {
+   "label": "data",
+   "color": "--color-info"
+  },
+  "signal": {
+   "label": "signal",
+   "color": "--color-warning"
+  }
+ },
+ "groups": [
+  {
+   "id": "shell",
+   "label": "Shell",
+   "sub": "boot \u00b7 chrome \u00b7 routing",
+   "tint": "--color-ink",
+   "x": 80,
+   "y": 60,
+   "w": 300,
+   "h": 149
+  },
+  {
+   "id": "pages",
+   "label": "Pages",
+   "sub": "routes and content",
+   "tint": "--color-accent",
+   "x": 420,
+   "y": 60,
+   "w": 340,
+   "h": 128
+  },
+  {
+   "id": "masonry",
+   "label": "Masonry engine",
+   "sub": "grid \u00b7 reveal \u00b7 viewer",
+   "tint": "--color-info",
+   "x": 800,
+   "y": 60,
+   "w": 360,
+   "h": 212
+  },
+  {
+   "id": "fx",
+   "label": "Visual fx",
+   "sub": "specimen registry",
+   "tint": "--color-warning",
+   "x": 80,
+   "y": 300,
+   "w": 380,
+   "h": 212
+  },
+  {
+   "id": "sound",
+   "label": "Sound",
+   "sub": "voices \u00b7 unlock",
+   "tint": "--color-success",
+   "x": 500,
+   "y": 300,
+   "w": 360,
+   "h": 212
+  },
+  {
+   "id": "styles",
+   "label": "Foundations",
+   "sub": "tokens and stylesheets",
+   "tint": "--color-ink-muted",
+   "x": 900,
+   "y": 300,
+   "w": 340,
+   "h": 233
+  },
+  {
+   "id": "tools",
+   "label": "Repo gates",
+   "sub": "generators and checks",
+   "tint": "--color-ink-subtle",
+   "x": 80,
+   "y": 580,
+   "w": 340,
+   "h": 170
+  }
+ ],
+ "nodes": [
+  {
+   "id": "boot_chrome",
+   "label": "boot-chrome",
+   "desc": "Measures the fixed header and slides it away as you scroll.",
+   "sub": "header \u00b7 scroll",
+   "group": "shell",
+   "kind": "boot",
+   "file": "src/boot-chrome.js"
+  },
+  {
+   "id": "main",
+   "label": "main",
+   "desc": "Boots the strip, themes and hash routes the three views.",
+   "sub": "router \u00b7 mount",
+   "group": "shell",
+   "kind": "boot",
+   "file": "src/main.js"
+  },
+  {
+   "id": "theme",
+   "label": "theme",
+   "desc": "system \u00b7 light \u00b7 dark, remembered in localStorage.",
+   "sub": "theme switch",
+   "group": "shell",
+   "kind": "boot",
+   "file": "src/theme.js"
+  },
+  {
+   "id": "views_headerFrame",
+   "label": "headerFrame",
+   "desc": "Slides the selection frame between strip thumbnails.",
+   "sub": "strip frame",
+   "group": "shell",
+   "kind": "boot",
+   "file": "src/views/headerFrame.js"
+  },
+  {
+   "id": "views_shared",
+   "label": "shared",
+   "desc": "Footer, strip items and view tabs every page reuses.",
+   "sub": "chrome",
+   "group": "shell",
+   "kind": "boot",
+   "file": "src/views/shared.js"
+  },
+  {
+   "id": "views_masonry",
+   "label": "masonry",
+   "desc": "The story grid: filter, parallax, hover and viewer.",
+   "sub": "landing",
+   "group": "pages",
+   "kind": "page",
+   "file": "src/views/masonry.js"
+  },
+  {
+   "id": "views_project",
+   "label": "project",
+   "desc": "Text-left / media-right layout for one case study.",
+   "sub": "case study",
+   "group": "pages",
+   "kind": "page",
+   "file": "src/views/project.js"
+  },
+  {
+   "id": "views_contact",
+   "label": "contact",
+   "desc": "Form, socials and the closing note.",
+   "sub": "contact",
+   "group": "pages",
+   "kind": "page",
+   "file": "src/views/contact.js"
+  },
+  {
+   "id": "data_site",
+   "label": "site data",
+   "desc": "Projects, socials and about copy from one source.",
+   "sub": "content",
+   "group": "pages",
+   "kind": "page",
+   "file": "src/data/site.js"
+  },
+  {
+   "id": "views_masonry_layout",
+   "label": "layout",
+   "desc": "Binary-subdivision distribution across four columns.",
+   "sub": "columns",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/layout.js"
+  },
+  {
+   "id": "views_masonry_cards",
+   "label": "cards",
+   "desc": "Card and list-row markup for every story.",
+   "sub": "markup",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/cards.js"
+  },
+  {
+   "id": "views_masonry_cells",
+   "label": "cells",
+   "desc": "Seeded shuffle that keeps the reveal order stable.",
+   "sub": "order",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/cells.js"
+  },
+  {
+   "id": "views_masonry_reveal",
+   "label": "reveal",
+   "desc": "Staggered entrance as cells meet the viewport.",
+   "sub": "entrance",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/reveal.js"
+  },
+  {
+   "id": "views_masonry_gridReveal",
+   "label": "gridReveal",
+   "desc": "rAF-driven binary-subdivision reveal of the grid.",
+   "sub": "reveal engine",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/gridReveal.js"
+  },
+  {
+   "id": "views_masonry_parallax",
+   "label": "parallax",
+   "desc": "Scroll-linked chase for column offsets.",
+   "sub": "scroll chase",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/parallax.js"
+  },
+  {
+   "id": "views_masonry_viewer",
+   "label": "viewer",
+   "desc": "Full-bleed image viewer with keyboard stepping.",
+   "sub": "lightbox",
+   "group": "masonry",
+   "kind": "core",
+   "file": "src/views/masonry/viewer.js"
+  },
+  {
+   "id": "styles_masonry",
+   "label": "masonry.css",
+   "desc": "Column, cell and hover styling for the grid.",
+   "sub": "grid css",
+   "group": "masonry",
+   "kind": "style",
+   "file": "src/styles/masonry.css"
+  },
+  {
+   "id": "views_glitch",
+   "label": "glitch",
+   "desc": "Slice, offset and RGB-split on any container.",
+   "sub": "specimen",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/glitch.js"
+  },
+  {
+   "id": "views_glitch_sound",
+   "label": "glitch-sound",
+   "desc": "Sound design bound to the glitch specimen.",
+   "sub": "fx audio",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/glitch-sound.js"
+  },
+  {
+   "id": "views_glimmer_orb",
+   "label": "glimmer-orb",
+   "desc": "Orbiting light with a pointer-tracked sheen.",
+   "sub": "specimen",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/glimmer-orb.js"
+  },
+  {
+   "id": "views_rise",
+   "label": "rise",
+   "desc": "Staggered rise-in for blocks and cards.",
+   "sub": "specimen",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/rise.js"
+  },
+  {
+   "id": "views_scramble_text",
+   "label": "scramble-text",
+   "desc": "Glyph scramble that resolves into the headline.",
+   "sub": "specimen",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/scramble-text.js"
+  },
+  {
+   "id": "views_title_reveal",
+   "label": "title-reveal",
+   "desc": "Mask reveal shared by page headlines.",
+   "sub": "specimen",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/title-reveal.js"
+  },
+  {
+   "id": "fx_visual_index",
+   "label": "visual index",
+   "desc": "Registry that boots every visual specimen page.",
+   "sub": "fx hub",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/fx/visual/index.js"
+  },
+  {
+   "id": "views_element_sound",
+   "label": "element-sound",
+   "desc": "Pointer-driven ticks for interactive atoms.",
+   "sub": "micro sound",
+   "group": "fx",
+   "kind": "fx",
+   "file": "src/views/element-sound.js"
+  },
+  {
+   "id": "fx_sound_index",
+   "label": "sound index",
+   "desc": "Audio unlock plus the voice registry.",
+   "sub": "sound hub",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/fx/sound/index.js"
+  },
+  {
+   "id": "views_init_sound",
+   "label": "init-sound",
+   "desc": "First-gesture boot for the audio layer.",
+   "sub": "unlock",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/views/init-sound.js"
+  },
+  {
+   "id": "views_audio_ctx",
+   "label": "audio-ctx",
+   "desc": "Lazy AudioContext with gesture unlock.",
+   "sub": "context",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/views/audio-ctx.js"
+  },
+  {
+   "id": "views_sound_palette",
+   "label": "sound-palette",
+   "desc": "Debug surface that auditions every voice.",
+   "sub": "lab",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/views/sound-palette.js"
+  },
+  {
+   "id": "fx_sound_voices_tone",
+   "label": "tone",
+   "desc": "Sine / triangle voice for clicks and confirms.",
+   "sub": "voice",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/fx/sound/voices/tone.js"
+  },
+  {
+   "id": "fx_sound_voices_noise",
+   "label": "noise",
+   "desc": "Filtered noise bursts for swipes and errors.",
+   "sub": "voice",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/fx/sound/voices/noise.js"
+  },
+  {
+   "id": "fx_sound_voices_drone",
+   "label": "drone",
+   "desc": "Sustained low pad under long interactions.",
+   "sub": "voice",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/fx/sound/voices/drone.js"
+  },
+  {
+   "id": "fx_sound_voices_scan",
+   "label": "scan",
+   "desc": "Sweeping scanline voice for reveals.",
+   "sub": "voice",
+   "group": "sound",
+   "kind": "sound",
+   "file": "src/fx/sound/voices/scan.js"
+  },
+  {
+   "id": "styles_tokens",
+   "label": "tokens.css",
+   "desc": "Primitive scale: space, size, motion, colour.",
+   "sub": "foundation",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/tokens.css"
+  },
+  {
+   "id": "styles_tokens_color",
+   "label": "tokens-color",
+   "desc": "Colour layer and theme overrides.",
+   "sub": "foundation",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/tokens-color.css"
+  },
+  {
+   "id": "styles_tokens_type",
+   "label": "tokens-type",
+   "desc": "Type scale and font stacks.",
+   "sub": "foundation",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/tokens-type.css"
+  },
+  {
+   "id": "styles_tokens_fx",
+   "label": "tokens-fx",
+   "desc": "Motion curves and effect settings.",
+   "sub": "foundation",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/tokens-fx.css"
+  },
+  {
+   "id": "styles_tokens_overrides",
+   "label": "tokens-overrides",
+   "desc": "Theme-specific value swaps.",
+   "sub": "foundation",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/tokens-overrides.css"
+  },
+  {
+   "id": "styles_base",
+   "label": "base.css",
+   "desc": "Reset, header, wrap and type base.",
+   "sub": "chrome css",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/base.css"
+  },
+  {
+   "id": "styles_pages",
+   "label": "pages.css",
+   "desc": "Strip, tabs and page sections.",
+   "sub": "chrome css",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/pages.css"
+  },
+  {
+   "id": "styles_card",
+   "label": "card.css",
+   "desc": "Card hover, outline and meta styling.",
+   "sub": "grid css",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/card.css"
+  },
+  {
+   "id": "styles_case",
+   "label": "case.css",
+   "desc": "Case-study prose and media columns.",
+   "sub": "page css",
+   "group": "styles",
+   "kind": "style",
+   "file": "src/styles/case.css"
+  },
+  {
+   "id": "scripts_map_graph",
+   "label": "map-graph",
+   "desc": "Turns src imports into graph.mmd + arch-schema.json.",
+   "sub": "generator",
+   "group": "tools",
+   "kind": "tool",
+   "file": "scripts/map-graph.mjs"
+  },
+  {
+   "id": "scripts_graph_schema",
+   "label": "graph-schema",
+   "desc": "Layers, routes and token evidence for the schema.",
+   "sub": "schema rules",
+   "group": "tools",
+   "kind": "tool",
+   "file": "scripts/graph-schema.js"
+  },
+  {
+   "id": "scripts_ds_track",
+   "label": "ds-track",
+   "desc": "Plans and commits into the changelog manifest.",
+   "sub": "traceability",
+   "group": "tools",
+   "kind": "tool",
+   "file": "scripts/ds-track.mjs"
+  },
+  {
+   "id": "scripts_lint_tokens",
+   "label": "lint-tokens",
+   "desc": "Fails on raw colour literals outside tokens.",
+   "sub": "gate",
+   "group": "tools",
+   "kind": "tool",
+   "file": "scripts/lint-tokens.mjs"
+  },
+  {
+   "id": "scripts_lint_manage",
+   "label": "lint-manage",
+   "desc": "Budget, readability and graph-freshness gate.",
+   "sub": "gate",
+   "group": "tools",
+   "kind": "tool",
+   "file": "scripts/lint-manage.mjs"
+  },
+  {
+   "id": "scripts_smoke",
+   "label": "smoke",
+   "desc": "Preview sweep across every route.",
+   "sub": "gate",
+   "group": "tools",
+   "kind": "tool",
+   "file": "scripts/smoke.mjs"
+  }
+ ],
+ "edges": [
+  {
+   "from": "fx_sound_index",
+   "to": "views_audio_ctx",
+   "kind": "call",
+   "label": "plays through"
+  },
+  {
+   "from": "fx_sound_index",
+   "to": "views_element_sound",
+   "kind": "call",
+   "label": "registers ticks"
+  },
+  {
+   "from": "fx_sound_index",
+   "to": "views_glitch_sound",
+   "kind": "call",
+   "label": "registers glitch audio"
+  },
+  {
+   "from": "fx_sound_index",
+   "to": "views_init_sound",
+   "kind": "call",
+   "label": "boots audio"
+  },
+  {
+   "from": "fx_sound_index",
+   "to": "views_sound_palette",
+   "kind": "call",
+   "label": "auditions voices"
+  },
+  {
+   "from": "fx_visual_index",
+   "to": "views_glimmer_orb",
+   "kind": "call",
+   "label": "boots specimen"
+  },
+  {
+   "from": "fx_visual_index",
+   "to": "views_glitch",
+   "kind": "call",
+   "label": "boots specimen"
+  },
+  {
+   "from": "fx_visual_index",
+   "to": "views_masonry_gridReveal",
+   "kind": "call",
+   "label": "boots reveal"
+  },
+  {
+   "from": "fx_visual_index",
+   "to": "views_rise",
+   "kind": "call",
+   "label": "boots specimen"
+  },
+  {
+   "from": "fx_visual_index",
+   "to": "views_scramble_text",
+   "kind": "call",
+   "label": "boots specimen"
+  },
+  {
+   "from": "fx_visual_index",
+   "to": "views_title_reveal",
+   "kind": "call",
+   "label": "boots specimen"
+  },
+  {
+   "from": "main",
+   "to": "boot_chrome",
+   "kind": "call",
+   "label": "wires header"
+  },
+  {
+   "from": "main",
+   "to": "theme",
+   "kind": "call",
+   "label": "inits theme"
+  },
+  {
+   "from": "main",
+   "to": "views_contact",
+   "kind": "call",
+   "label": "route mounts"
+  },
+  {
+   "from": "main",
+   "to": "views_headerFrame",
+   "kind": "call",
+   "label": "syncs frames"
+  },
+  {
+   "from": "main",
+   "to": "views_masonry",
+   "kind": "call",
+   "label": "route mounts"
+  },
+  {
+   "from": "main",
+   "to": "views_project",
+   "kind": "call",
+   "label": "route mounts"
+  },
+  {
+   "from": "main",
+   "to": "views_shared",
+   "kind": "call",
+   "label": "builds chrome"
+  },
+  {
+   "from": "styles_base",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_card",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_case",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_masonry",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_pages",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_tokens_color",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_tokens_fx",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_tokens_overrides",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "styles_tokens_type",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "views_contact",
+   "to": "data_site",
+   "kind": "call",
+   "label": "reads socials"
+  },
+  {
+   "from": "views_contact",
+   "to": "views_rise",
+   "kind": "call",
+   "label": "animates in"
+  },
+  {
+   "from": "views_contact",
+   "to": "views_shared",
+   "kind": "call",
+   "label": "reuses chrome"
+  },
+  {
+   "from": "views_contact",
+   "to": "views_title_reveal",
+   "kind": "call",
+   "label": "reveals title"
+  },
+  {
+   "from": "views_element_sound",
+   "to": "views_audio_ctx",
+   "kind": "call",
+   "label": "plays tick"
+  },
+  {
+   "from": "views_element_sound",
+   "to": "views_sound_palette",
+   "kind": "call",
+   "label": "picks voice"
+  },
+  {
+   "from": "views_glitch_sound",
+   "to": "views_audio_ctx",
+   "kind": "call",
+   "label": "plays glitch"
+  },
+  {
+   "from": "views_glitch_sound",
+   "to": "views_sound_palette",
+   "kind": "call",
+   "label": "picks voice"
+  },
+  {
+   "from": "views_init_sound",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "views_init_sound",
+   "to": "views_glitch_sound",
+   "kind": "call",
+   "label": "arms audio"
+  },
+  {
+   "from": "views_masonry_gridReveal",
+   "to": "views_masonry_cells",
+   "kind": "call",
+   "label": "reads order"
+  },
+  {
+   "from": "views_masonry_reveal",
+   "to": "views_masonry_gridReveal",
+   "kind": "call",
+   "label": "hands off"
+  },
+  {
+   "from": "views_masonry",
+   "to": "data_site",
+   "kind": "call",
+   "label": "reads stories"
+  },
+  {
+   "from": "views_masonry",
+   "to": "styles_masonry",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_masonry_cards",
+   "kind": "call",
+   "label": "renders cards"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_masonry_layout",
+   "kind": "call",
+   "label": "distributes"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_masonry_parallax",
+   "kind": "call",
+   "label": "attaches chase"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_masonry_reveal",
+   "kind": "call",
+   "label": "attaches reveal"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_masonry_viewer",
+   "kind": "call",
+   "label": "attaches viewer"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_shared",
+   "kind": "call",
+   "label": "reuses chrome"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_title_reveal",
+   "kind": "call",
+   "label": "reveals title"
+  },
+  {
+   "from": "views_project",
+   "to": "data_site",
+   "kind": "call",
+   "label": "reads project"
+  },
+  {
+   "from": "views_project",
+   "to": "views_rise",
+   "kind": "call",
+   "label": "animates in"
+  },
+  {
+   "from": "views_project",
+   "to": "views_shared",
+   "kind": "call",
+   "label": "reuses chrome"
+  },
+  {
+   "from": "views_project",
+   "to": "views_title_reveal",
+   "kind": "call",
+   "label": "reveals title"
+  },
+  {
+   "from": "views_rise",
+   "to": "styles_tokens",
+   "kind": "data",
+   "label": "reads vars"
+  },
+  {
+   "from": "views_rise",
+   "to": "views_masonry_gridReveal",
+   "kind": "call",
+   "label": "pairs with"
+  },
+  {
+   "from": "views_shared",
+   "to": "data_site",
+   "kind": "call",
+   "label": "reads lists"
+  },
+  {
+   "from": "views_sound_palette",
+   "to": "fx_sound_voices_drone",
+   "kind": "call",
+   "label": "auditions"
+  },
+  {
+   "from": "views_sound_palette",
+   "to": "fx_sound_voices_noise",
+   "kind": "call",
+   "label": "auditions"
+  },
+  {
+   "from": "views_sound_palette",
+   "to": "fx_sound_voices_scan",
+   "kind": "call",
+   "label": "auditions"
+  },
+  {
+   "from": "views_sound_palette",
+   "to": "fx_sound_voices_tone",
+   "kind": "call",
+   "label": "auditions"
+  },
+  {
+   "from": "views_title_reveal",
+   "to": "views_scramble_text",
+   "kind": "call",
+   "label": "imports"
+  },
+  {
+   "from": "main",
+   "to": "theme",
+   "kind": "signal",
+   "label": "theme switch click"
+  },
+  {
+   "from": "main",
+   "to": "boot_chrome",
+   "kind": "signal",
+   "label": "window scroll"
+  },
+  {
+   "from": "views_masonry",
+   "to": "views_masonry_parallax",
+   "kind": "signal",
+   "label": "scroll + resize"
+  },
+  {
+   "from": "views_init_sound",
+   "to": "views_audio_ctx",
+   "kind": "signal",
+   "label": "first gesture"
+  },
+  {
+   "from": "views_element_sound",
+   "to": "views_audio_ctx",
+   "kind": "signal",
+   "label": "pointer gesture"
+  }
+ ]
+}

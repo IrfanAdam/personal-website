@@ -389,25 +389,45 @@ Verified: the 16 route-bearing nodes (routes resolved by `graph-schema.js` from 
 
 **Files:** create `src/views/map/{index.js,data.js,render.js,canvas.js,popover.js}` + `src/styles/map.css` (all ≤100 lines, no `#hex`), `<link>` + `<script>` in root `index.html`, entry-card on minimal-lab module, drift check hooked into `package.json` build chain.
 
-### Task 23: Curated public dataset
+### Task 23: Curated public dataset ✓ done
+
+**Files:** `src/data/arch-map.json` (new), `src/views/map/data.js`
 
 **Verify:** Build passes with curated ids matching `arch-schema` module paths (spot-check 10); edge labels relate to real imports.
 
-### Task 24: Canvas engine port
+Verified: `src/data/arch-map.json` — 48 nodes across 7 groups (Shell 5, Pages 4, Masonry engine 8, Visual fx 8, Sound 8, Foundations 9, Repo gates 6), under the 50 cap, each with `title/desc/sub/group/kind/file`; 65 edges — 48 `call` pairs mirroring real `imports` in arch-schema (each labelled with what the importer does: "reads stories", "attaches viewer", "route mounts"…), 12 `data` (9 stylesheets + `views_masonry` → masonry.css → `tokens.css`, plus `views_init_sound`/`views_rise` token reads), 5 `signal` edges each grounded in a real listener (`theme.js:21` delegated theme click, `boot-chrome.js:15` scroll-hide, `parallax.js:45` scroll chase, `audio-ctx.js:17` first gesture). Every id resolved against the schema during generation — none hand-typed.
+
+### Task 24: Canvas engine port ✓ done
+
+**Files:** `src/views/map/{canvas,hits,drag,pointer,route,render,wires,paint,popover}.js`
 
 **Verify:** ~40 curated nodes render as boxed groups; drag group header moves it; reorder node inside group; dblclick header resets; pan + wheel zoom; cursor tooltip with node desc; click pins wiring; edge hover shows from → to label.
 
-### Task 25: Map view + URL
+Verified on preview 5201 (1280×569 canvas): all 7 boxed groups + 48 rows render and auto-fit at 0.63 (`48 modules · 65 relations · 7 groups` in the bar); dragging the Shell header by +140/+110 px moved the group (its tooltip answered at the new spot, stopped at the old, and the canvas pixel hash changed); double-click on a header restored it to its base slot; dragging `boot-chrome`'s row down two slots reordered the column to main/theme/headerFrame/boot-chrome/shared; panning empty canvas shifted the whole scene by exactly the drag delta (+50/+30) and fit stays centred; wheel zoom is cursor-anchored and clamps (12 out + 40 in with no errors); hovering shows the node tooltip with desc + in/out relation badges, hovering a wire shows `masonry → title-reveal · reveals title`; clicking pins (tip survives `pointerleave`), clicking empty canvas clears. Orthogonal routing lives in `route.js` (ports → stubs → gutters, collinear points collapsed); split into 9 single-job modules to hold the 100-line budget (`hits`/`drag`/`wires` are the extractions).
+
+### Task 25: Map view + URL ✓ done
+
+**Files:** `src/views/map/index.js` (new), `src/styles/map.css` (new), `src/main.js`, `index.html`, `src/styles/tokens-type.css`
 
 **Verify:** Fresh load `/#/lab/architecture` → fullscreen map, zero console errors; Esc returns; scroll re-lock works ×3 open/close.
 
-### Task 26: Entry points
+Verified: fresh load of `/#/lab/architecture` paints the fullscreen map (`body.map-open` hides `.top`, `.wrap` goes full-bleed, body `overflow: hidden`), bar + legends (`modules` 7 kinds · `wires` call/data/signal) + footer flow line all render, zero console errors; Esc returns to `#/masonry` with body class cleared, scroll restored and the header back; 3 open/close cycles each toggled cleanly with no listener leaks or errors. Two size tokens added (`--size-map-tip`, `--size-lab-card`); `.map-view`/`.map-bar`/`.map-stage` chrome is token-only (`npm run lint:tokens` 34 stylesheets clean).
+
+### Task 26: Entry points ✓ done
+
+**Files:** `src/views/minimal-lab.js` (new), `src/styles/lab.css` (new), `src/main.js`, `index.html`
 
 **Verify:** From `/#/minimal-lab` the link opens the map; hover outline only.
 
-### Task 27: Regeneration guard
+Verified: **no `minimal-lab` page existed in the repo** (the route was referenced only by this plan), so task 26 creates the minimal landing it names: `#/minimal-lab` renders a "Minimal lab" page whose first card links to `#/lab/architecture` (plus work + contact cards), visible without auth, footer included. Clicking the card opens the map; focus/hover resolves to `outline: solid 3px` (`--border-focus`) with colour, background and opacity unchanged — outline only, per house style. Lab cards are styled in their own `lab.css` (map.css was at budget).
+
+### Task 27: Regeneration guard ✓ done
+
+**Files:** `scripts/check-arch-map.mjs` (new), `package.json`, `src/data/arch-map.json`
 
 **Verify:** Break one curated id → `npm run build` fails with a clear drift message; restore → green. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-7]`.
+
+Verified: `npm run check:map` reports `48 nodes · 65 edges · 7 groups, every id traces to arch-schema.json`; renaming one curated id made `npm run build` exit 1 with `✗ arch-map drift — 1: node "boot_chrome_RENAMED" (src/boot-chrome.js) is not in arch-schema.json — renamed or deleted?` before the build step; restoring the id returned the whole chain to green. The gate also flags unknown groups, unknown edge endpoints and a >50 node map, and is chained into `build` right after `map-graph.mjs` so the check always runs against a freshly generated schema.
 
 *Shipped in <sha> · Tasks 23–27 · phase-7.*
 

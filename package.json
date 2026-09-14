@@ -1,29 +1,30 @@
 {
-  "name": "personal-website",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "node scripts/ds-track.mjs && vite build",
-    "preview": "vite preview",
-    "cms": "decap-server",
-    "cms:dev": "concurrently \"vite --host 0.0.0.0 --port 5173\" \"decap-server\"",
-    "lint:tokens": "node scripts/lint-tokens.mjs",
-    "test": "npm run lint:tokens && npm run build",
-    "ds:track": "node scripts/ds-track.mjs",
-    "plan:suggest": "node scripts/plan-suggest.mjs",
-    "plan:names": "node scripts/plan-names.mjs",
-    "predev": "node scripts/ds-track.mjs || true",
-    "lint:manage": "node scripts/lint-manage.mjs",
-    "smoke": "node scripts/smoke.mjs"
-  },
-  "devDependencies": {
-    "concurrently": "^10.0.5",
-    "decap-server": "^3.11.0",
-    "vite": "^5.0.0"
-  },
-  "dependencies": {
-    "marked": "^18.0.11"
-  }
+ "name": "personal-website",
+ "private": true,
+ "version": "0.0.0",
+ "type": "module",
+ "scripts": {
+  "dev": "vite",
+  "build": "node scripts/map-graph.mjs && node scripts/check-arch-map.mjs && node scripts/ds-track.mjs && vite build",
+  "preview": "vite preview",
+  "cms": "decap-server",
+  "cms:dev": "concurrently \"vite --host 0.0.0.0 --port 5173\" \"decap-server\"",
+  "lint:tokens": "node scripts/lint-tokens.mjs",
+  "test": "npm run lint:tokens && npm run build",
+  "ds:track": "node scripts/ds-track.mjs",
+  "plan:suggest": "node scripts/plan-suggest.mjs",
+  "plan:names": "node scripts/plan-names.mjs",
+  "predev": "node scripts/ds-track.mjs || true",
+  "lint:manage": "node scripts/lint-manage.mjs",
+  "smoke": "node scripts/smoke.mjs",
+  "check:map": "node scripts/check-arch-map.mjs"
+ },
+ "devDependencies": {
+  "concurrently": "^10.0.5",
+  "decap-server": "^3.11.0",
+  "vite": "^5.0.0"
+ },
+ "dependencies": {
+  "marked": "^18.0.11"
+ }
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T12:07:29.007Z",
+  "generated": "2026-09-14T12:19:49.286Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2150,6 +2150,14 @@
       "tokens": []
     },
     {
+      "id": "scripts_check_arch_map",
+      "path": "scripts/check-arch-map.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "check arch map",
+      "tokens": []
+    },
+    {
       "id": "scripts_dims",
       "path": "scripts/dims.mjs",
       "layer": "tool",
@@ -2527,6 +2535,86 @@
       ]
     },
     {
+      "id": "styles_lab",
+      "path": "src/styles/lab.css",
+      "layer": "style",
+      "route": null,
+      "title": "lab",
+      "tokens": [
+        "--border-focus",
+        "--border-hairline",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-surface",
+        "--focus-offset",
+        "--font-display",
+        "--font-mono",
+        "--leading-body",
+        "--measure-prose",
+        "--size-lab-card",
+        "--space-10",
+        "--space-14",
+        "--space-18",
+        "--space-8",
+        "--text-body",
+        "--text-card-title",
+        "--text-micro",
+        "--text-small",
+        "--text-title",
+        "--tracking-heading",
+        "--tracking-mono",
+        "--tracking-title"
+      ]
+    },
+    {
+      "id": "styles_map",
+      "path": "src/styles/map.css",
+      "layer": "style",
+      "route": null,
+      "title": "map",
+      "tokens": [
+        "--blur-header",
+        "--border-focus",
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-header",
+        "--color-info",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-line",
+        "--color-success",
+        "--color-surface",
+        "--color-warning",
+        "--focus-offset",
+        "--font-display",
+        "--font-mono",
+        "--leading-mono",
+        "--leading-snug",
+        "--size-header",
+        "--size-map-tip",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-body",
+        "--text-h3",
+        "--text-label",
+        "--text-micro",
+        "--text-small",
+        "--tracking-heading",
+        "--tracking-label",
+        "--tracking-mono",
+        "--z-frame"
+      ]
+    },
+    {
       "id": "styles_masonry",
       "path": "src/styles/masonry.css",
       "layer": "style",
@@ -2886,6 +2974,94 @@
       "tokens": []
     },
     {
+      "id": "views_map_canvas",
+      "path": "src/views/map/canvas.js",
+      "layer": "view",
+      "route": null,
+      "title": "canvas",
+      "tokens": []
+    },
+    {
+      "id": "views_map_data",
+      "path": "src/views/map/data.js",
+      "layer": "view",
+      "route": null,
+      "title": "data",
+      "tokens": []
+    },
+    {
+      "id": "views_map_drag",
+      "path": "src/views/map/drag.js",
+      "layer": "view",
+      "route": null,
+      "title": "drag",
+      "tokens": []
+    },
+    {
+      "id": "views_map_hits",
+      "path": "src/views/map/hits.js",
+      "layer": "view",
+      "route": null,
+      "title": "hits",
+      "tokens": []
+    },
+    {
+      "id": "views_map_index",
+      "path": "src/views/map/index.js",
+      "layer": "view",
+      "route": null,
+      "title": "index",
+      "tokens": []
+    },
+    {
+      "id": "views_map_paint",
+      "path": "src/views/map/paint.js",
+      "layer": "view",
+      "route": null,
+      "title": "paint",
+      "tokens": []
+    },
+    {
+      "id": "views_map_pointer",
+      "path": "src/views/map/pointer.js",
+      "layer": "view",
+      "route": null,
+      "title": "pointer",
+      "tokens": []
+    },
+    {
+      "id": "views_map_popover",
+      "path": "src/views/map/popover.js",
+      "layer": "view",
+      "route": null,
+      "title": "popover",
+      "tokens": []
+    },
+    {
+      "id": "views_map_render",
+      "path": "src/views/map/render.js",
+      "layer": "view",
+      "route": null,
+      "title": "render",
+      "tokens": []
+    },
+    {
+      "id": "views_map_route",
+      "path": "src/views/map/route.js",
+      "layer": "view",
+      "route": null,
+      "title": "route",
+      "tokens": []
+    },
+    {
+      "id": "views_map_wires",
+      "path": "src/views/map/wires.js",
+      "layer": "view",
+      "route": null,
+      "title": "wires",
+      "tokens": []
+    },
+    {
       "id": "views_masonry",
       "path": "src/views/masonry.js",
       "layer": "view",
@@ -3035,6 +3211,14 @@
       "layer": "view",
       "route": null,
       "title": "viewer visibility",
+      "tokens": []
+    },
+    {
+      "id": "views_minimal_lab",
+      "path": "src/views/minimal-lab.js",
+      "layer": "view",
+      "route": null,
+      "title": "minimal lab",
       "tokens": []
     },
     {
@@ -4986,7 +5170,17 @@
     },
     {
       "from": "main",
+      "to": "views_map_index",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
       "to": "views_masonry",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_minimal_lab",
       "kind": "imports"
     },
     {
@@ -5046,6 +5240,16 @@
     },
     {
       "from": "styles_glitch",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_lab",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_map",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -5215,6 +5419,121 @@
       "kind": "imports"
     },
     {
+      "from": "views_map_canvas",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_canvas",
+      "to": "views_map_hits",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_canvas",
+      "to": "views_map_render",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_canvas",
+      "to": "views_map_wires",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_drag",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_drag",
+      "to": "views_map_route",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_hits",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_hits",
+      "to": "views_map_route",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_canvas",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_paint",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_pointer",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_index",
+      "to": "views_map_route",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_pointer",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_pointer",
+      "to": "views_map_drag",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_pointer",
+      "to": "views_map_popover",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_pointer",
+      "to": "views_map_route",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_popover",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_render",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_render",
+      "to": "views_map_paint",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_wires",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_wires",
+      "to": "views_map_paint",
+      "kind": "imports"
+    },
+    {
+      "from": "views_map_wires",
+      "to": "views_map_route",
+      "kind": "imports"
+    },
+    {
       "from": "views_masonry_cells",
       "to": "views_masonry_cells_order",
       "kind": "imports"
@@ -5367,6 +5686,16 @@
     {
       "from": "views_masonry",
       "to": "views_title_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_minimal_lab",
+      "to": "views_map_data",
+      "kind": "imports"
+    },
+    {
+      "from": "views_minimal_lab",
+      "to": "views_shared",
       "kind": "imports"
     },
     {
