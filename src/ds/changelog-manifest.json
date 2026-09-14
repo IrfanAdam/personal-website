@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T13:57:30.792Z",
+ "generated": "2026-09-14T14:03:21.263Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -26,6 +26,15 @@
   "2026-09-14_192124-atlas-fullscreen.md"
  ],
  "commits": [
+  {
+   "sha": "c2fcbe3",
+   "full": "c2fcbe30ac37426b0ecc5266f3a1c2166c445ae9",
+   "date": "2026-09-14",
+   "time": "19:27",
+   "subject": "chore(ds): track refresh — manifest 175 · atlas fullscreen",
+   "plan": "2026-09-14_192124-atlas-fullscreen.md",
+   "anchor": "phase-2"
+  },
   {
    "sha": "48787ef",
    "full": "48787ef89f237bcdd0cdab86e226d9cd312e81ed",

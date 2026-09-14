@@ -7,6 +7,7 @@
 **Tech Stack:** ES modules (Vite), SVG atlas canvas, CSS class toggle + one z-index token.
 
 **Tags:** Component, Layout
+<!-- changelog: hide -->
 
 ---
 
