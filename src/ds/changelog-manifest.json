@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T14:03:21.263Z",
+ "generated": "2026-09-14T14:04:08.998Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -26,6 +26,15 @@
   "2026-09-14_192124-atlas-fullscreen.md"
  ],
  "commits": [
+  {
+   "sha": "0b1d0ff",
+   "full": "0b1d0ff0c984e054997c1d4f8087416fc6bc6df9",
+   "date": "2026-09-14",
+   "time": "19:34",
+   "subject": "chore(ds): fold fullscreen scope into the atlas build — phases 10-11",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase10"
+  },
   {
    "sha": "c2fcbe3",
    "full": "c2fcbe30ac37426b0ecc5266f3a1c2166c445ae9",
@@ -1612,7 +1621,6 @@
   }
  ],
  "wip": [
-  "M src/ds/arch-schema.json",
   "M src/ds/changelog-events.js",
   "M src/ds/changelog/graph.js"
  ]
