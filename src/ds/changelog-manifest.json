@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T11:20:17.550Z",
+ "generated": "2026-09-14T11:34:00.374Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -25,6 +25,42 @@
   "2026-09-14_120000-arch-atlas-canvas.md"
  ],
  "commits": [
+  {
+   "sha": "e4eb0de",
+   "full": "e4eb0dedb20a9b1a0481a39689a3e27ed670aea8",
+   "date": "2026-09-14",
+   "time": "17:04",
+   "subject": "chore(ds): regenerated arch schema — atlas token evidence after css wrap",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "640ac68",
+   "full": "640ac684baa228cb7d5cd16ed8d391e38125bb8e",
+   "date": "2026-09-14",
+   "time": "17:03",
+   "subject": "chore(ds): atlas phase 5 close-out — shipped line + css wrap",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "573e53e",
+   "full": "573e53e0c8dfb3930e55a9e1ce3b87f671890450",
+   "date": "2026-09-14",
+   "time": "17:03",
+   "subject": "feat(ds): atlas canvas polish — fit, emphasis, dock, tooltip",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "2d0f5e3",
+   "full": "2d0f5e37407823c83c2d1e280e99615f5832ef63",
+   "date": "2026-09-14",
+   "time": "16:50",
+   "subject": "docs(ds): fold atlas polish + public map into plan phases 5-8, upkeep to 9",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5"
+  },
   {
    "sha": "b5b29ce",
    "full": "b5b29ce848e466fe906c2f4d0370176a9fc74eaa",
@@ -1484,7 +1520,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-names.json"
- ]
+ "wip": []
 }
