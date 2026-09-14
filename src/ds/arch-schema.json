@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T10:28:49.806Z",
+  "generated": "2026-09-14T11:27:52.503Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -24,24 +24,45 @@
       "route": null,
       "title": "atlas",
       "tokens": [
-        "--border-dashed",
+        "--blur-header",
+        "--border-focus",
         "--border-hairline",
         "--color-accent",
         "--color-bg",
         "--color-focus",
+        "--color-header",
         "--color-info",
         "--color-ink",
         "--color-ink-muted",
-        "--color-panel",
+        "--color-ink-subtle",
+        "--color-line",
         "--color-surface",
+        "--focus-offset",
         "--font-mono",
-        "--radius-md",
-        "--radius-pill",
-        "--radius-sm",
+        "--size-ds-atlas-h",
+        "--size-ds-tip",
+        "--size-hairline",
+        "--space-10",
+        "--space-12",
+        "--space-14",
         "--space-16",
+        "--space-3",
         "--space-4",
-        "--space-8"
+        "--space-6",
+        "--space-8",
+        "--text-ds-body",
+        "--text-micro",
+        "--tracking-label",
+        "--z-ds-controls"
       ]
+    },
+    {
+      "id": "ds_atlas_camera",
+      "path": "src/ds/atlas/camera.js",
+      "layer": "component",
+      "route": null,
+      "title": "camera",
+      "tokens": []
     },
     {
       "id": "ds_atlas_canvas",
@@ -49,6 +70,14 @@
       "layer": "component",
       "route": null,
       "title": "canvas",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_dock",
+      "path": "src/ds/atlas/dock.js",
+      "layer": "component",
+      "route": null,
+      "title": "dock",
       "tokens": []
     },
     {
@@ -73,6 +102,14 @@
       "layer": "component",
       "route": null,
       "title": "schema",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_tooltip",
+      "path": "src/ds/atlas/tooltip.js",
+      "layer": "component",
+      "route": null,
+      "title": "tooltip",
       "tokens": []
     },
     {
@@ -3031,13 +3068,28 @@
   ],
   "edges": [
     {
+      "from": "ds_atlas_camera",
+      "to": "ds_atlas_layout",
+      "kind": "imports"
+    },
+    {
       "from": "ds_atlas_canvas",
       "to": "ds_atlas_layout",
       "kind": "imports"
     },
     {
+      "from": "ds_atlas_dock",
+      "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
       "from": "ds_atlas_panel",
       "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_tooltip",
+      "to": "ds_atlas_panel",
       "kind": "imports"
     },
     {
@@ -4142,17 +4194,32 @@
     },
     {
       "from": "ds_pages_atlas",
+      "to": "ds_atlas_camera",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
       "to": "ds_atlas_canvas",
       "kind": "imports"
     },
     {
       "from": "ds_pages_atlas",
-      "to": "ds_atlas_panel",
+      "to": "ds_atlas_dock",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_layout",
       "kind": "imports"
     },
     {
       "from": "ds_pages_atlas",
       "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_tooltip",
       "kind": "imports"
     },
     {

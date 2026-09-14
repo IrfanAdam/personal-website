@@ -268,43 +268,55 @@ Verified: pane-color panel shows pane, own tokens, importers (`Foundations · To
 
 Reference: clicker mechanics map `clicker_test/src/js/mechanics/{canvas.js,popover.js}` + `clicker_test/index.html` float-controls/legend markup — port the pattern (glass float top-right, legends bottom-left, cursor tooltip), adapt colors to tokens.
 
-### Task 13: Auto-fit + zoom UX
+### Task 13: Auto-fit + zoom UX ✓ done
 
 **Objective:** Graph always framed on load; zoom anchored at the cursor.
 
-**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas/canvas.js`
+**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas/camera.js`, `src/ds/atlas/layout.js`
 
 **Verify:** `open /ds/#/atlas` fresh — full graph framed without scrolling; dblclick empty area re-frames; zoom % readout updates.
 
-### Task 14: Node/edge emphasis
+Verified: fresh load frames all 145 visible nodes with 48u margin (`insideView 145/145`, 55% readout); wheel zoom keeps the world point under the cursor fixed (world `376.4,-59` unchanged across 55% → 62% → 69%); clamp 15%–350%; dblclick on empty canvas restores the fit viewBox exactly; zoom % + `N nodes · M edges` in the dock.
+
+### Task 14: Node/edge emphasis ✓ done
 
 **Files:** `src/ds/atlas/canvas.js`, `src/ds/atlas.css`
 
-**Verify:** Hover `glitch` — its 10 edges full-ink, rest muted, other dots fill `var(--color-surface)`; leaving restores.
+**Verify:** Hover `glitch` — its edges full-ink, rest muted, other dots fill `var(--color-surface)`; leaving restores.
 
-### Task 15: Edge routing
+Verified: hover `ds_functions_glitch` → its 7 edges `data-hl=1` (kind-coloured), 223 wires muted, 137 other nodes dim to `var(--color-surface)` fill + `--color-line` hairline, its 7 neighbours stay ink-filled and their dense-column labels reveal; leaving restores (hl 0 / dim 0); click pins `data-sel` and it survives leaving the node (selection persists); hover outline stays border/outline only.
+
+### Task 15: Edge routing ✓ done
 
 **Files:** `src/ds/atlas/canvas.js`
 
-**Verify:** No straight hairlines crossing mid-canvas; curves arc through column gaps; edge count unchanged (224 in layered mode).
+**Verify:** No straight hairlines crossing mid-canvas; curves arc through column gaps; edge count unchanged.
 
-### Task 16: Floating dock + legend strip
+Verified: all 230 rendered wires are quadratic paths (`M… Q…`, control at the column midpoint — 230/230 contain `Q`), merged one path per (from,to) pair (230 pairs → 230 paths), kind-coloured on focus; schema edges for visible layers = 230 (was 224 before the 3 new atlas modules landed in `arch-schema.json`).
 
-**Files:** `src/ds/pages-atlas.js` (markup), `src/ds/atlas.css` (dock shell)
+### Task 16: Floating dock + legend strip ✓ done
+
+**Files:** `src/ds/atlas/dock.js` (markup + wiring), `src/ds/pages-atlas.js` (stage), `src/ds/atlas.css` (dock shell)
 
 **Verify:** No full-width bars anywhere; all controls inside the canvas viewport; keyboard focusable; legible under system/light/dark themes.
 
-### Task 17: Legend strip
+Verified: `.atlas-bar` count 0 (stacked toolbar gone) — one glass dock top-right inside `.atlas-stage` (8 chips: 3 layer dots + 2 layout + 3 kind swatches, plus `N nodes · M edges` and zoom %); chips are real `<button type="button">` elements (tabbable) and delegation is scoped to `.atlas-dock button` so SVG node clicks never flip pills; computed colours under system/light/dark resolve to surface/ink tokens in all three (`rgb(30,35,41)` bg + `rgb(242,244,247)` ink in dark) — no repeat of the light-theme pill failure.
 
-**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas.css`
+### Task 17: Legend strip ✓ done
+
+**Files:** `src/ds/atlas/dock.js`, `src/ds/pages-atlas.js`, `src/ds/atlas.css`
 
 **Verify:** Layer dots + edge-kind swatches visible in-canvas without scrolling; `npm run lint:tokens` clean.
 
-### Task 18: Hover/click tooltip
+Verified: bottom-left in-canvas legend — `layers` (3 colour dots) + `edges` (3 kind swatches) at `--text-micro`, `pointer-events: none` so it never eats canvas input, `backdrop-filter` glass like the dock; both dock and legend are absolutely positioned inside the stage (no scroll to reach them); `npm run lint:tokens` → 31 stylesheets + 33 JS modules clean, `atlas.css` 97/100 lines.
 
-**Files:** `src/ds/pages-atlas.js`, `src/ds/atlas/panel.js` (reuse render), `src/ds/atlas.css`
+### Task 18: Hover/click tooltip ✓ done
 
-**Verify:** Trail cursor near `ds_functions_glitch`; click pins and inspector stays synced; Esc unpins. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5]`.
+**Files:** `src/ds/atlas/tooltip.js` (new), `src/ds/pages-atlas.js`, `src/ds/atlas/panel.js` (reuse render), `src/ds/atlas.css`
+
+**Verify:** Trail cursor near `ds_functions_glitch`; click pins and inspector stays synced; Esc unpins.
+
+Verified: cursor-follow tip (title + layer + path + `click to pin · esc to clear`) tracks the pointer with edge-aware side/top swapping; click pins the Phase-4 inspector content into it (`.is-pinned`, `pointer-events: auto`, `Connectors · 1 out / 6 in`, route link `#/functions/glitch` navigates); Esc / blank-canvas click unpin and clear the emphasis; the detached `.atlas-inspector` aside is gone — the tip replaced it on-canvas. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5]`.
 
 *Shipped in <sha> · Tasks 13–18 · phase-5.*
 
