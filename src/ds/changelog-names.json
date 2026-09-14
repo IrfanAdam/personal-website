@@ -36,11 +36,11 @@
     "title": "Turn ADAM/DS into a system that builds pages itself"
   },
   "2026-09-09_145218-bidirectional-pipeline.md": {
-    "purpose": "Plan↔commit linking",
+    "purpose": "Plan\u2194commit linking",
     "title": "Link every plan and DS commit both ways, no bookkeeping"
   },
   "2026-09-09_170854-design-system-update-4.md": {
-    "purpose": "Foundations → Evo parity",
+    "purpose": "Foundations \u2192 Evo parity",
     "title": "Bring Foundations to Evo parity: color, type, tokens"
   },
   "2026-09-10_153555-color-cool-synthetic.md": {
@@ -73,7 +73,7 @@
   },
   "2026-09-14_003212-builds-nomenclature.md": {
     "purpose": "Builds nomenclature",
-    "title": "The changelog keeps its name — every entry in it is a build"
+    "title": "The changelog keeps its name \u2014 every entry in it is a build"
   },
   "2026-09-14_004508-refactor-bugfix.md": {
     "purpose": "Split-regression repair",
@@ -82,5 +82,9 @@
   "2026-09-14_120000-arch-atlas-canvas.md": {
     "title": "Architecture atlas canvas with live schema",
     "purpose": "arch map"
+  },
+  "2026-09-14_164047-atlas-polish-public-map.md": {
+    "title": "Atlas dock on canvas + public site map",
+    "purpose": "atlas ux, public map"
   }
 }
