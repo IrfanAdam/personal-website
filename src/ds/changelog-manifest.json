@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T13:26:09.479Z",
+ "generated": "2026-09-14T13:57:30.792Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -22,9 +22,28 @@
   "2026-09-14_001100-graph-join-leak.md",
   "2026-09-14_003212-builds-nomenclature.md",
   "2026-09-14_004508-refactor-bugfix.md",
-  "2026-09-14_120000-arch-atlas-canvas.md"
+  "2026-09-14_120000-arch-atlas-canvas.md",
+  "2026-09-14_192124-atlas-fullscreen.md"
  ],
  "commits": [
+  {
+   "sha": "48787ef",
+   "full": "48787ef89f237bcdd0cdab86e226d9cd312e81ed",
+   "date": "2026-09-14",
+   "time": "19:26",
+   "subject": "feat(ds): atlas fullscreen stage — dock toggle, overlay close, esc",
+   "plan": "2026-09-14_192124-atlas-fullscreen.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "5784050",
+   "full": "5784050156498f44f32c7b94d6a3da46c4aa1d1f",
+   "date": "2026-09-14",
+   "time": "18:56",
+   "subject": "chore(ds): track refresh — manifest 174 · phase 9 close-out",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-9"
+  },
   {
    "sha": "fd1fe9d",
    "full": "fd1fe9d62302201d0a1a038888081638bd1083ec",
@@ -1584,6 +1603,7 @@
   }
  ],
  "wip": [
+  "M src/ds/arch-schema.json",
   "M src/ds/changelog-events.js",
   "M src/ds/changelog/graph.js"
  ]
