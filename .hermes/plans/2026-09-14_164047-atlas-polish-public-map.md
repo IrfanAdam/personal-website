@@ -10,6 +10,8 @@
 
 **Tags:** Design System, Component, Function, Layout
 
+<!-- changelog: hide -->
+
 ---
 
 ## Context / assumptions
