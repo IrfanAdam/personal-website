@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13T19:37:30.851Z",
+ "generated": "2026-09-14T07:02:28.250Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -24,6 +24,15 @@
   "2026-09-14_004508-refactor-bugfix.md"
  ],
  "commits": [
+  {
+   "sha": "d1d47c6",
+   "full": "d1d47c6f7720eccdd31a181cb6e678bbca69b4d7",
+   "date": "2026-09-14",
+   "time": "01:07",
+   "subject": "chore(ds): track refresh after the fence-aware chunks fix",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
   {
    "sha": "8a97551",
    "full": "8a9755155c80647fd88794f6cefef34abf726842",

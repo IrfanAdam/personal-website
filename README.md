@@ -21,3 +21,18 @@ Vercel: import folder, framework Vite, output `dist`.
 - Naming: changelog card titles are LLM-curated in `src/ds/changelog-names.json` (`file → {title ≤76ch, purpose}`) — heuristics in `changelog-titles.js` are fallback only. Every new phased plan gets its names entry (via Hermes) before implementing; `npm run plan:names` fails when a phased plan lacks one.
 - Retro links: pre-trailer commits map in `.hermes/plan-links.json` (`sha → {plan, anchor}`; anchor must occur verbatim in exactly one `## Phase` body, `null` = first phase) — applied by `ds-track`, no history rewrite. phaseless old plans get one `(retro)` shipped phase instead of restructuring.
 - Color architecture (3-hop, toward DS-as-configurator): material ramp (raw values, never consumed) → swap slot (one active pick of N) → `--color-*` semantic (what components consume). The future configurator writes to the middle layer only. Same shape planned for type.
+## Code map
+| Folder | Job | Example |
+|---|---|---|
+| `src/app/` | boot only, no UI strings | `main.js`, `router.js` |
+| `src/pages/` | route views | `masonry.js`, `contact.js` |
+| `src/shared/` | cross-page only | `headerFrame.js` |
+| `src/fx/visual/` | pixels only | `glitch-attach.js` |
+| `src/fx/sound/` | audio only | `voices/tone.js` |
+| `src/ds/` | design-system labs + changelog | `functions/glitch/` |
+| `src/styles/` | one file per page, ≤100 lines | `tokens.css` |
+| `scripts/` | gates + graph | `lint-manage.mjs`, `map-graph.mjs` |
+- Header contract: `/* ADAM/<AREA> — <path> · <job> · [plan:<file>#phase-N] */` + `// Exports:` map + `// — Section —` banners (AREA ∈ APP|PAGE|SHARED|FX|SOUND|DS|STYLE|TOOL).
+- Diagram: `docs/graph.mmd` (`node scripts/map-graph.mjs` to regen — no orphans/cycles).
+- Loop: Draft → lint-manage → lint:tokens → test → smoke (`:5199`, never `:5173`) → 30s scan → fix; max 3 rounds.
+- E.g. "change glitch sound" → `src/fx/sound/voices/`.
