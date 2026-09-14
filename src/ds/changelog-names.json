@@ -82,5 +82,9 @@
   "2026-09-14_120000-arch-atlas-canvas.md": {
     "title": "Architecture atlas canvas with live schema",
     "purpose": "arch map"
+  },
+  "2026-09-14_192124-atlas-fullscreen.md": {
+    "title": "Fullscreen stage overlay for the atlas canvas",
+    "purpose": "atlas fullscreen"
   }
 }

@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/atlas/shell · atlas route markup (stage, dock, legend, tip)
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+   [plan:2026-09-14_192124-atlas-fullscreen.md#phase-1] */
 import { dockHTML, legendHTML } from './dock.js';
 // Exports: shellHTML
 export const shellHTML = () => [
@@ -12,5 +12,6 @@ export const shellHTML = () => [
   dockHTML(),
   legendHTML(),
   '<div class="atlas-tip" id="atlasTip" hidden></div>',
+  '<button class="atlas-close" id="atlasClose" type="button" aria-label="Close fullscreen" hidden>✕</button>',
   '</div></div>',
 ].join('');

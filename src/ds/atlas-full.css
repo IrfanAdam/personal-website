@@ -1,0 +1,30 @@
+/* ADAM/DS — ds/atlas-full · atlas stage fullscreen overlay + close control
+   [plan:2026-09-14_192124-atlas-fullscreen.md#phase-1] */
+body.atlas-full { overflow: hidden; }
+.atlas-stage.is-full {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-ds-full);
+  height: 100vh;
+  padding: var(--space-16);
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+.atlas-stage.is-full .atlas-canvas { height: 100%; }
+.atlas-full[aria-pressed="true"] { color: var(--color-ink); border-color: var(--color-ink); }
+.atlas-close {
+  position: absolute;
+  right: var(--space-16);
+  bottom: var(--space-16);
+  z-index: var(--z-ds-controls);
+  padding: var(--space-6) var(--space-12);
+  border: var(--border-hairline);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  line-height: var(--leading-mono);
+  cursor: pointer;
+}
+.atlas-close:hover, .atlas-close:focus-visible { outline: var(--border-focus); outline-offset: var(--focus-offset); }
+.atlas-close[hidden] { display: none; }

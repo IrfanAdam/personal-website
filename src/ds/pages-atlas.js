@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/pages-atlas · atlas route shell + interaction wiring
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+   [plan:2026-09-14_192124-atlas-fullscreen.md#phase-1] */
 import { LAYERS, KINDS, visible, edgesVisible } from './atlas/schema.js';
 import { BOX } from './atlas/layout.js';
 import { bind } from './atlas/camera.js';
@@ -9,6 +9,7 @@ import { shellHTML } from './atlas/shell.js';
 import { makeView } from './atlas/view.js';
 import { makeInsight } from './atlas/insight.js';
 import { makeActions } from './atlas/actions.js';
+import { makeFullscreen } from './atlas/fullscreen.js';
 // Exports: title, render, mount
 export const title = 'Atlas';
 export const render = shellHTML;
@@ -36,6 +37,7 @@ export function mount(root) {
   const onResize = () => {
     if (!tip.isPinned()) view.refit();
   };
+  const full = makeFullscreen(root, onResize);
   const unbindDock = bindDock(root, state, act.apply);
   const unbindSvg = bind(svg, cam, {
     onHover: act.onHover,
@@ -49,6 +51,7 @@ export function mount(root) {
   view.draw();
   view.refit();
   return () => {
+    full.unbind();
     unbindDock();
     unbindSvg();
     act.find.unbind();

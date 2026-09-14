@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/atlas/dock · floating controls + legend markup/wiring
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5] */
+   [plan:2026-09-14_192124-atlas-fullscreen.md#phase-1] */
 import { LAYERS, KINDS } from './schema.js';
 import { findHTML } from './search.js';
 // Exports: dockHTML, legendHTML, bindDock
@@ -12,6 +12,8 @@ const chip = (attr, value, on, swatch) => {
   return open + aria;
 };
 const div = '<span class="atlas-div" aria-hidden="true"></span>';
+const FULL = '<button type="button" class="atlas-chip atlas-full" id="atlasFull" data-full="1" ' +
+  'aria-pressed="false" aria-label="Fullscreen stage" title="Fullscreen stage">⛶</button>';
 export const dockHTML = () => [
   '<div class="atlas-dock" id="atlasDock" role="toolbar" aria-label="Atlas controls">',
   LAYERS.map((l) => chip('data-layer', l, true, 'atlas-dot')).join(''),
@@ -21,6 +23,7 @@ export const dockHTML = () => [
   KINDS.map((k) => chip('data-kind', k, true, 'atlas-swatch')).join(''),
   '<span class="atlas-count" id="atlasCount"></span>',
   '<span class="atlas-zoom" id="atlasZoom">100%</span>',
+  FULL,
   findHTML(),
   '</div>',
 ].join('');
@@ -53,6 +56,7 @@ export function bindDock(root, state, apply) {
   const onClick = (e) => {
     const btn = e.target.closest('.atlas-dock button');
     if (!btn) return;
+    if (btn.dataset.full) return;
     if (btn.dataset.layer) flip(state.on, btn.dataset.layer, btn);
     if (btn.dataset.kind) flip(state.kinds, btn.dataset.kind, btn);
     if (btn.dataset.layout) setMode(btn);

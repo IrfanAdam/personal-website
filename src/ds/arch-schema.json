@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T12:59:55.175Z",
+  "generated": "2026-09-14T13:55:06.075Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -83,6 +83,37 @@
       "layer": "component",
       "route": null,
       "title": "dock",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_full",
+      "path": "src/ds/atlas-full.css",
+      "layer": "style",
+      "route": null,
+      "title": "atlas full",
+      "tokens": [
+        "--border-focus",
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink",
+        "--color-surface",
+        "--focus-offset",
+        "--font-mono",
+        "--leading-mono",
+        "--space-12",
+        "--space-16",
+        "--space-6",
+        "--text-small",
+        "--z-ds-controls",
+        "--z-ds-full"
+      ]
+    },
+    {
+      "id": "ds_atlas_fullscreen",
+      "path": "src/ds/atlas/fullscreen.js",
+      "layer": "component",
+      "route": null,
+      "title": "fullscreen",
       "tokens": []
     },
     {
@@ -3432,6 +3463,11 @@
       "kind": "imports"
     },
     {
+      "from": "ds_atlas_full",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_atlas_insight",
       "to": "ds_atlas_schema",
       "kind": "imports"
@@ -4599,6 +4635,11 @@
     {
       "from": "ds_pages_atlas",
       "to": "ds_atlas_dock",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_fullscreen",
       "kind": "imports"
     },
     {
