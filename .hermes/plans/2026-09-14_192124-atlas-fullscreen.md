@@ -24,7 +24,7 @@
 
 **Files:** modify `src/ds/atlas/shell.js`, `src/ds/atlas/dock.js`, `src/ds/pages-atlas.js`, `src/ds/ds.css` (one z token), `ds/index.html` (one `<link>`); create `src/ds/atlas/fullscreen.js`, `src/ds/atlas-full.css`.
 
-### Task 1: Markup — dock chip + overlay close
+### Task 1: Markup — dock chip + overlay close ✓ done
 
 **Objective:** Controls exist in the shell markup, inert until wired.
 
@@ -32,7 +32,9 @@
 
 **Verify:** Fresh load of `#/atlas` renders both nodes; no console errors.
 
-### Task 2: Wiring — fullscreen.js
+Verified: fresh load of `#/atlas` renders `#atlasFull` in the dock (aria-pressed="false") and the hidden `#atlasClose` in the stage, zero console errors; `bindDock` ignores `[data-full]` so the chip never fires the layer/kind `apply()` path.
+
+### Task 2: Wiring — fullscreen.js ✓ done
 
 **Objective:** One module owns the toggle: class + body lock + aria state + refit.
 
@@ -40,7 +42,9 @@
 
 **Verify:** Chip enters fullscreen (`is-full` + pressed aria), ✕ and Escape exit, Escape in fullscreen must NOT clear the atlas selection, refit runs on both transitions, unbind on route leave.
 
-### Task 3: Styles — atlas-full.css
+Verified by clicking the real controls: chip → stage goes `946x432` embedded → `1280x633` fixed overlay (canvas 430 → 599 px) with `body.atlas-full` set, chip pressed, ✕ shown, and the camera refits for the new aspect (`55% → 58%`); ✕ and Escape both restore the embedded state exactly (`946x432`, canvas 430, `55%`); with a node pinned, Escape exits fullscreen and keeps the inspector, and only the second Escape clears the selection; 3 open/close cycles clean; leaving the route while fullscreen removes `body.atlas-full`.
+
+### Task 3: Styles — atlas-full.css ✓ done
 
 **Objective:** The overlay reads as a fullscreen canvas in system/light/dark; tokens only.
 
@@ -48,7 +52,9 @@
 
 **Verify:** `npm run lint:tokens` clean; overlay covers the viewport, dock/legend stay in-viewport, `atlas.css` still ≤100 lines.
 
-*Shipped in <sha> · Tasks 1–3 · phase-1.*
+Verified: `lint:tokens` clean (36 stylesheets); the overlay is `position: fixed` covering the viewport in system/light/dark with the stage background swapping per theme (`rgb(236,238,242)` light / `rgb(18,21,26)` dark) and the ✕ readable in both; `atlas.css` untouched at 91/100 lines.
+
+*Shipped in 48787ef · Tasks 1–3 · phase-1.*
 
 ---
 
@@ -65,14 +71,20 @@
 
 **Files:** none (verification) + plan doc marks.
 
-### Task 4: Gate + browser sweep
+### Task 4: Gate + browser sweep ✓ done
 
 **Objective:** Prove the toggle on a fresh load (HMR state lies) and prove no other route regressed.
 
 **Verify:** open → ✕ → re-open → Escape ×3 cycles clean; refit changes the camera on both transitions; widget count and readout unchanged; all 16 ds routes + `/#/lab/architecture` zero console errors.
 
-### Task 5: Close-out
+Verified: `lint:manage` clean (regenerated graph + schema committed), `lint:tokens` ✓, `npm run build` ✓, `smoke` on 5199 ✓; freshly-loaded sweep with zero console errors on all 16 ds routes (incl. `#/atlas`) plus `/#/lab/architecture` and the main page; fullscreen cycle re-proved on a fresh load (chip/✕/Esc ×3).
+
+### Task 5: Close-out ✓ done
 
 **Objective:** Archive the scope like every DS phase.
 
 **Verify:** `npm run plan:names` 0 missing; `npm run ds:track` tagged == phased, 0 unlinked; tasks marked `✓ done` with the code sha in `*Shipped in*`; commits: feat `[plan:2026-09-14_192124-atlas-fullscreen.md#phase-1]`, chore close-out, `chore(ds): track refresh`.
+
+Verified: `plan:names` 22 names · 0 missing (`18/18 tagged` in `ds:track`); tasks marked `✓ done` with the code sha in the shipped lines; commits `48787ef` (feat) + close-out + `chore(ds): track refresh`, all carrying the `atlas-fullscreen` trailer.
+
+*Shipped in 48787ef · Tasks 4–5 · phase-2.*
