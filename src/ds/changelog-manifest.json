@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T07:29:20.401Z",
+ "generated": "2026-09-14T08:21:32.940Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -21,9 +21,19 @@
   "2026-09-13_235413-over-limit-splits.md",
   "2026-09-14_001100-graph-join-leak.md",
   "2026-09-14_003212-builds-nomenclature.md",
-  "2026-09-14_004508-refactor-bugfix.md"
+  "2026-09-14_004508-refactor-bugfix.md",
+  "2026-09-14_120000-arch-atlas-canvas.md"
  ],
  "commits": [
+  {
+   "sha": "1918e17",
+   "full": "1918e172d7ca01fecadcc9cb156ef577501af3a8",
+   "date": "2026-09-14",
+   "time": "12:59",
+   "subject": "chore(ds): track refresh after reordering — manifest 155",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-6"
+  },
   {
    "sha": "f3c99a9",
    "full": "f3c99a994d7c36848c53b3c8706f1a09be35e908",
@@ -1420,5 +1430,7 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-names.json"
+ ]
 }
