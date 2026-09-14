@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/changelog/graph · activity graph · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/changelog/graph · activity graph · [plan:2026-09-12_150255-glitch-sound.md#phase-6] */
 import { commits } from '../changelog-links.js';
 import { MONTHS, fmtDate, pDay, isoDay } from '../changelog-parse.js';
 export function graph({ plans, day }) {
@@ -37,11 +37,10 @@ export function graph({ plans, day }) {
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
       const k = isoDay(d),
-        todayCls = k === isoDay(today) ? ' is-today' : '',
-        sound = k === isoDay(today) ? ' data-glitch-sound="5000-9000 hum"' : '';
+        todayCls = k === isoDay(today) ? ' is-today' : '';
       if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} \u00b7 upcoming"></span>`;
       const n = dc[k] || 0;
-      if (!n) return `<span class="ds-day${todayCls}"${sound} data-tip="${fmtDate(k)} \u00b7 no changes"></span>`;
+      if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} \u00b7 no changes"></span>`;
       const lv = Math.min(4, Math.ceil(4 * Math.sqrt(n / max)));
       return [
         `<button class="ds-day lv`,
@@ -49,7 +48,6 @@ export function graph({ plans, day }) {
         day === k ? ' on' : '',
         todayCls,
         `"`,
-        sound,
         ` data-day="`,
         k,
         `" data-tip="`,
