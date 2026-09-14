@@ -429,7 +429,7 @@ Verified: **no `minimal-lab` page existed in the repo** (the route was reference
 
 Verified: `npm run check:map` reports `48 nodes · 65 edges · 7 groups, every id traces to arch-schema.json`; renaming one curated id made `npm run build` exit 1 with `✗ arch-map drift — 1: node "boot_chrome_RENAMED" (src/boot-chrome.js) is not in arch-schema.json — renamed or deleted?` before the build step; restoring the id returned the whole chain to green. The gate also flags unknown groups, unknown edge endpoints and a >50 node map, and is chained into `build` right after `map-graph.mjs` so the check always runs against a freshly generated schema.
 
-*Shipped in <sha> · Tasks 23–27 · phase-7.*
+*Shipped in 3a33f73 · Tasks 23–27 · phase-7.*
 
 ---
 
