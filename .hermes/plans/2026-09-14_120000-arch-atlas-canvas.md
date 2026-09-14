@@ -318,7 +318,7 @@ Verified: bottom-left in-canvas legend — `layers` (3 colour dots) + `edges` (3
 
 Verified: cursor-follow tip (title + layer + path + `click to pin · esc to clear`) tracks the pointer with edge-aware side/top swapping; click pins the Phase-4 inspector content into it (`.is-pinned`, `pointer-events: auto`, `Connectors · 1 out / 6 in`, route link `#/functions/glitch` navigates); Esc / blank-canvas click unpin and clear the emphasis; the detached `.atlas-inspector` aside is gone — the tip replaced it on-canvas. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5]`.
 
-*Shipped in <sha> · Tasks 13–18 · phase-5.*
+*Shipped in 573e53e · Tasks 13–18 · phase-5.*
 
 ---
 

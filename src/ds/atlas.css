@@ -86,10 +86,10 @@
 }
 .atlas-tip.is-pinned { pointer-events: auto; border-color: var(--color-ink); }
 .atlas-phead { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); }
-.atlas-path, .atlas-hint { display: block; }
-.atlas-path { color: var(--color-ink-muted); overflow-wrap: anywhere; }
-.atlas-hint { margin-top: var(--space-4); color: var(--color-ink-subtle); }
-.atlas-tip h3 { font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--color-ink-muted); }
+.atlas-path { display: block; color: var(--color-ink-muted); overflow-wrap: anywhere; }
+.atlas-hint { display: block; margin-top: var(--space-4); color: var(--color-ink-subtle); }
+.atlas-tip h3 { font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); }
+.atlas-tip h3 { color: var(--color-ink-muted); }
 .atlas-meta { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4) var(--space-8); }
 .atlas-meta dt { color: var(--color-ink-muted); }
 .atlas-meta dd { margin: 0; overflow-wrap: anywhere; }
