@@ -49,6 +49,8 @@ const walkExt = (d, exts) => readdirSync(d).flatMap((f) => {
   return exts.some((e) => p.endsWith(e)) ? [p] : [];
 });
 const pretty = (b) => b.replace(/[-_]/g, ' ');
+const TOKEN_RE = /var\((--[a-z]+(?:-[a-z0-9]+)+)\)/g;
+const tokenNames = (text) => [...new Set([...text.matchAll(TOKEN_RE)].map((m) => m[1]))].sort();
 export function buildSchema(root, jsMods, importEdges) {
   const links = routeLinks(root);
   const cssFiles = walkExt(join(root, 'src'), ['.css']);
@@ -59,7 +61,7 @@ export function buildSchema(root, jsMods, importEdges) {
     const rel = relative(root, f);
     const link = links.get(rel);
     return { id: modId(root, f), path: rel, layer: layerFor(rel), route: link ? link.route : null,
-      title: link ? link.title : pretty(base(f)) };
+      title: link ? link.title : pretty(base(f)), tokens: tokenNames(readFileSync(f, 'utf8')) };
   });
   const edges = [...new Map(importEdges.map(([f, t]) => [`${f}>${t}>imports`,
     { from: f, to: t, kind: 'imports' }])).values()];

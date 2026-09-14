@@ -207,7 +207,7 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 | 11 | Components schema detail | Inspector on a component node lists page, primitives/library membership, token deps |
 | 12 | Foundations schema detail + edge rendering | Foundation nodes list pane membership + token sections; canvas draws labeled connector edges |
 
-### Task 10: Functions schema detail
+### Task 10: Functions schema detail ✓ done
 
 **Objective:** Clicking any of the 7 lab nodes shows: DS files, production counterpart (`views/*`), CSS/token edges, route link.
 
@@ -217,7 +217,9 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** Click `glitch` node — panel lists ≥7 DS files, `views/glitch*` counterpart, `--dur-glitch`/`--fx-glitch-*` tokens, working `#/functions/glitch` link.
 
-### Task 11: Components schema detail
+Verified: panel lists 5 lab submodules, `glitch sound` views counterpart, `--dur-glitch` + `--fx-glitch-*` token names, working `#/functions/glitch` link. Schema extended with per-node `tokens:` name arrays (generator extracts `var(--…)` per file; lab token names arrive via 1-hop styles traversal).
+
+### Task 11: Components schema detail ✓ done
 
 **Objective:** Component nodes show owning page (primitives/library/components/patterns), token deps, importers.
 
@@ -226,7 +228,9 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** Click `primitives/btn` — panel shows route `#/primitives`, token list non-empty, importer list includes `pages-primitives.js`.
 
-### Task 12: Foundations schema detail + edge rendering
+Verified: panel shows page link `Primitives` (`#/primitives`), tokens `--border-hairline, --color-bg, --space-16`, importer `Primitives`.
+
+### Task 12: Foundations schema detail + edge rendering ✓ done
 
 **Objective:** Foundation nodes show pane membership + token sections; canvas draws edges colored by kind (imports/styles/tokens) with hover outline only; edge toggle.
 
@@ -236,6 +240,10 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 - Modify: `src/ds/atlas.css` (edge styles, `var()` only — reuse accent/muted tokens)
 
 **Verify:** With edges on, edge count equals schema edges for visible nodes; toggling `tokens` hides only token edges; `npm test` green. Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-4]`.
+
+Verified: pane-color panel shows pane, own tokens, importers (`Foundations · Tokens`); wired edges colored by kind (kind pills pre-existing); schema verify — only `imports` edges span visible-layer node pairs (styles/tokens edges land on style-layer nodes outside the canvas), so kind toggles are consistent no-ops today; count 142·224 matches schema for visible nodes exactly. Fixed in passing: SVG nodes also carry `data-layer`/`data-kind`, so node clicks bubbled to the toolbar handler and toggled layer pills off — toolbar selectors now scoped to `.atlas-bar`.
+
+*Shipped in <sha> · Tasks 10–12 · phase-4.*
 
 ---
 

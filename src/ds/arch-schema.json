@@ -1,1657 +1,3032 @@
 {
-  "generated": "2026-09-14T09:59:09.827Z",
+  "generated": "2026-09-14T10:28:49.806Z",
   "nodes": [
     {
       "id": "boot_chrome",
       "path": "src/boot-chrome.js",
       "layer": "view",
       "route": null,
-      "title": "boot chrome"
+      "title": "boot chrome",
+      "tokens": []
     },
     {
       "id": "data_site",
       "path": "src/data/site.js",
       "layer": "component",
       "route": null,
-      "title": "site"
+      "title": "site",
+      "tokens": []
     },
     {
       "id": "ds_atlas",
       "path": "src/ds/atlas.css",
       "layer": "style",
       "route": null,
-      "title": "atlas"
+      "title": "atlas",
+      "tokens": [
+        "--border-dashed",
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-focus",
+        "--color-info",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--radius-md",
+        "--radius-pill",
+        "--radius-sm",
+        "--space-16",
+        "--space-4",
+        "--space-8"
+      ]
     },
     {
       "id": "ds_atlas_canvas",
       "path": "src/ds/atlas/canvas.js",
       "layer": "component",
       "route": null,
-      "title": "canvas"
+      "title": "canvas",
+      "tokens": []
     },
     {
       "id": "ds_atlas_layout",
       "path": "src/ds/atlas/layout.js",
       "layer": "component",
       "route": null,
-      "title": "layout"
+      "title": "layout",
+      "tokens": []
     },
     {
       "id": "ds_atlas_panel",
       "path": "src/ds/atlas/panel.js",
       "layer": "component",
       "route": null,
-      "title": "panel"
+      "title": "panel",
+      "tokens": []
     },
     {
       "id": "ds_atlas_schema",
       "path": "src/ds/atlas/schema.js",
       "layer": "component",
       "route": null,
-      "title": "schema"
+      "title": "schema",
+      "tokens": []
     },
     {
       "id": "ds_changelog",
       "path": "src/ds/changelog.css",
       "layer": "style",
       "route": null,
-      "title": "changelog"
+      "title": "changelog",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--dur-glitch",
+        "--font-mono",
+        "--fx-glitch-skew",
+        "--fx-glitch-x",
+        "--space-1",
+        "--space-12",
+        "--space-16",
+        "--space-2",
+        "--space-26",
+        "--space-28",
+        "--space-4",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_changelog_archive",
       "path": "src/ds/changelog-archive.css",
       "layer": "style",
       "route": null,
-      "title": "changelog archive"
+      "title": "changelog archive",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--leading-prose",
+        "--space-1",
+        "--space-10",
+        "--space-12",
+        "--space-16",
+        "--space-18",
+        "--space-22",
+        "--space-4",
+        "--space-5",
+        "--space-6",
+        "--space-8",
+        "--space-9",
+        "--text-ds-body",
+        "--text-ds-table",
+        "--text-h2",
+        "--text-h3",
+        "--text-meta",
+        "--text-micro",
+        "--tracking-heading"
+      ]
     },
     {
       "id": "ds_changelog_drawer",
       "path": "src/ds/changelog-drawer.css",
       "layer": "style",
       "route": null,
-      "title": "changelog drawer"
+      "title": "changelog drawer",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink-muted",
+        "--color-viewer-shade",
+        "--dur-glide",
+        "--dur-soft",
+        "--ease-signature",
+        "--ease-standard",
+        "--leading-prose",
+        "--shadow-viewer",
+        "--size-ds-drawer",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-30",
+        "--space-6",
+        "--space-8",
+        "--text-micro",
+        "--z-ds-drawer",
+        "--z-ds-scrim"
+      ]
     },
     {
       "id": "ds_changelog_esc",
       "path": "src/ds/changelog/esc.js",
       "layer": "component",
       "route": null,
-      "title": "esc"
+      "title": "esc",
+      "tokens": []
     },
     {
       "id": "ds_changelog_events",
       "path": "src/ds/changelog-events.js",
       "layer": "component",
       "route": null,
-      "title": "changelog events"
+      "title": "changelog events",
+      "tokens": []
     },
     {
       "id": "ds_changelog_graph",
       "path": "src/ds/changelog/graph.js",
       "layer": "component",
       "route": null,
-      "title": "graph"
+      "title": "graph",
+      "tokens": [
+        "--space-16",
+        "--space-4"
+      ]
     },
     {
       "id": "ds_changelog_links",
       "path": "src/ds/changelog-links.js",
       "layer": "component",
       "route": null,
-      "title": "changelog links"
+      "title": "changelog links",
+      "tokens": []
     },
     {
       "id": "ds_changelog_paint",
       "path": "src/ds/changelog-paint.js",
       "layer": "component",
       "route": null,
-      "title": "changelog paint"
+      "title": "changelog paint",
+      "tokens": []
     },
     {
       "id": "ds_changelog_paint_chips",
       "path": "src/ds/changelog/paint-chips.js",
       "layer": "component",
       "route": null,
-      "title": "paint chips"
+      "title": "paint chips",
+      "tokens": []
     },
     {
       "id": "ds_changelog_paint_detail",
       "path": "src/ds/changelog/paint-detail.js",
       "layer": "component",
       "route": null,
-      "title": "paint detail"
+      "title": "paint detail",
+      "tokens": []
     },
     {
       "id": "ds_changelog_paint_plan",
       "path": "src/ds/changelog/paint-plan.js",
       "layer": "component",
       "route": null,
-      "title": "paint plan"
+      "title": "paint plan",
+      "tokens": []
     },
     {
       "id": "ds_changelog_parse",
       "path": "src/ds/changelog-parse.js",
       "layer": "component",
       "route": null,
-      "title": "changelog parse"
+      "title": "changelog parse",
+      "tokens": []
     },
     {
       "id": "ds_changelog_picks",
       "path": "src/ds/changelog-picks.css",
       "layer": "style",
       "route": null,
-      "title": "changelog picks"
+      "title": "changelog picks",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--radius-none",
+        "--space-12",
+        "--space-14",
+        "--space-2",
+        "--space-4",
+        "--space-5",
+        "--space-8",
+        "--space-9",
+        "--text-ds-body",
+        "--text-micro",
+        "--tracking-mono"
+      ]
     },
     {
       "id": "ds_changelog_tags",
       "path": "src/ds/changelog-tags.js",
       "layer": "component",
       "route": null,
-      "title": "changelog tags"
+      "title": "changelog tags",
+      "tokens": []
     },
     {
       "id": "ds_changelog_tasks",
       "path": "src/ds/changelog-tasks.css",
       "layer": "style",
       "route": null,
-      "title": "changelog tasks"
+      "title": "changelog tasks",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-surface",
+        "--font-mono",
+        "--leading-prose",
+        "--radius-none",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-6",
+        "--space-8",
+        "--text-micro",
+        "--z-ds-controls"
+      ]
     },
     {
       "id": "ds_changelog_titles",
       "path": "src/ds/changelog-titles.js",
       "layer": "component",
       "route": null,
-      "title": "changelog titles"
+      "title": "changelog titles",
+      "tokens": []
     },
     {
       "id": "ds_component",
       "path": "src/ds/component.js",
       "layer": "component",
       "route": null,
-      "title": "component"
+      "title": "component",
+      "tokens": [
+        "--space-8"
+      ]
     },
     {
       "id": "ds_component_knobs",
       "path": "src/ds/component/knobs.js",
       "layer": "component",
       "route": null,
-      "title": "knobs"
+      "title": "knobs",
+      "tokens": []
     },
     {
       "id": "ds_ds",
       "path": "src/ds/ds.js",
       "layer": "component",
       "route": null,
-      "title": "ds"
+      "title": "ds",
+      "tokens": []
     },
     {
       "id": "ds_ds",
       "path": "src/ds/ds.css",
       "layer": "style",
       "route": null,
-      "title": "ds"
+      "title": "ds",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--size-ds-gutter-max",
+        "--size-ds-main",
+        "--size-ds-side",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-2",
+        "--space-22",
+        "--space-3",
+        "--space-30",
+        "--space-4",
+        "--space-8",
+        "--space-90",
+        "--text-ds-body",
+        "--text-ds-mark",
+        "--text-micro",
+        "--tracking-display",
+        "--tracking-label",
+        "--weight-bold",
+        "--z-ds-controls",
+        "--z-ds-side"
+      ]
     },
     {
       "id": "ds_ds_blocks",
       "path": "src/ds/ds-blocks.css",
       "layer": "style",
       "route": null,
-      "title": "ds blocks"
+      "title": "ds blocks",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--leading-body",
+        "--leading-mono",
+        "--size-frame",
+        "--space-1",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-2",
+        "--space-3",
+        "--space-46",
+        "--space-5",
+        "--space-6",
+        "--space-60",
+        "--space-7",
+        "--space-8",
+        "--text-ds-body",
+        "--text-ds-table",
+        "--text-label",
+        "--text-meta",
+        "--text-micro",
+        "--text-small",
+        "--tracking-mono"
+      ]
     },
     {
       "id": "ds_ds_content",
       "path": "src/ds/ds-content.css",
       "layer": "style",
       "route": null,
-      "title": "ds content"
+      "title": "ds content",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink-muted",
+        "--color-surface",
+        "--font-mono",
+        "--leading-display",
+        "--leading-prose",
+        "--measure-ds-lede",
+        "--measure-prose",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-22",
+        "--space-3",
+        "--space-4",
+        "--space-42",
+        "--space-6",
+        "--space-8",
+        "--space-9",
+        "--text-display",
+        "--text-ds-body",
+        "--text-ds-lede",
+        "--text-h2",
+        "--text-h3",
+        "--text-label",
+        "--text-meta",
+        "--tracking-display",
+        "--tracking-heading",
+        "--tracking-label",
+        "--weight-bold",
+        "--z-ds-controls"
+      ]
     },
     {
       "id": "ds_ds_lab",
       "path": "src/ds/ds-lab.css",
       "layer": "style",
       "route": null,
-      "title": "ds lab"
+      "title": "ds lab",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--dur-glide",
+        "--dur-shimmer",
+        "--ease-signature",
+        "--font-mono",
+        "--reveal-grid",
+        "--shimmer-band",
+        "--shimmer-gradient",
+        "--size-ds-img",
+        "--size-ds-lab",
+        "--size-ds-scale-label",
+        "--size-ds-scale-val",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-3",
+        "--space-6",
+        "--space-8",
+        "--space-90",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_ds_responsive",
       "path": "src/ds/ds-responsive.css",
       "layer": "style",
       "route": null,
-      "title": "ds responsive"
+      "title": "ds responsive",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--space-10",
+        "--space-16",
+        "--space-22",
+        "--space-6",
+        "--space-70",
+        "--space-8"
+      ]
     },
     {
       "id": "ds_ds_tabs",
       "path": "src/ds/ds-tabs.css",
       "layer": "style",
       "route": null,
-      "title": "ds tabs"
+      "title": "ds tabs",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-surface",
+        "--font-mono",
+        "--space-1",
+        "--space-10",
+        "--space-16",
+        "--space-2",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--space-9",
+        "--text-meta"
+      ]
     },
     {
       "id": "ds_foundations",
       "path": "src/ds/foundations.css",
       "layer": "style",
       "route": null,
-      "title": "foundations"
+      "title": "foundations",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-panel",
+        "--color-surface",
+        "--radius-none",
+        "--space-12",
+        "--space-2",
+        "--space-8",
+        "--text-ds-body"
+      ]
     },
     {
       "id": "ds_foundations_color",
       "path": "src/ds/foundations-color.css",
       "layer": "style",
       "route": null,
-      "title": "foundations color"
+      "title": "foundations color",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-error",
+        "--color-ink",
+        "--color-ink-muted",
+        "--font-mono",
+        "--leading-prose",
+        "--opacity-hover",
+        "--space-1",
+        "--space-10",
+        "--space-2",
+        "--space-3",
+        "--space-5",
+        "--space-6",
+        "--space-8",
+        "--text-meta",
+        "--text-micro",
+        "--text-small",
+        "--weight-bold",
+        "--z-ds-controls"
+      ]
     },
     {
       "id": "ds_foundations_color_data",
       "path": "src/ds/foundations/color/data.js",
       "layer": "foundation",
       "route": null,
-      "title": "data"
+      "title": "data",
+      "tokens": []
     },
     {
       "id": "ds_foundations_color_sections",
       "path": "src/ds/foundations/color/sections.js",
       "layer": "foundation",
       "route": null,
-      "title": "sections"
+      "title": "sections",
+      "tokens": []
     },
     {
       "id": "ds_foundations_demo",
       "path": "src/ds/foundations-demo.css",
       "layer": "style",
       "route": null,
-      "title": "foundations demo"
+      "title": "foundations demo",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-header",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--dur-glide",
+        "--ease-signature",
+        "--font-mono",
+        "--opacity-hover",
+        "--reveal-grid",
+        "--scale-press",
+        "--size-ds-scale-label",
+        "--size-ds-scale-val",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-26",
+        "--space-6",
+        "--space-60",
+        "--space-70",
+        "--space-8",
+        "--text-ds-body",
+        "--text-meta",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_elev",
       "path": "src/ds/foundations-elev.css",
       "layer": "style",
       "route": null,
-      "title": "foundations elev"
+      "title": "foundations elev",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink-muted",
+        "--color-on-media",
+        "--color-on-media-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--shadow-viewer",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-4",
+        "--space-6",
+        "--space-90",
+        "--stone-600",
+        "--stone-800",
+        "--text-micro",
+        "--text-small",
+        "--tracking-heading"
+      ]
     },
     {
       "id": "ds_foundations_fx_demos",
       "path": "src/ds/foundations/fx/demos.js",
       "layer": "foundation",
       "route": null,
-      "title": "demos"
+      "title": "demos",
+      "tokens": [
+        "--dur-glide",
+        "--dur-shimmer",
+        "--ease-signature",
+        "--fx-sheen",
+        "--opacity-hover",
+        "--scale-press",
+        "--shimmer-band",
+        "--shimmer-gradient"
+      ]
     },
     {
       "id": "ds_foundations_fx_elev",
       "path": "src/ds/foundations/fx/elev.js",
       "layer": "foundation",
       "route": null,
-      "title": "elev"
+      "title": "elev",
+      "tokens": [
+        "--color-ink-muted",
+        "--color-surface-sunken",
+        "--font-mono",
+        "--shadow-on-media",
+        "--space-1",
+        "--space-10",
+        "--space-12",
+        "--space-2",
+        "--space-32",
+        "--space-6",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_fx_spring",
       "path": "src/ds/foundations/fx/spring.js",
       "layer": "foundation",
       "route": null,
-      "title": "spring"
+      "title": "spring",
+      "tokens": [
+        "--space-1"
+      ]
     },
     {
       "id": "ds_foundations_fx_tokens",
       "path": "src/ds/foundations/fx/tokens.js",
       "layer": "foundation",
       "route": null,
-      "title": "tokens"
+      "title": "tokens",
+      "tokens": [
+        "--space-1"
+      ]
     },
     {
       "id": "ds_foundations_handlers",
       "path": "src/ds/foundations-handlers.js",
       "layer": "component",
       "route": null,
-      "title": "foundations handlers"
+      "title": "foundations handlers",
+      "tokens": []
     },
     {
       "id": "ds_foundations_mix",
       "path": "src/ds/foundations-mix.js",
       "layer": "component",
       "route": null,
-      "title": "foundations mix"
+      "title": "foundations mix",
+      "tokens": []
     },
     {
       "id": "ds_foundations_motion_data",
       "path": "src/ds/foundations/motion/data.js",
       "layer": "foundation",
       "route": null,
-      "title": "data"
+      "title": "data",
+      "tokens": []
     },
     {
       "id": "ds_foundations_motion_sections",
       "path": "src/ds/foundations/motion/sections.js",
       "layer": "foundation",
       "route": null,
-      "title": "sections"
+      "title": "sections",
+      "tokens": [
+        "--dur-fast",
+        "--dur-glide",
+        "--dur-hero-rise",
+        "--dur-zoom",
+        "--ease-signature",
+        "--ease-standard"
+      ]
     },
     {
       "id": "ds_foundations_pane_color",
       "path": "src/ds/foundations/pane-color.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane color"
+      "title": "pane color",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink",
+        "--font-mono",
+        "--space-60",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_pane_contract",
       "path": "src/ds/foundations/pane-contract.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane contract"
+      "title": "pane contract",
+      "tokens": [
+        "--font-mono",
+        "--font-sans"
+      ]
     },
     {
       "id": "ds_foundations_pane_fx",
       "path": "src/ds/foundations/pane-fx.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane fx"
+      "title": "pane fx",
+      "tokens": []
     },
     {
       "id": "ds_foundations_pane_motion",
       "path": "src/ds/foundations/pane-motion.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane motion"
+      "title": "pane motion",
+      "tokens": [
+        "--ease-signature",
+        "--opacity-hover",
+        "--scale-press",
+        "--scale-zoom"
+      ]
     },
     {
       "id": "ds_foundations_pane_shape",
       "path": "src/ds/foundations/pane-shape.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane shape"
+      "title": "pane shape",
+      "tokens": []
     },
     {
       "id": "ds_foundations_pane_space",
       "path": "src/ds/foundations/pane-space.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane space"
+      "title": "pane space",
+      "tokens": []
     },
     {
       "id": "ds_foundations_pane_type",
       "path": "src/ds/foundations/pane-type.js",
       "layer": "foundation",
       "route": null,
-      "title": "pane type"
+      "title": "pane type",
+      "tokens": []
     },
     {
       "id": "ds_foundations_shape_borders",
       "path": "src/ds/foundations/shape/borders.js",
       "layer": "foundation",
       "route": null,
-      "title": "borders"
+      "title": "borders",
+      "tokens": [
+        "--border-dashed",
+        "--border-frame",
+        "--border-hairline",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-surface",
+        "--size-frame",
+        "--size-hairline",
+        "--space-30"
+      ]
     },
     {
       "id": "ds_foundations_shape_doctrine",
       "path": "src/ds/foundations/shape/doctrine.js",
       "layer": "foundation",
       "route": null,
-      "title": "doctrine"
+      "title": "doctrine",
+      "tokens": [
+        "--color-ink-muted",
+        "--color-surface",
+        "--font-mono",
+        "--radius-none",
+        "--space-14",
+        "--space-60",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_shape_focus",
       "path": "src/ds/foundations/shape/focus.js",
       "layer": "foundation",
       "route": null,
-      "title": "focus"
+      "title": "focus",
+      "tokens": [
+        "--border-focus",
+        "--border-hairline",
+        "--color-bg",
+        "--color-focus",
+        "--color-ink",
+        "--color-ink-muted",
+        "--focus-offset",
+        "--font-mono",
+        "--size-frame",
+        "--space-12",
+        "--space-16",
+        "--space-2",
+        "--space-8",
+        "--text-meta",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_shape_radius",
       "path": "src/ds/foundations/shape/radius.js",
       "layer": "foundation",
       "route": null,
-      "title": "radius"
+      "title": "radius",
+      "tokens": [
+        "--color-surface",
+        "--font-mono",
+        "--radius-md",
+        "--radius-none",
+        "--radius-pill",
+        "--space-60",
+        "--space-90",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_space_audit",
       "path": "src/ds/foundations/space/audit.js",
       "layer": "foundation",
       "route": null,
-      "title": "audit"
+      "title": "audit",
+      "tokens": [
+        "--size-input-h",
+        "--size-tap",
+        "--space-6"
+      ]
     },
     {
       "id": "ds_foundations_space_layout",
       "path": "src/ds/foundations/space/layout.js",
       "layer": "foundation",
       "route": null,
-      "title": "layout"
+      "title": "layout",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--size-frame",
+        "--size-hairline",
+        "--size-header",
+        "--size-strip",
+        "--size-strip-tab",
+        "--size-tap",
+        "--size-wrap",
+        "--space-10",
+        "--space-12",
+        "--space-8",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_foundations_space_scale",
       "path": "src/ds/foundations/space/scale.js",
       "layer": "foundation",
       "route": null,
-      "title": "scale"
+      "title": "scale",
+      "tokens": []
     },
     {
       "id": "ds_foundations_space_tables",
       "path": "src/ds/foundations/space/tables.js",
       "layer": "foundation",
       "route": null,
-      "title": "tables"
+      "title": "tables",
+      "tokens": [
+        "--leading-prose",
+        "--measure-copy",
+        "--measure-prose",
+        "--space-14",
+        "--text-body"
+      ]
     },
     {
       "id": "ds_foundations_type_demos",
       "path": "src/ds/foundations/type/demos.js",
       "layer": "foundation",
       "route": null,
-      "title": "demos"
+      "title": "demos",
+      "tokens": [
+        "--font-mono",
+        "--text-body",
+        "--text-h3",
+        "--text-meta"
+      ]
     },
     {
       "id": "ds_foundations_type_playground",
       "path": "src/ds/foundations/type/playground.js",
       "layer": "foundation",
       "route": null,
-      "title": "playground"
+      "title": "playground",
+      "tokens": [
+        "--border-hairline",
+        "--color-surface",
+        "--font-sans",
+        "--leading-body",
+        "--leading-display",
+        "--leading-prose",
+        "--leading-snug",
+        "--space-12",
+        "--space-60",
+        "--text-body",
+        "--text-display",
+        "--text-h3",
+        "--text-small",
+        "--text-title",
+        "--tracking-body",
+        "--tracking-display",
+        "--tracking-heading",
+        "--tracking-label",
+        "--tracking-mono",
+        "--tracking-title"
+      ]
     },
     {
       "id": "ds_foundations_type_scale",
       "path": "src/ds/foundations/type/scale.js",
       "layer": "foundation",
       "route": null,
-      "title": "scale"
+      "title": "scale",
+      "tokens": [
+        "--font-mono",
+        "--leading-body",
+        "--leading-display",
+        "--leading-title",
+        "--text-body",
+        "--text-card-title",
+        "--text-display",
+        "--text-h2",
+        "--text-h3",
+        "--text-label",
+        "--text-logo",
+        "--text-meta",
+        "--text-micro",
+        "--text-small",
+        "--text-title",
+        "--tracking-display",
+        "--tracking-heading",
+        "--tracking-label",
+        "--tracking-mono",
+        "--tracking-title"
+      ]
     },
     {
       "id": "ds_foundations_type_voice",
       "path": "src/ds/foundations/type/voice.js",
       "layer": "foundation",
       "route": null,
-      "title": "voice"
+      "title": "voice",
+      "tokens": []
     },
     {
       "id": "ds_functions_glimmer_orb",
       "path": "src/ds/functions/glimmer-orb.js",
       "layer": "function",
       "route": "#/functions/glimmer-orb",
-      "title": "Glimmer orb"
+      "title": "Glimmer orb",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch",
       "path": "src/ds/functions/glitch.js",
       "layer": "function",
       "route": "#/functions/glitch",
-      "title": "Glitch"
+      "title": "Glitch",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch_lab_controls",
       "path": "src/ds/functions/glitch/lab-controls.js",
       "layer": "function",
       "route": null,
-      "title": "lab controls"
+      "title": "lab controls",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch_meta",
       "path": "src/ds/functions/glitch/meta.js",
       "layer": "function",
       "route": null,
-      "title": "meta"
+      "title": "meta",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch_sound_bind",
       "path": "src/ds/functions/glitch/sound-bind.js",
       "layer": "function",
       "route": null,
-      "title": "sound bind"
+      "title": "sound bind",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch_sound_panel",
       "path": "src/ds/functions/glitch/sound-panel.js",
       "layer": "function",
       "route": null,
-      "title": "sound panel"
+      "title": "sound panel",
+      "tokens": [
+        "--color-ink-muted"
+      ]
     },
     {
       "id": "ds_functions_glitch_sound_play",
       "path": "src/ds/functions/glitch/sound-play.js",
       "layer": "function",
       "route": null,
-      "title": "sound play"
+      "title": "sound play",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch_source_markup",
       "path": "src/ds/functions/glitch/source/markup.js",
       "layer": "function",
       "route": null,
-      "title": "markup"
+      "title": "markup",
+      "tokens": []
     },
     {
       "id": "ds_functions_glitch_source_panel",
       "path": "src/ds/functions/glitch/source-panel.js",
       "layer": "function",
       "route": null,
-      "title": "source panel"
+      "title": "source panel",
+      "tokens": []
     },
     {
       "id": "ds_functions_grid_reveal",
       "path": "src/ds/functions/grid-reveal.js",
       "layer": "function",
       "route": "#/functions/grid-reveal",
-      "title": "GridReveal"
+      "title": "GridReveal",
+      "tokens": []
     },
     {
       "id": "ds_functions_grid_reveal_docs",
       "path": "src/ds/functions/grid-reveal-docs.js",
       "layer": "function",
       "route": null,
-      "title": "grid reveal docs"
+      "title": "grid reveal docs",
+      "tokens": [
+        "--space-8"
+      ]
     },
     {
       "id": "ds_functions_grid_reveal_lab",
       "path": "src/ds/functions/grid-reveal-lab.js",
       "layer": "function",
       "route": null,
-      "title": "grid reveal lab"
+      "title": "grid reveal lab",
+      "tokens": [
+        "--color-ink-muted",
+        "--font-mono",
+        "--size-ds-lab",
+        "--space-8",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_functions_rise",
       "path": "src/ds/functions/rise.js",
       "layer": "function",
       "route": "#/functions/rise",
-      "title": "Rise"
+      "title": "Rise",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble",
       "path": "src/ds/functions/scramble.js",
       "layer": "function",
       "route": "#/functions/scramble",
-      "title": "Scramble"
+      "title": "Scramble",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_bind",
       "path": "src/ds/functions/scramble/bind.js",
       "layer": "function",
       "route": null,
-      "title": "bind"
+      "title": "bind",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_bind_refs",
       "path": "src/ds/functions/scramble/bind-refs.js",
       "layer": "function",
       "route": null,
-      "title": "bind refs"
+      "title": "bind refs",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_bind_sound",
       "path": "src/ds/functions/scramble/bind-sound.js",
       "layer": "function",
       "route": null,
-      "title": "bind sound"
+      "title": "bind sound",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_bind_ui",
       "path": "src/ds/functions/scramble/bind-ui.js",
       "layer": "function",
       "route": null,
-      "title": "bind ui"
+      "title": "bind ui",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_code_tab",
       "path": "src/ds/functions/scramble/code-tab.js",
       "layer": "function",
       "route": null,
-      "title": "code tab"
+      "title": "code tab",
+      "tokens": [
+        "--dur-scramble"
+      ]
     },
     {
       "id": "ds_functions_scramble_lab_sound",
       "path": "src/ds/functions/scramble/lab-sound.js",
       "layer": "function",
       "route": null,
-      "title": "lab sound"
+      "title": "lab sound",
+      "tokens": [
+        "--border-hairline",
+        "--color-surface",
+        "--font-mono",
+        "--space-4",
+        "--space-8",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_functions_scramble_lab_text",
       "path": "src/ds/functions/scramble/lab-text.js",
       "layer": "function",
       "route": null,
-      "title": "lab text"
+      "title": "lab text",
+      "tokens": [
+        "--border-hairline",
+        "--color-surface",
+        "--font-mono",
+        "--font-sans",
+        "--leading-display",
+        "--space-16",
+        "--space-4",
+        "--space-8",
+        "--space-90",
+        "--text-display",
+        "--text-micro",
+        "--tracking-display"
+      ]
     },
     {
       "id": "ds_functions_scramble_meta",
       "path": "src/ds/functions/scramble/meta.js",
       "layer": "function",
       "route": null,
-      "title": "meta"
+      "title": "meta",
+      "tokens": [
+        "--font-mono",
+        "--font-sans",
+        "--leading-body",
+        "--leading-display",
+        "--leading-mono",
+        "--leading-snug",
+        "--leading-title",
+        "--text-body",
+        "--text-card-title",
+        "--text-display",
+        "--text-h2",
+        "--text-h3",
+        "--text-label",
+        "--text-logo",
+        "--text-meta",
+        "--text-micro",
+        "--text-small",
+        "--text-title",
+        "--tracking-body",
+        "--tracking-display",
+        "--tracking-heading",
+        "--tracking-label",
+        "--tracking-mono",
+        "--tracking-title"
+      ]
     },
     {
       "id": "ds_functions_scramble_opts",
       "path": "src/ds/functions/scramble/opts.js",
       "layer": "function",
       "route": null,
-      "title": "opts"
+      "title": "opts",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_panel",
       "path": "src/ds/functions/scramble/panel.js",
       "layer": "function",
       "route": null,
-      "title": "panel"
+      "title": "panel",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_run",
       "path": "src/ds/functions/scramble/run.js",
       "layer": "function",
       "route": null,
-      "title": "run"
+      "title": "run",
+      "tokens": []
     },
     {
       "id": "ds_functions_scramble_teardown",
       "path": "src/ds/functions/scramble/teardown.js",
       "layer": "function",
       "route": null,
-      "title": "teardown"
+      "title": "teardown",
+      "tokens": []
     },
     {
       "id": "ds_functions_shimmer",
       "path": "src/ds/functions/shimmer.js",
       "layer": "function",
       "route": "#/functions/shimmer",
-      "title": "Shimmer"
+      "title": "Shimmer",
+      "tokens": [
+        "--dur-shimmer",
+        "--shimmer-band",
+        "--shimmer-gradient"
+      ]
     },
     {
       "id": "ds_functions_viewer",
       "path": "src/ds/functions/viewer.js",
       "layer": "function",
       "route": "#/functions/viewer",
-      "title": "Viewer"
+      "title": "Viewer",
+      "tokens": []
     },
     {
       "id": "ds_fx_lab",
       "path": "src/ds/fx-lab.js",
       "layer": "component",
       "route": null,
-      "title": "fx lab"
+      "title": "fx lab",
+      "tokens": []
     },
     {
       "id": "ds_fx_lab_cells",
       "path": "src/ds/fx-lab/cells.js",
       "layer": "component",
       "route": null,
-      "title": "cells"
+      "title": "cells",
+      "tokens": []
     },
     {
       "id": "ds_fx_lab_cells_draw",
       "path": "src/ds/fx-lab/cells-draw.js",
       "layer": "component",
       "route": null,
-      "title": "cells draw"
+      "title": "cells draw",
+      "tokens": []
     },
     {
       "id": "ds_fx_lab_cells_texture",
       "path": "src/ds/fx-lab/cells-texture.js",
       "layer": "component",
       "route": null,
-      "title": "cells texture"
+      "title": "cells texture",
+      "tokens": []
     },
     {
       "id": "ds_fx_lab_color",
       "path": "src/ds/fx-lab/color.js",
       "layer": "component",
       "route": null,
-      "title": "color"
+      "title": "color",
+      "tokens": []
     },
     {
       "id": "ds_fx_lab_panels",
       "path": "src/ds/fx-lab/panels.js",
       "layer": "component",
       "route": null,
-      "title": "panels"
+      "title": "panels",
+      "tokens": []
     },
     {
       "id": "ds_library_card",
       "path": "src/ds/library/card.js",
       "layer": "component",
       "route": null,
-      "title": "card"
+      "title": "card",
+      "tokens": []
     },
     {
       "id": "ds_library_contact",
       "path": "src/ds/library/contact.js",
       "layer": "component",
       "route": null,
-      "title": "contact"
+      "title": "contact",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink",
+        "--color-panel",
+        "--font-mono",
+        "--space-14",
+        "--space-16",
+        "--space-8",
+        "--space-90",
+        "--text-meta"
+      ]
     },
     {
       "id": "ds_library_cta",
       "path": "src/ds/library/cta.js",
       "layer": "component",
       "route": null,
-      "title": "cta"
+      "title": "cta",
+      "tokens": []
     },
     {
       "id": "ds_library_filters",
       "path": "src/ds/library/filters.js",
       "layer": "component",
       "route": null,
-      "title": "filters"
+      "title": "filters",
+      "tokens": []
     },
     {
       "id": "ds_library_footer",
       "path": "src/ds/library/footer.js",
       "layer": "component",
       "route": null,
-      "title": "footer"
+      "title": "footer",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--space-8"
+      ]
     },
     {
       "id": "ds_library_header",
       "path": "src/ds/library/header.js",
       "layer": "component",
       "route": null,
-      "title": "header"
+      "title": "header",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--space-4",
+        "--space-8"
+      ]
     },
     {
       "id": "ds_library_hero",
       "path": "src/ds/library/hero.js",
       "layer": "component",
       "route": null,
-      "title": "hero"
+      "title": "hero",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-panel",
+        "--font-mono",
+        "--space-16",
+        "--space-90",
+        "--text-meta"
+      ]
     },
     {
       "id": "ds_library_next",
       "path": "src/ds/library/next.js",
       "layer": "component",
       "route": null,
-      "title": "next"
+      "title": "next",
+      "tokens": []
     },
     {
       "id": "ds_library_spec",
       "path": "src/ds/library/spec.js",
       "layer": "component",
       "route": null,
-      "title": "spec"
+      "title": "spec",
+      "tokens": []
     },
     {
       "id": "ds_library_strip",
       "path": "src/ds/library/strip.js",
       "layer": "component",
       "route": null,
-      "title": "strip"
+      "title": "strip",
+      "tokens": [
+        "--size-ds-demo-strip"
+      ]
     },
     {
       "id": "ds_library_work",
       "path": "src/ds/library/work.js",
       "layer": "component",
       "route": null,
-      "title": "work"
+      "title": "work",
+      "tokens": []
     },
     {
       "id": "ds_overview_hero",
       "path": "src/ds/overview/hero.js",
       "layer": "component",
       "route": null,
-      "title": "hero"
+      "title": "hero",
+      "tokens": [
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--font-mono",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-8",
+        "--tracking-mono"
+      ]
     },
     {
       "id": "ds_overview_mood",
       "path": "src/ds/overview/mood.js",
       "layer": "component",
       "route": null,
-      "title": "mood"
+      "title": "mood",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-on-accent",
+        "--color-panel",
+        "--font-mono",
+        "--font-sans",
+        "--size-frame",
+        "--space-12",
+        "--space-14",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--stone-200",
+        "--text-micro",
+        "--tracking-mono",
+        "--weight-bold"
+      ]
     },
     {
       "id": "ds_overview_principles",
       "path": "src/ds/overview/principles.js",
       "layer": "component",
       "route": null,
-      "title": "principles"
+      "title": "principles",
+      "tokens": [
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--size-frame",
+        "--space-12"
+      ]
     },
     {
       "id": "ds_overview_reading",
       "path": "src/ds/overview/reading.js",
       "layer": "component",
       "route": null,
-      "title": "reading"
+      "title": "reading",
+      "tokens": []
     },
     {
       "id": "ds_overview_sections",
       "path": "src/ds/overview-sections.js",
       "layer": "component",
       "route": null,
-      "title": "overview sections"
+      "title": "overview sections",
+      "tokens": []
     },
     {
       "id": "ds_overview_style_a",
       "path": "src/ds/overview/style-a.js",
       "layer": "component",
       "route": null,
-      "title": "style a"
+      "title": "style a",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-surface",
+        "--font-mono",
+        "--font-sans",
+        "--leading-prose",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-22",
+        "--space-28",
+        "--space-30",
+        "--space-8",
+        "--text-body",
+        "--text-label",
+        "--tracking-mono",
+        "--weight-bold"
+      ]
     },
     {
       "id": "ds_overview_style_b",
       "path": "src/ds/overview/style-b.js",
       "layer": "component",
       "route": null,
-      "title": "style b"
+      "title": "style b",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-on-accent",
+        "--color-panel",
+        "--color-surface",
+        "--dur-soft",
+        "--ease-standard",
+        "--font-mono",
+        "--font-sans",
+        "--size-frame",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-3",
+        "--space-6",
+        "--space-8",
+        "--text-label",
+        "--text-micro",
+        "--tracking-heading",
+        "--tracking-mono"
+      ]
     },
     {
       "id": "ds_pages_atlas",
       "path": "src/ds/pages-atlas.js",
       "layer": "component",
       "route": "#/atlas",
-      "title": "Atlas"
+      "title": "Atlas",
+      "tokens": []
     },
     {
       "id": "ds_pages_changelog",
       "path": "src/ds/pages-changelog.js",
       "layer": "component",
       "route": "#/changelog",
-      "title": "Changelog"
+      "title": "Changelog",
+      "tokens": []
     },
     {
       "id": "ds_pages_components",
       "path": "src/ds/pages-components.js",
       "layer": "component",
       "route": "#/components",
-      "title": "Components"
+      "title": "Components",
+      "tokens": []
     },
     {
       "id": "ds_pages_foundations",
       "path": "src/ds/pages-foundations.js",
       "layer": "foundation",
       "route": "#/foundations",
-      "title": "Foundations · Tokens"
+      "title": "Foundations · Tokens",
+      "tokens": []
     },
     {
       "id": "ds_pages_functions",
       "path": "src/ds/pages-functions.js",
       "layer": "function",
       "route": "#/functions",
-      "title": "Functions"
+      "title": "Functions",
+      "tokens": []
     },
     {
       "id": "ds_pages_library",
       "path": "src/ds/pages-library.js",
       "layer": "component",
       "route": "#/library",
-      "title": "Library · Landing"
+      "title": "Library · Landing",
+      "tokens": []
     },
     {
       "id": "ds_pages_overview",
       "path": "src/ds/pages-overview.js",
       "layer": "component",
       "route": "#/",
-      "title": "Overview"
+      "title": "Overview",
+      "tokens": []
     },
     {
       "id": "ds_pages_patterns",
       "path": "src/ds/pages-patterns.js",
       "layer": "component",
       "route": "#/patterns",
-      "title": "Patterns · Quality"
+      "title": "Patterns · Quality",
+      "tokens": []
     },
     {
       "id": "ds_pages_primitives",
       "path": "src/ds/pages-primitives.js",
       "layer": "component",
       "route": "#/primitives",
-      "title": "Primitives"
+      "title": "Primitives",
+      "tokens": []
     },
     {
       "id": "ds_patterns_data",
       "path": "src/ds/patterns-data.js",
       "layer": "component",
       "route": null,
-      "title": "patterns data"
+      "title": "patterns data",
+      "tokens": []
     },
     {
       "id": "ds_patterns_layouts",
       "path": "src/ds/patterns-layouts.js",
       "layer": "component",
       "route": null,
-      "title": "patterns layouts"
+      "title": "patterns layouts",
+      "tokens": [
+        "--text-title"
+      ]
     },
     {
       "id": "ds_patterns_quality",
       "path": "src/ds/patterns-quality.js",
       "layer": "component",
       "route": null,
-      "title": "patterns quality"
+      "title": "patterns quality",
+      "tokens": [
+        "--color-accent",
+        "--color-ink",
+        "--measure-copy",
+        "--size-frame",
+        "--space-2"
+      ]
     },
     {
       "id": "ds_playground",
       "path": "src/ds/playground.js",
       "layer": "component",
       "route": null,
-      "title": "playground"
+      "title": "playground",
+      "tokens": [
+        "--space-8"
+      ]
     },
     {
       "id": "ds_playground_knobs",
       "path": "src/ds/playground/knobs.js",
       "layer": "component",
       "route": null,
-      "title": "knobs"
+      "title": "knobs",
+      "tokens": []
     },
     {
       "id": "ds_primitives_avatar",
       "path": "src/ds/primitives/avatar.js",
       "layer": "component",
       "route": null,
-      "title": "avatar"
+      "title": "avatar",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink-muted",
+        "--font-mono",
+        "--space-16",
+        "--text-meta"
+      ]
     },
     {
       "id": "ds_primitives_badge",
       "path": "src/ds/primitives/badge.js",
       "layer": "component",
       "route": null,
-      "title": "badge"
+      "title": "badge",
+      "tokens": []
     },
     {
       "id": "ds_primitives_btn",
       "path": "src/ds/primitives/btn.js",
       "layer": "component",
       "route": null,
-      "title": "btn"
+      "title": "btn",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--space-16"
+      ]
     },
     {
       "id": "ds_primitives_divider",
       "path": "src/ds/primitives/divider.js",
       "layer": "component",
       "route": null,
-      "title": "divider"
+      "title": "divider",
+      "tokens": [
+        "--color-ink-muted"
+      ]
     },
     {
       "id": "ds_primitives_field",
       "path": "src/ds/primitives/field.js",
       "layer": "component",
       "route": null,
-      "title": "field"
+      "title": "field",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--space-16"
+      ]
     },
     {
       "id": "ds_primitives_field_code",
       "path": "src/ds/primitives/field-code.js",
       "layer": "component",
       "route": null,
-      "title": "field code"
+      "title": "field code",
+      "tokens": []
     },
     {
       "id": "ds_primitives_field_meta",
       "path": "src/ds/primitives/field-meta.js",
       "layer": "component",
       "route": null,
-      "title": "field meta"
+      "title": "field meta",
+      "tokens": []
     },
     {
       "id": "ds_primitives_kicker",
       "path": "src/ds/primitives/kicker.js",
       "layer": "component",
       "route": null,
-      "title": "kicker"
+      "title": "kicker",
+      "tokens": []
     },
     {
       "id": "ds_primitives_logo",
       "path": "src/ds/primitives/logo.js",
       "layer": "component",
       "route": null,
-      "title": "logo"
+      "title": "logo",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink-muted",
+        "--font-mono",
+        "--space-16",
+        "--text-meta"
+      ]
     },
     {
       "id": "ds_primitives_tag",
       "path": "src/ds/primitives/tag.js",
       "layer": "component",
       "route": null,
-      "title": "tag"
+      "title": "tag",
+      "tokens": []
     },
     {
       "id": "ds_primitives_toggle",
       "path": "src/ds/primitives/toggle.js",
       "layer": "component",
       "route": null,
-      "title": "toggle"
+      "title": "toggle",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--space-16"
+      ]
     },
     {
       "id": "ds_routes",
       "path": "src/ds/routes.js",
       "layer": "component",
       "route": null,
-      "title": "routes"
+      "title": "routes",
+      "tokens": []
     },
     {
       "id": "ds_sidebar",
       "path": "src/ds/sidebar.js",
       "layer": "component",
       "route": null,
-      "title": "sidebar"
+      "title": "sidebar",
+      "tokens": []
     },
     {
       "id": "ds_specimens",
       "path": "src/ds/specimens.js",
       "layer": "component",
       "route": null,
-      "title": "specimens"
+      "title": "specimens",
+      "tokens": []
     },
     {
       "id": "ds_specimens",
       "path": "src/ds/specimens.css",
       "layer": "style",
       "route": null,
-      "title": "specimens"
+      "title": "specimens",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-header",
+        "--color-ink",
+        "--color-ink-muted",
+        "--font-mono",
+        "--size-ds-card",
+        "--size-ds-img",
+        "--size-ds-scale-label",
+        "--size-ds-scale-val",
+        "--size-ds-strip",
+        "--space-10",
+        "--space-12",
+        "--space-16",
+        "--space-4",
+        "--space-42",
+        "--space-8",
+        "--text-micro",
+        "--text-title"
+      ]
     },
     {
       "id": "ds_specimens_color",
       "path": "src/ds/specimens/color.js",
       "layer": "component",
       "route": null,
-      "title": "color"
+      "title": "color",
+      "tokens": []
     },
     {
       "id": "ds_specimens_copy",
       "path": "src/ds/specimens/copy.js",
       "layer": "component",
       "route": null,
-      "title": "copy"
+      "title": "copy",
+      "tokens": [
+        "--color-ink",
+        "--space-2"
+      ]
     },
     {
       "id": "ds_specimens_grids",
       "path": "src/ds/specimens/grids.js",
       "layer": "component",
       "route": null,
-      "title": "grids"
+      "title": "grids",
+      "tokens": []
     },
     {
       "id": "ds_specimens_markup",
       "path": "src/ds/specimens/markup.js",
       "layer": "component",
       "route": null,
-      "title": "markup"
+      "title": "markup",
+      "tokens": []
     },
     {
       "id": "ds_specimens_trace",
       "path": "src/ds/specimens/trace.js",
       "layer": "component",
       "route": null,
-      "title": "trace"
+      "title": "trace",
+      "tokens": [
+        "--color-ink-muted",
+        "--font-mono",
+        "--text-label"
+      ]
     },
     {
       "id": "ds_tabs",
       "path": "src/ds/tabs.js",
       "layer": "component",
       "route": null,
-      "title": "tabs"
+      "title": "tabs",
+      "tokens": []
     },
     {
       "id": "ds_theme",
       "path": "src/ds/theme.js",
       "layer": "component",
       "route": null,
-      "title": "theme"
+      "title": "theme",
+      "tokens": []
     },
     {
       "id": "fx_sound_index",
       "path": "src/fx/sound/index.js",
       "layer": "component",
       "route": null,
-      "title": "index"
+      "title": "index",
+      "tokens": []
     },
     {
       "id": "fx_sound_voices_drone",
       "path": "src/fx/sound/voices/drone.js",
       "layer": "component",
       "route": null,
-      "title": "drone"
+      "title": "drone",
+      "tokens": []
     },
     {
       "id": "fx_sound_voices_helpers",
       "path": "src/fx/sound/voices/helpers.js",
       "layer": "component",
       "route": null,
-      "title": "helpers"
+      "title": "helpers",
+      "tokens": []
     },
     {
       "id": "fx_sound_voices_noise",
       "path": "src/fx/sound/voices/noise.js",
       "layer": "component",
       "route": null,
-      "title": "noise"
+      "title": "noise",
+      "tokens": []
     },
     {
       "id": "fx_sound_voices_scan",
       "path": "src/fx/sound/voices/scan.js",
       "layer": "component",
       "route": null,
-      "title": "scan"
+      "title": "scan",
+      "tokens": []
     },
     {
       "id": "fx_sound_voices_tone",
       "path": "src/fx/sound/voices/tone.js",
       "layer": "component",
       "route": null,
-      "title": "tone"
+      "title": "tone",
+      "tokens": []
     },
     {
       "id": "fx_visual_index",
       "path": "src/fx/visual/index.js",
       "layer": "component",
       "route": null,
-      "title": "index"
+      "title": "index",
+      "tokens": []
     },
     {
       "id": "main",
       "path": "src/main.js",
       "layer": "view",
       "route": null,
-      "title": "main"
+      "title": "main",
+      "tokens": []
     },
     {
       "id": "scripts_dims",
       "path": "scripts/dims.mjs",
       "layer": "tool",
       "route": null,
-      "title": "dims"
+      "title": "dims",
+      "tokens": []
     },
     {
       "id": "scripts_ds_track",
       "path": "scripts/ds-track.mjs",
       "layer": "tool",
       "route": null,
-      "title": "ds track"
+      "title": "ds track",
+      "tokens": []
     },
     {
       "id": "scripts_graph_schema",
       "path": "scripts/graph-schema.js",
       "layer": "tool",
       "route": null,
-      "title": "graph schema"
+      "title": "graph schema",
+      "tokens": []
     },
     {
       "id": "scripts_lint_manage",
       "path": "scripts/lint-manage.mjs",
       "layer": "tool",
       "route": null,
-      "title": "lint manage"
+      "title": "lint manage",
+      "tokens": []
     },
     {
       "id": "scripts_lint_tokens",
       "path": "scripts/lint-tokens.mjs",
       "layer": "tool",
       "route": null,
-      "title": "lint tokens"
+      "title": "lint tokens",
+      "tokens": []
     },
     {
       "id": "scripts_map_graph",
       "path": "scripts/map-graph.mjs",
       "layer": "tool",
       "route": null,
-      "title": "map graph"
+      "title": "map graph",
+      "tokens": []
     },
     {
       "id": "scripts_plan_names",
       "path": "scripts/plan-names.mjs",
       "layer": "tool",
       "route": null,
-      "title": "plan names"
+      "title": "plan names",
+      "tokens": []
     },
     {
       "id": "scripts_plan_suggest",
       "path": "scripts/plan-suggest.mjs",
       "layer": "tool",
       "route": null,
-      "title": "plan suggest"
+      "title": "plan suggest",
+      "tokens": []
     },
     {
       "id": "scripts_smoke",
       "path": "scripts/smoke.mjs",
       "layer": "tool",
       "route": null,
-      "title": "smoke"
+      "title": "smoke",
+      "tokens": []
     },
     {
       "id": "styles_base",
       "path": "src/styles/base.css",
       "layer": "style",
       "route": null,
-      "title": "base"
+      "title": "base",
+      "tokens": [
+        "--blur-header",
+        "--color-bg",
+        "--color-header",
+        "--color-ink",
+        "--dur-reveal",
+        "--ease-standard",
+        "--font-mono",
+        "--font-sans",
+        "--leading-body",
+        "--radius-none",
+        "--sat-header",
+        "--size-header",
+        "--space-10",
+        "--space-12",
+        "--space-2",
+        "--space-28",
+        "--space-4",
+        "--space-6",
+        "--space-7",
+        "--space-8",
+        "--space-9",
+        "--text-body",
+        "--text-meta",
+        "--z-header"
+      ]
     },
     {
       "id": "styles_base_actions",
       "path": "src/styles/base-actions.css",
       "layer": "style",
       "route": null,
-      "title": "base actions"
+      "title": "base actions",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--dur-fast",
+        "--dur-soft",
+        "--ease-standard",
+        "--font-sans",
+        "--leading-display",
+        "--measure-copy",
+        "--radius-none",
+        "--size-frame",
+        "--size-wrap",
+        "--space-1",
+        "--space-10",
+        "--space-14",
+        "--space-2",
+        "--space-26",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-display",
+        "--text-logo",
+        "--text-meta",
+        "--text-small",
+        "--tracking-display",
+        "--weight-bold",
+        "--weight-semibold"
+      ]
     },
     {
       "id": "styles_base_atoms",
       "path": "src/styles/base-atoms.css",
       "layer": "style",
       "route": null,
-      "title": "base atoms"
+      "title": "base atoms",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-on-accent",
+        "--font-mono",
+        "--radius-none",
+        "--space-14",
+        "--space-22",
+        "--space-3",
+        "--space-30",
+        "--space-4",
+        "--space-60",
+        "--space-8",
+        "--text-label",
+        "--text-meta",
+        "--tracking-label",
+        "--tracking-mono",
+        "--weight-semibold"
+      ]
     },
     {
       "id": "styles_card",
       "path": "src/styles/card.css",
       "layer": "style",
       "route": null,
-      "title": "card"
+      "title": "card",
+      "tokens": [
+        "--blur-scrim",
+        "--border-hairline",
+        "--color-chip",
+        "--color-ink",
+        "--color-on-media",
+        "--color-panel",
+        "--color-surface",
+        "--dur-blur",
+        "--dur-med",
+        "--dur-slow",
+        "--dur-zoom",
+        "--ease-signature",
+        "--ease-standard",
+        "--font-mono",
+        "--radius-none",
+        "--sat-scrim",
+        "--scale-zoom",
+        "--scrim-fallback",
+        "--scrim-gradient",
+        "--scrim-mask",
+        "--shimmer-band",
+        "--shimmer-gradient",
+        "--size-frame",
+        "--space-10",
+        "--space-2",
+        "--space-3",
+        "--space-6",
+        "--space-7",
+        "--text-label",
+        "--z-media"
+      ]
     },
     {
       "id": "styles_card_info",
       "path": "src/styles/card-info.css",
       "layer": "style",
       "route": null,
-      "title": "card info"
+      "title": "card info",
+      "tokens": [
+        "--color-on-media",
+        "--color-on-media-muted",
+        "--dur-slow",
+        "--ease-standard",
+        "--font-mono",
+        "--leading-mono",
+        "--leading-snug",
+        "--shadow-on-media",
+        "--shadow-on-media-sm",
+        "--space-11",
+        "--space-12",
+        "--space-18",
+        "--space-2",
+        "--space-6",
+        "--text-card-title",
+        "--text-label",
+        "--tracking-body",
+        "--weight-semibold",
+        "--z-media"
+      ]
     },
     {
       "id": "styles_case",
       "path": "src/styles/case.css",
       "layer": "style",
       "route": null,
-      "title": "case"
+      "title": "case",
+      "tokens": [
+        "--border-hairline",
+        "--color-panel",
+        "--dur-blur",
+        "--dur-shimmer",
+        "--ease-standard",
+        "--radius-none",
+        "--reveal-grid",
+        "--shimmer-band",
+        "--shimmer-gradient",
+        "--space-12"
+      ]
     },
     {
       "id": "styles_case_prose",
       "path": "src/styles/case-prose.css",
       "layer": "style",
       "route": null,
-      "title": "case prose"
+      "title": "case prose",
+      "tokens": [
+        "--border-dashed",
+        "--border-hairline",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-surface",
+        "--font-mono",
+        "--leading-prose",
+        "--radius-sm",
+        "--size-frame",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-2",
+        "--space-26",
+        "--space-3",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-h2",
+        "--text-h3",
+        "--text-label",
+        "--text-meta",
+        "--text-title",
+        "--tracking-heading",
+        "--tracking-mono",
+        "--tracking-title",
+        "--weight-semibold"
+      ]
     },
     {
       "id": "styles_form",
       "path": "src/styles/form.css",
       "layer": "style",
       "route": null,
-      "title": "form"
+      "title": "form",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-input-bg",
+        "--color-input-focus",
+        "--color-input-line",
+        "--font-mono",
+        "--font-sans",
+        "--leading-body",
+        "--leading-mono",
+        "--radius-none",
+        "--size-frame",
+        "--size-input-h",
+        "--space-10",
+        "--space-14",
+        "--space-2",
+        "--space-30",
+        "--space-6",
+        "--space-8",
+        "--text-body",
+        "--text-meta",
+        "--tracking-label"
+      ]
     },
     {
       "id": "styles_form_controls",
       "path": "src/styles/form-controls.css",
       "layer": "style",
       "route": null,
-      "title": "form controls"
+      "title": "form controls",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink",
+        "--color-panel",
+        "--color-surface",
+        "--dur-soft",
+        "--ease-standard",
+        "--font-mono",
+        "--font-sans",
+        "--radius-none",
+        "--size-frame",
+        "--size-tap",
+        "--space-18",
+        "--space-2",
+        "--space-22",
+        "--space-30",
+        "--space-42",
+        "--space-60",
+        "--space-8",
+        "--text-h3",
+        "--text-meta",
+        "--text-small",
+        "--weight-semibold"
+      ]
     },
     {
       "id": "styles_glitch",
       "path": "src/styles/glitch.css",
       "layer": "style",
       "route": null,
-      "title": "glitch"
+      "title": "glitch",
+      "tokens": [
+        "--color-accent",
+        "--dur-glitch",
+        "--fx-glitch-opacity",
+        "--fx-glitch-skew",
+        "--fx-glitch-x",
+        "--space-1",
+        "--space-6"
+      ]
     },
     {
       "id": "styles_masonry",
       "path": "src/styles/masonry.css",
       "layer": "style",
       "route": null,
-      "title": "masonry"
+      "title": "masonry",
+      "tokens": [
+        "--dur-blur",
+        "--ease-standard",
+        "--space-12"
+      ]
     },
     {
       "id": "styles_pages",
       "path": "src/styles/pages.css",
       "layer": "style",
       "route": null,
-      "title": "pages"
+      "title": "pages",
+      "tokens": [
+        "--border-frame",
+        "--border-hairline",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-surface",
+        "--dur-base",
+        "--dur-fast",
+        "--dur-glide",
+        "--dur-soft",
+        "--ease-signature",
+        "--ease-standard",
+        "--opacity-hover",
+        "--radius-none",
+        "--scale-press",
+        "--size-strip",
+        "--size-strip-tab",
+        "--space-12",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-h3",
+        "--weight-semibold",
+        "--z-frame"
+      ]
     },
     {
       "id": "styles_pages_sections",
       "path": "src/styles/pages-sections.css",
       "layer": "style",
       "route": null,
-      "title": "pages sections"
+      "title": "pages sections",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-surface",
+        "--font-mono",
+        "--leading-title",
+        "--measure-copy",
+        "--measure-prose",
+        "--size-frame",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-2",
+        "--space-22",
+        "--space-30",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-meta",
+        "--text-title",
+        "--tracking-body",
+        "--tracking-label",
+        "--tracking-title",
+        "--weight-bold"
+      ]
     },
     {
       "id": "styles_tokens",
       "path": "src/styles/tokens.css",
       "layer": "style",
       "route": null,
-      "title": "tokens"
+      "title": "tokens",
+      "tokens": [
+        "--accent-500"
+      ]
     },
     {
       "id": "styles_tokens_color",
       "path": "src/styles/tokens-color.css",
       "layer": "style",
       "route": null,
-      "title": "tokens color"
+      "title": "tokens color",
+      "tokens": [
+        "--accent-700",
+        "--color-ink",
+        "--color-line",
+        "--color-shadow-media",
+        "--color-shadow-media-sm",
+        "--fx-grid-pitch",
+        "--opacity-shadow-media",
+        "--opacity-shadow-media-sm",
+        "--opacity-shadow-viewer",
+        "--opacity-shadow-viewer-soft",
+        "--space-1",
+        "--space-10",
+        "--space-12",
+        "--stone-0",
+        "--stone-100",
+        "--stone-200",
+        "--stone-400",
+        "--stone-600",
+        "--stone-900",
+        "--stone-950"
+      ]
     },
     {
       "id": "styles_tokens_fx",
       "path": "src/styles/tokens-fx.css",
       "layer": "style",
       "route": null,
-      "title": "tokens fx"
+      "title": "tokens fx",
+      "tokens": [
+        "--color-focus",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-shadow-viewer",
+        "--color-shadow-viewer-soft",
+        "--color-surface",
+        "--color-viewer-line",
+        "--size-frame",
+        "--size-hairline",
+        "--size-tap",
+        "--size-viewer-tether",
+        "--space-1",
+        "--space-10",
+        "--space-12",
+        "--space-2",
+        "--space-32",
+        "--stone-0"
+      ]
     },
     {
       "id": "styles_tokens_overrides",
       "path": "src/styles/tokens-overrides.css",
       "layer": "style",
       "route": null,
-      "title": "tokens overrides"
+      "title": "tokens overrides",
+      "tokens": [
+        "--accent-300",
+        "--accent-700",
+        "--color-accent",
+        "--color-bg",
+        "--color-chip",
+        "--color-header",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-on-media",
+        "--color-panel",
+        "--color-shadow-viewer",
+        "--color-shadow-viewer-soft",
+        "--color-surface",
+        "--space-12",
+        "--space-14",
+        "--space-3",
+        "--space-36",
+        "--stone-0",
+        "--stone-100",
+        "--stone-200",
+        "--stone-400",
+        "--stone-500",
+        "--stone-600",
+        "--stone-700",
+        "--stone-900"
+      ]
     },
     {
       "id": "styles_tokens_type",
       "path": "src/styles/tokens-type.css",
       "layer": "style",
       "route": null,
-      "title": "tokens type"
+      "title": "tokens type",
+      "tokens": [
+        "--space-14",
+        "--space-16"
+      ]
     },
     {
       "id": "styles_viewer",
       "path": "src/styles/viewer.css",
       "layer": "style",
       "route": null,
-      "title": "viewer"
+      "title": "viewer",
+      "tokens": [
+        "--blur-cursor",
+        "--blur-micro",
+        "--blur-viewer",
+        "--color-surface",
+        "--color-viewer-bg",
+        "--color-viewer-tether",
+        "--dur-glide",
+        "--dur-viewer-line",
+        "--ease-signature",
+        "--ease-standard",
+        "--sat-header",
+        "--shadow-viewer",
+        "--size-cursor",
+        "--size-viewer-tether",
+        "--size-viewer-w",
+        "--space-4",
+        "--viewer-border",
+        "--z-viewer",
+        "--z-viewer-lines"
+      ]
     },
     {
       "id": "theme",
       "path": "src/theme.js",
       "layer": "view",
       "route": null,
-      "title": "theme"
+      "title": "theme",
+      "tokens": []
     },
     {
       "id": "views_audio_ctx",
       "path": "src/views/audio-ctx.js",
       "layer": "view",
       "route": null,
-      "title": "audio ctx"
+      "title": "audio ctx",
+      "tokens": []
     },
     {
       "id": "views_audio_test",
       "path": "src/views/audio-test.js",
       "layer": "view",
       "route": null,
-      "title": "audio test"
+      "title": "audio test",
+      "tokens": []
     },
     {
       "id": "views_contact",
       "path": "src/views/contact.js",
       "layer": "view",
       "route": null,
-      "title": "contact"
+      "title": "contact",
+      "tokens": []
     },
     {
       "id": "views_element_sound",
       "path": "src/views/element-sound.js",
       "layer": "view",
       "route": null,
-      "title": "element sound"
+      "title": "element sound",
+      "tokens": []
     },
     {
       "id": "views_fx_tokens",
       "path": "src/views/fx-tokens.js",
       "layer": "view",
       "route": null,
-      "title": "fx tokens"
+      "title": "fx tokens",
+      "tokens": []
     },
     {
       "id": "views_glimmer_color",
       "path": "src/views/glimmer-color.js",
       "layer": "view",
       "route": null,
-      "title": "glimmer color"
+      "title": "glimmer color",
+      "tokens": []
     },
     {
       "id": "views_glimmer_orb",
       "path": "src/views/glimmer-orb.js",
       "layer": "view",
       "route": null,
-      "title": "glimmer orb"
+      "title": "glimmer orb",
+      "tokens": []
     },
     {
       "id": "views_glitch",
       "path": "src/views/glitch.js",
       "layer": "view",
       "route": null,
-      "title": "glitch"
+      "title": "glitch",
+      "tokens": []
     },
     {
       "id": "views_glitch_init",
       "path": "src/views/glitch-init.js",
       "layer": "view",
       "route": null,
-      "title": "glitch init"
+      "title": "glitch init",
+      "tokens": []
     },
     {
       "id": "views_glitch_sound",
       "path": "src/views/glitch-sound.js",
       "layer": "view",
       "route": null,
-      "title": "glitch sound"
+      "title": "glitch sound",
+      "tokens": []
     },
     {
       "id": "views_glitch_sound_geom",
       "path": "src/views/glitch-sound/geom.js",
       "layer": "view",
       "route": null,
-      "title": "geom"
+      "title": "geom",
+      "tokens": []
     },
     {
       "id": "views_glitch_sound_parse",
       "path": "src/views/glitch-sound/parse.js",
       "layer": "view",
       "route": null,
-      "title": "parse"
+      "title": "parse",
+      "tokens": []
     },
     {
       "id": "views_glitch_sound_timing",
       "path": "src/views/glitch-sound/timing.js",
       "layer": "view",
       "route": null,
-      "title": "timing"
+      "title": "timing",
+      "tokens": []
     },
     {
       "id": "views_headerFrame",
       "path": "src/views/headerFrame.js",
       "layer": "view",
       "route": null,
-      "title": "headerFrame"
+      "title": "headerFrame",
+      "tokens": []
     },
     {
       "id": "views_init_sound",
       "path": "src/views/init-sound.js",
       "layer": "view",
       "route": null,
-      "title": "init sound"
+      "title": "init sound",
+      "tokens": [
+        "--space-6"
+      ]
     },
     {
       "id": "views_init_sound_load",
       "path": "src/views/init-sound-load.js",
       "layer": "view",
       "route": null,
-      "title": "init sound load"
+      "title": "init sound load",
+      "tokens": []
     },
     {
       "id": "views_masonry",
       "path": "src/views/masonry.js",
       "layer": "view",
       "route": null,
-      "title": "masonry"
+      "title": "masonry",
+      "tokens": []
     },
     {
       "id": "views_masonry_cards",
       "path": "src/views/masonry/cards.js",
       "layer": "view",
       "route": null,
-      "title": "cards"
+      "title": "cards",
+      "tokens": []
     },
     {
       "id": "views_masonry_cells",
       "path": "src/views/masonry/cells.js",
       "layer": "view",
       "route": null,
-      "title": "cells"
+      "title": "cells",
+      "tokens": []
     },
     {
       "id": "views_masonry_cells_order",
       "path": "src/views/masonry/cells-order.js",
       "layer": "view",
       "route": null,
-      "title": "cells order"
+      "title": "cells order",
+      "tokens": []
     },
     {
       "id": "views_masonry_gridReveal",
       "path": "src/views/masonry/gridReveal.js",
       "layer": "view",
       "route": null,
-      "title": "gridReveal"
+      "title": "gridReveal",
+      "tokens": []
     },
     {
       "id": "views_masonry_gridReveal_config",
       "path": "src/views/masonry/gridReveal-config.js",
       "layer": "view",
       "route": null,
-      "title": "gridReveal config"
+      "title": "gridReveal config",
+      "tokens": []
     },
     {
       "id": "views_masonry_gridReveal_draw",
       "path": "src/views/masonry/gridReveal-draw.js",
       "layer": "view",
       "route": null,
-      "title": "gridReveal draw"
+      "title": "gridReveal draw",
+      "tokens": []
     },
     {
       "id": "views_masonry_gridReveal_load",
       "path": "src/views/masonry/gridReveal-load.js",
       "layer": "view",
       "route": null,
-      "title": "gridReveal load"
+      "title": "gridReveal load",
+      "tokens": []
     },
     {
       "id": "views_masonry_gridReveal_tick",
       "path": "src/views/masonry/gridReveal-tick.js",
       "layer": "view",
       "route": null,
-      "title": "gridReveal tick"
+      "title": "gridReveal tick",
+      "tokens": []
     },
     {
       "id": "views_masonry_layout",
       "path": "src/views/masonry/layout.js",
       "layer": "view",
       "route": null,
-      "title": "layout"
+      "title": "layout",
+      "tokens": []
     },
     {
       "id": "views_masonry_parallax",
       "path": "src/views/masonry/parallax.js",
       "layer": "view",
       "route": null,
-      "title": "parallax"
+      "title": "parallax",
+      "tokens": []
     },
     {
       "id": "views_masonry_parallax_calc",
       "path": "src/views/masonry/parallax-calc.js",
       "layer": "view",
       "route": null,
-      "title": "parallax calc"
+      "title": "parallax calc",
+      "tokens": []
     },
     {
       "id": "views_masonry_parallax_chase",
       "path": "src/views/masonry/parallax-chase.js",
       "layer": "view",
       "route": null,
-      "title": "parallax chase"
+      "title": "parallax chase",
+      "tokens": []
     },
     {
       "id": "views_masonry_parallax_measure",
       "path": "src/views/masonry/parallax-measure.js",
       "layer": "view",
       "route": null,
-      "title": "parallax measure"
+      "title": "parallax measure",
+      "tokens": []
     },
     {
       "id": "views_masonry_reveal",
       "path": "src/views/masonry/reveal.js",
       "layer": "view",
       "route": null,
-      "title": "reveal"
+      "title": "reveal",
+      "tokens": []
     },
     {
       "id": "views_masonry_viewer",
       "path": "src/views/masonry/viewer.js",
       "layer": "view",
       "route": null,
-      "title": "viewer"
+      "title": "viewer",
+      "tokens": []
     },
     {
       "id": "views_masonry_viewer_bind",
       "path": "src/views/masonry/viewer-bind.js",
       "layer": "view",
       "route": null,
-      "title": "viewer bind"
+      "title": "viewer bind",
+      "tokens": []
     },
     {
       "id": "views_masonry_viewer_markup",
       "path": "src/views/masonry/viewer-markup.js",
       "layer": "view",
       "route": null,
-      "title": "viewer markup"
+      "title": "viewer markup",
+      "tokens": []
     },
     {
       "id": "views_masonry_viewer_visibility",
       "path": "src/views/masonry/viewer-visibility.js",
       "layer": "view",
       "route": null,
-      "title": "viewer visibility"
+      "title": "viewer visibility",
+      "tokens": []
     },
     {
       "id": "views_project",
       "path": "src/views/project.js",
       "layer": "view",
       "route": null,
-      "title": "project"
+      "title": "project",
+      "tokens": []
     },
     {
       "id": "views_rise",
       "path": "src/views/rise.js",
       "layer": "view",
       "route": null,
-      "title": "rise"
+      "title": "rise",
+      "tokens": [
+        "--hero-aspect"
+      ]
     },
     {
       "id": "views_scramble_build",
       "path": "src/views/scramble/build.js",
       "layer": "view",
       "route": null,
-      "title": "build"
+      "title": "build",
+      "tokens": []
     },
     {
       "id": "views_scramble_helpers",
       "path": "src/views/scramble/helpers.js",
       "layer": "view",
       "route": null,
-      "title": "helpers"
+      "title": "helpers",
+      "tokens": []
     },
     {
       "id": "views_scramble_text",
       "path": "src/views/scramble-text.js",
       "layer": "view",
       "route": null,
-      "title": "scramble text"
+      "title": "scramble text",
+      "tokens": []
     },
     {
       "id": "views_shared",
       "path": "src/views/shared.js",
       "layer": "view",
       "route": null,
-      "title": "shared"
+      "title": "shared",
+      "tokens": []
     },
     {
       "id": "views_slot_sound",
       "path": "src/views/slot-sound.js",
       "layer": "view",
       "route": null,
-      "title": "slot sound"
+      "title": "slot sound",
+      "tokens": []
     },
     {
       "id": "views_sound_files",
       "path": "src/views/sound-files.js",
       "layer": "view",
       "route": null,
-      "title": "sound files"
+      "title": "sound files",
+      "tokens": []
     },
     {
       "id": "views_sound_palette",
       "path": "src/views/sound-palette.js",
       "layer": "view",
       "route": null,
-      "title": "sound palette"
+      "title": "sound palette",
+      "tokens": []
     },
     {
       "id": "views_sound_source",
       "path": "src/views/sound-source.js",
       "layer": "view",
       "route": null,
-      "title": "sound source"
+      "title": "sound source",
+      "tokens": []
     },
     {
       "id": "views_title_reveal",
       "path": "src/views/title-reveal.js",
       "layer": "view",
       "route": null,
-      "title": "title reveal"
+      "title": "title reveal",
+      "tokens": []
     }
   ],
   "edges": [

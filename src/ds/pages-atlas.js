@@ -48,9 +48,9 @@ export function mount(root) {
   };
   const onBar = (e) => {
     if (e.target.closest('[data-close]')) { state.sel = null; draw(); return; }
-    const pill = e.target.closest('[data-layer]');
-    const kind = e.target.closest('[data-kind]');
-    const lay = e.target.closest('[data-layout]');
+    const pill = e.target.closest('.atlas-bar [data-layer]');
+    const kind = e.target.closest('.atlas-bar [data-kind]');
+    const lay = e.target.closest('.atlas-bar [data-layout]');
     if (pill) flip(state.on, pill.dataset.layer, pill);
     if (kind) flip(state.kinds, kind.dataset.kind, kind);
     if (lay) {
