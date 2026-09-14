@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T11:33:30.262Z",
+  "generated": "2026-09-14T12:07:29.007Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -28,6 +28,7 @@
         "--border-focus",
         "--border-hairline",
         "--color-accent",
+        "--color-bg",
         "--color-focus",
         "--color-header",
         "--color-info",
@@ -39,21 +40,26 @@
         "--focus-offset",
         "--font-mono",
         "--size-ds-atlas-h",
-        "--size-ds-tip",
+        "--size-ds-find",
         "--size-hairline",
-        "--space-10",
-        "--space-12",
         "--space-14",
         "--space-16",
         "--space-3",
         "--space-4",
         "--space-6",
         "--space-8",
-        "--text-ds-body",
         "--text-micro",
         "--tracking-label",
         "--z-ds-controls"
       ]
+    },
+    {
+      "id": "ds_atlas_actions",
+      "path": "src/ds/atlas/actions.js",
+      "layer": "component",
+      "route": null,
+      "title": "actions",
+      "tokens": []
     },
     {
       "id": "ds_atlas_camera",
@@ -77,6 +83,14 @@
       "layer": "component",
       "route": null,
       "title": "dock",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_insight",
+      "path": "src/ds/atlas/insight.js",
+      "layer": "component",
+      "route": null,
+      "title": "insight",
       "tokens": []
     },
     {
@@ -104,11 +118,60 @@
       "tokens": []
     },
     {
+      "id": "ds_atlas_search",
+      "path": "src/ds/atlas/search.js",
+      "layer": "component",
+      "route": null,
+      "title": "search",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_shell",
+      "path": "src/ds/atlas/shell.js",
+      "layer": "component",
+      "route": null,
+      "title": "shell",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_tip",
+      "path": "src/ds/atlas-tip.css",
+      "layer": "style",
+      "route": null,
+      "title": "atlas tip",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-surface",
+        "--font-mono",
+        "--size-ds-tip",
+        "--space-10",
+        "--space-12",
+        "--space-4",
+        "--space-8",
+        "--text-ds-body",
+        "--text-micro",
+        "--tracking-label",
+        "--z-ds-controls"
+      ]
+    },
+    {
       "id": "ds_atlas_tooltip",
       "path": "src/ds/atlas/tooltip.js",
       "layer": "component",
       "route": null,
       "title": "tooltip",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_view",
+      "path": "src/ds/atlas/view.js",
+      "layer": "component",
+      "route": null,
+      "title": "view",
       "tokens": []
     },
     {
@@ -3067,6 +3130,26 @@
   ],
   "edges": [
     {
+      "from": "ds_atlas_actions",
+      "to": "ds_atlas_camera",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_actions",
+      "to": "ds_atlas_insight",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_actions",
+      "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_actions",
+      "to": "ds_atlas_search",
+      "kind": "imports"
+    },
+    {
       "from": "ds_atlas_camera",
       "to": "ds_atlas_layout",
       "kind": "imports"
@@ -3082,13 +3165,53 @@
       "kind": "imports"
     },
     {
+      "from": "ds_atlas_dock",
+      "to": "ds_atlas_search",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_insight",
+      "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
       "from": "ds_atlas_panel",
       "to": "ds_atlas_schema",
       "kind": "imports"
     },
     {
+      "from": "ds_atlas_search",
+      "to": "ds_atlas_schema",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_shell",
+      "to": "ds_atlas_dock",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_tip",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_atlas_tooltip",
       "to": "ds_atlas_panel",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_view",
+      "to": "ds_atlas_camera",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_view",
+      "to": "ds_atlas_canvas",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_view",
+      "to": "ds_atlas_insight",
       "kind": "imports"
     },
     {
@@ -3105,6 +3228,16 @@
       "from": "ds_changelog_drawer",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_events",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_events",
+      "to": "views_glitch_sound_timing",
+      "kind": "imports"
     },
     {
       "from": "ds_changelog_graph",
@@ -4193,17 +4326,22 @@
     },
     {
       "from": "ds_pages_atlas",
+      "to": "ds_atlas_actions",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
       "to": "ds_atlas_camera",
       "kind": "imports"
     },
     {
       "from": "ds_pages_atlas",
-      "to": "ds_atlas_canvas",
+      "to": "ds_atlas_dock",
       "kind": "imports"
     },
     {
       "from": "ds_pages_atlas",
-      "to": "ds_atlas_dock",
+      "to": "ds_atlas_insight",
       "kind": "imports"
     },
     {
@@ -4218,7 +4356,17 @@
     },
     {
       "from": "ds_pages_atlas",
+      "to": "ds_atlas_shell",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
       "to": "ds_atlas_tooltip",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_atlas",
+      "to": "ds_atlas_view",
       "kind": "imports"
     },
     {

@@ -1,6 +1,6 @@
-/* ADAM/DS — ds/atlas/panel · layer schema detail + connectors
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-4] */
-import { neighbors } from './schema.js';
+/* ADAM/DS — ds/atlas/panel · layer schema detail + connectors + import path
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+import { neighbors, lookup } from './schema.js';
 // Exports: renderPanel
 const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const cap = (cells) => {
@@ -56,7 +56,22 @@ function layerBlock(node, all) {
     + `<dt>tokens</dt><dd class="tok">${cap(toks)}</dd>`
     + `<dt>views</dt><dd>${peerList(views)}</dd>`);
 }
-export function renderPanel(node) {
+// — Import path (shift-click chain, BFS over imports) —
+const hop = (id, i) => {
+  const n = lookup(id);
+  if (!n) return '';
+  const tag = `<span class="atlas-kind">${esc(n.layer)}</span>`;
+  return `<li><span class="atlas-hop">${i + 1}</span> ${esc(n.title)} ${tag}</li>`;
+};
+function pathBlock(info) {
+  if (!info) return '';
+  if (!info.ids.length) {
+    return '<h3>Import path</h3><p class="atlas-empty">No import chain between these two nodes.</p>';
+  }
+  const rows = info.ids.map(hop).join('');
+  return `<h3>Import path · ${info.hops} hops</h3><ul class="atlas-edges atlas-hops">${rows}</ul>`;
+}
+export function renderPanel(node, pathInfo) {
   if (!node) return '<div class="atlas-empty">Select a node to inspect its connectors.</div>';
   const nb = neighbors(node.id);
   const out = nb.out.map((e) => ({ ...e, dir: 'out' }));
@@ -73,6 +88,7 @@ export function renderPanel(node) {
     `<dl class="atlas-meta"><dt>path</dt><dd class="tok">${esc(node.path)}</dd>`,
     `<dt>layer</dt><dd>${esc(node.layer)}</dd><dt>route</dt><dd>${route}</dd></dl>`,
     layerBlock(node, all),
+    pathBlock(pathInfo),
     `<h3>Connectors · ${out.length} out / ${inn.length} in</h3>`,
     `<ul class="atlas-edges">${rows || '<li>—</li>'}</ul>`,
   ].join('');

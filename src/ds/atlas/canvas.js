@@ -1,5 +1,5 @@
-/* ADAM/DS — ds/atlas/canvas · svg wires + nodes + focus emphasis
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5] */
+/* ADAM/DS — ds/atlas/canvas · svg wires + nodes + focus/path emphasis
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
 import { COLX, colLabel, position } from './layout.js';
 // Exports: paint, emphasis
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -49,24 +49,50 @@ export function paint(svg, list, view) {
   svg.innerHTML = `${cols}<g class="atlas-wires">${wires}</g>${dots}`;
 }
 // — Emphasis —
+// dim 0 = ink, 1 = muted ring, 2 = ghost; hits get a ring, path runs accent
 const touch = (near, focus, e) => {
   if (e.from === focus) near.add(e.to);
   if (e.to === focus) near.add(e.from);
 };
-export function emphasis(svg, focus, sel, edges) {
+const wireDim = (view, hit) => {
+  if (hit) return '0';
+  if (view.hits || view.deep) return '2';
+  if (view.path) return '1';
+  if (view.focus) return '1';
+  return '0';
+};
+export function emphasis(svg, view, edges) {
+  const { focus, sel, hits, path, pathEdges } = view;
   const near = new Set();
   if (focus) near.add(focus);
   (edges || []).forEach((e) => touch(near, focus, e));
+  const keep = (own) => {
+    if (near.has(own)) return true;
+    if (path && path.has(own)) return true;
+    return !!(hits && hits.has(own));
+  };
+  const dimOf = (own) => {
+    if (keep(own)) return '0';
+    if (hits) return '2';
+    if (path) return '1';
+    if (!focus) return '0';
+    return view.deep ? '2' : '1';
+  };
   svg.querySelectorAll('[data-node]').forEach((g) => {
     const own = g.getAttribute('data-node');
-    const linked = near.has(own);
-    g.setAttribute('data-hl', linked ? '1' : '0');
-    g.setAttribute('data-dim', focus && !linked ? '1' : '0');
+    g.setAttribute('data-hl', keep(own) ? '1' : '0');
+    g.setAttribute('data-dim', dimOf(own));
     g.setAttribute('data-sel', own === sel ? '1' : '0');
+    g.setAttribute('data-hit', hits && hits.has(own) ? '1' : '0');
+    g.setAttribute('data-path', path && path.has(own) ? '1' : '0');
   });
   svg.querySelectorAll('[data-from]').forEach((p) => {
-    const hit = !!focus && (p.getAttribute('data-from') === focus || p.getAttribute('data-to') === focus);
+    const from = p.getAttribute('data-from');
+    const to = p.getAttribute('data-to');
+    const onPath = !!(pathEdges && pathEdges.has(`${from}>${to}`));
+    const hit = onPath || (!!focus && (from === focus || to === focus));
     p.setAttribute('data-hl', hit ? '1' : '0');
-    p.setAttribute('data-dim', focus && !hit ? '1' : '0');
+    p.setAttribute('data-path', onPath ? '1' : '0');
+    p.setAttribute('data-dim', wireDim(view, hit));
   });
 }

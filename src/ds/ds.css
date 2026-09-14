@@ -18,6 +18,7 @@
     --measure-ds-lede: 62ch;
   --size-ds-atlas-h: 68vh;
     --size-ds-tip: 320px;
+    --size-ds-find: 132px;
 }
 body { padding-top: 0; }
 .ds-shell { display: flex; min-height: 100vh; align-items: stretch; }

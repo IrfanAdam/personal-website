@@ -1,7 +1,7 @@
-/* ADAM/DS — ds/atlas/camera · fit, pan, cursor zoom + focus dispatch
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5] */
-import { BOX, fitBox, position } from './layout.js';
-// Exports: scaleOf, fit, bind
+/* ADAM/DS — ds/atlas/camera · fit, pan, cursor zoom, center + focus dispatch
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+import { BOX, centerBox, fitBox, position } from './layout.js';
+// Exports: scaleOf, fit, centerOn, bind
 const MIN_SCALE = 0.15;
 const MAX_SCALE = 3.5;
 const STEP = 1.12;
@@ -14,6 +14,13 @@ export function fit(svg, list, mode, cam) {
   const r = svg.getBoundingClientRect();
   const aspect = r.height > 0 ? r.width / r.height : BOX.w / BOX.h;
   Object.assign(cam, fitBox(pos, aspect));
+  apply(svg, cam);
+}
+export function centerOn(svg, cam, list, mode, id) {
+  const { pos } = position(list, mode);
+  const box = centerBox(pos, id);
+  if (!box) return;
+  Object.assign(cam, box);
   apply(svg, cam);
 }
 export function bind(svg, cam, hooks) {

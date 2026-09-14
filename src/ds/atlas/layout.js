@@ -1,6 +1,6 @@
-/* ADAM/DS — ds/atlas/layout · layered columns + radial + fit, pure fns
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5] */
-// Exports: BOX, COLX, colLabel, position, fitBox
+/* ADAM/DS — ds/atlas/layout · layered columns + radial + fit + center, pure fns
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+// Exports: BOX, COLX, colLabel, position, centerBox, fitBox
 export const BOX = { w: 960, h: 780 };
 export const COLX = { function: 160, component: 480, foundation: 800 };
 const STEP_MAX = 24;
@@ -39,6 +39,13 @@ export function radial(list) {
   return { pos, dense };
 }
 export const position = (list, mode) => (mode === 'radial' ? radial(list) : layered(list));
+export const centerBox = (pos, id, zoom = 1.6) => {
+  const p = pos.get(id);
+  if (!p) return null;
+  const w = BOX.w / zoom;
+  const h = BOX.h / zoom;
+  return { x: p.x - w / 2, y: p.y - h / 2, w, h };
+};
 function bounds(pos) {
   let minX = Infinity;
   let minY = Infinity;

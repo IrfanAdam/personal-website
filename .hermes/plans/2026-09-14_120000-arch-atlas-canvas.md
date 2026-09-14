@@ -337,21 +337,37 @@ Verified: cursor-follow tip (title + layer + path + `click to pin · esc to clea
 
 **Files:** `src/ds/atlas/schema.js` (pathBetween BFS), `src/ds/pages-atlas.js` (search input + shift-select + path state), `src/ds/atlas/canvas.js` (path stroke emphasis), `src/ds/atlas.css` (search input chrome).
 
-### Task 19: Node search + jump
+### Task 19: Node search + jump ✓ done
+
+**Files:** `src/ds/atlas/search.js` (new), `src/ds/atlas/dock.js`, `src/ds/atlas/actions.js`, `src/ds/atlas.css`
 
 **Verify:** Type `glitch` → 8 matches; Enter selects + centers `ds_functions_glitch`; count shows `8` in dock.
 
-### Task 20: Focus mode
+Verified: dock search input (`find node`) → typing `glitch` reports `8` in `#atlasHit` and rings exactly 8 nodes (`data-hit`, accent fill) while the other 142 ghost to `dim=2` (244 wires too) — a real filter, and all 8 labels reveal in the dense function column. Enter selects + centers `ds_functions_glitch` (zoom 160%, pinned tip), repeat Enter steps through the remaining matches; Escape inside the input clears the query, restoring all 150 nodes to `dim=0`.
+
+### Task 20: Focus mode ✓ done
+
+**Files:** `src/ds/atlas/canvas.js`, `src/ds/atlas/insight.js` (new), `src/ds/atlas.css`
 
 **Verify:** Click `ds_functions_glitch`; non-neighbors dim beyond Phase-5 emphasis; neighbor labels stay readable at default zoom.
 
-### Task 21: Shortest-path highlight
+Verified: click `ds_functions_glitch` → 8 nodes stay ink (itself + 7 connectors), the other 142 fall to the new ghost level `data-dim="2"` (`--color-bg` fill/stroke, labels off) — stronger than Phase-5 hover dim (`1` = muted ring), so focus reads at 55% zoom; the 7 connector labels reveal in the dense column. A second click on the same node restores (150 nodes at `dim=0`) and a third re-arms it; hovering another node previews that node's neighbourhood without dropping the ghosts.
+
+### Task 21: Shortest-path highlight ✓ done
+
+**Files:** `src/ds/atlas/schema.js` (pathBetween BFS), `src/ds/atlas/insight.js`, `src/ds/atlas/panel.js`, `src/ds/atlas/canvas.js`, `src/ds/atlas.css`
 
 **Verify:** Click `ds_functions_glitch`, shift-click `ds_foundations_pane_color` → shortest import chain highlighted; inspector lists hops.
 
-### Task 22: Route deep-links in tooltip
+Verified: BFS over the 355 `imports` edges, keyed in `schema.js` at load. Shift-click chains highlight in `--color-accent`/`--color-info` (dots + wires) with the rest at `dim=1`, and the inspector gains `Import path · N hops` with numbered hops tagged by layer — `glitch → specimens → trace` = 3 hops/3 rows, `glitch → …helpers` = 5 rows/4 hops (the two `view` hops are non-canvas layers, listed by name but only their visible segments draw). **Deviation from the plan's example pair:** `ds_functions_glitch` → `ds_foundations_pane_color` has **no** import chain (glitch's imports stay inside the function/component subtree) — the honest result is `No import chain between these two nodes.`; verified with the pairs above instead.
+
+### Task 22: Route deep-links in tooltip ✓ done
+
+**Files:** `src/ds/atlas/tooltip.js`, `src/ds/atlas/panel.js`, `src/ds/atlas-tip.css` (new), `ds/index.html`
 
 **Verify:** Tooltip on Glitch shows `#/functions/glitch`; clicking it routes (hash changes, no crash). Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6]`.
+
+Verified: the 16 route-bearing nodes (routes resolved by `graph-schema.js` from `src/ds/routes.js`, so a link is never invented) show `#/functions/glitch` inline in the trailing tip; non-route nodes (`canvas`, `pane color`) show none. Clicking the link in the pinned tip routes (`hash → #/functions/glitch`, Glitch page renders, atlas clears up with no listeners left) and `#/atlas` remounts clean (150 nodes, refit 55%, single sidebar, 0 console errors); the tip's ✕ closes and clears the overlay. Left the trailing tip itself `pointer-events: none` — it tracks the cursor, so a follow-tip link can never be hit; the pinned panel is where the link becomes live (clicking it does not trip the canvas click-to-clear).
 
 *Shipped in <sha> · Tasks 19–22 · phase-6.*
 

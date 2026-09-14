@@ -1,6 +1,7 @@
 /* ADAM/DS — ds/atlas/dock · floating controls + legend markup/wiring
    [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-5] */
 import { LAYERS, KINDS } from './schema.js';
+import { findHTML } from './search.js';
 // Exports: dockHTML, legendHTML, bindDock
 const ATTR = { 'atlas-dot': 'data-atlas-dot', 'atlas-swatch': 'data-atlas-swatch' };
 const chip = (attr, value, on, swatch) => {
@@ -20,6 +21,7 @@ export const dockHTML = () => [
   KINDS.map((k) => chip('data-kind', k, true, 'atlas-swatch')).join(''),
   '<span class="atlas-count" id="atlasCount"></span>',
   '<span class="atlas-zoom" id="atlasZoom">100%</span>',
+  findHTML(),
   '</div>',
 ].join('');
 const leg = (swatch, attr, value) => {

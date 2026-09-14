@@ -1,0 +1,30 @@
+/* ADAM/DS — ds/atlas-tip · cursor tooltip + pinned inspector panel, route + hops
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+.atlas-tip {
+  position: absolute;
+  z-index: var(--z-ds-controls);
+  max-width: var(--size-ds-tip);
+  max-height: 44vh;
+  overflow-y: auto;
+  padding: var(--space-10) var(--space-12);
+  border: var(--border-hairline);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: var(--text-ds-body);
+  pointer-events: none;
+}
+.atlas-tip.is-pinned { pointer-events: auto; border-color: var(--color-ink); }
+.atlas-phead { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); }
+.atlas-path { display: block; color: var(--color-ink-muted); overflow-wrap: anywhere; }
+.atlas-route { display: block; color: var(--color-accent); }
+.atlas-hint { display: block; margin-top: var(--space-4); color: var(--color-ink-subtle); }
+.atlas-tip h3 { font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); }
+.atlas-tip h3 { color: var(--color-ink-muted); }
+.atlas-meta { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4) var(--space-8); }
+.atlas-meta dt { color: var(--color-ink-muted); }
+.atlas-meta dd { margin: 0; overflow-wrap: anywhere; }
+.atlas-edges { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.atlas-hop { color: var(--color-ink-muted); }
+.atlas-kind { font-family: var(--font-mono); color: var(--color-accent); }
+.atlas-empty { color: var(--color-ink-muted); }
+.atlas-x { border: var(--border-hairline); background: var(--color-surface); color: var(--color-ink); }
