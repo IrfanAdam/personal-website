@@ -191,6 +191,8 @@ Run: `node scripts/map-graph.mjs` (baseline, must print modules + edges counts)
 
 **Verify:** Browser loop on 5199: drag changes viewBox, wheel clamps, click every 5th node opens correct inspector, Esc closes; `mount` detach removes listeners (navigate away/back, no duplicates). Commit with `[plan:2026-09-14_120000-arch-atlas-canvas.md#phase-3]`.
 
+*Shipped in 7c5db04 · Tasks 7–9 · phase-3.*
+
 ---
 
 ## Phase 4 — Layer schemas + connector inspector {#phase-4}
