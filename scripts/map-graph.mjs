@@ -30,5 +30,13 @@ mkdirSync(join(ROOT, 'docs'), { recursive: true });
 const lines = [...new Set(pairs.map(([a, b]) => `${a} --> ${b}`))].sort();
 writeFileSync(join(ROOT, 'docs/graph.mmd'), `graph TD\n${lines.join('\n')}\n`);
 const schema = buildSchema(ROOT, mods, pairs);
-writeFileSync(join(ROOT, 'src/ds/arch-schema.json'), `${JSON.stringify(schema, null, 2)}\n`);
+/* Keep the previous stamp when only it would change — check-arch-map and the DS
+   atlas read this file, and a rebuild must never dirty the tree for nothing. */
+const schemaOut = join(ROOT, 'src/ds/arch-schema.json');
+try {
+  const before = JSON.parse(readFileSync(schemaOut, 'utf8'));
+  const strip = (o) => JSON.stringify({ ...o, generated: null });
+  if (strip(before) === strip(schema)) schema.generated = before.generated;
+} catch {}
+writeFileSync(schemaOut, `${JSON.stringify(schema, null, 2)}\n`);
 console.log(`✓ graph — ${mods.length} modules · ${lines.length} edges → docs/graph.mmd + arch-schema.json`);

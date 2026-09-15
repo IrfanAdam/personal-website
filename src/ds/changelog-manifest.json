@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T13:18:39.803Z",
+ "generated": "2026-09-15T13:24:05.809Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,15 +30,6 @@
  ],
  "commits": [
   {
-   "sha": "00448cd",
-   "full": "00448cd9fd3e34200b13631a2aa0610699721c32",
-   "date": "2026-09-15",
-   "time": "18:48",
-   "subject": "chore(ds): close sound phase-1 + track refresh — 186/186 linked, 0 wip",
-   "plan": "2026-09-15_190000-foundations-sound-pane.md",
-   "anchor": "phase-1"
-  },
-  {
    "sha": "f3d1442",
    "full": "f3d1442031ef80b3f3f312572b494af2480ff7fa",
    "date": "2026-09-15",
@@ -46,24 +37,6 @@
    "subject": "feat(ds): sound as the eighth foundation — Sound sheet, board + scope",
    "plan": "2026-09-15_190000-foundations-sound-pane.md",
    "anchor": "phase-1"
-  },
-  {
-   "sha": "4b68cb7",
-   "full": "4b68cb796b86dab597c4b0b1cbaac2469d1d3fa1",
-   "date": "2026-09-15",
-   "time": "18:42",
-   "subject": "chore(ds): clear the deployed archive noise — 184/184 linked",
-   "plan": "2026-09-15_183400-lump-sum-builds.md",
-   "anchor": "phase-3"
-  },
-  {
-   "sha": "5bcca23",
-   "full": "5bcca23968d577891452dde502030e9a037d6a62",
-   "date": "2026-09-15",
-   "time": "18:38",
-   "subject": "chore(ds): retro-link the atlas phase-4.5 commit + track refresh",
-   "plan": "2026-09-15_183400-lump-sum-builds.md",
-   "anchor": "phase-3"
   },
   {
    "sha": "0f3b8bd",
@@ -75,15 +48,6 @@
    "anchor": "phase-3"
   },
   {
-   "sha": "9d56186",
-   "full": "9d56186dc0b61cf090bcfcabf039ded7080376b7",
-   "date": "2026-09-15",
-   "time": "14:00",
-   "subject": "chore(ds): atlas phase12 close-out — marks + shipped line",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase12"
-  },
-  {
    "sha": "61dfaf2",
    "full": "61dfaf20baf92d3d8d3842e6f71fdd8b7158ea57",
    "date": "2026-09-15",
@@ -91,15 +55,6 @@
    "subject": "feat(ds): atlas arc flow, search left, legend off, fullscreen top-right",
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "phase12"
-  },
-  {
-   "sha": "e185b26",
-   "full": "e185b260d8d9ac275d77f5160c3159de29da53ff",
-   "date": "2026-09-14",
-   "time": "20:10",
-   "subject": "chore(ds): track refresh — manifest 178 · glitch hum via element engine",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": "phase-6"
   },
   {
    "sha": "9196057",
@@ -111,33 +66,6 @@
    "anchor": "phase-6"
   },
   {
-   "sha": "63f7002",
-   "full": "63f7002fece734c0e8d9920a885b44a6f3660e07",
-   "date": "2026-09-14",
-   "time": "19:34",
-   "subject": "chore(ds): track refresh — manifest 177 · atlas phases 10-11",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase11"
-  },
-  {
-   "sha": "0b1d0ff",
-   "full": "0b1d0ff0c984e054997c1d4f8087416fc6bc6df9",
-   "date": "2026-09-14",
-   "time": "19:34",
-   "subject": "chore(ds): fold fullscreen scope into the atlas build — phases 10-11",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase10"
-  },
-  {
-   "sha": "c2fcbe3",
-   "full": "c2fcbe30ac37426b0ecc5266f3a1c2166c445ae9",
-   "date": "2026-09-14",
-   "time": "19:27",
-   "subject": "chore(ds): track refresh — manifest 175 · atlas fullscreen",
-   "plan": "2026-09-14_192124-atlas-fullscreen.md",
-   "anchor": "phase-2"
-  },
-  {
    "sha": "48787ef",
    "full": "48787ef89f237bcdd0cdab86e226d9cd312e81ed",
    "date": "2026-09-14",
@@ -147,60 +75,6 @@
    "anchor": "phase-1"
   },
   {
-   "sha": "5784050",
-   "full": "5784050156498f44f32c7b94d6a3da46c4aa1d1f",
-   "date": "2026-09-14",
-   "time": "18:56",
-   "subject": "chore(ds): track refresh — manifest 174 · phase 9 close-out",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-9"
-  },
-  {
-   "sha": "fd1fe9d",
-   "full": "fd1fe9d62302201d0a1a038888081638bd1083ec",
-   "date": "2026-09-14",
-   "time": "18:30",
-   "subject": "chore(ds): track refresh — manifest 172 · phase 8 map",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-8"
-  },
-  {
-   "sha": "62a0fe1",
-   "full": "62a0fe138a54c57462707a771e0fbceb3340df88",
-   "date": "2026-09-14",
-   "time": "18:30",
-   "subject": "feat: public map insight parity — ia lanes, flow footer, legend tips, hover tick",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-8"
-  },
-  {
-   "sha": "6ab727f",
-   "full": "6ab727fbcf469f0762a27c8900251ff8d4bd080f",
-   "date": "2026-09-14",
-   "time": "17:52",
-   "subject": "chore(ds): track refresh — manifest 170 · phase 7 map",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-7"
-  },
-  {
-   "sha": "3a33f73",
-   "full": "3a33f73be75d2b75aa8090ed7ea22e70e58bdf23",
-   "date": "2026-09-14",
-   "time": "17:52",
-   "subject": "feat: public architecture map — #/lab/architecture + minimal-lab entry",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-7"
-  },
-  {
-   "sha": "854c0e4",
-   "full": "854c0e44bc2359f996899455fe1ea10cec81caa6",
-   "date": "2026-09-14",
-   "time": "17:38",
-   "subject": "chore(ds): track refresh — manifest 168 · atlas phase 6",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-6"
-  },
-  {
    "sha": "803ee31",
    "full": "803ee3170bee132ea95bfdf14f4da48b74a47df4",
    "date": "2026-09-14",
@@ -208,24 +82,6 @@
    "subject": "feat(ds): atlas insight layer — find, focus, import path, route links",
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "phase-6"
-  },
-  {
-   "sha": "fa62eac",
-   "full": "fa62eac19194f6929bc5f279699e7815b44b3bf4",
-   "date": "2026-09-14",
-   "time": "17:04",
-   "subject": "chore(ds): track refresh — manifest 165 · 0 wip",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-5"
-  },
-  {
-   "sha": "e4eb0de",
-   "full": "e4eb0dedb20a9b1a0481a39689a3e27ed670aea8",
-   "date": "2026-09-14",
-   "time": "17:04",
-   "subject": "chore(ds): regenerated arch schema — atlas token evidence after css wrap",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-5"
   },
   {
    "sha": "640ac68",
@@ -273,15 +129,6 @@
    "anchor": "phase-4"
   },
   {
-   "sha": "8593ca1",
-   "full": "8593ca1b37307d2def5b52f56ed386cba6908d3a",
-   "date": "2026-09-14",
-   "time": "15:29",
-   "subject": "chore(ds): track refresh — manifest 159 · 0 wip",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-3"
-  },
-  {
    "sha": "7c5db04",
    "full": "7c5db040d200024e57bfac71219ab605ed9ba457",
    "date": "2026-09-14",
@@ -289,15 +136,6 @@
    "subject": "feat(ds): atlas canvas route with toggles, layouts, pan/zoom + inspector",
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "phase-3"
-  },
-  {
-   "sha": "2969440",
-   "full": "2969440129d4b2f3b23e6ba30d3dad6ba594069f",
-   "date": "2026-09-14",
-   "time": "13:53",
-   "subject": "feat(ds): maintained arch-schema.json via map-graph + graph-schema helper",
-   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-2"
   },
   {
    "sha": "7cb18f9",
@@ -309,146 +147,11 @@
    "anchor": "phase-1"
   },
   {
-   "sha": "1918e17",
-   "full": "1918e172d7ca01fecadcc9cb156ef577501af3a8",
-   "date": "2026-09-14",
-   "time": "12:59",
-   "subject": "chore(ds): track refresh after reordering — manifest 155",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-6"
-  },
-  {
-   "sha": "f3c99a9",
-   "full": "f3c99a994d7c36848c53b3c8706f1a09be35e908",
-   "date": "2026-09-14",
-   "time": "12:57",
-   "subject": "chore(ds): track refresh after reordering phases",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-6"
-  },
-  {
-   "sha": "8e74433",
-   "full": "8e74433e8dab89ff1df8485e8db28d4dcf69020a",
-   "date": "2026-09-14",
-   "time": "12:57",
-   "subject": "docs(plan): order refactor phases 6–9 by first execution + timestamps",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-6"
-  },
-  {
-   "sha": "8afdb08",
-   "full": "8afdb08feef45f7c5b4e4a721f1c74bc3f22dca1",
-   "date": "2026-09-14",
-   "time": "12:54",
-   "subject": "chore(ds): track refresh after refactor phases 6–9",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-9"
-  },
-  {
-   "sha": "199d77e",
-   "full": "199d77e61d63c2b57c8df3c55d4e71e7cd3a7409",
-   "date": "2026-09-14",
-   "time": "12:54",
-   "subject": "docs(plan): refactor now owns its hygiene — 004508 + 003212 as phases 6–9",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-9"
-  },
-  {
-   "sha": "ff20296",
-   "full": "ff2029689a6f63b559ed1d9a69f55e9080baa185",
-   "date": "2026-09-14",
-   "time": "12:52",
-   "subject": "chore(ds): track refresh after hiding subset builds",
-   "plan": "2026-09-14_004508-refactor-bugfix.md",
-   "anchor": "phase-3"
-  },
-  {
-   "sha": "5b347e4",
-   "full": "5b347e42e6d3fa9bd4937e95e1d872d4d1f17328",
-   "date": "2026-09-14",
-   "time": "12:51",
-   "subject": "docs(plan): hide subset builds from changelog — 004508 + 003212 are refactor hygiene",
-   "plan": "2026-09-14_004508-refactor-bugfix.md",
-   "anchor": "phase-3"
-  },
-  {
-   "sha": "4b00986",
-   "full": "4b0098661514c49e634f7b1551e554ca6f3167cb",
-   "date": "2026-09-14",
-   "time": "12:49",
-   "subject": "chore(ds): track refresh after 004508 normalization",
-   "plan": "2026-09-14_004508-refactor-bugfix.md",
-   "anchor": "phase-3"
-  },
-  {
-   "sha": "7e7f213",
-   "full": "7e7f213d06c9ad1e2bce99f9f2d6191937591c70",
-   "date": "2026-09-14",
-   "time": "12:49",
-   "subject": "docs(plan): normalize 004508 phase-3 shipped line to 10b60e9",
-   "plan": "2026-09-14_004508-refactor-bugfix.md",
-   "anchor": "phase-3"
-  },
-  {
-   "sha": "eae23b5",
-   "full": "eae23b53795f08bcb1ca29b8ff7e6a62b1e835e5",
-   "date": "2026-09-14",
-   "time": "12:44",
-   "subject": "chore(ds): track refresh — manifest now includes b0c4f1d",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-5"
-  },
-  {
-   "sha": "b0c4f1d",
-   "full": "b0c4f1d4e97e3c355eedfa79f46ce1fc4090d19f",
-   "date": "2026-09-14",
-   "time": "12:44",
-   "subject": "chore(ds): track refresh after phase-5 close",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-5"
-  },
-  {
-   "sha": "1a90244",
-   "full": "1a902444930027daac10b5fb4f5ccff114535c74",
-   "date": "2026-09-14",
-   "time": "12:44",
-   "subject": "docs(plan): mark refactor phase 5 done — tasks 18–20 ✓",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-5"
-  },
-  {
-   "sha": "7025e93",
-   "full": "7025e93f22b1bf6cfe2bec0ede1263464a237dfa",
-   "date": "2026-09-14",
-   "time": "12:36",
-   "subject": "docs(plan): codify refactor rules + code map",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-5"
-  },
-  {
-   "sha": "d1d47c6",
-   "full": "d1d47c6f7720eccdd31a181cb6e678bbca69b4d7",
-   "date": "2026-09-14",
-   "time": "01:07",
-   "subject": "chore(ds): track refresh after the fence-aware chunks fix",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-4"
-  },
-  {
    "sha": "8a97551",
    "full": "8a9755155c80647fd88794f6cefef34abf726842",
    "date": "2026-09-14",
    "time": "01:07",
    "subject": "fix(ds): changelog chunks() is fence-aware — a fenced ## heading no longer splits a phase",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-4"
-  },
-  {
-   "sha": "0a489f3",
-   "full": "0a489f315c9d67e81a9ccab371b5061239611114",
-   "date": "2026-09-14",
-   "time": "01:04",
-   "subject": "chore(ds): track refresh + close phase 4 of the refactor",
    "plan": "2026-09-13_193000-refactor-manageability.md",
    "anchor": "phase-4"
   },
@@ -471,15 +174,6 @@
    "anchor": "phase-4"
   },
   {
-   "sha": "10b60e9",
-   "full": "10b60e986c6a8ed6d7094c25c360df6d5806cc69",
-   "date": "2026-09-14",
-   "time": "00:49",
-   "subject": "chore(ds): track refresh + close the split-repair phases",
-   "plan": "2026-09-14_004508-refactor-bugfix.md",
-   "anchor": "phase-3"
-  },
-  {
    "sha": "9b6f615",
    "full": "9b6f615b1b4fda8fee16cf39c8ce16f370cfae19",
    "date": "2026-09-14",
@@ -498,39 +192,12 @@
    "anchor": "phase-1"
   },
   {
-   "sha": "bb00cfa",
-   "full": "bb00cfa73b91fe5e796f136bdf44f1000d143c6e",
-   "date": "2026-09-14",
-   "time": "00:35",
-   "subject": "chore(ds): track refresh after builds nomenclature",
-   "plan": "2026-09-14_003212-builds-nomenclature.md",
-   "anchor": "phase-1"
-  },
-  {
    "sha": "28e2e3b",
    "full": "28e2e3b4c82dfec5c22493eff230cde52f727290",
    "date": "2026-09-14",
    "time": "00:35",
    "subject": "refactor(ds): the changelog keeps its name — its entries are builds",
    "plan": "2026-09-14_003212-builds-nomenclature.md",
-   "anchor": "phase-1"
-  },
-  {
-   "sha": "7e2d09b",
-   "full": "7e2d09b8289b2c7ab997eceb909e4e2f128109ef",
-   "date": "2026-09-14",
-   "time": "00:20",
-   "subject": "chore(ds): track refresh after split-hide fix",
-   "plan": "2026-09-14_001100-graph-join-leak.md",
-   "anchor": "phase-1"
-  },
-  {
-   "sha": "ccb8018",
-   "full": "ccb8018f4c767156313e48ae6e9481a7e9383d99",
-   "date": "2026-09-14",
-   "time": "00:18",
-   "subject": "chore(ds): track refresh after card-hide fix",
-   "plan": "2026-09-14_001100-graph-join-leak.md",
    "anchor": "phase-1"
   },
   {
@@ -543,15 +210,6 @@
    "anchor": "phase-1"
   },
   {
-   "sha": "dd897ed",
-   "full": "dd897eda8e3afa7e827a8226b546bbb03ac88022",
-   "date": "2026-09-14",
-   "time": "00:13",
-   "subject": "chore(ds): track refresh after graph fix",
-   "plan": "2026-09-14_001100-graph-join-leak.md",
-   "anchor": "phase-1"
-  },
-  {
    "sha": "88e5459",
    "full": "88e54597484ac10f94dfd9faaf0fcd5b1fdc3c0c",
    "date": "2026-09-14",
@@ -559,15 +217,6 @@
    "subject": "fix(changelog): remove join-fragment leak in activity graph",
    "plan": "2026-09-14_001100-graph-join-leak.md",
    "anchor": "phase-1"
-  },
-  {
-   "sha": "69faf12",
-   "full": "69faf1244d6e711388fdf92e16df58c88a4d53b6",
-   "date": "2026-09-14",
-   "time": "00:08",
-   "subject": "chore(ds): track refresh after over-limit close-out",
-   "plan": "2026-09-13_235413-over-limit-splits.md",
-   "anchor": "phase-4"
   },
   {
    "sha": "032b2b6",
@@ -640,15 +289,6 @@
    "subject": "refactor(glitch): split source-panel 133 into markup/bind modules",
    "plan": "2026-09-13_235413-over-limit-splits.md",
    "anchor": "phase-1"
-  },
-  {
-   "sha": "5a465e0",
-   "full": "5a465e0a1f11dab4e0dfdf90d262dd7fe81ce78f",
-   "date": "2026-09-13",
-   "time": "23:53",
-   "subject": "chore(ds): track refresh after phase-3 close",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-3"
   },
   {
    "sha": "1ed81cc",
@@ -759,15 +399,6 @@
    "anchor": "phase-3"
   },
   {
-   "sha": "1a60044",
-   "full": "1a600443d01f1b3410617775206c06962c3b4b2e",
-   "date": "2026-09-13",
-   "time": "23:15",
-   "subject": "chore(ds): track refresh after primitives split",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-3"
-  },
-  {
    "sha": "d46ebc7",
    "full": "d46ebc7fede258746fa174195d36d6cfae12bb17",
    "date": "2026-09-13",
@@ -831,15 +462,6 @@
    "anchor": "phase-3"
   },
   {
-   "sha": "eeba6e1",
-   "full": "eeba6e1388af80168f65e682b1f39a87b77a2b76",
-   "date": "2026-09-13",
-   "time": "20:31",
-   "subject": "docs(plan): mark refactor phase-2 done",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-2"
-  },
-  {
    "sha": "5780e3b",
    "full": "5780e3b0edb223114471c14c66da994401821c84",
    "date": "2026-09-13",
@@ -876,33 +498,6 @@
    "anchor": "phase-2"
   },
   {
-   "sha": "3d8a108",
-   "full": "3d8a1081b33bd8b870f67c4f3e388d41391e548b",
-   "date": "2026-09-13",
-   "time": "20:09",
-   "subject": "refactor(sound): split sound-palette into voice families",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-2"
-  },
-  {
-   "sha": "9b687c0",
-   "full": "9b687c03b65c9f529b705c377dbdb2ae0b75c1ab",
-   "date": "2026-09-13",
-   "time": "20:05",
-   "subject": "docs(plan): guardrails — extraction over packing",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-1"
-  },
-  {
-   "sha": "97fcd38",
-   "full": "97fcd38d16f715489760d37b16e39c323687d795",
-   "date": "2026-09-13",
-   "time": "20:03",
-   "subject": "docs(plan): mark refactor phase-1 done",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-1"
-  },
-  {
    "sha": "f677501",
    "full": "f67750118a0426525b97e2a8839f831ca0417e43",
    "date": "2026-09-13",
@@ -910,15 +505,6 @@
    "subject": "chore(nomenclature): ADAM headers everywhere",
    "plan": "2026-09-13_193000-refactor-manageability.md",
    "anchor": "phase-1"
-  },
-  {
-   "sha": "c52a905",
-   "full": "c52a9051fb49a4eded3de7bd7eb79929e3e4cdbe",
-   "date": "2026-09-13",
-   "time": "19:54",
-   "subject": "chore(ds): track refresh",
-   "plan": "2026-09-13_193000-refactor-manageability.md",
-   "anchor": "phase-0"
   },
   {
    "sha": "5d033ce",
@@ -939,24 +525,6 @@
    "anchor": "phase-5"
   },
   {
-   "sha": "34b2614",
-   "full": "34b2614b5930e024e6ff41160ce698890645a612",
-   "date": "2026-09-12",
-   "time": "17:20",
-   "subject": "chore(ds): track refresh",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
-  },
-  {
-   "sha": "c323b71",
-   "full": "c323b718481888a4ad04280a25625e81605120f7",
-   "date": "2026-09-12",
-   "time": "17:20",
-   "subject": "docs(plan): mark glitch-sound phase-4 done",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": "phase-4"
-  },
-  {
    "sha": "e422e76",
    "full": "e422e762e76b93a25068df6465235e089a97dde8",
    "date": "2026-09-12",
@@ -966,33 +534,6 @@
    "anchor": "phase-4"
   },
   {
-   "sha": "8741ebe",
-   "full": "8741ebe1d9ba67de58ef998089f69bdde9e958ff",
-   "date": "2026-09-12",
-   "time": "15:30",
-   "subject": "chore(ds): track refresh",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
-  },
-  {
-   "sha": "3b2db86",
-   "full": "3b2db869f1870549fe0c6ea03c598165ab74f549",
-   "date": "2026-09-12",
-   "time": "15:28",
-   "subject": "chore(ds): track refresh",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
-  },
-  {
-   "sha": "4c426b3",
-   "full": "4c426b3b83f3593f691b45d0a06ef8d7ecf0e191",
-   "date": "2026-09-12",
-   "time": "15:28",
-   "subject": "docs(plan): mark glitch-sound phase-3 done",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
-  },
-  {
    "sha": "020453b",
    "full": "020453b56661dde4eede22fac6a8c19e7c19d251",
    "date": "2026-09-12",
@@ -1000,33 +541,6 @@
    "subject": "fix(fx): glitch sound audibility — base gain, unlock, hover proxy, lab test",
    "plan": "2026-09-12_150255-glitch-sound.md",
    "anchor": "phase-3"
-  },
-  {
-   "sha": "579c025",
-   "full": "579c025ef387ac1238515bdeabcaf9489e0736c4",
-   "date": "2026-09-12",
-   "time": "15:13",
-   "subject": "chore(ds): track refresh",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
-  },
-  {
-   "sha": "e52fd91",
-   "full": "e52fd91e43f390920d59b05943facdccc5e70291",
-   "date": "2026-09-12",
-   "time": "15:13",
-   "subject": "chore(ds): track refresh after plan docs",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
-  },
-  {
-   "sha": "6169036",
-   "full": "616903606ea31d9782cdfda297770eae780a0140",
-   "date": "2026-09-12",
-   "time": "15:12",
-   "subject": "chore(ds): track refresh for glitch sound",
-   "plan": "2026-09-12_150255-glitch-sound.md",
-   "anchor": null
   },
   {
    "sha": "3cd65b4",
@@ -1047,15 +561,6 @@
    "anchor": "phase-1"
   },
   {
-   "sha": "50a1d79",
-   "full": "50a1d79e6a1401b67ef34aa650846a209af33c7f",
-   "date": "2026-09-12",
-   "time": "13:41",
-   "subject": "fix(ds): ds-track merges over committed manifest so Vercel shallow clone keeps full history",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
    "sha": "e6507a3",
    "full": "e6507a33a0640fba88f988cca44d68c52bbe4a6e",
    "date": "2026-09-11",
@@ -1063,15 +568,6 @@
    "subject": "feat(ds): LLM-curated changelog titles, slug-above-micro-footer, plan:names SOP gate",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-5"
-  },
-  {
-   "sha": "6a105d1",
-   "full": "6a105d1e7a698485cbf5800f461a230766015fc9",
-   "date": "2026-09-11",
-   "time": "21:06",
-   "subject": "chore(ds): track refresh for numeral-free timeline",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
   },
   {
    "sha": "2d1c41f",
@@ -1083,15 +579,6 @@
    "anchor": "Phase-5"
   },
   {
-   "sha": "280cd36",
-   "full": "280cd3646c6fd5ffbdde200884da53200b3670a0",
-   "date": "2026-09-11",
-   "time": "21:05",
-   "subject": "chore(ds): track refresh for clean blobs + chip order",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
    "sha": "5f72e4b",
    "full": "5f72e4b2df889ecaaaaca6d993914989f7a07f18",
    "date": "2026-09-11",
@@ -1099,15 +586,6 @@
    "subject": "feat(ds): clean blobs, day chip leads filter row",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-5"
-  },
-  {
-   "sha": "2abe404",
-   "full": "2abe4041101b06d275c2573568c8d2ed8a759725",
-   "date": "2026-09-11",
-   "time": "21:03",
-   "subject": "chore(ds): track refresh for timeline numerals",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
   },
   {
    "sha": "74b3497",
@@ -1119,15 +597,6 @@
    "anchor": "Phase-5"
   },
   {
-   "sha": "ed28fdb",
-   "full": "ed28fdba2b8d6daa0bf226c5a34084009f9e2aa6",
-   "date": "2026-09-11",
-   "time": "21:02",
-   "subject": "chore(ds): track refresh for month-start labels",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
    "sha": "a303c46",
    "full": "a303c46449a6d0049957ca9583debd89797d0d61",
    "date": "2026-09-11",
@@ -1135,15 +604,6 @@
    "subject": "feat(ds): start-of-month timeline labels, airy selection ring",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-5"
-  },
-  {
-   "sha": "ff0f913",
-   "full": "ff0f913247c4d09487f6186abd136d645835f2f9",
-   "date": "2026-09-11",
-   "time": "20:58",
-   "subject": "chore(ds): track refresh for timeline gutters + blip",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
   },
   {
    "sha": "af1a9f4",
@@ -1155,15 +615,6 @@
    "anchor": "Phase-5"
   },
   {
-   "sha": "7ead514",
-   "full": "7ead514f32edbaa0ada3a437e5991d214059a594",
-   "date": "2026-09-11",
-   "time": "20:52",
-   "subject": "chore(ds): track refresh for timeline cells + pulse",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
    "sha": "62feb65",
    "full": "62feb6575be9cb0c73e530673feff1c19239507a",
    "date": "2026-09-11",
@@ -1171,15 +622,6 @@
    "subject": "feat(ds): bigger timeline cells, wider gutters, pulsing today ring",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-5"
-  },
-  {
-   "sha": "001d47e",
-   "full": "001d47efb1694f9f98badd84bd0d9c48975d7695",
-   "date": "2026-09-11",
-   "time": "20:50",
-   "subject": "chore(ds): track refresh for padded timeline window",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
   },
   {
    "sha": "2ff10c5",
@@ -1191,15 +633,6 @@
    "anchor": "Phase-5"
   },
   {
-   "sha": "fddf3a0",
-   "full": "fddf3a0b41a898439ad5f2ef9258cae9e5ca17f9",
-   "date": "2026-09-11",
-   "time": "20:46",
-   "subject": "chore(ds): track refresh for timeline graph + shipped note",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
    "sha": "a828c9a",
    "full": "a828c9a066a942b9fd10f3302c284cbaa7e78475",
    "date": "2026-09-11",
@@ -1207,15 +640,6 @@
    "subject": "feat(ds): contribution timeline graph + day filter with removable chip",
    "plan": "2026-09-10_195043-smart-changelog.md",
    "anchor": "Phase-5"
-  },
-  {
-   "sha": "4963407",
-   "full": "4963407a06d71b1d0d9c2a07b4f9de1eec4f5d8e",
-   "date": "2026-09-11",
-   "time": "20:39",
-   "subject": "fix(ds): manifest no longer lists itself as wip — triage reads All tracked on clean tree",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
   },
   {
    "sha": "191f4d5",
@@ -1317,24 +741,6 @@
    "anchor": "Phase 1"
   },
   {
-   "sha": "37982f9",
-   "full": "37982f93a0eea26e1b21c5147430e5b66fda0f8c",
-   "date": "2026-09-10",
-   "time": "21:19",
-   "subject": "chore(ds): ds-track manifest 0 wip",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
-   "sha": "69eac10",
-   "full": "69eac10daf0c324277e27ab52973018ccccf7640",
-   "date": "2026-09-10",
-   "time": "21:18",
-   "subject": "chore(ds): ds-track manifest refresh [skip ci]",
-   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
-   "anchor": null
-  },
-  {
    "sha": "72c8f05",
    "full": "72c8f05c1e1ef616b8a27a22e3271b665d612f70",
    "date": "2026-09-10",
@@ -1380,24 +786,6 @@
    "anchor": "Phase-3"
   },
   {
-   "sha": "0c464b1",
-   "full": "0c464b18c15177ba0ffd3613d29f46d7f7fe8d70",
-   "date": "2026-09-10",
-   "time": "20:06",
-   "subject": "chore(ds): mark smart-changelog phases 1-4 shipped in plan",
-   "plan": "2026-09-10_195043-smart-changelog.md",
-   "anchor": "Shipped"
-  },
-  {
-   "sha": "4be6963",
-   "full": "4be6963152c53b02e9437fb8b673c3792972b44a",
-   "date": "2026-09-10",
-   "time": "20:06",
-   "subject": "feat(ds): retro-link 15 pre-trailer commits to semantic phases",
-   "plan": "2026-09-10_195043-smart-changelog.md",
-   "anchor": "Phase-4"
-  },
-  {
    "sha": "d884568",
    "full": "d8845688edcaeac941de95277a307448cf0147cc",
    "date": "2026-09-10",
@@ -1416,15 +804,6 @@
    "anchor": "phase-4"
   },
   {
-   "sha": "7f881d9",
-   "full": "7f881d9f61fbf183f5831cd65fc0378775c91e7b",
-   "date": "2026-09-10",
-   "time": "16:14",
-   "subject": "chore(plan): mark phase 3 shipped — signal slot live, tasks 7–8 ✓ done",
-   "plan": "2026-09-10_153555-color-cool-synthetic.md",
-   "anchor": "phase-3"
-  },
-  {
    "sha": "f12ea02",
    "full": "f12ea028e1cb66c2114c46a8f467010bc3365ed1",
    "date": "2026-09-10",
@@ -1432,15 +811,6 @@
    "subject": "feat(color): phase 3 swap-slot — signal indirection + live swap demo",
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-3"
-  },
-  {
-   "sha": "36c2d82",
-   "full": "36c2d826d9cefdffe26e3dd050d1469175fba2e7",
-   "date": "2026-09-10",
-   "time": "16:07",
-   "subject": "chore(plan): mark phases 1-2 shipped — Frost Alloy locked, tasks 1-6 ✓ done",
-   "plan": "2026-09-10_153555-color-cool-synthetic.md",
-   "anchor": "phase-2"
   },
   {
    "sha": "5fcbdac",
@@ -1504,15 +874,6 @@
    "subject": "feat(ds): update 4 phase 5 — motion prescription+true-scale bars, easing story, depth ladder, reduced-motion contract",
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Phase-5"
-  },
-  {
-   "sha": "ffd2bae",
-   "full": "ffd2bae03407f2924936e96960b372a980e303ac",
-   "date": "2026-09-09",
-   "time": "17:50",
-   "subject": "chore(ds): mark update-4 phases 1-4 shipped in plan",
-   "plan": "2026-09-09_170854-design-system-update-4.md",
-   "anchor": "Shipped"
   },
   {
    "sha": "7d3bcea",
@@ -1711,6 +1072,654 @@
    "subject": "feat: portfolio clone with decap cms",
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "decap cms"
+  },
+  {
+   "sha": "62a0fe1",
+   "full": "62a0fe138a54c57462707a771e0fbceb3340df88",
+   "date": "2026-09-14",
+   "time": "18:30",
+   "subject": "feat: public map insight parity — ia lanes, flow footer, legend tips, hover tick",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-8"
+  },
+  {
+   "sha": "3a33f73",
+   "full": "3a33f73be75d2b75aa8090ed7ea22e70e58bdf23",
+   "date": "2026-09-14",
+   "time": "17:52",
+   "subject": "feat: public architecture map — #/lab/architecture + minimal-lab entry",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-7"
+  },
+  {
+   "sha": "e4eb0de",
+   "full": "e4eb0dedb20a9b1a0481a39689a3e27ed670aea8",
+   "date": "2026-09-14",
+   "time": "17:04",
+   "subject": "chore(ds): regenerated arch schema — atlas token evidence after css wrap",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "2969440",
+   "full": "2969440129d4b2f3b23e6ba30d3dad6ba594069f",
+   "date": "2026-09-14",
+   "time": "13:53",
+   "subject": "feat(ds): maintained arch-schema.json via map-graph + graph-schema helper",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "50a8e31",
+   "full": "50a8e316e8dbe5c4bf2c3a48bb563cb9a7202aea",
+   "date": "2026-09-15",
+   "time": "18:52",
+   "subject": "chore(ds): tracker leaves the tree clean — stamp only moves on real change",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "00448cd",
+   "full": "00448cd9fd3e34200b13631a2aa0610699721c32",
+   "date": "2026-09-15",
+   "time": "18:48",
+   "subject": "chore(ds): close sound phase-1 + track refresh — 186/186 linked, 0 wip",
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "4b68cb7",
+   "full": "4b68cb796b86dab597c4b0b1cbaac2469d1d3fa1",
+   "date": "2026-09-15",
+   "time": "18:42",
+   "subject": "chore(ds): clear the deployed archive noise — 184/184 linked",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "5bcca23",
+   "full": "5bcca23968d577891452dde502030e9a037d6a62",
+   "date": "2026-09-15",
+   "time": "18:38",
+   "subject": "chore(ds): retro-link the atlas phase-4.5 commit + track refresh",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "9d56186",
+   "full": "9d56186dc0b61cf090bcfcabf039ded7080376b7",
+   "date": "2026-09-15",
+   "time": "14:00",
+   "subject": "chore(ds): atlas phase12 close-out — marks + shipped line",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase12"
+  },
+  {
+   "sha": "e185b26",
+   "full": "e185b260d8d9ac275d77f5160c3159de29da53ff",
+   "date": "2026-09-14",
+   "time": "20:10",
+   "subject": "chore(ds): track refresh — manifest 178 · glitch hum via element engine",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "63f7002",
+   "full": "63f7002fece734c0e8d9920a885b44a6f3660e07",
+   "date": "2026-09-14",
+   "time": "19:34",
+   "subject": "chore(ds): track refresh — manifest 177 · atlas phases 10-11",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase11"
+  },
+  {
+   "sha": "0b1d0ff",
+   "full": "0b1d0ff0c984e054997c1d4f8087416fc6bc6df9",
+   "date": "2026-09-14",
+   "time": "19:34",
+   "subject": "chore(ds): fold fullscreen scope into the atlas build — phases 10-11",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase10"
+  },
+  {
+   "sha": "c2fcbe3",
+   "full": "c2fcbe30ac37426b0ecc5266f3a1c2166c445ae9",
+   "date": "2026-09-14",
+   "time": "19:27",
+   "subject": "chore(ds): track refresh — manifest 175 · atlas fullscreen",
+   "plan": "2026-09-14_192124-atlas-fullscreen.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "5784050",
+   "full": "5784050156498f44f32c7b94d6a3da46c4aa1d1f",
+   "date": "2026-09-14",
+   "time": "18:56",
+   "subject": "chore(ds): track refresh — manifest 174 · phase 9 close-out",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-9"
+  },
+  {
+   "sha": "fd1fe9d",
+   "full": "fd1fe9d62302201d0a1a038888081638bd1083ec",
+   "date": "2026-09-14",
+   "time": "18:30",
+   "subject": "chore(ds): track refresh — manifest 172 · phase 8 map",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-8"
+  },
+  {
+   "sha": "6ab727f",
+   "full": "6ab727fbcf469f0762a27c8900251ff8d4bd080f",
+   "date": "2026-09-14",
+   "time": "17:52",
+   "subject": "chore(ds): track refresh — manifest 170 · phase 7 map",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-7"
+  },
+  {
+   "sha": "854c0e4",
+   "full": "854c0e44bc2359f996899455fe1ea10cec81caa6",
+   "date": "2026-09-14",
+   "time": "17:38",
+   "subject": "chore(ds): track refresh — manifest 168 · atlas phase 6",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "fa62eac",
+   "full": "fa62eac19194f6929bc5f279699e7815b44b3bf4",
+   "date": "2026-09-14",
+   "time": "17:04",
+   "subject": "chore(ds): track refresh — manifest 165 · 0 wip",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "8593ca1",
+   "full": "8593ca1b37307d2def5b52f56ed386cba6908d3a",
+   "date": "2026-09-14",
+   "time": "15:29",
+   "subject": "chore(ds): track refresh — manifest 159 · 0 wip",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "1918e17",
+   "full": "1918e172d7ca01fecadcc9cb156ef577501af3a8",
+   "date": "2026-09-14",
+   "time": "12:59",
+   "subject": "chore(ds): track refresh after reordering — manifest 155",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "f3c99a9",
+   "full": "f3c99a994d7c36848c53b3c8706f1a09be35e908",
+   "date": "2026-09-14",
+   "time": "12:57",
+   "subject": "chore(ds): track refresh after reordering phases",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "8e74433",
+   "full": "8e74433e8dab89ff1df8485e8db28d4dcf69020a",
+   "date": "2026-09-14",
+   "time": "12:57",
+   "subject": "docs(plan): order refactor phases 6–9 by first execution + timestamps",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "8afdb08",
+   "full": "8afdb08feef45f7c5b4e4a721f1c74bc3f22dca1",
+   "date": "2026-09-14",
+   "time": "12:54",
+   "subject": "chore(ds): track refresh after refactor phases 6–9",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-9"
+  },
+  {
+   "sha": "199d77e",
+   "full": "199d77e61d63c2b57c8df3c55d4e71e7cd3a7409",
+   "date": "2026-09-14",
+   "time": "12:54",
+   "subject": "docs(plan): refactor now owns its hygiene — 004508 + 003212 as phases 6–9",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-9"
+  },
+  {
+   "sha": "ff20296",
+   "full": "ff2029689a6f63b559ed1d9a69f55e9080baa185",
+   "date": "2026-09-14",
+   "time": "12:52",
+   "subject": "chore(ds): track refresh after hiding subset builds",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "5b347e4",
+   "full": "5b347e42e6d3fa9bd4937e95e1d872d4d1f17328",
+   "date": "2026-09-14",
+   "time": "12:51",
+   "subject": "docs(plan): hide subset builds from changelog — 004508 + 003212 are refactor hygiene",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "4b00986",
+   "full": "4b0098661514c49e634f7b1551e554ca6f3167cb",
+   "date": "2026-09-14",
+   "time": "12:49",
+   "subject": "chore(ds): track refresh after 004508 normalization",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "7e7f213",
+   "full": "7e7f213d06c9ad1e2bce99f9f2d6191937591c70",
+   "date": "2026-09-14",
+   "time": "12:49",
+   "subject": "docs(plan): normalize 004508 phase-3 shipped line to 10b60e9",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "eae23b5",
+   "full": "eae23b53795f08bcb1ca29b8ff7e6a62b1e835e5",
+   "date": "2026-09-14",
+   "time": "12:44",
+   "subject": "chore(ds): track refresh — manifest now includes b0c4f1d",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "b0c4f1d",
+   "full": "b0c4f1d4e97e3c355eedfa79f46ce1fc4090d19f",
+   "date": "2026-09-14",
+   "time": "12:44",
+   "subject": "chore(ds): track refresh after phase-5 close",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "1a90244",
+   "full": "1a902444930027daac10b5fb4f5ccff114535c74",
+   "date": "2026-09-14",
+   "time": "12:44",
+   "subject": "docs(plan): mark refactor phase 5 done — tasks 18–20 ✓",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "7025e93",
+   "full": "7025e93f22b1bf6cfe2bec0ede1263464a237dfa",
+   "date": "2026-09-14",
+   "time": "12:36",
+   "subject": "docs(plan): codify refactor rules + code map",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-5"
+  },
+  {
+   "sha": "d1d47c6",
+   "full": "d1d47c6f7720eccdd31a181cb6e678bbca69b4d7",
+   "date": "2026-09-14",
+   "time": "01:07",
+   "subject": "chore(ds): track refresh after the fence-aware chunks fix",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "0a489f3",
+   "full": "0a489f315c9d67e81a9ccab371b5061239611114",
+   "date": "2026-09-14",
+   "time": "01:04",
+   "subject": "chore(ds): track refresh + close phase 4 of the refactor",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "10b60e9",
+   "full": "10b60e986c6a8ed6d7094c25c360df6d5806cc69",
+   "date": "2026-09-14",
+   "time": "00:49",
+   "subject": "chore(ds): track refresh + close the split-repair phases",
+   "plan": "2026-09-14_004508-refactor-bugfix.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "bb00cfa",
+   "full": "bb00cfa73b91fe5e796f136bdf44f1000d143c6e",
+   "date": "2026-09-14",
+   "time": "00:35",
+   "subject": "chore(ds): track refresh after builds nomenclature",
+   "plan": "2026-09-14_003212-builds-nomenclature.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "7e2d09b",
+   "full": "7e2d09b8289b2c7ab997eceb909e4e2f128109ef",
+   "date": "2026-09-14",
+   "time": "00:20",
+   "subject": "chore(ds): track refresh after split-hide fix",
+   "plan": "2026-09-14_001100-graph-join-leak.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "ccb8018",
+   "full": "ccb8018f4c767156313e48ae6e9481a7e9383d99",
+   "date": "2026-09-14",
+   "time": "00:18",
+   "subject": "chore(ds): track refresh after card-hide fix",
+   "plan": "2026-09-14_001100-graph-join-leak.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "dd897ed",
+   "full": "dd897eda8e3afa7e827a8226b546bbb03ac88022",
+   "date": "2026-09-14",
+   "time": "00:13",
+   "subject": "chore(ds): track refresh after graph fix",
+   "plan": "2026-09-14_001100-graph-join-leak.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "69faf12",
+   "full": "69faf1244d6e711388fdf92e16df58c88a4d53b6",
+   "date": "2026-09-14",
+   "time": "00:08",
+   "subject": "chore(ds): track refresh after over-limit close-out",
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "5a465e0",
+   "full": "5a465e0a1f11dab4e0dfdf90d262dd7fe81ce78f",
+   "date": "2026-09-13",
+   "time": "23:53",
+   "subject": "chore(ds): track refresh after phase-3 close",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "1a60044",
+   "full": "1a600443d01f1b3410617775206c06962c3b4b2e",
+   "date": "2026-09-13",
+   "time": "23:15",
+   "subject": "chore(ds): track refresh after primitives split",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "eeba6e1",
+   "full": "eeba6e1388af80168f65e682b1f39a87b77a2b76",
+   "date": "2026-09-13",
+   "time": "20:31",
+   "subject": "docs(plan): mark refactor phase-2 done",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "3d8a108",
+   "full": "3d8a1081b33bd8b870f67c4f3e388d41391e548b",
+   "date": "2026-09-13",
+   "time": "20:09",
+   "subject": "refactor(sound): split sound-palette into voice families",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "9b687c0",
+   "full": "9b687c03b65c9f529b705c377dbdb2ae0b75c1ab",
+   "date": "2026-09-13",
+   "time": "20:05",
+   "subject": "docs(plan): guardrails — extraction over packing",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "97fcd38",
+   "full": "97fcd38d16f715489760d37b16e39c323687d795",
+   "date": "2026-09-13",
+   "time": "20:03",
+   "subject": "docs(plan): mark refactor phase-1 done",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "c52a905",
+   "full": "c52a9051fb49a4eded3de7bd7eb79929e3e4cdbe",
+   "date": "2026-09-13",
+   "time": "19:54",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "phase-0"
+  },
+  {
+   "sha": "34b2614",
+   "full": "34b2614b5930e024e6ff41160ce698890645a612",
+   "date": "2026-09-12",
+   "time": "17:20",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "c323b71",
+   "full": "c323b718481888a4ad04280a25625e81605120f7",
+   "date": "2026-09-12",
+   "time": "17:20",
+   "subject": "docs(plan): mark glitch-sound phase-4 done",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "phase-4"
+  },
+  {
+   "sha": "8741ebe",
+   "full": "8741ebe1d9ba67de58ef998089f69bdde9e958ff",
+   "date": "2026-09-12",
+   "time": "15:30",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "3b2db86",
+   "full": "3b2db869f1870549fe0c6ea03c598165ab74f549",
+   "date": "2026-09-12",
+   "time": "15:28",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "4c426b3",
+   "full": "4c426b3b83f3593f691b45d0a06ef8d7ecf0e191",
+   "date": "2026-09-12",
+   "time": "15:28",
+   "subject": "docs(plan): mark glitch-sound phase-3 done",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "579c025",
+   "full": "579c025ef387ac1238515bdeabcaf9489e0736c4",
+   "date": "2026-09-12",
+   "time": "15:13",
+   "subject": "chore(ds): track refresh",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "e52fd91",
+   "full": "e52fd91e43f390920d59b05943facdccc5e70291",
+   "date": "2026-09-12",
+   "time": "15:13",
+   "subject": "chore(ds): track refresh after plan docs",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "6169036",
+   "full": "616903606ea31d9782cdfda297770eae780a0140",
+   "date": "2026-09-12",
+   "time": "15:12",
+   "subject": "chore(ds): track refresh for glitch sound",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null
+  },
+  {
+   "sha": "50a1d79",
+   "full": "50a1d79e6a1401b67ef34aa650846a209af33c7f",
+   "date": "2026-09-12",
+   "time": "13:41",
+   "subject": "fix(ds): ds-track merges over committed manifest so Vercel shallow clone keeps full history",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "6a105d1",
+   "full": "6a105d1e7a698485cbf5800f461a230766015fc9",
+   "date": "2026-09-11",
+   "time": "21:06",
+   "subject": "chore(ds): track refresh for numeral-free timeline",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "280cd36",
+   "full": "280cd3646c6fd5ffbdde200884da53200b3670a0",
+   "date": "2026-09-11",
+   "time": "21:05",
+   "subject": "chore(ds): track refresh for clean blobs + chip order",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "2abe404",
+   "full": "2abe4041101b06d275c2573568c8d2ed8a759725",
+   "date": "2026-09-11",
+   "time": "21:03",
+   "subject": "chore(ds): track refresh for timeline numerals",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "ed28fdb",
+   "full": "ed28fdba2b8d6daa0bf226c5a34084009f9e2aa6",
+   "date": "2026-09-11",
+   "time": "21:02",
+   "subject": "chore(ds): track refresh for month-start labels",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "ff0f913",
+   "full": "ff0f913247c4d09487f6186abd136d645835f2f9",
+   "date": "2026-09-11",
+   "time": "20:58",
+   "subject": "chore(ds): track refresh for timeline gutters + blip",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "7ead514",
+   "full": "7ead514f32edbaa0ada3a437e5991d214059a594",
+   "date": "2026-09-11",
+   "time": "20:52",
+   "subject": "chore(ds): track refresh for timeline cells + pulse",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "001d47e",
+   "full": "001d47efb1694f9f98badd84bd0d9c48975d7695",
+   "date": "2026-09-11",
+   "time": "20:50",
+   "subject": "chore(ds): track refresh for padded timeline window",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "fddf3a0",
+   "full": "fddf3a0b41a898439ad5f2ef9258cae9e5ca17f9",
+   "date": "2026-09-11",
+   "time": "20:46",
+   "subject": "chore(ds): track refresh for timeline graph + shipped note",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "4963407",
+   "full": "4963407a06d71b1d0d9c2a07b4f9de1eec4f5d8e",
+   "date": "2026-09-11",
+   "time": "20:39",
+   "subject": "fix(ds): manifest no longer lists itself as wip — triage reads All tracked on clean tree",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "37982f9",
+   "full": "37982f93a0eea26e1b21c5147430e5b66fda0f8c",
+   "date": "2026-09-10",
+   "time": "21:19",
+   "subject": "chore(ds): ds-track manifest 0 wip",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "69eac10",
+   "full": "69eac10daf0c324277e27ab52973018ccccf7640",
+   "date": "2026-09-10",
+   "time": "21:18",
+   "subject": "chore(ds): ds-track manifest refresh [skip ci]",
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null
+  },
+  {
+   "sha": "0c464b1",
+   "full": "0c464b18c15177ba0ffd3613d29f46d7f7fe8d70",
+   "date": "2026-09-10",
+   "time": "20:06",
+   "subject": "chore(ds): mark smart-changelog phases 1-4 shipped in plan",
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Shipped"
+  },
+  {
+   "sha": "4be6963",
+   "full": "4be6963152c53b02e9437fb8b673c3792972b44a",
+   "date": "2026-09-10",
+   "time": "20:06",
+   "subject": "feat(ds): retro-link 15 pre-trailer commits to semantic phases",
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Phase-4"
+  },
+  {
+   "sha": "7f881d9",
+   "full": "7f881d9f61fbf183f5831cd65fc0378775c91e7b",
+   "date": "2026-09-10",
+   "time": "16:14",
+   "subject": "chore(plan): mark phase 3 shipped — signal slot live, tasks 7–8 ✓ done",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "36c2d82",
+   "full": "36c2d826d9cefdffe26e3dd050d1469175fba2e7",
+   "date": "2026-09-10",
+   "time": "16:07",
+   "subject": "chore(plan): mark phases 1-2 shipped — Frost Alloy locked, tasks 1-6 ✓ done",
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "ffd2bae",
+   "full": "ffd2bae03407f2924936e96960b372a980e303ac",
+   "date": "2026-09-09",
+   "time": "17:50",
+   "subject": "chore(ds): mark update-4 phases 1-4 shipped in plan",
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Shipped"
   }
  ],
  "wip": []
