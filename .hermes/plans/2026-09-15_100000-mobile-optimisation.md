@@ -88,7 +88,7 @@
 
 *Tags: Layout*
 
-### Task 5: Grids + cards (masonry / works / about)
+### Task 5: Grids + cards (masonry / works / about) ✓ done
 
 **Objective:** Single column, readable type, no overflow at 360px.
 
@@ -102,7 +102,7 @@
 2. Guard `.card:hover img { transform }` behind `@media (hover:hover)`.
 3. `.work { flex-direction:column; gap:4px }` on mobile; `.cta-actions .btn { width:100% }` optional.
 
-### Task 6: Case detail + contact + viewer + form
+### Task 6: Case detail + contact + viewer + form ✓ done
 
 **Objective:** 56/44 split stacks cleanly; hero media first (already `order:-1` ≤640px — verify); contact `h1` wraps; viewer/form fit.
 

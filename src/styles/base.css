@@ -27,7 +27,8 @@ body { padding-top: var(--header-h, var(--size-header)); }
   position: relative;
 }
 .smenu-btn {
-  min-width: var(--space-32);
+  min-width: var(--size-tap);
+  min-height: var(--size-tap);
   display: inline-flex;
   align-items: center;
   justify-content: center;

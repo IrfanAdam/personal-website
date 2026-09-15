@@ -56,3 +56,18 @@
 .contact-hero h1 span.ink { color: var(--color-ink); }
 .contact-hero h1 span.muted { color: var(--color-ink-muted); }
 .contact-about { max-width: none; padding: var(--space-18) 0 0; }
+@media (max-width: 640px) /* --break-sm */ {
+  .work {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .cta-band {
+    padding: var(--space-18) var(--space-12);
+  }
+  .cta-band .cta-actions .btn {
+    width: 100%;
+  }
+  .about {
+    padding: var(--space-12) var(--space-4);
+  }
+}
