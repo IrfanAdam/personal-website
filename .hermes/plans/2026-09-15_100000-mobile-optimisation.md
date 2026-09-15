@@ -47,7 +47,7 @@
 
 **Verify:** No hex/rgb literals (`npm run lint:tokens`); bar width unchanged with menu closed.
 
-*Shipped in TBD · Tasks 1–2 · phase-1.*
+*Shipped in 3f91b98 · Tasks 1–2 · phase-1.*
 
 ## Phase 2 — Mobile header in-flow fix {#phase-2}
 
