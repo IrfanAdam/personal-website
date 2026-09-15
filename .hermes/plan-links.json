@@ -21,6 +21,13 @@
     "557ffa6": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "glimmer-orb views build fix; function views -> P4" },
     "1160912": { "plan": "2026-09-10_201154-ds-nav-drawer.md", "anchor": "Drawer open/close", "note": "drawer emerge+dim, toggle visibility -> P2 drawer" },
     "37982f9": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" },
-    "69eac10": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" }
+    "69eac10": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" },
+    "0c80ab8": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-1", "note": "mobile: gear at end of icon row -> lump-sum P1 T1" },
+    "e494169": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-1", "note": "mobile: full-bleed rows, drop padding clip -> lump-sum P1 T2" },
+    "8e440b7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-1", "note": "mobile: grid gutter restored -> lump-sum P1 T3" },
+    "a330be7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-1", "note": "mobile: wrap gutter 16->12 -> lump-sum P1 T4" },
+    "96f28d6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-1", "note": "responsive images + reveal flicker -> lump-sum P1 T5" },
+    "05ec5b2": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-2", "note": "strip click snap + 200ms first-visit scramble -> lump-sum P2 T6-T7" },
+    "8d0fdc5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-2", "note": "map regenerated for committed tree -> lump-sum P2 T8" }
   }
 }

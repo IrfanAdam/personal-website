@@ -86,5 +86,13 @@
   "2026-09-14_192124-atlas-fullscreen.md": {
     "title": "Fullscreen stage overlay for the atlas canvas",
     "purpose": "atlas fullscreen"
+  },
+  "2026-09-15_100000-mobile-optimisation.md": {
+    "title": "Make the whole portfolio usable at 360–768px",
+    "purpose": "Mobile responsiveness"
+  },
+  "2026-09-15_183400-lump-sum-builds.md": {
+    "title": "Lump-sum builds: everything shipped without a scoped plan",
+    "purpose": "Traceability for plan-less shipments"
   }
 }
