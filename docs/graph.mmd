@@ -62,6 +62,11 @@ ds_foundations_pane_shape --> ds_foundations_shape_doctrine
 ds_foundations_pane_shape --> ds_foundations_shape_focus
 ds_foundations_pane_shape --> ds_foundations_shape_radius
 ds_foundations_pane_shape --> ds_specimens
+ds_foundations_pane_sound --> ds_foundations_sound_files
+ds_foundations_pane_sound --> ds_foundations_sound_procedural
+ds_foundations_pane_sound --> ds_foundations_sound_scope
+ds_foundations_pane_sound --> ds_foundations_sound_usage
+ds_foundations_pane_sound --> ds_tabs
 ds_foundations_pane_space --> ds_foundations_space_audit
 ds_foundations_pane_space --> ds_foundations_space_layout
 ds_foundations_pane_space --> ds_foundations_space_scale
@@ -73,6 +78,14 @@ ds_foundations_pane_type --> ds_foundations_type_voice
 ds_foundations_shape_borders --> ds_specimens
 ds_foundations_shape_focus --> ds_specimens
 ds_foundations_shape_radius --> ds_specimens
+ds_foundations_sound_board --> ds_foundations_sound_scope_draw
+ds_foundations_sound_board --> ds_foundations_sound_synth_render
+ds_foundations_sound_board --> views_audio_ctx
+ds_foundations_sound_board --> views_element_sound
+ds_foundations_sound_files --> ds_foundations_sound_data
+ds_foundations_sound_procedural --> ds_foundations_sound_data
+ds_foundations_sound_synth_render --> views_sound_palette
+ds_foundations_sound_usage --> ds_specimens
 ds_foundations_space_tables --> ds_specimens
 ds_foundations_type_playground --> ds_specimens
 ds_foundations_type_scale --> ds_foundations_type_demos
@@ -201,8 +214,10 @@ ds_pages_foundations --> ds_foundations_pane_contract
 ds_pages_foundations --> ds_foundations_pane_fx
 ds_pages_foundations --> ds_foundations_pane_motion
 ds_pages_foundations --> ds_foundations_pane_shape
+ds_pages_foundations --> ds_foundations_pane_sound
 ds_pages_foundations --> ds_foundations_pane_space
 ds_pages_foundations --> ds_foundations_pane_type
+ds_pages_foundations --> ds_foundations_sound_board
 ds_pages_foundations --> ds_specimens
 ds_pages_foundations --> ds_tabs
 ds_pages_functions --> ds_specimens
@@ -325,6 +340,7 @@ views_glitch_sound_parse --> views_sound_palette
 views_glitch_sound_timing --> views_audio_ctx
 views_init_sound --> views_glitch_sound
 views_init_sound --> views_init_sound_load
+views_init_sound --> views_strip_sound
 views_init_sound_load --> views_audio_ctx
 views_init_sound_load --> views_slot_sound
 views_map_canvas --> views_map_data
@@ -372,6 +388,7 @@ views_masonry --> views_masonry_reveal
 views_masonry --> views_masonry_viewer
 views_masonry --> views_shared
 views_masonry --> views_title_reveal
+views_masonry_cards --> views_img_helpers
 views_masonry_cells --> views_masonry_cells_order
 views_masonry_gridReveal --> views_masonry_cells
 views_masonry_gridReveal --> views_masonry_gridReveal_config
@@ -396,6 +413,7 @@ views_masonry_viewer_bind --> views_masonry_viewer_markup
 views_minimal_lab --> views_map_data
 views_minimal_lab --> views_shared
 views_project --> data_site
+views_project --> views_img_helpers
 views_project --> views_rise
 views_project --> views_shared
 views_project --> views_title_reveal
@@ -412,5 +430,6 @@ views_sound_palette --> fx_sound_voices_drone
 views_sound_palette --> fx_sound_voices_noise
 views_sound_palette --> fx_sound_voices_scan
 views_sound_palette --> fx_sound_voices_tone
+views_strip_sound --> views_slot_sound
 views_title_reveal --> views_scramble_text
 views_title_reveal --> views_slot_sound

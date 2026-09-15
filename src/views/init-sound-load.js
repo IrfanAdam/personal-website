@@ -15,22 +15,27 @@ export function initLoadScan(channel) {
     }catch{} if(_loadPlayed) return false;
     return true;
   }
-  function _playLoad(){ if(!_canLoad()) return; const c=_getLoadCtx(),
-    b=_getLoadBuf(); if(!c||!b) return; const go=async ()=>{ try{ const r=await playSlot('load',
-        0.5); if(String(r).startsWith('played')){ _loadPlayed=true; try{ sessionStorage.setItem('adam-load-played',
-              '1');
-              }catch{} } }catch{} };
-              if(c.state==='suspended'){ c.resume().then(go).catch(()=>{ // queue to first gesture
-    const once=()=>{ try{ if(_canLoad()) go();
-      }catch{};
-      try{ removeEventListener('pointerdown', once);
-        removeEventListener('keydown', once);
-      }catch{} };
-    addEventListener('pointerdown',
-      once,
-      {once:true}); addEventListener('keydown',
-      once,
-      {once:true}); }); } else go(); }
+  function _settle(r){ if(String(r).startsWith('played') || r === 'dedupe'){
+    _loadPlayed = true;
+    try{ sessionStorage.setItem('adam-load-played', '1'); }catch{}
+  } }
+  function _playLoad(){
+    if(!_canLoad()) return;
+    const c=_getLoadCtx(), b=_getLoadBuf();
+    if(!c||!b) return;
+    const go=async ()=>{ try{ _settle(await playSlot('load', 0.5)); }catch{} };
+    if(c.state==='suspended'){
+      c.resume().then(go).catch(()=>{
+        // queue to first gesture
+        const once=()=>{ try{ if(_canLoad()) go(); }catch{}
+          try{ removeEventListener('pointerdown', once);
+            removeEventListener('keydown', once);
+          }catch{} };
+        addEventListener('pointerdown', once, {once:true});
+        addEventListener('keydown', once, {once:true});
+      });
+    } else go();
+  }
   setTimeout(()=>{ try{ _playLoad(); }catch{} }, 820);
   document.addEventListener('pointerdown', ()=>{ try{ if(!_loadPlayed) _playLoad(); }catch{} }, {once:true});
 }

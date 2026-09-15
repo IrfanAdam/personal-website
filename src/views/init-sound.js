@@ -3,6 +3,7 @@
    MutationObserver attaches new nodes only — never resets live timers. */
 import { attach, setEnabled } from './glitch-sound.js';
 import { initLoadScan } from './init-sound-load.js';
+import { initStripSound } from './strip-sound.js';
 
 let on = true;
 try {
@@ -84,6 +85,7 @@ const mo = new MutationObserver((muts) => {
 });
 try { mo.observe(document.documentElement, { childList: true, subtree: true }); } catch {}
 initLoadScan({ isOn: () => on });
+initStripSound();
 if (document.readyState === 'loading') document
   .addEventListener('DOMContentLoaded', () => { ensureToggles(); scan(); });
 else { ensureToggles(); scan(); }

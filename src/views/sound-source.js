@@ -1,9 +1,11 @@
 /* ADAM/FX — Sound source store · per-slot kind pick (procedural | file).
-   Slot 'load' drives the page-load sweep; slot 'glitch' is the lab default.
+   Slot 'load' drives the page-load sweep; slot 'click' is the header icon
+   press snap; slot 'glitch' is the lab default.
    Persisted as JSON in localStorage 'adam-sound-src'. */
 const KEY = 'adam-sound-src';
 const DEFAULTS = {
   load: { kind: 'file', voice: 'scanner', file: 'loading.mp3' },
+  click: { kind: 'file', voice: 'scanner', file: 'load.wav' },
   glitch: { kind: 'procedural', voice: 'hum', file: 'load.wav' },
   scramble: { kind: 'procedural', voice: 'random', file: 'scifi-weapon.wav' },
 };
