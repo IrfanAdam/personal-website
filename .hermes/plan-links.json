@@ -29,6 +29,7 @@
     "96f28d6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-1", "note": "responsive images + reveal flicker -> lump-sum P1 T5" },
     "05ec5b2": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-2", "note": "strip click snap + 200ms first-visit scramble -> lump-sum P2 T6-T7" },
     "8d0fdc5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-2", "note": "map regenerated for committed tree -> lump-sum P2 T8" },
-    "b5b29ce": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "phase-5", "note": "phase 4.5 plan for atlas dock polish + public map; folded into atlas P5-P8 -> badged P5" }
+    "b5b29ce": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "phase-5", "note": "phase 4.5 plan for atlas dock polish + public map; folded into atlas P5-P8 -> badged P5" },
+    "2e1b95b": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "phase-4", "note": "plan-mark chore (phase 4 marks + shipped line) that reached the deployed manifest unlinked -> badged P4" }
   }
 }
