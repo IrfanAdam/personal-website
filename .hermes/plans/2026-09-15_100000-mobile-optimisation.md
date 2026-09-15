@@ -121,7 +121,7 @@
 
 *Tags: Tooling*
 
-### Task 7: Gates + device pass
+### Task 7: Gates + device pass ✓ done
 
 **Objective:** Zero regressions, доказано on real widths.
 
