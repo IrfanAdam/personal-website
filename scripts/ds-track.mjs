@@ -43,12 +43,19 @@ const wip = st.trim() ? st.trim().split('\n').map((l) => l.trim()).filter(Boolea
 /* Vercel builds from a shallow clone (--depth=10), so git log there only sees
    the latest commits. Never let a truncated history overwrite the full one:
    merge fresh commits over the last committed manifest (dedupe by sha). */
+let prevDoc = null;
 let prev = [];
-try { prev = JSON.parse(readFileSync(out, 'utf8')).commits || []; } catch { prev = []; }
+try { prevDoc = JSON.parse(readFileSync(out, 'utf8')); prev = prevDoc.commits || []; } catch { prev = []; }
 const seen = new Set(commits.map((c) => c.sha));
 prev.forEach((c) => { if (!seen.has(c.sha)) { commits.push(c); seen.add(c.sha); } });
 commits.forEach((c) => { const r = retro[c.sha]; if (r) { c.plan = r.plan; c.anchor = r.anchor ?? null; } });
 const shallow = (sh(`git rev-parse --is-shallow-repository`) || '').trim() === 'true';
 if (shallow) console.log(`… ds-track: shallow clone detected, merged ${commits.length} commits (kept full history)`);
-writeFileSync(out, JSON.stringify({ generated: new Date().toISOString(), continuation: CONTINUATION, plans, commits, wip }, null, 1) + '\n');
+/* Keep the previous stamp when only the timestamp would change: a dev run or
+   build must never leave the manifest dirty in git for no reason (a new DS
+   commit still rewrites it, and that rewrite is what the ship SOP commits). */
+const doc = { generated: new Date().toISOString(), continuation: CONTINUATION, plans, commits, wip };
+const strip = (o) => JSON.stringify({ ...o, generated: null });
+if (prevDoc && strip(prevDoc) === strip(doc)) doc.generated = prevDoc.generated;
+writeFileSync(out, JSON.stringify(doc, null, 1) + '\n');
 console.log(`✓ ds-track — ${plans.length} plans (${tagged}/${phased.length} tagged) · ${commits.length} DS commits (${commits.filter((c) => c.plan).length} linked) · ${wip.length} wip · cont ${CONTINUATION}`);

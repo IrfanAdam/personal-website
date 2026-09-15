@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T13:18:15.547Z",
+ "generated": "2026-09-15T13:18:39.803Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -29,6 +29,15 @@
   "2026-09-15_190000-foundations-sound-pane.md"
  ],
  "commits": [
+  {
+   "sha": "00448cd",
+   "full": "00448cd9fd3e34200b13631a2aa0610699721c32",
+   "date": "2026-09-15",
+   "time": "18:48",
+   "subject": "chore(ds): close sound phase-1 + track refresh — 186/186 linked, 0 wip",
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "f3d1442",
    "full": "f3d1442031ef80b3f3f312572b494af2480ff7fa",
