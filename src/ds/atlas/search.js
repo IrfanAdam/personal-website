@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/atlas/search · find-by-title/path + dock input wiring
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase12] */
 import { nodes } from './schema.js';
 // Exports: hits, findHTML, bindFind
 const rank = (n, q) => {
@@ -20,7 +20,6 @@ export function hits(q) {
     .map((x) => x.n);
 }
 export const findHTML = () => [
-  '<span class="atlas-div" aria-hidden="true"></span>',
   '<input class="atlas-find" id="atlasFind" type="search" placeholder="find node" aria-label="Find node" ',
   'autocomplete="off" spellcheck="false"><span class="atlas-hit" id="atlasHit" aria-live="polite"></span>',
 ].join('');

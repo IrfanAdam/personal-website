@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/atlas/fullscreen · stage overlay toggle (dock chip · ✕ · esc)
-   [plan:2026-09-14_192124-atlas-fullscreen.md#phase-1] */
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase12] */
 // Exports: makeFullscreen
 const IDLE = { isFull: () => false, set: () => false, unbind: () => {} };
 export function makeFullscreen(root, onResize) {

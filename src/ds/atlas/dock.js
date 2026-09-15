@@ -1,8 +1,8 @@
-/* ADAM/DS — ds/atlas/dock · floating controls + legend markup/wiring
-   [plan:2026-09-14_192124-atlas-fullscreen.md#phase-1] */
-import { LAYERS, KINDS } from './schema.js';
+/* ADAM/DS — ds/atlas/dock · floating controls (search left, no legend)
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase12] */
+import { KINDS, LAYERS } from './schema.js';
 import { findHTML } from './search.js';
-// Exports: dockHTML, legendHTML, bindDock
+// Exports: dockHTML, bindDock
 const ATTR = { 'atlas-dot': 'data-atlas-dot', 'atlas-swatch': 'data-atlas-swatch' };
 const chip = (attr, value, on, swatch) => {
   const icon = swatch ? `<i class="${swatch}" ${ATTR[swatch]}="${value}"></i>` : '';
@@ -12,31 +12,17 @@ const chip = (attr, value, on, swatch) => {
   return open + aria;
 };
 const div = '<span class="atlas-div" aria-hidden="true"></span>';
-const FULL = '<button type="button" class="atlas-chip atlas-full" id="atlasFull" data-full="1" ' +
-  'aria-pressed="false" aria-label="Fullscreen stage" title="Fullscreen stage">⛶</button>';
 export const dockHTML = () => [
   '<div class="atlas-dock" id="atlasDock" role="toolbar" aria-label="Atlas controls">',
+  findHTML(),
+  div,
   LAYERS.map((l) => chip('data-layer', l, true, 'atlas-dot')).join(''),
   div,
-  ['layered', 'radial'].map((m) => chip('data-layout', m, m === 'layered', '')).join(''),
+  ['layered', 'radial', 'arc'].map((m) => chip('data-layout', m, m === 'layered', '')).join(''),
   div,
   KINDS.map((k) => chip('data-kind', k, true, 'atlas-swatch')).join(''),
   '<span class="atlas-count" id="atlasCount"></span>',
   '<span class="atlas-zoom" id="atlasZoom">100%</span>',
-  FULL,
-  findHTML(),
-  '</div>',
-].join('');
-const leg = (swatch, attr, value) => {
-  return `<span class="atlas-leg"><i class="${swatch}" ${attr}="${value}"></i>${value}</span>`;
-};
-export const legendHTML = () => [
-  '<div class="atlas-legend" aria-label="Legend">',
-  '<span class="atlas-leg-label">layers</span>',
-  LAYERS.map((l) => leg('atlas-dot', 'data-atlas-dot', l)).join(''),
-  div,
-  '<span class="atlas-leg-label">edges</span>',
-  KINDS.map((k) => leg('atlas-swatch', 'data-atlas-swatch', k)).join(''),
   '</div>',
 ].join('');
 export function bindDock(root, state, apply) {

@@ -622,6 +622,76 @@ Verified: `plan:names` 22 names · 0 missing (`18/18 tagged` in `ds:track`); tas
 
 ---
 
+## Phase 12 — Arc flow, search left, legend off, fullscreen top-right {#phase12}
+
+*Hierarchy as a flow: an arc layout, search where the eye starts, no duplicate legend, and a fullscreen control the eye can't miss.*
+
+*Tags: Component, Layout*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 41 | Arc flow layout + wires | Dock shows `layered · radial · arc` (arc on by default when unpicked? layered stays default); switching to `arc` repositions every visible node into three horizontal bands (foundation → component → function) and redraws edges as elevated flow arcs; `layered`/`radial` still pixel-correct; dense labels still hide until hover/focus |
+| 42 | Search to the left + legend removal | `#atlasFind` is the first focusable control in `.atlas-dock` (before any chip); `.atlas-legend` node absent from DOM; count/zoom remain; no console errors |
+| 43 | Fullscreen top-right prominence | `#atlasFull` is no longer a dock chip but a standalone button anchored top-right of `.atlas-stage` (outside the dock), visually distinct at all three themes; `#atlasClose` sits top-right in overlay; both toggle `is-full` + `body.atlas-full` + refit; Esc capture still exits fullscreen without clearing selection |
+| 44 | Gate + browser sweep + ship | `lint:manage` + `lint:tokens` + `build` + `smoke` green; fresh-load atlas sweep (arc/layered/radial, search, hover trail, pinned inspector, fullscreen ×3, all 16 ds routes + `/#/lab/architecture`) zero errors; graph + schema regenerated; tasks marked + shipped line |
+
+### Task 41: Arc flow layout + wires ✓ done
+
+**Objective:** A third hierarchy-first layout whose geometry and wires read as a flow, not a cloud.
+
+**Files:**
+- Modify: `src/ds/atlas/layout.js` (add `arc()` + export; `position()` dispatches `arc`; keep ≤100 lines — extract helper if needed)
+- Modify: `src/ds/atlas/canvas.js` (branch `wire()` on `view.mode === 'arc'` for elevated cubic arcs; branch `heads()` / band labels for arc; keep ≤100 lines)
+- Modify: `src/ds/atlas/dock.js` (layout chips → `['layered','radial','arc']`; keep `apply()` path)
+- Modify: `src/ds/atlas/camera.js` if fit math needs a band-aware pad (keep clamp 0.15–3.5)
+
+**Verify:** With all layers on, `arc` chip on → node count unchanged (150), svg content length changes vs `layered` and `radial`; dense set still computed; column/band labels show `Foundation · N` etc in arc; edges are longer paths than layered (quadratic mid vs elevated cubic).
+
+### Task 42: Search to the left + legend removal ✓ done
+
+**Objective:** Search where the eye starts; remove the duplicate legend that repeats dock swatches.
+
+**Files:**
+- Modify: `src/ds/atlas/dock.js` (move `findHTML()` to the front of `dockHTML()` array, ahead of layer chips; delete the trailing append)
+- Modify: `src/ds/atlas/search.js` (remove the leading `<span class="atlas-div">` from `findHTML()` so the input sits flush left; adjust placeholder to `Search…` or keep `find node` — keep 1 line)
+- Modify: `src/ds/atlas/shell.js` (remove `legendHTML()` import and its call; `shellHTML` now renders only `dockHTML()` + svg + tip + close)
+- Modify: `src/ds/atlas.css` (remove or neutralise `.atlas-legend` rules if over budget; dock stays `top: var(--space-8); right: var(--space-8)` — no legend overlap)
+- Modify: `src/ds/atlas/dock.js` (optionally delete `legendHTML` export or leave dead — if deleted, verify `shell.js` no longer imports it so graph stays cycle-free)
+
+**Verify:** `document.querySelector('.atlas-legend') === null`; `document.querySelector('#atlasDock').firstElementChild.id === 'atlasFind'` or input is first button-adjacent focusable; dock chips still filter correctly; `150 nodes · 244 edges` readout still sits inside dock.
+
+### Task 43: Fullscreen top-right prominence ✓ done
+
+**Objective:** Fullscreen is the escape hatch — it should be the first control the eye lands on, not a chip buried among filters.
+
+**Files:**
+- Modify: `src/ds/atlas/dock.js` (remove the `FULL` chip constant and its insertion from `dockHTML()`)
+- Modify: `src/ds/atlas/shell.js` (`shellHTML` now renders `<button class="atlas-full-btn" id="atlasFull" …>⛶ Fullscreen</button>` as a direct child of `.atlas-stage` before/after the dock, with `data-full="1"` so `bindDock` still ignores it via the existing guard)
+- Modify: `src/ds/atlas/fullscreen.js` (no logic change — selectors still `#atlasFull` / `#atlasClose` / `#atlasStage`; keep `press()` + `requestAnimationFrame(onResize)`; ensure `focus()` still moves to close when entering)
+- Modify: `src/ds/atlas-full.css` (add `.atlas-full-btn` rules: `position: absolute; top: var(--space-8); right: var(--space-8); z-index: var(--z-ds-controls);` + distinct chrome: `border: var(--border-hairline); background: var(--color-surface); color: var(--color-ink); font: inherit mono micro` but with `padding`/`border-color`/`box-shadow` that reads above the dock in all three themes; hide when `is-full` if desired, or keep and flip label; ensure `atlas.css` dock `max-width` leaves room)
+- Modify: `src/ds/atlas.css` if dock max-width needs a nudge to avoid overlap (keep ≤100 lines)
+
+**Verify:** `#atlasFull` exists and its `getBoundingClientRect().right` is within `8px` of `#atlasStage`'s right edge and `top` within `8px` of the stage's top, in system/light/dark; clicking it still makes `#atlasStage.is-full` cover the viewport, `#atlasClose` appears top-right, Escape exits, second Escape clears selection; 3 cycles clean after a fresh reload.
+
+### Task 44: Gate + browser sweep + ship ✓ done
+
+**Objective:** Close the build like every DS build — gates green, visuals honest, archive correct.
+
+**Files:** none (verification) + plan doc marks.
+
+**Verify:**
+- `npm run lint:manage` clean (no budget breach after the three edits)
+- `npm run lint:tokens` clean (`var()` only, no raw px/hex outside token files)
+- `npm run build` clean (`✓ built`, graph + schema counts sane)
+- `node scripts/smoke.mjs` on 5199 green
+- Fresh-load sweep on `http://127.0.0.1:5199/ds/#/atlas`: arc ↔ layered ↔ radial chips change svg, search left, legend absent, fullscreen top-right, hover trails, click pin + shift-click path, Escape, fullscreen via chip + ✕ + Esc ×3; plus all 16 ds routes + `/#/lab/architecture` zero console errors
+- `npm run ds:track` → tagged == phased (12/12), 0 wip, `cont 20260909_145218_9888b1`
+- Mark tasks `✓ done`, add `*Shipped in <sha> · Tasks 41–44 · phase12.*` under the phase heading, refresh manifest, push
+
+*Shipped in <sha> · Tasks 41–44 · phase12.*
+
+---
+
 ## Notes for implementer (polish phases 5–8)
 
 - `atlas.css` and any new stylesheets must stay ≤100 lines; public-map styles are a NEW file (`src/styles/map.css`), never appended to a full atlas.css.

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T13:55:06.075Z",
+  "generated": "2026-09-15T08:29:03.313Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -41,6 +41,7 @@
         "--font-mono",
         "--size-ds-atlas-h",
         "--size-ds-find",
+        "--size-ds-full",
         "--size-hairline",
         "--space-14",
         "--space-16",
@@ -49,7 +50,6 @@
         "--space-6",
         "--space-8",
         "--text-micro",
-        "--tracking-label",
         "--z-ds-controls"
       ]
     },
@@ -100,10 +100,15 @@
         "--focus-offset",
         "--font-mono",
         "--leading-mono",
+        "--shadow-on-media-sm",
         "--space-12",
         "--space-16",
+        "--space-4",
         "--space-6",
+        "--space-8",
+        "--text-micro",
         "--text-small",
+        "--tracking-label",
         "--z-ds-controls",
         "--z-ds-full"
       ]
@@ -203,6 +208,14 @@
       "layer": "component",
       "route": null,
       "title": "view",
+      "tokens": []
+    },
+    {
+      "id": "ds_atlas_wire",
+      "path": "src/ds/atlas/wire.js",
+      "layer": "component",
+      "route": null,
+      "title": "wire",
       "tokens": []
     },
     {
@@ -3450,6 +3463,11 @@
     {
       "from": "ds_atlas_canvas",
       "to": "ds_atlas_layout",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_atlas_canvas",
+      "to": "ds_atlas_wire",
       "kind": "imports"
     },
     {

@@ -1,8 +1,9 @@
-/* ADAM/DS — ds/atlas/layout · layered columns + radial + fit + center, pure fns
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
-// Exports: BOX, COLX, colLabel, position, centerBox, fitBox
+/* ADAM/DS — ds/atlas/layout · layered + radial + arc + fit/center
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase12] */
+// Exports: BOX, COLX, ARCY, colLabel, layered, radial, arc, position, centerBox, fitBox
 export const BOX = { w: 960, h: 780 };
 export const COLX = { function: 160, component: 480, foundation: 800 };
+export const ARCY = { foundation: 118, component: 390, function: 662 };
 const STEP_MAX = 24;
 const LABEL_MIN = 15;
 const PAD = 48;
@@ -38,7 +39,31 @@ export function radial(list) {
   }));
   return { pos, dense };
 }
-export const position = (list, mode) => (mode === 'radial' ? radial(list) : layered(list));
+export function arc(list) {
+  const groups = { foundation: [], component: [], function: [] };
+  list.forEach((n) => { if (groups[n.layer]) groups[n.layer].push(n); });
+  Object.values(groups).forEach((g) => g.sort((a, b) => a.title.localeCompare(b.title)));
+  const dense = new Set();
+  const pos = new Map();
+  ['foundation', 'component', 'function'].forEach((layer) => {
+    const g = groups[layer];
+    if (!g.length) return;
+    const gap = (BOX.w - PAD * 2) / Math.max(1, g.length - 1);
+    if (gap < LABEL_MIN) g.forEach((n) => dense.add(n.id));
+    const y0 = ARCY[layer];
+    g.forEach((n, i) => {
+      const x = g.length === 1 ? BOX.w / 2 : PAD + (i / (g.length - 1)) * (BOX.w - PAD * 2);
+      const y = y0 + Math.sin((x / BOX.w) * Math.PI) * 16;
+      pos.set(n.id, { x, y });
+    });
+  });
+  return { pos, dense };
+}
+export const position = (list, mode) => {
+  if (mode === 'radial') return radial(list);
+  if (mode === 'arc') return arc(list);
+  return layered(list);
+};
 export const centerBox = (pos, id, zoom = 1.6) => {
   const p = pos.get(id);
   if (!p) return null;

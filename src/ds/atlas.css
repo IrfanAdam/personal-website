@@ -1,5 +1,5 @@
-/* ADAM/DS — ds/atlas · stage, wires, nodes, dock + legend, find input
-   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase-6] */
+/* ADAM/DS — ds/atlas · stage, wires, nodes, dock + find
+   [plan:2026-09-14_120000-arch-atlas-canvas.md#phase12] */
 .atlas-stage { position: relative; border: var(--border-hairline); background: var(--color-surface); }
 .atlas-canvas { display: block; width: 100%; height: var(--size-ds-atlas-h); cursor: grab; touch-action: none; }
 .atlas-canvas:active { cursor: grabbing; }
@@ -10,7 +10,7 @@
 .atlas-wire[data-hl="1"][data-kind="tokens"] { stroke: var(--color-info); }
 .atlas-wire[data-dim="2"] { stroke: var(--color-bg); }
 .atlas-wire[data-path="1"] { stroke: var(--color-accent); }
-/* — Nodes — (dim 1 = muted ring, dim 2 = ghost, hit = search, path = import chain) — */
+/* — Nodes — (dim 1 muted, dim 2 ghost, hit search, path chain) — */
 .atlas-node { cursor: pointer; }
 .atlas-node circle { fill: var(--color-surface); stroke: var(--color-ink-muted); stroke-width: var(--size-hairline); }
 .atlas-node[data-layer="function"] circle { stroke: var(--color-accent); }
@@ -30,9 +30,11 @@
 .atlas-node[data-dense="1"]:is(:hover, [data-hl="1"], [data-sel="1"], [data-hit="1"], [data-path="1"])
   .atlas-label { display: block; }
 .atlas-col { fill: var(--color-ink); font-family: var(--font-mono); font-size: var(--text-micro); }
-/* — Floating dock + legend (glass over the canvas, in-viewport always) — */
-.atlas-dock, .atlas-legend {
+/* — Floating dock (glass over canvas; search left) — */
+.atlas-dock {
   position: absolute;
+  top: var(--space-8);
+  right: calc(var(--space-8) + var(--size-ds-full) + var(--space-8));
   z-index: var(--z-ds-controls);
   display: flex;
   flex-wrap: wrap;
@@ -45,9 +47,8 @@
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   color: var(--color-ink-muted);
+  max-width: calc(100% - var(--space-16) - var(--size-ds-full) - var(--space-16));
 }
-.atlas-dock { top: var(--space-8); right: var(--space-8); max-width: calc(100% - var(--space-16)); }
-.atlas-legend { left: var(--space-8); bottom: var(--space-8); pointer-events: none; }
 .atlas-chip {
   display: inline-flex;
   align-items: center;
@@ -86,6 +87,4 @@
 .atlas-swatch[data-atlas-swatch="tokens"] { background: var(--color-info); }
 .atlas-chip[aria-pressed="false"] :is(.atlas-dot, .atlas-swatch) { background: var(--color-line); }
 .atlas-div { width: var(--space-8); height: var(--space-14); border-left: var(--border-hairline); }
-.atlas-leg, .atlas-leg-label { display: inline-flex; align-items: center; gap: var(--space-4); }
-.atlas-leg-label { text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--color-ink-subtle); }
 .atlas-count, .atlas-zoom { color: var(--color-ink); }
