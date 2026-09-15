@@ -70,7 +70,7 @@ body { padding-top: var(--header-h, var(--size-header)); }
   }
   .top.hide { transform: translateY(100%); }
   body { padding-top: 0; padding-bottom: calc(var(--header-h, var(--size-header)) + env(safe-area-inset-bottom, 0px)); }
-  .wrap { padding: 0; padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
+  .wrap { padding: 0 var(--gutter) calc(var(--gutter) + env(safe-area-inset-bottom, 0px)); }
   footer { padding-bottom: calc(var(--space-28) + env(safe-area-inset-bottom, 0px)); }
   .stripbar {
     padding: var(--space-8) 0;

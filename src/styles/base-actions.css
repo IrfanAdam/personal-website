@@ -70,7 +70,6 @@
 .hero p { color: var(--color-ink-muted); max-width: var(--measure-copy); }
 @media (max-width: 640px) /* --break-sm */ {
   .wrap {
-    padding: 0;
-    padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px));
+    padding: 0 var(--gutter) calc(var(--gutter) + env(safe-area-inset-bottom, 0px));
   }
 }
