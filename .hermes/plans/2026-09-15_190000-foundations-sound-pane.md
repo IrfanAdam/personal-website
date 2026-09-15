@@ -89,3 +89,5 @@
 **Objective:** Let the GridReveal 280px lab audition sounds in sync with the mosaic — a sound select beside texture, replay fires `playFileId` at the mosaic start.
 **Files:** `src/ds/functions/grid-reveal-lab.js`, `src/ds/fx-lab/cells.js`
 **Verify:** GridReveal lab has sound dropdown (none + 15 files); Replay/Shuffle with a file selected plays that file as the mosaic opens.
+
+*Shipped in 64b6388 · Tasks 10–11 · phase-2.*
