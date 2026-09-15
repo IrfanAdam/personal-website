@@ -41,3 +41,5 @@
 **Objective:** Restating the island tokens pushed `tokens-overrides.css` to 103 lines (budget is 100). Instead of packing lines, the dark set moved to `src/styles/tokens-dark.css` — light defaults live in `tokens-color.css`, dark in `tokens-dark.css`, scope resets in `tokens-overrides.css` (linked last so the island out-ranks the dark blocks).
 **Files:** `src/styles/tokens-dark.css`, `src/styles/tokens-overrides.css`, `index.html`, `ds/index.html`
 **Verify:** Layer split resolves correctly under an emulated dark OS — root `#12151a / stone-900`, light island `#eceef2 / stone-200`, dark cell `#12151a / stone-900`, Sunken row `14.06 AAA · 16.01 AAA`; `lint:manage` clean (43 + 62 lines).
+
+*Shipped in d5215d6 · Tasks 1–4 · phase-1.*

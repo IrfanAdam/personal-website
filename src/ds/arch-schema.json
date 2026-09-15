@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T13:22:45.689Z",
+  "generated": "2026-09-15T13:44:29.342Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2916,6 +2916,27 @@
       ]
     },
     {
+      "id": "styles_tokens_dark",
+      "path": "src/styles/tokens-dark.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens dark",
+      "tokens": [
+        "--accent-300",
+        "--color-ink",
+        "--color-line",
+        "--color-shadow-viewer",
+        "--color-shadow-viewer-soft",
+        "--space-12",
+        "--space-14",
+        "--space-3",
+        "--space-36",
+        "--stone-500",
+        "--stone-700",
+        "--stone-900"
+      ]
+    },
+    {
       "id": "styles_tokens_fx",
       "path": "src/styles/tokens-fx.css",
       "layer": "style",
@@ -2949,7 +2970,6 @@
       "route": null,
       "title": "tokens overrides",
       "tokens": [
-        "--accent-300",
         "--accent-700",
         "--color-accent",
         "--color-bg",
@@ -2963,17 +2983,15 @@
         "--color-shadow-viewer",
         "--color-shadow-viewer-soft",
         "--color-surface",
+        "--space-10",
         "--space-12",
-        "--space-14",
-        "--space-3",
-        "--space-36",
+        "--space-2",
+        "--space-32",
         "--stone-0",
         "--stone-100",
         "--stone-200",
         "--stone-400",
-        "--stone-500",
         "--stone-600",
-        "--stone-700",
         "--stone-900"
       ]
     },
@@ -5641,6 +5659,11 @@
     },
     {
       "from": "styles_tokens_color",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_tokens_dark",
       "to": "styles_tokens",
       "kind": "tokens"
     },
