@@ -12,7 +12,7 @@ export function mountCells(scope) {
   if (!canvas || !canvas.getContext) return () => {};
   const ctx = canvas.getContext('2d');
   const ctl = scope.querySelector('[data-fx-cells]');
-  const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none', sound: 'none' };
+  const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none', sound: 'window-open.mp3' };
   let root = null, branches = [], split = 0, playing = false, raf = 0, last = 0;
   const tex = makeTexture({
     getRoot: () => root,

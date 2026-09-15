@@ -21,6 +21,7 @@ export const FILES_META = [
   { id: 'loading.mp3', desc: 'loading · 504ms mp3 bed' },
   { id: 'pop.mp3', desc: 'pop · 183ms bubble' },
   { id: 'pull.mp3', desc: 'pull · 552ms rubber stretch' },
+  { id: 'window-open.mp3', desc: 'window open · 2.09s modern UI' },
   { id: 'reel.mp3', desc: 'reel · 287ms tape tick' },
   { id: 'schloop.mp3', desc: 'schloop · 418ms liquid drop' },
   { id: 'schlop.mp3', desc: 'schlop · 470ms woody plop' },

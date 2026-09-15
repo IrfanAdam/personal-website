@@ -6,7 +6,10 @@
 import { attachGridReveal } from './masonry/gridReveal.js';
 import { fxMs, fxVar } from './fx-tokens.js';
 import { hasHeroSeen, markHeroSeen, heroKey } from './hero-height-cache.js';
+import { syncPull } from './rise-sound.js';
+// Exports: mountHeroRise — mobile height morph then grid reveal + pull
 
+// — Skip path — cached hero goes straight to mosaic + pull —
 function skipRise(box, img, finalH) {
   box.style.aspectRatio = 'var(--hero-aspect)';
   box.style.height = '';
@@ -14,7 +17,9 @@ function skipRise(box, img, finalH) {
   box.style.willChange = '';
   box.classList.remove('loading');
   if (Number.isFinite(finalH) && finalH > 0) markHeroSeen(heroKey(), finalH);
-  return attachGridReveal(box, img, 20, true);
+  const off = attachGridReveal(box, img, 20, true);
+  syncPull(20);
+  return off;
 }
 
 export function mountHeroRise(root) {
@@ -26,13 +31,11 @@ export function mountHeroRise(root) {
     return () => {};
   }
   if (!matchMedia('(max-width: 640px)').matches) return attachGridReveal(box, img, 80, true);
-  // Cached hero — image already complete or this hash already rose this session
+  // Cached hero — skip height morph, keep mosaic pull
   const k = heroKey();
   const cached = hasHeroSeen(k);
   const imgCached = img.complete && img.naturalWidth > 0;
-  // If we have seen this tab before and the image is cached, skip the height morph
   if (cached && imgCached) return skipRise(box, img, 0);
-  // Also skip if seen but image not yet decoded? still skip morph, grid reveal handles tint
   if (cached) return skipRise(box, img, 0);
   const w = parseFloat(box.dataset.w) || 3;
   const h = parseFloat(box.dataset.h) || 4;
@@ -42,9 +45,7 @@ export function mountHeroRise(root) {
   if (finalH - placeholderH < 28) placeholderH = Math.max(220, finalH - 80);
   placeholderH = Math.min(placeholderH, finalH - 24);
   if (placeholderH < 180) placeholderH = Math.min(220, finalH - 24);
-  // Persist finalH per tab so revisit can skip without remeasuring
   markHeroSeen(k, finalH);
-  // Edge: instantly cached image — no morph, straight to mosaic
   if (img.complete && img.naturalWidth > 0 && finalH - placeholderH < 36) {
     return skipRise(box, img, finalH);
   }
@@ -70,6 +71,7 @@ export function mountHeroRise(root) {
     requestAnimationFrame(() => requestAnimationFrame(() => {
       if (!box.isConnected) return;
       offReveal = attachGridReveal(box, img, 80, true);
+      syncPull(80);
     }));
   };
   const onEnd = (e) => { if (e.propertyName !== 'height') return; finishHeight(); };

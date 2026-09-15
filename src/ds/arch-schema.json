@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T14:13:38.924Z",
+  "generated": "2026-09-15T14:20:47.882Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3511,6 +3511,14 @@
       ]
     },
     {
+      "id": "views_rise_sound",
+      "path": "src/views/rise-sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "rise sound",
+      "tokens": []
+    },
+    {
       "id": "views_scramble_build",
       "path": "src/views/scramble/build.js",
       "layer": "view",
@@ -6201,6 +6209,16 @@
       "kind": "imports"
     },
     {
+      "from": "views_rise_sound",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_rise_sound",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
       "from": "views_rise",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -6218,6 +6236,11 @@
     {
       "from": "views_rise",
       "to": "views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_rise",
+      "to": "views_rise_sound",
       "kind": "imports"
     },
     {

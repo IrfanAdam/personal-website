@@ -3,11 +3,11 @@
 import { note, code } from '../specimens.js';
 const SOUNDS = [
   'none','authorize.mp3','button_pop.mp3','click.mp3','hover.wav','load.wav',
-  'loading.mp3','pop.mp3','pull.mp3','reel.mp3','schloop.mp3','schlop.mp3',
+  'loading.mp3','pop.mp3','pull.mp3','window-open.mp3','reel.mp3','schloop.mp3','schlop.mp3',
   'scifi-weapon.wav','ui-click-43196.mp3','weapon_scifi_laser.wav','zing.mp3',
 ];
 function soundOpts() {
-  return SOUNDS.map((s) => `<option value="${s}">${s}</option>`).join('');
+  return SOUNDS.map((s) => `<option value="${s}"${s==="window-open.mp3"?" selected":""}>${s}</option>`).join('');
 }
 export function labSection(){
   return [
