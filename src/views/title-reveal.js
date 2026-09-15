@@ -9,7 +9,12 @@ import { playSlot } from './slot-sound.js';
 
 // — Tuning —
 const SEL = '.hero h1, .case-copy h1';
-const DUR = 0.2;           // seconds — 0.2 keeps headline snappy; loading.mp3 0.5s covers it
+const DUR_D = 0.2;           // desktop — snappy
+const DUR_M = 0.55;          // mobile — lingers as loading state (hero below fold)
+const DUR = () => {
+  try { return matchMedia('(max-width: 640px)').matches ? DUR_M : DUR_D; }
+  catch { return DUR_D; }
+};
 const LINE_STAGGER = 0.03; // seconds per extra headline line
 const GAIN = 0.5;
 const SEEN_KEY = 'adam-title-seen';
@@ -41,6 +46,7 @@ function unlock(el) {
 }
 const dead = () => ({ kill() {}, promise: Promise.resolve() });
 function reveal(el, idx) {
+  const d = DUR();
   const lines = [...el.children];
   if (lines.length) {
     const hs = lines.map((ln) => {
@@ -48,7 +54,7 @@ function reveal(el, idx) {
         const multi = /\s/.test(ln.textContent || '');
         return scrambleText(ln, {
           chars: 'upperAndLowerCase',
-          duration: DUR,
+          duration: d,
           speed: 1,
           delimiter: multi ? ' ' : '',
           revealDelay: idx * LINE_STAGGER + LINE_STAGGER * lines.indexOf(ln),
@@ -64,7 +70,7 @@ function reveal(el, idx) {
   try {
     return scrambleText(el, {
       chars: 'upperAndLowerCase',
-      duration: DUR, speed: 1, delimiter: ' ', tweenLength: false,
+      duration: d, speed: 1, delimiter: ' ', tweenLength: false,
     });
   } catch { return dead(); }
 }

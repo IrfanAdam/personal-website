@@ -339,9 +339,12 @@ views_glitch_sound --> views_glitch_sound_timing
 views_glitch_sound --> views_sound_palette
 views_glitch_sound_parse --> views_sound_palette
 views_glitch_sound_timing --> views_audio_ctx
+views_init_sound --> views_audio_ctx
 views_init_sound --> views_glitch_sound
 views_init_sound --> views_init_sound_load
+views_init_sound --> views_init_sound_vol
 views_init_sound --> views_strip_sound
+views_init_sound_vol --> views_audio_ctx
 views_map_canvas --> views_map_data
 views_map_canvas --> views_map_hits
 views_map_canvas --> views_map_render

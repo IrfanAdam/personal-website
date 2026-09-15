@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T15:58:34.690Z",
+  "generated": "2026-09-15T16:22:30.048Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3189,6 +3189,14 @@
       "tokens": []
     },
     {
+      "id": "views_init_sound_vol",
+      "path": "src/views/init-sound-vol.js",
+      "layer": "view",
+      "route": null,
+      "title": "init sound vol",
+      "tokens": []
+    },
+    {
       "id": "views_map_canvas",
       "path": "src/views/map/canvas.js",
       "layer": "view",
@@ -5809,9 +5817,24 @@
       "kind": "imports"
     },
     {
+      "from": "views_init_sound_vol",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "views_init_sound_vol",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
       "from": "views_init_sound",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "views_init_sound",
+      "to": "views_audio_ctx",
+      "kind": "imports"
     },
     {
       "from": "views_init_sound",
@@ -5821,6 +5844,11 @@
     {
       "from": "views_init_sound",
       "to": "views_init_sound_load",
+      "kind": "imports"
+    },
+    {
+      "from": "views_init_sound",
+      "to": "views_init_sound_vol",
       "kind": "imports"
     },
     {

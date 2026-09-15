@@ -11,7 +11,7 @@ function tryPull() {
   try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch {}
   const n = Date.now(); if (n - lastPull < 380) return;
   lastPull = n;
-  try { playFileId('pull.mp3', 0.34); } catch {}
+  try { playFileId('zing.mp3', 0.2); } catch {}
 }
 export function reveal(grid) {
   const t0 = performance.now();

@@ -4,7 +4,7 @@
    uses. Needs no live AudioContext, so it survives silent-live Safari. */
 import { synth, TYPES } from './sound-palette.js';
 import { fileById } from './sound-files.js';
-import { isMuted, encodeWavBuffer } from './audio-ctx.js';
+import { isMuted, scaledGain, encodeWavBuffer } from './audio-ctx.js';
 const RATE = 44100;
 const RANDOMS = ['tick', 'blip', 'data', 'chime', 'scanner'];
 function noiseBuffer(c) {
@@ -34,7 +34,7 @@ export async function playVoice(voice, opts) {
   if (v === 'random'
     || !TYPES.includes(v)) v = v === 'random' ? RANDOMS[Math.floor(Math.random() * RANDOMS.length)] : 'hum';
   const ms = Math.max(60, Math.min(1500, o.ms || 320));
-  const gain = o.gain != null ? Math.max(0, Math.min(1, o.gain)) : 0.6;
+  const gain = scaledGain(o.gain != null ? Math.max(0, Math.min(1, o.gain)) : 0.6);
   try {
     const OC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
     if (!OC) return 'no-offline';
@@ -51,7 +51,7 @@ export async function playFileId(id, gain = 0.8) {
   if (isMuted()) return 'muted';
   const f = fileById(id);
   if (!f) return 'file-missing';
-  const g = Math.max(0, Math.min(1, gain));
+  const g = scaledGain(Math.max(0, Math.min(1, gain)));
   const r1 = await fire(new Audio(f.url), f.url, g);
   if (r1 === 'played') return 'played:file-' + id;
   if (r1 === 'blocked' || r1 === 'muted') return r1;

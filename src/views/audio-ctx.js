@@ -55,9 +55,26 @@ export async function resetCtx() {
   }
   return 'reset:' + c.state + '@' + (c.sampleRate || '?');
 }
+const VKEY = 'adam-volume';
+function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+export function getVolume() {
+  try {
+    const raw = localStorage.getItem(VKEY);
+    if (raw != null) { const n = parseFloat(raw); if (Number.isFinite(n)) return clamp01(n); }
+  } catch {}
+  return 1; // new visitors hear gains as-authored (0.12/0.2/0.5 etc.)
+}
+export function setVolume(v) {
+  const n = clamp01(Number(v));
+  try { localStorage.setItem(VKEY, String(n)); } catch {}
+  try { dispatchEvent(new CustomEvent('adam-volume', { detail: n })); } catch {}
+  return n;
+}
+export function scaledGain(g) { return clamp01((Number(g) || 0) * getVolume()); }
 export function isMuted() {
   try {
     if (localStorage.getItem('adam-sound') === 'off') return true;
+    if (getVolume() <= 0.001) return true;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
   } catch {}
   return false;
