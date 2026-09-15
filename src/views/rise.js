@@ -31,8 +31,9 @@ export function mountHeroRise(root) {
     return () => {};
   }
   if (!matchMedia('(max-width: 640px)').matches) {
+    const k = heroKey(), seen = hasHeroSeen(k);
     const off = attachGridReveal(box, img, 80, true);
-    syncPull(80);
+    if (!seen) { markHeroSeen(k, 0); syncPull(620); }
     return off;
   }
   // Cached hero — skip height morph, keep mosaic pull
