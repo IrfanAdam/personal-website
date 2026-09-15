@@ -5,13 +5,14 @@ import { buildTree, orderRandom } from '../../views/masonry/cells.js';
 import { css, tok, reduced } from './color.js';
 import { makeDraw } from './cells-draw.js';
 import { makeTexture } from './cells-texture.js';
+import { playFileId } from '../../views/element-sound.js';
 
 export function mountCells(scope) {
   const canvas = scope.querySelector('[data-fx-stage]');
   if (!canvas || !canvas.getContext) return () => {};
   const ctx = canvas.getContext('2d');
   const ctl = scope.querySelector('[data-fx-cells]');
-  const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none' };
+  const P = { count: 120, morph: 0.04, gut: 1, span: 1.2, order: 'seq', image: 'none', sound: 'none' };
   let root = null, branches = [], split = 0, playing = false, raf = 0, last = 0;
   const tex = makeTexture({
     getRoot: () => root,
@@ -45,9 +46,16 @@ export function mountCells(scope) {
     if (split < 1 && playing) raf = requestAnimationFrame(tick);
     else { playing = false; raf = 0; }
   };
-  const play = () => { if (playing
-      || reduced()) return; playing = true; last = performance.now(); raf = requestAnimationFrame(tick); };
-  const replay = () => { pal = readPal(); stop(); split = reduced() ? 1 : 0; draw(); play(); };
+  const play = () => {
+    if (playing || reduced()) return;
+    playing = true; last = performance.now(); raf = requestAnimationFrame(tick);
+  };
+  const replay = () => {
+    pal = readPal(); stop(); split = reduced() ? 1 : 0; draw(); play();
+    if (P.sound && P.sound !== 'none') {
+      try { playFileId(P.sound, 0.7); } catch {}
+    }
+  };
   const outs = {};
   if (ctl) ctl.querySelectorAll('[data-v]').forEach((o) => { outs[o.dataset.v] = o; });
   const show = () => {
@@ -57,6 +65,7 @@ export function mountCells(scope) {
     if (outs.span) outs.span.textContent = P.span.toFixed(1) + 's';
     if (outs.order) outs.order.textContent = P.order;
     if (outs.image) outs.image.textContent = P.image;
+    if (outs.sound) outs.sound.textContent = P.sound;
   };
   const onCtl = (e) => {
     const k = e.target.dataset.k; if (!k) return;
@@ -66,6 +75,7 @@ export function mountCells(scope) {
     else if (k === 'gut') P.gut = +v;
     else if (k === 'span') { P.span = (+v) / 10; tok('--dur-fx-span', P.span.toFixed(1) + 's'); }
     else if (k === 'order') { P.order = v; rebuild(); }
+    else if (k === 'sound') { P.sound = v; }
     else if (k === 'image') { P.image = v; tex.loadImage(v); show(); return; }
     show(); draw();
   };

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T13:45:44.083Z",
+ "generated": "2026-09-15T14:14:21.411Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -1741,5 +1741,9 @@
    "anchor": "Shipped"
   }
  ],
- "wip": []
+ "wip": [
+  "M  src/ds/foundations/sound/data.js",
+  "M  src/ds/functions/grid-reveal-lab.js",
+  "M  src/ds/fx-lab/cells.js"
+ ]
 }

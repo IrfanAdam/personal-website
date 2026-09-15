@@ -73,3 +73,19 @@
 **Verify:** Vertical rail unchanged; nested tabs render as a line list; `--color-surface-sunken` resolves in light and dark.
 
 *Shipped in f3d1442 · Tasks 1–9 · phase-1.*
+
+## Phase 2 — Web-sounds library + GridReveal pairing {#phase-2}
+
+*Tags: Design System*
+
+### Task 10: Vendor the full web-sounds library ✓ done
+
+**Objective:** Add all 15 usable files from `IrfanAdam/web-sounds` (skip empty `click.wav`) to `/public/sounds` and the DS library, so the Sound foundation shows every authored bed.
+**Files:** `public/sounds/*`, `src/views/sound-files.js`, `src/ds/foundations/sound/data.js`
+**Verify:** `/ds/#/foundations/sound` File tab lists 15 rows; each ▶ plays via `playFileId` with local → remote fallback.
+
+### Task 11: Pair sounds in the GridReveal lab ✓ done
+
+**Objective:** Let the GridReveal 280px lab audition sounds in sync with the mosaic — a sound select beside texture, replay fires `playFileId` at the mosaic start.
+**Files:** `src/ds/functions/grid-reveal-lab.js`, `src/ds/fx-lab/cells.js`
+**Verify:** GridReveal lab has sound dropdown (none + 15 files); Replay/Shuffle with a file selected plays that file as the mosaic opens.

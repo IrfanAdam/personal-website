@@ -13,7 +13,19 @@ export const VOICES = [
   { id: 'zapscan', freq: 0, ms: 260, desc: 'falling glass + 9Hz wobble' },
 ];
 export const FILES_META = [
+  { id: 'authorize.mp3', desc: 'authorize · 444ms plucky pop' },
+  { id: 'button_pop.mp3', desc: 'button pop · 418ms soft thock' },
+  { id: 'click.mp3', desc: 'click · 78ms micro tick' },
+  { id: 'hover.wav', desc: 'hover · 410ms brushed pad' },
   { id: 'load.wav', desc: 'load snap · 117ms stereo' },
-  { id: 'loading.mp3', desc: 'loading · mp3 bed' },
+  { id: 'loading.mp3', desc: 'loading · 504ms mp3 bed' },
+  { id: 'pop.mp3', desc: 'pop · 183ms bubble' },
+  { id: 'pull.mp3', desc: 'pull · 552ms rubber stretch' },
+  { id: 'reel.mp3', desc: 'reel · 287ms tape tick' },
+  { id: 'schloop.mp3', desc: 'schloop · 418ms liquid drop' },
+  { id: 'schlop.mp3', desc: 'schlop · 470ms woody plop' },
   { id: 'scifi-weapon.wav', desc: 'scifi sweep · 886ms stereo' },
+  { id: 'ui-click-43196.mp3', desc: 'ui click · 552ms crisp' },
+  { id: 'weapon_scifi_laser.wav', desc: 'laser · 1296ms sci-fi zap' },
+  { id: 'zing.mp3', desc: 'zing · 287ms bright ping' },
 ];

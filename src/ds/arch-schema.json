@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T14:00:57.515Z",
+  "generated": "2026-09-15T14:13:38.924Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -4688,6 +4688,11 @@
     {
       "from": "ds_fx_lab_cells",
       "to": "ds_fx_lab_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_fx_lab_cells",
+      "to": "views_element_sound",
       "kind": "imports"
     },
     {
