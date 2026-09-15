@@ -63,7 +63,7 @@
     --color-viewer-tether: color-mix(in srgb, var(--stone-0) 68%, transparent);
     --size-viewer-tether: var(--space-2);
   --viewer-border: var(--size-viewer-tether) solid var(--color-viewer-line);
-    --shadow-viewer: 0 var(--space-12) var(--space-32) var(--color-shadow-viewer),;
+    --shadow-viewer: 0 var(--space-12) var(--space-32) var(--color-shadow-viewer),
     0 var(--space-2) var(--space-10) var(--color-shadow-viewer-soft);
       --dur-viewer-in: 300ms;
       --dur-viewer-line: 780ms;
