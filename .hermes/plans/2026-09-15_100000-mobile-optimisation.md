@@ -115,7 +115,7 @@
 1. Test one long case, contact page, one viewer open, one form at 360px; fix only overflowers.
 2. Tap targets for strip thumbs/vtabs/gear ≥40px.
 
-*Shipped in TBD · Tasks 5–6 · phase-3.*
+*Shipped in 88429a7 · Tasks 5–6 · phase-3.*
 
 ## Phase 4 — Verify + ship {#phase-4}
 
