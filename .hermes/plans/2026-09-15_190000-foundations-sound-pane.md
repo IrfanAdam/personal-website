@@ -101,3 +101,5 @@
 **Objective:** `resc/window-open` (2.09s modern UI) is vendored as `window-open.mp3` (65K), added to the file library (now 16), and the hero rise plays it faint (0.12) in sync with the mosaic — cached hero @20ms, fresh hero @80ms after the height morph. Lab default flips `pull` → `window-open` for instant A/B.
 **Files:** `public/sounds/window-open.mp3`, `src/views/sound-files.js`, `src/ds/foundations/sound/data.js`, `src/views/rise-sound.js`, `src/views/rise.js`, `src/ds/functions/grid-reveal-lab.js`, `src/ds/fx-lab/cells.js`
 **Verify:** `/ds/#/functions/grid-reveal` Replay with `window-open` plays at the mosaic start; `/projects/helix` hero mosaic (speaker on) plays `window-open` at 0.12 after the rise.
+
+*Shipped in aaa738c · Tasks 12–12 · phase-3.*
