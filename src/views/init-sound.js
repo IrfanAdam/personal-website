@@ -41,13 +41,17 @@ function apply() {
 function ensureToggles() {
   const site = document.getElementById('stripbar');
   if (site && !site.querySelector('[data-sound-toggle]')) {
-    const slot = site.querySelector('#soundSlot') || site.querySelector('.smenu-pop');
-    const target = slot || site.querySelector('.strip-meta') || site;
+    const strip = site.querySelector('#strip');
+    const smenu = site.querySelector('.smenu');
     const wrap = document.createElement('div');
     wrap.className = 'sound-switch';
     wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)'; wrap.style.alignItems = 'center';
+    wrap.style.flex = 'none';
     wrap.innerHTML = SND_BTN + VOL(getVolume());
-    target.appendChild(wrap);
+    if (strip && smenu && smenu.parentElement === strip) strip.insertBefore(wrap, smenu);
+    else if (strip && smenu) site.insertBefore(wrap, strip.nextSibling);
+    else if (strip) strip.appendChild(wrap);
+    else site.appendChild(wrap);
   }
   document.querySelectorAll('[data-sound-btn]').forEach((n) => {
     const w = n.closest('.sound-switch'); if (w) w.remove(); else n.remove();
