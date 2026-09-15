@@ -82,7 +82,7 @@
 
 **Verify:** Scroll down hides bar, scroll up reveals; no content hidden behind bar at page end (footer padding ok).
 
-*Shipped in TBD · Tasks 3–4 · phase-2.*
+*Shipped in cfb55a7 · Tasks 3–4 · phase-2.*
 
 ## Phase 3 — Portfolio mobile sweep {#phase-3}
 
