@@ -30,7 +30,11 @@ export function mountHeroRise(root) {
     box.classList.add('ready');
     return () => {};
   }
-  if (!matchMedia('(max-width: 640px)').matches) return attachGridReveal(box, img, 80, true);
+  if (!matchMedia('(max-width: 640px)').matches) {
+    const off = attachGridReveal(box, img, 80, true);
+    syncPull(80);
+    return off;
+  }
   // Cached hero — skip height morph, keep mosaic pull
   const k = heroKey();
   const cached = hasHeroSeen(k);
