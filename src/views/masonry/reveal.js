@@ -2,17 +2,7 @@
 // Exports: reveal(), attachLinger() — staggered reveal timing owns the slots
 import { attachGridReveal } from './gridReveal.js';
 import { fxMs } from '../fx-tokens.js';
-import { playFileId } from '../element-sound.js';
-import { isMuted } from '../audio-ctx.js';
-// — Reel tick — mobile card highlight, throttled —
-let lastPull = 0;
-function tryPull() {
-  if (isMuted()) return;
-  try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch {}
-  const n = Date.now(); if (n - lastPull < 380) return;
-  lastPull = n;
-  try { playFileId('zing.mp3', 0.2); } catch {}
-}
+import { reelTick } from './reel-tick.js';
 export function reveal(grid) {
   const t0 = performance.now();
   const SKELETON_MS = fxMs('--fx-skeleton', 120);
@@ -56,7 +46,7 @@ export function attachLinger(grid) {
             showTimers.delete(el);
             if (el.isConnected && isMobile()) {
               el.classList.add('in-view');
-              tryPull();
+              reelTick();
             }
           }, LINGER_IN);
           showTimers.set(el, t);

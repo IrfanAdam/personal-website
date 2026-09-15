@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T16:22:30.048Z",
+  "generated": "2026-09-15T19:39:03.796Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3453,6 +3453,14 @@
       "tokens": []
     },
     {
+      "id": "views_masonry_reel_tick",
+      "path": "src/views/masonry/reel-tick.js",
+      "layer": "view",
+      "route": null,
+      "title": "reel tick",
+      "tokens": []
+    },
+    {
       "id": "views_masonry_reveal",
       "path": "src/views/masonry/reveal.js",
       "layer": "view",
@@ -6117,13 +6125,8 @@
       "kind": "imports"
     },
     {
-      "from": "views_masonry_reveal",
+      "from": "views_masonry_reel_tick",
       "to": "views_audio_ctx",
-      "kind": "imports"
-    },
-    {
-      "from": "views_masonry_reveal",
-      "to": "views_element_sound",
       "kind": "imports"
     },
     {
@@ -6134,6 +6137,11 @@
     {
       "from": "views_masonry_reveal",
       "to": "views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_reveal",
+      "to": "views_masonry_reel_tick",
       "kind": "imports"
     },
     {
