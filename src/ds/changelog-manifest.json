@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T08:30:39.851Z",
+ "generated": "2026-09-15T13:07:53.013Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -23,9 +23,29 @@
   "2026-09-14_003212-builds-nomenclature.md",
   "2026-09-14_004508-refactor-bugfix.md",
   "2026-09-14_120000-arch-atlas-canvas.md",
-  "2026-09-14_192124-atlas-fullscreen.md"
+  "2026-09-14_192124-atlas-fullscreen.md",
+  "2026-09-15_100000-mobile-optimisation.md",
+  "2026-09-15_183400-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "0f3b8bd",
+   "full": "0f3b8bdd6991ade5cb59f7858b272a37a3f29f5e",
+   "date": "2026-09-15",
+   "time": "18:36",
+   "subject": "chore(ds): lump-sum plan for plan-less shipments + ship rule in SOP",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "9d56186",
+   "full": "9d56186dc0b61cf090bcfcabf039ded7080376b7",
+   "date": "2026-09-15",
+   "time": "14:00",
+   "subject": "chore(ds): atlas phase12 close-out — marks + shipped line",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase12"
+  },
   {
    "sha": "61dfaf2",
    "full": "61dfaf20baf92d3d8d3842e6f71fdd8b7158ea57",
@@ -204,7 +224,7 @@
    "time": "16:46",
    "subject": "chore(ds): phase 4.5 plan — atlas dock polish + public map",
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
-   "anchor": "phase-4-5"
+   "anchor": "phase-5"
   },
   {
    "sha": "685c6ce",
@@ -1657,6 +1677,14 @@
   }
  ],
  "wip": [
-  "M src/ds/arch-schema.json"
+  "M src/ds/arch-schema.json",
+  "M src/ds/foundations-color.css",
+  "M src/ds/foundations.css",
+  "M src/ds/foundations/color/sections.js",
+  "M src/ds/pages-foundations.js",
+  "M src/ds/tabs.js",
+  "?? src/ds/foundations-sound.css",
+  "?? src/ds/foundations/pane-sound.js",
+  "?? src/ds/foundations/sound/"
  ]
 }
