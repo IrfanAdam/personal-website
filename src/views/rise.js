@@ -42,7 +42,11 @@ export function mountHeroRise(root) {
     box.style.transition = '';
     box.style.willChange = '';
     box.classList.remove('loading');
-    offReveal = attachGridReveal(box, img, 80, true);
+    // double-rAF — let layout settle before measuring for gridReveal
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (!box.isConnected) return;
+      offReveal = attachGridReveal(box, img, 80, true);
+    }));
   };
   const onEnd = (e) => { if (e.propertyName !== 'height') return; finishHeight(); };
   box.addEventListener('transitionend', onEnd);

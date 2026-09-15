@@ -3,6 +3,7 @@ import { projects, bodies } from '../data/site.js';
 import { footer } from './shared.js';
 import { mountHeroRise } from './rise.js';
 import { mountTitleReveal } from './title-reveal.js';
+import { pictureMarkup } from './img-helpers.js';
 import { marked } from 'marked';
 
 function renderBody(md) {
@@ -23,30 +24,31 @@ export function Project(slug) {
   const cats = [a, b].filter(Boolean).join(' · ');
   const body = bodies[s] || '';
   const heroSrc = hero || mock || img;
+  const heroPic = pictureMarkup(heroSrc, title, w, h, {
+    loading: 'eager',
+    fetchPriority: 'high',
+    kind: 'hero',
+    decoding: 'async',
+  });
   return [
-    `<article class="case"><div class="case-grid">
-  <div class="case-copy"><h1>`,
+    `<article class="case"><div class="case-grid">\n  <div class="case-copy"><h1>`,
     title,
     `</h1><p class="kicker">`,
     cats ? cats + ' · ' : '',
     date,
-    `</p>
-  `,
+    `</p>\n  `,
     renderBody(body),
-    `
-  <dl class="spec"><div><dt>Deliverables</dt><dd>`,
+    `\n  <dl class="spec"><div><dt>Deliverables</dt><dd>`,
     deliverables || '—',
     `</dd></div><div><dt>Date</dt><dd>`,
     date,
-    `</dd></div>
-  <div><dt>Timeline</dt><dd>`,
+    `</dd></div>\n  <div><dt>Timeline</dt><dd>`,
     timeline || '—',
     `</dd></div><div><dt>Role</dt><dd>`,
     role || '—',
     `</dd></div><div><dt>Platform</dt><dd>`,
     platform || '—',
-    `</dd></div></dl></div>
-  <div class="case-media hero-box" style="--hero-aspect:`,
+    `</dd></div></dl></div>\n  <div class="case-media hero-box" style="--hero-aspect:`,
     w,
     `/`,
     h,
@@ -54,23 +56,11 @@ export function Project(slug) {
     w,
     `" data-h="`,
     h,
-    `"><canvas class="gr" aria-hidden="true"></canvas><img src="`,
-    heroSrc,
-    `" alt="`,
-    title,
-    `" width="`,
-    w,
-    `" height="`,
-    h,
-    `" decoding="async" fetchpriority="high"`,
-    heroSrc.startsWith('http') ? ' crossorigin="anonymous"' : '',
-    ` /></div></div>
-  <a class="next" href="#/projects/`,
+    `"><canvas class="gr" aria-hidden="true"></canvas>${heroPic}</div></div>\n  <a class="next" href="#/projects/`,
     next[0],
     `"><small>See whats next</small><b>`,
     next[1],
-    `</b>
-  <span class="work-meta">`,
+    `</b>\n  <span class="work-meta">`,
     next[2] ? next[2] + ' · ' : '',
     next[3] ? next[3] + ' · ' : '',
     next[0],

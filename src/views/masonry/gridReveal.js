@@ -41,13 +41,6 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
     waitCap: t.waitCap,
     spanS: t.spanS };
 
-  let finished = false;
-  const finish = () => {
-    if (finished) return; finished = true;
-    const el = box.closest('.card, .hero-box');
-    if (el && el.isConnected) el.classList.add('ready');
-    else if (box.isConnected) box.classList.add('ready');
-  };
   const render = (now) => {
     s.now = now;
     s.fade = s.loadedAt < 0 ? 0 : smoothstep(0, s.colorMs, now - s.loadedAt);
@@ -64,6 +57,21 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
       img.naturalWidth * sc,
       img.naturalHeight * sc);
     s.sharp = c;
+  };
+  let finished = false;
+  const finish = async () => {
+    if (finished) return; finished = true;
+    try { if (img.decode) await img.decode(); } catch {}
+    s.split = 1;
+    s.eased = 1;
+    s.fade = 1;
+    s.done = true;
+    if (s.W) { makeBuffers(); render(performance.now()); }
+    requestAnimationFrame(() => {
+      const el = box.closest('.card, .hero-box');
+      if (el && el.isConnected) el.classList.add('ready');
+      else if (box.isConnected) box.classList.add('ready');
+    });
   };
   const decode = makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce);
   if (gateLoad(img, hero, reduce, s, decode, render, finish)) return () => {};

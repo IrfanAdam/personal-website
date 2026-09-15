@@ -6,9 +6,10 @@ import { fxMs } from '../fx-tokens.js';
 const SAMPLE = 128;
 const seen = new Set();
 
-// — Decode factory —
+// — Decode factory — async decode ensures bitmap ready before mosaic tint —
 export function makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce) {
-  return () => {
+  return async () => {
+    try { if (img.decode) await img.decode(); } catch {}
     const buf = document.createElement('canvas');
     buf.width = SAMPLE;
     buf.height = SAMPLE;
@@ -31,11 +32,12 @@ export function makeDecode(img, root, branches, s, makeBuffers, render, finish, 
     s.loadedAt = performance.now();
     makeBuffers();
     if (reduce) {
+      try { if (img.decode) await img.decode(); } catch {}
       s.split = 1;
       s.eased = 1;
       s.fade = 1;
       render(s.loadedAt + s.colorMs);
-      finish();
+      requestAnimationFrame(() => finish());
     }
   };
 }
@@ -46,12 +48,16 @@ export function gateLoad(img, hero, reduce, s, decode, render, finish) {
   const mobile = matchMedia('(max-width: 640px)').matches;
   const replay = hero && mobile;
   if (seen.has(key) || (img.complete && img.naturalWidth)) {
-    decode();
+    const p = decode();
     if (!replay || reduce) {
-      s.split = 1;
-      s.eased = 1;
-      s.fade = 1;
-      finish();
+      const go = () => {
+        s.split = 1;
+        s.eased = 1;
+        s.fade = 1;
+        finish();
+      };
+      if (p && p.then) p.then(go);
+      else go();
       return true;
     }
     return false;
@@ -67,7 +73,7 @@ export function gateLoad(img, hero, reduce, s, decode, render, finish) {
     s.loadedAt = performance.now();
     if (reduce) {
       render(s.loadedAt);
-      finish();
+      requestAnimationFrame(() => finish());
     }
   }, { once: true });
   setTimeout(() => {

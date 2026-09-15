@@ -1,13 +1,19 @@
 /* ADAM/PAGE — views/masonry/cards · cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: card(), row() — pure markup for grid + list
-export function card(p) {
+import { pictureMarkup } from '../img-helpers.js';
+export function card(p, eager = false) {
   const [slug, title, a, b, date, , , , img, , , w = 3, h = 4, mock] = p;
   const tags = [a, b].filter(Boolean).map((c) => `<i>${c}</i>`).join('');
   const open = `<a class="card" href="#/projects/${slug}" data-mock="${mock || img}">`;
-  const imgTag = `<img loading="lazy" decoding="async" width="${w}" height="${h}" src="${img}" alt="${title}" />`;
+  const pic = pictureMarkup(img, title, w, h, {
+    loading: eager ? 'eager' : 'lazy',
+    fetchPriority: eager ? 'high' : 'low',
+    kind: 'grid',
+    decoding: 'async',
+  });
   const media = `<span class="img" style="aspect-ratio:${w}/${h}">`
     + `<canvas class="gr" aria-hidden="true"></canvas>`
-    + imgTag + `</span>`;
+    + pic + `</span>`;
   const meta = `<span class="tags">${tags}</span>`
     + `<span class="scrim" aria-hidden="true"></span>`
     + `<span class="card-info"><b>${title}</b><small>${slug} · ${date}</small></span></a>`;

@@ -16,13 +16,16 @@
 }
 .card.ready .img::before { display: none; }
 @keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
-.card img {
+.card img,
+.card picture img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   opacity: 0;
   transition: opacity var(--dur-blur) var(--ease-standard), transform var(--dur-zoom) var(--ease-signature);
-  will-change: transform;
+  will-change: opacity, transform;
 }
-.card.ready img { opacity: 1; transition: transform var(--dur-zoom) var(--ease-signature); }
+.card.ready img { opacity: 1; }
+.card picture { position: absolute; inset: 0; display: block; }
+.card picture img { display: block; }
 @media (hover: hover) {
   .card:hover img { transform: scale(var(--scale-zoom)); }
 }

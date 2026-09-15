@@ -1,0 +1,263 @@
+{
+  "/images/acquapanna.png": {
+    "w": 683,
+    "variants": [
+      480
+    ]
+  },
+  "/images/apparel.jpg": {
+    "w": 2341,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/bloomify.jpg": {
+    "w": 854,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/earthly.jpg": {
+    "w": 684,
+    "variants": [
+      480
+    ]
+  },
+  "/images/fluxx.jpg": {
+    "w": 683,
+    "variants": [
+      480
+    ]
+  },
+  "/images/gravitas.jpg": {
+    "w": 733,
+    "variants": [
+      480
+    ]
+  },
+  "/images/grovegoods.jpg": {
+    "w": 693,
+    "variants": [
+      480
+    ]
+  },
+  "/images/helix.png": {
+    "w": 683,
+    "variants": [
+      480
+    ]
+  },
+  "/images/irfan-profile.jpg": {
+    "w": 1400,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/images/tas-35.jpg": {
+    "w": 2731,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/tas-51.jpg": {
+    "w": 848,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/tas-58.jpg": {
+    "w": 698,
+    "variants": [
+      480
+    ]
+  },
+  "/images/tas-69.jpg": {
+    "w": 1917,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/velocity.png": {
+    "w": 682,
+    "variants": [
+      480
+    ]
+  },
+  "/images/zenithlabs.png": {
+    "w": 825,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/heroes/acquapanna.png": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/apparel-manufacturing-system-reimagined.jpg": {
+    "w": 2400,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/heroes/bloomify.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/earthlyessence.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/fluxx.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/gravitas.jpg": {
+    "w": 1300,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/grovegoods.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/helix.png": {
+    "w": 1526,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/tas-35.jpg": {
+    "w": 1524,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/tas-51.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/tas-58.webp": {
+    "w": 2400,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/heroes/tas-69.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/velocity.jpg": {
+    "w": 1365,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/heroes/zenithlabs.jpg": {
+    "w": 1728,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/mood/brutal-shell.jpg": {
+    "w": 960,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/mood/hard-grid.jpg": {
+    "w": 960,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/mood/neon-void.jpg": {
+    "w": 900,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/mood/one-signal.jpg": {
+    "w": 900,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/mood/paper-terrain.jpg": {
+    "w": 900,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/mood/system-docs.jpg": {
+    "w": 900,
+    "variants": [
+      480,
+      800
+    ]
+  }
+}

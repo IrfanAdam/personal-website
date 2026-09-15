@@ -34,7 +34,10 @@ function draw(root) {
     const buckets = distribute(cols, heights);
     grid.className = 'cols';
     grid.style.setProperty('--cols', cols);
-    grid.innerHTML = buckets.map((b) => `<div class="col">${b.map((i) => card(list[i])).join('')}</div>`).join('');
+    // first 6 cards eager — above the fold on both desktop & mobile
+    let n = 0;
+    grid.innerHTML = buckets.map((b) => `<div class="col">${
+      b.map((i) => card(list[i], n++ < 6)).join('')}</div>`).join('');
     revealOff = reveal(grid);
     parallaxOff = attachParallax(grid);
     lingerOff = attachLinger(grid);
