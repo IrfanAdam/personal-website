@@ -18,19 +18,18 @@ stripbar.innerHTML = [
   `<div class="strip" id="strip">`,
   viewTabs(),
   stripItems(),
-  `<span class="tab-frame" id="tabframe" aria-hidden="true"></span></div>`,
-].join('')
-  + [
-    `<div class="smenu"><button class="pill smenu-btn"`,
-    ` id="settingsBtn" aria-haspopup="true" aria-expanded="false"`,
-    ` aria-controls="smenuPop" title="Settings">⚙</button>`,
-    `<div class="smenu-pop" id="smenuPop" hidden><div class="theme-switch" id="themeSwitch">`,
-    `<button class="pill" data-theme-btn="system">system</button>`,
-    `<button class="pill" data-theme-btn="light">light</button>`,
-    `<button class="pill" data-theme-btn="dark">dark</button></div>`,
-    `<div id="soundSlot"></div><span class="hint" id="count">14 stories</span>`,
-    `</div></div>`,
-  ].join('');
+  `<span class="tab-frame" id="tabframe" aria-hidden="true"></span>`,
+  `<div class="smenu"><button class="pill smenu-btn"`,
+  ` id="settingsBtn" aria-haspopup="true" aria-expanded="false"`,
+  ` aria-controls="smenuPop" title="Settings">⚙</button>`,
+  `<div class="smenu-pop" id="smenuPop" hidden><div class="theme-switch" id="themeSwitch">`,
+  `<button class="pill" data-theme-btn="system">system</button>`,
+  `<button class="pill" data-theme-btn="light">light</button>`,
+  `<button class="pill" data-theme-btn="dark">dark</button></div>`,
+  `<div id="soundSlot"></div><span class="hint" id="count">14 stories</span>`,
+  `</div></div>`,
+  `</div>`,
+].join('');
 initSettingsMenu(stripbar);
 initTheme();
 const vtabs = [...stripbar.querySelectorAll('[data-vtab]')];

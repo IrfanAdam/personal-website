@@ -76,7 +76,6 @@ body { padding-top: var(--header-h, var(--size-header)); }
     padding: var(--space-8) var(--space-12);
     gap: var(--space-8);
     overflow: visible;
-    align-items: center;
   }
   .stripbar .strip {
     flex: 1 1 auto;
@@ -87,14 +86,15 @@ body { padding-top: var(--header-h, var(--size-header)); }
     overflow-y: hidden;
     scrollbar-width: none;
   }
-  .smenu { flex: none; }
   .hint { display: none; }
   .smenu-pop .hint {
     display: block;
   }
   .theme-switch .pill { padding: var(--space-4) var(--space-7); }
   .smenu-pop {
+    position: fixed;
+    right: var(--space-12);
+    bottom: calc(var(--header-h) + var(--space-8) + env(safe-area-inset-bottom, 0px));
     top: auto;
-    bottom: calc(100% + var(--space-8));
   }
 }
