@@ -3,3 +3,4 @@ dist/
 .DS_Store
 _preview*.html
 .hermes/plans/screens/
+.hermes/sessions.db
