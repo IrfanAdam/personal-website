@@ -53,7 +53,7 @@
 
 *Tags: Layout*
 
-### Task 3: Free the thumbnail strip on ≤640px
+### Task 3: Free the thumbnail strip on ≤640px ✓ done
 
 **Objective:** Strip gets full row width; nothing fixed-positioned competes with it.
 
@@ -68,7 +68,7 @@
 
 **Verify:** At 360px wide the strip scrolls 14 thumbs + contact + 2 vtabs; gear stays visible right; no horizontal page overflow (`document.documentElement.scrollWidth === innerWidth`).
 
-### Task 4: Bottom-bar polish
+### Task 4: Bottom-bar polish ✓ done
 
 **Objective:** Safe-area + hide-on-scroll correct when docked bottom.
 
