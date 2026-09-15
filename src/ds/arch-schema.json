@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T08:29:03.313Z",
+  "generated": "2026-09-15T13:17:46.426Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -702,7 +702,6 @@
       "tokens": [
         "--border-hairline",
         "--color-bg",
-        "--color-error",
         "--color-ink",
         "--color-ink-muted",
         "--font-mono",
@@ -712,6 +711,7 @@
         "--space-10",
         "--space-2",
         "--space-3",
+        "--space-4",
         "--space-5",
         "--space-6",
         "--space-8",
@@ -736,7 +736,9 @@
       "layer": "foundation",
       "route": null,
       "title": "sections",
-      "tokens": []
+      "tokens": [
+        "--color-bg"
+      ]
     },
     {
       "id": "ds_foundations_demo",
@@ -954,6 +956,14 @@
       "tokens": []
     },
     {
+      "id": "ds_foundations_pane_sound",
+      "path": "src/ds/foundations/pane-sound.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane sound",
+      "tokens": []
+    },
+    {
       "id": "ds_foundations_pane_space",
       "path": "src/ds/foundations/pane-space.js",
       "layer": "foundation",
@@ -1044,6 +1054,97 @@
         "--space-90",
         "--text-micro"
       ]
+    },
+    {
+      "id": "ds_foundations_sound",
+      "path": "src/ds/foundations-sound.css",
+      "layer": "style",
+      "route": null,
+      "title": "foundations sound",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--leading-body",
+        "--opacity-hover",
+        "--size-ds-scale-label",
+        "--size-ds-scale-val",
+        "--space-10",
+        "--space-12",
+        "--space-16",
+        "--space-28",
+        "--space-8",
+        "--text-label",
+        "--text-micro"
+      ]
+    },
+    {
+      "id": "ds_foundations_sound_board",
+      "path": "src/ds/foundations/sound/board.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "board",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_data",
+      "path": "src/ds/foundations/sound/data.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "data",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_files",
+      "path": "src/ds/foundations/sound/files.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "files",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_procedural",
+      "path": "src/ds/foundations/sound/procedural.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "procedural",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_scope",
+      "path": "src/ds/foundations/sound/scope.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "scope",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_scope_draw",
+      "path": "src/ds/foundations/sound/scope-draw.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "scope draw",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_synth_render",
+      "path": "src/ds/foundations/sound/synth-render.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "synth render",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_usage",
+      "path": "src/ds/foundations/sound/usage.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "usage",
+      "tokens": []
     },
     {
       "id": "ds_foundations_space_audit",
@@ -2250,6 +2351,14 @@
       "tokens": []
     },
     {
+      "id": "scripts_optimize_images",
+      "path": "scripts/optimize-images.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "optimize images",
+      "tokens": []
+    },
+    {
       "id": "scripts_plan_names",
       "path": "scripts/plan-names.mjs",
       "layer": "tool",
@@ -2281,19 +2390,24 @@
       "title": "base",
       "tokens": [
         "--blur-header",
+        "--border-hairline",
         "--color-bg",
         "--color-header",
         "--color-ink",
+        "--color-surface",
         "--dur-reveal",
         "--ease-standard",
         "--font-mono",
         "--font-sans",
+        "--header-h",
         "--leading-body",
         "--radius-none",
         "--sat-header",
         "--size-header",
+        "--size-tap",
         "--space-10",
         "--space-12",
+        "--space-128",
         "--space-2",
         "--space-28",
         "--space-4",
@@ -2330,6 +2444,7 @@
         "--size-wrap",
         "--space-1",
         "--space-10",
+        "--space-12",
         "--space-14",
         "--space-2",
         "--space-26",
@@ -3022,6 +3137,14 @@
       "tokens": []
     },
     {
+      "id": "views_img_helpers",
+      "path": "src/views/img-helpers.js",
+      "layer": "view",
+      "route": null,
+      "title": "img helpers",
+      "tokens": []
+    },
+    {
       "id": "views_init_sound",
       "path": "src/views/init-sound.js",
       "layer": "view",
@@ -3386,6 +3509,14 @@
       "tokens": []
     },
     {
+      "id": "views_settings_menu",
+      "path": "src/views/settings-menu.js",
+      "layer": "view",
+      "route": null,
+      "title": "settings menu",
+      "tokens": []
+    },
+    {
       "id": "views_shared",
       "path": "src/views/shared.js",
       "layer": "view",
@@ -3423,6 +3554,14 @@
       "layer": "view",
       "route": null,
       "title": "sound source",
+      "tokens": []
+    },
+    {
+      "id": "views_strip_sound",
+      "path": "src/views/strip-sound.js",
+      "layer": "view",
+      "route": null,
+      "title": "strip sound",
       "tokens": []
     },
     {
@@ -3731,6 +3870,11 @@
       "kind": "imports"
     },
     {
+      "from": "ds_foundations_color_sections",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_foundations_color",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -3896,6 +4040,31 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_foundations_pane_sound",
+      "to": "ds_foundations_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_sound",
+      "to": "ds_foundations_sound_procedural",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_sound",
+      "to": "ds_foundations_sound_scope",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_sound",
+      "to": "ds_foundations_sound_usage",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_sound",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
       "from": "ds_foundations_pane_space",
       "to": "ds_foundations_space_audit",
       "kind": "imports"
@@ -3972,6 +4141,51 @@
     },
     {
       "from": "ds_foundations_shape_radius",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_sound_board",
+      "to": "ds_foundations_sound_scope_draw",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_board",
+      "to": "ds_foundations_sound_synth_render",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_board",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_board",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_files",
+      "to": "ds_foundations_sound_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_procedural",
+      "to": "ds_foundations_sound_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_synth_render",
+      "to": "views_sound_palette",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_usage",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -4762,12 +4976,22 @@
     },
     {
       "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
       "to": "ds_foundations_pane_space",
       "kind": "imports"
     },
     {
       "from": "ds_pages_foundations",
       "to": "ds_foundations_pane_type",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_sound_board",
       "kind": "imports"
     },
     {
@@ -5327,6 +5551,11 @@
     },
     {
       "from": "main",
+      "to": "views_settings_menu",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
       "to": "views_shared",
       "kind": "imports"
     },
@@ -5561,6 +5790,11 @@
       "kind": "imports"
     },
     {
+      "from": "views_init_sound",
+      "to": "views_strip_sound",
+      "kind": "imports"
+    },
+    {
       "from": "views_map_canvas",
       "to": "views_map_data",
       "kind": "imports"
@@ -5746,6 +5980,11 @@
       "kind": "imports"
     },
     {
+      "from": "views_masonry_cards",
+      "to": "views_img_helpers",
+      "kind": "imports"
+    },
+    {
       "from": "views_masonry_cells",
       "to": "views_masonry_cells_order",
       "kind": "imports"
@@ -5917,6 +6156,11 @@
     },
     {
       "from": "views_project",
+      "to": "views_img_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
       "to": "views_rise",
       "kind": "imports"
     },
@@ -5998,6 +6242,11 @@
     {
       "from": "views_sound_palette",
       "to": "fx_sound_voices_tone",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_sound",
+      "to": "views_slot_sound",
       "kind": "imports"
     },
     {

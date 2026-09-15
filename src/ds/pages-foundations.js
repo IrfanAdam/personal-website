@@ -16,6 +16,8 @@ import { label as hL, html as hH } from './foundations/pane-shape.js';
 import { label as mL, html as mH } from './foundations/pane-motion.js';
 import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
+import { label as oL, html as oH } from './foundations/pane-sound.js';
+import { mountSoundBoard } from './foundations/sound/board.js';
 export function render() {
   const panes = [{ label: cL, html: cH() },
     { label: tL, html: tH() },
@@ -23,10 +25,11 @@ export function render() {
     { label: hL, html: hH() },
     { label: mL, html: mH() },
     { label: fL, html: fH() },
+    { label: oL, html: oH() },
     { label: kL, html: kH() }];
   return [
     `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
-    `<p class="lede">Seven definitions feed every token. Swatches and values read live computed <span `,
+    `<p class="lede">Eight definitions feed every token. Swatches and values read live computed <span `,
     `class="tok">var()</span> — click any card to copy.</p></div>`,
   ].join('') + tabs({ vertical: true, panes });
 }
@@ -74,11 +77,13 @@ export function mount(root) {
   if (typeCtrls) typeCtrls.addEventListener('change', onType);
   if (easeCtrls) easeCtrls.addEventListener('click', onEase), easeCtrls.addEventListener('change', onEase);
   root.addEventListener('click', onFx);
+  const offSound = mountSoundBoard(root);
   return () => {
     if (ctrls) { ctrls.removeEventListener('input', onMix); ctrls.removeEventListener('click', onCopyVar); }
     if (typeCtrls) typeCtrls.removeEventListener('change', onType);
     if (easeCtrls) { easeCtrls.removeEventListener('click', onEase); easeCtrls.removeEventListener('change', onEase); }
     root.removeEventListener('click', onFx);
+    try { offSound && offSound(); } catch {}
     obs.disconnect();
   };
 }

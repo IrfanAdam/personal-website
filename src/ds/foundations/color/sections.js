@@ -21,7 +21,11 @@ export function pairs(rows){return [
     ['light','dark'].map((t) => [
       `<td data-c="`,
       t,
-      `"><span class="cl-demo" data-demo>Aa</span><br><span class="cl-aa" data-aa>…</span></td>`,
+      `"><div class="cl-cell" data-theme="`,
+      t,
+      `" style="background:var(--color-bg);">`,
+      `<span class="cl-demo" data-demo>Aa</span>`,
+      `<span class="cl-aa" data-aa>…</span></div></td>`,
     ].join('')).join(''),
     `</tr>`,
   ].join('')).join(''),

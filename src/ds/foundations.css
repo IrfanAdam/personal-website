@@ -1,6 +1,6 @@
 /* ADAM/DS foundations — vertical tabs + live definition demos. Token-only. */
 .ds-tabs.vert { display: flex; gap: var(--space-12); align-items: flex-start; }
-.ds-tabs.vert .ds-tablist {
+.ds-tabs.vert > .ds-tablist {
   flex: 0 0 auto;
   flex-direction: column;
   align-items: stretch;
@@ -14,7 +14,7 @@
   background: var(--color-surface);
   padding: 0;
 }
-.ds-tabs.vert .ds-tab {
+.ds-tabs.vert > .ds-tablist > .ds-tab {
   display: block;
   width: 100%;
   text-align: left;
@@ -28,12 +28,12 @@
   color: var(--color-ink);
   cursor: pointer;
 }
-.ds-tabs.vert .ds-tab:last-child { border-bottom: none; }
-.ds-tabs.vert .ds-tab:hover { background: var(--color-panel); }
-.ds-tabs.vert .ds-tab.on {
+.ds-tabs.vert > .ds-tablist > .ds-tab:last-child { border-bottom: none; }
+.ds-tabs.vert > .ds-tablist > .ds-tab:hover { background: var(--color-panel); }
+.ds-tabs.vert > .ds-tablist > .ds-tab.on {
   background: var(--color-panel);
   color: var(--color-ink);
   box-shadow: inset var(--space-2) 0 0 var(--color-accent);
 }
-.ds-tabs.vert .ds-panes { flex: 1 1 auto; min-width: 0; }
-.ds-tabs.vert .ds-pane > .ds-sec:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.ds-tabs.vert > .ds-panes { flex: 1 1 auto; min-width: 0; }
+.ds-tabs.vert > .ds-panes > .ds-pane > .ds-sec:first-child { margin-top: 0; padding-top: 0; border-top: none; }

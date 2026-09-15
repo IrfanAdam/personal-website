@@ -1,5 +1,15 @@
 /* ADAM/DS — foundations-color · ramp popovers + pairs · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 /* color — ramp popovers + compact pair lines (AA inline, no proof tables) */
+.cl-cell {
+  display: grid;
+  gap: var(--space-4);
+  place-items: start center;
+  padding: var(--space-6);
+  border: var(--border-hairline);
+  text-align: center;
+}
+.cl-cell .cl-demo { margin: 0; }
+.cl-cell .cl-aa { margin-top: 0; }
 .ds-ramp i { position: relative; cursor: pointer; }
 .ds-ramp i .tip {
   display: none;
@@ -47,6 +57,4 @@
   margin-top: var(--space-3);
   white-space: nowrap;
 }
-.cl-aa[data-v='AAA'] { background: var(--color-ink); color: var(--color-bg); border-color: var(--color-ink); }
-.cl-aa[data-v='Fail'] { color: var(--color-error); border-color: var(--color-error); }
 @media (prefers-reduced-motion: reduce) { .fd-dot { transition: none; } }

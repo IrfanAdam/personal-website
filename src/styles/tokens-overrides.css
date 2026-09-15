@@ -17,6 +17,7 @@
 @media (prefers-color-scheme: dark) { :root {
   --color-bg: #12151a;
     --color-surface: #1e2329;
+    --color-surface-sunken: var(--stone-900);
     --color-ink: #f2f4f7;
     --color-ink-muted: #9aa5b1;
     --color-ink-subtle: #9aa5b1;
@@ -45,6 +46,7 @@
 [data-theme="dark"] {
   --color-bg: #12151a;
     --color-surface: #1e2329;
+    --color-surface-sunken: var(--stone-900);
     --color-ink: #f2f4f7;
     --color-ink-muted: #9aa5b1;
     --color-ink-subtle: #9aa5b1;

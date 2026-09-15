@@ -1,0 +1,100 @@
+/* ADAM/DS — ds/foundations-sound · sound board · [plan:2026-09-15_190000-foundations-sound-pane.md#phase-1] */
+.snd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-12);
+  margin: var(--space-10) 0;
+}
+.snd-voice {
+  display: grid;
+  gap: var(--space-8);
+  align-content: start;
+}
+.snd-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-8);
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.snd-head .nm {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: lowercase;
+}
+.snd-desc {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  margin: 0;
+  line-height: var(--leading-body);
+}
+.snd-voice .snd-play,
+.snd-file-ctrl .snd-play {
+  justify-self: start;
+}
+.snd-knob {
+  display: grid;
+  grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val);
+  gap: var(--space-8);
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+}
+.snd-knob.off { opacity: var(--opacity-hover); }
+.snd-knob.inline {
+  grid-template-columns: auto 1fr auto;
+  display: inline-grid;
+  vertical-align: middle;
+  margin-left: var(--space-8);
+}
+.snd-knob input[type=range] {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+.snd-knob output {
+  text-align: right;
+  color: var(--color-ink);
+}
+.snd-scope-wrap {
+  border: var(--border-hairline);
+  background: var(--color-surface);
+  padding: var(--space-8);
+  margin: var(--space-10) 0;
+}
+.snd-scope {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: var(--border-hairline);
+  background: var(--color-panel);
+}
+.snd-scope-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-8);
+  align-items: center;
+  margin-top: var(--space-8);
+  flex-wrap: wrap;
+}
+.snd-global {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: var(--space-10);
+}
+.snd-file-table .snd-audio {
+  width: calc(var(--space-16) * 10);
+  height: var(--space-28);
+  vertical-align: middle;
+}
+@media (max-width: 900px) /* --break-lg */ {
+  .snd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) /* --break-sm */ {
+  .snd-grid { grid-template-columns: 1fr; }
+  .snd-file-table .snd-audio { width: calc(var(--space-12) * 10); }
+}

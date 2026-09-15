@@ -2,7 +2,7 @@
    panes: [{ label, html }] → tablist + panels. Preview-first default.
    Mount via mountTabs(root); cleanup returned. ≤100 lines. */
 const reg = (window.__tabsReg = window.__tabsReg || {});
-export function tabs({ panes = [], initial = 0, vertical = false } = {}) {
+export function tabs({ panes = [], initial = 0, vertical = false, variant = '' } = {}) {
   const id = 'tabs-' + Math.random().toString(36).slice(2, 6);
   reg[id] = { panes, initial };
   const btns = panes.map((p, i) => [
@@ -34,7 +34,7 @@ export function tabs({ panes = [], initial = 0, vertical = false } = {}) {
     vertical ? ' vert' : '',
     `" data-tabs-root="`,
     id,
-    `"><div class="ds-tablist" role="tablist"`,
+    `"><div class="ds-tablist${variant === 'line' ? ' ds-tablist--line' : ''}" role="tablist"`,
     vertical ? ' aria-orientation="vertical"' : '',
     `>`,
     btns,
