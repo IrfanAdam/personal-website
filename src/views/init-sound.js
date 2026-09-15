@@ -47,12 +47,14 @@ function ensureToggles() {
     const old = site.querySelectorAll('[data-sound-btn]');
     old.forEach((n) => { const w = n.closest('.sound-switch'); (w || n).remove(); });
     if (!site.querySelector('[data-sound-toggle]')) {
+      const slot = site.querySelector('#soundSlot') || site.querySelector('.smenu-pop');
       const meta = site.querySelector('.strip-meta');
+      const target = slot || meta || site;
       const wrap = document.createElement('div');
       wrap.className = 'sound-switch';
       wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)';
       wrap.innerHTML = SND_BTN;
-      (meta || site).appendChild(wrap);
+      target.appendChild(wrap);
     }
   }
   const ds = document.querySelector('.ds-controls');

@@ -8,6 +8,7 @@ import { MinimalLab } from './views/minimal-lab.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initTheme } from './theme.js';
 import { initChrome } from './boot-chrome.js';
+import { initSettingsMenu } from './views/settings-menu.js';
 import './views/init-sound.js';
 
 const root = document.getElementById('app');
@@ -20,12 +21,17 @@ stripbar.innerHTML = [
   `<span class="tab-frame" id="tabframe" aria-hidden="true"></span></div>`,
 ].join('')
   + [
-    `<div class="strip-meta"><div class="theme-switch" id="themeSwitch">`,
+    `<div class="smenu"><button class="pill smenu-btn"`,
+    ` id="settingsBtn" aria-haspopup="true" aria-expanded="false"`,
+    ` aria-controls="smenuPop" title="Settings">⚙</button>`,
+    `<div class="smenu-pop" id="smenuPop" hidden><div class="theme-switch" id="themeSwitch">`,
     `<button class="pill" data-theme-btn="system">system</button>`,
     `<button class="pill" data-theme-btn="light">light</button>`,
-    `<button class="pill" data-theme-btn="dark">dark</button></div><span class="hint" id="count">14 stories</span>`,
-    `</div>`,
+    `<button class="pill" data-theme-btn="dark">dark</button></div>`,
+    `<div id="soundSlot"></div><span class="hint" id="count">14 stories</span>`,
+    `</div></div>`,
   ].join('');
+initSettingsMenu(stripbar);
 initTheme();
 const vtabs = [...stripbar.querySelectorAll('[data-vtab]')];
 const stripLinks = [...stripbar.querySelectorAll('.strip a')];
