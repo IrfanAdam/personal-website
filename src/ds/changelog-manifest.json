@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T14:40:01.954Z",
+ "generated": "2026-09-15T08:30:39.851Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -26,6 +26,24 @@
   "2026-09-14_192124-atlas-fullscreen.md"
  ],
  "commits": [
+  {
+   "sha": "61dfaf2",
+   "full": "61dfaf20baf92d3d8d3842e6f71fdd8b7158ea57",
+   "date": "2026-09-15",
+   "time": "13:59",
+   "subject": "feat(ds): atlas arc flow, search left, legend off, fullscreen top-right",
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase12"
+  },
+  {
+   "sha": "e185b26",
+   "full": "e185b260d8d9ac275d77f5160c3159de29da53ff",
+   "date": "2026-09-14",
+   "time": "20:10",
+   "subject": "chore(ds): track refresh — manifest 178 · glitch hum via element engine",
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "phase-6"
+  },
   {
    "sha": "9196057",
    "full": "9196057108326275f69277b08cda4d5eb9b2c04b",

@@ -688,7 +688,7 @@ Verified: `plan:names` 22 names · 0 missing (`18/18 tagged` in `ds:track`); tas
 - `npm run ds:track` → tagged == phased (12/12), 0 wip, `cont 20260909_145218_9888b1`
 - Mark tasks `✓ done`, add `*Shipped in <sha> · Tasks 41–44 · phase12.*` under the phase heading, refresh manifest, push
 
-*Shipped in <sha> · Tasks 41–44 · phase12.*
+*Shipped in 61dfaf2 · Tasks 41–44 · phase12.*
 
 ---
 
