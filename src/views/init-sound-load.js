@@ -1,41 +1,9 @@
-/* ADAM/FX — views/init-sound-load · page-load scanner · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
-// Exports: initLoadScan — once-per-session load sweep via isOn channel
-import { playSlot } from './slot-sound.js';
-import { getCtx as sharedGetCtx, getNoise as sharedNoise } from './audio-ctx.js';
+/* ADAM/FX — views/init-sound-load · legacy loader no-op · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
+// Exports: initLoadScan — kept for compat; sound now owned by title-reveal.
+// Previously this fired a once-per-session 520ms sweep at 820ms, which drifted
+// from the headline scramble. Now the single load sound is triggered atomically
+// with the first-and-only scramble via mountTitleReveal, so initLoadScan is a
+// no-op (avoids double/dedupe races). Channel arg retained for call-site compat.
 export function initLoadScan(channel) {
-  const { isOn } = channel;
-/* Page-load scanner — once per session, ~520ms sweep. Respects muted/reduced-motion; queued to first interaction if
-/* AudioContext blocked. */
-  let _loadPlayed = false;
-  function _getLoadCtx(){ return sharedGetCtx(); }
-  function _getLoadBuf(){ return sharedNoise(); }
-  function _canLoad(){ if(!isOn()) return false;
-    try{ if(matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-    }catch{} try{ if(sessionStorage.getItem('adam-load-played')) return false;
-    }catch{} if(_loadPlayed) return false;
-    return true;
-  }
-  function _settle(r){ if(String(r).startsWith('played') || r === 'dedupe'){
-    _loadPlayed = true;
-    try{ sessionStorage.setItem('adam-load-played', '1'); }catch{}
-  } }
-  function _playLoad(){
-    if(!_canLoad()) return;
-    const c=_getLoadCtx(), b=_getLoadBuf();
-    if(!c||!b) return;
-    const go=async ()=>{ try{ _settle(await playSlot('load', 0.5)); }catch{} };
-    if(c.state==='suspended'){
-      c.resume().then(go).catch(()=>{
-        // queue to first gesture
-        const once=()=>{ try{ if(_canLoad()) go(); }catch{}
-          try{ removeEventListener('pointerdown', once);
-            removeEventListener('keydown', once);
-          }catch{} };
-        addEventListener('pointerdown', once, {once:true});
-        addEventListener('keydown', once, {once:true});
-      });
-    } else go();
-  }
-  setTimeout(()=>{ try{ _playLoad(); }catch{} }, 820);
-  document.addEventListener('pointerdown', ()=>{ try{ if(!_loadPlayed) _playLoad(); }catch{} }, {once:true});
+  void channel;
 }

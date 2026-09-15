@@ -5,6 +5,17 @@
    contact.js ran this morph inline and duplicated.) */
 import { attachGridReveal } from './masonry/gridReveal.js';
 import { fxMs, fxVar } from './fx-tokens.js';
+import { hasHeroSeen, markHeroSeen, heroKey } from './hero-height-cache.js';
+
+function skipRise(box, img, finalH) {
+  box.style.aspectRatio = 'var(--hero-aspect)';
+  box.style.height = '';
+  box.style.transition = '';
+  box.style.willChange = '';
+  box.classList.remove('loading');
+  if (Number.isFinite(finalH) && finalH > 0) markHeroSeen(heroKey(), finalH);
+  return attachGridReveal(box, img, 20, true);
+}
 
 export function mountHeroRise(root) {
   const box = root.querySelector('.hero-box');
@@ -15,6 +26,14 @@ export function mountHeroRise(root) {
     return () => {};
   }
   if (!matchMedia('(max-width: 640px)').matches) return attachGridReveal(box, img, 80, true);
+  // Cached hero — image already complete or this hash already rose this session
+  const k = heroKey();
+  const cached = hasHeroSeen(k);
+  const imgCached = img.complete && img.naturalWidth > 0;
+  // If we have seen this tab before and the image is cached, skip the height morph
+  if (cached && imgCached) return skipRise(box, img, 0);
+  // Also skip if seen but image not yet decoded? still skip morph, grid reveal handles tint
+  if (cached) return skipRise(box, img, 0);
   const w = parseFloat(box.dataset.w) || 3;
   const h = parseFloat(box.dataset.h) || 4;
   const cw = box.getBoundingClientRect().width || window.innerWidth - 24;
@@ -23,6 +42,12 @@ export function mountHeroRise(root) {
   if (finalH - placeholderH < 28) placeholderH = Math.max(220, finalH - 80);
   placeholderH = Math.min(placeholderH, finalH - 24);
   if (placeholderH < 180) placeholderH = Math.min(220, finalH - 24);
+  // Persist finalH per tab so revisit can skip without remeasuring
+  markHeroSeen(k, finalH);
+  // Edge: instantly cached image — no morph, straight to mosaic
+  if (img.complete && img.naturalWidth > 0 && finalH - placeholderH < 36) {
+    return skipRise(box, img, finalH);
+  }
   const dur = Math.round(fxMs('--dur-hero-rise', 860));
   const ease = fxVar('--ease-signature', 'cubic-bezier(0.32,0.72,0,1)');
   box.style.aspectRatio = 'auto';
@@ -42,7 +67,6 @@ export function mountHeroRise(root) {
     box.style.transition = '';
     box.style.willChange = '';
     box.classList.remove('loading');
-    // double-rAF — let layout settle before measuring for gridReveal
     requestAnimationFrame(() => requestAnimationFrame(() => {
       if (!box.isConnected) return;
       offReveal = attachGridReveal(box, img, 80, true);

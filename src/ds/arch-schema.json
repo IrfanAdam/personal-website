@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T13:44:29.342Z",
+  "generated": "2026-09-15T14:00:57.515Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3155,6 +3155,14 @@
       "tokens": []
     },
     {
+      "id": "views_hero_height_cache",
+      "path": "src/views/hero-height-cache.js",
+      "layer": "view",
+      "route": null,
+      "title": "hero height cache",
+      "tokens": []
+    },
+    {
       "id": "views_img_helpers",
       "path": "src/views/img-helpers.js",
       "layer": "view",
@@ -5788,16 +5796,6 @@
       "kind": "imports"
     },
     {
-      "from": "views_init_sound_load",
-      "to": "views_audio_ctx",
-      "kind": "imports"
-    },
-    {
-      "from": "views_init_sound_load",
-      "to": "views_slot_sound",
-      "kind": "imports"
-    },
-    {
       "from": "views_init_sound",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -6205,6 +6203,11 @@
     {
       "from": "views_rise",
       "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_rise",
+      "to": "views_hero_height_cache",
       "kind": "imports"
     },
     {
