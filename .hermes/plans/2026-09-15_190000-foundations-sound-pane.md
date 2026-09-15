@@ -71,3 +71,5 @@
 **Objective:** `.ds-tabs.vert` rules target only the outer tablist's direct children so the nested sound tabs never inherit vertical chrome; add the sunken surface token the sheet needs.
 **Files:** `src/ds/foundations.css`, `src/ds/foundations-color.css`, `src/ds/foundations/color/sections.js`
 **Verify:** Vertical rail unchanged; nested tabs render as a line list; `--color-surface-sunken` resolves in light and dark.
+
+*Shipped in f3d1442 · Tasks 1–9 · phase-1.*

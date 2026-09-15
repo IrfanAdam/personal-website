@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T13:11:43.635Z",
+ "generated": "2026-09-15T13:18:15.547Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -25,9 +25,28 @@
   "2026-09-14_120000-arch-atlas-canvas.md",
   "2026-09-14_192124-atlas-fullscreen.md",
   "2026-09-15_100000-mobile-optimisation.md",
-  "2026-09-15_183400-lump-sum-builds.md"
+  "2026-09-15_183400-lump-sum-builds.md",
+  "2026-09-15_190000-foundations-sound-pane.md"
  ],
  "commits": [
+  {
+   "sha": "f3d1442",
+   "full": "f3d1442031ef80b3f3f312572b494af2480ff7fa",
+   "date": "2026-09-15",
+   "time": "18:48",
+   "subject": "feat(ds): sound as the eighth foundation — Sound sheet, board + scope",
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "4b68cb7",
+   "full": "4b68cb796b86dab597c4b0b1cbaac2469d1d3fa1",
+   "date": "2026-09-15",
+   "time": "18:42",
+   "subject": "chore(ds): clear the deployed archive noise — 184/184 linked",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-3"
+  },
   {
    "sha": "5bcca23",
    "full": "5bcca23968d577891452dde502030e9a037d6a62",
@@ -1685,14 +1704,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/foundations-color.css",
-  "M src/ds/foundations.css",
-  "M src/ds/foundations/color/sections.js",
-  "M src/ds/pages-foundations.js",
-  "M src/ds/tabs.js",
-  "?? src/ds/foundations-sound.css",
-  "?? src/ds/foundations/pane-sound.js",
-  "?? src/ds/foundations/sound/"
- ]
+ "wip": []
 }
