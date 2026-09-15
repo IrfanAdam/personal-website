@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T14:20:47.882Z",
+  "generated": "2026-09-15T15:58:34.690Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -6086,6 +6086,16 @@
     {
       "from": "views_masonry_parallax",
       "to": "views_masonry_parallax_measure",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_reveal",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_reveal",
+      "to": "views_element_sound",
       "kind": "imports"
     },
     {
