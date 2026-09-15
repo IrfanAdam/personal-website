@@ -132,7 +132,7 @@
 2. Serve `vite --port 5174` (never `:5173`, user tests there in Safari) and check 360 / 390 / 768 + desktop: header strip scrolls, settings dropdown works, no x-overflow, case/contact/viewer clean.
 3. Keyboard: Tab to gear, Enter opens, Esc closes, theme/sound reachable; `aria-expanded` correct.
 
-*Shipped in TBD · Tasks 7–7 · phase-4.*
+*Shipped in 416fcbc · Tasks 7–7 · phase-4.*
 
 ---
 
