@@ -19,6 +19,7 @@ stripbar.innerHTML = [
   viewTabs(),
   stripItems(),
   `<span class="tab-frame" id="tabframe" aria-hidden="true"></span>`,
+  `</div>`,
   `<div class="smenu"><button class="pill smenu-btn"`,
   ` id="settingsBtn" aria-haspopup="true" aria-expanded="false"`,
   ` aria-controls="smenuPop" title="Settings">⚙</button>`,
@@ -28,7 +29,6 @@ stripbar.innerHTML = [
   `<button class="pill" data-theme-btn="dark">dark</button></div>`,
   `<div id="soundSlot"></div><span class="hint" id="count">14 stories</span>`,
   `</div></div>`,
-  `</div>`,
 ].join('');
 initSettingsMenu(stripbar);
 initTheme();

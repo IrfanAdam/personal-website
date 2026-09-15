@@ -40,21 +40,20 @@ function apply() {
 }
 function ensureToggles() {
   const site = document.getElementById('stripbar');
-  if (site && !site.querySelector('[data-sound-toggle]')) {
-    const strip = site.querySelector('#strip');
-    const smenu = site.querySelector('.smenu');
+  const slot = site ? site.querySelector('#soundSlot') : null;
+  if (slot && !slot.querySelector('[data-sound-toggle]')) {
     const wrap = document.createElement('div');
     wrap.className = 'sound-switch';
     wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)'; wrap.style.alignItems = 'center';
-    wrap.style.flex = 'none';
     wrap.innerHTML = SND_BTN + VOL(getVolume());
-    if (strip && smenu && smenu.parentElement === strip) strip.insertBefore(wrap, smenu);
-    else if (strip && smenu) site.insertBefore(wrap, strip.nextSibling);
-    else if (strip) strip.appendChild(wrap);
-    else site.appendChild(wrap);
+    slot.appendChild(wrap);
   }
+  // cleanup legacy header-inserted switches (from previous iteration)
+  site?.querySelectorAll(':scope > .sound-switch').forEach((n) => n.remove());
   document.querySelectorAll('[data-sound-btn]').forEach((n) => {
-    const w = n.closest('.sound-switch'); if (w) w.remove(); else n.remove();
+    const w = n.closest('.sound-switch');
+    if (w && w.parentElement?.id !== 'soundSlot') w.remove();
+    else if (!w) n.remove();
   });
   const ds = document.querySelector('.ds-controls');
   if (ds && !ds.querySelector('[data-sound-toggle]')) ds.insertAdjacentHTML('beforeend', SND_BTN);
