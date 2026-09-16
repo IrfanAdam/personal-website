@@ -13,12 +13,20 @@ export function initSettingsMenu(bar) {
     backdrop.hidden = true;
     document.body.appendChild(backdrop);
   }
-  // move pop to body so fixed center escapes header backdrop-filter
-  if (pop.parentElement !== document.body) document.body.appendChild(pop);
   const allBtns = () => [btn, document.getElementById('fSettingsBtn')].filter(Boolean);
   const sync = (expanded) => {
     allBtns().forEach((b) => b.setAttribute('aria-expanded', expanded ? 'true' : 'false'));
   };
+  const syncPos = () => {
+    const mobile = window.innerWidth <= 640;
+    if (mobile) {
+      if (pop.parentElement !== document.body) document.body.appendChild(pop);
+    } else {
+      const smenu = bar.querySelector('.smenu') || document.querySelector('.smenu');
+      if (smenu && pop.parentElement !== smenu) smenu.appendChild(pop);
+    }
+  };
+  syncPos();
   const close = (focus) => {
     pop.hidden = true;
     backdrop.hidden = true;
@@ -26,8 +34,10 @@ export function initSettingsMenu(bar) {
     if (focus) btn.focus();
   };
   const open = () => {
+    syncPos();
+    const mobile = window.innerWidth <= 640;
     pop.hidden = false;
-    backdrop.hidden = false;
+    backdrop.hidden = !mobile;
     sync(true);
   };
   const toggle = () => {
@@ -53,6 +63,7 @@ export function initSettingsMenu(bar) {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !pop.hidden) close(true);
   });
+  window.addEventListener('resize', syncPos);
 }
 
 // — Section: reposition —

@@ -65,8 +65,11 @@
 }
 @media (prefers-reduced-motion: reduce) { .tab-frame { transition: none; } }
 @media (max-width: 640px) {
-  .stripbar .smenu-btn {
+  .stripbar .smenu {
     display: none;
+  }
+  .stripbar {
+    gap: 0;
   }
   body[data-view="list"] .f-settings {
     display: inline-flex;
@@ -82,8 +85,5 @@
     left: 0;
     z-index: 5;
     box-shadow: var(--space-6) 0 var(--space-12) calc(var(--space-6) * -1) var(--color-bg);
-  }
-  body[data-route="project"] .tab-frame {
-    opacity: 0 !important;
   }
 }
