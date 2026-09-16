@@ -32,7 +32,7 @@ footer {
   line-height: var(--leading-display);
   letter-spacing: var(--tracking-display);
   font-weight: var(--weight-bold);
-  color: var(--color-ink);
+  color: var(--color-ink-muted);
   margin: 0 0 var(--space-16);
   overflow-wrap: anywhere;
   text-wrap: balance;
@@ -44,41 +44,47 @@ footer nav { display: flex; flex-wrap: wrap; gap: var(--space-14); }
 footer nav a { text-decoration: none; border-bottom: var(--border-hairline); }
 .footer-big {
   position: relative;
+  color: transparent;
   background: linear-gradient(90deg,
-    var(--color-ink) 0%,
-    var(--color-ink) 34%,
-    color-mix(in srgb, var(--color-accent) 28%, var(--color-ink)) 50%,
-    var(--color-ink) 66%,
-    var(--color-ink) 100%);
+    var(--color-ink-muted) 0%,
+    var(--color-ink-muted) 38%,
+    color-mix(in srgb, var(--color-ink) 22%, var(--color-ink-muted)) 50%,
+    var(--color-ink-muted) 62%,
+    var(--color-ink-muted) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: footer-shimmer var(--dur-zoom) var(--ease-standard) infinite;
-  animation-duration: 3.8s;
+  animation: footer-shimmer 3.8s var(--ease-standard) infinite;
+  transition: filter var(--dur-soft) var(--ease-standard);
 }
-.footer-big::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: radial-gradient(circle var(--space-420) at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--color-accent) 22%, transparent) 0%,
-    transparent 58%);
-  opacity: 0;
-  transition: opacity var(--dur-soft) var(--ease-standard);
-  pointer-events: none;
-  mix-blend-mode: plus-lighter;
-}
-.footer-big.is-hovering::after { opacity: 1; }
 .footer-big.is-hovering {
-  filter: drop-shadow(0 0 var(--space-12) color-mix(in srgb, var(--color-accent) 18%, transparent));
+  background:
+    radial-gradient(circle var(--space-420) at var(--mx, 50%) var(--my, 50%),
+      var(--color-ink) 0%,
+      color-mix(in srgb, var(--color-accent) 44%, var(--color-ink)) 18%,
+      var(--color-ink-muted) 38%,
+      transparent 64%),
+    linear-gradient(90deg,
+      var(--color-ink-muted) 0%,
+      var(--color-ink-muted) 38%,
+      color-mix(in srgb, var(--color-ink) 22%, var(--color-ink-muted)) 50%,
+      var(--color-ink-muted) 62%,
+      var(--color-ink-muted) 100%);
+  background-size: auto, 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 var(--space-8) color-mix(in srgb, var(--color-accent) 22%, transparent))
+    drop-shadow(0 0 var(--space-16) color-mix(in srgb, var(--color-accent) 12%, transparent));
   animation-play-state: paused;
 }
 @keyframes footer-shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%, 0% 50%; }
+  50% { background-position: 0% 50%, 100% 50%; }
+  100% { background-position: 0% 50%, 0% 50%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .footer-big { animation: none; -webkit-text-fill-color: var(--color-ink); background: none; }
-  .footer-big::after { display: none; }
+  .footer-big { animation: none; }
+  .footer-big.is-hovering { filter: none; }
 }
