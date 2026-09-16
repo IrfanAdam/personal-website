@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T07:27:58.703Z",
+  "generated": "2026-09-16T07:40:31.288Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2399,7 +2399,6 @@
         "--ease-standard",
         "--font-mono",
         "--font-sans",
-        "--header-h",
         "--leading-body",
         "--radius-none",
         "--sat-header",
@@ -2408,6 +2407,7 @@
         "--space-10",
         "--space-12",
         "--space-128",
+        "--space-16",
         "--space-2",
         "--space-28",
         "--space-4",

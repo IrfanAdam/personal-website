@@ -5,17 +5,29 @@ export function initSettingsMenu(bar) {
   const btn = bar.querySelector('#settingsBtn');
   const pop = bar.querySelector('#smenuPop');
   if (!btn || !pop) return;
+  let backdrop = document.getElementById('smenuBackdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.id = 'smenuBackdrop';
+    backdrop.className = 'smenu-backdrop';
+    backdrop.hidden = true;
+    document.body.appendChild(backdrop);
+  }
+  // move pop to body so fixed center escapes header backdrop-filter
+  if (pop.parentElement !== document.body) document.body.appendChild(pop);
   const allBtns = () => [btn, document.getElementById('fSettingsBtn')].filter(Boolean);
   const sync = (expanded) => {
     allBtns().forEach((b) => b.setAttribute('aria-expanded', expanded ? 'true' : 'false'));
   };
   const close = (focus) => {
     pop.hidden = true;
+    backdrop.hidden = true;
     sync(false);
     if (focus) btn.focus();
   };
   const open = () => {
     pop.hidden = false;
+    backdrop.hidden = false;
     sync(true);
   };
   const toggle = () => {
@@ -26,6 +38,7 @@ export function initSettingsMenu(bar) {
     e.stopPropagation();
     toggle();
   });
+  backdrop.addEventListener('click', () => close(false));
   document.addEventListener('click', (e) => {
     if (e.target.closest('#fSettingsBtn')) {
       e.stopPropagation();
@@ -43,14 +56,4 @@ export function initSettingsMenu(bar) {
 }
 
 // — Section: reposition —
-export function syncSettingsPop() {
-  const pop = document.getElementById('smenuPop');
-  const wrap = document.getElementById('fWrap');
-  const smenu = document.querySelector('.smenu');
-  if (!pop || !smenu) return;
-  const mobile = window.innerWidth <= 640;
-  const isList = document.body.dataset.view === 'list';
-  const shouldMove = mobile && isList && wrap;
-  if (shouldMove && pop.parentElement !== wrap) wrap.appendChild(pop);
-  else if (!shouldMove && pop.parentElement !== smenu) smenu.appendChild(pop);
-}
+export function syncSettingsPop() {}
