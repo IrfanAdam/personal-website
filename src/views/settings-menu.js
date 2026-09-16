@@ -1,5 +1,5 @@
 /* ADAM/SHARED — views/settings-menu · gear dropdown · [plan:2026-09-15_100000-mobile-optimisation.md#phase-1] */
-// Exports: initSettingsMenu(stripbar) — toggles hidden + aria-expanded
+// Exports: initSettingsMenu, syncSettingsPop
 // — Section: toggle —
 export function initSettingsMenu(bar) {
   const btn = bar.querySelector('#settingsBtn');
@@ -40,4 +40,17 @@ export function initSettingsMenu(bar) {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !pop.hidden) close(true);
   });
+}
+
+// — Section: reposition —
+export function syncSettingsPop() {
+  const pop = document.getElementById('smenuPop');
+  const wrap = document.getElementById('fWrap');
+  const smenu = document.querySelector('.smenu');
+  if (!pop || !smenu) return;
+  const mobile = window.innerWidth <= 640;
+  const isList = document.body.dataset.view === 'list';
+  const shouldMove = mobile && isList && wrap;
+  if (shouldMove && pop.parentElement !== wrap) wrap.appendChild(pop);
+  else if (!shouldMove && pop.parentElement !== smenu) smenu.appendChild(pop);
 }

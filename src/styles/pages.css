@@ -71,6 +71,13 @@
   body[data-view="list"] .f-settings {
     display: inline-flex;
   }
+  body[data-view="list"] #fWrap #smenuPop {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: calc(100% + var(--space-8));
+    bottom: auto;
+  }
   body[data-route="project"] .strip .vtab {
     display: none;
   }

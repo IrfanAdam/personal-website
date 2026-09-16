@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T07:10:05.853Z",
+  "generated": "2026-09-16T07:27:58.703Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2441,7 +2441,6 @@
         "--measure-copy",
         "--radius-none",
         "--size-frame",
-        "--size-tap",
         "--size-wrap",
         "--space-1",
         "--space-10",
@@ -5612,6 +5611,11 @@
     {
       "from": "main",
       "to": "views_project",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_settings_menu",
       "kind": "imports"
     },
     {

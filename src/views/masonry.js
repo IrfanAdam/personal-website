@@ -50,9 +50,9 @@ export function Masonry() {
     `<div class="filters" id="filtersBar"><button class="pill on" data-filter="all">All</button>`,
     `<button class="pill" data-filter="crm">Sales CRM</button>`,
     `<button class="pill" data-filter="goals">Sales Goals</button>`,
-    `<button class="pill f-settings" id="fSettingsBtn"`,
+    `<span class="f-wrap" id="fWrap"><button class="pill f-settings" id="fSettingsBtn"`,
     ` aria-haspopup="true" aria-expanded="false"`,
-    ` aria-controls="smenuPop" title="Settings">⚙</button></div>`,
+    ` aria-controls="smenuPop" title="Settings">⚙</button></span></div>`,
     `<main id="grid"></main>${footer()}`,
   ].join('');
 }

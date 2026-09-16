@@ -73,10 +73,14 @@
 }
 .f-settings {
   display: none;
-  min-width: var(--size-tap);
-  min-height: var(--size-tap);
+  padding: var(--space-6) var(--space-10);
   align-items: center;
   justify-content: center;
+  line-height: 1;
+}
+.f-wrap {
+  position: relative;
+  display: inline-flex;
 }
 .hero { padding: var(--space-26) var(--space-4) var(--space-10); }
 .hero h1 { font-size: var(--text-display); letter-spacing: var(--tracking-display); margin: 0; }

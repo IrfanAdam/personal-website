@@ -7,6 +7,7 @@ import { MinimalLab } from './views/minimal-lab.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initChrome } from './boot-chrome.js';
 import { initStripbar, syncStripMode } from './views/stripbar.js';
+import { syncSettingsPop } from './views/settings-menu.js';
 import './views/init-sound.js';
 
 const root = document.getElementById('app');
@@ -49,6 +50,7 @@ function route() {
   const contact = h.startsWith('#/contact');
   const isProject = h.startsWith('#/projects/');
   syncStripMode(isProject, masonryView, closeBtn);
+  syncSettingsPop();
   stripLinks.forEach((a) => {
     const href = a.getAttribute('href');
     a.classList.toggle('on', href === `#/projects/${slug}` || (contact && href === '#/contact'));
@@ -69,6 +71,7 @@ function route() {
     root.innerHTML = Masonry();
     cleanup = mountMasonry(root);
     syncStripMode(false, masonryView, closeBtn);
+    syncSettingsPop();
   }
   syncTabs();
   centerActiveThumb();
@@ -77,6 +80,7 @@ window.addEventListener('hashchange', route);
 window.addEventListener('resize', () => {
   const isProject = location.hash.startsWith('#/projects/');
   syncStripMode(isProject, masonryView, closeBtn);
+  syncSettingsPop();
   requestAnimationFrame(syncHeaderFrames);
 });
 window.addEventListener('load', syncHeaderFrames);
