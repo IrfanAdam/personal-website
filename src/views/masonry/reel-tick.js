@@ -5,12 +5,13 @@ import { isMuted, scaledGain } from '../audio-ctx.js';
 let last = 0;
 let active = null;
 
-export function reelTick() {
+export function reelTick(el) {
   if (isMuted()) return;
   try {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   } catch {}
   if (window.innerWidth > 640) return;
+  if (el && !el.classList.contains('ready')) return;
   const grid = document.getElementById('grid');
   if (!grid) return;
   const ready = grid.querySelectorAll('.card.ready').length;

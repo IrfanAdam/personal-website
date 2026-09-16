@@ -46,7 +46,7 @@ export function attachLinger(grid) {
             showTimers.delete(el);
             if (el.isConnected && isMobile()) {
               el.classList.add('in-view');
-              reelTick();
+              reelTick(el);
             }
           }, LINGER_IN);
           showTimers.set(el, t);
