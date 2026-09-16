@@ -8,6 +8,7 @@ import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initChrome } from './boot-chrome.js';
 import { initStripbar, syncStripMode } from './views/stripbar.js';
 import { syncSettingsPop } from './views/settings-menu.js';
+import { initProceedGate } from './views/proceed-gate.js';
 import './views/init-sound.js';
 
 const root = document.getElementById('app');
@@ -18,6 +19,7 @@ let cleanup = null;
 let masonryView = 'grid';
 
 initChrome(header);
+initProceedGate();
 
 function syncTabs() {
   vtabs.forEach((b) => b.classList.toggle('on', b.dataset.vtab === masonryView));

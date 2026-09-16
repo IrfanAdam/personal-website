@@ -316,6 +316,7 @@ main --> views_headerFrame
 main --> views_map_index
 main --> views_masonry
 main --> views_minimal_lab
+main --> views_proceed_gate
 main --> views_project
 main --> views_settings_menu
 main --> views_stripbar
@@ -339,6 +340,7 @@ views_glitch_sound --> views_sound_palette
 views_glitch_sound_parse --> views_sound_palette
 views_glitch_sound_timing --> views_audio_ctx
 views_init_sound --> views_audio_ctx
+views_init_sound --> views_element_sound
 views_init_sound --> views_glitch_sound
 views_init_sound --> views_init_sound_load
 views_init_sound --> views_init_sound_vol
@@ -415,6 +417,8 @@ views_masonry_viewer --> views_masonry_viewer_visibility
 views_masonry_viewer_bind --> views_masonry_viewer_markup
 views_minimal_lab --> views_map_data
 views_minimal_lab --> views_shared
+views_proceed_gate --> views_audio_ctx
+views_proceed_gate --> views_element_sound
 views_project --> data_site
 views_project --> views_img_helpers
 views_project --> views_rise

@@ -1,0 +1,56 @@
+/* ADAM/STYLE — styles/proceed · cyberpunk gate · [plan:2026-09-15_183400-lump-sum-builds.md#phase-4] */
+.proceed-gate {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-16);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+}
+.proceed-gate.hide { opacity: 0; pointer-events: none; transition: opacity var(--dur-soft) var(--ease-standard); }
+.proceed-card {
+  width: min(92vw, 420px); position: relative; overflow: hidden;
+  background: var(--color-surface); border: var(--border-hairline);
+  border-left: var(--size-frame) solid var(--color-accent);
+  padding: var(--space-20) var(--space-16) var(--space-16);
+  box-shadow: 0 var(--space-12) var(--space-32) rgba(0,0,0,0.18);
+}
+.proceed-card::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.35;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px,
+    color-mix(in srgb, var(--color-accent) 5%, transparent) 2px 3px);
+}
+.proceed-card::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.9;
+}
+.proceed-kicker {
+  font: var(--text-micro) var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-accent); display: flex; align-items: center; gap: var(--space-8);
+}
+.proceed-kicker::before { content: "◼"; font-size: 6px; }
+.proceed-title {
+  margin: var(--space-8) 0 var(--space-6); font: var(--text-h2) var(--font-display);
+  line-height: var(--leading-tight); color: var(--color-ink);
+}
+.proceed-copy {
+  margin: 0 0 var(--space-16); color: var(--color-ink-muted);
+  font: var(--text-body) var(--font-sans); line-height: var(--leading-body);
+}
+.proceed-btn {
+  width: 100%; min-height: var(--size-tap);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8);
+  font: var(--text-label) var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-on-accent); background: var(--color-accent);
+  border: var(--size-hairline) solid var(--color-accent);
+  cursor: pointer; position: relative;
+}
+.proceed-btn:hover { filter: brightness(1.06); }
+.proceed-btn:active { transform: scale(var(--scale-press)); }
+.proceed-btn:focus-visible { outline: var(--border-focus); outline-offset: var(--focus-offset); }
+.proceed-hint {
+  margin-top: var(--space-10); text-align: center;
+  font: var(--text-micro) var(--font-mono); color: var(--color-ink-muted);
+}
+@media (prefers-reduced-motion: reduce) { .proceed-gate.hide { transition: none; } }

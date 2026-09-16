@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T07:40:31.288Z",
+  "generated": "2026-09-16T08:12:12.353Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2883,6 +2883,46 @@
       ]
     },
     {
+      "id": "styles_proceed",
+      "path": "src/styles/proceed.css",
+      "layer": "style",
+      "route": null,
+      "title": "proceed",
+      "tokens": [
+        "--border-focus",
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-on-accent",
+        "--color-surface",
+        "--dur-soft",
+        "--ease-standard",
+        "--focus-offset",
+        "--font-display",
+        "--font-mono",
+        "--font-sans",
+        "--leading-body",
+        "--leading-tight",
+        "--scale-press",
+        "--size-frame",
+        "--size-hairline",
+        "--size-tap",
+        "--space-10",
+        "--space-12",
+        "--space-16",
+        "--space-20",
+        "--space-32",
+        "--space-6",
+        "--space-8",
+        "--text-body",
+        "--text-h2",
+        "--text-label",
+        "--text-micro"
+      ]
+    },
+    {
       "id": "styles_tokens",
       "path": "src/styles/tokens.css",
       "layer": "style",
@@ -3512,6 +3552,14 @@
       "layer": "view",
       "route": null,
       "title": "minimal lab",
+      "tokens": []
+    },
+    {
+      "id": "views_proceed_gate",
+      "path": "src/views/proceed-gate.js",
+      "layer": "view",
+      "route": null,
+      "title": "proceed gate",
       "tokens": []
     },
     {
@@ -5610,6 +5658,11 @@
     },
     {
       "from": "main",
+      "to": "views_proceed_gate",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
       "to": "views_project",
       "kind": "imports"
     },
@@ -5700,6 +5753,11 @@
     },
     {
       "from": "styles_pages",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_proceed",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -5851,6 +5909,11 @@
     {
       "from": "views_init_sound",
       "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_init_sound",
+      "to": "views_element_sound",
       "kind": "imports"
     },
     {
@@ -6236,6 +6299,16 @@
     {
       "from": "views_minimal_lab",
       "to": "views_shared",
+      "kind": "imports"
+    },
+    {
+      "from": "views_proceed_gate",
+      "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_proceed_gate",
+      "to": "views_element_sound",
       "kind": "imports"
     },
     {

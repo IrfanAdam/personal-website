@@ -5,6 +5,7 @@ import { initLoadScan } from './init-sound-load.js';
 import { initStripSound } from './strip-sound.js';
 import { getVolume, setVolume } from './audio-ctx.js';
 import { volHTML, syncVolume } from './init-sound-vol.js';
+import { playFileId } from './element-sound.js';
 
 let on = true;
 try {
@@ -62,6 +63,7 @@ function ensureToggles() {
 }
 function scan(root = document) { root.querySelectorAll('[data-glitch-sound]').forEach((el) => attach(el)); }
 document.addEventListener('click', (e) => { const b = e.target.closest('[data-sound-toggle]'); if (b) apply(); });
+let previewTimer = 0;
 document.addEventListener('input', (e) => {
   const s = e.target.closest('[data-volume-slider]'); if (!s) return;
   const v = setVolume(s.value);
@@ -70,6 +72,10 @@ document.addEventListener('input', (e) => {
     on = true; try { localStorage.setItem('adam-sound', 'on'); } catch {}
     setEnabled(true); syncUI();
   }
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(() => {
+    try { playFileId('authorize.mp3', 0.8); } catch {}
+  }, 60);
 });
 try { addEventListener('adam-volume', () => syncUI()); } catch {}
 const mo = new MutationObserver((muts) => {
