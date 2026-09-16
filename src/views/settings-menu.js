@@ -56,8 +56,9 @@ export function initSettingsMenu(bar) {
       return;
     }
     if (pop.hidden) return;
-    if (bar.contains(e.target)) return;
-    if (e.target.closest('#filtersBar')) return;
+    if (pop.contains(e.target)) return;
+    if (btn.contains(e.target)) return;
+    if (e.target.closest('#smenuPop')) return;
     close(false);
   });
   document.addEventListener('keydown', (e) => {

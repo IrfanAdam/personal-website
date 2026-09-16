@@ -39,12 +39,13 @@ function apply() {
   setEnabled(on); syncUI();
 }
 function ensureToggles() {
+  const slot = document.getElementById('soundSlot');
   const site = document.getElementById('stripbar');
-  const slot = site ? site.querySelector('#soundSlot') : null;
   if (slot && !slot.querySelector('[data-sound-toggle]')) {
     const wrap = document.createElement('div');
     wrap.className = 'sound-switch';
     wrap.style.display = 'flex'; wrap.style.gap = 'var(--space-6)'; wrap.style.alignItems = 'center';
+    wrap.style.width = '100%';
     wrap.innerHTML = SND_BTN + VOL(getVolume());
     slot.appendChild(wrap);
   }
