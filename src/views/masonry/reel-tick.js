@@ -10,6 +10,8 @@ export function reelTick() {
   try {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   } catch {}
+  if (window.innerWidth > 640) return;
+  if (!document.querySelector('#grid .card.ready')) return;
   const now = Date.now();
   if (now - last < 45) return;
   last = now;
