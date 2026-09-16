@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T08:41:26.350Z",
+ "generated": "2026-09-16T08:42:04.338Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,6 +30,15 @@
   "2026-09-15_193000-theme-island-parity.md"
  ],
  "commits": [
+  {
+   "sha": "935b329",
+   "full": "935b329ad11cf337ba593cdbfec6f1684cfda3d1",
+   "date": "2026-09-16",
+   "time": "14:12",
+   "subject": "fix(changelog): per-task timestamps, tables, heat & badge date·time · phases 6-10 polish",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-10"
+  },
   {
    "sha": "e3db2c1",
    "full": "e3db2c114e59b4f7f82eb565ebc12d6abfa9f5ef",
@@ -2029,7 +2038,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-links.js"
- ]
+ "wip": []
 }
