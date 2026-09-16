@@ -12,7 +12,10 @@ export function reelTick() {
   } catch {}
   if (window.innerWidth > 640) return;
   const grid = document.getElementById('grid');
-  if (!grid || grid.querySelector('.card:not(.ready)')) return;
+  if (!grid) return;
+  const ready = grid.querySelectorAll('.card.ready').length;
+  const total = grid.querySelectorAll('.card').length;
+  if (ready < Math.min(6, total)) return;
   const now = Date.now();
   if (now - last < 45) return;
   last = now;
