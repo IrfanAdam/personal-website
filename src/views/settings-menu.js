@@ -5,22 +5,36 @@ export function initSettingsMenu(bar) {
   const btn = bar.querySelector('#settingsBtn');
   const pop = bar.querySelector('#smenuPop');
   if (!btn || !pop) return;
+  const allBtns = () => [btn, document.getElementById('fSettingsBtn')].filter(Boolean);
+  const sync = (expanded) => {
+    allBtns().forEach((b) => b.setAttribute('aria-expanded', expanded ? 'true' : 'false'));
+  };
   const close = (focus) => {
     pop.hidden = true;
-    btn.setAttribute('aria-expanded', 'false');
+    sync(false);
     if (focus) btn.focus();
   };
   const open = () => {
     pop.hidden = false;
-    btn.setAttribute('aria-expanded', 'true');
+    sync(true);
   };
-  btn.addEventListener('click', () => {
+  const toggle = () => {
     if (pop.hidden) open();
     else close(false);
+  };
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggle();
   });
   document.addEventListener('click', (e) => {
+    if (e.target.closest('#fSettingsBtn')) {
+      e.stopPropagation();
+      toggle();
+      return;
+    }
     if (pop.hidden) return;
     if (bar.contains(e.target)) return;
+    if (e.target.closest('#filtersBar')) return;
     close(false);
   });
   document.addEventListener('keydown', (e) => {

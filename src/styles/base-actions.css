@@ -64,7 +64,20 @@
 .btn:focus-visible { outline: var(--size-frame) solid var(--color-ink); outline-offset: var(--space-2); }
 .spacer { flex: 1; } .hint { color: var(--color-ink-muted); font-size: var(--text-meta); }
 .wrap { max-width: var(--size-wrap); margin: 0 auto; padding: var(--gutter); }
-.filters { display: flex; gap: var(--space-8); align-items: center; margin: var(--space-6) 0 var(--space-14); }
+.filters {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+  margin: var(--space-6) 0 var(--space-14);
+  flex-wrap: wrap;
+}
+.f-settings {
+  display: none;
+  min-width: var(--size-tap);
+  min-height: var(--size-tap);
+  align-items: center;
+  justify-content: center;
+}
 .hero { padding: var(--space-26) var(--space-4) var(--space-10); }
 .hero h1 { font-size: var(--text-display); letter-spacing: var(--tracking-display); margin: 0; }
 .hero p { color: var(--color-ink-muted); max-width: var(--measure-copy); }

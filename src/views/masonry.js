@@ -49,9 +49,12 @@ export function Masonry() {
   return [
     `<section class="hero"><h1>Working on stories that last</h1>`,
     `<p>Masonry view. Edit stories in <code>src/data/site.js</code>.</p></section>`,
-    `<div class="filters"><button class="pill on" data-filter="all">All</button>`,
+    `<div class="filters" id="filtersBar"><button class="pill on" data-filter="all">All</button>`,
     `<button class="pill" data-filter="crm">Sales CRM</button>`,
-    `<button class="pill" data-filter="goals">Sales Goals</button></div>`,
+    `<button class="pill" data-filter="goals">Sales Goals</button>`,
+    `<button class="pill f-settings" id="fSettingsBtn"`,
+    ` aria-haspopup="true" aria-expanded="false"`,
+    ` aria-controls="smenuPop" title="Settings">⚙</button></div>`,
     `<main id="grid"></main>${footer()}`,
   ].join('');
 }

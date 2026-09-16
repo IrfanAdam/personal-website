@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T19:39:03.796Z",
+  "generated": "2026-09-16T07:10:05.853Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2441,6 +2441,7 @@
         "--measure-copy",
         "--radius-none",
         "--size-frame",
+        "--size-tap",
         "--size-wrap",
         "--space-1",
         "--space-10",
@@ -2474,18 +2475,23 @@
         "--color-ink-muted",
         "--color-on-accent",
         "--font-mono",
+        "--leading-display",
         "--radius-none",
         "--space-14",
+        "--space-16",
         "--space-22",
         "--space-3",
         "--space-30",
         "--space-4",
         "--space-60",
         "--space-8",
+        "--text-footer",
         "--text-label",
         "--text-meta",
+        "--tracking-display",
         "--tracking-label",
         "--tracking-mono",
+        "--weight-bold",
         "--weight-semibold"
       ]
     },
@@ -2816,6 +2822,7 @@
       "tokens": [
         "--border-frame",
         "--border-hairline",
+        "--color-bg",
         "--color-ink",
         "--color-ink-muted",
         "--color-surface",
@@ -3612,6 +3619,14 @@
       "layer": "view",
       "route": null,
       "title": "strip sound",
+      "tokens": []
+    },
+    {
+      "id": "views_stripbar",
+      "path": "src/views/stripbar.js",
+      "layer": "view",
+      "route": null,
+      "title": "stripbar",
       "tokens": []
     },
     {
@@ -5571,11 +5586,6 @@
     },
     {
       "from": "main",
-      "to": "theme",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
       "to": "views_contact",
       "kind": "imports"
     },
@@ -5606,12 +5616,7 @@
     },
     {
       "from": "main",
-      "to": "views_settings_menu",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
-      "to": "views_shared",
+      "to": "views_stripbar",
       "kind": "imports"
     },
     {
@@ -6347,6 +6352,21 @@
     {
       "from": "views_strip_sound",
       "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_stripbar",
+      "to": "theme",
+      "kind": "imports"
+    },
+    {
+      "from": "views_stripbar",
+      "to": "views_settings_menu",
+      "kind": "imports"
+    },
+    {
+      "from": "views_stripbar",
+      "to": "views_shared",
       "kind": "imports"
     },
     {

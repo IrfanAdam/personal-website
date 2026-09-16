@@ -2,40 +2,19 @@
 import { Masonry, mountMasonry, setView } from './views/masonry.js';
 import { Project, mountProject } from './views/project.js';
 import { Contact, mountContact } from './views/contact.js';
-import { stripItems, viewTabs } from './views/shared.js';
 import { MapView, mountMap } from './views/map/index.js';
 import { MinimalLab } from './views/minimal-lab.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
-import { initTheme } from './theme.js';
 import { initChrome } from './boot-chrome.js';
-import { initSettingsMenu } from './views/settings-menu.js';
+import { initStripbar, syncStripMode } from './views/stripbar.js';
 import './views/init-sound.js';
 
 const root = document.getElementById('app');
 const header = document.querySelector('.top');
 const stripbar = document.getElementById('stripbar');
-stripbar.innerHTML = [
-  `<div class="strip" id="strip">`,
-  viewTabs(),
-  stripItems(),
-  `<span class="tab-frame" id="tabframe" aria-hidden="true"></span>`,
-  `</div>`,
-  `<div class="smenu"><button class="pill smenu-btn"`,
-  ` id="settingsBtn" aria-haspopup="true" aria-expanded="false"`,
-  ` aria-controls="smenuPop" title="Settings">⚙</button>`,
-  `<div class="smenu-pop" id="smenuPop" hidden><div class="theme-switch" id="themeSwitch">`,
-  `<button class="pill" data-theme-btn="system">system</button>`,
-  `<button class="pill" data-theme-btn="light">light</button>`,
-  `<button class="pill" data-theme-btn="dark">dark</button></div>`,
-  `<div id="soundSlot"></div><span class="hint" id="count">14 stories</span>`,
-  `</div></div>`,
-].join('');
-initSettingsMenu(stripbar);
-initTheme();
-const vtabs = [...stripbar.querySelectorAll('[data-vtab]')];
-const stripLinks = [...stripbar.querySelectorAll('.strip a')];
+const { vtabs, stripLinks, closeBtn } = initStripbar(stripbar);
 let cleanup = null;
-let masonryView = 'grid'; // 'grid' | 'list'
+let masonryView = 'grid';
 
 initChrome(header);
 
@@ -52,6 +31,7 @@ function showMasonry(view) {
 }
 
 vtabs.forEach((b) => b.addEventListener('click', () => showMasonry(b.dataset.vtab)));
+if (closeBtn) closeBtn.addEventListener('click', () => { location.hash = '#/masonry'; });
 
 function route() {
   const h = location.hash || '#/';
@@ -67,6 +47,8 @@ function route() {
   }
   const slug = h.startsWith('#/projects/') ? h.split('/')[2] : '';
   const contact = h.startsWith('#/contact');
+  const isProject = h.startsWith('#/projects/');
+  syncStripMode(isProject, masonryView, closeBtn);
   stripLinks.forEach((a) => {
     const href = a.getAttribute('href');
     a.classList.toggle('on', href === `#/projects/${slug}` || (contact && href === '#/contact'));
@@ -86,12 +68,17 @@ function route() {
     setView(masonryView);
     root.innerHTML = Masonry();
     cleanup = mountMasonry(root);
+    syncStripMode(false, masonryView, closeBtn);
   }
   syncTabs();
   centerActiveThumb();
 }
 window.addEventListener('hashchange', route);
-window.addEventListener('resize', () => requestAnimationFrame(syncHeaderFrames));
+window.addEventListener('resize', () => {
+  const isProject = location.hash.startsWith('#/projects/');
+  syncStripMode(isProject, masonryView, closeBtn);
+  requestAnimationFrame(syncHeaderFrames);
+});
 window.addEventListener('load', syncHeaderFrames);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeaderFrames);
 if (!location.hash) location.hash = '#/masonry';

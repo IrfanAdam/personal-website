@@ -19,6 +19,7 @@
     --text-meta: 12px;
     --text-label: 11px;
     --text-micro: 10.5px;
+    --text-footer: clamp(36px, 11vw, 132px);
   --leading-display: 0.9;
     --leading-title: 1.1;
     --leading-snug: 1.25;
