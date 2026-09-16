@@ -62,6 +62,24 @@ try { prevDoc = JSON.parse(readFileSync(out, 'utf8')); prev = prevDoc.commits ||
 const seen = new Set(commits.map((c) => c.sha));
 prev.forEach((c) => { if (!seen.has(c.sha)) { commits.push(c); seen.add(c.sha); } });
 commits.forEach((c) => { const r = retro[c.sha]; if (r) { c.plan = r.plan; c.anchor = r.anchor ?? null; } });
+// Portfolio shas live in plan-links.json but never touch DS paths — without this they stay invisible to the calendar/heat graph and hit badges.
+// Inject any retro-linked sha not already in the DS log so the changelog shows it as a tracked commit.
+Object.keys(retro).forEach((short) => {
+  if (commits.some((c) => c.sha === short)) return;
+  const line = sh(`git show -s --format='%H|%h|%ad|%cI|%s' --date=short ${short}`);
+  if (!line) return;
+  const head = line.trim().split('\n')[0];
+  if (!head) return;
+  const [full, sha, date, iso, ...rest] = head.split('|');
+  if (!full || !sha) return;
+  const subject = rest.join('|');
+  const r = retro[sha] || retro[short];
+  if (!r) return;
+  const time = (iso.match(/T(\d{2}:\d{2})/) || [])[1] || '';
+  const m = subject.match(TAG);
+  commits.push({ sha, full, date, time, subject: m ? subject.replace(TAG, '').trim() : subject.trim(), plan: r.plan, anchor: r.anchor ?? null });
+});
+commits.sort((a, b) => (b.date + (b.time || '')).localeCompare(a.date + (a.time || '')));
 const shallow = (sh(`git rev-parse --is-shallow-repository`) || '').trim() === 'true';
 if (shallow) console.log(`… ds-track: shallow clone detected, merged ${commits.length} commits (kept full history)`);
 /* Keep the previous stamp when only the timestamp would change: a dev run or

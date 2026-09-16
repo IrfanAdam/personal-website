@@ -6,9 +6,9 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g
 export const commits = manifest.commits || [];
 export const wip = manifest.wip || [];
 export const continuation = manifest.continuation || '20260909_145218_9888b1';
-const badge = (c) => `<a href="${GH}${c.full}">${c.sha}</a> ${esc(c.subject)} <small>${c.date}</small>`;
-/* anchor-less commits attach to their plan's first phase; anchored ones to the first phase whose text contains the
-/* anchor. */
+const badge = (c) => `<a href="${GH}${c.full}">${c.sha}</a> ${esc(c.subject)} <small>${c.date}${c.time ? ' ' + esc(c.time) : ''}</small>`;
+// anchor-less commits attach to their plan's first phase; anchored ones to the first phase whose text contains the
+// anchor.
 export const hits = (file, text, first) => commits
   .filter((c) => c.plan === file && (c.anchor ? text.includes(c.anchor) : first));
 export const badges = (list) => (list.length ? `<p class="ds-commits">${list.map(badge).join('<br>')}</p>` : '');
