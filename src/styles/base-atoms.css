@@ -45,39 +45,22 @@ footer nav a { text-decoration: none; border-bottom: var(--border-hairline); }
 .footer-big {
   position: relative;
   color: var(--color-ink-muted);
-  opacity: 0.48;
+  opacity: 0.44;
   transition: opacity var(--dur-soft) var(--ease-standard);
 }
 .footer-big.is-hovering {
-  opacity: 1;
   color: transparent;
   background:
-    radial-gradient(circle var(--space-420) at var(--mx, 50%) var(--my, 50%),
+    radial-gradient(circle var(--space-160) at var(--mx, 50%) var(--my, 50%),
       var(--color-ink) 0%,
-      color-mix(in srgb, var(--color-accent) 44%, var(--color-ink)) 18%,
-      var(--color-ink-muted) 38%,
-      transparent 64%),
-    linear-gradient(90deg,
-      var(--color-ink-muted) 0%,
-      var(--color-ink-muted) 38%,
-      color-mix(in srgb, var(--color-ink) 22%, var(--color-ink-muted)) 50%,
-      var(--color-ink-muted) 62%,
-      var(--color-ink-muted) 100%);
-  background-size: auto, 200% 100%;
+      color-mix(in srgb, var(--color-accent) 20%, var(--color-ink)) 16%,
+      color-mix(in srgb, var(--color-ink-muted) 88%, var(--color-accent)) 34%,
+      transparent 62%),
+    linear-gradient(var(--color-ink-muted), var(--color-ink-muted));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 var(--space-8) color-mix(in srgb, var(--color-accent) 22%, transparent))
-    drop-shadow(0 0 var(--space-16) color-mix(in srgb, var(--color-accent) 12%, transparent));
-  animation: footer-shimmer 3.8s var(--ease-standard) infinite;
-  animation-play-state: running;
-}
-@keyframes footer-shimmer {
-  0% { background-position: 0% 50%, 0% 50%; }
-  50% { background-position: 0% 50%, 100% 50%; }
-  100% { background-position: 0% 50%, 0% 50%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .footer-big { animation: none; opacity: 0.62; }
-  .footer-big.is-hovering { filter: none; animation: none; }
+  .footer-big.is-hovering { opacity: 0.58; }
 }
