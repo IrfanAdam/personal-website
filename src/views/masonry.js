@@ -1,9 +1,10 @@
-/* ADAM/PAGE — views/masonry · masonry · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/PAGE — views/masonry · masonry · [plan:2026-09-15_183400-lump-sum-builds.md#phase-11] */
 import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
 import { card, row } from './masonry/cards.js';
 import { reveal, attachLinger } from './masonry/reveal.js';
+import { attachDesktopZing } from './masonry/reel-tick.js';
 import { attachViewer } from './masonry/viewer.js';
 import { footer, aboutBlock } from './shared.js';
 import { mountTitleReveal } from './title-reveal.js';
@@ -15,6 +16,7 @@ let parallaxOff = null;
 let lingerOff = null;
 let revealOff = null;
 let viewerOff = null;
+let desktopZingOff = null;
 const TEXT_H = 0;
 const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filter);
 function draw(root) {
@@ -25,6 +27,7 @@ function draw(root) {
   if (lingerOff) { lingerOff(); lingerOff = null; }
   if (revealOff) { revealOff(); revealOff = null; }
   if (viewerOff) { viewerOff(); viewerOff = null; }
+  if (desktopZingOff) { desktopZingOff(); desktopZingOff = null; }
   if (view === 'list') {
     grid.className = 'works';
     grid.style.removeProperty('--cols');
@@ -41,6 +44,7 @@ function draw(root) {
     revealOff = reveal(grid);
     parallaxOff = attachParallax(grid);
     lingerOff = attachLinger(grid);
+    desktopZingOff = attachDesktopZing(grid);
     if (window.innerWidth > 640) viewerOff = attachViewer(grid);
   }
   if (count) count.textContent = `${list.length} stories`;
@@ -76,6 +80,7 @@ export function mountMasonry(root) {
     if (lingerOff) { lingerOff(); lingerOff = null; }
     if (revealOff) { revealOff(); revealOff = null; }
     if (viewerOff) { viewerOff(); viewerOff = null; }
+    if (desktopZingOff) { desktopZingOff(); desktopZingOff = null; }
     redraw = null;
   };
 }

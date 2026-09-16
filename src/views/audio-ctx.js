@@ -62,7 +62,7 @@ export function getVolume() {
     const raw = localStorage.getItem(VKEY);
     if (raw != null) { const n = parseFloat(raw); if (Number.isFinite(n)) return clamp01(n); }
   } catch {}
-  return 1; // new visitors hear gains as-authored (0.12/0.2/0.5 etc.)
+  return 0.44; // new visitors hear at 0.44 (visitor-tuned faint default)
 }
 export function setVolume(v) {
   const n = clamp01(Number(v));
