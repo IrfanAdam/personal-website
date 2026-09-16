@@ -1,7 +1,8 @@
-/* ADAM/FX — views/proceed-gate · entry capture for sound · [plan:2026-09-15_183400-lump-sum-builds.md#phase-4] */
-// Exports: initProceedGate — cyberpunk authorize gate, first thing visitors do
+/* ADAM/FX — views/proceed-gate · subtle redux gate · [plan:2026-09-15_183400-lump-sum-builds.md#phase-4] */
+// Exports: initProceedGate — first thing visitors do, captures gesture for sound
 import { ensureRunning, hasGesture } from './audio-ctx.js';
 import { playFileId } from './element-sound.js';
+import { attachGlimmerOrb } from './glimmer-orb.js';
 const KEY = 'adam-proceed';
 export function initProceedGate() {
   try {
@@ -13,20 +14,36 @@ export function initProceedGate() {
   gate.className = 'proceed-gate';
   gate.setAttribute('role', 'dialog');
   gate.setAttribute('aria-modal', 'true');
-  gate.setAttribute('aria-label', 'Authorize sound');
+  gate.setAttribute('aria-label', 'Proceed');
   gate.innerHTML = [
-    '<div class="proceed-card">',
-    '<div class="proceed-kicker">Sound protocol // 01</div>',
-    '<h2 class="proceed-title">Authorize audio link</h2>',
-    '<p class="proceed-copy">This site speaks in ticks and zings. Proceed to unlock.</p>',
-    '<button class="proceed-btn" data-proceed aria-label="Proceed — enable sound">PROCEED →</button>',
-    '<div class="proceed-hint">One tap unlocks AudioContext</div>',
+    '<div class="proceed-corner proceed-corner--bl" aria-hidden="true"></div>',
+    '<div class="proceed-corner proceed-corner--br" aria-hidden="true"></div>',
+    '<div class="proceed-shell">',
+    '<div class="proceed-orb-wrap" aria-hidden="true">',
+    '<canvas data-glimmer width="96" height="96" aria-hidden="true"></canvas>',
+    '<svg class="proceed-orb-lines" viewBox="0 0 340 140" fill="none" aria-hidden="true">',
+    '<path d="M6 20 H92 L138 46" stroke="var(--color-line)" stroke-width="0.7"/>',
+    '<path d="M6 118 H92 L138 94" stroke="var(--color-line)" stroke-width="0.7"/>',
+    '<path d="M334 20 H248 L202 46" stroke="var(--color-line)" stroke-width="0.7"/>',
+    '<path d="M334 118 H248 L202 94" stroke="var(--color-line)" stroke-width="0.7"/>',
+    '<rect x="91" y="18" width="6" height="6" fill="var(--color-ink)"/>',
+    '<rect x="91" y="116" width="6" height="6" fill="var(--color-ink)"/>',
+    '<rect x="243" y="18" width="6" height="6" fill="var(--color-ink)"/>',
+    '<rect x="243" y="116" width="6" height="6" fill="var(--color-ink)"/>',
+    '</svg>',
+    '</div>',
+    '<div class="proceed-label">Private preview</div>',
+    '<h1 class="proceed-title">Proceed to witness<br>Irfan In Redux.</h1>',
+    '<p class="proceed-copy">The same stories, distilled — a quiet edit.</p>',
+    '<button class="proceed-btn" data-proceed>Proceed</button>',
     '</div>',
   ].join('');
   document.body.appendChild(gate);
+  const canvas = gate.querySelector('[data-glimmer]');
+  let stopOrb = null;
+  try { stopOrb = attachGlimmerOrb(canvas, { state: 'idle', dots: 9 }); } catch {}
   const prevOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
-  const btn = gate.querySelector('[data-proceed]');
   let done = false;
   const dismiss = async () => {
     if (done) return;
@@ -34,16 +51,15 @@ export function initProceedGate() {
     try { localStorage.setItem(KEY, 'done'); } catch {}
     gate.classList.add('hide');
     document.body.style.overflow = prevOverflow;
+    try { if (stopOrb) stopOrb(); } catch {}
     try { await ensureRunning(); } catch {}
-    try { await playFileId('authorize.mp3', 0.8); } catch {}
+    try { await playFileId('authorize.mp3', 0.7); } catch {}
     setTimeout(() => { try { gate.remove(); } catch {} }, 380);
   };
-  btn.addEventListener('click', dismiss);
-  gate.addEventListener('click', (e) => {
-    if (e.target === gate) dismiss();
-  });
+  gate.querySelector('[data-proceed]').addEventListener('click', dismiss);
+  gate.addEventListener('click', (e) => { if (e.target === gate) dismiss(); });
   document.addEventListener('keydown', function esc(e) {
     if (e.key === 'Escape') { dismiss(); document.removeEventListener('keydown', esc); }
   });
-  try { btn.focus(); } catch {}
+  try { gate.querySelector('[data-proceed]').focus(); } catch {}
 }

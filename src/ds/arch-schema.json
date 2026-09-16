@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T08:12:12.353Z",
+  "generated": "2026-09-16T08:16:09.048Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2891,11 +2891,10 @@
       "tokens": [
         "--border-focus",
         "--border-hairline",
-        "--color-accent",
         "--color-bg",
         "--color-ink",
         "--color-ink-muted",
-        "--color-on-accent",
+        "--color-line",
         "--color-surface",
         "--dur-soft",
         "--ease-standard",
@@ -2904,20 +2903,16 @@
         "--font-mono",
         "--font-sans",
         "--leading-body",
-        "--leading-tight",
         "--scale-press",
-        "--size-frame",
-        "--size-hairline",
-        "--size-tap",
         "--space-10",
         "--space-12",
         "--space-16",
+        "--space-2",
         "--space-20",
-        "--space-32",
         "--space-6",
-        "--space-8",
+        "--stone-100",
+        "--stone-800",
         "--text-body",
-        "--text-h2",
         "--text-label",
         "--text-micro"
       ]
@@ -3560,7 +3555,10 @@
       "layer": "view",
       "route": null,
       "title": "proceed gate",
-      "tokens": []
+      "tokens": [
+        "--color-ink",
+        "--color-line"
+      ]
     },
     {
       "id": "views_project",
@@ -6303,12 +6301,22 @@
     },
     {
       "from": "views_proceed_gate",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "views_proceed_gate",
       "to": "views_audio_ctx",
       "kind": "imports"
     },
     {
       "from": "views_proceed_gate",
       "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_proceed_gate",
+      "to": "views_glimmer_orb",
       "kind": "imports"
     },
     {
