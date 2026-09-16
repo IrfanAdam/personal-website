@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T08:52:26.975Z",
+  "generated": "2026-09-16T08:56:19.224Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2474,15 +2474,20 @@
         "--color-ink",
         "--color-ink-muted",
         "--color-on-accent",
+        "--dur-soft",
+        "--dur-zoom",
+        "--ease-standard",
         "--font-mono",
         "--leading-display",
         "--radius-none",
+        "--space-12",
         "--space-14",
         "--space-16",
         "--space-22",
         "--space-3",
         "--space-30",
         "--space-4",
+        "--space-420",
         "--space-60",
         "--space-8",
         "--text-footer",
@@ -3131,6 +3136,14 @@
       "layer": "view",
       "route": null,
       "title": "element sound",
+      "tokens": []
+    },
+    {
+      "id": "views_footer_shimmer",
+      "path": "src/views/footer-shimmer.js",
+      "layer": "view",
+      "route": null,
+      "title": "footer shimmer",
       "tokens": []
     },
     {
@@ -5650,6 +5663,11 @@
     {
       "from": "main",
       "to": "views_contact",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
+      "to": "views_footer_shimmer",
       "kind": "imports"
     },
     {
