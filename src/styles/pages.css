@@ -70,6 +70,8 @@
   }
   body[data-view="list"] .f-settings {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   body[data-view="list"] #fWrap #smenuPop {
     position: absolute;

@@ -73,10 +73,6 @@
 }
 .f-settings {
   display: none;
-  padding: var(--space-6) var(--space-10);
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
 }
 .f-wrap {
   position: relative;
