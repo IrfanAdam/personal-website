@@ -61,11 +61,24 @@
     --space-30: 30px;
     --space-32: 32px;
     --space-36: 36px;
+    --space-38: 38px;
     --space-42: 42px;
     --space-46: 46px;
     --space-60: 60px;
     --space-70: 70px;
+    --space-80: 80px;
     --space-90: 90px;
+    --space-96: 96px;
+    --space-112: 112px;
+    --space-140: 140px;
+    --space-160: 160px;
+    --space-360: 360px;
+    --space-420: 420px;
+    --space-560: 560px;
+  --proceed-dot-sm: 1.4px;
+    --proceed-dot: 1.6px;
+    --text-proceed-title: clamp(28px, 5vw, 38px);
+    --text-proceed-title-sm: clamp(26px, 7vw, 32px);
     --gutter: var(--space-16);
     --rhythm: var(--space-14);
   /* — Size & layout — */

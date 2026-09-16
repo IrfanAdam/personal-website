@@ -36,6 +36,22 @@
     "126cbd5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-4", "note": "hero window-open 620->480ms -> lump-sum P4 T18" },
     "0a72739": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-4", "note": "mobile reel pull 0.34 linger -> lump-sum P4 T19" },
     "7dd33a3": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-4", "note": "master volume x per-sound gain -> lump-sum P4 T20" },
-    "9a82f0f": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-4", "note": "header sound outside gear pop -> lump-sum P4 T21" }
+    "9a82f0f": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-4", "note": "header sound outside gear pop -> lump-sum P4 T21" },
+    "08d6e66": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-6", "note": "loading sound sync + hero height cache -> lump-sum P6 T24" },
+    "031395c": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "modern footer + mobile settings morphing close -> lump-sum P7 T25" },
+    "3299e52": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "restore settings sheet + hero title to footer -> lump-sum P7 T26" },
+    "6d9fdd1": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "pill-height settings + anchored dropdown -> lump-sum P7 T27" },
+    "bf62cf7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "gear matches pill height -> lump-sum P7 T28" },
+    "6ed4848": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "restore bottom sheet near gear -> lump-sum P7 T29" },
+    "77e8757": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "dropdown via fWrap absolute -> lump-sum P7 T30" },
+    "bf97af5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "settings centered modal + backdrop -> lump-sum P7 T31" },
+    "66c9ced": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "mobile-only modal full-width volume -> lump-sum P7 T32" },
+    "73db667": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "outside close desktop + mobile volume width -> lump-sum P7 T33" },
+    "3225bf7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "gate mobile grid zing until first reveal -> lump-sum P8 T34" },
+    "acb1bdd": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "gate zing until all cards ready -> lump-sum P8 T35" },
+    "11e9955": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "zing after first fold 6 cards -> lump-sum P8 T36" },
+    "f91c68f": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "per-card zing on card.ready + first-fold -> lump-sum P8 T37" },
+    "05e9ab5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-9", "note": "cyberpunk proceed gate + authorize preview -> lump-sum P9 T38" },
+    "e3db2c1": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-9", "note": "subtle redux gate glimmer orb -> lump-sum P9 T39" }
   }
 }

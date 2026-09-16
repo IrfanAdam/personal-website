@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T08:16:09.048Z",
+  "generated": "2026-09-16T08:29:08.539Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2410,6 +2410,7 @@
         "--space-16",
         "--space-2",
         "--space-28",
+        "--space-360",
         "--space-4",
         "--space-6",
         "--space-7",
@@ -2903,18 +2904,35 @@
         "--font-mono",
         "--font-sans",
         "--leading-body",
+        "--proceed-dot",
+        "--proceed-dot-sm",
         "--scale-press",
+        "--size-tap",
+        "--space-1",
         "--space-10",
+        "--space-112",
         "--space-12",
+        "--space-14",
+        "--space-140",
         "--space-16",
+        "--space-160",
+        "--space-18",
         "--space-2",
         "--space-20",
+        "--space-420",
+        "--space-46",
+        "--space-560",
         "--space-6",
+        "--space-7",
+        "--space-80",
+        "--space-96",
         "--stone-100",
         "--stone-800",
         "--text-body",
         "--text-label",
-        "--text-micro"
+        "--text-micro",
+        "--text-proceed-title",
+        "--text-proceed-title-sm"
       ]
     },
     {
