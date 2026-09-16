@@ -65,7 +65,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .tab-frame { transition: none; } }
 @media (max-width: 640px) {
-  .stripbar .smenu {
+  .stripbar .smenu-btn {
     display: none;
   }
   body[data-view="list"] .f-settings {

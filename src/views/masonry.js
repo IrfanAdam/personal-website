@@ -47,8 +47,6 @@ function draw(root) {
 }
 export function Masonry() {
   return [
-    `<section class="hero"><h1>Working on stories that last</h1>`,
-    `<p>Masonry view. Edit stories in <code>src/data/site.js</code>.</p></section>`,
     `<div class="filters" id="filtersBar"><button class="pill on" data-filter="all">All</button>`,
     `<button class="pill" data-filter="crm">Sales CRM</button>`,
     `<button class="pill" data-filter="goals">Sales Goals</button>`,
