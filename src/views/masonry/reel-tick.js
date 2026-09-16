@@ -11,7 +11,8 @@ export function reelTick() {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   } catch {}
   if (window.innerWidth > 640) return;
-  if (!document.querySelector('#grid .card.ready')) return;
+  const grid = document.getElementById('grid');
+  if (!grid || grid.querySelector('.card:not(.ready)')) return;
   const now = Date.now();
   if (now - last < 45) return;
   last = now;
