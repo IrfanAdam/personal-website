@@ -12,28 +12,11 @@ export function initSettingsMenu(bar) {
   const close = (focus) => {
     pop.hidden = true;
     sync(false);
-    pop.style.removeProperty('top');
-    pop.style.removeProperty('right');
-    pop.style.removeProperty('left');
-    pop.style.removeProperty('bottom');
     if (focus) btn.focus();
   };
   const open = () => {
     pop.hidden = false;
     sync(true);
-    const mobile = window.innerWidth <= 640;
-    const isList = document.body.dataset.view === 'list';
-    if (mobile && isList) {
-      const fBtn = document.getElementById('fSettingsBtn');
-      if (fBtn) {
-        const r = fBtn.getBoundingClientRect();
-        pop.style.position = 'fixed';
-        pop.style.top = `${r.bottom + 8}px`;
-        pop.style.right = `${Math.max(12, window.innerWidth - r.right)}px`;
-        pop.style.left = 'auto';
-        pop.style.bottom = 'auto';
-      }
-    }
   };
   const toggle = () => {
     if (pop.hidden) open();
@@ -60,4 +43,14 @@ export function initSettingsMenu(bar) {
 }
 
 // — Section: reposition —
-export function syncSettingsPop() {}
+export function syncSettingsPop() {
+  const pop = document.getElementById('smenuPop');
+  const wrap = document.getElementById('fWrap');
+  const smenu = document.querySelector('.smenu');
+  if (!pop || !smenu) return;
+  const mobile = window.innerWidth <= 640;
+  const isList = document.body.dataset.view === 'list';
+  const shouldMove = mobile && isList && wrap;
+  if (shouldMove && pop.parentElement !== wrap) wrap.appendChild(pop);
+  else if (!shouldMove && pop.parentElement !== smenu) smenu.appendChild(pop);
+}
