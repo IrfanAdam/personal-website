@@ -88,6 +88,7 @@
     "3f91b98": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-1", "note": "settings gear + dropdown — P1" },
     "97dd81b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-14", "note": "retro coverage pass — tracker sees all 256" },
     "6e59812": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-15", "note": "footer round 2 — nubs, pale dashes, column-major links, strip scroll" },
-    "86a1ec7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-16", "note": "title at design scale — natural wrap, 6.5vw/100, 40/60 grid" }
+    "86a1ec7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-16", "note": "title at design scale — natural wrap, 6.5vw/100, 40/60 grid" },
+    "70520a5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-17", "note": "footer own padding + dual corner squares" }
   }
 }
