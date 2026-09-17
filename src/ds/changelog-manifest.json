@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T08:42:04.338Z",
+ "generated": "2026-09-17T06:49:09.293Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -31,6 +31,132 @@
  ],
  "commits": [
   {
+   "sha": "cbe4759",
+   "full": "cbe475998f55aeb8434210b4e59330925620cc06",
+   "date": "2026-09-17",
+   "time": "12:17",
+   "subject": "chore(lump-sum): close phase-13 — stamping 0737aec",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-13"
+  },
+  {
+   "sha": "0737aec",
+   "full": "0737aecb35f783d18f322bbd5ac72e990dc3508f",
+   "date": "2026-09-17",
+   "time": "12:17",
+   "subject": "style(footer): match original framer footer — sans links, faint title, © under right col",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-13"
+  },
+  {
+   "sha": "2e4c3ff",
+   "full": "2e4c3ff54485263ed0a96bc11892da482f06edd2",
+   "date": "2026-09-17",
+   "time": "12:08",
+   "subject": "style(footer): tighten padding rhythm — denser links, balanced columns",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "826c292",
+   "full": "826c292d16d8dca102a45bfcfedd69f40e440436",
+   "date": "2026-09-17",
+   "time": "12:04",
+   "subject": "fix(footer): dashed border via --border-dashed token",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "62931e1",
+   "full": "62931e19f904012e2a1a9cbb609b7669453451ab",
+   "date": "2026-09-17",
+   "time": "12:04",
+   "subject": "fix(footer): corner squares via space tokens",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "80721c6",
+   "full": "80721c683ef0f93dc9ce42d4184e60c7c4aa5b0f",
+   "date": "2026-09-17",
+   "time": "12:03",
+   "subject": "feat(footer): dashed frame + corner square accents",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "634f471",
+   "full": "634f4716c7ec9af52aaefbd0b0f5cac86955f890",
+   "date": "2026-09-17",
+   "time": "12:01",
+   "subject": "feat(footer): link grid + divider + note + auto-year copyright under big title",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "ca9051c",
+   "full": "ca9051cdd1bd7c342809081f850e355f08ff3533",
+   "date": "2026-09-16",
+   "time": "14:33",
+   "subject": "fix(footer): hover bloom only in cursor zone, no whole-text contrast or shadow",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "f032b97",
+   "full": "f032b97245645bab175e8cc75f31e7ea4b918569",
+   "date": "2026-09-16",
+   "time": "14:31",
+   "subject": "fix(footer): more muted resting, no default glow — shimmer/glow only on hover",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "5b72377",
+   "full": "5b723779f89d8d62b7c0d1452abc3fa8b62e0c74",
+   "date": "2026-09-16",
+   "time": "14:29",
+   "subject": "fix(footer): muted glyph shimmer clipped to text, not box glow",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "042fab2",
+   "full": "042fab275036bd8e3b76fdb037f7151e84641cbf",
+   "date": "2026-09-16",
+   "time": "14:27",
+   "subject": "chore(lump-sum): close phase-12 — stamping 223badb",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "223badb",
+   "full": "223badb625645b243cf693213c4a1aaead06d220",
+   "date": "2026-09-16",
+   "time": "14:26",
+   "subject": "feat(portfolio): visitor volume 0.36 + footer shimmer glow",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12"
+  },
+  {
+   "sha": "b037611",
+   "full": "b03761142bdbddfbc4478e75ca52c1cb1ae35832",
+   "date": "2026-09-16",
+   "time": "14:22",
+   "subject": "chore(lump-sum): close phase-11 — stamping 7a56269",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-11"
+  },
+  {
+   "sha": "7a56269",
+   "full": "7a562694f687fafca685013c0849bfe2b1bfb83c",
+   "date": "2026-09-16",
+   "time": "14:22",
+   "subject": "feat(sound): visitor volume 0.44 + desktop hover zing",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-11"
+  },
+  {
    "sha": "935b329",
    "full": "935b329ad11cf337ba593cdbfec6f1684cfda3d1",
    "date": "2026-09-16",
@@ -38,6 +164,33 @@
    "subject": "fix(changelog): per-task timestamps, tables, heat & badge date·time · phases 6-10 polish",
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "phase-10"
+  },
+  {
+   "sha": "e224f85",
+   "full": "e224f85c749123576f26dee30c2b14ad52c89968",
+   "date": "2026-09-16",
+   "time": "14:12",
+   "subject": "chore(ds): track refresh — 223/223 linked",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-10"
+  },
+  {
+   "sha": "dcc7f54",
+   "full": "dcc7f547df593afb9ab40dcf5eec8af0348e0a06",
+   "date": "2026-09-16",
+   "time": "14:02",
+   "subject": "chore(lump-sum): close phase-10 — token compliance a8199b3",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-10"
+  },
+  {
+   "sha": "a8199b3",
+   "full": "a8199b33ee6f5ccf7b595bb929273c2ffba07700",
+   "date": "2026-09-16",
+   "time": "13:59",
+   "subject": "chore(lump-sum): phases 6-10 — retro 16 shas + gate token compliance",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-10"
   },
   {
    "sha": "e3db2c1",
@@ -175,6 +328,42 @@
    "anchor": "#phase-7"
   },
   {
+   "sha": "5ef71db",
+   "full": "5ef71dbcdea3956f0444dfb0a1061f8f3f24d957",
+   "date": "2026-09-16",
+   "time": "01:17",
+   "subject": "chore(lump-sum): close phase-5 — ship reel shutter e2252fd",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-5"
+  },
+  {
+   "sha": "e2252fd",
+   "full": "e2252fde9fce2ac95fa42dc35c8a026e8b77a58d",
+   "date": "2026-09-16",
+   "time": "01:17",
+   "subject": "fix(portfolio): reel shutter — interruptible zing, 380→45ms per card",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-5"
+  },
+  {
+   "sha": "d3e61fb",
+   "full": "d3e61fb7669ef9af3e4d91f4b740a9ff121b7c06",
+   "date": "2026-09-15",
+   "time": "22:07",
+   "subject": "chore(lump-sum): close phase-4 — ship sound polish b162ab6",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-4"
+  },
+  {
+   "sha": "b162ab6",
+   "full": "b162ab6895909a139df8d7904b19fb6c7801baa6",
+   "date": "2026-09-15",
+   "time": "22:07",
+   "subject": "fix(portfolio): header slot to #soundSlot — follow-up soundSwitch cleanup",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-4"
+  },
+  {
    "sha": "9a82f0f",
    "full": "9a82f0f0fb2b803c1323b4d90da28a686d47e4ca",
    "date": "2026-09-15",
@@ -238,6 +427,15 @@
    "anchor": "phase-3"
   },
   {
+   "sha": "80906ad",
+   "full": "80906ade4589ad81c9602d147d269e56dc8724c6",
+   "date": "2026-09-15",
+   "time": "20:02",
+   "subject": "chore(ds): close sound phase-3 + track refresh — 192/192 linked",
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "#phase-3"
+  },
+  {
    "sha": "64b6388",
    "full": "64b638855fa326fc7cb11bb4bda6a050ac8c9b04",
    "date": "2026-09-15",
@@ -245,6 +443,15 @@
    "subject": "feat(ds): web-sounds library + GridReveal sound pairing",
    "plan": "2026-09-15_190000-foundations-sound-pane.md",
    "anchor": "phase-2"
+  },
+  {
+   "sha": "ef427e3",
+   "full": "ef427e3fd23e2963bf65b91730879304d1981e69",
+   "date": "2026-09-15",
+   "time": "19:44",
+   "subject": "chore(ds): close sound phase-2 + track refresh — 191/191 linked",
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "#phase-2"
   },
   {
    "sha": "08d6e66",
@@ -265,6 +472,15 @@
    "anchor": "phase-1"
   },
   {
+   "sha": "896068d",
+   "full": "896068d24d257e069f23e7022de4d155fe5cb76a",
+   "date": "2026-09-15",
+   "time": "19:15",
+   "subject": "chore(ds): close island-parity phase-1 + track refresh — 190/190 linked",
+   "plan": "2026-09-15_193000-theme-island-parity.md",
+   "anchor": "#phase-1"
+  },
+  {
    "sha": "d7aa6ba",
    "full": "d7aa6ba06546c50a7f256701b861374a5191ce43",
    "date": "2026-09-15",
@@ -274,6 +490,15 @@
    "anchor": "phase-1"
   },
   {
+   "sha": "ccb60f4",
+   "full": "ccb60f4f066d7dffb7249e8f6c50114b2d2cbef4",
+   "date": "2026-09-15",
+   "time": "18:54",
+   "subject": "chore(ds): generated DS files stop trailing every build and commit",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-3"
+  },
+  {
    "sha": "50a8e31",
    "full": "50a8e316e8dbe5c4bf2c3a48bb563cb9a7202aea",
    "date": "2026-09-15",
@@ -281,6 +506,15 @@
    "subject": "chore(ds): tracker leaves the tree clean — stamp only moves on real change",
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "phase-3"
+  },
+  {
+   "sha": "571757e",
+   "full": "571757ea0a9a65f6ef2ab17175c534e3811948b7",
+   "date": "2026-09-15",
+   "time": "18:51",
+   "subject": "chore(portfolio): ignore the Hermes runtime db",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-3"
   },
   {
    "sha": "f3d1442",
@@ -398,6 +632,69 @@
    "subject": "chore(portfolio): close phase 4 marks + shipped line — gates pass",
    "plan": "2026-09-15_100000-mobile-optimisation.md",
    "anchor": "phase-4"
+  },
+  {
+   "sha": "416fcbc",
+   "full": "416fcbc0d858d9e4c14ad6a733522ad8e3d39207",
+   "date": "2026-09-15",
+   "time": "15:18",
+   "subject": "feat(portfolio): gates + device pass — phase 4 verify",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-4"
+  },
+  {
+   "sha": "3c6d3d0",
+   "full": "3c6d3d0c4348c8894b056a3148a6a121e1f648d3",
+   "date": "2026-09-15",
+   "time": "15:16",
+   "subject": "chore(portfolio): close phase 3 marks + shipped line — mobile sweep",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-3"
+  },
+  {
+   "sha": "88429a7",
+   "full": "88429a7d0955c71e3c092c416b57cc7e0ffdcb56",
+   "date": "2026-09-15",
+   "time": "15:16",
+   "subject": "feat(portfolio): mobile sweep — phase 3 - masonry 1-col @640 gap 12, card hover-zoom behind @media(hover:hover) - gear tap 44x44 via --size-tap, thumb/vtab 56 keep ≥40 - work stack column mobile, cta-band pad down, btn full width, about pad",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-3"
+  },
+  {
+   "sha": "e185e71",
+   "full": "e185e715c0f91dee0cf449a0b1d928dd4668a952",
+   "date": "2026-09-15",
+   "time": "15:11",
+   "subject": "chore(portfolio): close phase 2 marks + shipped line — mobile header fix",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-2"
+  },
+  {
+   "sha": "cfb55a7",
+   "full": "cfb55a722d5a236e08ddf2ae572f371cb4b099cd",
+   "date": "2026-09-15",
+   "time": "15:11",
+   "subject": "feat(portfolio): mobile header in-flow — phase 2 - strip gets flex:1 min-width:0, smenu flex:none, stripbar gap 8px overflow visible - gear stays in-flow right, strip scrolls 14+ thumbs, no page overflow at 360px - keep bottom-docked bar, safe-area padding, header height stable on pop toggle",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-2"
+  },
+  {
+   "sha": "d4d04c6",
+   "full": "d4d04c6d3bb04b3dd19d2d5bec9b6d98795bffb7",
+   "date": "2026-09-15",
+   "time": "14:54",
+   "subject": "chore(portfolio): close phase 1 marks + shipped line — mobile optimisation",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-1"
+  },
+  {
+   "sha": "3f91b98",
+   "full": "3f91b981b9fc8de9a53ce5e0d7772fdcebee1861",
+   "date": "2026-09-15",
+   "time": "14:53",
+   "subject": "feat(portfolio): settings menu gear + dropdown — phase 1 - replace inline theme pills with ⚙ gear + absolute dropdown (smenu-pop) - move sound toggle into #soundSlot, delegate via init-sound - add token-only styles (surface, hairline, space vars), upward pop on ≤640px - fix toggle a11y: aria-expanded, outside click, Escape returns focus",
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-1"
   },
   {
    "sha": "9d56186",
