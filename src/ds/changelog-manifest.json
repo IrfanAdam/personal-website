@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T06:49:09.293Z",
+ "generated": "2026-09-17T06:49:52.076Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,6 +30,15 @@
   "2026-09-15_193000-theme-island-parity.md"
  ],
  "commits": [
+  {
+   "sha": "97dd81b",
+   "full": "97dd81b3fe6e5a4691614d5010cb449dd237cd24",
+   "date": "2026-09-17",
+   "time": "12:19",
+   "subject": "chore(ds): retro-link 33 straggler shas — footer/volume + mobile phases now tracked",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-14"
+  },
   {
    "sha": "cbe4759",
    "full": "cbe475998f55aeb8434210b4e59330925620cc06",
