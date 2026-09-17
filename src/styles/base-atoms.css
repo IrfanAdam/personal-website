@@ -28,11 +28,24 @@ footer {
   color: var(--color-ink-muted);
 }
 .footer-cols {
+  position: relative;
+  border: 1px dashed var(--color-line);
+  padding: var(--space-22) var(--space-30) var(--space-40);
   display: grid;
   grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
   gap: var(--space-30);
   align-items: start;
 }
+.footer-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-ink);
+}
+.footer-corner--tl { top: -6px; left: -6px; }
+.footer-corner--tr { top: -6px; right: -6px; }
+.footer-corner--bl { bottom: -6px; left: -6px; }
+.footer-corner--br { bottom: -6px; right: -6px; }
 .footer-info { display: grid; gap: var(--space-14); align-content: start; }
 .footer-links {
   display: grid;

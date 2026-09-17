@@ -6,6 +6,10 @@ const yearNow = () => new Date().getFullYear();
 export function footer() {
   return [
     `<footer><div class="footer-cols">`,
+    `  <i class="footer-corner footer-corner--tl"></i>`,
+    `  <i class="footer-corner footer-corner--tr"></i>`,
+    `  <i class="footer-corner footer-corner--bl"></i>`,
+    `  <i class="footer-corner footer-corner--br"></i>`,
     `  <div class="footer-info">`,
     `    <nav class="footer-links">`,
     socials.map(([n, u]) => `<a href="${u}" target="_blank" rel="noreferrer">${n}</a>`).join(''),
