@@ -29,7 +29,7 @@ footer {
 }
 .footer-cols {
   position: relative;
-  border: 1px dashed var(--color-line);
+  border: var(--border-dashed);
   padding: var(--space-22) var(--space-30) var(--space-40);
   display: grid;
   grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
