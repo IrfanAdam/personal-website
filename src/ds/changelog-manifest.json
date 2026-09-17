@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T07:04:33.745Z",
+ "generated": "2026-09-17T07:12:52.222Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,6 +30,15 @@
   "2026-09-15_193000-theme-island-parity.md"
  ],
  "commits": [
+  {
+   "sha": "86a1ec7",
+   "full": "86a1ec7a7bea5e0d1aa09273af559e0e05988134",
+   "date": "2026-09-17",
+   "time": "12:42",
+   "subject": "style(footer): title at design scale — natural wrap, 6.5vw/100, 40/60 grid",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-16"
+  },
   {
    "sha": "6e59812",
    "full": "6e59812e1d453c4524a4747342c254cbecb53380",
