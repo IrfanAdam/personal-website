@@ -38,14 +38,14 @@ footer {
 }
 .footer-corner {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: var(--space-12);
+  height: var(--space-12);
   background: var(--color-ink);
 }
-.footer-corner--tl { top: -6px; left: -6px; }
-.footer-corner--tr { top: -6px; right: -6px; }
-.footer-corner--bl { bottom: -6px; left: -6px; }
-.footer-corner--br { bottom: -6px; right: -6px; }
+.footer-corner--tl { top: calc(var(--space-6) * -1); left: calc(var(--space-6) * -1); }
+.footer-corner--tr { top: calc(var(--space-6) * -1); right: calc(var(--space-6) * -1); }
+.footer-corner--bl { bottom: calc(var(--space-6) * -1); left: calc(var(--space-6) * -1); }
+.footer-corner--br { bottom: calc(var(--space-6) * -1); right: calc(var(--space-6) * -1); }
 .footer-info { display: grid; gap: var(--space-14); align-content: start; }
 .footer-links {
   display: grid;
