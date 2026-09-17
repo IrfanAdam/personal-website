@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T08:56:19.224Z",
+  "generated": "2026-09-17T06:47:16.438Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2474,29 +2474,15 @@
         "--color-ink",
         "--color-ink-muted",
         "--color-on-accent",
-        "--dur-soft",
-        "--dur-zoom",
-        "--ease-standard",
         "--font-mono",
-        "--leading-display",
         "--radius-none",
-        "--space-12",
         "--space-14",
-        "--space-16",
-        "--space-22",
         "--space-3",
-        "--space-30",
-        "--space-4",
-        "--space-420",
-        "--space-60",
         "--space-8",
-        "--text-footer",
         "--text-label",
         "--text-meta",
-        "--tracking-display",
         "--tracking-label",
         "--tracking-mono",
-        "--weight-bold",
         "--weight-semibold"
       ]
     },
@@ -2622,6 +2608,44 @@
         "--tracking-mono",
         "--tracking-title",
         "--weight-semibold"
+      ]
+    },
+    {
+      "id": "styles_footer",
+      "path": "src/styles/footer.css",
+      "layer": "style",
+      "route": null,
+      "title": "footer",
+      "tokens": [
+        "--border-dashed",
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--dur-soft",
+        "--ease-standard",
+        "--font-mono",
+        "--font-sans",
+        "--leading-display",
+        "--space-112",
+        "--space-12",
+        "--space-160",
+        "--space-18",
+        "--space-22",
+        "--space-32",
+        "--space-4",
+        "--space-420",
+        "--space-46",
+        "--space-560",
+        "--space-6",
+        "--space-60",
+        "--text-footer",
+        "--text-h3",
+        "--text-meta",
+        "--tracking-display",
+        "--weight-bold",
+        "--weight-medium"
       ]
     },
     {
@@ -4877,6 +4901,11 @@
     },
     {
       "from": "ds_library_footer",
+      "to": "styles_footer",
+      "kind": "styles"
+    },
+    {
+      "from": "ds_library_footer",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -5742,6 +5771,11 @@
     },
     {
       "from": "styles_case",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_footer",
       "to": "styles_tokens",
       "kind": "tokens"
     },
