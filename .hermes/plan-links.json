@@ -86,6 +86,7 @@
     "cfb55a7": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-2", "note": "mobile header in-flow — P2" },
     "d4d04c6": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-1", "note": "close mark phase 1" },
     "3f91b98": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-1", "note": "settings gear + dropdown — P1" },
-    "97dd81b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-14", "note": "retro coverage pass — tracker sees all 256" }
+    "97dd81b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-14", "note": "retro coverage pass — tracker sees all 256" },
+    "6e59812": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-15", "note": "footer round 2 — nubs, pale dashes, column-major links, strip scroll" }
   }
 }
