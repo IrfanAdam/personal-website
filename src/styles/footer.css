@@ -1,8 +1,9 @@
 /* ADAM/STYLE — styles/footer · dashed frame + link grid + display title · [plan:2026-09-15_183400-lump-sum-builds.md#phase-13] */
 footer {
   border-top: var(--border-hairline);
-  margin-top: var(--space-46);
-  padding: var(--space-22) var(--space-4) var(--space-60);
+  max-width: var(--size-wrap);
+  margin: var(--space-46) auto 0;
+  padding: var(--space-22) var(--space-20) var(--space-60);
   color: var(--color-ink-muted);
 }
 .footer-cols {
@@ -10,19 +11,23 @@ footer {
   display: grid;
   grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
   column-gap: var(--space-70);
-  border: var(--size-hairline) dashed color-mix(in srgb, var(--color-ink-subtle) 52%, transparent);
+  border: var(--size-hairline) dashed color-mix(in srgb, var(--color-ink-subtle) 24%, transparent);
   padding: var(--space-32);
 }
 .footer-corner {
   position: absolute;
-  width: var(--space-5);
-  height: var(--space-5);
-  background: var(--color-ink);
+  width: var(--space-8); height: var(--space-8);
+  background: color-mix(in srgb, var(--color-ink) 14%, transparent);
 }
-.footer-corner--tl { top: calc(var(--space-1) * -1); left: calc(var(--space-1) * -1); }
-.footer-corner--tr { top: calc(var(--space-1) * -1); right: calc(var(--space-1) * -1); }
-.footer-corner--bl { bottom: calc(var(--space-1) * -1); left: calc(var(--space-1) * -1); }
-.footer-corner--br { bottom: calc(var(--space-1) * -1); right: calc(var(--space-1) * -1); }
+.footer-corner::after {
+  content: ''; position: absolute;
+  width: var(--space-4); height: var(--space-4);
+  background: color-mix(in srgb, var(--color-ink) 68%, transparent);
+}
+.footer-corner--tl, .footer-corner--tl::after { top: 0; left: 0; }
+.footer-corner--tr, .footer-corner--tr::after { top: 0; right: 0; }
+.footer-corner--bl, .footer-corner--bl::after { bottom: 0; left: 0; }
+.footer-corner--br, .footer-corner--br::after { bottom: 0; right: 0; }
 .footer-info { display: grid; gap: var(--space-18); align-content: start; }
 .footer-links {
   display: grid;
@@ -87,10 +92,9 @@ footer .divider { margin: var(--space-22) 0 var(--space-32); }
   padding-top: var(--space-22);
 }
 @media (max-width: 760px) {
+  footer { padding-inline: var(--space-16); }
   .footer-cols { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-18); min-height: 0; }
   .footer-right { order: -1; }
   .footer-big { opacity: 0.32; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .footer-big { opacity: 0.58; }
-}
+@media (prefers-reduced-motion: reduce) { .footer-big { opacity: 0.58; } }

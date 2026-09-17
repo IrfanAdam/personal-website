@@ -50,6 +50,7 @@ function route() {
     cleanup();
     cleanup = null;
   }
+  document.querySelectorAll('body > footer').forEach((n) => n.remove());
   const slug = h.startsWith('#/projects/') ? h.split('/')[2] : '';
   const contact = h.startsWith('#/contact');
   const isProject = h.startsWith('#/projects/');
@@ -77,6 +78,8 @@ function route() {
     syncStripMode(false, masonryView, closeBtn);
     syncSettingsPop();
   }
+  const foot = root.querySelector(':scope > footer');
+  if (foot) document.body.appendChild(foot);
   syncTabs();
   centerActiveThumb();
 }
