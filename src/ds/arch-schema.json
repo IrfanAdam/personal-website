@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T06:47:16.438Z",
+  "generated": "2026-09-17T10:03:57.501Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2500,7 +2500,10 @@
         "--color-on-media",
         "--color-panel",
         "--color-surface",
+        "--color-viewer-line",
+        "--color-viewer-shade",
         "--dur-blur",
+        "--dur-fast",
         "--dur-med",
         "--dur-slow",
         "--dur-zoom",
@@ -2516,11 +2519,14 @@
         "--shimmer-band",
         "--shimmer-gradient",
         "--size-frame",
+        "--size-viewer-tether",
         "--space-10",
+        "--space-16",
         "--space-2",
         "--space-3",
         "--space-6",
         "--space-7",
+        "--space-8",
         "--text-label",
         "--z-media"
       ]
@@ -2617,7 +2623,6 @@
       "route": null,
       "title": "footer",
       "tokens": [
-        "--border-dashed",
         "--border-hairline",
         "--color-accent",
         "--color-ink",
@@ -2628,18 +2633,21 @@
         "--font-mono",
         "--font-sans",
         "--leading-display",
-        "--space-112",
-        "--space-12",
+        "--size-hairline",
+        "--size-wrap",
+        "--space-16",
         "--space-160",
         "--space-18",
+        "--space-20",
         "--space-22",
         "--space-32",
         "--space-4",
-        "--space-420",
         "--space-46",
         "--space-560",
         "--space-6",
         "--space-60",
+        "--space-70",
+        "--space-8",
         "--text-footer",
         "--text-h3",
         "--text-meta",
@@ -3111,6 +3119,7 @@
         "--dur-viewer-line",
         "--ease-signature",
         "--ease-standard",
+        "--fx-viewer-pop",
         "--sat-header",
         "--shadow-viewer",
         "--size-cursor",
@@ -3517,6 +3526,14 @@
       "tokens": []
     },
     {
+      "id": "views_masonry_list_viewer",
+      "path": "src/views/masonry/list-viewer.js",
+      "layer": "view",
+      "route": null,
+      "title": "list viewer",
+      "tokens": []
+    },
+    {
       "id": "views_masonry_parallax",
       "path": "src/views/masonry/parallax.js",
       "layer": "view",
@@ -3719,6 +3736,22 @@
       "layer": "view",
       "route": null,
       "title": "strip sound",
+      "tokens": []
+    },
+    {
+      "id": "views_strip_viewer",
+      "path": "src/views/strip-viewer.js",
+      "layer": "view",
+      "route": null,
+      "title": "strip viewer",
+      "tokens": []
+    },
+    {
+      "id": "views_strip_viewer_helpers",
+      "path": "src/views/strip-viewer-helpers.js",
+      "layer": "view",
+      "route": null,
+      "title": "strip viewer helpers",
       "tokens": []
     },
     {
@@ -5736,6 +5769,11 @@
     },
     {
       "from": "main",
+      "to": "views_strip_viewer",
+      "kind": "imports"
+    },
+    {
+      "from": "main",
       "to": "views_stripbar",
       "kind": "imports"
     },
@@ -6250,6 +6288,16 @@
       "kind": "imports"
     },
     {
+      "from": "views_masonry_list_viewer",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_viewer",
+      "to": "views_strip_viewer_helpers",
+      "kind": "imports"
+    },
+    {
       "from": "views_masonry_parallax",
       "to": "views_masonry_parallax_calc",
       "kind": "imports"
@@ -6332,6 +6380,11 @@
     {
       "from": "views_masonry",
       "to": "views_masonry_layout",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry",
+      "to": "views_masonry_list_viewer",
       "kind": "imports"
     },
     {
@@ -6512,6 +6565,26 @@
     {
       "from": "views_strip_sound",
       "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer_helpers",
+      "to": "data_site",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer_helpers",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer",
+      "to": "views_strip_viewer_helpers",
       "kind": "imports"
     },
     {

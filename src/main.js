@@ -7,6 +7,7 @@ import { MinimalLab } from './views/minimal-lab.js';
 import { syncHeaderFrames, centerActiveThumb } from './views/headerFrame.js';
 import { initChrome } from './boot-chrome.js';
 import { initStripbar, syncStripMode } from './views/stripbar.js';
+import { attachStripViewer } from './views/strip-viewer.js';
 import { syncSettingsPop } from './views/settings-menu.js';
 import { initProceedGate } from './views/proceed-gate.js';
 import { initFooterShimmer } from './views/footer-shimmer.js';
@@ -16,6 +17,7 @@ const root = document.getElementById('app');
 const header = document.querySelector('.top');
 const stripbar = document.getElementById('stripbar');
 const { vtabs, stripLinks, closeBtn } = initStripbar(stripbar);
+const stripViewerOff = attachStripViewer(stripbar);
 let cleanup = null;
 let masonryView = 'grid';
 

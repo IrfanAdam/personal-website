@@ -320,6 +320,7 @@ main --> views_minimal_lab
 main --> views_proceed_gate
 main --> views_project
 main --> views_settings_menu
+main --> views_strip_viewer
 main --> views_stripbar
 views_audio_ctx --> views_audio_test
 views_audio_test --> views_audio_ctx
@@ -387,6 +388,7 @@ views_map_wires --> views_map_route
 views_masonry --> data_site
 views_masonry --> views_masonry_cards
 views_masonry --> views_masonry_layout
+views_masonry --> views_masonry_list_viewer
 views_masonry --> views_masonry_parallax
 views_masonry --> views_masonry_reel_tick
 views_masonry --> views_masonry_reveal
@@ -405,6 +407,8 @@ views_masonry_gridReveal_draw --> views_masonry_cells
 views_masonry_gridReveal_load --> views_fx_tokens
 views_masonry_gridReveal_load --> views_masonry_cells
 views_masonry_gridReveal_tick --> views_masonry_cells
+views_masonry_list_viewer --> views_fx_tokens
+views_masonry_list_viewer --> views_strip_viewer_helpers
 views_masonry_parallax --> views_masonry_parallax_calc
 views_masonry_parallax --> views_masonry_parallax_chase
 views_masonry_parallax --> views_masonry_parallax_measure
@@ -445,6 +449,10 @@ views_sound_palette --> fx_sound_voices_noise
 views_sound_palette --> fx_sound_voices_scan
 views_sound_palette --> fx_sound_voices_tone
 views_strip_sound --> views_slot_sound
+views_strip_viewer --> views_fx_tokens
+views_strip_viewer --> views_strip_viewer_helpers
+views_strip_viewer_helpers --> data_site
+views_strip_viewer_helpers --> views_fx_tokens
 views_stripbar --> theme
 views_stripbar --> views_settings_menu
 views_stripbar --> views_shared

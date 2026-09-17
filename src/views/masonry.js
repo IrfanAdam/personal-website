@@ -6,6 +6,7 @@ import { card, row } from './masonry/cards.js';
 import { reveal, attachLinger } from './masonry/reveal.js';
 import { attachDesktopZing } from './masonry/reel-tick.js';
 import { attachViewer } from './masonry/viewer.js';
+import { attachListViewer } from './masonry/list-viewer.js';
 import { footer, aboutBlock } from './shared.js';
 import { mountTitleReveal } from './title-reveal.js';
 let filter = 'all';
@@ -17,6 +18,7 @@ let lingerOff = null;
 let revealOff = null;
 let viewerOff = null;
 let desktopZingOff = null;
+let listViewOff = null;
 const TEXT_H = 0;
 const filtered = () => projects.filter((p) => filter === 'all' || p[7] === filter);
 function draw(root) {
@@ -28,10 +30,12 @@ function draw(root) {
   if (revealOff) { revealOff(); revealOff = null; }
   if (viewerOff) { viewerOff(); viewerOff = null; }
   if (desktopZingOff) { desktopZingOff(); desktopZingOff = null; }
+  if (listViewOff) { listViewOff(); listViewOff = null; }
   if (view === 'list') {
     grid.className = 'works';
     grid.style.removeProperty('--cols');
     grid.innerHTML = `<h2>All of my works</h2>${list.map(row).join('')}${aboutBlock()}`;
+    if (window.innerWidth > 640) listViewOff = attachListViewer(grid);
   } else {
     const heights = list.map((p) => (p[12] || 4) / (p[11] || 3) + TEXT_H);
     const buckets = distribute(cols, heights);
@@ -81,6 +85,7 @@ export function mountMasonry(root) {
     if (revealOff) { revealOff(); revealOff = null; }
     if (viewerOff) { viewerOff(); viewerOff = null; }
     if (desktopZingOff) { desktopZingOff(); desktopZingOff = null; }
+    if (listViewOff) { listViewOff(); listViewOff = null; }
     redraw = null;
   };
 }

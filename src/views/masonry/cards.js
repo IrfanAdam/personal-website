@@ -14,15 +14,24 @@ export function card(p, eager = false) {
   const media = `<span class="img" style="aspect-ratio:${w}/${h}">`
     + `<canvas class="gr" aria-hidden="true"></canvas>`
     + pic + `</span>`;
+  const brackets = [
+    `<span class="card-dim" aria-hidden="true"></span>`,
+    `<span class="card-bracket card-bracket--tl" aria-hidden="true"></span>`,
+    `<span class="card-bracket card-bracket--tr" aria-hidden="true"></span>`,
+    `<span class="card-bracket card-bracket--bl" aria-hidden="true"></span>`,
+    `<span class="card-bracket card-bracket--br" aria-hidden="true"></span>`,
+  ].join('');
   const meta = `<span class="tags">${tags}</span>`
     + `<span class="scrim" aria-hidden="true"></span>`
-    + `<span class="card-info"><b>${title}</b><small>${slug} · ${date}</small></span></a>`;
+    + `<span class="card-info"><b>${title}</b><small>${slug} · ${date}</small></span>` + brackets + `</a>`;
   return open + media + meta;
 }
 export function row(p) {
-  const [slug, title, a, b, date] = p;
+  const [slug, title, a, b, date, , , , img, , , , , mock, hero] = p;
   const cats = [a, b].filter(Boolean).join(' · ');
-  const open = `<a class="work" href="#/projects/${slug}"><span class="work-title">${title}</span>`;
+  const heroSrc = hero || mock || img;
+  const open = `<a class="work" href="#/projects/${slug}" data-hero="${heroSrc}">`
+    + `<span class="work-title">${title}</span>`;
   const meta = `<span class="work-meta">${cats ? cats + ' · ' : ''}${slug} · ${date}</span></a>`;
   return open + meta;
 }
