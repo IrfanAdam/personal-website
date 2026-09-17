@@ -8,11 +8,10 @@ footer {
 .footer-cols {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
-  column-gap: var(--space-112);
+  grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+  column-gap: var(--space-70);
   border: var(--size-hairline) dashed color-mix(in srgb, var(--color-ink-subtle) 52%, transparent);
   padding: var(--space-32);
-  min-height: var(--space-420);
 }
 .footer-corner {
   position: absolute;
@@ -65,10 +64,8 @@ footer .divider { margin: var(--space-22) 0 var(--space-32); }
   opacity: 0.35;
   margin: 0;
   overflow-wrap: anywhere;
-  text-wrap: balance;
   transition: opacity var(--dur-soft) var(--ease-standard);
 }
-.footer-big span { display: block; }
 .footer-big.is-hovering {
   color: transparent;
   background:
