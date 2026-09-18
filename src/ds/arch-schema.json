@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18T10:26:01.618Z",
+  "generated": "2026-09-18T10:38:44.674Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3104,6 +3104,18 @@
       ]
     },
     {
+      "id": "styles_transit",
+      "path": "src/styles/transit.css",
+      "layer": "style",
+      "route": null,
+      "title": "transit",
+      "tokens": [
+        "--border-hairline",
+        "--color-panel",
+        "--z-viewer"
+      ]
+    },
+    {
       "id": "styles_viewer",
       "path": "src/styles/viewer.css",
       "layer": "style",
@@ -3784,6 +3796,14 @@
       "layer": "view",
       "route": null,
       "title": "title reveal",
+      "tokens": []
+    },
+    {
+      "id": "views_transit",
+      "path": "src/views/transit.js",
+      "layer": "view",
+      "route": null,
+      "title": "transit",
       "tokens": []
     }
   ],
@@ -5794,6 +5814,11 @@
       "kind": "imports"
     },
     {
+      "from": "main",
+      "to": "views_transit",
+      "kind": "imports"
+    },
+    {
       "from": "styles_base_actions",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -5905,6 +5930,11 @@
     },
     {
       "from": "styles_tokens_type",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_transit",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -6656,6 +6686,21 @@
     {
       "from": "views_title_reveal",
       "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_transit",
+      "to": "styles_transit",
+      "kind": "styles"
+    },
+    {
+      "from": "views_transit",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_transit",
+      "to": "views_masonry_gridReveal_load",
       "kind": "imports"
     }
   ]

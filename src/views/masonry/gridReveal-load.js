@@ -1,10 +1,15 @@
 /* ADAM/FX — gridReveal-load · decode gate + buffers · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: makeDecode, gateLoad — session-seen cache, mobile replay, timeout
+// Exports: makeDecode, gateLoad, forgetReveal — session-seen cache, replay, mobile replay, timeout
 import { measureTree, orderRandom } from './cells.js';
 import { fxMs } from '../fx-tokens.js';
 
 const SAMPLE = 128;
 const seen = new Set();
+
+// — Cache — a preview reveal must not consume the project page's mosaic —
+export function forgetReveal(src) {
+  if (src) seen.delete(src);
+}
 
 // — Decode factory — async decode ensures bitmap ready before mosaic tint —
 export function makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce) {
@@ -42,24 +47,27 @@ export function makeDecode(img, root, branches, s, makeBuffers, render, finish, 
   };
 }
 
-// — Gate: seen cache, broken-file fast path, load listeners, timeout —
-export function gateLoad(img, hero, reduce, s, decode, render, finish) {
+// — Gate: seen cache, replay, broken-file fast path, load listeners, timeout —
+// `replay` forces the mosaic even when the bitmap is already decoded: the pane's
+// hover swaps and the flight in from the list both want the reveal again.
+export function gateLoad(img, hero, reduce, s, decode, render, finish, replay = false) {
   const key = img.currentSrc || img.src;
   const mobile = matchMedia('(max-width: 640px)').matches;
-  const replay = hero && mobile;
-  if (seen.has(key) || (img.complete && img.naturalWidth)) {
+  const wantReplay = replay || (hero && mobile && !reduce);
+  if ((seen.has(key) || (img.complete && img.naturalWidth)) && !wantReplay) {
     const p = decode();
-    if (!replay || reduce) {
-      const go = () => {
-        s.split = 1;
-        s.eased = 1;
-        s.fade = 1;
-        finish();
-      };
-      if (p && p.then) p.then(go);
-      else go();
-      return true;
-    }
+    const go = () => {
+      s.split = 1;
+      s.eased = 1;
+      s.fade = 1;
+      finish();
+    };
+    if (p && p.then) p.then(go);
+    else go();
+    return true;
+  }
+  if (img.complete && img.naturalWidth) {
+    decode(); // data is ready — the ticker mosaics it in
     return false;
   }
   if (img.complete) {

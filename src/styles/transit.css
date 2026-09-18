@@ -1,0 +1,20 @@
+/* ADAM/STYLE — styles/transit · shared media flight ·
+   [plan:2026-09-15_183400-lump-sum-builds.md#phase-22] */
+/* Ghost of the list pane's media box flying into the detail hero. The hero
+   stays hidden until the ghost lands, so the vertical offset between the pane
+   and the hero reads as motion. Geometry comes from transit.js inline styles. */
+html.is-transit .case-media.hero-box { visibility: hidden; }
+.transit-ghost {
+  position: fixed;
+  z-index: var(--z-viewer);
+  overflow: hidden;
+  border: var(--border-hairline);
+  background: var(--color-panel);
+  transform-origin: 0 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.transit-ghost img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: reduce) {
+  .transit-ghost { display: none; }
+}

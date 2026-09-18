@@ -62,6 +62,7 @@
   --size-viewer-w: 180px;
     --size-viewer-gap: 10px;
     --size-viewer-pad: 20px;
+    --dur-transit: 520ms;
     --size-cursor: 32px;
     --blur-viewer: 2px;
     --blur-cursor: 4px;

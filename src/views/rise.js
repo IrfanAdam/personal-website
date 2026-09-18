@@ -17,7 +17,7 @@ function skipRise(box, img, finalH) {
   box.style.willChange = '';
   box.classList.remove('loading');
   if (Number.isFinite(finalH) && finalH > 0) markHeroSeen(heroKey(), finalH);
-  const off = attachGridReveal(box, img, 20, true);
+  const off = attachGridReveal(box, img, 20, true, 0, box.hasAttribute('data-reveal'));
   syncPull(20);
   return off;
 }
@@ -32,7 +32,7 @@ export function mountHeroRise(root) {
   }
   if (!matchMedia('(max-width: 640px)').matches) {
     const k = heroKey(), seen = hasHeroSeen(k);
-    const off = attachGridReveal(box, img, 80, true);
+    const off = attachGridReveal(box, img, 80, true, 0, box.hasAttribute('data-reveal'));
     if (!seen) { markHeroSeen(k, 0); syncPull(480); }
     return off;
   }
@@ -75,7 +75,7 @@ export function mountHeroRise(root) {
     box.classList.remove('loading');
     requestAnimationFrame(() => requestAnimationFrame(() => {
       if (!box.isConnected) return;
-      offReveal = attachGridReveal(box, img, 80, true);
+      offReveal = attachGridReveal(box, img, 80, true, 0, box.hasAttribute('data-reveal'));
       syncPull(80);
     }));
   };

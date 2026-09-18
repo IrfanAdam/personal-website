@@ -9,7 +9,7 @@ import { makeTicker } from './gridReveal-tick.js';
 import { makeDecode, gateLoad } from './gridReveal-load.js';
 import { smoothstep } from './cells.js';
 import { fx, darkNow, cellCount } from './gridReveal-config.js';
-export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) {
+export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0, replay = false) {
   const canvas = box.querySelector('canvas.gr'), ctx = canvas ? canvas.getContext('2d') : null;
   if (!canvas || !ctx) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -74,7 +74,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0) 
     });
   };
   const decode = makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce);
-  if (gateLoad(img, hero, reduce, s, decode, render, finish)) return () => {};
+  if (gateLoad(img, hero, reduce, s, decode, render, finish, replay)) return () => {};
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2), r = box.getBoundingClientRect();
     const W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));

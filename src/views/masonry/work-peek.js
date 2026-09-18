@@ -40,7 +40,7 @@ export function attachWorkPeek(grid) {
     pane.classList.remove('ready'); // mosaic holds the frame while the new media decodes
     img.src = src;
     offReveal();
-    offReveal = attachGridReveal(pane, img, 0, true);
+    offReveal = attachGridReveal(pane, img, 0, true, 0, true); // every swap re-mosaics
   };
   const onEnter = (e) => show(e.currentTarget);
   rows.forEach((r) => r.addEventListener('mouseenter', onEnter));

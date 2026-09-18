@@ -11,6 +11,7 @@ import { attachStripViewer } from './views/strip-viewer.js';
 import { syncSettingsPop } from './views/settings-menu.js';
 import { initProceedGate } from './views/proceed-gate.js';
 import { initFooterShimmer } from './views/footer-shimmer.js';
+import { armTransit, takeTransit, flyTransit } from './views/transit.js';
 import './views/init-sound.js';
 
 const root = document.getElementById('app');
@@ -24,6 +25,7 @@ let masonryView = 'grid';
 initChrome(header);
 initProceedGate();
 initFooterShimmer();
+document.addEventListener('click', armTransit, true);
 
 function syncTabs() {
   vtabs.forEach((b) => b.classList.toggle('on', b.dataset.vtab === masonryView));
@@ -63,8 +65,12 @@ function route() {
     a.classList.toggle('on', href === `#/projects/${slug}` || (contact && href === '#/contact'));
   });
   if (h.startsWith('#/projects/')) {
+    const transit = takeTransit(h.split('/')[2]);
     root.innerHTML = Project(h.split('/')[2]);
+    const hero = root.querySelector('.case-media.hero-box');
+    if (transit && hero) hero.setAttribute('data-reveal', 'replay');
     cleanup = mountProject(root);
+    if (transit) flyTransit(transit, root);
   } else if (h.startsWith('#/lab/architecture')) {
     root.innerHTML = MapView();
     cleanup = mountMap(root);
