@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18T10:11:28.519Z",
+  "generated": "2026-09-18T10:26:01.618Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2902,7 +2902,6 @@
         "--measure-prose",
         "--size-frame",
         "--size-header",
-        "--size-peek-w",
         "--space-10",
         "--space-12",
         "--space-14",
@@ -3056,10 +3055,8 @@
         "--space-1",
         "--space-10",
         "--space-12",
-        "--space-160",
         "--space-2",
         "--space-32",
-        "--space-360",
         "--stone-0"
       ]
     },
