@@ -93,6 +93,7 @@
     "4f7de17": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-18", "note": "feat(viewer): physics popover for strip/list + grid viewfinder desktop" },
     "5fbfb1a": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-19", "note": "feat(list): preview pane on the right + promo-card previews" },
     "2d6c1ca": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-20", "note": "feat(list): pane previews the project's detail media" },
-    "9375655": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-21", "note": "style(list): 1fr/1fr split, pane fills its half" }
+    "9375655": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-21", "note": "style(list): 1fr/1fr split, pane fills its half" },
+    "6b043a6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-22", "note": "feat(transit): media flight from the list pane into the hero" }
   }
 }
