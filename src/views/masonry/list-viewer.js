@@ -6,7 +6,7 @@ import { makeStripEl, placeWithOrigin, createFollower } from '../strip-viewer-he
 export function attachListViewer(grid) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   if (matchMedia('(hover: none)').matches) return () => {};
-  const rows = [...grid.querySelectorAll('.work[data-hero]')];
+  const rows = [...grid.querySelectorAll('.work[data-card]')];
   if (!rows.length) return () => {};
   const VW = fxNum('--size-viewer-w', 180), GAP = fxNum('--space-8', 8) * 0.1, PAD = fxNum('--space-12', 12);
   const HIDE = fxMs('--fx-viewer-debounce', 70), SWAP = fxMs('--dur-viewer-swap', 110);
@@ -30,7 +30,7 @@ export function attachListViewer(grid) {
     el.classList.remove('on');
   };
   const showRow = (row, x, y) => {
-    const src = row.dataset.hero;
+    const src = row.dataset.card;
     if (!src) return;
     cx = x; cy = y;
     const p = place();
@@ -67,7 +67,7 @@ export function attachListViewer(grid) {
     r.addEventListener('mousemove', onMove);
     r.addEventListener('mouseleave', onLeave);
   });
-  const first = rows[0] && rows[0].dataset.hero;
+  const first = rows[0] && rows[0].dataset.card;
   if (first && !img.getAttribute('src')) img.src = first;
   return () => {
     cancelH(); clearPop(); fol.stop();

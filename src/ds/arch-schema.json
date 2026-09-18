@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T10:03:57.501Z",
+  "generated": "2026-09-18T09:48:02.879Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2896,11 +2896,15 @@
         "--color-ink-muted",
         "--color-line",
         "--color-surface",
+        "--dur-viewer-swap",
+        "--ease-standard",
         "--font-mono",
         "--leading-title",
         "--measure-copy",
         "--measure-prose",
         "--size-frame",
+        "--size-header",
+        "--size-peek-w",
         "--space-10",
         "--space-12",
         "--space-14",
@@ -3054,8 +3058,10 @@
         "--space-1",
         "--space-10",
         "--space-12",
+        "--space-160",
         "--space-2",
         "--space-32",
+        "--space-360",
         "--stone-0"
       ]
     },
@@ -3119,7 +3125,6 @@
         "--dur-viewer-line",
         "--ease-signature",
         "--ease-standard",
-        "--fx-viewer-pop",
         "--sat-header",
         "--shadow-viewer",
         "--size-cursor",
@@ -3526,6 +3531,14 @@
       "tokens": []
     },
     {
+      "id": "views_masonry_list_view",
+      "path": "src/views/masonry/list-view.js",
+      "layer": "view",
+      "route": null,
+      "title": "list view",
+      "tokens": []
+    },
+    {
       "id": "views_masonry_list_viewer",
       "path": "src/views/masonry/list-viewer.js",
       "layer": "view",
@@ -3611,6 +3624,14 @@
       "layer": "view",
       "route": null,
       "title": "viewer visibility",
+      "tokens": []
+    },
+    {
+      "id": "views_masonry_work_peek",
+      "path": "src/views/masonry/work-peek.js",
+      "layer": "view",
+      "route": null,
+      "title": "work peek",
       "tokens": []
     },
     {
@@ -6298,6 +6319,26 @@
       "kind": "imports"
     },
     {
+      "from": "views_masonry_list_view",
+      "to": "views_masonry_cards",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_view",
+      "to": "views_masonry_list_viewer",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_view",
+      "to": "views_masonry_work_peek",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_view",
+      "to": "views_shared",
+      "kind": "imports"
+    },
+    {
       "from": "views_masonry_parallax",
       "to": "views_masonry_parallax_calc",
       "kind": "imports"
@@ -6363,6 +6404,16 @@
       "kind": "imports"
     },
     {
+      "from": "views_masonry_work_peek",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_work_peek",
+      "to": "views_img_helpers",
+      "kind": "imports"
+    },
+    {
       "from": "views_masonry",
       "to": "data_site",
       "kind": "imports"
@@ -6384,7 +6435,7 @@
     },
     {
       "from": "views_masonry",
-      "to": "views_masonry_list_viewer",
+      "to": "views_masonry_list_view",
       "kind": "imports"
     },
     {

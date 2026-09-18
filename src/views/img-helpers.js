@@ -1,5 +1,5 @@
 /* ADAM/SHARED — views/img-helpers · responsive picture · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: pictureMarkup, srcsetFor — builds <picture> with WebP + JPEG srcsets
+// Exports: pictureMarkup, srcsetFor, cardSrc — <picture> srcsets + one preview src
 import variants from '../data/variants.json';
 
 function baseOf(src) {
@@ -14,6 +14,16 @@ export function srcsetFor(src, type) {
   const base = baseOf(key);
   const ext = type === 'webp' ? 'webp' : 'jpg';
   return entry.variants.map((w) => `${base}-${w}.${ext} ${w}w`).join(', ');
+}
+
+/* Single src for preview surfaces (popover, peek pane) — nearest shipped width. */
+export function cardSrc(src, prefer = 480) {
+  const key = (src || '').split('?')[0];
+  const entry = variants[key];
+  if (!entry || !entry.variants.length) return src;
+  const near = (a, b) => Math.abs(b - prefer) < Math.abs(a - prefer);
+  const w = entry.variants.reduce((a, b) => (near(a, b) ? b : a));
+  return `${baseOf(key)}-${w}.webp`;
 }
 
 export function sizesFor(kind) {

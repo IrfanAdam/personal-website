@@ -2,12 +2,12 @@
 import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
-import { card, row } from './masonry/cards.js';
+import { card } from './masonry/cards.js';
 import { reveal, attachLinger } from './masonry/reveal.js';
 import { attachDesktopZing } from './masonry/reel-tick.js';
 import { attachViewer } from './masonry/viewer.js';
-import { attachListViewer } from './masonry/list-viewer.js';
-import { footer, aboutBlock } from './shared.js';
+import { listMarkup, attachListView } from './masonry/list-view.js';
+import { footer } from './shared.js';
 import { mountTitleReveal } from './title-reveal.js';
 let filter = 'all';
 const cols = 4;
@@ -34,8 +34,8 @@ function draw(root) {
   if (view === 'list') {
     grid.className = 'works';
     grid.style.removeProperty('--cols');
-    grid.innerHTML = `<h2>All of my works</h2>${list.map(row).join('')}${aboutBlock()}`;
-    if (window.innerWidth > 640) listViewOff = attachListViewer(grid);
+    grid.innerHTML = listMarkup(list);
+    if (window.innerWidth > 640) listViewOff = attachListView(grid);
   } else {
     const heights = list.map((p) => (p[12] || 4) / (p[11] || 3) + TEXT_H);
     const buckets = distribute(cols, heights);

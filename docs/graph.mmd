@@ -388,7 +388,7 @@ views_map_wires --> views_map_route
 views_masonry --> data_site
 views_masonry --> views_masonry_cards
 views_masonry --> views_masonry_layout
-views_masonry --> views_masonry_list_viewer
+views_masonry --> views_masonry_list_view
 views_masonry --> views_masonry_parallax
 views_masonry --> views_masonry_reel_tick
 views_masonry --> views_masonry_reveal
@@ -407,6 +407,10 @@ views_masonry_gridReveal_draw --> views_masonry_cells
 views_masonry_gridReveal_load --> views_fx_tokens
 views_masonry_gridReveal_load --> views_masonry_cells
 views_masonry_gridReveal_tick --> views_masonry_cells
+views_masonry_list_view --> views_masonry_cards
+views_masonry_list_view --> views_masonry_list_viewer
+views_masonry_list_view --> views_masonry_work_peek
+views_masonry_list_view --> views_shared
 views_masonry_list_viewer --> views_fx_tokens
 views_masonry_list_viewer --> views_strip_viewer_helpers
 views_masonry_parallax --> views_masonry_parallax_calc
@@ -421,6 +425,8 @@ views_masonry_viewer --> views_masonry_viewer_bind
 views_masonry_viewer --> views_masonry_viewer_markup
 views_masonry_viewer --> views_masonry_viewer_visibility
 views_masonry_viewer_bind --> views_masonry_viewer_markup
+views_masonry_work_peek --> views_fx_tokens
+views_masonry_work_peek --> views_img_helpers
 views_minimal_lab --> views_map_data
 views_minimal_lab --> views_shared
 views_proceed_gate --> views_audio_ctx
