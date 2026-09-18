@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T11:34:15.130Z",
+ "generated": "2026-09-18T10:14:44.101Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,6 +30,24 @@
   "2026-09-15_193000-theme-island-parity.md"
  ],
  "commits": [
+  {
+   "sha": "2d6c1ca",
+   "full": "2d6c1ca4a714bd5d17b96d7820f475541c4e74be",
+   "date": "2026-09-18",
+   "time": "15:42",
+   "subject": "feat(list): pane previews the project's detail media",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-20"
+  },
+  {
+   "sha": "5fbfb1a",
+   "full": "5fbfb1a65ff40fe4e8a84e3aee08d8d90947585c",
+   "date": "2026-09-18",
+   "time": "15:23",
+   "subject": "feat(list): preview pane on the right + promo-card previews",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-19"
+  },
   {
    "sha": "4f7de17",
    "full": "4f7de17d57e0721fb9b88db9eecda3e5f4f1f9bb",
