@@ -18,7 +18,9 @@
 .work:hover .work-title { text-decoration: underline; }
 .work-title { font-weight: var(--weight-bold); letter-spacing: var(--tracking-body); }
 .work-meta { color: var(--color-ink-muted); font-family: var(--font-mono); font-size: var(--text-meta); }
-/* List view — rows column + project preview pane (desktop; markup in masonry/list-view.js). */
+/* List view — rows column + project preview pane (desktop; markup in masonry/work-peek.js).
+   The pane is the detail page's media box (.case-media.hero-box): same aspect, crop
+   and mosaic reveal, so the preview reads as the project's own page, not a card crop. */
 .works-cols {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--size-peek-w);
@@ -26,21 +28,13 @@
   align-items: start;
 }
 .works-rows { min-width: 0; }
-.peek {
+.peek.case-media.hero-box {
   position: sticky;
   top: calc(var(--header-h, var(--size-header)) + var(--space-16));
-  min-width: 0;
+  align-self: start;
+  width: var(--size-peek-w);
+  will-change: auto;
 }
-.peek-frame { padding: var(--space-4); background: var(--color-surface); border: var(--border-hairline); }
-.peek-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 1;
-  transition: opacity var(--dur-viewer-swap) var(--ease-standard);
-}
-.peek.is-swap .peek-frame img { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .peek-frame img { transition: none; } }
 .about { max-width: var(--measure-prose); padding: var(--space-18) var(--space-4); }
 .about blockquote {
   margin: var(--space-14) 0;

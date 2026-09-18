@@ -27,10 +27,11 @@ export function card(p, eager = false) {
   return open + media + meta;
 }
 export function row(p) {
-  const [slug, title, a, b, date, , , , img] = p;
+  const [slug, title, a, b, date, , , , img, , , w = 3, h = 4, mock, hero] = p;
   const cats = [a, b].filter(Boolean).join(' · ');
-  const card = cardSrc(img, 480), peek = cardSrc(img, 800);
-  const open = `<a class="work" href="#/projects/${slug}" data-card="${card}" data-peek="${peek}">`
+  const card = cardSrc(img, 480), media = cardSrc(hero || mock || img, 800);
+  const open = `<a class="work" href="#/projects/${slug}" data-card="${card}"`
+    + ` data-media="${media}" data-w="${w}" data-h="${h}">`
     + `<span class="work-title">${title}</span>`;
   const meta = `<span class="work-meta">${cats ? cats + ' · ' : ''}${slug} · ${date}</span></a>`;
   return open + meta;
