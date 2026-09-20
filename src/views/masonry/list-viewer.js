@@ -8,25 +8,32 @@ export function attachListViewer(grid) {
   if (matchMedia('(hover: none)').matches) return () => {};
   const rows = [...grid.querySelectorAll('.work[data-card]')];
   if (!rows.length) return () => {};
+  rows.forEach((r) => {
+    const src = r.dataset.card;
+    if (!src) return;
+    const im = new Image();
+    im.decoding = 'async';
+    im.src = src;
+  });
   const VW = fxNum('--size-viewer-w', 180), GAP = fxNum('--space-8', 8) * 0.1, PAD = fxNum('--space-12', 12);
-  const HIDE = fxMs('--fx-viewer-debounce', 70), SWAP = fxMs('--dur-viewer-swap', 110);
+  const HIDE = fxMs('--fx-viewer-debounce', 70);
   const el = makeStripEl();
   const img = el.querySelector('img');
   const fol = createFollower(el);
-  let cur = '', hideT = 0, popT = 0, on = false;
-  let cx = 0, cy = 0, vh = 240;
+  let cur = '', hideT = 0, on = false;
+  let cx = 0, cy = 0;
+  const VH = 240;
   const titleOf = (row) => {
     const t = row.querySelector('.work-title');
     return t ? t.textContent : '';
   };
-  const place = () => placeWithOrigin(el, cx, cy, VW, vh, PAD, GAP);
+  const place = () => placeWithOrigin(el, cx, cy, VW, VH, PAD, GAP);
   const cancelH = () => { if (hideT) { clearTimeout(hideT); hideT = 0; } };
-  const clearPop = () => { if (popT) { clearTimeout(popT); popT = 0; } };
   const schedH = () => { cancelH(); hideT = setTimeout(hide, HIDE); };
   const hide = () => {
     if (!on) return;
     on = false; cur = '';
-    clearPop(); fol.idle();
+    fol.idle();
     el.classList.remove('on');
   };
   const showRow = (row, x, y) => {
@@ -37,8 +44,7 @@ export function attachListViewer(grid) {
     if (src === cur && on) { fol.aim(p.x, p.y); return; }
     if (img.getAttribute('src') !== src) img.src = src;
     img.alt = titleOf(row);
-    vh = el.offsetHeight || vh;
-    cancelH(); clearPop();
+    cancelH();
     if (!on) {
       cur = src; on = true;
       fol.snap(p.x, p.y);
@@ -46,33 +52,34 @@ export function attachListViewer(grid) {
       requestAnimationFrame(() => fol.pop());
     } else {
       cur = src;
-      fol.dip();
       fol.aim(p.x, p.y);
-      popT = setTimeout(() => { popT = 0; fol.settle(); }, SWAP);
     }
   };
   const onEnter = (e) => showRow(e.currentTarget, e.clientX, e.clientY);
+  let moveTick = false;
   const onMove = (e) => {
     if (!on) return;
-    cx = e.clientX; cy = e.clientY;
-    const p = place();
-    fol.aim(p.x, p.y);
+    cx = e.clientX;
+    cy = e.clientY;
+    if (moveTick) return;
+    moveTick = true;
+    requestAnimationFrame(() => {
+      moveTick = false;
+      if (!on) return;
+      const p = place();
+      fol.aim(p.x, p.y);
+    });
   };
   const onLeave = () => schedH();
-  const onImgLoad = () => { vh = el.offsetHeight || vh; const p = place(); fol.aim(p.x, p.y); };
-  img.addEventListener('load', onImgLoad);
-  img.addEventListener('error', onImgLoad);
   rows.forEach((r) => {
     r.addEventListener('mouseenter', onEnter);
-    r.addEventListener('mousemove', onMove);
+    r.addEventListener('mousemove', onMove, { passive: true });
     r.addEventListener('mouseleave', onLeave);
   });
   const first = rows[0] && rows[0].dataset.card;
   if (first && !img.getAttribute('src')) img.src = first;
   return () => {
-    cancelH(); clearPop(); fol.stop();
-    img.removeEventListener('load', onImgLoad);
-    img.removeEventListener('error', onImgLoad);
+    cancelH(); fol.stop();
     rows.forEach((r) => {
       r.removeEventListener('mouseenter', onEnter);
       r.removeEventListener('mousemove', onMove);

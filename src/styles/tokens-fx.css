@@ -50,8 +50,11 @@
   --fx-viewer-threshold: 12px;
     --fx-viewer-idle: 850ms;
     --fx-viewer-debounce: 70ms;
-    --fx-viewer-k: 0.32;
-    --fx-viewer-fr: 0.58;
+    --fx-viewer-k: 0.05;
+    --fx-viewer-fr: 0.78;
+    --fx-viewer-y-k: 0.07;
+    --fx-viewer-y-fr: 0.8;
+    --fx-viewer-y-dead: 14px;
     --fx-viewer-pop-k: 0.28;
     --fx-viewer-pop-fr: 0.55;
     /* Pop scale — FROM driven by physics (see createFollower) */

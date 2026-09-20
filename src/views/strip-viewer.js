@@ -3,7 +3,7 @@
 // Exports: attachStripViewer — cursor-following hero popover for header strip
 import { fxNum, fxMs } from './fx-tokens.js';
 import {
-  HERO, slugFrom, makeStripEl, placeWithOrigin, createFollower,
+  HERO, slugFrom, makeStripEl, placeWithOrigin, createFollower, preloadHeroes,
 } from './strip-viewer-helpers.js';
 export function attachStripViewer(bar) {
   if (!bar) return () => {};
@@ -11,11 +11,13 @@ export function attachStripViewer(bar) {
   if (matchMedia('(hover: none)').matches) return () => {};
   const links = [...bar.querySelectorAll('.strip a[href^="#/projects/"]')];
   if (!links.length) return () => {};
+  preloadHeroes();
   const VW = fxNum('--size-viewer-w', 180), GAP = fxNum('--space-8', 8) * 0.1, PAD = fxNum('--space-12', 12);
   const HIDE = fxMs('--fx-viewer-debounce', 70), SWAP = fxMs('--dur-viewer-swap', 110);
   const el = makeStripEl(), img = el.querySelector('img'), fol = createFollower(el);
-  let cur = '', hideT = 0, popT = 0, on = false, cx = 0, cy = 0, vh = 240;
-  const place = () => placeWithOrigin(el, cx, cy, VW, vh, PAD, GAP);
+  let cur = '', hideT = 0, popT = 0, on = false, cx = 0, cy = 0;
+  const VH = 240;
+  const place = () => placeWithOrigin(el, cx, cy, VW, VH, PAD, GAP);
   const cancelH = () => { if (hideT) { clearTimeout(hideT); hideT = 0; } };
   const clearPop = () => { if (popT) { clearTimeout(popT); popT = 0; } };
   const schedH = () => { cancelH(); hideT = setTimeout(hide, HIDE); };
@@ -25,9 +27,11 @@ export function attachStripViewer(bar) {
     cx = x; cy = y;
     const p = place();
     if (slug === cur && on) { fol.aim(p.x, p.y); return; }
-    if (img.getAttribute('src') !== src) img.src = src;
+    if (img.getAttribute('src') !== src) {
+      img.src = src;
+      if (img.decode) img.decode().catch(() => {});
+    }
     img.alt = slug;
-    vh = el.offsetHeight || vh;
     cancelH(); clearPop();
     if (!on) {
       cur = slug; on = true;
@@ -63,17 +67,14 @@ export function attachStripViewer(bar) {
     else { cancelH(); const p = place(); fol.aim(p.x, p.y); }
   };
   const onStripLeave = () => schedH();
-  const onImgLoad = () => { vh = el.offsetHeight || vh; const p = place(); fol.aim(p.x, p.y); };
-  img.addEventListener('load', onImgLoad);
-  img.addEventListener('error', onImgLoad);
   links.forEach((a) => {
     a.addEventListener('mouseenter', onEnter);
-    a.addEventListener('mousemove', onMove);
+    a.addEventListener('mousemove', onMove, { passive: true });
     a.addEventListener('mouseleave', onLeave);
   });
   const strip = bar.querySelector('.strip');
   if (strip) {
-    strip.addEventListener('mousemove', onStripMove);
+    strip.addEventListener('mousemove', onStripMove, { passive: true });
     strip.addEventListener('mouseleave', onStripLeave);
   }
   const onResize = () => { if (!on) return; const p = place(); fol.aim(p.x, p.y); };
@@ -83,8 +84,6 @@ export function attachStripViewer(bar) {
     cancelH(); clearPop(); fol.stop();
     window.removeEventListener('resize', onResize);
     window.removeEventListener('scroll', onResize);
-    img.removeEventListener('load', onImgLoad);
-    img.removeEventListener('error', onImgLoad);
     links.forEach((a) => {
       a.removeEventListener('mouseenter', onEnter);
       a.removeEventListener('mousemove', onMove);

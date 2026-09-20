@@ -11,6 +11,12 @@ export function forgetReveal(src) {
   if (src) seen.delete(src);
 }
 
+// — Read probe — lets the list pane reuse the project page's seen rule —
+export function hasReveal(src) {
+  if (!src) return false;
+  return seen.has(src);
+}
+
 // — Decode factory — async decode ensures bitmap ready before mosaic tint —
 export function makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce) {
   return async () => {

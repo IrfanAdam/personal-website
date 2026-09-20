@@ -22,8 +22,9 @@ export function attachViewer(grid) {
     TH: fxNum('--fx-viewer-threshold', 12),
     IDLE: fxMs('--fx-viewer-idle', 850),
     HIDE: fxMs('--fx-viewer-debounce', 70),
-    K: fxNum('--fx-viewer-k', 0.1),
-    FR: fxNum('--fx-viewer-fr', 0.54),
+    K: fxNum('--fx-viewer-k', 0.05),
+    FR: fxNum('--fx-viewer-fr', 0.78),
+    YDEAD: fxNum('--fx-viewer-y-dead', 14),
     VW: fxNum('--size-viewer-w', 180),
     VGAP: fxNum('--size-viewer-gap', 10),
     VPAD: fxNum('--size-viewer-pad', 20),
@@ -57,6 +58,7 @@ export function attachViewer(grid) {
   const offBind = bindViewer({
     grid, cards, els, state, cfg, paint, kick, schedulePaint,
     showCursor, scheduleHide, cancelHide, clearIdle, armIdle, checkThreshold,
+    setTgt: (cand) => { if (Math.abs(cand - state.cur) >= cfg.YDEAD) state.tgt = cand; },
   });
   // expose for bind's idle/threshold callbacks
   state._hidePortal = hidePortal; state._showPortal = showPortal;

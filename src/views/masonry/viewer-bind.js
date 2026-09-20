@@ -2,7 +2,7 @@
 // Exports: bindViewer — wires card/grid/scroll/resize + image fallback
 import { targetY, placeViewerNear } from './viewer-markup.js';
 export function bindViewer(o) {
-  const { grid, cards, els, state, cfg, paint, kick, schedulePaint } = o;
+  const { grid, cards, els, state, cfg, paint, kick, schedulePaint, setTgt } = o;
   const { vimg } = els;
   const enter = (e) => {
     const next = e.currentTarget;
@@ -27,7 +27,7 @@ export function bindViewer(o) {
     if (!state.card) return;
     o.cancelHide();
     state.cx = e.clientX; state.cy = e.clientY;
-    state.tgt = targetY(state.cy, state.rect, state.vh);
+    setTgt(targetY(state.cy, state.rect, state.vh));
     o.checkThreshold(); if (state.portalOn) o.armIdle();
     schedulePaint();
   };
@@ -37,7 +37,7 @@ export function bindViewer(o) {
     state.cx = e.clientX; state.cy = e.clientY;
     const over = !!e.target.closest('.card');
     if (state.card && state.rect) {
-      state.tgt = targetY(state.cy, state.rect, state.vh);
+      setTgt(targetY(state.cy, state.rect, state.vh));
       if (over) o.checkThreshold();
       if (state.portalOn) o.armIdle();
     }

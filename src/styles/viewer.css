@@ -27,10 +27,9 @@
 @supports not ((backdrop-filter:blur(var(--blur-viewer))) or
   (-webkit-backdrop-filter:blur(var(--blur-viewer)))){.viewer{background:var(--color-viewer-bg);}}
 @media (prefers-reduced-motion:reduce){
-  .viewer-cursor,.viewer,.viewer-lines,.viewer-lines line{transition:none;animation:none;}
-  .viewer--strip{scale:1 !important;}}
+  .viewer-cursor,.viewer,.viewer-lines,.viewer-lines line{transition:none;animation:none;}}
 html.viewer-cursor-active .cols,html.viewer-cursor-active .cols *{cursor:none !important;}
-.viewer--strip{will-change:transform,scale;scale:var(--fx-viewer-pop);transform-origin:0% 0%;
+.viewer--strip{will-change:transform;transform-origin:0% 0%;
   transition:opacity var(--dur-glide) var(--ease-standard),filter var(--dur-glide) var(--ease-signature);}
 .viewer--strip.on{
   transition:opacity var(--dur-glide) var(--ease-signature),filter var(--dur-glide) var(--ease-signature);}
