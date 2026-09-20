@@ -69,5 +69,5 @@ collections:
       - { label: "Cover Image", name: "image", widget: "image", required: false, hint: "Grid thumbnail — /public/images" }
       - { label: "Hover Mock (masonry hover + viewer)", name: "mock", widget: "image", required: false, hint: "Framer BEj — masonry hover & viewer preview; also detail hero if hero empty (CDN or /public/mocks)" }
       - { label: "Hero Image (detail page hero)", name: "hero", widget: "image", required: false, hint: "Detail page large hero — Framer detail uses mock, not grid thumb; falls back to mock → image" }
-      - { label: "Promo Video (16:9 below hero)", name: "promoVideo", widget: "file", required: false, media_folder: "public/videos", public_folder: "/videos", hint: "MP4 promo — shows 16:9 below hero. Leave empty for demo placeholder", pattern: ['\\.mp4$|\\.webm$|\\.mov$', "mp4/webm/mov"] }
+      - { label: "Promo Video (16:9 below hero)", name: "promoVideo", widget: "file", required: false, media_folder: "public/videos", public_folder: "/videos", hint: "MP4 promo — shows 16:9 below hero. Leave empty for demo placeholder", pattern: ['\.(mp4|webm|mov)$', "mp4/webm/mov"] }
       - { label: "Body", name: "body", widget: "markdown", required: false, hint: "Case study content — supports markdown" }
