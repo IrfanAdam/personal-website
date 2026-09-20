@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-20T13:13:27.902Z",
+ "generated": "2026-09-20T14:21:15.124Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,6 +30,15 @@
   "2026-09-15_193000-theme-island-parity.md"
  ],
  "commits": [
+  {
+   "sha": "2bccb2e",
+   "full": "2bccb2efbace5ba6cafc4cd58a498ef42fcfae93",
+   "date": "2026-09-20",
+   "time": "19:14",
+   "subject": "feat(case): 16:9 promo video below hero with minimal player + avatar 44 tap",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "phase-25"
+  },
   {
    "sha": "6b043a6",
    "full": "6b043a6a892032b3fb4693489b1410180ea9db0b",
@@ -2416,8 +2425,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/foundations/space/audit.js",
-  "M src/ds/primitives/avatar.js"
- ]
+ "wip": []
 }
