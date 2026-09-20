@@ -2,7 +2,7 @@
    [plan:2026-09-15_183400-lump-sum-builds.md#phase-17] */
 // Exports: attachListViewer — single popover, grid follow + throttled swaps
 import { fxNum, fxMs } from '../fx-tokens.js';
-import { makeStripEl, placeWithOrigin, createFollower } from '../strip-viewer-helpers.js';
+import { makeStripEl, placeWithOrigin, createListFollower } from '../strip-viewer-helpers.js';
 export function attachListViewer(grid) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
   if (matchMedia('(hover: none)').matches) return () => {};
@@ -15,7 +15,7 @@ export function attachListViewer(grid) {
   });
   const VW = fxNum('--size-viewer-w', 180), GAP = fxNum('--space-8', 8) * 0.1, PAD = fxNum('--space-12', 12);
   const HIDE = fxMs('--fx-viewer-debounce', 70), VH = 240;
-  const el = makeStripEl(), img = el.querySelector('img'), fol = createFollower(el);
+  const el = makeStripEl(), img = el.querySelector('img'), fol = createListFollower(el);
   img.decoding = 'async';
   let cur = '', hideT = 0, swapRaf = 0, on = false, cx = 0, cy = 0, pending = '', pendingAlt = '';
   const titleOf = (row) => (row.querySelector('.work-title') || {}).textContent || '';

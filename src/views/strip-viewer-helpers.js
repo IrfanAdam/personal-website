@@ -73,3 +73,28 @@ export function createFollower(el) {
     stop() { if (raf) cancelAnimationFrame(raf); raf = 0; live = false; },
   };
 }
+// — List follower —
+export function createListFollower(el) {
+  const SK = fxNum('--fx-viewer-pop-k', 0.28);
+  const SFR = fxNum('--fx-viewer-pop-fr', 0.55);
+  const FROM = fxNum('--fx-viewer-pop', 0.985);
+  let x = 0, y = 0, s = FROM, vs = 0, ts = FROM, raf = 0, live = false;
+  const apply = () => {
+    el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${s.toFixed(4)})`;
+  };
+  const tick = () => {
+    raf = 0;
+    vs = (vs + (ts - s) * SK) * SFR; s += vs;
+    apply();
+    const sclDone = Math.abs(ts - s) < 0.001 && Math.abs(vs) < 0.001;
+    if (live || !sclDone) raf = requestAnimationFrame(tick);
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  return {
+    snap(nx, ny) { x = nx; y = ny; apply(); kick(); },
+    aim(nx, ny) { x = nx; y = ny; apply(); live = true; kick(); },
+    pop() { s = FROM; vs = 0; ts = 1; live = true; kick(); },
+    idle() { live = false; ts = FROM; kick(); },
+    stop() { if (raf) cancelAnimationFrame(raf); raf = 0; live = false; },
+  };
+}
