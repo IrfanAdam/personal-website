@@ -25,7 +25,7 @@ export function audit(){return [
       `<td>Pass (row-padded)</td></tr>`,
     ].join('')
     + [
-      `<tr><td>.avatar</td><td>30 / 44 / 60px variants — sm below, md/lg above</td>`,
-      `<td>Pass at md/lg, sm is non-interactive</td></tr>`,
+      `<tr><td>.avatar</td><td>44 / 44 / 60px variants — all ≥ <span class="tok">--size-tap</span> (sm bumped from 30)</td>`,
+      `<td>Pass — min 44 tap met</td></tr>`,
     ].join('')
     + `</table>`;}

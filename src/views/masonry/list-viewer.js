@@ -14,10 +14,10 @@ export function attachListViewer(grid) {
     if (im.decode) im.decode().catch(() => {});
   });
   const VW = fxNum('--size-viewer-w', 180), GAP = fxNum('--space-8', 8) * 0.1, PAD = fxNum('--space-12', 12);
-  const HIDE = fxMs('--fx-viewer-debounce', 70), VH = 240;
+  const HIDE = fxMs('--fx-viewer-debounce', 70), VH = fxNum('--size-viewer-h', 240);
   const el = makeStripEl(), img = el.querySelector('img'), fol = createListFollower(el);
   img.decoding = 'async';
-  let cur = '', hideT = 0, swapRaf = 0, on = false, cx = 0, cy = 0, pending = '', pendingAlt = '';
+  let cur = '', hideT = 0, swapRaf = 0, on = false, cx = 0, cy = 0, pending = '', pendingAlt = '', moveRaf = 0;
   const titleOf = (row) => (row.querySelector('.work-title') || {}).textContent || '';
   const place = () => placeWithOrigin(el, cx, cy, VW, VH, PAD, GAP);
   const cancelH = () => { if (hideT) { clearTimeout(hideT); hideT = 0; } };
@@ -25,6 +25,7 @@ export function attachListViewer(grid) {
   const hide = () => {
     if (!on) return; on = false; cur = '';
     if (swapRaf) { cancelAnimationFrame(swapRaf); swapRaf = 0; pending = ''; }
+    if (moveRaf) { cancelAnimationFrame(moveRaf); moveRaf = 0; }
     fol.idle(); el.classList.remove('on');
   };
   const flushSwap = () => {
@@ -49,14 +50,19 @@ export function attachListViewer(grid) {
   };
   const onEnter = (e) => showRow(e.currentTarget, e.clientX, e.clientY);
   const onLeave = () => schedH();
-  const onGridMove = (e) => { if (!on) return; cx = e.clientX; cy = e.clientY; const p = place(); fol.aim(p.x, p.y); };
+  const flushMove = () => { moveRaf = 0; if (!on) return; const p = place(); fol.aim(p.x, p.y); };
+  const onGridMove = (e) => {
+    if (!on) return; cx = e.clientX; cy = e.clientY;
+    if (!moveRaf) moveRaf = requestAnimationFrame(flushMove);
+  };
   rows.forEach((r) => { r.addEventListener('mouseenter', onEnter); r.addEventListener('mouseleave', onLeave); });
   grid.addEventListener('mousemove', onGridMove, { passive: true });
   grid.addEventListener('mouseleave', schedH);
   const first = rows[0] && rows[0].dataset.card;
   if (first && !img.getAttribute('src')) { img.src = first; cur = first; }
   return () => {
-    cancelH(); if (swapRaf) cancelAnimationFrame(swapRaf); fol.stop();
+    cancelH(); if (swapRaf) cancelAnimationFrame(swapRaf);
+    if (moveRaf) cancelAnimationFrame(moveRaf); fol.stop();
     grid.removeEventListener('mousemove', onGridMove); grid.removeEventListener('mouseleave', schedH);
     rows.forEach((r) => {
       r.removeEventListener('mouseenter', onEnter);

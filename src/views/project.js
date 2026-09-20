@@ -4,6 +4,7 @@ import { footer } from './shared.js';
 import { mountHeroRise } from './rise.js';
 import { mountTitleReveal } from './title-reveal.js';
 import { pictureMarkup } from './img-helpers.js';
+import { promoVideoMarkup, mountPromoVideo } from './promo-video.js';
 import { marked } from 'marked';
 
 function renderBody(md) {
@@ -19,7 +20,7 @@ function renderBody(md) {
 export function Project(slug) {
   const i = projects.findIndex((p) => p[0] === slug);
   if (i < 0) return `<p>Not found. <a href="#/">Back home</a>.</p>${footer()}`;
-  const [s, title, a, b, date, timeline, role, , img, deliverables, platform, w = 3, h = 4, mock, hero] = projects[i];
+  const [s, title, a, b, date, timeline, role, , img, deliverables, platform, w = 3, h = 4, mock, hero, promoVideo] = projects[i];
   const next = projects[(i + 1) % projects.length];
   const cats = [a, b].filter(Boolean).join(' · ');
   const body = bodies[s] || '';
@@ -30,6 +31,7 @@ export function Project(slug) {
     kind: 'hero',
     decoding: 'async',
   });
+  const promo = promoVideoMarkup(promoVideo, heroSrc);
   return [
     `<article class="case"><div class="case-grid">\n  <div class="case-copy"><h1>`,
     title,
@@ -56,7 +58,7 @@ export function Project(slug) {
     w,
     `" data-h="`,
     h,
-    `"><canvas class="gr" aria-hidden="true"></canvas>${heroPic}</div></div>\n  <a class="next" href="#/projects/`,
+    `"><canvas class="gr" aria-hidden="true"></canvas>${heroPic}</div></div>${promo}\n  <a class="next" href="#/projects/`,
     next[0],
     `"><small>See whats next</small><b>`,
     next[1],
@@ -76,5 +78,6 @@ export function mountProject(root) {
   }
   const offRise = mountHeroRise(root);
   const offTitle = mountTitleReveal(root);
-  return () => { try { offRise(); } catch {} try { offTitle(); } catch {} };
+  const offPromo = mountPromoVideo(root);
+  return () => { try { offRise(); } catch {} try { offTitle(); } catch {} try { offPromo(); } catch {} };
 }

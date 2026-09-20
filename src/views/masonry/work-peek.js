@@ -9,7 +9,8 @@ import { cardSrc } from '../img-helpers.js';
 const mediaOf = (p) => p[14] || p[13] || p[8];
 
 // Hover intent: popover is instant; the pane waits a beat so fast travel starts no mosaic.
-const INTENT_MS = 80;
+// 120ms lets a quick sweep across 5 rows skip the canvas work.
+const INTENT_MS = 120;
 
 // — Section: markup —
 export function peekMarkup(p) {

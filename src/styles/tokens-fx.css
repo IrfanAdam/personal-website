@@ -63,6 +63,7 @@
       --dur-viewer-swap: 110ms;
   /* — Viewer (tamed editorial — only geometry + frosted border, no neon/grid/scan) — */
   --size-viewer-w: 180px;
+    --size-viewer-h: 240px;
     --size-viewer-gap: 10px;
     --size-viewer-pad: 20px;
     --dur-transit: 520ms;
@@ -82,6 +83,9 @@
       --dur-viewer-line: 780ms;
       --z-viewer: 15;
       --z-viewer-lines: 14;
+  /* — Promo video (16:9 below hero) — minimal player tokens — */
+  --promo-scrim: linear-gradient(to top, rgba(0, 0, 0, 0.58), transparent); --promo-track: rgba(255, 255, 255, 0.35); --promo-fill: #fff; --promo-time: #fff;
+    --promo-bar-bg: rgba(255, 255, 255, 0.92); --promo-pill: 999px;
   /* — Elevation, blur, opacity, scale / z-index — */
   --blur-header: 18px;
     --blur-scrim: 18px;

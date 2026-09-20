@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T09:59:51.298Z",
+  "generated": "2026-09-20T13:13:50.180Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2710,7 +2710,6 @@
         "--space-18",
         "--space-2",
         "--space-22",
-        "--space-30",
         "--space-42",
         "--space-60",
         "--space-8",
@@ -2974,6 +2973,39 @@
       ]
     },
     {
+      "id": "styles_promo_video",
+      "path": "src/styles/promo-video.css",
+      "layer": "style",
+      "route": null,
+      "title": "promo video",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink",
+        "--color-panel",
+        "--color-surface",
+        "--dur-blur",
+        "--dur-glide",
+        "--ease-standard",
+        "--font-mono",
+        "--promo-bar-bg",
+        "--promo-fill",
+        "--promo-pill",
+        "--promo-scrim",
+        "--promo-time",
+        "--promo-track",
+        "--radius-sm",
+        "--space-1",
+        "--space-10",
+        "--space-14",
+        "--space-22",
+        "--space-26",
+        "--space-4",
+        "--space-8",
+        "--text-label",
+        "--text-meta"
+      ]
+    },
+    {
       "id": "styles_tokens",
       "path": "src/styles/tokens.css",
       "layer": "style",
@@ -3135,6 +3167,7 @@
         "--sat-header",
         "--shadow-viewer",
         "--size-cursor",
+        "--size-viewer-h",
         "--size-viewer-tether",
         "--size-viewer-w",
         "--space-4",
@@ -3666,6 +3699,14 @@
       "layer": "view",
       "route": null,
       "title": "project",
+      "tokens": []
+    },
+    {
+      "id": "views_promo_video",
+      "path": "src/views/promo-video.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video",
       "tokens": []
     },
     {
@@ -5909,6 +5950,11 @@
       "kind": "tokens"
     },
     {
+      "from": "styles_promo_video",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "styles_tokens_color",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -6540,6 +6586,11 @@
     },
     {
       "from": "views_project",
+      "to": "views_promo_video",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
       "to": "views_rise",
       "kind": "imports"
     },
@@ -6552,6 +6603,11 @@
       "from": "views_project",
       "to": "views_title_reveal",
       "kind": "imports"
+    },
+    {
+      "from": "views_promo_video",
+      "to": "styles_promo_video",
+      "kind": "styles"
     },
     {
       "from": "views_rise_sound",

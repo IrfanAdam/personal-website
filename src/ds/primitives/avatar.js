@@ -44,7 +44,7 @@ const inner=s
     label:'size',
     type:'select',
     default:'md',
-    options:[{value:'sm',label:'sm · 30'},{value:'md',label:'md · 44'},{value:'lg',label:'lg · 60'}]},
+    options:[{value:'sm',label:'sm · 44 (min tap)'},{value:'md',label:'md · 44'},{value:'lg',label:'lg · 60'}]},
   {key:'kind',
     label:'kind',
     type:'select',
@@ -59,7 +59,6 @@ const inner=s
 const avatarTokens=['--color-panel',
   '--color-ink',
   '--size-tap',
-  '--space-30',
   '--space-60',
   '--text-small',
   '--text-meta',
@@ -69,7 +68,7 @@ const avatarTokens=['--color-panel',
   '--border-hairline',
   '--radius-none'];
 const avatarAnat=['<span class="tok">.avatar</span> + <span class="tok">--sm / --lg</span> — square <span ',
-  'class="tok">--radius-none</span> 30/44/60 via <span class="tok">--space-30/--space-60</span>. Image cover or ',
+  'class="tok">--radius-none</span> 44/44/60 via <span class="tok">--size-tap/--space-60</span>. Image cover or ',
   'fallback initial.'].join('');
 const avatarBehav=[
   'Static square; no focus ring. Fallback is centered mono. Dark: <span class="tok">--color-panel</span> border '
@@ -77,7 +76,7 @@ const avatarBehav=[
   'recomputes; no state change.'].join('');
 export function avatarSheet(){return component({title:'Avatar',
         sub:['Zero-radius square — <span class="tok">.avatar</span> + <span class="tok">--sm / --lg</span>. Image ',
-          'cover or fallback initial. 44px default via <span class="tok">--size-tap</span>.'].join(''),
+          'cover or fallback initial. 44px default via <span class="tok">--size-tap</span> (sm bumped to meet min tap).'].join(''),
         anatomy:avatarAnat,
         behaviour:avatarBehav,
         knobs:avatarKnobs,
