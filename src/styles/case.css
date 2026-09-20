@@ -1,14 +1,15 @@
-/* ADAM/STYLE — styles/case · project detail 56/44 split · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
-/* Case — project detail: text left / media right, hero with GridReveal */
+/* ADAM/STYLE — styles/case · project detail 40/60 split · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* Case — project detail: text left / media right, hero + promo stacked in same column */
 .case { width: 100%; }
-.case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start; }
+.case-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 0; align-items: start; }
 .case-copy { min-width: 0; padding-right: var(--gutter); }
-.case-media { padding: 0; line-height: 0; }
+.case-media { padding: 0; line-height: 0; display: flex; flex-direction: column; gap: var(--space-14); }
 .case-media img { width: 100%; height: auto; border-radius: var(--radius-none); border: none; display: block; }
 .wrap:has(> .case) { padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: var(--space-12); }
 @media (max-width: 800px) /* --break-md */ {
   .case-grid { grid-template-columns: 1fr; }
   .case-copy { padding-right: 0; padding-bottom: var(--gutter); }
+  .case-media { gap: var(--space-12); }
   .wrap:has(> .case) { padding: var(--space-12); }
 }
 @media (max-width: 640px) /* --break-sm */ {
@@ -19,7 +20,7 @@
   .case-media { order: -1; }
   .case-copy { padding-top: var(--gutter); }
 }
-.case-media.hero-box {
+.hero-box {
   position: relative;
   overflow: hidden;
   background: var(--color-panel);
@@ -27,37 +28,36 @@
   aspect-ratio: var(--hero-aspect, 3 / 4);
   line-height: 0;
 }
-.case-media.hero-box.loading {
-  /* skeletal placeholder — fixed grid tiles, so height morph adds tiles rather than stretching cells */
+.hero-box.loading {
   background-image: var(--reveal-grid);
 }
-.case-media.hero-box canvas.gr {
+.hero-box canvas.gr {
   position: absolute; inset: 0; width: 100%; height: 100%; display: block;
   opacity: 1; transition: opacity var(--dur-blur) var(--ease-standard);
   will-change: opacity;
 }
-.case-media.hero-box picture { position: absolute; inset: 0; display: block; }
-.case-media.hero-box picture img { display: block; }
-.case-media.hero-box img {
+.hero-box picture { position: absolute; inset: 0; display: block; }
+.hero-box picture img { display: block; }
+.hero-box img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
   opacity: 0; transition: opacity var(--dur-blur) var(--ease-standard);
   will-change: opacity;
 }
-.case-media.hero-box.ready img { opacity: 1; }
-.case-media.hero-box.ready canvas.gr { opacity: 0; }
-.case-media.hero-box.loading::after {
+.hero-box.ready img { opacity: 1; }
+.hero-box.ready canvas.gr { opacity: 0; }
+.hero-box.loading::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
   background: var(--shimmer-gradient);
   -webkit-mask-image: var(--shimmer-band);
   mask-image: var(--shimmer-band);
   animation: hero-shimmer var(--dur-shimmer) linear infinite;
 }
-.case-media.hero-box.ready::after { display: none; }
+.hero-box.ready::after { display: none; }
 @keyframes hero-shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
-.case-media.hero-box { will-change: height; }
+.hero-box { will-change: height; }
 @media (prefers-reduced-motion: reduce) {
-  .case-media.hero-box canvas.gr, .case-media.hero-box img { transition: none; }
-  .case-media.hero-box img { opacity: 1; }
-  .case-media.hero-box canvas.gr { opacity: 0; }
-  .case-media.hero-box.loading::after { animation: none; display: none; }
+  .hero-box canvas.gr, .hero-box img { transition: none; }
+  .hero-box img { opacity: 1; }
+  .hero-box canvas.gr { opacity: 0; }
+  .hero-box.loading::after { animation: none; display: none; }
 }

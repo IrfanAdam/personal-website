@@ -45,8 +45,6 @@ collections:
     label: "Projects"
     folder: "content/projects"
     path: "{{slug}}.json"
-    media_folder: ""
-    public_folder: ""
     create: true
     slug: "{{slug}}"
     extension: "json"

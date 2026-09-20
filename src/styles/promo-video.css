@@ -1,5 +1,6 @@
 /* ADAM/STYLE — styles/promo-video · 16:9 promo below hero · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 .case-promo { margin: var(--space-22) 0 0; width: 100%; }
+.case-media .case-promo { margin: 0; }
 .promo-video {
   position: relative; aspect-ratio: 16 / 9; width: 100%; overflow: hidden;
   background: var(--color-panel); border: var(--border-hairline); border-radius: var(--radius-sm);

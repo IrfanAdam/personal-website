@@ -36,7 +36,7 @@ export function Contact() {
     `</blockquote>
     </section>
   </div>
-  <div class="case-media hero-box" style="--hero-aspect:`,
+  <div class="case-media"><div class="hero-box" style="--hero-aspect:`,
     PW,
     `/`,
     PH,
@@ -50,7 +50,7 @@ export function Contact() {
     PW,
     `" height="`,
     PH,
-    `" decoding="async" fetchpriority="high" /></div>
+    `" decoding="async" fetchpriority="high" /></div></div>
   </div></article>`,
     footer(),
   ].join('');
