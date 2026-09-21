@@ -349,6 +349,7 @@ views_init_sound --> views_init_sound_load
 views_init_sound --> views_init_sound_vol
 views_init_sound --> views_strip_sound
 views_init_sound_vol --> views_audio_ctx
+views_list_follower --> views_fx_tokens
 views_map_canvas --> views_map_data
 views_map_canvas --> views_map_hits
 views_map_canvas --> views_map_render
@@ -396,7 +397,9 @@ views_masonry --> views_masonry_reveal
 views_masonry --> views_masonry_viewer
 views_masonry --> views_shared
 views_masonry --> views_title_reveal
+views_masonry_brand_tokens --> views_masonry_brand_tokens_extract
 views_masonry_cards --> views_img_helpers
+views_masonry_cards --> views_masonry_brand_tokens
 views_masonry_cells --> views_masonry_cells_order
 views_masonry_gridReveal --> views_masonry_cells
 views_masonry_gridReveal --> views_masonry_gridReveal_config
@@ -408,6 +411,7 @@ views_masonry_gridReveal_draw --> views_masonry_cells
 views_masonry_gridReveal_load --> views_fx_tokens
 views_masonry_gridReveal_load --> views_masonry_cells
 views_masonry_gridReveal_tick --> views_masonry_cells
+views_masonry_list_view --> views_masonry_brand_tokens
 views_masonry_list_view --> views_masonry_cards
 views_masonry_list_view --> views_masonry_list_viewer
 views_masonry_list_view --> views_masonry_work_peek
@@ -440,6 +444,10 @@ views_project --> views_promo_video
 views_project --> views_rise
 views_project --> views_shared
 views_project --> views_title_reveal
+views_promo_video --> views_promo_video_markup
+views_promo_video --> views_promo_video_mount
+views_promo_video_markup --> views_promo_video_icons
+views_promo_video_mount --> views_promo_video_icons
 views_rise --> views_fx_tokens
 views_rise --> views_hero_height_cache
 views_rise --> views_masonry_gridReveal
@@ -462,6 +470,7 @@ views_strip_viewer --> views_fx_tokens
 views_strip_viewer --> views_strip_viewer_helpers
 views_strip_viewer_helpers --> data_site
 views_strip_viewer_helpers --> views_fx_tokens
+views_strip_viewer_helpers --> views_list_follower
 views_stripbar --> theme
 views_stripbar --> views_settings_menu
 views_stripbar --> views_shared

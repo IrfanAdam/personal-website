@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T07:27:02.229Z",
+ "generated": "2026-09-21T07:27:46.557Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -31,6 +31,15 @@
   "2026-09-21_125642-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "efde078",
+   "full": "efde0788d17536dc44ae21cea613192a32d3195b",
+   "date": "2026-09-21",
+   "time": "12:57",
+   "subject": "chore(sop): lump-sum plans go weekly — week of Sep 21 opens (hover + deploy SOP homed), week of Sep 15 sealed",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "25f36ee",
    "full": "25f36eefad515724ab059481971fd978abf914d0",
@@ -3353,7 +3362,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-names.json"
- ]
+ "wip": []
 }

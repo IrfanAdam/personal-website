@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T16:10:00.531Z",
+  "generated": "2026-09-21T07:26:36.134Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2895,13 +2895,19 @@
         "--color-ink",
         "--color-ink-muted",
         "--color-line",
+        "--color-panel",
         "--color-surface",
+        "--dur-soft",
+        "--ease-standard",
         "--font-mono",
+        "--leading-snug",
         "--leading-title",
         "--measure-copy",
         "--measure-prose",
         "--size-frame",
+        "--size-hairline",
         "--size-header",
+        "--space-1",
         "--space-10",
         "--space-12",
         "--space-14",
@@ -2909,16 +2915,20 @@
         "--space-18",
         "--space-2",
         "--space-22",
+        "--space-3",
         "--space-30",
         "--space-4",
         "--space-6",
         "--space-8",
+        "--text-h3",
         "--text-meta",
         "--text-title",
         "--tracking-body",
         "--tracking-label",
+        "--tracking-mono",
         "--tracking-title",
-        "--weight-bold"
+        "--weight-bold",
+        "--work-swatch"
       ]
     },
     {
@@ -2980,30 +2990,43 @@
       "route": null,
       "title": "promo video",
       "tokens": [
-        "--border-hairline",
-        "--color-ink",
-        "--color-panel",
-        "--color-surface",
+        "--color-on-media",
+        "--dur-base",
         "--dur-blur",
         "--dur-glide",
+        "--dur-soft",
+        "--ease-signature",
+        "--ease-spring",
         "--ease-standard",
         "--font-mono",
-        "--promo-bar-bg",
+        "--promo-blur",
+        "--promo-blur-bar",
+        "--promo-ctrl-bg",
+        "--promo-ctrl-bg-hover",
         "--promo-fill",
         "--promo-pill",
-        "--promo-scrim",
+        "--promo-pill-bg",
+        "--promo-pill-line",
+        "--promo-play",
+        "--promo-play-sm",
+        "--promo-scrim-bar",
+        "--promo-scrim-soft",
+        "--promo-shadow",
         "--promo-time",
-        "--promo-track",
+        "--promo-track-h",
         "--radius-sm",
-        "--space-1",
+        "--size-hairline",
         "--space-10",
+        "--space-12",
         "--space-14",
+        "--space-2",
         "--space-22",
         "--space-26",
-        "--space-4",
-        "--space-8",
-        "--text-label",
-        "--text-meta"
+        "--stone-0",
+        "--stone-900",
+        "--stone-950",
+        "--text-meta",
+        "--tracking-mono"
       ]
     },
     {
@@ -3088,9 +3111,12 @@
         "--space-1",
         "--space-10",
         "--space-12",
+        "--space-16",
         "--space-2",
         "--space-32",
-        "--stone-0"
+        "--space-4",
+        "--stone-0",
+        "--stone-950"
       ]
     },
     {
@@ -3348,6 +3374,14 @@
       "tokens": []
     },
     {
+      "id": "views_list_follower",
+      "path": "src/views/list-follower.js",
+      "layer": "view",
+      "route": null,
+      "title": "list follower",
+      "tokens": []
+    },
+    {
       "id": "views_map_canvas",
       "path": "src/views/map/canvas.js",
       "layer": "view",
@@ -3497,6 +3531,22 @@
       "layer": "view",
       "route": null,
       "title": "masonry",
+      "tokens": []
+    },
+    {
+      "id": "views_masonry_brand_tokens",
+      "path": "src/views/masonry/brand-tokens.js",
+      "layer": "view",
+      "route": null,
+      "title": "brand tokens",
+      "tokens": []
+    },
+    {
+      "id": "views_masonry_brand_tokens_extract",
+      "path": "src/views/masonry/brand-tokens-extract.js",
+      "layer": "view",
+      "route": null,
+      "title": "brand tokens extract",
       "tokens": []
     },
     {
@@ -3708,6 +3758,30 @@
       "layer": "view",
       "route": null,
       "title": "promo video",
+      "tokens": []
+    },
+    {
+      "id": "views_promo_video_icons",
+      "path": "src/views/promo-video-icons.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video icons",
+      "tokens": []
+    },
+    {
+      "id": "views_promo_video_markup",
+      "path": "src/views/promo-video-markup.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video markup",
+      "tokens": []
+    },
+    {
+      "id": "views_promo_video_mount",
+      "path": "src/views/promo-video-mount.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video mount",
       "tokens": []
     },
     {
@@ -6136,6 +6210,11 @@
       "kind": "imports"
     },
     {
+      "from": "views_list_follower",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
       "from": "views_map_canvas",
       "to": "views_map_data",
       "kind": "imports"
@@ -6321,8 +6400,18 @@
       "kind": "imports"
     },
     {
+      "from": "views_masonry_brand_tokens",
+      "to": "views_masonry_brand_tokens_extract",
+      "kind": "imports"
+    },
+    {
       "from": "views_masonry_cards",
       "to": "views_img_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_cards",
+      "to": "views_masonry_brand_tokens",
       "kind": "imports"
     },
     {
@@ -6388,6 +6477,11 @@
     {
       "from": "views_masonry_list_viewer",
       "to": "views_strip_viewer_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_view",
+      "to": "views_masonry_brand_tokens",
       "kind": "imports"
     },
     {
@@ -6606,9 +6700,29 @@
       "kind": "imports"
     },
     {
+      "from": "views_promo_video_markup",
+      "to": "views_promo_video_icons",
+      "kind": "imports"
+    },
+    {
+      "from": "views_promo_video_mount",
+      "to": "views_promo_video_icons",
+      "kind": "imports"
+    },
+    {
       "from": "views_promo_video",
       "to": "styles_promo_video",
       "kind": "styles"
+    },
+    {
+      "from": "views_promo_video",
+      "to": "views_promo_video_markup",
+      "kind": "imports"
+    },
+    {
+      "from": "views_promo_video",
+      "to": "views_promo_video_mount",
+      "kind": "imports"
     },
     {
       "from": "views_rise_sound",
@@ -6713,6 +6827,11 @@
     {
       "from": "views_strip_viewer_helpers",
       "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer_helpers",
+      "to": "views_list_follower",
       "kind": "imports"
     },
     {
