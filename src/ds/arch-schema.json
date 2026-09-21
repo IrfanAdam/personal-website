@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T07:46:57.381Z",
+  "generated": "2026-09-21T07:55:30.395Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3193,7 +3193,6 @@
         "--size-viewer-h",
         "--size-viewer-tether",
         "--size-viewer-w",
-        "--space-4",
         "--viewer-border",
         "--z-viewer"
       ]
