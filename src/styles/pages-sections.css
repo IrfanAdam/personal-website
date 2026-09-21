@@ -29,17 +29,13 @@
 .work:hover {
   background: color-mix(in srgb, var(--color-panel) 55%, transparent);
 }
-.work:hover::after {
-  height: var(--size-frame);
-  background: var(--color-ink);
+.work:hover .work-title {
+  text-decoration: underline var(--size-hairline);
+  text-underline-offset: var(--space-3);
 }
 .work:focus-visible {
   outline: var(--border-focus);
   outline-offset: var(--focus-offset);
-}
-.work:focus-visible::after {
-  height: var(--size-frame);
-  background: var(--color-ink);
 }
 .work-row { display: flex; align-items: center; gap: var(--space-12); justify-content: space-between; min-width: 0; }
 .work-title, .work-meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

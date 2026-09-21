@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T12:41:28.916Z",
+  "generated": "2026-09-21T13:18:05.656Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2984,7 +2984,6 @@
       "tokens": [
         "--border-focus",
         "--border-hairline",
-        "--color-ink",
         "--color-ink-muted",
         "--color-line",
         "--color-panel",
@@ -2993,7 +2992,6 @@
         "--focus-offset",
         "--font-mono",
         "--leading-snug",
-        "--size-frame",
         "--size-hairline",
         "--space-1",
         "--space-10",
@@ -3001,6 +2999,7 @@
         "--space-14",
         "--space-2",
         "--space-22",
+        "--space-3",
         "--space-4",
         "--text-h3",
         "--text-meta",

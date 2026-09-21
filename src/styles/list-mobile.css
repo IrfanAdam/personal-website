@@ -65,12 +65,11 @@
     text-overflow: clip;
     line-clamp: 2;
   }
-  .work-row--bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .work-row {
     gap: var(--space-8);
-    margin-top: auto;
+  }
+  .work-row--main {
+    align-items: flex-start;
   }
   .work-meta {
     font-size: var(--text-meta);
