@@ -1045,6 +1045,11 @@
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-4}",
    "note": "feat(next+list): Next preview, mobile thumb, cursor hint, case/CTA split -> lump-sum P4 T10-12"
+  },
+  "2d9fbef": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-5}",
+   "note": "fix(list+rim): desktop rows back to two, thumb mobile-only, no dark ink rim -> lump-sum P5 T13-14"
   }
  }
 }

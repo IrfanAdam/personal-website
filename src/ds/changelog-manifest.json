@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T12:42:53.367Z",
+ "generated": "2026-09-21T13:18:42.586Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -31,6 +31,15 @@
   "2026-09-21_125642-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "2d9fbef",
+   "full": "2d9fbefd9616d063da15b53cf8a58685d0c90d97",
+   "date": "2026-09-21",
+   "time": "18:48",
+   "subject": "fix(list+rim): desktop rows back to two, thumb mobile-only, no dark ink rim",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-5}"
+  },
   {
    "sha": "09114cd",
    "full": "09114cd559da2e7c78b5de51f9f268125241ff47",
