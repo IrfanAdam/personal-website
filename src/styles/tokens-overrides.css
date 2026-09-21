@@ -41,4 +41,6 @@
      the heavier cut, so a light island inside a dark OS would inherit that. */
   --shadow-viewer: 0 var(--space-12) var(--space-32) var(--color-shadow-viewer),
     0 var(--space-2) var(--space-10) var(--color-shadow-viewer-soft);
+  --color-viewer-line: var(--color-surface);
+  --color-viewer-tether: color-mix(in srgb, var(--color-surface) 68%, transparent);
 }
