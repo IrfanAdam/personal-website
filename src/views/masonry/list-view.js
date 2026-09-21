@@ -5,6 +5,7 @@ import { row } from './cards.js';
 import { aboutBlock } from '../shared.js';
 import { peekMarkup, attachWorkPeek } from './work-peek.js';
 import { attachListViewer } from './list-viewer.js';
+import { attachBrandTokens } from './brand-tokens.js';
 
 // — Section: markup —
 export function listMarkup(list) {
@@ -18,8 +19,10 @@ export function listMarkup(list) {
 export function attachListView(grid) {
   const offPopover = attachListViewer(grid);
   const offPeek = attachWorkPeek(grid);
+  const offTokens = attachBrandTokens(grid);
   return () => {
     offPopover();
     offPeek();
+    offTokens();
   };
 }
