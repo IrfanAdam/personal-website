@@ -1,5 +1,5 @@
 /* ADAM/PAGE — views/masonry/viewer-markup · markup · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: geometry helpers + DOM factory for single-frame portal
+// Exports: geometry helpers + DOM factory for cursor / portal / tethers
 const NS = 'http://www.w3.org/2000/svg';
 export const HALF = 16;
 export const OFF = 4;
@@ -56,27 +56,44 @@ export function placeViewerNear(rect, cx, w = 180, gap = 10, pad = 20) {
     : Math.max(pad, rect.left - gap - w);
   return { x: Math.min(Math.max(x, pad), vw - w - pad), side };
 }
-// Single-frame factory — only the portal remains (cursor + tether removed per single-frame fix)
 export function createViewerDom() {
+  const cursorEl = document.createElement('div');
+  cursorEl.className = 'viewer-cursor';
+  cursorEl.setAttribute('aria-hidden', 'true');
   const viewerEl = document.createElement('div');
   viewerEl.className = 'viewer';
   viewerEl.setAttribute('aria-hidden', 'true');
   viewerEl.innerHTML = '<img alt="" />';
   const vimg = viewerEl.querySelector('img');
-  // Back-compat stubs so callers destructuring {cursorEl, svg, l1, l2} do not break
-  const cursorEl = document.createElement('div');
-  cursorEl.style.display = 'none';
   const svg = document.createElementNS(NS, 'svg');
-  svg.style.display = 'none';
+  svg.setAttribute('class', 'viewer-lines');
+  svg.setAttribute('aria-hidden', 'true');
   const l1 = document.createElementNS(NS, 'line');
   const l2 = document.createElementNS(NS, 'line');
-  document.body.append(viewerEl);
+  l1.setAttribute('pathLength', '100');
+  l2.setAttribute('pathLength', '100');
+  svg.append(l1, l2);
+  document.body.append(cursorEl, viewerEl, svg);
   return { cursorEl, viewerEl, vimg, svg, l1, l2 };
 }
 export function makePaint(state, els, cfg) {
   return () => {
-    const { viewerEl } = els;
-    if (!state.card || !state.rect) return;
+    const { cursorEl, viewerEl, l1, l2 } = els;
+    if (!state.card || !state.rect) {
+      cursorEl.style.transform = `translate3d(${(state.cx - HALF).toFixed(1)}px,${(state.cy - HALF).toFixed(1)}px,0)`;
+      return;
+    }
     viewerEl.style.transform = `translate3d(${state.vx}px,${(state.rect.top + state.cur).toFixed(1)}px,0)`;
+    cursorEl.style.transform = `translate3d(${(state.cx - HALF).toFixed(1)}px,${(state.cy - HALF).toFixed(1)}px,0)`;
+    const vy2 = state.rect.top + state.cur;
+    const cxSide = state.side === 'right' ? state.cx + HALF : state.cx - HALF;
+    const vxSide = state.side === 'right' ? state.vx : state.vx + cfg.VW;
+    const a1 = { x: cxSide, y: state.cy - HALF }, b1 = { x: vxSide, y: vy2 };
+    const a2 = { x: cxSide, y: state.cy + HALF }, b2 = { x: vxSide, y: vy2 + state.vh };
+    const p1 = offsetPoint(a1, b1, OFF), p2 = offsetPoint(a2, b2, OFF);
+    l1.setAttribute('x1', p1.x1); l1.setAttribute('y1', p1.y1);
+    l1.setAttribute('x2', p1.x2); l1.setAttribute('y2', p1.y2);
+    l2.setAttribute('x1', p2.x1); l2.setAttribute('y1', p2.y1);
+    l2.setAttribute('x2', p2.x2); l2.setAttribute('y2', p2.y2);
   };
 }

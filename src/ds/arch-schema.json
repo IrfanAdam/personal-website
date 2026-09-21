@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T07:55:30.395Z",
+  "generated": "2026-09-21T08:07:19.455Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -6481,6 +6481,11 @@
     {
       "from": "views_masonry_list_view",
       "to": "views_masonry_cards",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_view",
+      "to": "views_masonry_list_viewer",
       "kind": "imports"
     },
     {

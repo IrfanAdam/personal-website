@@ -1,5 +1,5 @@
 /* ADAM/PAGE — views/masonry/viewer · viewer · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
-// Exports: attachViewer — single-frame portal, delegates markup + events
+// Exports: attachViewer — open/close orchestration, delegates markup + events
 import { fxNum, fxMs } from '../fx-tokens.js';
 import { createViewerDom, makePaint, springStep } from './viewer-markup.js';
 import { bindViewer } from './viewer-bind.js';
@@ -33,7 +33,7 @@ export function attachViewer(grid) {
   const state = {
     card: null, rect: null, vx: 0, side: 'right', vh: 220,
     cx: 0, cy: 0, tgt: 0, cur: 0, vel: 0, raf: 0,
-    hideTimer: 0, idleTimer: 0, portalOn: false,
+    hideTimer: 0, idleTimer: 0, cursorOn: false, portalOn: false,
     enterX: 0, enterY: 0, pendingRaf: 0,
   };
   const paint = makePaint(state, els, cfg);
@@ -60,6 +60,7 @@ export function attachViewer(grid) {
     showCursor, scheduleHide, cancelHide, clearIdle, armIdle, checkThreshold,
     setTgt: (cand) => { if (Math.abs(cand - state.cur) >= cfg.YDEAD) state.tgt = cand; },
   });
+  // expose for bind's idle/threshold callbacks
   state._hidePortal = hidePortal; state._showPortal = showPortal;
   return () => {
     offBind();
@@ -67,6 +68,6 @@ export function attachViewer(grid) {
     if (state.idleTimer) clearTimeout(state.idleTimer);
     if (state.raf) cancelAnimationFrame(state.raf);
     if (state.pendingRaf) cancelAnimationFrame(state.pendingRaf);
-    els.viewerEl.remove();
+    els.cursorEl.remove(); els.viewerEl.remove(); els.svg.remove();
   };
 }

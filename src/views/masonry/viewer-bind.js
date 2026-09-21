@@ -1,5 +1,5 @@
 /* ADAM/PAGE — views/masonry/viewer-bind · bind · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: bindViewer — wires card/grid/scroll/resize + image fallback (single-frame, no cursor)
+// Exports: bindViewer — wires card/grid/scroll/resize + image fallback
 import { targetY, placeViewerNear } from './viewer-markup.js';
 export function bindViewer(o) {
   const { grid, cards, els, state, cfg, paint, kick, schedulePaint, setTgt } = o;
@@ -16,7 +16,7 @@ export function bindViewer(o) {
     state.cx = e.clientX; state.cy = e.clientY;
     state.enterX = state.cx; state.enterY = state.cy;
     state.portalOn = false;
-    els.viewerEl.classList.remove('on');
+    els.viewerEl.classList.remove('on'); els.svg.classList.remove('on');
     const p = placeViewerNear(state.rect, state.cx, cfg.VW, cfg.VGAP, cfg.VPAD);
     state.vx = p.x; state.side = p.side;
     state.cur = targetY(state.cy, state.rect, state.vh);
@@ -33,12 +33,14 @@ export function bindViewer(o) {
   };
   const leave = () => o.scheduleHide();
   const onGridMove = (e) => {
-    if (!state.card || !state.rect) return;
+    if (!state.cursorOn) return;
     state.cx = e.clientX; state.cy = e.clientY;
     const over = !!e.target.closest('.card');
-    setTgt(targetY(state.cy, state.rect, state.vh));
-    if (over) o.checkThreshold();
-    if (state.portalOn) o.armIdle();
+    if (state.card && state.rect) {
+      setTgt(targetY(state.cy, state.rect, state.vh));
+      if (over) o.checkThreshold();
+      if (state.portalOn) o.armIdle();
+    }
     if (!over) o.scheduleHide(); else o.cancelHide();
     schedulePaint();
   };
