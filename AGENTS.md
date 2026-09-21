@@ -18,7 +18,7 @@ After completing any task:
 - Mention only: (1) what changed (1–3 bullets), (2) issues/limitations/failed tests, (3) what remains.
 - If everything succeeded, "Done" + key changes is sufficient.
 
-## 5. Changelog & Plan Traceability — Bidirectional SOP (auto, never ask)
+## 5. Changelog & Plan Traceability — Bidirectional SOP (local auto, deploy on approval)
 Anchored at `20260909_145218_9888b1` (`continuation` in `.hermes/continuation.json`). Pipeline: `.hermes/plans/*.md` → `scripts/ds-track.mjs` → `src/ds/changelog-manifest.json` → `src/ds/pages-changelog.js` (`import.meta.glob` + `src/ds/changelog-links.js` + `src/ds/changelog-tags.js`) → `/ds/#/changelog` Miller columns. Continuation + pipeline never re-anchored; `build` runs `node scripts/ds-track.mjs && vite build`, `predev` runs `ds-track || true`.
 
 **Plan file (every DS scope, no exceptions):**
@@ -28,25 +28,26 @@ Anchored at `20260909_145218_9888b1` (`continuation` in `.hermes/continuation.js
 - Tasks: `### Task N: …` marked `✓ done` or `✗ cancelled` (with `> **Cancelled by user override** — reason` blockquote); each phase closed with `*Shipped in <sha> · Tasks a–b · phase-N.*`. Never leave unchecked tasks, never re-propose cancelled.
 - Names: every phased plan MUST have `src/ds/changelog-names.json` entry `{title ≤76ch, purpose}` before any implementation — `npm run plan:names` fails otherwise. Titles via `changelog-titles.js`; raw file identity rendered in drawer above footer.
 
-**Commits:**
+**Commits (local, no push):**
 - Any commit touching DS paths (`src/ds`, `src/styles/tokens.css`, `DESIGN.md`, `design.md`) MUST carry exactly one trailer `[plan:<file>#<anchor>]` where `<file>` is the plan filename and `<anchor>` is a verbatim case-sensitive substring of exactly one `## Phase` body (`#phase-N` recommended, `null` = first phase). Verified by `ds-track`.
 - Pre-trailer history mapped in `.hermes/plan-links.json` (`sha → {plan, anchor, note}`) — no history rewrite; `anchor` must match one phase body.
 - Commit message subject is what the changelog badge shows; `plan-links.json` note is not rendered.
 - Trailer goes on the SUBJECT line — `ds-track` parses `%s` only; a trailer in the body leaves the commit unlinked.
 
-**Ship rule — every push is attributable (lump sum, auto, never ask):**
-- Account for every commit at push time: reuse the covering plan's `[plan:<file>#<anchor>]` trailer; work no scoped plan covers appends to the running lump-sum plan — a `### Task N: … ✓ done` under its phase, closed with `*Shipped in <sha> · Tasks a–b · phase-N.*`.
+**Ship rule — commits attributable locally, push only on your approval:**
+- Every local commit stays attributable: reuse the covering plan's `[plan:<file>#<anchor>]` trailer; work no scoped plan covers appends to the running lump-sum plan — a `### Task N: … ✓ done` under its phase, closed with `*Shipped in <sha> · Tasks a–b · phase-N.*`.
 - Work already shipped with no plan gets a new lump-sum plan (`.hermes/plans/YYYY-MM-DD_HHMMSS-lump-sum-builds.md`): names entry + phases + the shas that prompted it, committed before pushing; never leave a plan-less sha behind.
 - Already-pushed shas are mapped in `.hermes/plan-links.json` (`sha → {plan, anchor, note}`) — never rewrite history to add a trailer.
-- **Push report (always):** commits pushed · wip left uncommitted and which session owns it · what `/ds/#/changelog` will show · whether the deploy carries it (verify the deployed bundle, never assume).
+- **No auto-push:** agents never run `git push` / `vercel deploy` on their own. They prepare clean, attributable commits, run local verification (`ds-track` + `build`), and report what *would* push — then stop.
+- **Push on explicit approval only:** `git push` runs only when you say `y` / `push` / `deploy` / `ship it`. On approval the agent pushes, verifies the deployed bundle, and emits the push report (commits pushed · wip left + owner · `/ds/#/changelog` preview · deploy verified — never assume).
 
-**Verification (run automatically after every phase, without user prompt):**
+**Verification (local, auto after every phase — no push):**
 - `npm run plan:names` → 0 missing names
 - `npm run ds:track` → tagged count matches phased count, 0 wip (except new plan before first commit is 1 wip, expected), `cont 20260909_145218_9888b1`
 - `npm test` (`lint:tokens` + `build`) green
 - Visual: `/ds/#/changelog` Miller columns + drawer badges resolve per phase; `Build N` recomputes on filtered list client-side.
 
-**Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never skip `ds-track` before commit, never push a plan-less commit, never ship a phase with unchecked tasks, never report a change as deployed without checking the deployed bundle. This section is law — agents enforce it without being asked.
+**Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never skip `ds-track` before commit, never push a plan-less commit, never ship a phase with unchecked tasks, never `git push` without your explicit `y`, never report a change as deployed without checking the deployed bundle. This section is law — agents enforce it without being asked.
 
 ## 6. File Budget — Max 100 lines, all languages (JS+CSS+scripts)
 Every source file ≤100 lines incl. comments. CI (`lint-manage.mjs`) fails the build over budget. Split via extract-module + barrel re-export; never via minification/packing.
