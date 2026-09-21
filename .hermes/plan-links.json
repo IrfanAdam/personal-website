@@ -1050,6 +1050,11 @@
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-5}",
    "note": "fix(list+rim): desktop rows back to two, thumb mobile-only, no dark ink rim -> lump-sum P5 T13-14"
+  },
+  "9ea7373": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-5}",
+   "note": "fix(rim): light island viewer rim stays light \u2014 surface + tether -> lump-sum P5 T14"
   }
  }
 }
