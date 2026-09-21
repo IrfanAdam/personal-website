@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T07:05:48.465Z",
+ "generated": "2026-09-21T07:07:17.593Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,6 +30,15 @@
   "2026-09-15_193000-theme-island-parity.md"
  ],
  "commits": [
+  {
+   "sha": "fd5638b",
+   "full": "fd5638b02f26cd03e6b05129ff65f9142ce63ea0",
+   "date": "2026-09-21",
+   "time": "12:37",
+   "subject": "chore(ds): retro-link 99 unseen commits Sep 6-20 — badges, heat graph complete",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-28"
+  },
   {
    "sha": "f6d6614",
    "full": "f6d66147521c9ba36f970cb14eec1b2eb0ba47ba",

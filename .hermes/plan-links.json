@@ -199,6 +199,7 @@
     "11a3293": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "update 4 task 7 — three accent ramps (trailer cited ambiguous Phase-1)" },
     "ffd2bae": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "mark update-4 phases 1-4 shipped; badged P1" },
     "7d3bcea": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Space · Layout: usage-anchored", "note": "update 4 phases 3-4 — space usage + breakpoints; badged P3" },
-    "dba2975": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "update 4 phases 1-2 — color story + type; badged P1" }
+    "dba2975": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "update 4 phases 1-2 — color story + type; badged P1" },
+    "fd5638b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-28", "note": "coverage sweep — 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete" }
   }
 }
