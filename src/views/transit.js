@@ -42,7 +42,7 @@ export function takeTransit(slug) {
 
 // — Flight: ghost from the pane's rect to the hero's rect, then reveal —
 export function flyTransit(t, root) {
-  const hero = root.querySelector('.case-media.hero-box');
+  const hero = root.querySelector('.case .hero-box');
   let ghost = null;
   const done = () => {
     document.documentElement.classList.remove('is-transit');

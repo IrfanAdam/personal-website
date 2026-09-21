@@ -3,7 +3,7 @@
 /* Ghost of the list pane's media box flying into the detail hero. The hero
    stays hidden until the ghost lands, so the vertical offset between the pane
    and the hero reads as motion. Geometry comes from transit.js inline styles. */
-html.is-transit .case-media.hero-box { visibility: hidden; }
+html.is-transit .case .hero-box { visibility: hidden; }
 .transit-ghost {
   position: fixed;
   z-index: var(--z-viewer);

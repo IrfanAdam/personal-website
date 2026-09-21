@@ -67,7 +67,7 @@ function route() {
   if (h.startsWith('#/projects/')) {
     const transit = takeTransit(h.split('/')[2]);
     root.innerHTML = Project(h.split('/')[2]);
-    const hero = root.querySelector('.case-media.hero-box');
+    const hero = root.querySelector('.case .hero-box');
     if (transit && hero) hero.setAttribute('data-reveal', 'replay');
     cleanup = mountProject(root);
     if (transit) flyTransit(transit, root);
