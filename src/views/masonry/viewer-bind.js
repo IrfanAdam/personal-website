@@ -81,6 +81,10 @@ export function bindViewer(o) {
   grid.addEventListener('mouseleave', onGridLeave, { passive: true });
   window.addEventListener('scroll', refresh, { passive: true });
   window.addEventListener('resize', refresh);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', refresh);
+    window.visualViewport.addEventListener('scroll', refresh);
+  }
   return () => {
     cards.forEach((c) => {
       c.removeEventListener('mouseenter', enter);
@@ -91,6 +95,10 @@ export function bindViewer(o) {
     grid.removeEventListener('mouseleave', onGridLeave);
     window.removeEventListener('scroll', refresh);
     window.removeEventListener('resize', refresh);
+    if (window.visualViewport) {
+      window.visualViewport.removeEventListener('resize', refresh);
+      window.visualViewport.removeEventListener('scroll', refresh);
+    }
     vimg.removeEventListener('error', onErr);
     vimg.removeEventListener('load', remeasure);
     if (refreshRaf) cancelAnimationFrame(refreshRaf);

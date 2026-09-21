@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T08:07:19.455Z",
+  "generated": "2026-09-21T08:12:12.762Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -3181,6 +3181,8 @@
       "route": null,
       "title": "viewer",
       "tokens": [
+        "--blur-cursor",
+        "--blur-micro",
         "--blur-viewer",
         "--color-surface",
         "--color-viewer-bg",
@@ -3189,12 +3191,15 @@
         "--dur-viewer-line",
         "--ease-signature",
         "--ease-standard",
+        "--sat-header",
         "--shadow-viewer",
+        "--size-cursor",
         "--size-viewer-h",
         "--size-viewer-tether",
         "--size-viewer-w",
         "--viewer-border",
-        "--z-viewer"
+        "--z-viewer",
+        "--z-viewer-lines"
       ]
     },
     {

@@ -26,8 +26,8 @@
     --color-on-warning: #12151a;
     --color-info: var(--accent3-100);
     --color-on-info: #12151a;
-    --color-viewer-line: #f2f4f7;
-    --color-viewer-tether: color-mix(in srgb, #f2f4f7 68%, transparent);
+    --color-viewer-line: #1e2329;
+    --color-viewer-tether: color-mix(in srgb, #1e2329 68%, transparent);
     --opacity-shadow-viewer: 24%;
     --opacity-shadow-viewer-soft: 12%;
     --shadow-viewer: 0 var(--space-14) var(--space-36) var(--color-shadow-viewer),
@@ -57,8 +57,8 @@
     --color-on-warning: #12151a;
     --color-info: var(--accent3-100);
     --color-on-info: #12151a;
-    --color-viewer-line: #f2f4f7;
-    --color-viewer-tether: color-mix(in srgb, #f2f4f7 68%, transparent);
+    --color-viewer-line: #1e2329;
+    --color-viewer-tether: color-mix(in srgb, #1e2329 68%, transparent);
     --opacity-shadow-viewer: 24%;
     --opacity-shadow-viewer-soft: 12%;
     --shadow-viewer: 0 var(--space-14) var(--space-36) var(--color-shadow-viewer),

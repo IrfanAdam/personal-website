@@ -73,8 +73,8 @@
     --blur-micro: 1px;
   --color-viewer-shade: rgba(0, 0, 0, 0.32);
     --color-viewer-bg: var(--color-surface);
-    --color-viewer-line: var(--color-ink);
-    --color-viewer-tether: color-mix(in srgb, var(--color-ink) 68%, transparent);
+    --color-viewer-line: var(--color-surface);
+    --color-viewer-tether: color-mix(in srgb, var(--color-surface) 68%, transparent);
     --size-viewer-tether: var(--space-2);
   --viewer-border: var(--size-viewer-tether) solid var(--color-viewer-line);
     --shadow-viewer: 0 var(--space-12) var(--space-32) var(--color-shadow-viewer),
