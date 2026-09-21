@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T07:07:17.593Z",
+ "generated": "2026-09-21T07:15:31.282Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -31,11 +31,38 @@
  ],
  "commits": [
   {
+   "sha": "4961001",
+   "full": "49610018be419ae6dd906d91091bc568d70c4ae6",
+   "date": "2026-09-21",
+   "time": "12:42",
+   "subject": "chore(sop): manual deploy — push only on your y (no auto-push)",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-29"
+  },
+  {
+   "sha": "3f4cd90",
+   "full": "3f4cd90af55afe982e80babe55fe7a6a57a84b1f",
+   "date": "2026-09-21",
+   "time": "12:42",
+   "subject": "feat(hover): tiny Y-inertia for list popover — viewport flip glides, rAF-batched",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-29"
+  },
+  {
    "sha": "fd5638b",
    "full": "fd5638b02f26cd03e6b05129ff65f9142ce63ea0",
    "date": "2026-09-21",
    "time": "12:37",
    "subject": "chore(ds): retro-link 99 unseen commits Sep 6-20 — badges, heat graph complete",
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-28"
+  },
+  {
+   "sha": "32c014b",
+   "full": "32c014b26441702b6cc3f4cfbb05242b04abf312",
+   "date": "2026-09-21",
+   "time": "12:37",
+   "subject": "chore(lump-sum): close phase-28 — stamping fd5638b",
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-28"
   },

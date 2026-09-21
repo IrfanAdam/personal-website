@@ -200,6 +200,9 @@
     "ffd2bae": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "mark update-4 phases 1-4 shipped; badged P1" },
     "7d3bcea": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Space · Layout: usage-anchored", "note": "update 4 phases 3-4 — space usage + breakpoints; badged P3" },
     "dba2975": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "update 4 phases 1-2 — color story + type; badged P1" },
-    "fd5638b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-28", "note": "coverage sweep — 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete" }
+    "fd5638b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-28", "note": "coverage sweep — 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete" },
+    "32c014b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-28", "note": "close phase-28 \u2014 stamping fd5638b (sweep bookkeeping)" },
+    "3f4cd90": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-29", "note": "list popover Y-inertia \u2014 viewport flip glides, rAF-batched swaps (sibling session)" },
+    "4961001": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-29", "note": "SOP: manual deploy \u2014 push only on explicit y (no auto-push)" }
   }
 }
