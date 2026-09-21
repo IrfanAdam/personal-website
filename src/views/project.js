@@ -31,7 +31,7 @@ export function Project(slug) {
     kind: 'hero',
     decoding: 'async',
   });
-  const promo = promoVideoMarkup(promoVideo, heroSrc);
+  const promo = promoVideoMarkup(promoVideo);
   return [
     `<article class="case"><div class="case-grid">\n  <div class="case-copy"><h1>`,
     title,
