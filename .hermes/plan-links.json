@@ -1040,6 +1040,11 @@
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-3}",
    "note": "fix(popover): single-frame desktop previews \u2014 grid portal only, list peek only -> lump-sum P3 T6"
+  },
+  "09114cd": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "feat(next+list): Next preview, mobile thumb, cursor hint, case/CTA split -> lump-sum P4 T10-12"
   }
  }
 }

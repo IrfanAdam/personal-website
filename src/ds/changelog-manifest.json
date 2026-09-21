@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T07:27:46.557Z",
+ "generated": "2026-09-21T12:42:53.367Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -31,6 +31,78 @@
   "2026-09-21_125642-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "09114cd",
+   "full": "09114cd559da2e7c78b5de51f9f268125241ff47",
+   "date": "2026-09-21",
+   "time": "18:12",
+   "subject": "feat(next+list): Next preview, mobile thumb, cursor hint, case/CTA split",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-4}"
+  },
+  {
+   "sha": "a4c6aad",
+   "full": "a4c6aad111c070c87db3ddfd5222c534d57830ae",
+   "date": "2026-09-21",
+   "time": "13:42",
+   "subject": "fix(popover): light-in-light dark-in-dark surface border, connectors restored, zoom-aware",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "6e5d1f0",
+   "full": "6e5d1f0d8087562c7b7530617ce20cfc30d69625",
+   "date": "2026-09-21",
+   "time": "13:37",
+   "subject": "fix(popover): restore grid connectors + list floating, single 2px theme border",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "46a5a21",
+   "full": "46a5a217d5c056f2c656856d82b907d94625bd92",
+   "date": "2026-09-21",
+   "time": "13:26",
+   "subject": "fix(popover): dark single border tracks theme — 2px theme-matched, no padding",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "1bff4db",
+   "full": "1bff4db2ce76bf9e1794c4df2d720b18cabbdcbf",
+   "date": "2026-09-21",
+   "time": "13:21",
+   "subject": "fix(popover): single-frame desktop previews — grid portal only, list peek only",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "8213488",
+   "full": "821348894a7c514ab55eae26bd133db3cca6d2b6",
+   "date": "2026-09-21",
+   "time": "12:58",
+   "subject": "feat(promo): cinematic player — icons split, poster frame, buffer bar, hover scrim",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-2}"
+  },
+  {
+   "sha": "265b15a",
+   "full": "265b15a0f40295b82836b5d75544c1420b6ae665",
+   "date": "2026-09-21",
+   "time": "12:58",
+   "subject": "feat(list): brand colour recall swatches on work rows — two-line rows, canvas refine",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-2}"
+  },
+  {
+   "sha": "7514a72",
+   "full": "7514a72973c793b4d60b9aced15d749074025853",
+   "date": "2026-09-21",
+   "time": "12:58",
+   "subject": "fix(transit): hero-box selector — ghost hides the real hero again",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-2}"
+  },
   {
    "sha": "efde078",
    "full": "efde0788d17536dc44ae21cea613192a32d3195b",
