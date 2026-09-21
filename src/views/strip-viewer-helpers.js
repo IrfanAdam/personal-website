@@ -1,8 +1,9 @@
 /* ADAM/SHARED — views/strip-viewer-helpers · dom + place + hero + spring
    [plan:2026-09-15_183400-lump-sum-builds.md#phase-17] */
-// Exports: makeStripEl, placeStrip, HERO, slugFrom, createFollower, preloadHeroes
+// Exports: makeStripEl, placeStrip, HERO, slugFrom, createFollower, preloadHeroes · createListFollower (re-export)
 import { projects } from '../data/site.js';
 import { fxNum } from './fx-tokens.js';
+export { createListFollower } from './list-follower.js';
 export const HERO = Object.fromEntries(projects.map((p) => [p[0], p[14] || p[13] || p[8]]));
 export const slugFrom = (a) => (a.getAttribute('href') || '').split('/').pop() || '';
 export function makeStripEl() {
@@ -71,30 +72,5 @@ export function createFollower(el) {
     settle() { ts = 1; live = true; kick(); },
     idle() { live = false; ts = FROM; kick(); },
     stop() { if (raf) cancelAnimationFrame(raf); raf = 0; live = false; },
-  };
-}
-export function createListFollower(el) {
-  const SK = fxNum('--fx-viewer-pop-k', 0.28);
-  const SFR = fxNum('--fx-viewer-pop-fr', 0.55);
-  const FROM = fxNum('--fx-viewer-pop', 0.985);
-  let x = 0, y = 0, tx = 0, ty = 0, s = FROM, vs = 0, ts = FROM, raf = 0, live = false, dirty = false;
-  const apply = () => {
-    el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${s.toFixed(4)})`;
-  };
-  const tick = () => {
-    raf = 0;
-    if (dirty) { x = tx; y = ty; dirty = false; }
-    vs = (vs + (ts - s) * SK) * SFR; s += vs;
-    apply();
-    const sclDone = Math.abs(ts - s) < 0.001 && Math.abs(vs) < 0.001;
-    if (live || !sclDone || dirty) raf = requestAnimationFrame(tick);
-  };
-  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
-  return {
-    snap(nx, ny) { x = tx = nx; y = ty = ny; dirty = false; apply(); kick(); },
-    aim(nx, ny) { tx = nx; ty = ny; dirty = true; live = true; kick(); },
-    pop() { s = FROM; vs = 0; ts = 1; live = true; kick(); },
-    idle() { live = false; ts = FROM; kick(); },
-    stop() { if (raf) cancelAnimationFrame(raf); raf = 0; live = false; dirty = false; },
   };
 }
