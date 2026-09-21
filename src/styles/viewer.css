@@ -2,7 +2,7 @@
 /* Single-frame portal — cursor + tether removed; only .viewer remains */
 .viewer-cursor{display:none !important;}
 .viewer{position:fixed;left:0;top:0;width:var(--size-viewer-w);background:var(--color-surface);
-  border:var(--viewer-border);box-shadow:var(--shadow-viewer);padding:var(--space-4);
+  border:var(--viewer-border);box-shadow:var(--shadow-viewer);padding:0;
   z-index:var(--z-viewer);pointer-events:none;overflow:hidden;opacity:0;filter:blur(var(--blur-viewer));
   transform:translate3d(0,0,0);will-change:transform,opacity,filter;contain:layout paint;
   transition:opacity var(--dur-glide) var(--ease-standard),filter var(--dur-glide) var(--ease-signature);}
