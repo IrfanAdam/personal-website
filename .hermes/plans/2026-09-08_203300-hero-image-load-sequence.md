@@ -4,6 +4,8 @@
 > **Source:** Desktop plan approved via `add this plan`
 > **Goal:** Sequential CSS shimmer → grid reveal with viewport-gated trigger, lazy-load aware, no repeat on second visit.
 
+**Tags:** Motion
+
 ## Spec (user)
 
 - **Mobile:** layout@placeholder → continuous shimmer → resize done → shimmer OFF → cell grid reveal → unblur + final shimmer → no repeat on 2nd load
@@ -56,3 +58,22 @@ desktop: CSS shimmer@aspect ──image decoded──▶ shimmer OFF → same gr
 - [ ] Task 2: `project.js` — split mobile/desktop triggers, defer grid attach
 - [ ] Task 3: `gridReveal.js` — drop `|| now<t0` shimmer gate if deferred
 - [ ] Task 4: Build + manual verify (mobile/desktop dedup + lazy)
+
+## Phase 1 — Shipped: hero load sequence + reveal polish (retro) {#phase-1}
+
+*Tags: Motion*
+
+*Retroactive entry so the pre-trailer commits (2026-09-08/09) have a home in the changelog; the phase above is the original pre-SOP task list.*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 1 | Case hero GridReveal + CORS unblur | heroes reveal cell-by-cell — denser/slower timing, mobile height morph, unblur like masonry |
+| 2 | Mobile hero layout-first + dedup | height before reveal, sessionStorage + visited-set dedup, RAF fallback, no repeat on revisit |
+| 3 | Load-coupled settle + local heroes | staggered grid reveals, instant handoff, mobile decode of cached images, local hero images |
+
+- [x] **1 Case hero GridReveal + CORS unblur.** ✓ done — denser/slower hero reveal (`3ccf3ff`), CORS-aware unblur (`7bb9f6a`), unified project/contact heroes (`e0d9ca3`).
+- [x] **2 Mobile hero layout-first + dedup.** ✓ done — sequencing + dedup (`50ffd51`), sessionStorage dedup (`86dc748`), visited-set + shimmer through height (`7b1a383`), mobile layout-first no-stretch (`92ba6d6`).
+- [x] **3 Load-coupled settle + local heroes.** ✓ done — staggered reveals + instant handoff (`3d1c4f2`), skip already-viewed (`ab91e39`), long-cache local images (`6d3487b`), always-replay vendor-local (`12bfb17`), mobile cached-image decode (`7ecf1a1`).
+
+*Shipped in 3ccf3ff–7ecf1a1 · Tasks 1–3 · phase-1.*
+
