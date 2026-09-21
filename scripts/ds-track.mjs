@@ -10,7 +10,7 @@ import { execSync } from 'node:child_process';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'src/ds/changelog-manifest.json');
-const DS = ['src/ds', 'src/styles/tokens.css', 'DESIGN.md', 'design.md'];
+const DS = ['src/ds', 'src/styles/tokens.css', 'src/styles/tokens-dark.css', 'src/styles/tokens-fx.css', 'DESIGN.md', 'design.md'];
 const TAG = /\[plan:([^\]#\s]+)(?:#([^\]]+))?\]/;
 const CONTINUATION = '20260909_145218_9888b1';
 const sh = (cmd) => { try { return execSync(cmd, { cwd: root, encoding: 'utf8' }); } catch { return null; } };

@@ -5,13 +5,14 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Mar-May'19",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "goals",
   "image": "/images/earthly.jpg",
   "mock": "https://framerusercontent.com/images/5P3AYuCYcMVPDx7AKDAyUGQyhW4.jpg?scale-down-to=2048",
   "body": "",
-  "deliverables": "—",
-  "platform": "—",
-  "hero": "/heroes/earthlyessence.jpg"
+  "deliverables": "\u2014",
+  "platform": "\u2014",
+  "hero": "/heroes/earthlyessence.jpg",
+  "nextImage": "/images/next/earthlyessence.jpg"
 }

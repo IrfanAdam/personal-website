@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T08:12:12.762Z",
+  "generated": "2026-09-21T12:41:28.916Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -7,6 +7,14 @@
       "layer": "view",
       "route": null,
       "title": "boot chrome",
+      "tokens": []
+    },
+    {
+      "id": "data_next_copy",
+      "path": "src/data/next-copy.js",
+      "layer": "component",
+      "route": null,
+      "title": "next copy",
       "tokens": []
     },
     {
@@ -2576,7 +2584,8 @@
         "--shimmer-band",
         "--shimmer-gradient",
         "--space-12",
-        "--space-14"
+        "--space-14",
+        "--space-6"
       ]
     },
     {
@@ -2601,9 +2610,7 @@
         "--space-16",
         "--space-18",
         "--space-2",
-        "--space-26",
         "--space-3",
-        "--space-4",
         "--space-6",
         "--space-8",
         "--text-h2",
@@ -2770,6 +2777,32 @@
       ]
     },
     {
+      "id": "styles_list_mobile",
+      "path": "src/styles/list-mobile.css",
+      "layer": "style",
+      "route": null,
+      "title": "list mobile",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink-muted",
+        "--color-line",
+        "--color-panel",
+        "--measure-prose",
+        "--size-frame",
+        "--size-header",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-2",
+        "--space-4",
+        "--space-8",
+        "--space-96",
+        "--text-meta"
+      ]
+    },
+    {
       "id": "styles_map",
       "path": "src/styles/map.css",
       "layer": "style",
@@ -2851,6 +2884,38 @@
       ]
     },
     {
+      "id": "styles_next",
+      "path": "src/styles/next.css",
+      "layer": "style",
+      "route": null,
+      "title": "next",
+      "tokens": [
+        "--color-ink",
+        "--color-surface",
+        "--font-sans",
+        "--leading-body",
+        "--leading-prose",
+        "--radius-sm",
+        "--size-hairline",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-20",
+        "--space-3",
+        "--space-32",
+        "--space-6",
+        "--space-8",
+        "--text-body",
+        "--text-h3",
+        "--text-title",
+        "--tracking-body",
+        "--tracking-heading",
+        "--tracking-title",
+        "--weight-bold",
+        "--weight-medium"
+      ]
+    },
+    {
       "id": "styles_pages",
       "path": "src/styles/pages.css",
       "layer": "style",
@@ -2884,49 +2949,64 @@
       ]
     },
     {
+      "id": "styles_pages_cta",
+      "path": "src/styles/pages-cta.css",
+      "layer": "style",
+      "route": null,
+      "title": "pages cta",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-surface",
+        "--leading-title",
+        "--measure-copy",
+        "--size-frame",
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-18",
+        "--space-30",
+        "--space-6",
+        "--space-8",
+        "--text-title",
+        "--tracking-title",
+        "--weight-bold"
+      ]
+    },
+    {
       "id": "styles_pages_sections",
       "path": "src/styles/pages-sections.css",
       "layer": "style",
       "route": null,
       "title": "pages sections",
       "tokens": [
+        "--border-focus",
         "--border-hairline",
-        "--color-accent",
         "--color-ink",
         "--color-ink-muted",
         "--color-line",
         "--color-panel",
-        "--color-surface",
         "--dur-soft",
         "--ease-standard",
+        "--focus-offset",
         "--font-mono",
         "--leading-snug",
-        "--leading-title",
-        "--measure-copy",
-        "--measure-prose",
         "--size-frame",
         "--size-hairline",
-        "--size-header",
         "--space-1",
         "--space-10",
         "--space-12",
         "--space-14",
-        "--space-16",
-        "--space-18",
         "--space-2",
         "--space-22",
-        "--space-3",
-        "--space-30",
         "--space-4",
-        "--space-6",
-        "--space-8",
         "--text-h3",
         "--text-meta",
-        "--text-title",
         "--tracking-body",
         "--tracking-label",
         "--tracking-mono",
-        "--tracking-title",
         "--weight-bold",
         "--work-swatch"
       ]
@@ -3200,6 +3280,30 @@
         "--viewer-border",
         "--z-viewer",
         "--z-viewer-lines"
+      ]
+    },
+    {
+      "id": "styles_work_cursor",
+      "path": "src/styles/work-cursor.css",
+      "layer": "style",
+      "route": null,
+      "title": "work cursor",
+      "tokens": [
+        "--blur-cursor",
+        "--color-ink",
+        "--color-surface",
+        "--dur-soft",
+        "--ease-standard",
+        "--font-mono",
+        "--sat-header",
+        "--shadow-viewer",
+        "--size-hairline",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-label",
+        "--text-meta",
+        "--tracking-mono"
       ]
     },
     {
@@ -3717,6 +3821,14 @@
       "tokens": []
     },
     {
+      "id": "views_masonry_work_cursor",
+      "path": "src/views/masonry/work-cursor.js",
+      "layer": "view",
+      "route": null,
+      "title": "work cursor",
+      "tokens": []
+    },
+    {
       "id": "views_masonry_work_peek",
       "path": "src/views/masonry/work-peek.js",
       "layer": "view",
@@ -3730,6 +3842,14 @@
       "layer": "view",
       "route": null,
       "title": "minimal lab",
+      "tokens": []
+    },
+    {
+      "id": "views_next_preview",
+      "path": "src/views/next-preview.js",
+      "layer": "view",
+      "route": null,
+      "title": "next preview",
       "tokens": []
     },
     {
@@ -5119,6 +5239,11 @@
       "kind": "imports"
     },
     {
+      "from": "ds_library_next",
+      "to": "styles_next",
+      "kind": "styles"
+    },
+    {
       "from": "ds_library_spec",
       "to": "ds_playground",
       "kind": "imports"
@@ -5994,6 +6119,11 @@
       "kind": "tokens"
     },
     {
+      "from": "styles_list_mobile",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "styles_map_controls",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -6005,6 +6135,16 @@
     },
     {
       "from": "styles_masonry",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_next",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_pages_cta",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -6060,6 +6200,11 @@
     },
     {
       "from": "styles_viewer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "styles_work_cursor",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -6495,6 +6640,11 @@
     },
     {
       "from": "views_masonry_list_view",
+      "to": "views_masonry_work_cursor",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_list_view",
       "to": "views_masonry_work_peek",
       "kind": "imports"
     },
@@ -6567,6 +6717,11 @@
       "from": "views_masonry_viewer",
       "to": "views_masonry_viewer_visibility",
       "kind": "imports"
+    },
+    {
+      "from": "views_masonry_work_cursor",
+      "to": "styles_work_cursor",
+      "kind": "styles"
     },
     {
       "from": "views_masonry_work_peek",
@@ -6649,6 +6804,16 @@
       "kind": "imports"
     },
     {
+      "from": "views_next_preview",
+      "to": "data_next_copy",
+      "kind": "imports"
+    },
+    {
+      "from": "views_next_preview",
+      "to": "views_img_helpers",
+      "kind": "imports"
+    },
+    {
       "from": "views_proceed_gate",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -6676,6 +6841,11 @@
     {
       "from": "views_project",
       "to": "views_img_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "views_project",
+      "to": "views_next_preview",
       "kind": "imports"
     },
     {

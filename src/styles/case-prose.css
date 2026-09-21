@@ -44,26 +44,5 @@
   color: var(--color-ink-muted);
 }
 .spec dd { margin: var(--space-2) 0 0; font-weight: var(--weight-semibold); }
-.next {
-  display: block;
-  margin: var(--space-26) 0 var(--space-6);
-  padding: var(--space-18);
-  border: var(--border-hairline);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
-  text-decoration: none;
-}
-.next small {
-  color: var(--color-ink-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-mono);
-  font-size: var(--text-label);
-}
-.next b {
-  display: block;
-  font-size: var(--text-h2);
-  letter-spacing: var(--tracking-heading);
-  margin: var(--space-4) 0;
-}
 .top nav { display: flex; gap: var(--space-6); }
 .top nav a { text-decoration: none; }

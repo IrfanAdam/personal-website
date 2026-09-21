@@ -17,8 +17,14 @@
     padding: var(--space-12);
     padding-bottom: calc(var(--space-12) + env(safe-area-inset-bottom, 0px));
   }
-  .case-media { order: -1; }
-  .case-copy { padding-top: var(--gutter); }
+  .case-grid { display: flex; flex-direction: column; }
+  .case-copy { display: contents; }
+  .case-copy h1 { order: -2; margin: 0 0 var(--space-6); }
+  .case-copy .kicker { order: -1; }
+  .case-media { order: 0; }
+  .case-copy .prose { order: 1; }
+  .case-copy .spec { order: 2; }
+  .case-copy { padding-top: 0; }
 }
 .hero-box {
   position: relative;

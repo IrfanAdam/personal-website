@@ -1,0 +1,85 @@
+/* ADAM/STYLE — styles/list-mobile · mobile list inline thumb · [plan:2026-09-15_183400-lump-sum-builds.md#phase-22] */
+/* — Exports: none — overrides pages-sections for --break-sm — */
+.works-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: start;
+}
+.works-rows { min-width: 0; padding-right: var(--gutter); }
+.peek.case-media.hero-box {
+  position: sticky;
+  top: calc(var(--header-h, var(--size-header)) + var(--space-16));
+  align-self: start;
+  will-change: auto;
+}
+.about { max-width: var(--measure-prose); padding: var(--space-18) var(--space-4); }
+.about blockquote {
+  margin: var(--space-14) 0;
+  padding-left: var(--space-14);
+  border-left: var(--size-frame) solid var(--color-line);
+  color: var(--color-ink-muted);
+}
+@media (max-width: 640px) /* --break-sm */ {
+  #grid.works { margin: 0; gap: 0; }
+  .works { margin: 0; gap: 0; }
+  .works h2 { display: none; }
+  #filtersBar:has(+ #grid.works) { display: none; }
+  .wrap:has(#grid.works) { padding-top: 0; }
+  .work {
+    display: flex;
+    gap: var(--space-12);
+    align-items: stretch;
+    padding: var(--space-10) var(--space-4);
+  }
+  .work-thumb {
+    display: block;
+    flex: none;
+    width: var(--space-96);
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--color-panel);
+    border: var(--border-hairline);
+  }
+  .work-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .work-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    min-width: 0;
+    gap: var(--space-4);
+    padding: var(--space-2) 0;
+  }
+  .work-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: clip;
+    line-clamp: 2;
+  }
+  .work-row--bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    margin-top: auto;
+  }
+  .work-meta {
+    font-size: var(--text-meta);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  .work-swatches { --work-swatch: var(--space-12); }
+  .works-cols { grid-template-columns: minmax(0, 1fr); }
+  .peek { display: none; }
+  .about { padding: var(--space-12) var(--space-4); }
+}

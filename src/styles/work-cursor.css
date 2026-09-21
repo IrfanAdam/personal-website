@@ -1,0 +1,47 @@
+/* ADAM/STYLE — styles/work-cursor · cursor hint · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+.work-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-4) var(--space-8);
+  background: color-mix(in srgb, var(--color-ink) 88%, transparent);
+  color: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-mono);
+  line-height: 1;
+  border: var(--size-hairline) solid var(--color-surface);
+  pointer-events: none;
+  z-index: 31;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  transition: opacity var(--dur-soft) var(--ease-standard);
+  box-shadow: var(--shadow-viewer);
+  backdrop-filter: blur(var(--blur-cursor)) saturate(var(--sat-header));
+  -webkit-backdrop-filter: blur(var(--blur-cursor)) saturate(var(--sat-header));
+}
+.work-cursor.on {
+  opacity: 1;
+}
+.work-cursor span:last-child {
+  font-size: var(--text-label);
+  line-height: 1;
+}
+@media (hover: none) {
+  .work-cursor {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-cursor {
+    transition: none;
+  }
+}
+html.work-cursor-active .works,
+html.work-cursor-active .works * {
+  cursor: none !important;
+}

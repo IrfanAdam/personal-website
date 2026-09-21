@@ -6,6 +6,7 @@ import { aboutBlock } from '../shared.js';
 import { peekMarkup, attachWorkPeek } from './work-peek.js';
 import { attachListViewer } from './list-viewer.js';
 import { attachBrandTokens } from './brand-tokens.js';
+import { attachWorkCursor } from './work-cursor.js';
 
 // — Section: markup —
 export function listMarkup(list) {
@@ -20,9 +21,11 @@ export function attachListView(grid) {
   const offPopover = attachListViewer(grid);
   const offPeek = attachWorkPeek(grid);
   const offTokens = attachBrandTokens(grid);
+  const offCursor = attachWorkCursor(grid);
   return () => {
     offPopover();
     offPeek();
     offTokens();
+    offCursor();
   };
 }

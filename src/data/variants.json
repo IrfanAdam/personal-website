@@ -259,5 +259,126 @@
       480,
       800
     ]
+  },
+  "/images/next/acquapanna.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/apparel-manufacturing-system-reimagined.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/bloomify.jpg": {
+    "w": 1050,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/next/earthlyessence.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/fluxx.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/gravitas.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/grovegoods.jpg": {
+    "w": 3024,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/helix.jpg": {
+    "w": 1510,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "/images/next/tas-35.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/tas-51.jpg": {
+    "w": 1000,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "/images/next/tas-58.jpg": {
+    "w": 8167,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/tas-69.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/velocity.jpg": {
+    "w": 5065,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "/images/next/zenithlabs.jpg": {
+    "w": 5472,
+    "variants": [
+      480,
+      800,
+      1200,
+      1600
+    ]
   }
 }

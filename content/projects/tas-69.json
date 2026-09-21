@@ -5,13 +5,14 @@
   "catA": "",
   "catB": "Leisure",
   "date": "Nov'20-Jul'21",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "goals",
   "image": "/images/tas-69.jpg",
   "mock": "https://framerusercontent.com/images/YbQwWhTWP32X7mMUOeUr68QpQ.jpg?scale-down-to=2048",
   "body": "",
-  "deliverables": "—",
-  "platform": "—",
-  "hero": "/heroes/tas-69.jpg"
+  "deliverables": "\u2014",
+  "platform": "\u2014",
+  "hero": "/heroes/tas-69.jpg",
+  "nextImage": "/images/next/tas-69.jpg"
 }

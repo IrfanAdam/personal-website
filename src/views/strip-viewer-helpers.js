@@ -23,8 +23,12 @@ export function preloadHeroes() {
   });
 }
 export function placeStrip(cx, cy, vw, vh, pad, gap) {
-  let x = cx + gap; let y = cy + gap;
+  let x = cx + gap;
   const sw = window.innerWidth; const sh = window.innerHeight;
+  const cur = document.querySelector('.work-cursor');
+  const ch = cur ? cur.getBoundingClientRect().height || 28 : 0;
+  const hasCursor = !!document.querySelector('.work-cursor.on');
+  let y = cy + gap + (hasCursor && ch ? ch + gap : 0);
   if (x + vw + pad > sw) x = cx - vw - gap;
   if (x < pad) x = pad;
   if (x + vw + pad > sw) x = Math.max(pad, sw - vw - pad);

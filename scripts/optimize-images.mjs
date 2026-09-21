@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const dirs = ['public/images', 'public/heroes', 'public/images/mood'];
+const dirs = ['public/images', 'public/heroes', 'public/images/mood', 'public/images/next'];
 const widths = [480, 800, 1200, 1600];
 const qJpeg = 78;
 const qWebp = 75;

@@ -35,9 +35,12 @@ export function row(p) {
   const sw = paletteFor(slug).map(c => `<i style="background:${c}"></i>`).join('');
   const open = `<a class="work" href="#/projects/${slug}" data-card="${card}"`
     + ` data-media="${media}" data-w="${w}" data-h="${h}">`;
-  const titleRow = `<span class="work-row work-row--main"><span class="work-title">${title}</span>`
+  const thumb = `<span class="work-thumb" aria-hidden="true"><img src="${card}" alt=""`
+    + ` loading="lazy" decoding="async" width="${w}" height="${h}" /></span>`;
+  const titleRow = `<span class="work-row work-row--main"><span class="work-title">${title}</span></span>`;
+  const metaRow = `<span class="work-meta">${cat}${slug}</span>`;
+  const bottomRow = `<span class="work-row work-row--bottom"><span class="work-date">${date}</span>`
     + `<span class="work-swatches" aria-hidden="true" data-swatches>${sw}</span></span>`;
-  const metaRow = `<span class="work-row work-row--sub"><span class="work-meta">${cat}${slug}</span>`
-    + `<span class="work-date">${date}</span></span></a>`;
-  return open + titleRow + metaRow;
+  const body = `<span class="work-body">${titleRow}${metaRow}${bottomRow}</span>`;
+  return open + thumb + body + `</a>`;
 }

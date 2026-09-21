@@ -8,11 +8,12 @@
   "catB": "Sales CRM",
   "order": 1,
   "date": "Sep-Dec'24",
-  "platform": "—",
-  "deliverables": "—",
+  "platform": "\u2014",
+  "deliverables": "\u2014",
   "role": "Brand Identity",
   "title": "Mining gems over hitting sales goals",
   "tag": "crm",
   "hero": "/heroes/tas-51.jpg",
-  "image": "/images/tas-51.jpg"
+  "image": "/images/tas-51.jpg",
+  "nextImage": "/images/next/tas-51.jpg"
 }

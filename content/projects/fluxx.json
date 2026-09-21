@@ -11,7 +11,8 @@
   "image": "/images/fluxx.jpg",
   "mock": "https://framerusercontent.com/images/otT2zTLfJCiCESQe7jwTRpKFsU.jpg?scale-down-to=2048",
   "body": "",
-  "deliverables": "—",
-  "platform": "—",
-  "hero": "/heroes/fluxx.jpg"
+  "deliverables": "\u2014",
+  "platform": "\u2014",
+  "hero": "/heroes/fluxx.jpg",
+  "nextImage": "/images/next/fluxx.jpg"
 }

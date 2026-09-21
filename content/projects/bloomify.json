@@ -5,13 +5,14 @@
   "catA": "",
   "catB": "Mobile App",
   "date": "Jan-Mar'21",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
   "image": "/images/bloomify.jpg",
   "mock": "https://framerusercontent.com/images/pXiEpKEipPRh8dlminVEXClKlUM.jpg?scale-down-to=2048",
   "body": "",
-  "deliverables": "—",
-  "platform": "—",
-  "hero": "/heroes/bloomify.jpg"
+  "deliverables": "\u2014",
+  "platform": "\u2014",
+  "hero": "/heroes/bloomify.jpg",
+  "nextImage": "/images/next/bloomify.jpg"
 }

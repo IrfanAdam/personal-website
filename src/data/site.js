@@ -1,12 +1,16 @@
 /* ADAM/APP — data/site · CMS-backed project tuples + settings ·
    [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Content lives in /content/*.json so Decap CMS (/admin) can edit it.
-// Tuple: [slug, title, catA, catB, date, timeline, role, tag, image, deliverables, platform, w, h, mock, hero, promoVideo]
+// Tuple: [slug, title, catA, catB, date, timeline, role, tag,
+//  image, deliverables, platform, w, h, mock, hero, promoVideo,
+//  nextImage, nextW, nextH]
 // w/h come from content/dims.json (node scripts/dims.mjs); fallback 3:4.
 // mock is Framer hover variant (BEj6Kv06e); hero is detail hero (same as mock, Framer detail uses mock not grid thumb).
 // hero falls back to mock → image for backwards-compat; promoVideo is optional 16:9 MP4 below hero.
+// nextImage is the Framer "See whats next" preview (special per-project, not hero).
 import settings from '../../content/settings.json';
 import dims from '../../content/dims.json';
+import nextDims from '../../content/next-dims.json';
 const files = import.meta.glob('../../content/projects/*.json', { eager: true });
 const items = Object.values(files)
   .map((m) => m.default ?? m)
@@ -31,5 +35,7 @@ export const projects = items.map((p) =>
     ...(dims[p.slug] || [3, 4]),
     p.mock || p.image,
     p.hero || p.mock || p.image,
-    p.promoVideo || '']);
+    p.promoVideo || '',
+    p.nextImage || p.hero || p.mock || p.image,
+    ...(nextDims[p.slug] || dims[p.slug] || [3, 4])]);
 export const iconFor = (slug) => `/icons/${slug === 'apparel-manufacturing-system-reimagined' ? 'apparel' : slug}.jpg`;

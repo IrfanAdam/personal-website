@@ -5,13 +5,14 @@
   "catA": "Batting Data",
   "catB": "Sports Tech",
   "date": "Jun-Jul'19",
-  "timeline": "—",
-  "role": "—",
+  "timeline": "\u2014",
+  "role": "\u2014",
   "tag": "crm",
   "image": "/images/gravitas.jpg",
   "mock": "https://framerusercontent.com/images/ZbsTDTa9OGR6h0ewFpNEAHE58Oc.jpg?scale-down-to=2048",
   "body": "",
-  "deliverables": "—",
-  "platform": "—",
-  "hero": "/heroes/gravitas.jpg"
+  "deliverables": "\u2014",
+  "platform": "\u2014",
+  "hero": "/heroes/gravitas.jpg",
+  "nextImage": "/images/next/gravitas.jpg"
 }
