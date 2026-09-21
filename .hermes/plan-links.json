@@ -1,208 +1,1025 @@
 {
-  "_comment": "Retroactive plan links for pre-trailer commits — no history rewrite. sha -> {plan, anchor, note}. anchor must be a verbatim case-sensitive substring of exactly one ## Phase body (checked by audit); null attaches to the plan's first phase per convention. Read by scripts/ds-track.mjs.",
-  "links": {
-    "0287e39": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": null, "note": "prep checkpoint for update 4; first-phase attach per convention" },
-    "50c8050": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "Moodboard strip", "note": "moodboard refs + overview polish -> P5 overview/moodboard" },
-    "001f837": { "plan": "2026-09-09_130000-ds-maturity.md", "anchor": "Token hygiene", "note": "bundle spanning P1/P2/P4/P5/P6; badged on first area P1" },
-    "5948e02": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "capped scale", "note": "card-title type step -> P2 type scale" },
-    "ffee0b1": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "subdivision-reveal algorithm that became the shared function -> P4" },
-    "9d2b13f": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "viewer tether/perf iteration; viewer housed as function -> P4" },
-    "3d974ae": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "viewer mocks/portal iteration -> P4" },
-    "487b974": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "cyberpunk expander iteration -> P4" },
-    "c595a3e": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "blur-to-sharp", "note": "mosaic shimmer detail-first sharpen ~= dimension-first blur-to-sharp -> P2" },
-    "7e4f047": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "favicon", "note": "theme toggle + favicon restore; clone-completion leftover -> retro P1" },
-    "fa4eb0e": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "Baseline + IA skeleton", "note": "token-DS adoption across site+docs -> P0 baseline" },
-    "0d02406": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "one sheet per foundation", "note": "DESIGN.md tokens spec -> P2 foundations sheets" },
-    "940e158": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "bottom-fixed header", "note": "mobile header/cards/media -> retro P1" },
-    "8b88207": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "sliding selection frame", "note": "slick minimal header -> retro P1" },
-    "c7303a2": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "decap cms", "note": "initial clone -> retro P1" },
-    "ce0b94a": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "Phase 1", "note": "trailer cited lowercase phase-1; prune scope -> P1" },
-    "72c8f05": { "plan": "2026-09-10_153555-color-cool-synthetic.md", "anchor": "Material mapping", "note": "color pane material mapping + inline AA pairs -> P2" },
-    "557ffa6": { "plan": "2026-09-09_120000-ds-maturity.md", "anchor": "GridReveal", "note": "glimmer-orb views build fix; function views -> P4" },
-    "1160912": { "plan": "2026-09-10_201154-ds-nav-drawer.md", "anchor": "Drawer open/close", "note": "drawer emerge+dim, toggle visibility -> P2 drawer" },
-    "37982f9": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" },
-    "69eac10": { "plan": "2026-09-09_145218-bidirectional-pipeline.md", "anchor": null, "note": "manifest upkeep refresh; first-phase attach per convention" },
-    "0c80ab8": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-1}", "note": "mobile: gear at end of icon row -> lump-sum P1 T1" },
-    "e494169": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-1}", "note": "mobile: full-bleed rows, drop padding clip -> lump-sum P1 T2" },
-    "8e440b7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-1}", "note": "mobile: grid gutter restored -> lump-sum P1 T3" },
-    "a330be7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-1}", "note": "mobile: wrap gutter 16->12 -> lump-sum P1 T4" },
-    "96f28d6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-1}", "note": "responsive images + reveal flicker -> lump-sum P1 T5" },
-    "05ec5b2": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-2}", "note": "strip click snap + 200ms first-visit scramble -> lump-sum P2 T6-T7" },
-    "8d0fdc5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-2}", "note": "map regenerated for committed tree -> lump-sum P2 T8" },
-    "b5b29ce": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "phase-5", "note": "phase 4.5 plan for atlas dock polish + public map; folded into atlas P5-P8 -> badged P5" },
-    "2e1b95b": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "phase-4", "note": "plan-mark chore (phase 4 marks + shipped line) that reached the deployed manifest unlinked -> badged P4" },
-    "5313c76": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "hero window-open on desktop 0.12 -> lump-sum P4 T16" },
-    "5b2f104": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "desktop hero second-load silence + de-overlap -> lump-sum P4 T17" },
-    "126cbd5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "hero window-open 620->480ms -> lump-sum P4 T18" },
-    "0a72739": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "mobile reel pull 0.34 linger -> lump-sum P4 T19" },
-    "7dd33a3": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "master volume x per-sound gain -> lump-sum P4 T20" },
-    "9a82f0f": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "header sound outside gear pop -> lump-sum P4 T21" },
-    "08d6e66": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-6", "note": "loading sound sync + hero height cache -> lump-sum P6 T24" },
-    "031395c": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "modern footer + mobile settings morphing close -> lump-sum P7 T25" },
-    "3299e52": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "restore settings sheet + hero title to footer -> lump-sum P7 T26" },
-    "6d9fdd1": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "pill-height settings + anchored dropdown -> lump-sum P7 T27" },
-    "bf62cf7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "gear matches pill height -> lump-sum P7 T28" },
-    "6ed4848": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "restore bottom sheet near gear -> lump-sum P7 T29" },
-    "77e8757": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "dropdown via fWrap absolute -> lump-sum P7 T30" },
-    "bf97af5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "settings centered modal + backdrop -> lump-sum P7 T31" },
-    "66c9ced": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "mobile-only modal full-width volume -> lump-sum P7 T32" },
-    "73db667": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-7", "note": "outside close desktop + mobile volume width -> lump-sum P7 T33" },
-    "3225bf7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "gate mobile grid zing until first reveal -> lump-sum P8 T34" },
-    "acb1bdd": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "gate zing until all cards ready -> lump-sum P8 T35" },
-    "11e9955": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "zing after first fold 6 cards -> lump-sum P8 T36" },
-    "f91c68f": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-8", "note": "per-card zing on card.ready + first-fold -> lump-sum P8 T37" },
-    "05e9ab5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-9", "note": "cyberpunk proceed gate + authorize preview -> lump-sum P9 T38" },
-    "e3db2c1": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-9", "note": "subtle redux gate glimmer orb -> lump-sum P9 T39" },
-    "cbe4759": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-13", "note": "chore(lump-sum): close phase-13 — stamping 0737aec" },
-    "0737aec": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-13", "note": "style(footer): match original framer footer — sans links, faint title, © under right col" },
-    "2e4c3ff": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "style(footer): tighten padding rhythm — denser links, balanced columns" },
-    "826c292": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "fix(footer): dashed border via --border-dashed token" },
-    "62931e1": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "fix(footer): corner squares via space tokens" },
-    "80721c6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "feat(footer): dashed frame + corner square accents" },
-    "634f471": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "feat(footer): link grid + divider + note + auto-year copyright under big title" },
-    "ca9051c": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "fix(footer): hover bloom only in cursor zone, no whole-text contrast or shadow" },
-    "f032b97": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "fix(footer): more muted resting, no default glow — shimmer/glow only on hover" },
-    "5b72377": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "fix(footer): muted glyph shimmer clipped to text, not box glow" },
-    "042fab2": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "chore(lump-sum): close phase-12 — stamping 223badb" },
-    "223badb": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-12", "note": "feat(portfolio): visitor volume 0.36 + footer shimmer glow" },
-    "b037611": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-11", "note": "chore(lump-sum): close phase-11 — stamping 7a56269" },
-    "7a56269": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-11", "note": "feat(sound): visitor volume 0.44 + desktop hover zing" },
-    "e224f85": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-10", "note": "chore(ds): track refresh — 223/223 linked" },
-    "dcc7f54": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-10", "note": "chore(lump-sum): close phase-10 — token compliance a8199b3" },
-    "a8199b3": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-10", "note": "chore(lump-sum): phases 6-10 — retro 16 shas + gate token compliance" },
-    "5ef71db": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-5", "note": "chore(lump-sum): close phase-5 — ship reel shutter e2252fd" },
-    "e2252fd": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-5", "note": "fix(portfolio): reel shutter — interruptible zing, 380→45ms per card" },
-    "d3e61fb": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "chore(lump-sum): close phase-4 — ship sound polish b162ab6" },
-    "b162ab6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "{#phase-4}", "note": "fix(portfolio): header slot to #soundSlot — follow-up soundSwitch cleanup" },
-    "80906ad": { "plan": "2026-09-15_190000-foundations-sound-pane.md", "anchor": "#phase-3", "note": "chore(ds): close sound phase-3 + track refresh — 192/192 linked" },
-    "ef427e3": { "plan": "2026-09-15_190000-foundations-sound-pane.md", "anchor": "#phase-2", "note": "chore(ds): close sound phase-2 + track refresh — 191/191 linked" },
-    "896068d": { "plan": "2026-09-15_193000-theme-island-parity.md", "anchor": "#phase-1", "note": "chore(ds): close island-parity phase-1 + track refresh — 190/190 linked" },
-    "ccb60f4": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-3", "note": "chore(ds): generated DS files stop trailing every build and commit" },
-    "571757e": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-3", "note": "chore(portfolio): ignore the Hermes runtime db" },
-    "416fcbc": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-4", "note": "gates + device pass — P4" },
-    "3c6d3d0": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-3", "note": "close mark phase 3" },
-    "88429a7": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-3", "note": "mobile sweep — P3" },
-    "e185e71": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-2", "note": "close mark phase 2" },
-    "cfb55a7": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-2", "note": "mobile header in-flow — P2" },
-    "d4d04c6": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-1", "note": "close mark phase 1" },
-    "3f91b98": { "plan": "2026-09-15_100000-mobile-optimisation.md", "anchor": "#phase-1", "note": "settings gear + dropdown — P1" },
-    "97dd81b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-14", "note": "retro coverage pass — tracker sees all 256" },
-    "6e59812": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-15", "note": "footer round 2 — nubs, pale dashes, column-major links, strip scroll" },
-    "86a1ec7": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-16", "note": "title at design scale — natural wrap, 6.5vw/100, 40/60 grid" },
-    "70520a5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-17", "note": "footer own padding + dual corner squares" },
-    "4f7de17": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-18", "note": "feat(viewer): physics popover for strip/list + grid viewfinder desktop" },
-    "5fbfb1a": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-19", "note": "feat(list): preview pane on the right + promo-card previews" },
-    "2d6c1ca": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-20", "note": "feat(list): pane previews the project's detail media" },
-    "9375655": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-21", "note": "style(list): 1fr/1fr split, pane fills its half" },
-    "6b043a6": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-22", "note": "feat(transit): media flight from the list pane into the hero" },
-    "1e1538b": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "admin on Vercel with self-hosted GitHub OAuth" },
-    "6a4e9d8": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "admin config.yml 404 — absolute cms-config-url + /admin redirect" },
-    "e4158af": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "same-window OAuth flow when popup blocked" },
-    "8c457f6": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "popup handshake — dual postMessage + opener localStorage" },
-    "b3b3798": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "CMS content — acquapanna project update" },
-    "e6cfdd8": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "merge PR #1 — CMS acquapanna" },
-    "f1c761e": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "CMS content — acquapanna project update" },
-    "d9f3354": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "merge PR #2 — CMS acquapanna" },
-    "ca9090b": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "case padding, borderless header, matched titles" },
-    "9a6f736": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "dims.json", "note": "commit content/dims.json for the Vercel build" },
-    "3448dc1": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "Safety checkpoint", "note": "ignore preview HTML + plan screenshots" },
-    "f65f3f2": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "mobile row clipping — 100% width, padding removed" },
-    "19531a9": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "mobile right clipping — inset outer gutter" },
-    "0d90ee2": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "right edge clip — inset outer gutter, outer overflow" },
-    "b478eed": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "full bleed on mobile — side gutters removed" },
-    "b7639c7": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "restore gutters, remove vestigial gap" },
-    "8b4dd22": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "true full bleed — wrap+header 0 gutters" },
-    "7290896": { "plan": "2026-09-07_140407-mobile-responsiveness.md", "anchor": "responsive pass", "note": "scroller inset 12px, full-bleed outer" },
-    "953b723": { "plan": "2026-09-06_183401-portfolio-decap-completion.md", "anchor": "clone + CMS + chrome", "note": "remove Framer link from strip-meta" },
-    "bb36f58": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "blur-to-sharp", "note": "remove post-reveal blur/unblur" },
-    "24de219": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "blur-to-sharp", "note": "club unblur + shimmer into a single sweep" },
-    "7f41690": { "plan": "2026-09-07_113052-masonry-grid-opt.md", "anchor": "blur-to-sharp", "note": "fluid parallax — exponential decay, compositor" },
-    "3ccf3ff": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "denser slower case hero GridReveal + mobile height morph" },
-    "7bb9f6a": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "hero GridReveal CORS — unblur like masonry" },
-    "e0d9ca3": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "unify project/contact heroes to cell-by-cell GridReveal" },
-    "50ffd51": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "hero sequencing + dedup — height before reveal" },
-    "86dc748": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "sessionStorage dedup + shimmer during height" },
-    "7b1a383": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "visited-set dedup + shimmer through height, RAF fallback" },
-    "92ba6d6": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "hero mobile layout-first, skeletal shimmer, blur-unblur" },
-    "3d1c4f2": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "staggered grid reveals, instant handoff, load-coupled settle" },
-    "ab91e39": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "skip reveal for already-viewed images" },
-    "6d3487b": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "heroes always play, long-cache local images" },
-    "12bfb17": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "mobile heroes always replay, vendor hero images local" },
-    "7ecf1a1": { "plan": "2026-09-08_203300-hero-image-load-sequence.md", "anchor": "#phase-1", "note": "mobile heroes decode cached images instead of dead-waiting" },
-    "067fa38": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Phase-5", "note": "marks update-4 phases 5-7 shipped; badged P5" },
-    "e24445c": { "plan": "2026-09-10_153555-color-cool-synthetic.md", "anchor": "phase-4", "note": "mark phase 4 shipped — swatch audit" },
-    "a48f9b4": { "plan": "2026-09-10_153555-color-cool-synthetic.md", "anchor": "phase-5", "note": "mark phase 5 shipped — live adoption" },
-    "a3f6f23": { "plan": "2026-09-10_153555-color-cool-synthetic.md", "anchor": "phase-5", "note": "point phase-5 shipped line at a48f9b4" },
-    "ad6e5d9": { "plan": "2026-09-10_201154-ds-nav-drawer.md", "anchor": "Phase-1", "note": "marks nav-drawer phases 1-2 shipped; badged P1" },
-    "b4d852d": { "plan": "2026-09-12_150255-glitch-sound.md", "anchor": null, "note": "mark glitch-sound tasks done; first-phase attach" },
-    "7722f32": { "plan": "2026-09-12_150255-glitch-sound.md", "anchor": "#phase-3", "note": "sound control is single toggle" },
-    "6521bc1": { "plan": "2026-09-12_150255-glitch-sound.md", "anchor": "#phase-5", "note": "mark glitch-sound phase-5 done" },
-    "05f212d": { "plan": "2026-09-12_150255-glitch-sound.md", "anchor": "#phase-5", "note": "add missing Tags + Tech Stack to glitch-sound" },
-    "046f924": { "plan": "2026-09-12_150255-glitch-sound.md", "anchor": "#phase-6", "note": "glitch-sound phase 6 close-out — marks + shipped line" },
-    "5d83af0": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-0", "note": "over-limit inventory baseline" },
-    "6528508": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-0", "note": "manageability lint gate" },
-    "0419eab": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-0", "note": "route smoke for refactor safety" },
-    "a213ad0": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-0", "note": "mark refactor phase-0 done" },
-    "d36a17e": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-1", "note": "import graph for node diagram" },
-    "5affee9": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-1", "note": "barrel nests for visual/sound split" },
-    "2f5819c": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-1", "note": "contact block base→pages, footer expanded multiline" },
-    "b087dfe": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-2", "note": "split viewer + grid composer" },
-    "5cba489": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-2", "note": "split ctx tests + glitch init" },
-    "0d4091c": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-2", "note": "split cells parallax gridReveal" },
-    "b18f013": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-3", "note": "plain no-collapsing rule for phase-3" },
-    "7a7109d": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-3", "note": "split glitch-sound 175 into parse/geom/timing" },
-    "2f5ed4f": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-3", "note": "wrap two long lines in glitch-sound split" },
-    "86a7993": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-3", "note": "split scramble-text engine 146 into helpers" },
-    "44035f7": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-3", "note": "wrap reduced() one-liner in scramble helpers" },
-    "0436c5a": { "plan": "2026-09-13_193000-refactor-manageability.md", "anchor": "#phase-3", "note": "mark refactor phase-3 done" },
-    "a439295": { "plan": "2026-09-13_235413-over-limit-splits.md", "anchor": "#phase-3", "note": "split glimmer orb 105 into color utils" },
-    "a769cf1": { "plan": "2026-09-13_235413-over-limit-splits.md", "anchor": "#phase-3", "note": "split init-sound 116 into load-scanner" },
-    "5ffd87b": { "plan": "2026-09-13_235413-over-limit-splits.md", "anchor": "#phase-3", "note": "split gridReveal 112 into config module" },
-    "9db2bfa": { "plan": "2026-09-13_235413-over-limit-splits.md", "anchor": "#phase-3", "note": "split viewer 103 into visibility module" },
-    "af98a73": { "plan": "2026-09-13_235413-over-limit-splits.md", "anchor": "#phase-4", "note": "split main 106 into chrome module" },
-    "0c0f36a": { "plan": "2026-09-14_001100-graph-join-leak.md", "anchor": "#phase-1", "note": "hide split scope from cards via marker" },
-    "9125a58": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-4", "note": "mark atlas phase 4 shipped" },
-    "777839e": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-5", "note": "hide companion atlas-polish plan; folded into atlas P5-P8" },
-    "92e013e": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-6", "note": "atlas phase 6 close-out — shipped line" },
-    "b82a1fd": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-7", "note": "atlas phase 7 close-out — shipped line" },
-    "a74cac8": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-8", "note": "atlas phase 8 close-out — shipped line" },
-    "9540e71": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-9", "note": "atlas upkeep — arch script, predev chain, docs" },
-    "5d07ddf": { "plan": "2026-09-14_120000-arch-atlas-canvas.md", "anchor": "#phase-9", "note": "atlas phase 9 close-out — shipped line, plan complete" },
-    "dd2b09b": { "plan": "2026-09-14_192124-atlas-fullscreen.md", "anchor": "#phase-2", "note": "fullscreen close-out — tasks marked, shipped lines" },
-    "488b5e1": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-14", "note": "close phase-14 — stamping 97dd81b" },
-    "270793a": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-15", "note": "close phase-15 — stamping 6e59812" },
-    "aab2df5": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-16", "note": "close phase-16 — stamping 86a1ec7" },
-    "7517f6d": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-17", "note": "close phase-17 — stamping 70520a5" },
-    "a791998": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-18", "note": "close phase-18 — stamping 4f7de17" },
-    "74b1444": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-19", "note": "close phase-19 — stamping 5fbfb1a" },
-    "3980766": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-20", "note": "close phase-20 — stamping 2d6c1ca" },
-    "37b58fb": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-20", "note": "track refresh — phases 19+20 linked" },
-    "85f4237": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-21", "note": "close phase-21 — stamping 9375655" },
-    "67e7579": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-21", "note": "track refresh — phase 21 linked" },
-    "0c1d868": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-22", "note": "close phase-22 — stamping 6b043a6" },
-    "980df39": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-22", "note": "track refresh — phase 22 linked" },
-    "391dbf0": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-23", "note": "single-render popover, inertia follower, pane intent" },
-    "7f4979c": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-23", "note": "close phase-23 — stamping 391dbf0" },
-    "76ab5ed": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-24", "note": "snap list follow, rAF swaps, stable strip geometry" },
-    "da73232": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-24", "note": "close phase-24 — stamping 76ab5ed" },
-    "14b6143": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-25", "note": "instant list follow, scale-only spring" },
-    "13f8687": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-25", "note": "close phase-25 — stamping 14b6143" },
-    "86d5691": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-25", "note": "track refresh — phase 25 linked" },
-    "d6a38df": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-26", "note": "admin promoVideo pattern single-escaped" },
-    "8a0d3c0": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-26", "note": "close phase-26 — stamping d6a38df" },
-    "f6d6614": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-27", "note": "hero 40/60 + promo stacked in media column, video to public/videos" },
-    "9d84125": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-27", "note": "CMS content — tas-51 update (uploaded the video P27 T71 relocated)" },
-    "71b56d9": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-27", "note": "merge PR #3 — CMS projects/tas-51" },
-    "78c227e": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-27", "note": "close phase-27 — stamping f6d6614" },
-    "48787ef": { "plan": "2026-09-14_192124-atlas-fullscreen.md", "anchor": "{#phase-1}", "note": "atlas fullscreen stage overlay — dock toggle, overlay close (trailer cited ambiguous phase-1)" },
-    "0c464b1": { "plan": "2026-09-10_195043-smart-changelog.md", "anchor": "Tag taxonomy", "note": "mark smart-changelog phases 1-4 shipped; badged P1" },
-    "11a3293": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "update 4 task 7 — three accent ramps (trailer cited ambiguous Phase-1)" },
-    "ffd2bae": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "mark update-4 phases 1-4 shipped; badged P1" },
-    "7d3bcea": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Space · Layout: usage-anchored", "note": "update 4 phases 3-4 — space usage + breakpoints; badged P3" },
-    "dba2975": { "plan": "2026-09-09_170854-design-system-update-4.md", "anchor": "Color: primitives", "note": "update 4 phases 1-2 — color story + type; badged P1" },
-    "fd5638b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-28", "note": "coverage sweep — 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete" },
-    "32c014b": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-28", "note": "close phase-28 \u2014 stamping fd5638b (sweep bookkeeping)" },
-    "3f4cd90": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-29", "note": "list popover Y-inertia \u2014 viewport flip glides, rAF-batched swaps (sibling session)" },
-    "4961001": { "plan": "2026-09-15_183400-lump-sum-builds.md", "anchor": "#phase-29", "note": "SOP: manual deploy \u2014 push only on explicit y (no auto-push)" }
+ "_comment": "Retroactive plan links for pre-trailer commits — no history rewrite. sha -> {plan, anchor, note}. anchor must be a verbatim case-sensitive substring of exactly one ## Phase body (checked by audit); null attaches to the plan's first phase per convention. Read by scripts/ds-track.mjs.",
+ "links": {
+  "0287e39": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": null,
+   "note": "prep checkpoint for update 4; first-phase attach per convention"
+  },
+  "50c8050": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Moodboard strip",
+   "note": "moodboard refs + overview polish -> P5 overview/moodboard"
+  },
+  "001f837": {
+   "plan": "2026-09-09_130000-ds-maturity.md",
+   "anchor": "Token hygiene",
+   "note": "bundle spanning P1/P2/P4/P5/P6; badged on first area P1"
+  },
+  "5948e02": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "capped scale",
+   "note": "card-title type step -> P2 type scale"
+  },
+  "ffee0b1": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal",
+   "note": "subdivision-reveal algorithm that became the shared function -> P4"
+  },
+  "9d2b13f": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal",
+   "note": "viewer tether/perf iteration; viewer housed as function -> P4"
+  },
+  "3d974ae": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal",
+   "note": "viewer mocks/portal iteration -> P4"
+  },
+  "487b974": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal",
+   "note": "cyberpunk expander iteration -> P4"
+  },
+  "c595a3e": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "blur-to-sharp",
+   "note": "mosaic shimmer detail-first sharpen ~= dimension-first blur-to-sharp -> P2"
+  },
+  "7e4f047": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "favicon",
+   "note": "theme toggle + favicon restore; clone-completion leftover -> retro P1"
+  },
+  "fa4eb0e": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "Baseline + IA skeleton",
+   "note": "token-DS adoption across site+docs -> P0 baseline"
+  },
+  "0d02406": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "one sheet per foundation",
+   "note": "DESIGN.md tokens spec -> P2 foundations sheets"
+  },
+  "940e158": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "bottom-fixed header",
+   "note": "mobile header/cards/media -> retro P1"
+  },
+  "8b88207": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "sliding selection frame",
+   "note": "slick minimal header -> retro P1"
+  },
+  "c7303a2": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "decap cms",
+   "note": "initial clone -> retro P1"
+  },
+  "ce0b94a": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "Phase 1",
+   "note": "trailer cited lowercase phase-1; prune scope -> P1"
+  },
+  "72c8f05": {
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "Material mapping",
+   "note": "color pane material mapping + inline AA pairs -> P2"
+  },
+  "557ffa6": {
+   "plan": "2026-09-09_120000-ds-maturity.md",
+   "anchor": "GridReveal",
+   "note": "glimmer-orb views build fix; function views -> P4"
+  },
+  "1160912": {
+   "plan": "2026-09-10_201154-ds-nav-drawer.md",
+   "anchor": "Drawer open/close",
+   "note": "drawer emerge+dim, toggle visibility -> P2 drawer"
+  },
+  "37982f9": {
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null,
+   "note": "manifest upkeep refresh; first-phase attach per convention"
+  },
+  "69eac10": {
+   "plan": "2026-09-09_145218-bidirectional-pipeline.md",
+   "anchor": null,
+   "note": "manifest upkeep refresh; first-phase attach per convention"
+  },
+  "0c80ab8": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "mobile: gear at end of icon row -> lump-sum P1 T1"
+  },
+  "e494169": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "mobile: full-bleed rows, drop padding clip -> lump-sum P1 T2"
+  },
+  "8e440b7": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "mobile: grid gutter restored -> lump-sum P1 T3"
+  },
+  "a330be7": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "mobile: wrap gutter 16->12 -> lump-sum P1 T4"
+  },
+  "96f28d6": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "responsive images + reveal flicker -> lump-sum P1 T5"
+  },
+  "05ec5b2": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-2}",
+   "note": "strip click snap + 200ms first-visit scramble -> lump-sum P2 T6-T7"
+  },
+  "8d0fdc5": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-2}",
+   "note": "map regenerated for committed tree -> lump-sum P2 T8"
+  },
+  "b5b29ce": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "phase-5",
+   "note": "phase 4.5 plan for atlas dock polish + public map; folded into atlas P5-P8 -> badged P5"
+  },
+  "2e1b95b": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "phase-4",
+   "note": "plan-mark chore (phase 4 marks + shipped line) that reached the deployed manifest unlinked -> badged P4"
+  },
+  "5313c76": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "hero window-open on desktop 0.12 -> lump-sum P4 T16"
+  },
+  "5b2f104": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "desktop hero second-load silence + de-overlap -> lump-sum P4 T17"
+  },
+  "126cbd5": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "hero window-open 620->480ms -> lump-sum P4 T18"
+  },
+  "0a72739": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "mobile reel pull 0.34 linger -> lump-sum P4 T19"
+  },
+  "7dd33a3": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "master volume x per-sound gain -> lump-sum P4 T20"
+  },
+  "9a82f0f": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "header sound outside gear pop -> lump-sum P4 T21"
+  },
+  "08d6e66": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-6",
+   "note": "loading sound sync + hero height cache -> lump-sum P6 T24"
+  },
+  "031395c": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "modern footer + mobile settings morphing close -> lump-sum P7 T25"
+  },
+  "3299e52": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "restore settings sheet + hero title to footer -> lump-sum P7 T26"
+  },
+  "6d9fdd1": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "pill-height settings + anchored dropdown -> lump-sum P7 T27"
+  },
+  "bf62cf7": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "gear matches pill height -> lump-sum P7 T28"
+  },
+  "6ed4848": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "restore bottom sheet near gear -> lump-sum P7 T29"
+  },
+  "77e8757": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "dropdown via fWrap absolute -> lump-sum P7 T30"
+  },
+  "bf97af5": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "settings centered modal + backdrop -> lump-sum P7 T31"
+  },
+  "66c9ced": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "mobile-only modal full-width volume -> lump-sum P7 T32"
+  },
+  "73db667": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-7",
+   "note": "outside close desktop + mobile volume width -> lump-sum P7 T33"
+  },
+  "3225bf7": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-8",
+   "note": "gate mobile grid zing until first reveal -> lump-sum P8 T34"
+  },
+  "acb1bdd": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-8",
+   "note": "gate zing until all cards ready -> lump-sum P8 T35"
+  },
+  "11e9955": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-8",
+   "note": "zing after first fold 6 cards -> lump-sum P8 T36"
+  },
+  "f91c68f": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-8",
+   "note": "per-card zing on card.ready + first-fold -> lump-sum P8 T37"
+  },
+  "05e9ab5": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-9",
+   "note": "cyberpunk proceed gate + authorize preview -> lump-sum P9 T38"
+  },
+  "e3db2c1": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-9",
+   "note": "subtle redux gate glimmer orb -> lump-sum P9 T39"
+  },
+  "cbe4759": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-13",
+   "note": "chore(lump-sum): close phase-13 — stamping 0737aec"
+  },
+  "0737aec": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-13",
+   "note": "style(footer): match original framer footer — sans links, faint title, © under right col"
+  },
+  "2e4c3ff": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "style(footer): tighten padding rhythm — denser links, balanced columns"
+  },
+  "826c292": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "fix(footer): dashed border via --border-dashed token"
+  },
+  "62931e1": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "fix(footer): corner squares via space tokens"
+  },
+  "80721c6": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "feat(footer): dashed frame + corner square accents"
+  },
+  "634f471": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "feat(footer): link grid + divider + note + auto-year copyright under big title"
+  },
+  "ca9051c": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "fix(footer): hover bloom only in cursor zone, no whole-text contrast or shadow"
+  },
+  "f032b97": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "fix(footer): more muted resting, no default glow — shimmer/glow only on hover"
+  },
+  "5b72377": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "fix(footer): muted glyph shimmer clipped to text, not box glow"
+  },
+  "042fab2": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "chore(lump-sum): close phase-12 — stamping 223badb"
+  },
+  "223badb": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-12",
+   "note": "feat(portfolio): visitor volume 0.36 + footer shimmer glow"
+  },
+  "b037611": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-11",
+   "note": "chore(lump-sum): close phase-11 — stamping 7a56269"
+  },
+  "7a56269": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-11",
+   "note": "feat(sound): visitor volume 0.44 + desktop hover zing"
+  },
+  "e224f85": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-10",
+   "note": "chore(ds): track refresh — 223/223 linked"
+  },
+  "dcc7f54": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-10",
+   "note": "chore(lump-sum): close phase-10 — token compliance a8199b3"
+  },
+  "a8199b3": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-10",
+   "note": "chore(lump-sum): phases 6-10 — retro 16 shas + gate token compliance"
+  },
+  "5ef71db": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-5",
+   "note": "chore(lump-sum): close phase-5 — ship reel shutter e2252fd"
+  },
+  "e2252fd": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-5",
+   "note": "fix(portfolio): reel shutter — interruptible zing, 380→45ms per card"
+  },
+  "d3e61fb": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "chore(lump-sum): close phase-4 — ship sound polish b162ab6"
+  },
+  "b162ab6": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "{#phase-4}",
+   "note": "fix(portfolio): header slot to #soundSlot — follow-up soundSwitch cleanup"
+  },
+  "80906ad": {
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "#phase-3",
+   "note": "chore(ds): close sound phase-3 + track refresh — 192/192 linked"
+  },
+  "ef427e3": {
+   "plan": "2026-09-15_190000-foundations-sound-pane.md",
+   "anchor": "#phase-2",
+   "note": "chore(ds): close sound phase-2 + track refresh — 191/191 linked"
+  },
+  "896068d": {
+   "plan": "2026-09-15_193000-theme-island-parity.md",
+   "anchor": "#phase-1",
+   "note": "chore(ds): close island-parity phase-1 + track refresh — 190/190 linked"
+  },
+  "ccb60f4": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-3",
+   "note": "chore(ds): generated DS files stop trailing every build and commit"
+  },
+  "571757e": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-3",
+   "note": "chore(portfolio): ignore the Hermes runtime db"
+  },
+  "416fcbc": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-4",
+   "note": "gates + device pass — P4"
+  },
+  "3c6d3d0": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-3",
+   "note": "close mark phase 3"
+  },
+  "88429a7": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-3",
+   "note": "mobile sweep — P3"
+  },
+  "e185e71": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-2",
+   "note": "close mark phase 2"
+  },
+  "cfb55a7": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-2",
+   "note": "mobile header in-flow — P2"
+  },
+  "d4d04c6": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-1",
+   "note": "close mark phase 1"
+  },
+  "3f91b98": {
+   "plan": "2026-09-15_100000-mobile-optimisation.md",
+   "anchor": "#phase-1",
+   "note": "settings gear + dropdown — P1"
+  },
+  "97dd81b": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-14",
+   "note": "retro coverage pass — tracker sees all 256"
+  },
+  "6e59812": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-15",
+   "note": "footer round 2 — nubs, pale dashes, column-major links, strip scroll"
+  },
+  "86a1ec7": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-16",
+   "note": "title at design scale — natural wrap, 6.5vw/100, 40/60 grid"
+  },
+  "70520a5": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-17",
+   "note": "footer own padding + dual corner squares"
+  },
+  "4f7de17": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-18",
+   "note": "feat(viewer): physics popover for strip/list + grid viewfinder desktop"
+  },
+  "5fbfb1a": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-19",
+   "note": "feat(list): preview pane on the right + promo-card previews"
+  },
+  "2d6c1ca": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-20",
+   "note": "feat(list): pane previews the project's detail media"
+  },
+  "9375655": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-21",
+   "note": "style(list): 1fr/1fr split, pane fills its half"
+  },
+  "6b043a6": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-22",
+   "note": "feat(transit): media flight from the list pane into the hero"
+  },
+  "1e1538b": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "admin on Vercel with self-hosted GitHub OAuth"
+  },
+  "6a4e9d8": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "admin config.yml 404 — absolute cms-config-url + /admin redirect"
+  },
+  "e4158af": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "same-window OAuth flow when popup blocked"
+  },
+  "8c457f6": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "popup handshake — dual postMessage + opener localStorage"
+  },
+  "b3b3798": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "CMS content — acquapanna project update"
+  },
+  "e6cfdd8": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "merge PR #1 — CMS acquapanna"
+  },
+  "f1c761e": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "CMS content — acquapanna project update"
+  },
+  "d9f3354": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "merge PR #2 — CMS acquapanna"
+  },
+  "ca9090b": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "case padding, borderless header, matched titles"
+  },
+  "9a6f736": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "dims.json",
+   "note": "commit content/dims.json for the Vercel build"
+  },
+  "3448dc1": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "Safety checkpoint",
+   "note": "ignore preview HTML + plan screenshots"
+  },
+  "f65f3f2": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "mobile row clipping — 100% width, padding removed"
+  },
+  "19531a9": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "mobile right clipping — inset outer gutter"
+  },
+  "0d90ee2": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "right edge clip — inset outer gutter, outer overflow"
+  },
+  "b478eed": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "full bleed on mobile — side gutters removed"
+  },
+  "b7639c7": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "restore gutters, remove vestigial gap"
+  },
+  "8b4dd22": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "true full bleed — wrap+header 0 gutters"
+  },
+  "7290896": {
+   "plan": "2026-09-07_140407-mobile-responsiveness.md",
+   "anchor": "responsive pass",
+   "note": "scroller inset 12px, full-bleed outer"
+  },
+  "953b723": {
+   "plan": "2026-09-06_183401-portfolio-decap-completion.md",
+   "anchor": "clone + CMS + chrome",
+   "note": "remove Framer link from strip-meta"
+  },
+  "bb36f58": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "blur-to-sharp",
+   "note": "remove post-reveal blur/unblur"
+  },
+  "24de219": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "blur-to-sharp",
+   "note": "club unblur + shimmer into a single sweep"
+  },
+  "7f41690": {
+   "plan": "2026-09-07_113052-masonry-grid-opt.md",
+   "anchor": "blur-to-sharp",
+   "note": "fluid parallax — exponential decay, compositor"
+  },
+  "3ccf3ff": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "denser slower case hero GridReveal + mobile height morph"
+  },
+  "7bb9f6a": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "hero GridReveal CORS — unblur like masonry"
+  },
+  "e0d9ca3": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "unify project/contact heroes to cell-by-cell GridReveal"
+  },
+  "50ffd51": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "hero sequencing + dedup — height before reveal"
+  },
+  "86dc748": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "sessionStorage dedup + shimmer during height"
+  },
+  "7b1a383": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "visited-set dedup + shimmer through height, RAF fallback"
+  },
+  "92ba6d6": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "hero mobile layout-first, skeletal shimmer, blur-unblur"
+  },
+  "3d1c4f2": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "staggered grid reveals, instant handoff, load-coupled settle"
+  },
+  "ab91e39": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "skip reveal for already-viewed images"
+  },
+  "6d3487b": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "heroes always play, long-cache local images"
+  },
+  "12bfb17": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "mobile heroes always replay, vendor hero images local"
+  },
+  "7ecf1a1": {
+   "plan": "2026-09-08_203300-hero-image-load-sequence.md",
+   "anchor": "#phase-1",
+   "note": "mobile heroes decode cached images instead of dead-waiting"
+  },
+  "067fa38": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Phase-5",
+   "note": "marks update-4 phases 5-7 shipped; badged P5"
+  },
+  "e24445c": {
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-4",
+   "note": "mark phase 4 shipped — swatch audit"
+  },
+  "a48f9b4": {
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-5",
+   "note": "mark phase 5 shipped — live adoption"
+  },
+  "a3f6f23": {
+   "plan": "2026-09-10_153555-color-cool-synthetic.md",
+   "anchor": "phase-5",
+   "note": "point phase-5 shipped line at a48f9b4"
+  },
+  "ad6e5d9": {
+   "plan": "2026-09-10_201154-ds-nav-drawer.md",
+   "anchor": "Phase-1",
+   "note": "marks nav-drawer phases 1-2 shipped; badged P1"
+  },
+  "b4d852d": {
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": null,
+   "note": "mark glitch-sound tasks done; first-phase attach"
+  },
+  "7722f32": {
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "#phase-3",
+   "note": "sound control is single toggle"
+  },
+  "6521bc1": {
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "#phase-5",
+   "note": "mark glitch-sound phase-5 done"
+  },
+  "05f212d": {
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "#phase-5",
+   "note": "add missing Tags + Tech Stack to glitch-sound"
+  },
+  "046f924": {
+   "plan": "2026-09-12_150255-glitch-sound.md",
+   "anchor": "#phase-6",
+   "note": "glitch-sound phase 6 close-out — marks + shipped line"
+  },
+  "5d83af0": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-0",
+   "note": "over-limit inventory baseline"
+  },
+  "6528508": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-0",
+   "note": "manageability lint gate"
+  },
+  "0419eab": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-0",
+   "note": "route smoke for refactor safety"
+  },
+  "a213ad0": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-0",
+   "note": "mark refactor phase-0 done"
+  },
+  "d36a17e": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-1",
+   "note": "import graph for node diagram"
+  },
+  "5affee9": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-1",
+   "note": "barrel nests for visual/sound split"
+  },
+  "2f5819c": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-1",
+   "note": "contact block base→pages, footer expanded multiline"
+  },
+  "b087dfe": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-2",
+   "note": "split viewer + grid composer"
+  },
+  "5cba489": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-2",
+   "note": "split ctx tests + glitch init"
+  },
+  "0d4091c": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-2",
+   "note": "split cells parallax gridReveal"
+  },
+  "b18f013": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-3",
+   "note": "plain no-collapsing rule for phase-3"
+  },
+  "7a7109d": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-3",
+   "note": "split glitch-sound 175 into parse/geom/timing"
+  },
+  "2f5ed4f": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-3",
+   "note": "wrap two long lines in glitch-sound split"
+  },
+  "86a7993": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-3",
+   "note": "split scramble-text engine 146 into helpers"
+  },
+  "44035f7": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-3",
+   "note": "wrap reduced() one-liner in scramble helpers"
+  },
+  "0436c5a": {
+   "plan": "2026-09-13_193000-refactor-manageability.md",
+   "anchor": "#phase-3",
+   "note": "mark refactor phase-3 done"
+  },
+  "a439295": {
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "#phase-3",
+   "note": "split glimmer orb 105 into color utils"
+  },
+  "a769cf1": {
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "#phase-3",
+   "note": "split init-sound 116 into load-scanner"
+  },
+  "5ffd87b": {
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "#phase-3",
+   "note": "split gridReveal 112 into config module"
+  },
+  "9db2bfa": {
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "#phase-3",
+   "note": "split viewer 103 into visibility module"
+  },
+  "af98a73": {
+   "plan": "2026-09-13_235413-over-limit-splits.md",
+   "anchor": "#phase-4",
+   "note": "split main 106 into chrome module"
+  },
+  "0c0f36a": {
+   "plan": "2026-09-14_001100-graph-join-leak.md",
+   "anchor": "#phase-1",
+   "note": "hide split scope from cards via marker"
+  },
+  "9125a58": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-4",
+   "note": "mark atlas phase 4 shipped"
+  },
+  "777839e": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-5",
+   "note": "hide companion atlas-polish plan; folded into atlas P5-P8"
+  },
+  "92e013e": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-6",
+   "note": "atlas phase 6 close-out — shipped line"
+  },
+  "b82a1fd": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-7",
+   "note": "atlas phase 7 close-out — shipped line"
+  },
+  "a74cac8": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-8",
+   "note": "atlas phase 8 close-out — shipped line"
+  },
+  "9540e71": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-9",
+   "note": "atlas upkeep — arch script, predev chain, docs"
+  },
+  "5d07ddf": {
+   "plan": "2026-09-14_120000-arch-atlas-canvas.md",
+   "anchor": "#phase-9",
+   "note": "atlas phase 9 close-out — shipped line, plan complete"
+  },
+  "dd2b09b": {
+   "plan": "2026-09-14_192124-atlas-fullscreen.md",
+   "anchor": "#phase-2",
+   "note": "fullscreen close-out — tasks marked, shipped lines"
+  },
+  "488b5e1": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-14",
+   "note": "close phase-14 — stamping 97dd81b"
+  },
+  "270793a": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-15",
+   "note": "close phase-15 — stamping 6e59812"
+  },
+  "aab2df5": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-16",
+   "note": "close phase-16 — stamping 86a1ec7"
+  },
+  "7517f6d": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-17",
+   "note": "close phase-17 — stamping 70520a5"
+  },
+  "a791998": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-18",
+   "note": "close phase-18 — stamping 4f7de17"
+  },
+  "74b1444": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-19",
+   "note": "close phase-19 — stamping 5fbfb1a"
+  },
+  "3980766": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-20",
+   "note": "close phase-20 — stamping 2d6c1ca"
+  },
+  "37b58fb": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-20",
+   "note": "track refresh — phases 19+20 linked"
+  },
+  "85f4237": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-21",
+   "note": "close phase-21 — stamping 9375655"
+  },
+  "67e7579": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-21",
+   "note": "track refresh — phase 21 linked"
+  },
+  "0c1d868": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-22",
+   "note": "close phase-22 — stamping 6b043a6"
+  },
+  "980df39": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-22",
+   "note": "track refresh — phase 22 linked"
+  },
+  "391dbf0": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-23",
+   "note": "single-render popover, inertia follower, pane intent"
+  },
+  "7f4979c": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-23",
+   "note": "close phase-23 — stamping 391dbf0"
+  },
+  "76ab5ed": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-24",
+   "note": "snap list follow, rAF swaps, stable strip geometry"
+  },
+  "da73232": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-24",
+   "note": "close phase-24 — stamping 76ab5ed"
+  },
+  "14b6143": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-25",
+   "note": "instant list follow, scale-only spring"
+  },
+  "13f8687": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-25",
+   "note": "close phase-25 — stamping 14b6143"
+  },
+  "86d5691": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-25",
+   "note": "track refresh — phase 25 linked"
+  },
+  "d6a38df": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-26",
+   "note": "admin promoVideo pattern single-escaped"
+  },
+  "8a0d3c0": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-26",
+   "note": "close phase-26 — stamping d6a38df"
+  },
+  "f6d6614": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-27",
+   "note": "hero 40/60 + promo stacked in media column, video to public/videos"
+  },
+  "9d84125": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-27",
+   "note": "CMS content — tas-51 update (uploaded the video P27 T71 relocated)"
+  },
+  "71b56d9": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-27",
+   "note": "merge PR #3 — CMS projects/tas-51"
+  },
+  "78c227e": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-27",
+   "note": "close phase-27 — stamping f6d6614"
+  },
+  "48787ef": {
+   "plan": "2026-09-14_192124-atlas-fullscreen.md",
+   "anchor": "{#phase-1}",
+   "note": "atlas fullscreen stage overlay — dock toggle, overlay close (trailer cited ambiguous phase-1)"
+  },
+  "0c464b1": {
+   "plan": "2026-09-10_195043-smart-changelog.md",
+   "anchor": "Tag taxonomy",
+   "note": "mark smart-changelog phases 1-4 shipped; badged P1"
+  },
+  "11a3293": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Color: primitives",
+   "note": "update 4 task 7 — three accent ramps (trailer cited ambiguous Phase-1)"
+  },
+  "ffd2bae": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Color: primitives",
+   "note": "mark update-4 phases 1-4 shipped; badged P1"
+  },
+  "7d3bcea": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Space · Layout: usage-anchored",
+   "note": "update 4 phases 3-4 — space usage + breakpoints; badged P3"
+  },
+  "dba2975": {
+   "plan": "2026-09-09_170854-design-system-update-4.md",
+   "anchor": "Color: primitives",
+   "note": "update 4 phases 1-2 — color story + type; badged P1"
+  },
+  "fd5638b": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-28",
+   "note": "coverage sweep — 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete"
+  },
+  "32c014b": {
+   "plan": "2026-09-15_183400-lump-sum-builds.md",
+   "anchor": "#phase-28",
+   "note": "close phase-28 — stamping fd5638b (sweep bookkeeping)"
+  },
+  "3f4cd90": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "list popover Y-inertia (sibling session)"
+  },
+  "4961001": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "SOP: manual deploy — push only on explicit y"
+  },
+  "25f36ee": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}",
+   "note": "week-roll bookkeeping — mapped close/hover/SOP shas (trailer #phase-29 overridden)"
   }
+ }
 }

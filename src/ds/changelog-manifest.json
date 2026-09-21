@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T07:15:31.282Z",
+ "generated": "2026-09-21T07:27:02.229Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -27,17 +27,27 @@
   "2026-09-15_100000-mobile-optimisation.md",
   "2026-09-15_183400-lump-sum-builds.md",
   "2026-09-15_190000-foundations-sound-pane.md",
-  "2026-09-15_193000-theme-island-parity.md"
+  "2026-09-15_193000-theme-island-parity.md",
+  "2026-09-21_125642-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "25f36ee",
+   "full": "25f36eefad515724ab059481971fd978abf914d0",
+   "date": "2026-09-21",
+   "time": "12:45",
+   "subject": "chore(ds): map close/hover/SOP shas — phase-29 added, manifest 368/368",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "4961001",
    "full": "49610018be419ae6dd906d91091bc568d70c4ae6",
    "date": "2026-09-21",
    "time": "12:42",
    "subject": "chore(sop): manual deploy — push only on your y (no auto-push)",
-   "plan": "2026-09-15_183400-lump-sum-builds.md",
-   "anchor": "#phase-29"
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
   },
   {
    "sha": "3f4cd90",
@@ -45,8 +55,8 @@
    "date": "2026-09-21",
    "time": "12:42",
    "subject": "feat(hover): tiny Y-inertia for list popover — viewport flip glides, rAF-batched",
-   "plan": "2026-09-15_183400-lump-sum-builds.md",
-   "anchor": "#phase-29"
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
   },
   {
    "sha": "fd5638b",
@@ -3343,5 +3353,7 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-names.json"
+ ]
 }

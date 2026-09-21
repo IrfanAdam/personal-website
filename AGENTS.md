@@ -29,14 +29,15 @@ Anchored at `20260909_145218_9888b1` (`continuation` in `.hermes/continuation.js
 - Names: every phased plan MUST have `src/ds/changelog-names.json` entry `{title ≤76ch, purpose}` before any implementation — `npm run plan:names` fails otherwise. Titles via `changelog-titles.js`; raw file identity rendered in drawer above footer.
 
 **Commits (local, no push):**
-- Any commit touching DS paths (`src/ds`, `src/styles/tokens.css`, `DESIGN.md`, `design.md`) MUST carry exactly one trailer `[plan:<file>#<anchor>]` where `<file>` is the plan filename and `<anchor>` is a verbatim case-sensitive substring of exactly one `## Phase` body (`#phase-N` recommended, `null` = first phase). Verified by `ds-track`.
+- Any commit touching DS paths (`src/ds`, `src/styles/tokens.css`, `DESIGN.md`, `design.md`) MUST carry exactly one trailer `[plan:<file>#<anchor>]` where `<file>` is the plan filename and `<anchor>` is a verbatim case-sensitive substring of exactly one `## Phase` body (`#phase-N` recommended; cite the braced `{#phase-N}` form for single-digit phases, since bare `#phase-1` also matches `{#phase-10}`; `null` = first phase). Verified by `ds-track`.
 - Pre-trailer history mapped in `.hermes/plan-links.json` (`sha → {plan, anchor, note}`) — no history rewrite; `anchor` must match one phase body.
 - Commit message subject is what the changelog badge shows; `plan-links.json` note is not rendered.
 - Trailer goes on the SUBJECT line — `ds-track` parses `%s` only; a trailer in the body leaves the commit unlinked.
 
 **Ship rule — commits attributable locally, push only on your approval:**
-- Every local commit stays attributable: reuse the covering plan's `[plan:<file>#<anchor>]` trailer; work no scoped plan covers appends to the running lump-sum plan — a `### Task N: … ✓ done` under its phase, closed with `*Shipped in <sha> · Tasks a–b · phase-N.*`.
-- Work already shipped with no plan gets a new lump-sum plan (`.hermes/plans/YYYY-MM-DD_HHMMSS-lump-sum-builds.md`): names entry + phases + the shas that prompted it, committed before pushing; never leave a plan-less sha behind.
+- Every local commit stays attributable: reuse the covering plan's `[plan:<file>#<anchor>]` trailer; work no scoped plan covers appends to this week's lump-sum plan — a `### Task N: … ✓ done` under its phase, closed with `*Shipped in <sha> · Tasks a–b · phase-N.*`.
+- **Lump-sum plans are weekly:** the catch-all covers one calendar week (Mon–Sun), named for the Monday it opens; at rollover seal the closing week (closing note) and open the next week's file before its first ad-hoc shipment — a lump-sum plan never carries into a new week, and a shipment opened in the closing week finishes in that week's file.
+- Work already shipped with no plan gets a lump-sum plan for the week it shipped (`.hermes/plans/YYYY-MM-DD_HHMMSS-lump-sum-builds.md`): names entry + phases + the shas that prompted it, committed before pushing; never leave a plan-less sha behind.
 - Already-pushed shas are mapped in `.hermes/plan-links.json` (`sha → {plan, anchor, note}`) — never rewrite history to add a trailer.
 - **No auto-push:** agents never run `git push` / `vercel deploy` on their own. They prepare clean, attributable commits, run local verification (`ds-track` + `build`), and report what *would* push — then stop.
 - **Push on explicit approval only:** `git push` runs only when you say `y` / `push` / `deploy` / `ship it`. On approval the agent pushes, verifies the deployed bundle, and emits the push report (commits pushed · wip left + owner · `/ds/#/changelog` preview · deploy verified — never assume).
@@ -47,7 +48,7 @@ Anchored at `20260909_145218_9888b1` (`continuation` in `.hermes/continuation.js
 - `npm test` (`lint:tokens` + `build`) green
 - Visual: `/ds/#/changelog` Miller columns + drawer badges resolve per phase; `Build N` recomputes on filtered list client-side.
 
-**Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never skip `ds-track` before commit, never push a plan-less commit, never ship a phase with unchecked tasks, never `git push` without your explicit `y`, never report a change as deployed without checking the deployed bundle. This section is law — agents enforce it without being asked.
+**Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never carry a lump-sum plan across a week boundary, never skip `ds-track` before commit, never push a plan-less commit, never ship a phase with unchecked tasks, never `git push` without your explicit `y`, never report a change as deployed without checking the deployed bundle. This section is law — agents enforce it without being asked.
 
 ## 6. File Budget — Max 100 lines, all languages (JS+CSS+scripts)
 Every source file ≤100 lines incl. comments. CI (`lint-manage.mjs`) fails the build over budget. Split via extract-module + barrel re-export; never via minification/packing.

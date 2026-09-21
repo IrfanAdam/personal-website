@@ -36,11 +36,11 @@
     "title": "Turn ADAM/DS into a system that builds pages itself"
   },
   "2026-09-09_145218-bidirectional-pipeline.md": {
-    "purpose": "Plan\u2194commit linking",
+    "purpose": "Plan↔commit linking",
     "title": "Link every plan and DS commit both ways, no bookkeeping"
   },
   "2026-09-09_170854-design-system-update-4.md": {
-    "purpose": "Foundations \u2192 Evo parity",
+    "purpose": "Foundations → Evo parity",
     "title": "Bring Foundations to Evo parity: color, type, tokens"
   },
   "2026-09-10_153555-color-cool-synthetic.md": {
@@ -73,7 +73,7 @@
   },
   "2026-09-14_003212-builds-nomenclature.md": {
     "purpose": "Builds nomenclature",
-    "title": "The changelog keeps its name \u2014 every entry in it is a build"
+    "title": "The changelog keeps its name — every entry in it is a build"
   },
   "2026-09-14_004508-refactor-bugfix.md": {
     "purpose": "Split-regression repair",
@@ -92,7 +92,7 @@
     "purpose": "Mobile responsiveness"
   },
   "2026-09-15_183400-lump-sum-builds.md": {
-    "title": "Lump-sum builds: everything shipped without a scoped plan",
+    "title": "Lump-sum builds, week of Sep 15: ad-hoc shipments",
     "purpose": "Traceability for plan-less shipments"
   },
   "2026-09-15_190000-foundations-sound-pane.md": {
@@ -102,5 +102,9 @@
   "2026-09-15_193000-theme-island-parity.md": {
     "title": "Theme islands: one theme, every token",
     "purpose": "Island token parity"
+  },
+  "2026-09-21_125642-lump-sum-builds.md": {
+    "title": "Lump-sum builds, week of Sep 21: ad-hoc shipments",
+    "purpose": "Weekly ad-hoc traceability"
   }
 }
