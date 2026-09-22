@@ -140,7 +140,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 | 6 | Near-limit JS (97-100) — helpers | `rise.js:99`, `title-reveal.js:98`, `strip-viewer.js:98`, `changelog-parse.js:98`, `next.css:97`, `case.css:97` etc. — each ≤96 or split |
 | 7 | DS sheets at cap — compact | `ds.css:97`, `foundations-demo.css:97`, `changelog-events.js:97` — free 3-5 lines via one-liner compaction, selectors intact |
 
-### Task 5: At-100 sheets — pre-emptive tidy
+### Task 5 ✓ done: At-100 sheets — pre-emptive tidy
 
 *2026-09-22 · refactor(budget): at-cap sheets tidy*
 
@@ -152,7 +152,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Verify:** `wc -l` all ≤100; `lint:tokens` ✓; `lint-manage` ✓; `build` ✓; selector diff zero deletions.
 
-### Task 6: Near-limit JS — extract helpers
+### Task 6 ✓ done: Near-limit JS — extract helpers
 
 *2026-09-22 · refactor(near-limit): helpers extracted*
 
@@ -165,7 +165,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Verify:** All touched ≤96; build + lint:manage green; render-diff harness for markup.
 
-### Task 7: DS sheets at cap — compact
+### Task 7 ✓ done: DS sheets at cap — compact
 
 *2026-09-22 · style(ds): compact at-cap sheets*
 
@@ -176,7 +176,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Verify:** `wc -l` ≤96 each; `build` ✓; `/ds` visual unchanged.
 
-*Shipped in <sha> · Tasks 5–7 · phase-2.*
+*Shipped in 3a8690e · Tasks 5–7 · phase-2.*
 
 ---
 
