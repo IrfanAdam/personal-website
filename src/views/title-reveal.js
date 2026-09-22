@@ -61,10 +61,29 @@ function reveal(el, idx) {
 export function mountTitleReveal(root, opts) { // [plan:2026-09-13_193000-refactor-manageability.md#phase-3]
   const o = opts || {};
   const els = [...(root || document).querySelectorAll(SEL)];
-  if (!els.length || isReduced() || !isFirstVisit()) return () => {};
-  // Sound and scramble must share the same tick — fire sound before rAF
+  if (!els.length || !isFirstVisit()) return () => {};
+  const reduce = isReduced();
+  let forced = false;
+  try { forced = localStorage.getItem('adam-sound') === 'on'; } catch {}
+  if (reduce && !forced) return () => {};
+  if (reduce && forced) {
+    if (o.sound !== false) try { playSlot('load', GAIN, { gap: 350 }); } catch {}
+    return () => {};
+  }
+  // Sound before rAF — if blocked (Android), queue to first tap
   if (o.sound !== false) {
-    try { playSlot('load', GAIN, { gap: 350 }); } catch {}
+    try {
+      const p = playSlot('load', GAIN, { gap: 350 });
+      if (p && p.then) p.then((r) => {
+        if (r === 'blocked' || String(r).startsWith('blocked')) {
+          const once = () => { try { playSlot('load', GAIN, { gap: 350 }); } catch {} };
+          try {
+            addEventListener('pointerdown', once, { once: true, capture: true });
+            addEventListener('keydown', once, { once: true });
+          } catch {}
+        }
+      }).catch(() => {});
+    } catch {}
   }
   const offs = [];
   els.forEach((el, i) => {

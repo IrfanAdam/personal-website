@@ -10,9 +10,10 @@ import { playFileId } from './element-sound.js';
 let on = true;
 try {
   const s = localStorage.getItem('adam-sound');
-  on = s !== 'off';
+  if (s === 'off') on = false;
+  else if (s === 'on') on = true;
+  else if (matchMedia('(prefers-reduced-motion: reduce)').matches) on = false;
 } catch {}
-try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) on = false; } catch {}
 setEnabled(on);
 
 const SND_ICON = ['<svg class="ic-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6v4h3l4 3.5v-11L5 6H2z" ',

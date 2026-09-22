@@ -75,6 +75,8 @@ export function isMuted() {
   try {
     if (localStorage.getItem('adam-sound') === 'off') return true;
     if (getVolume() <= 0.001) return true;
+    // Explicit 'on' overrides reduced-motion — user asked for sound
+    if (localStorage.getItem('adam-sound') === 'on') return false;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
   } catch {}
   return false;
