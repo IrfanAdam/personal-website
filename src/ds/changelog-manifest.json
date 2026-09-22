@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T13:24:12.032Z",
+ "generated": "2026-09-22T08:38:26.884Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -31,6 +31,15 @@
   "2026-09-21_125642-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "0d40da7",
+   "full": "0d40da7a9169e7a012030ead921db13d2e35aa2c",
+   "date": "2026-09-22",
+   "time": "14:07",
+   "subject": "feat(list+case+tooling): 3-col desktop grid + 2×4 mobile + case mobile reorder + playwright",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-6}"
+  },
   {
    "sha": "9ea7373",
    "full": "9ea737334463ba320bcfbd7678f83a215a98688e",

@@ -1055,6 +1055,11 @@
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-5}",
    "note": "fix(rim): light island viewer rim stays light \u2014 surface + tether -> lump-sum P5 T14"
+  },
+  "0d40da7": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-6}",
+   "note": "feat(list+case+tooling): 3-col desktop grid + 2\u00d74 mobile + case mobile reorder + playwright -> lump-sum P6 T15-18"
   }
  }
 }
