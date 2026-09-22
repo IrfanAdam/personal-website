@@ -7,21 +7,15 @@
 .ds-sw { height: var(--space-60); border: var(--border-hairline); margin-bottom: var(--space-8); }
 .ds-cell .nm { font-family: var(--font-mono); font-size: var(--text-label); }
 .ds-cell .vl {
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  color: var(--color-ink-muted);
-  margin-top: var(--space-2);
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-ink-muted); margin-top: var(--space-2);
 }
 .ds-table { width: 100%; border-collapse: collapse; font-size: var(--text-ds-table); margin: var(--space-10) 0; }
 .ds-table th {
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-mono);
-  color: var(--color-ink-muted);
-  text-align: left;
-  padding: var(--space-6) var(--space-8);
-  border-bottom: var(--border-hairline);
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  text-transform: uppercase; letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-muted); text-align: left;
+  padding: var(--space-6) var(--space-8); border-bottom: var(--border-hairline);
 }
 .ds-table td {
   padding: var(--space-7) var(--space-8);

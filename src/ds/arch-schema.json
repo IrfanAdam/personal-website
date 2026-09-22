@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:07:18.464Z",
+  "generated": "2026-09-22T09:20:33.455Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -342,6 +342,14 @@
       "tokens": []
     },
     {
+      "id": "ds_changelog_format",
+      "path": "src/ds/changelog-format.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog format",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_graph",
       "path": "src/ds/changelog/graph.js",
       "layer": "component",
@@ -351,6 +359,14 @@
         "--space-16",
         "--space-4"
       ]
+    },
+    {
+      "id": "ds_changelog_hum",
+      "path": "src/ds/changelog-hum.js",
+      "layer": "component",
+      "route": null,
+      "title": "changelog hum",
+      "tokens": []
     },
     {
       "id": "ds_changelog_links",
@@ -3200,12 +3216,8 @@
         "--space-1",
         "--space-10",
         "--space-12",
-        "--space-16",
         "--space-2",
-        "--space-32",
-        "--space-4",
-        "--stone-0",
-        "--stone-950"
+        "--space-32"
       ]
     },
     {
@@ -3238,6 +3250,19 @@
         "--stone-400",
         "--stone-600",
         "--stone-900"
+      ]
+    },
+    {
+      "id": "styles_tokens_promo",
+      "path": "src/styles/tokens-promo.css",
+      "layer": "style",
+      "route": null,
+      "title": "tokens promo",
+      "tokens": [
+        "--space-16",
+        "--space-4",
+        "--stone-0",
+        "--stone-950"
       ]
     },
     {
@@ -3897,6 +3922,14 @@
       "tokens": []
     },
     {
+      "id": "views_promo_video_format",
+      "path": "src/views/promo-video-format.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video format",
+      "tokens": []
+    },
+    {
       "id": "views_promo_video_icons",
       "path": "src/views/promo-video-icons.js",
       "layer": "view",
@@ -3929,6 +3962,14 @@
       "tokens": [
         "--hero-aspect"
       ]
+    },
+    {
+      "id": "views_rise_layout",
+      "path": "src/views/rise-layout.js",
+      "layer": "view",
+      "route": null,
+      "title": "rise layout",
+      "tokens": []
     },
     {
       "id": "views_rise_sound",
@@ -4027,6 +4068,14 @@
       "tokens": []
     },
     {
+      "id": "views_strip_viewer_core",
+      "path": "src/views/strip-viewer-core.js",
+      "layer": "view",
+      "route": null,
+      "title": "strip viewer core",
+      "tokens": []
+    },
+    {
       "id": "views_strip_viewer_helpers",
       "path": "src/views/strip-viewer-helpers.js",
       "layer": "view",
@@ -4048,6 +4097,14 @@
       "layer": "view",
       "route": null,
       "title": "title reveal",
+      "tokens": []
+    },
+    {
+      "id": "views_title_reveal_gate",
+      "path": "src/views/title-reveal-gate.js",
+      "layer": "view",
+      "route": null,
+      "title": "title reveal gate",
       "tokens": []
     },
     {
@@ -4217,12 +4274,7 @@
     },
     {
       "from": "ds_changelog_events",
-      "to": "views_element_sound",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_changelog_events",
-      "to": "views_glitch_sound_timing",
+      "to": "ds_changelog_hum",
       "kind": "imports"
     },
     {
@@ -4239,6 +4291,16 @@
       "from": "ds_changelog_graph",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_hum",
+      "to": "views_element_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_hum",
+      "to": "views_glitch_sound_timing",
+      "kind": "imports"
     },
     {
       "from": "ds_changelog_paint_chips",
@@ -4303,6 +4365,11 @@
     {
       "from": "ds_changelog_paint",
       "to": "ds_changelog_paint_plan",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_parse",
+      "to": "ds_changelog_format",
       "kind": "imports"
     },
     {
@@ -6221,6 +6288,11 @@
       "kind": "tokens"
     },
     {
+      "from": "styles_tokens_promo",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "styles_tokens_type",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -6912,6 +6984,11 @@
     },
     {
       "from": "views_promo_video_mount",
+      "to": "views_promo_video_format",
+      "kind": "imports"
+    },
+    {
+      "from": "views_promo_video_mount",
       "to": "views_promo_video_icons",
       "kind": "imports"
     },
@@ -6958,6 +7035,11 @@
     {
       "from": "views_rise",
       "to": "views_masonry_gridReveal",
+      "kind": "imports"
+    },
+    {
+      "from": "views_rise",
+      "to": "views_rise_layout",
       "kind": "imports"
     },
     {
@@ -7026,6 +7108,16 @@
       "kind": "imports"
     },
     {
+      "from": "views_strip_viewer_core",
+      "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer_core",
+      "to": "views_strip_viewer_helpers",
+      "kind": "imports"
+    },
+    {
       "from": "views_strip_viewer_helpers",
       "to": "data_site",
       "kind": "imports"
@@ -7043,6 +7135,11 @@
     {
       "from": "views_strip_viewer",
       "to": "views_fx_tokens",
+      "kind": "imports"
+    },
+    {
+      "from": "views_strip_viewer",
+      "to": "views_strip_viewer_core",
       "kind": "imports"
     },
     {
@@ -7073,6 +7170,11 @@
     {
       "from": "views_title_reveal",
       "to": "views_slot_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "views_title_reveal",
+      "to": "views_title_reveal_gate",
       "kind": "imports"
     },
     {

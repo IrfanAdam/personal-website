@@ -25,10 +25,11 @@ ds_atlas_tooltip --> ds_atlas_panel
 ds_atlas_view --> ds_atlas_camera
 ds_atlas_view --> ds_atlas_canvas
 ds_atlas_view --> ds_atlas_insight
-ds_changelog_events --> views_element_sound
-ds_changelog_events --> views_glitch_sound_timing
+ds_changelog_events --> ds_changelog_hum
 ds_changelog_graph --> ds_changelog_links
 ds_changelog_graph --> ds_changelog_parse
+ds_changelog_hum --> views_element_sound
+ds_changelog_hum --> views_glitch_sound_timing
 ds_changelog_paint --> ds_changelog_paint_chips
 ds_changelog_paint --> ds_changelog_paint_detail
 ds_changelog_paint --> ds_changelog_paint_plan
@@ -42,6 +43,7 @@ ds_changelog_paint_plan --> ds_changelog_esc
 ds_changelog_paint_plan --> ds_changelog_links
 ds_changelog_paint_plan --> ds_changelog_parse
 ds_changelog_paint_plan --> ds_changelog_titles
+ds_changelog_parse --> ds_changelog_format
 ds_component --> ds_component_knobs
 ds_component --> ds_specimens
 ds_component --> ds_tabs
@@ -455,10 +457,12 @@ views_project --> views_title_reveal
 views_promo_video --> views_promo_video_markup
 views_promo_video --> views_promo_video_mount
 views_promo_video_markup --> views_promo_video_icons
+views_promo_video_mount --> views_promo_video_format
 views_promo_video_mount --> views_promo_video_icons
 views_rise --> views_fx_tokens
 views_rise --> views_hero_height_cache
 views_rise --> views_masonry_gridReveal
+views_rise --> views_rise_layout
 views_rise --> views_rise_sound
 views_rise_sound --> views_audio_ctx
 views_rise_sound --> views_element_sound
@@ -475,7 +479,10 @@ views_sound_palette --> fx_sound_voices_scan
 views_sound_palette --> fx_sound_voices_tone
 views_strip_sound --> views_slot_sound
 views_strip_viewer --> views_fx_tokens
+views_strip_viewer --> views_strip_viewer_core
 views_strip_viewer --> views_strip_viewer_helpers
+views_strip_viewer_core --> views_fx_tokens
+views_strip_viewer_core --> views_strip_viewer_helpers
 views_strip_viewer_helpers --> data_site
 views_strip_viewer_helpers --> views_fx_tokens
 views_strip_viewer_helpers --> views_list_follower
@@ -484,5 +491,6 @@ views_stripbar --> views_settings_menu
 views_stripbar --> views_shared
 views_title_reveal --> views_scramble_text
 views_title_reveal --> views_slot_sound
+views_title_reveal --> views_title_reveal_gate
 views_transit --> views_fx_tokens
 views_transit --> views_masonry_gridReveal_load

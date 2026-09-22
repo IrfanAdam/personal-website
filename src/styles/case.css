@@ -55,12 +55,9 @@
   .case-copy { padding-top: 0; }
 }
 .hero-box {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-panel);
-  border: var(--border-hairline);
-  aspect-ratio: var(--hero-aspect, 3 / 4);
-  line-height: 0;
+  position: relative; overflow: hidden;
+  background: var(--color-panel); border: var(--border-hairline);
+  aspect-ratio: var(--hero-aspect, 3 / 4); line-height: 0;
 }
 .hero-box.loading {
   background-image: var(--reveal-grid);

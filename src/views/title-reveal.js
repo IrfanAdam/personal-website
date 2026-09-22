@@ -6,6 +6,7 @@
 // Exports: mountTitleReveal(root, opts) — returns a cleanup
 import { scrambleText } from './scramble-text.js';
 import { playSlot } from './slot-sound.js';
+import { isFirstVisit, isReduced } from './title-reveal-gate.js';
 
 // — Tuning —
 const SEL = '.hero h1, .case-copy h1';
@@ -17,25 +18,6 @@ const DUR = () => {
 };
 const LINE_STAGGER = 0.03; // seconds per extra headline line
 const GAIN = 0.5;
-const SEEN_KEY = 'adam-title-seen';
-const seen = new Set();
-const reduced = () => {
-  try {
-    return matchMedia('(prefers-reduced-motion: reduce)').matches;
-  } catch { return false; }
-};
-
-// — First visit gate —
-function isFirstVisit() {
-  const key = `${SEEN_KEY}:${location.hash || '#/'}`;
-  if (seen.has(key)) return false;
-  seen.add(key);
-  try {
-    if (sessionStorage.getItem(key)) return false;
-    sessionStorage.setItem(key, '1');
-  } catch {}
-  return true;
-}
 
 // — Scramble —
 function lock(el) {
@@ -79,7 +61,7 @@ function reveal(el, idx) {
 export function mountTitleReveal(root, opts) { // [plan:2026-09-13_193000-refactor-manageability.md#phase-3]
   const o = opts || {};
   const els = [...(root || document).querySelectorAll(SEL)];
-  if (!els.length || reduced() || !isFirstVisit()) return () => {};
+  if (!els.length || isReduced() || !isFirstVisit()) return () => {};
   // Sound and scramble must share the same tick — fire sound before rAF
   if (o.sound !== false) {
     try { playSlot('load', GAIN, { gap: 350 }); } catch {}

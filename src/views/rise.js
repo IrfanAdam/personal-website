@@ -7,6 +7,7 @@ import { attachGridReveal } from './masonry/gridReveal.js';
 import { fxMs, fxVar } from './fx-tokens.js';
 import { hasHeroSeen, markHeroSeen, heroKey } from './hero-height-cache.js';
 import { syncPull } from './rise-sound.js';
+import { calcHeights } from './rise-layout.js';
 // Exports: mountHeroRise — mobile height morph then grid reveal + pull
 
 // — Skip path — cached hero goes straight to mosaic + pull —
@@ -42,14 +43,7 @@ export function mountHeroRise(root) {
   const imgCached = img.complete && img.naturalWidth > 0;
   if (cached && imgCached) return skipRise(box, img, 0);
   if (cached) return skipRise(box, img, 0);
-  const w = parseFloat(box.dataset.w) || 3;
-  const h = parseFloat(box.dataset.h) || 4;
-  const cw = box.getBoundingClientRect().width || window.innerWidth - 24;
-  const finalH = Math.round(cw * (h / w));
-  let placeholderH = Math.round(Math.min(420, Math.max(300, cw * 0.82)));
-  if (finalH - placeholderH < 28) placeholderH = Math.max(220, finalH - 80);
-  placeholderH = Math.min(placeholderH, finalH - 24);
-  if (placeholderH < 180) placeholderH = Math.min(220, finalH - 24);
+  const { finalH, placeholderH } = calcHeights(box);
   markHeroSeen(k, finalH);
   if (img.complete && img.naturalWidth > 0 && finalH - placeholderH < 36) {
     return skipRise(box, img, finalH);

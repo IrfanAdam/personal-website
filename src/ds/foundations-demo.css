@@ -1,12 +1,9 @@
 /* ADAM/DS — foundations-demo · live foundation demos · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 .fd-durs, .fd-lay { display: grid; gap: var(--space-8); margin: var(--space-10) 0; }
 .fd-dur, .fd-layrow {
-  display: grid;
-  grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val);
-  gap: var(--space-12);
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
+  display: grid; grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val);
+  gap: var(--space-12); align-items: center;
+  font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-ink-muted);
 }
 .fd-dur b, .fd-layrow b { color: var(--color-ink); font-weight: 500; }

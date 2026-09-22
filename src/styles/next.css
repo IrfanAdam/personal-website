@@ -2,20 +2,13 @@
 /* Exports: .next · Next — image+copy block link */
 /* — Next — full-bleed image+copy block link — */
 .next {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-10);
-  align-items: center;
-  justify-content: flex-start;
-  margin: var(--space-32) 0 var(--space-6);
-  padding: var(--space-32) var(--space-20);
-  border: none;
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
-  text-decoration: none;
-  width: 100%;
-  overflow: hidden;
-  color: inherit;
+  display: flex; flex-direction: row;
+  gap: var(--space-10); align-items: center;
+  justify-content: flex-start; margin: var(--space-32) 0 var(--space-6);
+  padding: var(--space-32) var(--space-20); border: none;
+  border-radius: var(--radius-sm); background: var(--color-surface);
+  text-decoration: none; width: 100%;
+  overflow: hidden; color: inherit;
 }
 .next-copy {
   flex: 1 0 0;

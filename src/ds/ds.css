@@ -25,20 +25,12 @@
 body { padding-top: 0; }
 .ds-shell { display: flex; min-height: 100vh; align-items: stretch; }
 .ds-side {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: var(--size-ds-side);
-  box-sizing: border-box;
-  padding: var(--space-18) var(--space-14) var(--space-14);
-  border-right: var(--border-hairline);
-  background: var(--color-bg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-16);
-  overflow-y: auto;
-  z-index: var(--z-ds-side);
+  position: fixed; top: 0; bottom: 0; left: 0;
+  width: var(--size-ds-side); box-sizing: border-box;
+  padding: var(--space-18) var(--space-14) var(--space-14); border-right: var(--border-hairline);
+  background: var(--color-bg); display: flex;
+  flex-direction: column; gap: var(--space-16);
+  overflow-y: auto; z-index: var(--z-ds-side);
 }
 .ds-side-toggle {
   position: fixed;

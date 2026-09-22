@@ -5,6 +5,7 @@ import { fxNum, fxMs } from './fx-tokens.js';
 import {
   HERO, slugFrom, makeStripEl, placeWithOrigin, createFollower, preloadHeroes,
 } from './strip-viewer-helpers.js';
+import { makeViewerCore } from './strip-viewer-core.js';
 export function attachStripViewer(bar) {
   if (!bar) return () => {};
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
@@ -12,11 +13,8 @@ export function attachStripViewer(bar) {
   const links = [...bar.querySelectorAll('.strip a[href^="#/projects/"]')];
   if (!links.length) return () => {};
   preloadHeroes();
-  const VW = fxNum('--size-viewer-w', 180), GAP = fxNum('--space-8', 8) * 0.1, PAD = fxNum('--space-12', 12);
-  const HIDE = fxMs('--fx-viewer-debounce', 70), SWAP = fxMs('--dur-viewer-swap', 110);
-  const el = makeStripEl(), img = el.querySelector('img'), fol = createFollower(el);
+  const { VW, GAP, PAD, HIDE, SWAP, el, img, fol, VH } = makeViewerCore();
   let cur = '', hideT = 0, popT = 0, on = false, cx = 0, cy = 0;
-  const VH = 240;
   const place = () => placeWithOrigin(el, cx, cy, VW, VH, PAD, GAP);
   const cancelH = () => { if (hideT) { clearTimeout(hideT); hideT = 0; } };
   const clearPop = () => { if (popT) { clearTimeout(popT); popT = 0; } };

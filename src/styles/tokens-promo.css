@@ -1,0 +1,25 @@
+/* ADAM/STYLE — styles/tokens-promo · promo video tokens ·
+   [plan:2026-09-22_141500-housekeeping-refactor.md#{#phase-2}] */
+/* Exports: promo tokens (consumed in promo-video.css / promo-video-mount.js) */
+:root {
+  /* — Promo video (16:9 below hero) — cinematic — */
+  --promo-scrim: linear-gradient(to top, rgba(0, 0, 0, 0.58), transparent);
+  --promo-track: rgba(255, 255, 255, 0.35);
+  --promo-fill: #fff;
+  --promo-time: #fff;
+  --promo-bar-bg: rgba(255, 255, 255, 0.92);
+  --promo-pill: 999px;
+  --promo-play: 56px;
+  --promo-play-sm: 48px;
+  --promo-track-h: 3px;
+  --promo-blur: 10px;
+  --promo-blur-bar: 6px;
+  --promo-scrim-soft: linear-gradient(to top, color-mix(in srgb, var(--stone-950) 22%, transparent), transparent 55%);
+  --promo-scrim-bar: linear-gradient(to top, color-mix(in srgb, var(--stone-950) 62%, transparent) 0%,
+    color-mix(in srgb, var(--stone-950) 18%, transparent) 68%, transparent 100%);
+  --promo-shadow: 0 var(--space-4) var(--space-16) color-mix(in srgb, var(--stone-950) 22%, transparent);
+  --promo-pill-bg: color-mix(in srgb, var(--stone-0) 92%, transparent);
+  --promo-pill-line: color-mix(in srgb, var(--stone-0) 18%, transparent);
+  --promo-ctrl-bg: color-mix(in srgb, var(--stone-0) 14%, transparent);
+  --promo-ctrl-bg-hover: color-mix(in srgb, var(--stone-0) 22%, transparent);
+}

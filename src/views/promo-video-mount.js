@@ -2,12 +2,7 @@
    [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
 // Exports: mountPromoVideo(root)
 import { IC_PLAY, IC_PAUSE, IC_SOUND, IC_MUTE } from './promo-video-icons.js';
-
-function fmt(s) {
-  if (!Number.isFinite(s) || s <= 0) return '0:00';
-  return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-}
-const nudgeFrame = (el) => { try { el.currentTime = 0.15; } catch {} };
+import { fmt, nudgeFrame } from './promo-video-format.js';
 export function mountPromoVideo(root) {
   const box = root.querySelector('[data-promo-video]');
   if (!box) return () => {};
