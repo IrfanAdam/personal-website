@@ -76,7 +76,8 @@ const avatarBehav=[
   'recomputes; no state change.'].join('');
 export function avatarSheet(){return component({title:'Avatar',
         sub:['Zero-radius square — <span class="tok">.avatar</span> + <span class="tok">--sm / --lg</span>. Image ',
-          'cover or fallback initial. 44px default via <span class="tok">--size-tap</span> (sm bumped to meet min tap).'].join(''),
+          'cover or fallback initial. 44px default via ',
+          '<span class="tok">--size-tap</span> (sm bumped to meet min tap).'].join(''),
         anatomy:avatarAnat,
         behaviour:avatarBehav,
         knobs:avatarKnobs,

@@ -1,4 +1,5 @@
-/* ADAM/STYLE — styles/footer · dashed frame + link grid + display title · [plan:2026-09-15_183400-lump-sum-builds.md#phase-13] */
+/* ADAM/STYLE — styles/footer · dashed frame + link grid + display title ·
+   [plan:2026-09-15_183400-lump-sum-builds.md#phase-13] */
 footer {
   border-top: var(--border-hairline);
   max-width: var(--size-wrap);
@@ -94,7 +95,6 @@ footer .divider { margin: var(--space-22) 0 var(--space-32); }
 @media (max-width: 760px) {
   footer { padding-inline: var(--space-16); }
   .footer-cols { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-18); min-height: 0; }
-  .footer-right { order: -1; }
-  .footer-big { opacity: 0.32; }
+  .footer-right { order: -1; } .footer-big { opacity: 0.32; }
 }
 @media (prefers-reduced-motion: reduce) { .footer-big { opacity: 0.58; } }
