@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T08:38:26.884Z",
+ "generated": "2026-09-22T08:57:34.972Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -28,9 +28,19 @@
   "2026-09-15_183400-lump-sum-builds.md",
   "2026-09-15_190000-foundations-sound-pane.md",
   "2026-09-15_193000-theme-island-parity.md",
-  "2026-09-21_125642-lump-sum-builds.md"
+  "2026-09-21_125642-lump-sum-builds.md",
+  "2026-09-22_141500-housekeeping-refactor.md"
  ],
  "commits": [
+  {
+   "sha": "77894b6",
+   "full": "77894b671a3762ad803cf08b960df772d219bcb2",
+   "date": "2026-09-22",
+   "time": "14:27",
+   "subject": "docs(plan): housekeeping refactor plan — zero-UI-change passes",
+   "plan": "2026-09-22_141500-housekeeping-refactor.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "0d40da7",
    "full": "0d40da7a9169e7a012030ead921db13d2e35aa2c",
