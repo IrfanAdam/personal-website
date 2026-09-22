@@ -1,4 +1,13 @@
 graph TD
+boot_routing --> views_contact
+boot_routing --> views_headerFrame
+boot_routing --> views_map_index
+boot_routing --> views_masonry
+boot_routing --> views_minimal_lab
+boot_routing --> views_project
+boot_routing --> views_settings_menu
+boot_routing --> views_stripbar
+boot_routing --> views_transit
 ds_atlas_actions --> ds_atlas_camera
 ds_atlas_actions --> ds_atlas_insight
 ds_atlas_actions --> ds_atlas_schema
@@ -311,15 +320,9 @@ fx_visual_index --> views_rise
 fx_visual_index --> views_scramble_text
 fx_visual_index --> views_title_reveal
 main --> boot_chrome
-main --> views_contact
+main --> boot_routing
 main --> views_footer_shimmer
-main --> views_headerFrame
-main --> views_map_index
-main --> views_masonry
-main --> views_minimal_lab
 main --> views_proceed_gate
-main --> views_project
-main --> views_settings_menu
 main --> views_strip_viewer
 main --> views_stripbar
 main --> views_transit
@@ -429,7 +432,9 @@ views_masonry_viewer --> views_fx_tokens
 views_masonry_viewer --> views_masonry_viewer_bind
 views_masonry_viewer --> views_masonry_viewer_markup
 views_masonry_viewer --> views_masonry_viewer_visibility
+views_masonry_viewer_bind --> views_masonry_viewer_bind_refresh
 views_masonry_viewer_bind --> views_masonry_viewer_markup
+views_masonry_viewer_bind_refresh --> views_masonry_viewer_markup
 views_masonry_work_peek --> views_img_helpers
 views_masonry_work_peek --> views_masonry_gridReveal
 views_masonry_work_peek --> views_masonry_gridReveal_load

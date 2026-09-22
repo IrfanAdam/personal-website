@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T08:24:10.319Z",
+  "generated": "2026-09-22T09:07:18.464Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -7,6 +7,14 @@
       "layer": "view",
       "route": null,
       "title": "boot chrome",
+      "tokens": []
+    },
+    {
+      "id": "boot_routing",
+      "path": "src/boot/routing.js",
+      "layer": "component",
+      "route": null,
+      "title": "routing",
       "tokens": []
     },
     {
@@ -3806,6 +3814,14 @@
       "tokens": []
     },
     {
+      "id": "views_masonry_viewer_bind_refresh",
+      "path": "src/views/masonry/viewer-bind-refresh.js",
+      "layer": "view",
+      "route": null,
+      "title": "viewer bind refresh",
+      "tokens": []
+    },
+    {
       "id": "views_masonry_viewer_markup",
       "path": "src/views/masonry/viewer-markup.js",
       "layer": "view",
@@ -4044,6 +4060,51 @@
     }
   ],
   "edges": [
+    {
+      "from": "boot_routing",
+      "to": "views_contact",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_headerFrame",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_map_index",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_masonry",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_minimal_lab",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_project",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_settings_menu",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_stripbar",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_routing",
+      "to": "views_transit",
+      "kind": "imports"
+    },
     {
       "from": "ds_atlas_actions",
       "to": "ds_atlas_camera",
@@ -6001,7 +6062,7 @@
     },
     {
       "from": "main",
-      "to": "views_contact",
+      "to": "boot_routing",
       "kind": "imports"
     },
     {
@@ -6011,37 +6072,7 @@
     },
     {
       "from": "main",
-      "to": "views_headerFrame",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
-      "to": "views_map_index",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
-      "to": "views_masonry",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
-      "to": "views_minimal_lab",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
       "to": "views_proceed_gate",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
-      "to": "views_project",
-      "kind": "imports"
-    },
-    {
-      "from": "main",
-      "to": "views_settings_menu",
       "kind": "imports"
     },
     {
@@ -6682,6 +6713,16 @@
     {
       "from": "views_masonry_reveal",
       "to": "views_masonry_reel_tick",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer_bind_refresh",
+      "to": "views_masonry_viewer_markup",
+      "kind": "imports"
+    },
+    {
+      "from": "views_masonry_viewer_bind",
+      "to": "views_masonry_viewer_bind_refresh",
       "kind": "imports"
     },
     {
