@@ -12,7 +12,7 @@ footer {
   grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
   column-gap: var(--space-70);
   border: var(--size-hairline) dashed color-mix(in srgb, var(--color-ink-subtle) 24%, transparent);
-  padding: var(--space-32);
+  padding: var(--space-16);
 }
 .footer-corner {
   position: absolute;

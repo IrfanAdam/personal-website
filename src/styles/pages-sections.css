@@ -29,13 +29,17 @@
 .work:hover {
   background: color-mix(in srgb, var(--color-panel) 55%, transparent);
 }
-.work:hover .work-title {
-  text-decoration: underline var(--size-hairline);
-  text-underline-offset: var(--space-3);
+.work:hover::after {
+  height: var(--size-frame);
+  background: var(--color-ink);
 }
 .work:focus-visible {
   outline: var(--border-focus);
   outline-offset: var(--focus-offset);
+}
+.work:focus-visible::after {
+  height: var(--size-frame);
+  background: var(--color-ink);
 }
 .work-row { display: flex; align-items: center; gap: var(--space-12); justify-content: space-between; min-width: 0; }
 .work-title, .work-meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -59,3 +63,24 @@
 .work:hover .work-swatches i { transform: translateY(calc(var(--space-1) * -1)); }
 .work-thumb { display: none; }
 .work-body { display: contents; }
+@media (min-width: 641px) {
+  .work { grid-template-columns: 1fr auto auto; }
+  .work-row--main { grid-column: 1 / -1; }
+  .work-row--bottom { display: contents; }
+  .work-date {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+  }
+  .work-meta {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+  }
+  .work-swatches {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: center;
+    justify-self: end;
+  }
+}

@@ -28,6 +28,7 @@ export function Project(slug) {
     platform, w = 3, h = 4, mock, hero, promoVideo] = projects[i];
   const next = projects[(i + 1) % projects.length];
   const cats = [a, b].filter(Boolean).join(' · ');
+  const kicker = cats;
   const body = bodies[s] || '';
   const heroSrc = hero || mock || img;
   const heroPic = pictureMarkup(heroSrc, title, w, h, {
@@ -38,25 +39,32 @@ export function Project(slug) {
   });
   const promo = promoVideoMarkup(promoVideo);
   const nextHtml = nextBlock(next);
+  const specHtml = `<dl class="spec"><div><dt>Deliverables</dt><dd>`
+    + (deliverables || '—')
+    + `</dd></div><div><dt>Date</dt><dd>`
+    + date
+    + `</dd></div>\n  <div><dt>Timeline</dt><dd>`
+    + (timeline || '—')
+    + `</dd></div><div><dt>Role</dt><dd>`
+    + (role || '—')
+    + `</dd></div><div><dt>Platform</dt><dd>`
+    + (platform || '—')
+    + `</dd></div></dl>`;
+  const mKicker = kicker ? `<p class="kicker kicker--mobile">${kicker}</p>` : '';
+  const dKicker = kicker ? `<p class="kicker kicker--desktop">${kicker}</p>` : '';
   return [
     `<article class="case"><div class="case-grid">\n  <div class="case-copy"><h1>`,
     title,
-    `</h1><p class="kicker">`,
-    cats ? cats + ' · ' : '',
-    date,
-    `</p>\n  `,
+    `</h1>`,
+    dKicker,
+    `\n  `,
     renderBody(body),
-    `\n  <dl class="spec"><div><dt>Deliverables</dt><dd>`,
-    deliverables || '—',
-    `</dd></div><div><dt>Date</dt><dd>`,
-    date,
-    `</dd></div>\n  <div><dt>Timeline</dt><dd>`,
-    timeline || '—',
-    `</dd></div><div><dt>Role</dt><dd>`,
-    role || '—',
-    `</dd></div><div><dt>Platform</dt><dd>`,
-    platform || '—',
-    `</dd></div></dl></div>\n  <div class="case-media"><div class="hero-box" style="--hero-aspect:`,
+    `\n  `,
+    specHtml,
+    `</div>\n  <div class="case-media">`,
+    mKicker,
+    specHtml,
+    `<div class="hero-box" style="--hero-aspect:`,
     w,
     `/`,
     h,

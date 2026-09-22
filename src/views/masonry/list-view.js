@@ -2,7 +2,6 @@
    [plan:2026-09-15_183400-lump-sum-builds.md#phase-19] */
 // Exports: listMarkup — rows + pane markup · attachListView — popover + pane
 import { row } from './cards.js';
-import { aboutBlock } from '../shared.js';
 import { peekMarkup, attachWorkPeek } from './work-peek.js';
 import { attachListViewer } from './list-viewer.js';
 import { attachBrandTokens } from './brand-tokens.js';
@@ -13,7 +12,7 @@ export function listMarkup(list) {
   const rows = list.map(row).join('');
   const pane = list.length ? peekMarkup(list[0]) : '';
   return `<div class="works-cols"><div class="works-rows"><h2>All of my works</h2>`
-    + `${rows}</div>${pane}</div>${aboutBlock()}`;
+    + `${rows}</div>${pane}</div>`;
 }
 
 // — Section: behaviour —

@@ -29,18 +29,18 @@ export function card(p, eager = false) {
 }
 export function row(p) {
   const [slug, title, a, b, date, , , , img, , , w = 3, h = 4, mock, hero] = p;
-  const cats = [a, b].filter(Boolean).join(' \u00b7 ');
-  const cat = cats ? cats + ' \u00b7 ' : '';
+  const cats = [a, b].filter(Boolean).join(' · ');
+  const cat = cats ? cats + ' · ' : '';
   const card = cardSrc(img, 480), media = cardSrc(hero || mock || img, 800);
   const sw = paletteFor(slug).map(c => `<i style="background:${c}"></i>`).join('');
   const open = `<a class="work" href="#/projects/${slug}" data-card="${card}"`
     + ` data-media="${media}" data-w="${w}" data-h="${h}">`;
   const thumb = `<span class="work-thumb" aria-hidden="true"><img src="${card}" alt=""`
     + ` loading="lazy" decoding="async" width="${w}" height="${h}" /></span>`;
-  const titleRow = `<span class="work-row work-row--main"><span class="work-title">${title}</span>`
+  const titleRow = `<span class="work-row work-row--main"><span class="work-title">${title}</span></span>`;
+  const metaRow = `<span class="work-meta">${cat}${slug}</span>`;
+  const bottomRow = `<span class="work-row work-row--bottom"><span class="work-date">${date}</span>`
     + `<span class="work-swatches" aria-hidden="true" data-swatches>${sw}</span></span>`;
-  const metaRow = `<span class="work-row work-row--sub"><span class="work-meta">${cat}${slug}</span>`
-    + `<span class="work-date">${date}</span></span>`;
-  const body = `<span class="work-body">${titleRow}${metaRow}</span>`;
+  const body = `<span class="work-body">${titleRow}${metaRow}${bottomRow}</span>`;
   return open + thumb + body + `</a>`;
 }
