@@ -1,7 +1,5 @@
 /* ADAM/DS — glitch/sound-bind · palette state + chips · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: mountSoundBind — prox state, updSnd, chips; returns api
-import { getSource } from '../../../views/sound-source.js';
-import { FILES } from '../../../views/sound-files.js';
 import { playVoice } from '../../../views/element-sound.js';
 import { isMuted } from '../../../views/audio-ctx.js';
 import { TYPE_META, VOICE_DEFAULTS } from './meta.js';

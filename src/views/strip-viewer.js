@@ -1,9 +1,8 @@
 /* ADAM/SHARED — views/strip-viewer · strip icon hover hero preview
    [plan:2026-09-15_183400-lump-sum-builds.md#phase-17] */
 // Exports: attachStripViewer — cursor-following hero popover for header strip
-import { fxNum, fxMs } from './fx-tokens.js';
 import {
-  HERO, slugFrom, makeStripEl, placeWithOrigin, createFollower, preloadHeroes,
+  HERO, slugFrom, placeWithOrigin, preloadHeroes,
 } from './strip-viewer-helpers.js';
 import { makeViewerCore } from './strip-viewer-core.js';
 export function attachStripViewer(bar) {

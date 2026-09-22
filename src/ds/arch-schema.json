@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:20:33.455Z",
+  "generated": "2026-09-22T09:23:19.466Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -4898,16 +4898,6 @@
       "kind": "imports"
     },
     {
-      "from": "ds_functions_glitch_sound_bind",
-      "to": "views_sound_files",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_functions_glitch_sound_bind",
-      "to": "views_sound_source",
-      "kind": "imports"
-    },
-    {
       "from": "ds_functions_glitch_sound_panel",
       "to": "ds_functions_glitch_meta",
       "kind": "imports"
@@ -7130,11 +7120,6 @@
     {
       "from": "views_strip_viewer_helpers",
       "to": "views_list_follower",
-      "kind": "imports"
-    },
-    {
-      "from": "views_strip_viewer",
-      "to": "views_fx_tokens",
       "kind": "imports"
     },
     {

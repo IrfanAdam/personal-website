@@ -1,5 +1,5 @@
 /* ADAM/DS — overview/reading.js · reading guide · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
-import { note, code } from '../specimens.js';
+import { code } from '../specimens.js';
 
 export function readingHtml() {
   return [

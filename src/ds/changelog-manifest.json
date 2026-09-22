@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T09:20:57.302Z",
+ "generated": "2026-09-22T09:23:20.617Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -32,6 +32,15 @@
   "2026-09-22_141500-housekeeping-refactor.md"
  ],
  "commits": [
+  {
+   "sha": "3a8690e",
+   "full": "3a8690eb0dc9b739a7f6adcb5d93ed363d9af9b9",
+   "date": "2026-09-22",
+   "time": "14:51",
+   "subject": "refactor(budget): at-cap sheets tidy + near-limit helpers + DS compact",
+   "plan": "2026-09-22_141500-housekeeping-refactor.md",
+   "anchor": "{#phase-2}"
+  },
   {
    "sha": "08d80f4",
    "full": "08d80f43408069aa3a9fee850541889fb8866e2d",
@@ -3481,14 +3490,9 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-events.js",
-  "M src/ds/changelog-parse.js",
-  "M src/ds/ds-blocks.css",
-  "M src/ds/ds.css",
-  "M src/ds/foundations-demo.css",
-  "M src/ds/foundations-sound.css",
-  "M src/styles/tokens-fx.css",
-  "?? src/ds/changelog-format.js",
-  "?? src/ds/changelog-hum.js"
+  "M src/ds/foundations/pane-shape.js",
+  "M src/ds/functions/glitch/sound-bind.js",
+  "M src/ds/overview/principles.js",
+  "M src/ds/overview/reading.js"
  ]
 }

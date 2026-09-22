@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/foundations/pane-shape · shape composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
-import { tokenTrace, note, code } from '../specimens.js';
+import { note } from '../specimens.js';
 import { doctrine } from './shape/doctrine.js';
 import { radii, liveRadii } from './shape/radius.js';
 import { borders, liveBorders } from './shape/borders.js';
