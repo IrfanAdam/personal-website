@@ -25,7 +25,7 @@
 | 3 | Split `src/views/masonry/viewer-bind.js` 106→≤100 | `viewer-bind.js` ≤100, helpers (bind/refresh/teardown) extracted, ≤100 each, build green |
 | 4 | Fix `work-peek.js` template continuations | `work-peek.js` has ≤2 consecutive `+ \\` continuations — named parts or array join, no logic change, build green |
 
-### Task 1: Wrap 4 over-long lines (>120ch)
+### Task 1 ✓ done: Wrap 4 over-long lines (>120ch)
 
 *2026-09-22 · style(lint): wrap 120ch lines*
 
@@ -57,7 +57,7 @@ Run: `npm run build 2>&1 | tail -5` → ✓ built.
 `git add src/data/next-copy.js src/ds/changelog-links.js src/ds/foundations/space/audit.js src/ds/primitives/avatar.js src/styles/footer.css src/styles/tokens-fx.css`
 `git commit -m "style(lint): wrap 120ch lines — no behaviour change [plan:2026-09-22_141500-housekeeping-refactor.md#{#phase-1}]"`
 
-### Task 2: Split `src/main.js` 104→≤100
+### Task 2 ✓ done: Split `src/main.js` 104→≤100
 
 *2026-09-22 · refactor(main): split 104→≤100 via extraction*
 
@@ -86,7 +86,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 `git add src/main.js src/boot/routing.js docs/graph.mmd src/ds/arch-schema.json`
 `git commit -m "refactor(main): split 104→≤100 — extract job [plan:2026-09-22_141500-housekeeping-refactor.md#{#phase-1}]"`
 
-### Task 3: Split `src/views/masonry/viewer-bind.js` 106→≤100
+### Task 3 ✓ done: Split `src/views/masonry/viewer-bind.js` 106→≤100
 
 *2026-09-22 · refactor(viewer-bind): split 106→≤100*
 
@@ -107,7 +107,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Step 5: Commit** `git add src/views/masonry/viewer-bind*.js docs/graph.mmd src/ds/arch-schema.json` `git commit -m "refactor(viewer-bind): split 106→≤100 [plan:2026-09-22_141500-housekeeping-refactor.md#{#phase-1}]"`
 
-### Task 4: Fix `work-peek.js` template continuations
+### Task 4 ✓ done: Fix `work-peek.js` template continuations
 
 *2026-09-22 · style(work-peek): template chain 4→≤2*
 
@@ -124,7 +124,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Step 4: Commit** `git add src/views/masonry/work-peek.js` `git commit -m "style(work-peek): break template chain 4→≤2 [plan:2026-09-22_141500-housekeeping-refactor.md#{#phase-1}]"`
 
-*Shipped in <sha> · Tasks 1–4 · phase-1.*
+*Shipped in 08d80f4, b7bc70d, 471c88b, f28aafc · phase-1.*
 
 ---
 
