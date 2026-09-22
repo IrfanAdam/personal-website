@@ -192,7 +192,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 | 9 | Header & section-banner pass | Every `/* ADAM/*` header ≤120ch (two-line form where needed), banners at column 0, `lint-manage` 0 hits |
 | 10 | Readability: named parts over chains | Remaining `+ \\` >2, nested ternaries, `>120ch` not in Phase 1 rewritten as named consts/maps, `lint-manage` 0 readability hits |
 
-### Task 8: Dead-import sweep + graph freshness
+### Task 8 ✓ done: Dead-import sweep + graph freshness
 
 *2026-09-22 · chore(hygiene): dead imports + graph*
 
@@ -203,7 +203,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Verify:** No orphan `from`; `node scripts/map-graph.mjs && git diff --stat` → 0 diff.
 
-### Task 9: Header & section-banner pass
+### Task 9 ✓ done: Header & section-banner pass
 
 *2026-09-22 · style(headers): ADAM headers + banners*
 
@@ -214,7 +214,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Verify:** `awk 'NR==1 && length>120' src/**/*.js src/**/*.css` → 0; `lint-manage` header hits 0.
 
-### Task 10: Readability — named parts over chains
+### Task 10 ✓ done: Readability — named parts over chains
 
 *2026-09-22 · style(readability): named parts, no nested ternaries*
 
@@ -225,7 +225,7 @@ Run: `node scripts/map-graph.mjs` → graph fresh.
 
 **Verify:** `lint-manage` → ✓ 0 violations; `lint:tokens` ✓; `build` ✓; zero UI diff.
 
-*Shipped in <sha> · Tasks 8–10 · phase-3.*
+*Shipped in 47f081b · Tasks 8–10 · phase-3.*
 
 ---
 
