@@ -16,11 +16,11 @@ const INTENT_MS = 120;
 export function peekMarkup(p) {
   const [slug, title, , , , , , , , , , w = 3, h = 4] = p;
   const src = cardSrc(mediaOf(p), 800);
-  return `<aside class="peek case-media hero-box" id="workPeek" data-slug="${slug}" aria-hidden="true"`
-    + ` style="--hero-aspect:${w}/${h}">`
-    + `<canvas class="gr" aria-hidden="true"></canvas>`
-    + `<img src="${src}" alt="${title}" width="${w}" height="${h}" loading="eager" decoding="async" />`
-    + `</aside>`;
+  const head = `<aside class="peek case-media hero-box" id="workPeek" data-slug="${slug}" aria-hidden="true"`
+    + ` style="--hero-aspect:${w}/${h}">`;
+  const inner = `<canvas class="gr" aria-hidden="true"></canvas>`
+    + `<img src="${src}" alt="${title}" width="${w}" height="${h}" loading="eager" decoding="async" /></aside>`;
+  return head + inner;
 }
 
 // — Section: behaviour —
