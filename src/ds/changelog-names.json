@@ -112,7 +112,7 @@
     "purpose": "Code quality"
   },
   "2026-09-23_130000-ds-understandable-mutable.md": {
-    "title": "DS coherent — live Foundations, unified IA, consistent chrome",
+    "title": "DS coherent \u2014 live Foundations, unified IA, consistent chrome",
     "purpose": "Live Foundations + unified IA"
   },
   "2026-09-23_134500-ds-coherent-consumable.md": {
@@ -136,7 +136,7 @@
     "purpose": "Pane copy"
   },
   "2026-09-23_151320-ds-fx-cards.md": {
-    "title": "FX + Motion legible — what each token changes, one screen",
+    "title": "FX + Motion legible \u2014 what each token changes, one screen",
     "purpose": "FX + Motion legible"
   },
   "2026-09-23_154500-ds-elev-motion-tables.md": {
@@ -144,7 +144,11 @@
     "purpose": "Tabled tokens"
   },
   "2026-09-23_173234-ds-motion-coherent.md": {
-    "title": "Motion coherent — labs read like Elements, live, one screen",
+    "title": "Motion coherent \u2014 labs read like Elements, live, one screen",
     "purpose": "Motion labs coherent"
+  },
+  "2026-09-23_174000-motion-elements-vertical.md": {
+    "title": "Motion + Sound as Elements \u2014 vertical tabs, one screen per effect",
+    "purpose": "Motion+Sound vertical"
   }
 }

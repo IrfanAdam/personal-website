@@ -1,11 +1,12 @@
-/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
+/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-1] */
 import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview, mount as mountOverview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
 import { render as patterns, mount as mountPatterns } from './pages-patterns.js';
-import { render as functions, mount as mountFunctions } from './pages-functions.js';
 import { render as primitives, mount as mountPrimitives } from './pages-primitives.js';
 import { render as library, mount as mountLibrary } from './pages-library.js';
+import { render as motion, mount as mountMotion } from './pages-motion.js';
+import { render as functions, mount as mountFunctions } from './pages-functions.js';
 import { render as gridReveal, mount as mountGrid } from './functions/grid-reveal.js';
 import { render as shimmer, mount as mountShimmer } from './functions/shimmer.js';
 import { render as rise, mount as mountRise } from './functions/rise.js';
@@ -23,6 +24,7 @@ export const routes = [
   { hash: '#/primitives', label: 'Primitives', group: 'Elements', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library', group: 'Elements', render: library, mount: mountLibrary },
   { hash: '#/patterns', label: 'Patterns', group: 'Elements', render: patterns, mount: mountPatterns },
+  { hash: '#/motion', label: 'Motion', group: 'Elements', render: motion, mount: mountMotion },
   { hash: '#/functions', label: 'Motion', group: 'Motion', render: functions, mount: mountFunctions },
   { hash: '#/functions/grid-reveal', label: 'GridReveal', group: 'Motion', render: gridReveal, mount: mountGrid },
   { hash: '#/functions/shimmer', label: 'Shimmer', group: 'Motion', render: shimmer, mount: mountShimmer },
