@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/routes · route table · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
 import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview, mount as mountOverview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
@@ -23,10 +23,10 @@ export const routes = [
     group: 'Start',
     render: foundations,
     mount: mountFoundations },
-  { hash: '#/atlas', label: 'Atlas', group: 'Start', render: atlas, mount: mountAtlas },
+  { hash: '#/atlas', label: 'Atlas', group: 'Atlas', render: atlas, mount: mountAtlas },
   { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
-  { hash: '#/components', label: 'Components', group: 'Components', render: components },
+  { hash: '#/components', label: 'Components · Map', group: 'Components', render: components },
   { hash: '#/patterns', label: 'Patterns · Quality', group: 'Components', render: patterns, mount: mountPatterns },
   { hash: '#/functions', label: 'Functions', group: 'Functions', render: functions, mount: mountFunctions },
   { hash: '#/functions/grid-reveal', label: 'GridReveal', group: 'Functions', render: gridReveal, mount: mountGrid },

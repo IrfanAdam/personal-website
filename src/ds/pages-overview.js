@@ -1,4 +1,4 @@
-/* ADAM/DS — pages-overview · composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/DS — pages-overview · composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
 // Exports: title, render, mount — delegates markup/styles to overview-sections
 import { attachGlimmerOrb } from '../views/glimmer-orb.js';
 import {
@@ -7,6 +7,7 @@ import {
   principlesHtml,
   readingHtml,
   moodHtml,
+  checklistHtml,
 } from './overview-sections.js';
 
 export const title = 'Overview';
@@ -19,6 +20,7 @@ export function render() {
     + heroHtml(y)
     + principlesHtml()
     + readingHtml()
+    + checklistHtml()
     + moodHtml();
 }
 

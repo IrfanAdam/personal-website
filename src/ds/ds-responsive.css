@@ -1,4 +1,4 @@
-/* ADAM/DS — ds-responsive · responsive overrides · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds-responsive · responsive overrides · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
 @media (max-width: 900px) /* --break-lg */ {
   .ds-shell { flex-direction: column; }
   .ds-side { position: static; width: auto; border-right: none; border-bottom: var(--border-hairline); }
@@ -15,6 +15,32 @@
   }
   body.side-collapsed .ds-side { transform: none; }
   .ds-side-toggle { display: none; }
+  .ds-tabs.vert { flex-direction: column; }
+  .ds-tabs.vert > .ds-tablist {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    gap: var(--space-8);
+    border: none;
+    background: transparent;
+    padding-bottom: var(--space-4);
+  }
+  .ds-tabs.vert > .ds-tablist > .ds-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    border: var(--border-hairline);
+  }
+  .ds-tabs.vert > .ds-tablist > .ds-tab.on {
+    box-shadow: none;
+    border-color: var(--color-ink);
+  }
+  .ds-tablist--line {
+    flex-wrap: nowrap;
+    gap: var(--space-12);
+  }
 }
 @media (max-width: 640px) /* --break-sm */ {
   .ds-grid.c2 { grid-template-columns: 1fr; }

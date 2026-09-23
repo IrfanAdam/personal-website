@@ -1,4 +1,4 @@
-/* ADAM/DS — ds-tabs · tabs shell, Preview-first · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds-tabs · tabs shell, Preview-first · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
 /* tabs shell (Phase 1) — token-only, Preview-first */
 .ds-tabs { margin: var(--space-10) 0; }
 .ds-tablist { display: flex; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-10); }
@@ -18,6 +18,9 @@
   flex-wrap: wrap;
   border-bottom: var(--border-hairline);
   margin-bottom: var(--space-10);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 .ds-tablist--line .ds-tab {
   background: transparent;
@@ -27,6 +30,8 @@
   margin-bottom: calc(var(--space-1) * -1);
   color: var(--color-ink-muted);
   cursor: pointer;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 .ds-tablist--line .ds-tab:hover { color: var(--color-ink); }
 .ds-tablist--line .ds-tab.on {

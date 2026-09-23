@@ -1,43 +1,53 @@
-/* ADAM/DS — Components: redirect index. Static demos migrated into uniform sheets + library.
-   This page stays as an index for one release (like #/tokens → #/foundations). */
-import { note, code } from './specimens.js';
-const rows=[
-  ['Primitives · Button, Tag, Kicker, Divider, Badge, Field, Toggle, Avatar, Logo',
-    '#/primitives',
-    'uniform template — Usage → Anatomy → Behaviour → Preview/Code/Tokens → knobs'],
-  ['Library · Header, Footer, Hero, Card, Work row, Filters, Strip, Spec, Next, CTA, Contact',
-    '#/library',
-    'landing composition — playgrounds dogfood real .top/.card/.case-grid etc.'],
-  ['Patterns · Masonry, Viewer, Case 50/50, A11y, Migration',
-    '#/patterns',
+/* ADAM/DS — Components map · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
+import { note } from './specimens.js';
+const map = [
+  ['Primitives', '9', '#/primitives',
+    'Button · Tag · Kicker · Divider · Badge · Field · Toggle · Avatar · Logo',
+    'Usage → Anatomy → Behaviour → Preview / Code / Tokens'],
+  ['Library', '11', '#/library',
+    'Header · Footer · Hero · Card · Work · Filters · Strip · Spec · Next · CTA · Contact',
+    'landing playgrounds dogfood real .top/.card/.cols'],
+  ['Patterns', '4', '#/patterns',
+    'Masonry · Viewer · Case 50/50 · A11y + Migration',
     'compositions + gates (contrast live, motion, focus)'],
-  ['Functions · Grid reveal, Shimmer, Rise, Viewer params',
-    '#/functions',
+  ['Functions', '7', '#/functions',
+    'GridReveal · Shimmer · Rise · Viewer · Glimmer orb · Glitch · Scramble',
     'labs + token backlog — tune here, graduate via --fx-*'],
 ];
-export const title='Components';
-export function render(){
+export const title = 'Components';
+export function render() {
   return [
-    `<p class="ds-crumb">Components · index</p><div class="ds-hero"><h1>One Components section.</h1>`,
-    `<p class="lede">Static demos are now uniform sheets. Every primitive lives on <a `,
-    `href="#/primitives">Primitives</a> (Usage → Anatomy → Behaviour → Preview/Code/Tokens); landing pieces live on `,
-    `<a href="#/library">Library</a>. This index stays for one release.</p></div><div class="ds-sec">`,
-    `<h2>Where things live</h2>`,
-    `<p class="sub">Old <span class="tok">#/components</span> specimens migrated — no pixels changed, just `,
-    `templated.</p><table class="ds-table"><tr><th>Section</th><th>What it holds</th></tr>`,
-    rows.map(([label,href,desc])=>`<tr><td><a href="${href}">${label}</a></td><td>${desc}</td></tr>`).join(''),
-    `</table>`,
+    `<p class="ds-crumb">Components · map</p><div class="ds-hero"><h1>One Components section.</h1>`,
+    `<p class="lede">No dead-end index — every specimen lives on a sheet. `,
+    `This map is the only entry point for <span class="tok">#/components</span>.</p></div>`,
+    `<div class="ds-sec"><h2>Where things live</h2>`,
+    `<p class="sub">9 → 11 → 4 → 7 — primitives compose into library, `,
+    `library into patterns, motion into functions.</p>`,
+    `<div class="ds-grid c2" style="gap:var(--space-12)">`,
+    map.map(([name, n, href, holds, desc]) => [
+      `<a href="${href}" style="text-decoration:none;display:block;`,
+      `border:var(--border-hairline);padding:var(--space-14);`,
+      `background:var(--color-surface)">`,
+      `<div style="display:flex;justify-content:space-between;`,
+      `align-items:baseline;gap:var(--space-8)">`,
+      `<b style="font-size:var(--text-h3)">${name}</b>`,
+      `<span class="tok">${n}</span></div>`,
+      `<div style="font-family:var(--font-mono);font-size:var(--text-micro);`,
+      `color:var(--color-ink-muted);margin-top:var(--space-6)">${holds}</div>`,
+      `<div style="font-size:var(--text-meta);color:var(--color-ink-muted);`,
+      `margin-top:var(--space-8)">${desc}</div>`,
+      `<span class="kicker" style="margin-top:var(--space-10);`,
+      `display:inline-block">Open ${name} →</span></a>`,
+    ].join('')).join(''),
+    `</div>`,
     note('Do',
-      ['Build from <span class="tok">#/primitives</span> + <span class="tok">#/library</span> — this page is just ',
-      'a map. Behaviour + Tokens tabs live on each sheet.'].join(''),'do'),
-    `</div><div class="ds-sec"><h2>Migrated</h2>`,
-    `<p class="sub">Pill → <a href="#/library">Filters</a> + <span class="tok">.pill.on</span> in Library; Card → `,
-    `<a href="#/library">Card</a> playground (tags/hover/in-view); Strip thumb/vtab → <a href="#/library">Strip `,
-    `tabs</a>; Viewer portal → <a href="#/functions">Functions · Viewer</a> + <a href="#/patterns">Patterns · `,
-    `Viewer</a>. Pill’s filter/tab role unchanged.</p>`,
-    code(['pill:   .pill / .pill.on  →  filters playground (Library)\ncard:   .card ready + .tags/.scrim/.card-info  ',
-      '→  card playground (Library)\nstrip:  .strip a 56×56 + .vtab  →  strip tabs playground (Library)\nviewer: ',
-      '.viewer / .viewer-cursor / .viewer-lines  →  Functions labs + Patterns specimen'].join('')),
+      ['Build from <span class="tok">#/primitives</span> + <span class="tok">#/library</span> — ',
+        'behaviour + tokens live on each sheet.'].join(''), 'do'),
+    `</div>`,
+    `<div class="ds-sec"><h2>Migrated</h2>`,
+    `<p class="sub">Pill → <a href="#/library">Filters</a> · Card → `,
+    `<a href="#/library">Card</a> · Strip → <a href="#/library">Strip</a> · Viewer → `,
+    `<a href="#/functions">Functions</a> + <a href="#/patterns">Patterns</a>.</p>`,
     `</div>`,
   ].join('');
 }

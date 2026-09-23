@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T07:51:29.665Z",
+  "generated": "2026-09-23T07:57:47.019Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -673,9 +673,12 @@
       "tokens": [
         "--border-hairline",
         "--color-bg",
+        "--color-ink",
         "--space-10",
+        "--space-12",
         "--space-16",
         "--space-22",
+        "--space-4",
         "--space-6",
         "--space-70",
         "--space-8"
@@ -1839,6 +1842,19 @@
       "tokens": []
     },
     {
+      "id": "ds_overview_checklist",
+      "path": "src/ds/overview/checklist.js",
+      "layer": "component",
+      "route": null,
+      "title": "checklist",
+      "tokens": [
+        "--color-ink-muted",
+        "--font-mono",
+        "--space-8",
+        "--text-micro"
+      ]
+    },
+    {
       "id": "ds_overview_hero",
       "path": "src/ds/overview/hero.js",
       "layer": "component",
@@ -1999,8 +2015,21 @@
       "path": "src/ds/pages-components.js",
       "layer": "component",
       "route": "#/components",
-      "title": "Components",
-      "tokens": []
+      "title": "Components · Map",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink-muted",
+        "--color-surface",
+        "--font-mono",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-6",
+        "--space-8",
+        "--text-h3",
+        "--text-meta",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_pages_foundations",
@@ -5527,6 +5556,11 @@
       "kind": "imports"
     },
     {
+      "from": "ds_overview_checklist",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_overview_hero",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -5549,6 +5583,11 @@
     {
       "from": "ds_overview_reading",
       "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_checklist",
       "kind": "imports"
     },
     {
@@ -5675,6 +5714,11 @@
       "from": "ds_pages_components",
       "to": "ds_specimens",
       "kind": "imports"
+    },
+    {
+      "from": "ds_pages_components",
+      "to": "styles_tokens",
+      "kind": "tokens"
     },
     {
       "from": "ds_pages_foundations",

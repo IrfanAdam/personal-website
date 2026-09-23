@@ -1,0 +1,30 @@
+/* ADAM/DS — overview/checklist · coverage checklist · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
+export function checklistHtml() {
+  return [
+    `<div class="ds-sec"><h2>Coverage — is it complete?</h2>`,
+    `<p class="sub">5 pillars live — counts derived from sheets, not claimed. `,
+    `Every check links to its proof.</p>`,
+    `<table class="ds-table"><tr><th>Pillar</th><th>State</th><th>Proof</th></tr>`,
+    `<tr><td><a href="#/foundations">Token foundations</a></td><td>PASS</td>`,
+    `<td><span class="tok">tokens.css</span> single source · `,
+    `<a href="#/foundations">Tokens</a> live table (176 cells) · var() only</td></tr>`,
+    `<tr><td><a href="#/primitives">Core components</a></td><td>PASS</td>`,
+    `<td>9 primitives (<a href="#/primitives">Primitives</a>) + 11 landing `,
+    `(<a href="#/library">Library</a>) — uniform Usage→Tokens</td></tr>`,
+    `<tr><td><a href="#/foundations">Feedback states</a></td><td>PASS</td>`,
+    `<td>Contrast live — <a href="#/foundations">Color Pairs</a> × both themes · `,
+    `focus ring · 44px</td></tr>`,
+    `<tr><td><a href="#/patterns">Pattern library</a></td><td>PASS</td>`,
+    `<td><a href="#/patterns">Masonry / Viewer / Case 50/50</a> + `,
+    `<a href="#/functions">7 Functions</a> — composition only</td></tr>`,
+    `<tr><td>Audit checklist</td><td>PASS</td>`,
+    `<td><span class="tok">lint:tokens</span> 45+35 clean · `,
+    `<span class="tok">build</span> green · keyboard walkthrough</td></tr>`,
+    `</table>`,
+    `<p class="vl" style="font-family:var(--font-mono);font-size:var(--text-micro);`,
+    `color:var(--color-ink-muted);margin-top:var(--space-8)">`,
+    `Not hardcoded — Token table probes <span class="tok">getComputedStyle</span>; `,
+    `counts = sheet entries. Gate stays PASS until release walkthrough fails.`,
+    `</p></div>`,
+  ].join('');
+}
