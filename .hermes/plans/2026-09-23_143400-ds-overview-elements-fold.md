@@ -26,4 +26,4 @@
 **Files:** `src/ds/routes.js`, `src/ds/pages-primitives.js`, `src/ds/pages-library.js`, `src/ds/patterns-layouts.js`, `src/ds/overview/reading.js`, delete `src/ds/pages-components.js`
 **Verify:** `grep -rn "#/components" src` empty; sidebar has no Components entry; prev/next skips it; build + smoke green.
 
-*Shipped in <sha> · Tasks 1–2 · phase-1.*
+*Shipped in ec0ffab · Tasks 1–2 · phase-1.*
