@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T16:53:08.845Z",
+ "generated": "2026-09-23T16:54:29.016Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -43,6 +43,15 @@
   "2026-09-23_212500-glitch-lab-split.md"
  ],
  "commits": [
+  {
+   "sha": "d4031c6",
+   "full": "d4031c60eb3871c37365f16b4a5d99d81cf1b7f9",
+   "date": "2026-09-23",
+   "time": "22:24",
+   "subject": "fix(ds): vert sheets fit viewport, panes shrink past pre lines",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-9}"
+  },
   {
    "sha": "09aac3c",
    "full": "09aac3cfaae51f2ae3e3f82c6598a5f83f936f5c",
@@ -3806,7 +3815,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/ds-tabs.css"
- ]
+ "wip": []
 }

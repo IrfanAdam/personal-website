@@ -236,3 +236,5 @@
 **Files:** `src/ds/ds-tabs.css`, plan + generated manifest as required by the repo gates.
 **Verify:** Playwright across all 7 sheets reports `docScrollW` 1500/1500; Glimmer orb visible, controls uncovered; `test` green.
 
+*Shipped in d4031c6 · Task 25 · phase-9.*
+
