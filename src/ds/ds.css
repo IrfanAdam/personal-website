@@ -77,6 +77,11 @@ body.side-collapsed .ds-side-toggle { left: var(--space-8); }
 }
 .ds-nav a:hover { background: var(--color-panel); }
 .ds-nav a.on { border-left-color: var(--color-ink); font-weight: 600; }
+.ds-nav-div {
+  border: none;
+  border-top: var(--border-hairline);
+  margin: var(--space-12) 0 var(--space-8);
+}
 .ds-side-foot { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 .ds-side-foot a { color: inherit; }
 .ds-main {

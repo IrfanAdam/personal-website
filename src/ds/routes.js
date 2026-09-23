@@ -9,13 +9,13 @@ import { render as sound, mount as mountSound } from './pages-sound.js';
 import { render as special, mount as mountSpecial } from './pages-special.js';
 import { render as atlas, mount as mountAtlas } from './pages-atlas.js';
 export const routes = [
-  { hash: '#/changelog', label: 'Changelog', group: '', render: changelog, mount: mountChangelog },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
   { hash: '#/foundations', label: 'Foundations', group: 'Start', render: foundations, mount: mountFoundations },
   { hash: '#/atlas', label: 'Atlas', group: 'Start', render: atlas, mount: mountAtlas },
   { hash: '#/primitives', label: 'Primitives', group: 'Elements', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library', group: 'Elements', render: library, mount: mountLibrary },
+  { hash: '#/special', label: 'Special', group: 'Elements', render: special, mount: mountSpecial },
   { hash: '#/patterns', label: 'Patterns', group: 'Elements', render: patterns, mount: mountPatterns },
   { hash: '#/sound', label: 'Sound', group: 'Elements', render: sound, mount: mountSound },
-  { hash: '#/special', label: 'Special', group: 'Special', render: special, mount: mountSpecial },
+  { hash: '#/changelog', label: 'Changelog', group: '', render: changelog, mount: mountChangelog },
 ];

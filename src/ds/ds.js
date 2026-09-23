@@ -12,6 +12,10 @@ mountSidebar();
 /* nav */
 let lastGroup = '';
 nav.innerHTML = routes.map((r) => {
+  if (r.hash === '#/changelog') {
+    lastGroup = r.group;
+    return `<hr class="ds-nav-div"><a href="${r.hash}">${r.label}</a>`;
+  }
   const h = r.group !== lastGroup ? `<div class="ds-nav-label">${r.group}</div>` : '';
   lastGroup = r.group; return `${h}<a href="${r.hash}">${r.label}</a>`;
 }).join('');
