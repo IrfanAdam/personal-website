@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:35:12.964Z",
+ "generated": "2026-09-23T12:36:38.162Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "e217e2d",
+   "full": "e217e2d4e901eaa6cb949da8208def2084de09b0",
+   "date": "2026-09-23",
+   "time": "18:05",
+   "subject": "chore(ds): hide subsidiary FX/Motion builds — 23 Sep is one DS refining build",
+   "plan": "2026-09-23_130000-ds-understandable-mutable.md",
+   "anchor": "{#phase-6}"
+  },
   {
    "sha": "7bce104",
    "full": "7bce1040a673a2cd3edef34e6db5d1a3f0094b32",
@@ -3697,7 +3706,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-names.json"
- ]
+ "wip": []
 }
