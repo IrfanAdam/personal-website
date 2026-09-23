@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS + Vite, `src/ds/routes.js`, `src/ds/pages-functions.js`, `src/ds/functions/*`, `src/ds/foundations/pane-motion.js` + `pane-fx.js` for cross-links, token-only CSS.
 **Tags:** Design System, Motion, Component
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Motion map + unified lab chrome {#phase-1}

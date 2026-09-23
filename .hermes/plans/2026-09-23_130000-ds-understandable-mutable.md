@@ -1,9 +1,9 @@
-# DS coherent — live Foundations, unified IA, consistent chrome
+# DS refining — live Foundations, unified IA, one screen per effect
 
 **Goal:** Make ADAM/DS read as one coherent system — Foundations scannable and live-tweakable (deep-linked panes + live token table), IA telling a consumer journey (Start → Elements → Motion), every page opening with unified chrome, and Foundations holding only material decisions.
 **Architecture:** Keep token single-source (`src/styles/tokens.css` → `var()` only) and vertical `tabs` shell. Add inner tabs + live token playground to Foundations, regroup routes into Start / Elements / Motion / Atlas with map-first order, unify crumb+hero+lede and sheet contracts, and move Sound from material to Motion labs.
 **Tech Stack:** Vanilla JS + Vite, `src/ds/tabs.js`, `src/ds/specimens.js` (`cssVar/probeTheme/refreshLive`), `src/ds/routes.js`/`ds.js`, page composers, `src/ds/foundations/*`, token-only CSS.
-**Tags:** Design System, Component, Tooling, Layout
+**Tags:** Design System
 
 ---
 
