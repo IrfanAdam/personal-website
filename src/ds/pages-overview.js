@@ -1,10 +1,11 @@
-/* ADAM/DS — pages-overview · composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
+/* ADAM/DS — pages-overview · composer · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
 // Exports: title, render, mount — delegates markup/styles to overview-sections
 import { attachGlimmerOrb } from '../views/glimmer-orb.js';
 import {
   overviewStyle,
   heroHtml,
   principlesHtml,
+  elementsMapHtml,
   readingHtml,
   moodHtml,
   checklistHtml,
@@ -19,6 +20,7 @@ export function render() {
     + overviewStyle
     + heroHtml(y)
     + principlesHtml()
+    + elementsMapHtml()
     + readingHtml()
     + checklistHtml()
     + moodHtml();

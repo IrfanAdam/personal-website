@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/patterns-layouts · layout section markup ·
-   [plan:2026-09-13_235413-over-limit-splits.md#phase-2] */
+   [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
 // Exports: renderLayouts — hero + masonry/viewer/case sections
 import { cardHTML } from './specimens.js';
 
@@ -9,7 +9,7 @@ export function renderLayouts() {
 `,
     `<p class="lede">Pages are arrangements of components on the 14px rhythm. Below: the three layouts that build `,
     `the whole site, plus the gates every release passes.</p>`,
-    `<p class="sub"><a href="#/components">← Elements map</a></p></div>`,
+    `<p class="sub"><a href="#/">← Overview</a></p></div>`,
     `<div class="ds-sec"><h2>Masonry grid</h2>`,
     `<p class="sub">4 cols → 2 @900px → 1 @640px. Short columns catch up on scroll (parallax) so bottoms align. `,
     `Mobile uses a 380ms linger instead of hover.</p>

@@ -122,5 +122,9 @@
   "2026-09-23_142100-ds-sidebar-pinned.md": {
     "title": "Sidebar pinned links sit above Start",
     "purpose": "Nav order"
+  },
+  "2026-09-23_143400-ds-overview-elements-fold.md": {
+    "title": "Overview absorbs Elements map; Components tab goes",
+    "purpose": "Nav fold"
   }
 }

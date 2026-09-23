@@ -1,5 +1,8 @@
-/* ADAM/DS — Components map · [plan:2026-09-23_134500-ds-coherent-consumable.md#phase-2] */
-import { note } from './specimens.js';
+/* ADAM/DS — overview/elements-map · Elements map section · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
+// Exports: elementsMapHtml — Elements index folded into Overview
+import { note } from '../specimens.js';
+
+// — Data —
 const map = [
   ['Primitives', '9', '#/primitives',
     'Button · Tag · Kicker · Divider · Badge · Field · Toggle · Avatar · Logo',
@@ -14,16 +17,14 @@ const map = [
     'GridReveal · Shimmer · Rise · Viewer · Glimmer orb · Glitch · Scramble · Sound',
     'labs + token backlog — tune here, graduate via --fx-*'],
 ];
-export const title = 'Components';
-export function render() {
+
+// — Section —
+export function elementsMapHtml() {
   return [
-    `<p class="ds-crumb">Elements · Components</p><div class="ds-hero"><h1>Start with elements.</h1>`,
-    `<p class="lede">This map is the Elements landing — every specimen lives on one of these sheets. `,
-    `Start here, then go deep.</p></div>`,
-    `<div class="ds-sec"><h2>Where things live</h2>`,
+    `<div class="ds-sec"><h2>Elements</h2>`,
     `<p class="sub">9 → 11 → 4 — primitives compose into library, `,
     `library into patterns. Motion lives next door in <a href="#/functions">Motion</a>. `,
-    `Tokens live in <a href="#/foundations">Start → Foundations</a>.</p>`,
+    `Tokens live in <a href="#/foundations">Foundations</a>.</p>`,
     `<div class="ds-grid c2" style="gap:var(--space-12)">`,
     map.map(([name, n, href, holds, desc]) => [
       `<a href="${href}" style="text-decoration:none;display:block;`,

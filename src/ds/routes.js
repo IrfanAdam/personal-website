@@ -1,8 +1,7 @@
-/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_142100-ds-sidebar-pinned.md#phase-1] */
+/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
 import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview, mount as mountOverview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
-import { render as components } from './pages-components.js';
 import { render as patterns, mount as mountPatterns } from './pages-patterns.js';
 import { render as functions, mount as mountFunctions } from './pages-functions.js';
 import { render as primitives, mount as mountPrimitives } from './pages-primitives.js';
@@ -18,7 +17,6 @@ import { render as sound, mount as mountSound } from './functions/sound.js';
 import { render as atlas, mount as mountAtlas } from './pages-atlas.js';
 export const routes = [
   { hash: '#/changelog', label: 'Changelog', group: '', render: changelog, mount: mountChangelog },
-  { hash: '#/components', label: 'Components', group: '', render: components },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
   { hash: '#/foundations', label: 'Foundations', group: 'Start', render: foundations, mount: mountFoundations },
   { hash: '#/atlas', label: 'Atlas', group: 'Start', render: atlas, mount: mountAtlas },

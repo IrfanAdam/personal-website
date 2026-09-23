@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T08:18:55.262Z",
+  "generated": "2026-09-23T09:03:20.159Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -1863,6 +1863,27 @@
       ]
     },
     {
+      "id": "ds_overview_elements_map",
+      "path": "src/ds/overview/elements-map.js",
+      "layer": "component",
+      "route": null,
+      "title": "elements map",
+      "tokens": [
+        "--border-hairline",
+        "--color-ink-muted",
+        "--color-surface",
+        "--font-mono",
+        "--space-10",
+        "--space-12",
+        "--space-14",
+        "--space-6",
+        "--space-8",
+        "--text-h3",
+        "--text-meta",
+        "--text-micro"
+      ]
+    },
+    {
       "id": "ds_overview_hero",
       "path": "src/ds/overview/hero.js",
       "layer": "component",
@@ -2017,27 +2038,6 @@
       "route": "#/changelog",
       "title": "Changelog",
       "tokens": []
-    },
-    {
-      "id": "ds_pages_components",
-      "path": "src/ds/pages-components.js",
-      "layer": "component",
-      "route": "#/components",
-      "title": "Components",
-      "tokens": [
-        "--border-hairline",
-        "--color-ink-muted",
-        "--color-surface",
-        "--font-mono",
-        "--space-10",
-        "--space-12",
-        "--space-14",
-        "--space-6",
-        "--space-8",
-        "--text-h3",
-        "--text-meta",
-        "--text-micro"
-      ]
     },
     {
       "id": "ds_pages_foundations",
@@ -5579,6 +5579,16 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_overview_elements_map",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_elements_map",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_overview_hero",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -5606,6 +5616,11 @@
     {
       "from": "ds_overview_sections",
       "to": "ds_overview_checklist",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_overview_sections",
+      "to": "ds_overview_elements_map",
       "kind": "imports"
     },
     {
@@ -5727,16 +5742,6 @@
       "from": "ds_pages_changelog",
       "to": "ds_changelog_titles",
       "kind": "imports"
-    },
-    {
-      "from": "ds_pages_components",
-      "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_components",
-      "to": "styles_tokens",
-      "kind": "tokens"
     },
     {
       "from": "ds_pages_foundations",
@@ -6126,11 +6131,6 @@
     {
       "from": "ds_routes",
       "to": "ds_pages_changelog",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_pages_components",
       "kind": "imports"
     },
     {

@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/pages-primitives · primitives composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/pages-primitives · primitives composer · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
 import { mountComponent } from './component.js';
 import { note, code } from './specimens.js';
 import { btnSheet } from './primitives/btn.js';
@@ -15,7 +15,7 @@ export function render(){
     `<p class="ds-crumb">Elements · Primitives</p><div class="ds-hero"><h1>Actions, not decoration.</h1>`,
     `<p class="lede">Primitives are the smallest reusable parts — each in one uniform sheet: What → When to use → `,
     `Preview / Code / Tokens → knobs. Pill keeps filter/tab role.</p>`,
-    `<p class="sub"><a href="#/components">← Elements map</a></p></div>`,
+    `<p class="sub"><a href="#/">← Overview</a></p></div>`,
   btnSheet(),
   tagSheet(),
   kickerSheet(),

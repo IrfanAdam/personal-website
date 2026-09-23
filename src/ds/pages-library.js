@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/pages-library · library composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/pages-library · library composer · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
 import { mountPlayground } from './playground.js';
 import { note, code } from './specimens.js';
 import { headerSheet } from './library/header.js';
@@ -17,7 +17,7 @@ export function render(){
   `<p class="ds-crumb">Elements · Library</p><div class="ds-hero"><h1>A page from the library.</h1>`,
   `<p class="lede">Header, heroes, cards, lists, filters, spec, next, CTA, and contact — each playground renders `,
   `the production class, unmodified. A landing page can be assembled purely from these.</p>`,
-  `<p class="sub"><a href="#/components">← Elements map</a></p></div>`,
+  `<p class="sub"><a href="#/">← Overview</a></p></div>`,
   headerSheet(),
   footerSheet(),
   heroSheet(),
