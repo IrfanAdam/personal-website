@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_134500-ds-coherent-consumable.md#phase-1] */
+/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_142100-ds-sidebar-pinned.md#phase-1] */
 import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview, mount as mountOverview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
@@ -17,11 +17,11 @@ import { render as scramble, mount as mountScramble } from './functions/scramble
 import { render as sound, mount as mountSound } from './functions/sound.js';
 import { render as atlas, mount as mountAtlas } from './pages-atlas.js';
 export const routes = [
-  { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
+  { hash: '#/changelog', label: 'Changelog', group: '', render: changelog, mount: mountChangelog },
+  { hash: '#/components', label: 'Components', group: '', render: components },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
   { hash: '#/foundations', label: 'Foundations', group: 'Start', render: foundations, mount: mountFoundations },
   { hash: '#/atlas', label: 'Atlas', group: 'Start', render: atlas, mount: mountAtlas },
-  { hash: '#/components', label: 'Components', group: 'Elements', render: components },
   { hash: '#/primitives', label: 'Primitives', group: 'Elements', render: primitives, mount: mountPrimitives },
   { hash: '#/library', label: 'Library', group: 'Elements', render: library, mount: mountLibrary },
   { hash: '#/patterns', label: 'Patterns', group: 'Elements', render: patterns, mount: mountPatterns },

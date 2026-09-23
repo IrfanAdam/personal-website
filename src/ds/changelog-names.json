@@ -118,5 +118,9 @@
   "2026-09-23_134500-ds-coherent-consumable.md": {
     "title": "DS coherent + consumable: one IA, one header, material-only Foundations",
     "purpose": "Make DS coherent for consumers"
+  },
+  "2026-09-23_142100-ds-sidebar-pinned.md": {
+    "title": "Sidebar pinned links sit above Start",
+    "purpose": "Nav order"
   }
 }
