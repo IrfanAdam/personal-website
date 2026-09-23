@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T07:57:47.019Z",
+  "generated": "2026-09-23T08:18:55.262Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -1669,6 +1669,14 @@
       ]
     },
     {
+      "id": "ds_functions_sound",
+      "path": "src/ds/functions/sound.js",
+      "layer": "function",
+      "route": "#/functions/sound",
+      "title": "Sound",
+      "tokens": []
+    },
+    {
       "id": "ds_functions_viewer",
       "path": "src/ds/functions/viewer.js",
       "layer": "function",
@@ -2015,7 +2023,7 @@
       "path": "src/ds/pages-components.js",
       "layer": "component",
       "route": "#/components",
-      "title": "Components · Map",
+      "title": "Components",
       "tokens": [
         "--border-hairline",
         "--color-ink-muted",
@@ -2036,7 +2044,7 @@
       "path": "src/ds/pages-foundations.js",
       "layer": "foundation",
       "route": "#/foundations",
-      "title": "Foundations · Tokens",
+      "title": "Foundations",
       "tokens": []
     },
     {
@@ -2044,7 +2052,7 @@
       "path": "src/ds/pages-functions.js",
       "layer": "function",
       "route": "#/functions",
-      "title": "Functions",
+      "title": "Motion",
       "tokens": []
     },
     {
@@ -2052,7 +2060,7 @@
       "path": "src/ds/pages-library.js",
       "layer": "component",
       "route": "#/library",
-      "title": "Library · Landing",
+      "title": "Library",
       "tokens": []
     },
     {
@@ -2068,7 +2076,7 @@
       "path": "src/ds/pages-patterns.js",
       "layer": "component",
       "route": "#/patterns",
-      "title": "Patterns · Quality",
+      "title": "Patterns",
       "tokens": []
     },
     {
@@ -5371,6 +5379,16 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_functions_sound",
+      "to": "ds_foundations_pane_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_sound",
+      "to": "ds_foundations_sound_board",
+      "kind": "imports"
+    },
+    {
       "from": "ds_functions_viewer",
       "to": "ds_specimens",
       "kind": "imports"
@@ -5757,22 +5775,12 @@
     },
     {
       "from": "ds_pages_foundations",
-      "to": "ds_foundations_pane_sound",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_foundations",
       "to": "ds_foundations_pane_space",
       "kind": "imports"
     },
     {
       "from": "ds_pages_foundations",
       "to": "ds_foundations_pane_type",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_foundations",
-      "to": "ds_foundations_sound_board",
       "kind": "imports"
     },
     {
@@ -6098,6 +6106,11 @@
     {
       "from": "ds_routes",
       "to": "ds_functions_shimmer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_functions_sound",
       "kind": "imports"
     },
     {

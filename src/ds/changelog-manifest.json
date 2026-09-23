@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T08:00:11.099Z",
+ "generated": "2026-09-23T08:27:37.871Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -30,9 +30,55 @@
   "2026-09-15_193000-theme-island-parity.md",
   "2026-09-21_125642-lump-sum-builds.md",
   "2026-09-22_141500-housekeeping-refactor.md",
-  "2026-09-23_130000-ds-understandable-mutable.md"
+  "2026-09-23_130000-ds-understandable-mutable.md",
+  "2026-09-23_134500-ds-coherent-consumable.md"
  ],
  "commits": [
+  {
+   "sha": "d03c511",
+   "full": "d03c51147460e0e655139425df2ac1df3ec4fbf8",
+   "date": "2026-09-23",
+   "time": "13:57",
+   "subject": "fix(ds): map copy + behaviour spelling alignment",
+   "plan": "2026-09-23_134500-ds-coherent-consumable.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "20676b2",
+   "full": "20676b2dbd09f021cfc06fba19028d2b9a739748",
+   "date": "2026-09-23",
+   "time": "13:55",
+   "subject": "fix(ds): stale refs after rename — Motion/8 counts, Space label, sound board voice",
+   "plan": "2026-09-23_134500-ds-coherent-consumable.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "17a8366",
+   "full": "17a83661e2fd1cbb539789ae1e1197c966d1b984",
+   "date": "2026-09-23",
+   "time": "13:49",
+   "subject": "feat(ds): foundations focus — sound lab route, ownership pointers, 3-step reading",
+   "plan": "2026-09-23_134500-ds-coherent-consumable.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "b103c8d",
+   "full": "b103c8dcdb9d35e3cd8f2b23aa6b94cb30f065f7",
+   "date": "2026-09-23",
+   "time": "13:44",
+   "subject": "feat(ds): unified chrome — group crumbs, What/When sheets, Elements map landing",
+   "plan": "2026-09-23_134500-ds-coherent-consumable.md",
+   "anchor": "{#phase-2}"
+  },
+  {
+   "sha": "d58d1e4",
+   "full": "d58d1e4b050ba6c1e494324c9e47a38e1f2ccd71",
+   "date": "2026-09-23",
+   "time": "13:41",
+   "subject": "feat(ds): coherent IA — Start/Elements/Motion groups, map leads, plain labels",
+   "plan": "2026-09-23_134500-ds-coherent-consumable.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "659fb4b",
    "full": "659fb4b96742fdfc8bac7e270c35f35b2f243339",
