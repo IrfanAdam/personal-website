@@ -32,7 +32,7 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All required local gates pass and the fresh screenshot shows tabbed elevation.
 
-*Shipped in pending · Tasks 1–3 · phase-1.*
+*Shipped in 28309a4 · Tasks 1–3 · phase-1.*
 
 ## Phase 2 — Motion tables behind tabs {#phase-2}
 *Tags: Design System, Component, Motion*
@@ -59,4 +59,4 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All required local gates pass and the fresh screenshot shows tabbed motion.
 
-*Shipped in pending · Tasks 4–6 · phase-2.*
+*Shipped in 28309a4 · Tasks 4–6 · phase-2.*
