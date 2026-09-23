@@ -150,5 +150,9 @@
   "2026-09-23_174000-motion-elements-vertical.md": {
     "title": "DS refining — FX + Motion + Sound, one screen per effect",
     "purpose": "DS refining — one screen per effect"
+  },
+  "2026-09-23_212500-glitch-lab-split.md": {
+    "title": "Glitch lab split — narrower card, wrapping sound panel",
+    "purpose": "Glitch lab split + wrap"
   }
 }

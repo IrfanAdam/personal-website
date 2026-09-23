@@ -12,7 +12,7 @@
 .fx-controls { display: grid; gap: var(--space-8); margin-top: var(--space-12); width: 100%; }
 .fx-row {
   display: grid;
-  grid-template-columns: var(--size-ds-scale-label) 1fr var(--size-ds-scale-val);
+  grid-template-columns: var(--size-ds-scale-label) minmax(0, 1fr) var(--size-ds-scale-val);
   gap: var(--space-12);
   align-items: center;
   font-family: var(--font-mono);
@@ -21,6 +21,7 @@
 }
 .fx-row output { color: var(--color-ink); text-align: right; }
 .fx-row input[type=range] { width: 100%; accent-color: var(--color-accent); }
+.fx-row select, .fx-panel select { max-width: 100%; }
 .fx-row select {
   font-family: var(--font-mono);
   font-size: var(--text-micro);
@@ -31,14 +32,24 @@
 }
 .fx-btns { display: flex; gap: var(--space-8); flex-wrap: wrap; }
 /* Glitch lab — card left, sound panel right (stacks narrow). */
-.fx-split { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-16); align-items: start; }
+.fx-split { display: grid; grid-template-columns: minmax(var(--size-ds-img), 0.8fr) minmax(0, 1.5fr); gap: var(--space-16); align-items: start; }
 .fx-panel {
   border: var(--border-hairline);
   padding: var(--space-14);
   display: grid;
   gap: var(--space-8);
   align-content: start;
+  min-width: 0;
+  overflow: hidden;
 }
+.fx-split > * { min-width: 0; }
+.fx-panel > * { min-width: 0; max-width: 100%; }
+.fx-panel .sub { overflow-wrap: anywhere; }
+.fx-panel .tok { white-space: normal; overflow-wrap: anywhere; }
+.fx-btns > * { min-width: 0; }
+.fx-row > * { min-width: 0; }
+.fx-row > :last-child:nth-child(2) { grid-column: 2 / -1; }
+.fx-row select, .fx-row input { width: 100%; min-width: 0; }
 .fx-panel h3 {
   margin: 0;
   font-family: var(--font-mono);
@@ -79,3 +90,10 @@
 }
 .fx-rise.rest { height: var(--space-90); }
 @media (prefers-reduced-motion: reduce) { .fx-shimmer i { animation: none; } .fx-rise { transition: none; } }
+
+/* full-width glitch demo — card fills its cell */
+.fx-split [data-lab] .card { width: 100%; max-width: none; }
+.cols[data-viewer-demo] .card { width: 100%; max-width: none; }
+.cols[data-viewer-demo] .col { flex: 1 1 100%; }
+.cols[data-viewer-demo] .card .img { height: auto; aspect-ratio: 4 / 3; }
+.fx-split [data-lab] .card .img { height: auto; aspect-ratio: 4 / 3; }
