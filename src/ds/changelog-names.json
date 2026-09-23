@@ -126,5 +126,9 @@
   "2026-09-23_143400-ds-overview-elements-fold.md": {
     "title": "Overview absorbs Elements map; Components tab goes",
     "purpose": "Nav fold"
+  },
+  "2026-09-23_145600-ds-elements-tabs.md": {
+    "title": "Elements sheets get Foundations-style vertical tabs",
+    "purpose": "Sheet navigation"
   }
 }

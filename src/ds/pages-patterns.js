@@ -1,13 +1,20 @@
-/* ADAM/DS — Patterns composer · accessibility · migration.
-   Contrast matrix is live in BOTH themes (probed, not claimed). */
-// Exports: title, render, mount — stitches layouts + quality sections
-import { renderLayouts } from './patterns-layouts.js';
-import { renderQuality } from './patterns-quality.js';
+/* ADAM/DS — Patterns composer · [plan:2026-09-23_145600-ds-elements-tabs.md#phase-1] */
+// Exports: title, render, mount — hero + vertical section tabs
+import { tabs } from './tabs.js';
+import { layoutsHero, masonryHtml, viewerHtml, caseHtml } from './patterns-layouts.js';
+import { a11yHtml, migrationHtml } from './patterns-quality.js';
 import { a11yRows } from './patterns-data.js';
 
 export const title = 'Patterns';
 export function render() {
-  return [renderLayouts(), renderQuality()].join('');
+  const panes = [
+    { label: 'Masonry', html: masonryHtml() },
+    { label: 'Viewer', html: viewerHtml() },
+    { label: 'Case 50/50', html: caseHtml() },
+    { label: 'Accessibility', html: a11yHtml() },
+    { label: 'Migration', html: migrationHtml() },
+  ];
+  return layoutsHero() + tabs({ vertical: true, panes });
 }
 export function mount(root) {
   const body = root.querySelector('#a11yBody');

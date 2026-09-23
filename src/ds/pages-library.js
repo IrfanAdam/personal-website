@@ -1,6 +1,7 @@
-/* ADAM/DS — ds/pages-library · library composer · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
+/* ADAM/DS — ds/pages-library · library composer · [plan:2026-09-23_145600-ds-elements-tabs.md#phase-1] */
 import { mountPlayground } from './playground.js';
 import { note, code } from './specimens.js';
+import { tabs } from './tabs.js';
 import { headerSheet } from './library/header.js';
 import { footerSheet } from './library/footer.js';
 import { heroSheet } from './library/hero.js';
@@ -13,22 +14,25 @@ import { nextSheet } from './library/next.js';
 import { ctaSheet } from './library/cta.js';
 import { contactSheet } from './library/contact.js';
 export function render(){
+  const panes = [
+    { label: 'Header', html: headerSheet() },
+    { label: 'Footer', html: footerSheet() },
+    { label: 'Hero', html: heroSheet() },
+    { label: 'Card', html: cardSheet() },
+    { label: 'Work', html: workSheet() },
+    { label: 'Filters', html: filtersSheet() },
+    { label: 'Strip', html: stripSheet() },
+    { label: 'Spec', html: specSheet() },
+    { label: 'Next', html: nextSheet() },
+    { label: 'CTA', html: ctaSheet() },
+    { label: 'Contact', html: contactSheet() },
+  ];
   return [
   `<p class="ds-crumb">Elements · Library</p><div class="ds-hero"><h1>A page from the library.</h1>`,
   `<p class="lede">Header, heroes, cards, lists, filters, spec, next, CTA, and contact — each playground renders `,
   `the production class, unmodified. A landing page can be assembled purely from these.</p>`,
   `<p class="sub"><a href="#/">← Overview</a></p></div>`,
-  headerSheet(),
-  footerSheet(),
-  heroSheet(),
-  cardSheet(),
-  workSheet(),
-  filtersSheet(),
-  stripSheet(),
-  specSheet(),
-  nextSheet(),
-  ctaSheet(),
-  contactSheet(),
+  tabs({ vertical: true, panes }),
   note('Do',
     ['Assemble landing: <span class="tok">.top → .hero → .filters → .cols → .cta-band → footer</span>. Keep <span ',
     'class="tok">.cta-band--accent</span> once per page — more dilutes vermilion.'].join(''),'do'),

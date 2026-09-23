@@ -1,10 +1,11 @@
 /* ADAM/DS — ds/patterns-quality · a11y/migration section markup ·
-   [plan:2026-09-13_235413-over-limit-splits.md#phase-2] */
-// Exports: renderQuality — accessibility + migration sections (MOTION rows inline)
+   [plan:2026-09-23_145600-ds-elements-tabs.md#phase-1] */
+// Exports: a11yHtml, migrationHtml — one export per tab pane
 import { note, code } from './specimens.js';
 import { MOTION } from './patterns-data.js';
 
-export function renderQuality() {
+// — Accessibility —
+export function a11yHtml() {
   return [
     `<div class="ds-sec"><h2>Accessibility — computed contrast</h2>`,
     `<p class="sub">Every ratio is computed live from <span class="tok">var()</span> in BOTH themes via a `,
@@ -46,8 +47,13 @@ export function renderQuality() {
 `,
     note('Do', ['Rings are <span class="tok">3px ink, offset 2px</span>. Motion dies under <span ',
       'class="tok">prefers-reduced-motion</span> — every model above no-ops by guard, never by promise.'].join('')),
-    `</div>
-`,
+    `</div>`,
+  ].join('');
+}
+
+// — Migration —
+export function migrationHtml() {
+  return [
     `<div class="ds-sec"><h2>Migration — making the site adherent</h2>`,
     `<p class="sub">Completed, zero visual change throughout. Every step was a token-alias swap with identical `,
     `pixels.</p>
