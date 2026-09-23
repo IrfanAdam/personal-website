@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog/paint-plan · build cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { fmtDate, fmtTime, buildState, isDone } from '../changelog-parse.js';
 import { hits, commits, unlinked } from '../changelog-links.js';
-import { descOf } from '../changelog-titles.js';
+import { clip } from '../changelog-titles.js';
 import { esc } from './esc.js';
 export function paintPlan(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
@@ -24,7 +24,7 @@ export function paintPlan(root, ctx){
       .innerHTML = unlinked(texts);
     drawer.hidden = true; scrim.hidden = true; return false;
   }
-  const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
+  const sprint = sprints[si];
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const seq = String(list.length - i).padStart(2, '0'), num = p.id || seq, frac = buildState(p.sprints);
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
@@ -54,7 +54,7 @@ export function paintPlan(root, ctx){
       i === sel[0] ? ' on' : '',
       isDone(frac) ? '' : ' is-open',
       `" data-tip="`,
-      esc(p.goal),
+      esc(p.purpose || clip(p.goal, 100) || p.title),
       `"><span class="ds-row"><span class="ds-num">`,
       num,
       `</span><b>`,

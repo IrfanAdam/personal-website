@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { marked } from 'marked';
 import { hits, badges, unlinked } from '../changelog-links.js';
-import { shortPhase as short, provenance, descOf } from '../changelog-titles.js';
+import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
 import { isDone, state } from '../changelog-parse.js';
 import { esc } from './esc.js';
 export function paintDetail(root, ctx){
@@ -18,7 +18,7 @@ export function paintDetail(root, ctx){
       i === sel[1] ? ' on' : '',
       isDone(frac) ? '' : ' is-open',
       `" data-tip="`,
-      esc(sprintDesc(s)),
+      esc(clip(sprintDesc(s), 90)),
       `"><span class="ds-row"><span class="ds-num">Phase `,
       String(n).padStart(2, '0'),
       `</span><b>`,
