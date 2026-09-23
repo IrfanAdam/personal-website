@@ -90,17 +90,19 @@
 | 8 | Coverage checklist | Overview shows `Token foundations / Core components / Feedback states / Pattern library / Audit checklist` with live check state |
 | 9 | Atlas regroup + polish | Atlas moves out of `Start` into its own group or footer link; Foundations vertical rail + inner tabs handle narrow screens via overflow |
 
-### Task 7: Prune Components stub
+### Task 7 ✓ done: Prune Components stub
 **Objective:** Eliminate the one-release redirect that now confuses first scan.
 **Files:** `src/ds/routes.js`, `src/ds/pages-components.js`, `src/ds/ds.css`
 **Verify:** `/ds/#/components` resolves to map or redirects to `#/primitives`; no dead-end table remains.
 
-### Task 8: Coverage checklist
+### Task 8 ✓ done: Coverage checklist
 **Objective:** Make system completeness visible.
 **Files:** `src/ds/pages-overview.js`, `src/ds/overview-sections.js`
 **Verify:** Overview footer lists 5 checklist items with check/ gap state derived from existing sheets; no hardcoded claims.
 
-### Task 9: Atlas regroup + polish
+### Task 9 ✓ done: Atlas regroup + polish
 **Objective:** Keep tooling from crowding Foundations narrative.
 **Files:** `src/ds/routes.js`, `src/ds/sidebar.js`, `src/ds/ds-responsive.css`
 **Verify:** Atlas no longer in `Start` group; narrow-screen Foundations rail collapses or inner tabs overflow without clipping; `build` green.
+
+*Shipped in 659fb4b · Tasks 7–9 · phase-3.*
