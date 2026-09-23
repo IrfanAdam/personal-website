@@ -46,7 +46,7 @@ export function render(){
   cardHTML('Fluxx', 'fluxx · 2024', '/images/fluxx.jpg', ['Fintech']),
   `</div></div></div>`,
 ].join('')
-+`<figure><figcaption>threshold 12px · idle 850ms · debounce 70ms · k 0.1 · fr 0.54 · W 180px`,
++`<figure><figcaption>threshold 12px · idle 850ms · debounce 70ms · k 0.1 · fr 0.54 · W 180px`
 +`preview to right, spring Y</figcaption></figure>`
 +`${note('Do','Keep <span class="tok">aria-hidden</span> + pointer-events none — cards keep native link semantics.')}`
 +`</div>`
