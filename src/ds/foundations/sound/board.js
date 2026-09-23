@@ -80,8 +80,14 @@ export function mountSoundBoard(root) {
       try {
         const ctx = scope && scope.getContext('2d');
         if (ctx) {
-          ctx.fillStyle = getComputedStyle(scope).getPropertyValue('--color-panel') || '#f2f4f7';
+          ctx.save();
+          ctx.globalAlpha = 1;
+          ctx.globalCompositeOperation = 'source-over';
+          const bg = (getComputedStyle(scope).getPropertyValue('--color-panel') || '#f2f4f7').trim();
+          ctx.fillStyle = bg;
+          ctx.clearRect(0, 0, scope.width, scope.height);
           ctx.fillRect(0, 0, scope.width, scope.height);
+          ctx.restore();
         }
       } catch {}
       say('idle — hit ▶ on any voice or file');
