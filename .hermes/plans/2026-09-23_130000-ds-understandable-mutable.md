@@ -56,20 +56,25 @@
 | 5 | Live playground | Controls (range/color/select) write `document.documentElement.style.setProperty` for selected tokens; all DS specimens + Library playgrounds reflow live |
 | 6 | Persist + export | Tweaks persist to `localStorage` (reset button), and `copy export` emits `tokens.css`-ready declarations; `DESIGN.md` sync noted |
 
-### Task 4: Token table
+### Task 4 ✓ done: Token table
+
 **Objective:** Build the observability layer — one place to see what the system actually is.
 **Files:** `src/ds/foundations/pane-contract.js` (or new `pane-tokens.js`), `src/ds/specimens/trace.js`, `src/ds/foundations/tokens-table.js`
 **Verify:** Table shows every `--color-*`, `--space-*`, `--text-*`, `--radius-*`, `--dur-*` with live values in light+dark, click copies token.
 
-### Task 5: Live playground
+### Task 5 ✓ done: Live playground
+
 **Objective:** Make the DS mutable without editing files.
 **Files:** `src/ds/foundations/tokens-playground.js`, `src/ds/foundations/tokens.css`
 **Verify:** Dragging `--space-14` slider or picking `--color-accent` instantly updates Foundations ramps, pair cells, and Library card/pill specimens; `refreshLive()` fires.
 
-### Task 6: Persist + export
+### Task 6 ✓ done: Persist + export
+
 **Objective:** Keep tweaks durable and committable.
 **Files:** `src/ds/foundations/tokens-playground.js`, `src/ds/specimens/copy.js`
 **Verify:** Reload restores tweaks; Reset clears `localStorage`; Export copies valid CSS declarations for `tokens.css`.
+
+*Shipped in 6fd7cb2 · Tasks 4–6 · phase-2.*
 
 ---
 
