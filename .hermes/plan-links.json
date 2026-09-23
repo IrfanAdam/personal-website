@@ -1090,6 +1090,16 @@
    "plan": "2026-09-23_174000-motion-elements-vertical.md",
    "anchor": "{#phase10}",
    "note": "stamp for 5cc8405 fold"
+  },
+  "32f2bc7": {
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase11}",
+   "note": "glitch split fix — folded from hidden split plan into previous build P11"
+  },
+  "c3e381f": {
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase11}",
+   "note": "close for 32f2bc7 fold"
   }
  }
 }

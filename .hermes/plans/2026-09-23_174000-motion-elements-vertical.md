@@ -253,3 +253,25 @@
 
 *Shipped in 5cc8405 · Tasks 26 · phase-10.*
 
+## Phase 11 — Glitch lab split, folded in {#phase11}
+*Tags: Design System, Layout*
+*2026-09-23 21:25–21:28 · originally 2026-09-23_212500-glitch-lab-split.md Phase 1 · subset, ordered by first execution.*
+*The Glitch lab reads as a narrow demo card left with a sound panel right that wraps inside its own width — folded here as part of this build.*
+
+| # | Task | Done when |
+|---|---|---|
+| 27 | Rebalance `.fx-split` tracks | card track `minmax(200px, 0.8fr)`, panel track `minmax(0, 1.5fr)` — image visibly narrower |
+| 28 | Panel children wrap in-width | `.fx-row` middle uses `minmax(0, 1fr)`, 2-child rows span full width, buttons/tokens/selects wrap, no edge clipping |
+
+### Task 27: Rebalance `.fx-split` tracks ✓ done
+**Objective:** Card image takes less width; sound panel fills the rest.
+**Files:** `src/ds/ds-lab.css`
+**Verify:** Glitch lab screenshot — card narrower, panel wider, no horizontal clip.
+
+### Task 28: Panel children wrap in-width ✓ done
+**Objective:** Voice/pitch/length rows, pill buttons and Attr-API token text wrap inside the panel.
+**Files:** `src/ds/ds-lab.css`
+**Verify:** `plan:names`, `ds:track`, `npm test` green + screenshot shows wrapped rows.
+
+*Shipped in 32f2bc7 · Tasks 1–2 · phase-1.*
+
