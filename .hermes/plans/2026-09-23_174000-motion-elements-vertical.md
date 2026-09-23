@@ -1,4 +1,4 @@
-# Motion + Sound as Elements — vertical tabs, one screen per effect
+# DS refining — FX + Motion + Sound, one screen per effect
 
 **Goal:** Motion and Sound stop living under Foundations/Motion labs — they read as Elements · Motion and Elements · Sound with vertical tabs like the screenshot (Masonry/Viewer/Case 50/50 pattern), one effect per screen.
 **Architecture:** New `src/ds/pages-motion.js` + `src/ds/pages-sound.js` reuse `foundations/motion/data.js` + `foundations/motion/sections.js` and `foundations/sound/*` with `tabs({vertical:true})` already used by Foundations/Patterns; `src/ds/routes.js` groups both under Elements; `src/ds/pages-foundations.js` drops Motion pane; Sound board keeps `mountSoundBoard`; live `data-live`/`data-copy-token` preserved.

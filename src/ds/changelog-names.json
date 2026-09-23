@@ -36,11 +36,11 @@
     "title": "Turn ADAM/DS into a system that builds pages itself"
   },
   "2026-09-09_145218-bidirectional-pipeline.md": {
-    "purpose": "Plan\u2194commit linking",
+    "purpose": "Plan↔commit linking",
     "title": "Link every plan and DS commit both ways, no bookkeeping"
   },
   "2026-09-09_170854-design-system-update-4.md": {
-    "purpose": "Foundations \u2192 Evo parity",
+    "purpose": "Foundations → Evo parity",
     "title": "Bring Foundations to Evo parity: color, type, tokens"
   },
   "2026-09-10_153555-color-cool-synthetic.md": {
@@ -73,7 +73,7 @@
   },
   "2026-09-14_003212-builds-nomenclature.md": {
     "purpose": "Builds nomenclature",
-    "title": "The changelog keeps its name \u2014 every entry in it is a build"
+    "title": "The changelog keeps its name — every entry in it is a build"
   },
   "2026-09-14_004508-refactor-bugfix.md": {
     "purpose": "Split-regression repair",
@@ -88,7 +88,7 @@
     "purpose": "atlas fullscreen"
   },
   "2026-09-15_100000-mobile-optimisation.md": {
-    "title": "Make the whole portfolio usable at 360\u2013768px",
+    "title": "Make the whole portfolio usable at 360–768px",
     "purpose": "Mobile responsiveness"
   },
   "2026-09-15_183400-lump-sum-builds.md": {
@@ -136,7 +136,7 @@
     "purpose": "Pane copy"
   },
   "2026-09-23_151320-ds-fx-cards.md": {
-    "title": "FX + Motion legible \u2014 what each token changes, one screen",
+    "title": "FX + Motion legible — what each token changes, one screen",
     "purpose": "FX + Motion legible"
   },
   "2026-09-23_154500-ds-elev-motion-tables.md": {
@@ -144,11 +144,11 @@
     "purpose": "Tabled tokens"
   },
   "2026-09-23_173234-ds-motion-coherent.md": {
-    "title": "Motion coherent \u2014 labs read like Elements, live, one screen",
+    "title": "Motion coherent — labs read like Elements, live, one screen",
     "purpose": "Motion labs coherent"
   },
   "2026-09-23_174000-motion-elements-vertical.md": {
-    "title": "Motion + Sound as Elements \u2014 vertical tabs, one screen per effect",
-    "purpose": "Motion+Sound vertical"
+    "title": "DS refining — FX + Motion + Sound, one screen per effect",
+    "purpose": "DS refining — one screen per effect"
   }
 }

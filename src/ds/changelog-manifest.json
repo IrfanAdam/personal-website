@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:49:12.270Z",
+ "generated": "2026-09-23T12:55:58.078Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -111,7 +111,7 @@
    "date": "2026-09-23",
    "time": "17:33",
    "subject": "docs(plan): Motion coherent — labs read like Elements, live, one screen",
-   "plan": "2026-09-23_173234-ds-motion-coherent.md",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
    "anchor": "{#phase-1}"
   },
   {
@@ -120,8 +120,8 @@
    "date": "2026-09-23",
    "time": "16:45",
    "subject": "refactor(ds): FX title semantic — legible by effect, live, one screen",
-   "plan": "2026-09-23_151320-ds-fx-cards.md",
-   "anchor": "{#phase-4}"
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}"
   },
   {
    "sha": "6e30341",
@@ -138,8 +138,8 @@
    "date": "2026-09-23",
    "time": "16:38",
    "subject": "refactor(ds): FX builds grouped — cards + elev/motion as one purpose build",
-   "plan": "2026-09-23_151320-ds-fx-cards.md",
-   "anchor": "{#phase-4}"
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}"
   },
   {
    "sha": "28309a4",
@@ -156,8 +156,8 @@
    "date": "2026-09-23",
    "time": "15:38",
    "subject": "feat(ds): FX tokens as tabbed tables",
-   "plan": "2026-09-23_151320-ds-fx-cards.md",
-   "anchor": "{#phase-2}"
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}"
   },
   {
    "sha": "778a771",
@@ -3733,5 +3733,7 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-names.json"
+ ]
 }

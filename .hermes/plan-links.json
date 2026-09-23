@@ -1,5 +1,5 @@
 {
- "_comment": "Retroactive plan links for pre-trailer commits \u2014 no history rewrite. sha -> {plan, anchor, note}. anchor must be a verbatim case-sensitive substring of exactly one ## Phase body (checked by audit); null attaches to the plan's first phase per convention. Read by scripts/ds-track.mjs.",
+ "_comment": "Retroactive plan links for pre-trailer commits — no history rewrite. sha -> {plan, anchor, note}. anchor must be a verbatim case-sensitive substring of exactly one ## Phase body (checked by audit); null attaches to the plan's first phase per convention. Read by scripts/ds-track.mjs.",
  "links": {
   "0287e39": {
    "plan": "2026-09-09_170854-design-system-update-4.md",
@@ -264,17 +264,17 @@
   "cbe4759": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-13",
-   "note": "chore(lump-sum): close phase-13 \u2014 stamping 0737aec"
+   "note": "chore(lump-sum): close phase-13 — stamping 0737aec"
   },
   "0737aec": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-13",
-   "note": "style(footer): match original framer footer \u2014 sans links, faint title, \u00a9 under right col"
+   "note": "style(footer): match original framer footer — sans links, faint title, © under right col"
   },
   "2e4c3ff": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-12",
-   "note": "style(footer): tighten padding rhythm \u2014 denser links, balanced columns"
+   "note": "style(footer): tighten padding rhythm — denser links, balanced columns"
   },
   "826c292": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -304,7 +304,7 @@
   "f032b97": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-12",
-   "note": "fix(footer): more muted resting, no default glow \u2014 shimmer/glow only on hover"
+   "note": "fix(footer): more muted resting, no default glow — shimmer/glow only on hover"
   },
   "5b72377": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -314,7 +314,7 @@
   "042fab2": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-12",
-   "note": "chore(lump-sum): close phase-12 \u2014 stamping 223badb"
+   "note": "chore(lump-sum): close phase-12 — stamping 223badb"
   },
   "223badb": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -324,7 +324,7 @@
   "b037611": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-11",
-   "note": "chore(lump-sum): close phase-11 \u2014 stamping 7a56269"
+   "note": "chore(lump-sum): close phase-11 — stamping 7a56269"
   },
   "7a56269": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -334,52 +334,52 @@
   "e224f85": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-10",
-   "note": "chore(ds): track refresh \u2014 223/223 linked"
+   "note": "chore(ds): track refresh — 223/223 linked"
   },
   "dcc7f54": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-10",
-   "note": "chore(lump-sum): close phase-10 \u2014 token compliance a8199b3"
+   "note": "chore(lump-sum): close phase-10 — token compliance a8199b3"
   },
   "a8199b3": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-10",
-   "note": "chore(lump-sum): phases 6-10 \u2014 retro 16 shas + gate token compliance"
+   "note": "chore(lump-sum): phases 6-10 — retro 16 shas + gate token compliance"
   },
   "5ef71db": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-5",
-   "note": "chore(lump-sum): close phase-5 \u2014 ship reel shutter e2252fd"
+   "note": "chore(lump-sum): close phase-5 — ship reel shutter e2252fd"
   },
   "e2252fd": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-5",
-   "note": "fix(portfolio): reel shutter \u2014 interruptible zing, 380\u219245ms per card"
+   "note": "fix(portfolio): reel shutter — interruptible zing, 380→45ms per card"
   },
   "d3e61fb": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "{#phase-4}",
-   "note": "chore(lump-sum): close phase-4 \u2014 ship sound polish b162ab6"
+   "note": "chore(lump-sum): close phase-4 — ship sound polish b162ab6"
   },
   "b162ab6": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "{#phase-4}",
-   "note": "fix(portfolio): header slot to #soundSlot \u2014 follow-up soundSwitch cleanup"
+   "note": "fix(portfolio): header slot to #soundSlot — follow-up soundSwitch cleanup"
   },
   "80906ad": {
    "plan": "2026-09-15_190000-foundations-sound-pane.md",
    "anchor": "#phase-3",
-   "note": "chore(ds): close sound phase-3 + track refresh \u2014 192/192 linked"
+   "note": "chore(ds): close sound phase-3 + track refresh — 192/192 linked"
   },
   "ef427e3": {
    "plan": "2026-09-15_190000-foundations-sound-pane.md",
    "anchor": "#phase-2",
-   "note": "chore(ds): close sound phase-2 + track refresh \u2014 191/191 linked"
+   "note": "chore(ds): close sound phase-2 + track refresh — 191/191 linked"
   },
   "896068d": {
    "plan": "2026-09-15_193000-theme-island-parity.md",
    "anchor": "#phase-1",
-   "note": "chore(ds): close island-parity phase-1 + track refresh \u2014 190/190 linked"
+   "note": "chore(ds): close island-parity phase-1 + track refresh — 190/190 linked"
   },
   "ccb60f4": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -394,7 +394,7 @@
   "416fcbc": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
    "anchor": "#phase-4",
-   "note": "gates + device pass \u2014 P4"
+   "note": "gates + device pass — P4"
   },
   "3c6d3d0": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
@@ -404,7 +404,7 @@
   "88429a7": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
    "anchor": "#phase-3",
-   "note": "mobile sweep \u2014 P3"
+   "note": "mobile sweep — P3"
   },
   "e185e71": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
@@ -414,7 +414,7 @@
   "cfb55a7": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
    "anchor": "#phase-2",
-   "note": "mobile header in-flow \u2014 P2"
+   "note": "mobile header in-flow — P2"
   },
   "d4d04c6": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
@@ -424,22 +424,22 @@
   "3f91b98": {
    "plan": "2026-09-15_100000-mobile-optimisation.md",
    "anchor": "#phase-1",
-   "note": "settings gear + dropdown \u2014 P1"
+   "note": "settings gear + dropdown — P1"
   },
   "97dd81b": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-14",
-   "note": "retro coverage pass \u2014 tracker sees all 256"
+   "note": "retro coverage pass — tracker sees all 256"
   },
   "6e59812": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-15",
-   "note": "footer round 2 \u2014 nubs, pale dashes, column-major links, strip scroll"
+   "note": "footer round 2 — nubs, pale dashes, column-major links, strip scroll"
   },
   "86a1ec7": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-16",
-   "note": "title at design scale \u2014 natural wrap, 6.5vw/100, 40/60 grid"
+   "note": "title at design scale — natural wrap, 6.5vw/100, 40/60 grid"
   },
   "70520a5": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -479,7 +479,7 @@
   "6a4e9d8": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "clone + CMS + chrome",
-   "note": "admin config.yml 404 \u2014 absolute cms-config-url + /admin redirect"
+   "note": "admin config.yml 404 — absolute cms-config-url + /admin redirect"
   },
   "e4158af": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
@@ -489,27 +489,27 @@
   "8c457f6": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "clone + CMS + chrome",
-   "note": "popup handshake \u2014 dual postMessage + opener localStorage"
+   "note": "popup handshake — dual postMessage + opener localStorage"
   },
   "b3b3798": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "clone + CMS + chrome",
-   "note": "CMS content \u2014 acquapanna project update"
+   "note": "CMS content — acquapanna project update"
   },
   "e6cfdd8": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "clone + CMS + chrome",
-   "note": "merge PR #1 \u2014 CMS acquapanna"
+   "note": "merge PR #1 — CMS acquapanna"
   },
   "f1c761e": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "clone + CMS + chrome",
-   "note": "CMS content \u2014 acquapanna project update"
+   "note": "CMS content — acquapanna project update"
   },
   "d9f3354": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
    "anchor": "clone + CMS + chrome",
-   "note": "merge PR #2 \u2014 CMS acquapanna"
+   "note": "merge PR #2 — CMS acquapanna"
   },
   "ca9090b": {
    "plan": "2026-09-06_183401-portfolio-decap-completion.md",
@@ -529,22 +529,22 @@
   "f65f3f2": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "responsive pass",
-   "note": "mobile row clipping \u2014 100% width, padding removed"
+   "note": "mobile row clipping — 100% width, padding removed"
   },
   "19531a9": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "responsive pass",
-   "note": "mobile right clipping \u2014 inset outer gutter"
+   "note": "mobile right clipping — inset outer gutter"
   },
   "0d90ee2": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "responsive pass",
-   "note": "right edge clip \u2014 inset outer gutter, outer overflow"
+   "note": "right edge clip — inset outer gutter, outer overflow"
   },
   "b478eed": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "responsive pass",
-   "note": "full bleed on mobile \u2014 side gutters removed"
+   "note": "full bleed on mobile — side gutters removed"
   },
   "b7639c7": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
@@ -554,7 +554,7 @@
   "8b4dd22": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
    "anchor": "responsive pass",
-   "note": "true full bleed \u2014 wrap+header 0 gutters"
+   "note": "true full bleed — wrap+header 0 gutters"
   },
   "7290896": {
    "plan": "2026-09-07_140407-mobile-responsiveness.md",
@@ -579,7 +579,7 @@
   "7f41690": {
    "plan": "2026-09-07_113052-masonry-grid-opt.md",
    "anchor": "blur-to-sharp",
-   "note": "fluid parallax \u2014 exponential decay, compositor"
+   "note": "fluid parallax — exponential decay, compositor"
   },
   "3ccf3ff": {
    "plan": "2026-09-08_203300-hero-image-load-sequence.md",
@@ -589,7 +589,7 @@
   "7bb9f6a": {
    "plan": "2026-09-08_203300-hero-image-load-sequence.md",
    "anchor": "#phase-1",
-   "note": "hero GridReveal CORS \u2014 unblur like masonry"
+   "note": "hero GridReveal CORS — unblur like masonry"
   },
   "e0d9ca3": {
    "plan": "2026-09-08_203300-hero-image-load-sequence.md",
@@ -599,7 +599,7 @@
   "50ffd51": {
    "plan": "2026-09-08_203300-hero-image-load-sequence.md",
    "anchor": "#phase-1",
-   "note": "hero sequencing + dedup \u2014 height before reveal"
+   "note": "hero sequencing + dedup — height before reveal"
   },
   "86dc748": {
    "plan": "2026-09-08_203300-hero-image-load-sequence.md",
@@ -649,12 +649,12 @@
   "e24445c": {
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-4",
-   "note": "mark phase 4 shipped \u2014 swatch audit"
+   "note": "mark phase 4 shipped — swatch audit"
   },
   "a48f9b4": {
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
    "anchor": "phase-5",
-   "note": "mark phase 5 shipped \u2014 live adoption"
+   "note": "mark phase 5 shipped — live adoption"
   },
   "a3f6f23": {
    "plan": "2026-09-10_153555-color-cool-synthetic.md",
@@ -689,7 +689,7 @@
   "046f924": {
    "plan": "2026-09-12_150255-glitch-sound.md",
    "anchor": "#phase-6",
-   "note": "glitch-sound phase 6 close-out \u2014 marks + shipped line"
+   "note": "glitch-sound phase 6 close-out — marks + shipped line"
   },
   "5d83af0": {
    "plan": "2026-09-13_193000-refactor-manageability.md",
@@ -724,7 +724,7 @@
   "2f5819c": {
    "plan": "2026-09-13_193000-refactor-manageability.md",
    "anchor": "#phase-1",
-   "note": "contact block base\u2192pages, footer expanded multiline"
+   "note": "contact block base→pages, footer expanded multiline"
   },
   "b087dfe": {
    "plan": "2026-09-13_193000-refactor-manageability.md",
@@ -814,92 +814,92 @@
   "92e013e": {
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "#phase-6",
-   "note": "atlas phase 6 close-out \u2014 shipped line"
+   "note": "atlas phase 6 close-out — shipped line"
   },
   "b82a1fd": {
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "#phase-7",
-   "note": "atlas phase 7 close-out \u2014 shipped line"
+   "note": "atlas phase 7 close-out — shipped line"
   },
   "a74cac8": {
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "#phase-8",
-   "note": "atlas phase 8 close-out \u2014 shipped line"
+   "note": "atlas phase 8 close-out — shipped line"
   },
   "9540e71": {
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "#phase-9",
-   "note": "atlas upkeep \u2014 arch script, predev chain, docs"
+   "note": "atlas upkeep — arch script, predev chain, docs"
   },
   "5d07ddf": {
    "plan": "2026-09-14_120000-arch-atlas-canvas.md",
    "anchor": "#phase-9",
-   "note": "atlas phase 9 close-out \u2014 shipped line, plan complete"
+   "note": "atlas phase 9 close-out — shipped line, plan complete"
   },
   "dd2b09b": {
    "plan": "2026-09-14_192124-atlas-fullscreen.md",
    "anchor": "#phase-2",
-   "note": "fullscreen close-out \u2014 tasks marked, shipped lines"
+   "note": "fullscreen close-out — tasks marked, shipped lines"
   },
   "488b5e1": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-14",
-   "note": "close phase-14 \u2014 stamping 97dd81b"
+   "note": "close phase-14 — stamping 97dd81b"
   },
   "270793a": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-15",
-   "note": "close phase-15 \u2014 stamping 6e59812"
+   "note": "close phase-15 — stamping 6e59812"
   },
   "aab2df5": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-16",
-   "note": "close phase-16 \u2014 stamping 86a1ec7"
+   "note": "close phase-16 — stamping 86a1ec7"
   },
   "7517f6d": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-17",
-   "note": "close phase-17 \u2014 stamping 70520a5"
+   "note": "close phase-17 — stamping 70520a5"
   },
   "a791998": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-18",
-   "note": "close phase-18 \u2014 stamping 4f7de17"
+   "note": "close phase-18 — stamping 4f7de17"
   },
   "74b1444": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-19",
-   "note": "close phase-19 \u2014 stamping 5fbfb1a"
+   "note": "close phase-19 — stamping 5fbfb1a"
   },
   "3980766": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-20",
-   "note": "close phase-20 \u2014 stamping 2d6c1ca"
+   "note": "close phase-20 — stamping 2d6c1ca"
   },
   "37b58fb": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-20",
-   "note": "track refresh \u2014 phases 19+20 linked"
+   "note": "track refresh — phases 19+20 linked"
   },
   "85f4237": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-21",
-   "note": "close phase-21 \u2014 stamping 9375655"
+   "note": "close phase-21 — stamping 9375655"
   },
   "67e7579": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-21",
-   "note": "track refresh \u2014 phase 21 linked"
+   "note": "track refresh — phase 21 linked"
   },
   "0c1d868": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-22",
-   "note": "close phase-22 \u2014 stamping 6b043a6"
+   "note": "close phase-22 — stamping 6b043a6"
   },
   "980df39": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-22",
-   "note": "track refresh \u2014 phase 22 linked"
+   "note": "track refresh — phase 22 linked"
   },
   "391dbf0": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -909,7 +909,7 @@
   "7f4979c": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-23",
-   "note": "close phase-23 \u2014 stamping 391dbf0"
+   "note": "close phase-23 — stamping 391dbf0"
   },
   "76ab5ed": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -919,7 +919,7 @@
   "da73232": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-24",
-   "note": "close phase-24 \u2014 stamping 76ab5ed"
+   "note": "close phase-24 — stamping 76ab5ed"
   },
   "14b6143": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -929,12 +929,12 @@
   "13f8687": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-25",
-   "note": "close phase-25 \u2014 stamping 14b6143"
+   "note": "close phase-25 — stamping 14b6143"
   },
   "86d5691": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-25",
-   "note": "track refresh \u2014 phase 25 linked"
+   "note": "track refresh — phase 25 linked"
   },
   "d6a38df": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -944,7 +944,7 @@
   "8a0d3c0": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-26",
-   "note": "close phase-26 \u2014 stamping d6a38df"
+   "note": "close phase-26 — stamping d6a38df"
   },
   "f6d6614": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
@@ -954,22 +954,22 @@
   "9d84125": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-27",
-   "note": "CMS content \u2014 tas-51 update (uploaded the video P27 T71 relocated)"
+   "note": "CMS content — tas-51 update (uploaded the video P27 T71 relocated)"
   },
   "71b56d9": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-27",
-   "note": "merge PR #3 \u2014 CMS projects/tas-51"
+   "note": "merge PR #3 — CMS projects/tas-51"
   },
   "78c227e": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-27",
-   "note": "close phase-27 \u2014 stamping f6d6614"
+   "note": "close phase-27 — stamping f6d6614"
   },
   "48787ef": {
    "plan": "2026-09-14_192124-atlas-fullscreen.md",
    "anchor": "{#phase-1}",
-   "note": "atlas fullscreen stage overlay \u2014 dock toggle, overlay close (trailer cited ambiguous phase-1)"
+   "note": "atlas fullscreen stage overlay — dock toggle, overlay close (trailer cited ambiguous phase-1)"
   },
   "0c464b1": {
    "plan": "2026-09-10_195043-smart-changelog.md",
@@ -979,7 +979,7 @@
   "11a3293": {
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Color: primitives",
-   "note": "update 4 task 7 \u2014 three accent ramps (trailer cited ambiguous Phase-1)"
+   "note": "update 4 task 7 — three accent ramps (trailer cited ambiguous Phase-1)"
   },
   "ffd2bae": {
    "plan": "2026-09-09_170854-design-system-update-4.md",
@@ -988,23 +988,23 @@
   },
   "7d3bcea": {
    "plan": "2026-09-09_170854-design-system-update-4.md",
-   "anchor": "Space \u00b7 Layout: usage-anchored",
-   "note": "update 4 phases 3-4 \u2014 space usage + breakpoints; badged P3"
+   "anchor": "Space · Layout: usage-anchored",
+   "note": "update 4 phases 3-4 — space usage + breakpoints; badged P3"
   },
   "dba2975": {
    "plan": "2026-09-09_170854-design-system-update-4.md",
    "anchor": "Color: primitives",
-   "note": "update 4 phases 1-2 \u2014 color story + type; badged P1"
+   "note": "update 4 phases 1-2 — color story + type; badged P1"
   },
   "fd5638b": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-28",
-   "note": "coverage sweep \u2014 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete"
+   "note": "coverage sweep — 99 unseen commits retro-linked, orphan sha pruned; badges + heat graph complete"
   },
   "32c014b": {
    "plan": "2026-09-15_183400-lump-sum-builds.md",
    "anchor": "#phase-28",
-   "note": "close phase-28 \u2014 stamping fd5638b (sweep bookkeeping)"
+   "note": "close phase-28 — stamping fd5638b (sweep bookkeeping)"
   },
   "3f4cd90": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
@@ -1014,32 +1014,32 @@
   "4961001": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-1}",
-   "note": "SOP: manual deploy \u2014 push only on explicit y"
+   "note": "SOP: manual deploy — push only on explicit y"
   },
   "25f36ee": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-1}",
-   "note": "week-roll bookkeeping \u2014 mapped close/hover/SOP shas (trailer #phase-29 overridden)"
+   "note": "week-roll bookkeeping — mapped close/hover/SOP shas (trailer #phase-29 overridden)"
   },
   "265b15a": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-2}",
-   "note": "feat(list): brand colour recall swatches \u2014 two-line rows, canvas refine -> lump-sum P2 T3"
+   "note": "feat(list): brand colour recall swatches — two-line rows, canvas refine -> lump-sum P2 T3"
   },
   "8213488": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-2}",
-   "note": "feat(promo): cinematic player \u2014 icons split, poster frame, buffer bar, hover scrim -> lump-sum P2 T4"
+   "note": "feat(promo): cinematic player — icons split, poster frame, buffer bar, hover scrim -> lump-sum P2 T4"
   },
   "7514a72": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-2}",
-   "note": "fix(transit): hero-box selector \u2014 ghost hides the real hero again -> lump-sum P2 T5"
+   "note": "fix(transit): hero-box selector — ghost hides the real hero again -> lump-sum P2 T5"
   },
   "1bff4db": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-3}",
-   "note": "fix(popover): single-frame desktop previews \u2014 grid portal only, list peek only -> lump-sum P3 T6"
+   "note": "fix(popover): single-frame desktop previews — grid portal only, list peek only -> lump-sum P3 T6"
   },
   "09114cd": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
@@ -1054,7 +1054,7 @@
   "9ea7373": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-5}",
-   "note": "fix(rim): light island viewer rim stays light \u2014 surface + tether -> lump-sum P5 T14"
+   "note": "fix(rim): light island viewer rim stays light — surface + tether -> lump-sum P5 T14"
   },
   "0d40da7": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
@@ -1062,9 +1062,24 @@
    "note": "feat(list+case+tooling): 3-col desktop grid + 2×4 mobile + case mobile reorder + playwright -> lump-sum P6 T15-18"
   },
   "f74ef4d": {
-   "plan": "2026-09-23_173234-ds-motion-coherent.md",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
    "anchor": "{#phase-1}",
-   "note": "docs(plan): Motion coherent plan + names — Motion labs read like Elements"
+   "note": "Motion coherent plan docs — consolidated into DS refining"
+  },
+  "f14a6dd": {
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}",
+   "note": "FX legible cards grouped as refining — consolidated from 151320 P4"
+  },
+  "3de1a8d": {
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}",
+   "note": "FX builds grouped — consolidated from 151320 P4"
+  },
+  "e2e3655": {
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}",
+   "note": "FX tokens as tabbed tables — consolidated from 151320 P2"
   }
  }
 }
