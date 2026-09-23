@@ -130,5 +130,9 @@
   "2026-09-23_145600-ds-elements-tabs.md": {
     "title": "Elements sheets get Foundations-style vertical tabs",
     "purpose": "Sheet navigation"
+  },
+  "2026-09-23_150400-ds-fx-lede.md": {
+    "title": "FX pane says what FX is in plain words",
+    "purpose": "Pane copy"
   }
 }
