@@ -194,5 +194,5 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** Screenshot of `/ds/#/special` matches Library chrome.
 
-*Shipped in pending · Tasks 19–21 · phase-7.*
+*Shipped in df1318a · Tasks 19–21 · phase-7.*
 

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T14:04:27.866Z",
+ "generated": "2026-09-23T14:05:14.612Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "df1318a",
+   "full": "df1318a8157bc3649a5ffe2aca7fedb46c2bf294",
+   "date": "2026-09-23",
+   "time": "19:35",
+   "subject": "feat(ds): Special as Library — single Special with 8 vertical sheets",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-7}"
+  },
   {
    "sha": "0494908",
    "full": "0494908435d18332852fed73f4f7986840f70e74",
@@ -3769,10 +3778,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/ds.js",
-  "M src/ds/pages-functions.js",
-  "M src/ds/routes.js",
-  "?? src/ds/pages-special.js"
- ]
+ "wip": []
 }
