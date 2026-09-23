@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS + Vite, `src/ds/routes.js`, `src/ds/ds.js`, page composers, `src/ds/foundations/*`, token-only CSS.
 **Tags:** Design System, Layout, Component
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Nav + IA coherence {#phase-1}
