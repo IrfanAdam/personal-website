@@ -138,5 +138,9 @@
   "2026-09-23_151320-ds-fx-cards.md": {
     "title": "FX cards explain the visible effect each token changes",
     "purpose": "Effect-first FX cards"
+  },
+  "2026-09-23_154500-ds-elev-motion-tables.md": {
+    "title": "FX elevation + Motion as tabbed tables",
+    "purpose": "Tabled tokens"
   }
 }

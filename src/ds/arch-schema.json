@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T10:04:39.163Z",
+  "generated": "2026-09-23T10:12:32.808Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -902,12 +902,6 @@
         "--color-surface-sunken",
         "--font-mono",
         "--shadow-on-media",
-        "--space-1",
-        "--space-10",
-        "--space-12",
-        "--space-2",
-        "--space-32",
-        "--space-6",
         "--text-micro"
       ]
     },
@@ -1003,10 +997,7 @@
       "route": null,
       "title": "pane motion",
       "tokens": [
-        "--ease-signature",
-        "--opacity-hover",
-        "--scale-press",
-        "--scale-zoom"
+        "--ease-signature"
       ]
     },
     {
@@ -4645,6 +4636,11 @@
     },
     {
       "from": "ds_foundations_fx_elev",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_fx_elev",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -4755,12 +4751,22 @@
     },
     {
       "from": "ds_foundations_pane_motion",
+      "to": "ds_foundations_motion_data",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_motion",
       "to": "ds_foundations_motion_sections",
       "kind": "imports"
     },
     {
       "from": "ds_foundations_pane_motion",
       "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_motion",
+      "to": "ds_tabs",
       "kind": "imports"
     },
     {
