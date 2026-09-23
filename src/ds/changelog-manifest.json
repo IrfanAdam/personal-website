@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T09:28:59.088Z",
+ "generated": "2026-09-23T09:38:10.815Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -34,9 +34,19 @@
   "2026-09-23_134500-ds-coherent-consumable.md",
   "2026-09-23_142100-ds-sidebar-pinned.md",
   "2026-09-23_143400-ds-overview-elements-fold.md",
-  "2026-09-23_145600-ds-elements-tabs.md"
+  "2026-09-23_145600-ds-elements-tabs.md",
+  "2026-09-23_150400-ds-fx-lede.md"
  ],
  "commits": [
+  {
+   "sha": "778a771",
+   "full": "778a77101f2b195bf35e696e49b6cd735165f3d6",
+   "date": "2026-09-23",
+   "time": "15:08",
+   "subject": "fix(ds): FX pane says what FX is in plain words",
+   "plan": "2026-09-23_150400-ds-fx-lede.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "c771f26",
    "full": "c771f269c4f96e66fc7ec4408315af92e5892aa5",
