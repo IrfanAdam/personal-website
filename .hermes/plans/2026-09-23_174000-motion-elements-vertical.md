@@ -196,3 +196,30 @@
 
 *Shipped in df1318a · Tasks 19–21 · phase-7.*
 
+## Phase 8 — Special under Elements, labs live + in-budget {#phase-8}
+*Tags: Design System, Layout*
+*Special drops the Overview sheet (7 labs), moves into the Elements group with a changelog divider; lab heroes unify on `.ds-hero--lab`, Viewer demos the real card physics, cells finish texture-first with shared visibility/controls modules, all inside line + token budgets.*
+
+| # | Task | Done when |
+|---|---|---|
+| 22 | Special 7 labs under Elements | no Overview sheet, `routes.js` lists Special under Elements + changelog last, `ds.js` renders `hr.ds-nav-div` before changelog; graph regen committed |
+| 23 | Labs live: hero, viewer, texture | all 7 labs on `.ds-hero--lab`; viewer mounts real `attachViewer` card; cells default helix + photo crossfade + replay-on-ready; glimmer defers start to unhide |
+| 24 | Budgets hold + verify + push | `cells-controls.js` + `fx-lab/pane-visible.js` extractions, no new lint-manage/token violations, `test` green, screenshots, clubbed commits pushed |
+
+### Task 22: Special 7 labs under Elements ✓ done
+**Objective:** Special reads as Elements sheets — 7 labs, no index page; changelog sits apart in the nav.
+**Files:** `src/ds/pages-special.js`, `src/ds/routes.js`, `src/ds/ds.js`, `src/ds/ds.css`, `docs/graph.mmd`, `src/ds/arch-schema.json`
+**Verify:** Sidebar Elements ends …Patterns·Special·Sound, changelog divided below; no `pages-functions` importers.
+
+### Task 23: Labs live — hero, viewer, texture ✓ done
+**Objective:** Labs look like sheets and run production geometry — hero compact, viewer interactive, cells texture-first.
+**Files:** `src/ds/ds-content.css`, `src/ds/functions/glimmer-orb.js`, `src/ds/functions/glitch.js`, `src/ds/functions/grid-reveal.js`, `src/ds/functions/grid-reveal-lab.js`, `src/ds/functions/rise.js`, `src/ds/functions/scramble/panel.js`, `src/ds/functions/shimmer.js`, `src/ds/functions/viewer.js`, `src/ds/fx-lab/cells.js`, `src/ds/fx-lab/cells-draw.js`, `src/ds/fx-lab/cells-texture.js`
+**Verify:** Build green; Special screenshots show live grid texture + viewer card + glimmer orb.
+
+### Task 24: Budgets hold + verify + push ✓ done
+**Objective:** No new violations ship — extractions keep every file ≤100 lines, token lint clean.
+**Files:** `src/ds/fx-lab/cells-controls.js`, `src/ds/fx-lab/pane-visible.js`, `src/ds/ds-lab.css`, plan + generated manifest/graph as required by the repo gates.
+**Verify:** `plan:names`, `ds:track`, `test` green; lint-manage shows only pre-existing violations; clubbed commits pushed.
+
+*Shipped in d2abaea, 09aac3c · Tasks 22–24 · phase-8.*
+
