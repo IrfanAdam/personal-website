@@ -1,11 +1,6 @@
-/* ADAM/DS — Foundations composer: color · type · space · shape · motion · fx · tokens.
-   Single route; definitions live on vertical tabs. Demos run on var(). */
-// Exports: render, mount — panes + mixer/sync/handlers stitching
-import { cssVar,
-  contrastRatio as ratio,
-  verdictRatio as verdict,
-  probeTheme,
-  refreshLive } from './specimens.js';
+/* ADAM/DS — Foundations composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-1] */
+// Exports: render, mount — panes + mixer/sync/handlers stitching, outer deep link
+import { cssVar, contrastRatio as ratio, verdictRatio as verdict, probeTheme, refreshLive } from './specimens.js';
 import { makeMix } from './foundations-mix.js';
 import { makeHandlers } from './foundations-handlers.js';
 import { tabs } from './tabs.js';
@@ -18,6 +13,18 @@ import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
 import { label as oL, html as oH } from './foundations/pane-sound.js';
 import { mountSoundBoard } from './foundations/sound/board.js';
+function outerInitial() {
+  const h = window.location.hash || '';
+  const qs = h.includes('?') ? h.split('?')[1] : (window.location.search.slice(1) || '');
+  const sp = new URLSearchParams(qs);
+  const p = (sp.get('pane') || '').toLowerCase();
+  const m = { color: 0, type: 1, space: 2, shape: 3, motion: 4, fx: 5, sound: 6, tokens: 7, contract: 7 };
+  if (m[p] != null) return m[p];
+  if (p.includes('space')) return 2;
+  if (p.includes('motion')) return 4;
+  if (p.includes('token')) return 7;
+  return 0;
+}
 export function render() {
   const panes = [{ label: cL, html: cH() },
     { label: tL, html: tH() },
@@ -31,7 +38,7 @@ export function render() {
     `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
     `<p class="lede">Eight definitions feed every token. Swatches and values read live computed <span `,
     `class="tok">var()</span> — click any card to copy.</p></div>`,
-  ].join('') + tabs({ vertical: true, panes });
+  ].join('') + tabs({ vertical: true, initial: outerInitial(), panes });
 }
 export function mount(root) {
   const sw = root.querySelector('#mixSw'), ctrls = root.querySelector('#mixCtrls'), val = root.querySelector('#mixVal');

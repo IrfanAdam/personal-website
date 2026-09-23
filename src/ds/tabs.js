@@ -1,6 +1,5 @@
-/* ADAM/DS — tabs shell. One tab container every component/function reuses.
-   panes: [{ label, html }] → tablist + panels. Preview-first default.
-   Mount via mountTabs(root); cleanup returned. ≤100 lines. */
+/* ADAM/DS — tabs shell · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-1] */
+// Exports: tabs, mountTabs — click + keyboard (Arrow/Home/End), roving tabindex
 const reg = (window.__tabsReg = window.__tabsReg || {});
 export function tabs({ panes = [], initial = 0, vertical = false, variant = '' } = {}) {
   const id = 'tabs-' + Math.random().toString(36).slice(2, 6);
@@ -10,6 +9,8 @@ export function tabs({ panes = [], initial = 0, vertical = false, variant = '' }
     i === initial ? ' on' : '',
     `" role="tab" aria-selected="`,
     i === initial,
+    `" tabindex="`,
+    i === initial ? '0' : '-1',
     `" data-tab="`,
     i,
     `" data-tabs="`,
@@ -50,9 +51,13 @@ export function mountTabs(root) {
     const btns = [...box.querySelectorAll(`[data-tab][data-tabs="${id}"]`)];
     const panes = [...box.querySelectorAll(`[data-pane][data-tabs="${id}"]`)];
     if (!btns.length) return;
+    const isVert = box.classList.contains('vert');
     const select = (n) => {
-      btns.forEach((b,
-          i) => { b.classList.toggle('on', i === n); b.setAttribute('aria-selected', i === n ? 'true' : 'false'); });
+      btns.forEach((b, i) => {
+        b.classList.toggle('on', i === n);
+        b.setAttribute('aria-selected', i === n ? 'true' : 'false');
+        b.setAttribute('tabindex', i === n ? '0' : '-1');
+      });
       panes.forEach((p, i) => { if (i === n) p.removeAttribute('hidden'); else p.setAttribute('hidden', ''); });
     };
     const onClick = (e) => {
@@ -60,8 +65,26 @@ export function mountTabs(root) {
       if (!b) return;
       select(Number(b.dataset.tab));
     };
+    const onKey = (e) => {
+      const b = e.target.closest(`[data-tab][data-tabs="${id}"]`);
+      if (!b) return;
+      const cur = btns.indexOf(b);
+      let nxt = -1;
+      if (!isVert && e.key === 'ArrowRight') nxt = (cur + 1) % btns.length;
+      else if (!isVert && e.key === 'ArrowLeft') nxt = (cur - 1 + btns.length) % btns.length;
+      else if (isVert && e.key === 'ArrowDown') nxt = (cur + 1) % btns.length;
+      else if (isVert && e.key === 'ArrowUp') nxt = (cur - 1 + btns.length) % btns.length;
+      else if (e.key === 'Home') nxt = 0;
+      else if (e.key === 'End') nxt = btns.length - 1;
+      else return;
+      e.preventDefault();
+      select(nxt);
+      btns[nxt].focus();
+    };
     box.addEventListener('click', onClick);
+    box.addEventListener('keydown', onKey);
     offs.push(() => box.removeEventListener('click', onClick));
+    offs.push(() => box.removeEventListener('keydown', onKey));
   });
   return () => offs.forEach((fn) => fn());
 }
