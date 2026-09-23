@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T17:13:18.418Z",
+ "generated": "2026-09-23T17:15:20.485Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -49,8 +49,17 @@
    "date": "2026-09-23",
    "time": "22:43",
    "subject": "fix(ds): viewer stray comma — Graduation back inside its pane",
-   "plan": "2026-09-21_125642-lump-sum-builds.md",
-   "anchor": "{#phase-7}"
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase10}"
+  },
+  {
+   "sha": "fbf8c6c",
+   "full": "fbf8c6cb10df1c1df15f1fd3c0e6043ed1c5d597",
+   "date": "2026-09-23",
+   "time": "22:43",
+   "subject": "chore(lump-sum): close phase-7 — stamping 5cc8405",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase10}"
   },
   {
    "sha": "d4031c6",

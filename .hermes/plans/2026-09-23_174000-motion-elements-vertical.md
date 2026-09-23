@@ -238,3 +238,18 @@
 
 *Shipped in d4031c6 · Task 25 · phase-9.*
 
+## Phase 10 — Viewer comma fix, folded in {#phase10}
+*Tags: Design System*
+*One stray comma in the Viewer lab's render collapsed its whole pane and spilled Graduation onto every Special tab — folded here as part of this build.*
+
+| # | Task | Done when |
+|---|---|---|
+| 26 | Viewer render comma — pane restored | `viewer.js` figure line loses its trailing comma; render NaN-free/div-balanced, Graduation back inside the Viewer pane, gates green |
+
+### Task 26: Viewer render comma — pane restored ✓ done
+**Objective:** Remove the expression-level comma that discarded hero/Params/Specimen, unary-plussed the next literal to `NaN`, and closed the pane early.
+**Files:** `src/ds/functions/viewer.js`
+**Verify:** Node render check + headless Chromium (no stray pane child, Viewer whole); `plan:names`, `ds:track`, `test` green.
+
+*Shipped in 5cc8405 · Tasks 26 · phase-10.*
+
