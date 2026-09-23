@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T09:03:54.581Z",
+ "generated": "2026-09-23T09:28:59.088Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -33,9 +33,19 @@
   "2026-09-23_130000-ds-understandable-mutable.md",
   "2026-09-23_134500-ds-coherent-consumable.md",
   "2026-09-23_142100-ds-sidebar-pinned.md",
-  "2026-09-23_143400-ds-overview-elements-fold.md"
+  "2026-09-23_143400-ds-overview-elements-fold.md",
+  "2026-09-23_145600-ds-elements-tabs.md"
  ],
  "commits": [
+  {
+   "sha": "c771f26",
+   "full": "c771f269c4f96e66fc7ec4408315af92e5892aa5",
+   "date": "2026-09-23",
+   "time": "14:58",
+   "subject": "feat(ds): Elements sheets behind Foundations-style vertical tabs",
+   "plan": "2026-09-23_145600-ds-elements-tabs.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "ec0ffab",
    "full": "ec0ffab8887eb010d27fb22d9df2ef96c2687031",
