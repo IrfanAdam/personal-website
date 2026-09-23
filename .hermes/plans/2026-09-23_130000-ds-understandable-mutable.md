@@ -22,20 +22,25 @@
 | 2 | Deep link + keyboard | `?pane=color&tab=pairs` (or `#/foundations/color--pairs`) restores selection on load/hash change; `tabs.js` supports Arrow/Home/End roving focus |
 | 3 | Preserve live behavior | Ramp hover tips, live pair `ratio/verdict` in both themes, mixer controls, and copy remain functional after tab switch and theme toggle |
 
-### Task 1: Color inner tabs
+### Task 1 ✓ done: Color inner tabs
+
 **Objective:** Split the current Color sheet into four focused panels without changing data.
 **Files:** `src/ds/foundations/pane-color.js`, `src/ds/foundations/color/sections.js`, `src/ds/foundations/color/tabs.js` (new)
 **Verify:** Fresh `/ds/#/foundations` shows Color → 4 inner tabs, only selected pane content renders.
 
-### Task 2: Deep link + keyboard
+### Task 2 ✓ done: Deep link + keyboard
+
 **Objective:** Make any Foundations sub-pane shareable and keyboard-operable.
 **Files:** `src/ds/tabs.js`, `src/ds/pages-foundations.js`, `src/ds/routes.js` (hash/query sync)
 **Verify:** Reload with `?pane=color&tab=lab` opens Lab; ArrowLeft/Right moves inner tabs, focus follows.
 
-### Task 3: Preserve live behavior
+### Task 3 ✓ done: Preserve live behavior
+
 **Objective:** Keep existing live probes and playgrounds mounted under new panel structure.
 **Files:** `src/ds/pages-foundations.js`, `src/ds/foundations-handlers.js`, `src/ds/specimens.js`
 **Verify:** Switching inner tabs + toggling theme leaves live contrast cells, ramp tips, and Lab mixer functional; `lint:tokens` + `build` green.
+
+*Shipped in e47382e · Tasks 1–3 · phase-1.*
 
 ---
 
