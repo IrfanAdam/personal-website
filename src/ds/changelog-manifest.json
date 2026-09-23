@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T11:15:16.908Z",
+ "generated": "2026-09-23T12:03:20.200Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -37,9 +37,19 @@
   "2026-09-23_145600-ds-elements-tabs.md",
   "2026-09-23_150400-ds-fx-lede.md",
   "2026-09-23_151320-ds-fx-cards.md",
-  "2026-09-23_154500-ds-elev-motion-tables.md"
+  "2026-09-23_154500-ds-elev-motion-tables.md",
+  "2026-09-23_173234-ds-motion-coherent.md"
  ],
  "commits": [
+  {
+   "sha": "f74ef4d",
+   "full": "f74ef4d803dc670b57c99a7e9ad61f317b8ad3f7",
+   "date": "2026-09-23",
+   "time": "17:33",
+   "subject": "docs(plan): Motion coherent — labs read like Elements, live, one screen",
+   "plan": null,
+   "anchor": null
+  },
   {
    "sha": "f14a6dd",
    "full": "f14a6dda5aaf095bb45a75eab78afbe6d367afd2",
