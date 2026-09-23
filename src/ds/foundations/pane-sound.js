@@ -14,7 +14,7 @@ export function html() {
   const intro = [
     `<div class="ds-sec" data-sound-foundations>`,
     `<h2>Sound board</h2>`,
-    `<p class="sub">Sound is behavior, not material: ` +
+    `<p class="sub">Sound is behaviour, not material: ` +
       `<b>procedural</b> (WebAudio <span class="tok">synth</span> → WAV) for elastic feedback, ` +
       `<b>file</b> (vendored <span class="tok">/sounds</span>) for authored beds. ` +
       `Every voice here is the site voice — tweak, play, and hear the real pipeline.</p>`,

@@ -6,7 +6,7 @@ export const title = 'Sound';
 export function render() {
   return [
     `<p class="ds-crumb">Motion · Sound</p><div class="ds-hero"><h1>Sound — feedback you hear.</h1>`,
-    `<p class="lede">Procedural WebAudio voices + vendored files — behavior, so it lives `,
+    `<p class="lede">Procedural WebAudio voices + vendored files — behaviour, so it lives `,
     `beside the motion labs, not in Foundations.</p></div>`,
     soundHtml(),
   ].join('');

@@ -6,7 +6,7 @@ const map = [
     'Usage → What → When to use → Preview / Code / Tokens'],
   ['Library', '11', '#/library',
     'Header · Footer · Hero · Card · Work · Filters · Strip · Spec · Next · CTA · Contact',
-    'landing playgrounds dogfood real .top/.card/.cols'],
+    'page sections, production classes — header to footer'],
   ['Patterns', '4', '#/patterns',
     'Masonry · Viewer · Case 50/50 · A11y + Migration',
     'compositions + gates (contrast live, motion, focus)'],
