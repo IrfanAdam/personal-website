@@ -59,4 +59,4 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All local gates pass and fresh screenshot of `/ds/#/sound` matches vertical-tab chrome.
 
-*Shipped in pending · Tasks 4–6 · phase-2.*
+*Shipped in 5268f4c · Tasks 4–6 · phase-2.*
