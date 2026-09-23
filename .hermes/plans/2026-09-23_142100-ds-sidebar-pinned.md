@@ -20,4 +20,4 @@
 **Files:** `src/ds/routes.js`
 **Verify:** Fresh `/ds/` load shows Changelog, Components, then Start label; prev/next walks the same order; `lint:tokens` + `build` green.
 
-*Shipped in <sha> · Tasks 1–1 · phase-1.*
+*Shipped in b6f84da · Tasks 1–1 · phase-1.*
