@@ -1,5 +1,5 @@
-/* ADAM/DS — Foundations composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-2] */
-// Exports: render, mount — panes + mixer/sync/handlers + playground
+/* ADAM/DS — ds/pages-foundations · Foundations 7 panes · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-6] */
+// Exports: render, mount — 7 panes (Motion inside), mixer/sync/handlers
 import { cssVar, contrastRatio as ratio, verdictRatio as verdict, probeTheme, refreshLive } from './specimens.js';
 import { makeMix } from './foundations-mix.js';
 import { makeHandlers } from './foundations-handlers.js';
@@ -8,37 +8,39 @@ import { label as cL, html as cH } from './foundations/pane-color.js';
 import { label as tL, html as tH } from './foundations/pane-type.js';
 import { label as sL, html as sH } from './foundations/pane-space.js';
 import { label as hL, html as hH } from './foundations/pane-shape.js';
+import { label as mL, html as mH } from './foundations/pane-motion.js';
 import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
 import { mountPlayground } from './foundations/tokens/playground.js';
+// — Initial —
 function outerInitial() {
   const h = window.location.hash || '';
   const qs = h.includes('?') ? h.split('?')[1] : (window.location.search.slice(1) || '');
   const sp = new URLSearchParams(qs);
   const p = (sp.get('pane') || '').toLowerCase();
-  if (p.includes('motion')) {
-    setTimeout(() => { if (location.hash.includes('foundations')) location.hash = '#/motion'; }, 0);
-    return 4;
-  }
-  const m = { color: 0, type: 1, space: 2, shape: 3, fx: 4, tokens: 5, contract: 5 };
+  if (p.includes('motion')) return 4;
+  const m = { color: 0, type: 1, space: 2, shape: 3, motion: 4, fx: 5, tokens: 6, contract: 6 };
   if (m[p] != null) return m[p];
   if (p.includes('space')) return 2;
-  if (p.includes('token')) return 5;
+  if (p.includes('token')) return 6;
   return 0;
 }
+// — Render —
 export function render() {
   const panes = [{ label: cL, html: cH() },
     { label: tL, html: tH() },
     { label: sL, html: sH() },
     { label: hL, html: hH() },
+    { label: mL, html: mH() },
     { label: fL, html: fH() },
     { label: kL, html: kH() }];
   return [
     `<p class="ds-crumb">Start · Foundations</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
-    `<p class="lede">Six definitions feed every token. Swatches and values read live computed <span `,
+    `<p class="lede">Seven definitions feed every token. Swatches and values read live computed <span `,
     `class="tok">var()</span> — click any card to copy.</p></div>`,
   ].join('') + tabs({ vertical: true, initial: outerInitial(), panes });
 }
+// — Mount —
 export function mount(root) {
   const sw = root.querySelector('#mixSw'), ctrls = root.querySelector('#mixCtrls'), val = root.querySelector('#mixVal');
   const aSel = ctrls && ctrls.querySelector('[data-mix="a"]'),

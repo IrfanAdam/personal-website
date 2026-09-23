@@ -141,3 +141,56 @@
 **Verify:** All local gates pass and fresh screenshots of sidebar (`Special`) + `/ds/#/functions` (under Special) match.
 
 *Shipped in 2dff01e · Tasks 13–15 · phase-5.*
+
+## Phase 6 — Motion returns to Foundations {#phase-6}
+*Tags: Design System*
+*Foundations reclaims Motion — 7 panes, Durations etc. live inside Foundations where the system defines them.*
+
+| # | Task | Done when |
+|---|---|---|
+| 16 | Re-add Motion pane to Foundations | `src/ds/pages-foundations.js` imports `pane-motion` as `mL/mH`, inserts `Motion` at index 4 → panes = Color·Type·Space·Shape·Motion·FX·Contract (7), lede says Seven definitions, `outerInitial` maps `motion`→4 and `fx`→5 |
+| 17 | Redirect legacy Motion hash | `src/ds/ds.js` maps `#/motion` → `#/foundations` (not `#/functions`) so old links land on Foundations Motion pane |
+| 18 | Verify Foundations Motion | `plan:names`, `ds:track`, `test` green; `/ds/#/foundations` shows 7 tabs with Motion at 5th, inner Durations/Easing/Interaction/Depth/Contract tabs work |
+
+### Task 16: Re-add Motion pane to Foundations ✓ done
+**Objective:** Motion lives where tokens live — Foundations.
+**Files:** `src/ds/pages-foundations.js`, `src/ds/foundations/pane-motion.js`
+**Verify:** Foundations has 7 panes.
+
+### Task 17: Redirect legacy Motion hash ✓ done
+**Objective:** Old `#/motion` links still work — now to Foundations.
+**Files:** `src/ds/ds.js`
+**Verify:** `#/motion` redirects to `#/foundations`.
+
+### Task 18: Verify Foundations Motion ✓ done
+**Objective:** Ship only a rendered, linted, buildable Foundations with Motion.
+**Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
+**Verify:** Screenshot of `/ds/#/foundations` shows Motion pane.
+
+*Shipped in 74fe3fd · Tasks 16–18 · phase-6.*
+
+## Phase 7 — Special as Library-style vertical tabs {#phase-7}
+*Tags: Design System*
+*Special stops being 8 flat sidebar routes — one Special page with 8 vertical tabs, like Library (Header · Footer · …).*
+
+| # | Task | Done when |
+|---|---|---|
+| 19 | Collapse Special labs into one page | `src/ds/pages-functions.js` (or `pages-special.js`) renders `tabs({vertical:true})` with 8 panes: Motion index + GridReveal · Shimmer · Rise · Viewer · Glimmer orb · Glitch · Scramble — each pane calls its lab `render()`; mount calls each lab mount |
+| 20 | Routes → single Special entry | `src/ds/routes.js` keeps single `Special` entry (`#/special` canonical, `#/functions` alias via `ds.js`), drops 7 per-lab routes; `ds.js` redirects `#/functions/*` → `#/special`; sidebar shows `Special` once under group `Special` |
+| 21 | Verify build + Special screenshot | `plan:names`, `ds:track`, `test` green; sidebar has `Special` once, `/ds/#/special` shows vertical tabs like Library, each lab live |
+
+### Task 19: Collapse Special labs into one page
+**Objective:** Special reads like Library — one tab, many sheets.
+**Files:** `src/ds/pages-functions.js`, `src/ds/pages-special.js` (if new), `src/ds/functions/*`
+**Verify:** Vertical tabs switch without page change.
+
+### Task 20: Routes → single Special entry
+**Objective:** Sidebar not fragmented — one Special entry.
+**Files:** `src/ds/routes.js`, `src/ds/ds.js`
+**Verify:** `routes.js` has 1 Special entry; 7 lab routes removed; grep 0 orphan.
+
+### Task 21: Verify build + Special screenshot
+**Objective:** Ship only a rendered, linted, buildable Special tab.
+**Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
+**Verify:** Screenshot of `/ds/#/special` matches Library chrome.
+

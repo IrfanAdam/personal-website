@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/ds · app shell · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-5] */
+/* ADAM/DS — ds/ds · app shell · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-6] */
 import { routes } from './routes.js';
 import { mountTheme } from './theme.js';
 import { mountSidebar } from './sidebar.js';
@@ -20,8 +20,8 @@ function route() {
   if (cleanup) { cleanup(); cleanup = null; }
   let h = location.hash || '#/';
   if (h.startsWith('#/motion')) {
-    location.hash = '#/functions';
-    h = '#/functions';
+    location.hash = '#/foundations';
+    h = '#/foundations';
   }
   if (h === '#/tokens') { location.hash = '#/foundations'; h = '#/foundations'; }
   if (h === '#/builds') { location.hash = '#/changelog'; h = '#/changelog'; }
