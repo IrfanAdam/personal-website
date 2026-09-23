@@ -21,6 +21,7 @@ function route() {
   let h = location.hash || '#/';
   if (h === '#/tokens') { location.hash = '#/foundations'; h = '#/foundations'; }
   if (h === '#/builds') { location.hash = '#/changelog'; h = '#/changelog'; }
+  if (h === '#/functions/sound') { location.hash = '#/sound'; h = '#/sound'; }
   const i = Math.max(0, routes.findIndex((r) => r.hash === h));
   const r = routes[i];
   nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === r.hash));

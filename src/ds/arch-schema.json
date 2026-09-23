@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T12:21:55.457Z",
+  "generated": "2026-09-23T12:23:13.780Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -1693,8 +1693,8 @@
       "id": "ds_functions_sound",
       "path": "src/ds/functions/sound.js",
       "layer": "function",
-      "route": "#/functions/sound",
-      "title": "Sound",
+      "route": null,
+      "title": "sound",
       "tokens": []
     },
     {
@@ -2127,6 +2127,14 @@
       "tokens": []
     },
     {
+      "id": "ds_pages_sound",
+      "path": "src/ds/pages-sound.js",
+      "layer": "component",
+      "route": "#/sound",
+      "title": "Sound",
+      "tokens": []
+    },
+    {
       "id": "ds_patterns_data",
       "path": "src/ds/patterns-data.js",
       "layer": "component",
@@ -2306,6 +2314,14 @@
       "layer": "component",
       "route": null,
       "title": "sidebar",
+      "tokens": []
+    },
+    {
+      "id": "ds_sound_panes",
+      "path": "src/ds/sound-panes.js",
+      "layer": "component",
+      "route": null,
+      "title": "sound panes",
       "tokens": []
     },
     {
@@ -6058,6 +6074,26 @@
       "kind": "imports"
     },
     {
+      "from": "ds_pages_sound",
+      "to": "ds_foundations_sound_board",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_sound",
+      "to": "ds_sound_panes",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_sound",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_sound",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
       "from": "ds_patterns_data",
       "to": "ds_specimens",
       "kind": "imports"
@@ -6219,11 +6255,6 @@
     },
     {
       "from": "ds_routes",
-      "to": "ds_functions_sound",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
       "to": "ds_functions_viewer",
       "kind": "imports"
     },
@@ -6270,6 +6301,31 @@
     {
       "from": "ds_routes",
       "to": "ds_pages_primitives",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_sound_panes",
+      "to": "ds_foundations_sound_files",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_sound_panes",
+      "to": "ds_foundations_sound_procedural",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_sound_panes",
+      "to": "ds_foundations_sound_scope",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_sound_panes",
+      "to": "ds_foundations_sound_usage",
       "kind": "imports"
     },
     {
