@@ -12,6 +12,9 @@
 }
 .ds-tab.on { background: var(--color-ink); color: var(--color-bg); }
 .ds-pane[hidden] { display: none; }
+/* vert sheets — panes are direct flex items; let them shrink so long
+   pre lines scroll inside .ds-code instead of widening the page */
+.ds-tabs.vert > .ds-pane { min-width: 0; }
 .ds-tablist--line {
   display: flex;
   gap: var(--space-16);

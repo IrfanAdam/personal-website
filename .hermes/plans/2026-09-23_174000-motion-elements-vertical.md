@@ -223,3 +223,16 @@
 
 *Shipped in d2abaea, 09aac3c · Tasks 22–24 · phase-8.*
 
+## Phase 9 — Vert sheets fit the viewport {#phase-9}
+*Tags: Design System, Layout*
+*Long `<pre>` lines in visible lab sheets (Glimmer orb's usage snippet) propagated min-content up through the block chain, and panes are direct flex items with `min-width: auto` — the sheet stretched to ~1480px with page-wide horizontal scroll. One shell rule lets panes shrink; code scrolls inside `.ds-code`.*
+
+| # | Task | Done when |
+|---|---|---|
+| 25 | Panes shrink, code scrolls inside | `.ds-tabs.vert > .ds-pane { min-width: 0 }` in `ds-tabs.css`; all 7 Special sheets `docScrollW` = viewport, Glimmer screenshot clean |
+
+### Task 25: Panes shrink, code scrolls inside ✓ done
+**Objective:** No Special sheet ever widens the page — long code lines scroll in their own block.
+**Files:** `src/ds/ds-tabs.css`, plan + generated manifest as required by the repo gates.
+**Verify:** Playwright across all 7 sheets reports `docScrollW` 1500/1500; Glimmer orb visible, controls uncovered; `test` green.
+
