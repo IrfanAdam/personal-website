@@ -3,7 +3,7 @@ import { note, code } from '../specimens.js';
 export const title = 'Viewer';
 export function render(){
   return [
-    `<p class="ds-crumb">Functions · Viewer</p><div class="ds-hero"><h1>Viewer portal — params.</h1>`,
+    `<p class="ds-crumb">Motion · Viewer</p><div class="ds-hero"><h1>Viewer portal — params.</h1>`,
     `<p class="lede">Tamed editorial expander (hairline + paper, no neon). Former overlays (<span `,
     `class="tok">--viewer-grid/scan/neon</span>) removed in v1.1; glass/bar/shimmer markup deleted in 5.3.</p></div>`,
   ].join('')

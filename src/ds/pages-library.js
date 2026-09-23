@@ -14,9 +14,10 @@ import { ctaSheet } from './library/cta.js';
 import { contactSheet } from './library/contact.js';
 export function render(){
   return [
-  `<p class="ds-crumb">Library · Landing set</p><div class="ds-hero"><h1>A page from the library.</h1>`,
+  `<p class="ds-crumb">Elements · Library</p><div class="ds-hero"><h1>A page from the library.</h1>`,
   `<p class="lede">Header, heroes, cards, lists, filters, spec, next, CTA, and contact — each playground renders `,
-  `the production class, unmodified. A landing page can be assembled purely from these.</p></div>`,
+  `the production class, unmodified. A landing page can be assembled purely from these.</p>`,
+  `<p class="sub"><a href="#/components">← Elements map</a></p></div>`,
   headerSheet(),
   footerSheet(),
   heroSheet(),

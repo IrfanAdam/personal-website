@@ -4,7 +4,7 @@ import { mountRise } from '../fx-lab.js';
 export const title = 'Rise';
 export function render(){
   return [
-    `<p class="ds-crumb">Functions · Rise</p><div class="ds-hero"><h1>Hero rise.</h1>`,
+    `<p class="ds-crumb">Motion · Rise</p><div class="ds-hero"><h1>Hero rise.</h1>`,
     `<p class="lede">Mobile case/contact placeholder → final height on <span class="tok">--ease-signature</span>. `,
     `Site runs via <span class="tok">rise.js</span> on <span class="tok">--dur-hero-rise</span> (860ms); lab runs `,
     `on a scoped var.</p></div>`,

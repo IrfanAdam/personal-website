@@ -36,7 +36,7 @@ export function render() {
     { label: oL, html: oH() },
     { label: kL, html: kH() }];
   return [
-    `<p class="ds-crumb">Foundations · Tokens</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
+    `<p class="ds-crumb">Start · Foundations</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
     `<p class="lede">Eight definitions feed every token. Swatches and values read live computed <span `,
     `class="tok">var()</span> — click any card to copy.</p></div>`,
   ].join('') + tabs({ vertical: true, initial: outerInitial(), panes });

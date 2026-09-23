@@ -6,7 +6,7 @@ import { docsSections } from './grid-reveal-docs.js';
 export const title = 'GridReveal';
 export function render(){
   return [
-    `<p class="ds-crumb">Functions · GridReveal</p><div class="ds-hero">`,
+    `<p class="ds-crumb">Motion · GridReveal</p><div class="ds-hero">`,
     `<h1>Grid reveal — one function, two surfaces.</h1>`,
     `<p class="lede">Same <span class="tok">cells.js · buildTree</span> as the masonry; same <span `,
     `class="tok">gridReveal.js</span> as the hero. The lab below is a 280px window into that function — never `,

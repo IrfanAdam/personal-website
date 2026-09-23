@@ -5,11 +5,11 @@ import { cardHTML } from './specimens.js';
 
 export function renderLayouts() {
   return [
-    `<p class="ds-crumb">Patterns · Quality · Migration</p><div class="ds-hero"><h1>Compositions that repeat.</h1>
+    `<p class="ds-crumb">Elements · Patterns</p><div class="ds-hero"><h1>Compositions that repeat.</h1>
 `,
     `<p class="lede">Pages are arrangements of components on the 14px rhythm. Below: the three layouts that build `,
-    `the whole site, plus the gates every release passes.</p></div>
-`,
+    `the whole site, plus the gates every release passes.</p>`,
+    `<p class="sub"><a href="#/components">← Elements map</a></p></div>`,
     `<div class="ds-sec"><h2>Masonry grid</h2>`,
     `<p class="sub">4 cols → 2 @900px → 1 @640px. Short columns catch up on scroll (parallax) so bottoms align. `,
     `Mobile uses a 380ms linger instead of hover.</p>

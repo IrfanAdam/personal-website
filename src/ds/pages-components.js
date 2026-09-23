@@ -1,4 +1,4 @@
-/* ADAM/DS — Components map · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
+/* ADAM/DS — Components map · [plan:2026-09-23_134500-ds-coherent-consumable.md#phase-2] */
 import { note } from './specimens.js';
 const map = [
   ['Primitives', '9', '#/primitives',
@@ -17,12 +17,12 @@ const map = [
 export const title = 'Components';
 export function render() {
   return [
-    `<p class="ds-crumb">Components · map</p><div class="ds-hero"><h1>One Components section.</h1>`,
-    `<p class="lede">No dead-end index — every specimen lives on a sheet. `,
-    `This map is the only entry point for <span class="tok">#/components</span>.</p></div>`,
+    `<p class="ds-crumb">Elements · Components</p><div class="ds-hero"><h1>Start with elements.</h1>`,
+    `<p class="lede">This map is the Elements landing — every specimen lives on one of these sheets. `,
+    `Start here, then go deep.</p></div>`,
     `<div class="ds-sec"><h2>Where things live</h2>`,
-    `<p class="sub">9 → 11 → 4 → 7 — primitives compose into library, `,
-    `library into patterns, motion into functions.</p>`,
+    `<p class="sub">9 → 11 → 4 — primitives compose into library, `,
+    `library into patterns. Motion lives next door in <a href="#/functions">Motion</a>.</p>`,
     `<div class="ds-grid c2" style="gap:var(--space-12)">`,
     map.map(([name, n, href, holds, desc]) => [
       `<a href="${href}" style="text-decoration:none;display:block;`,

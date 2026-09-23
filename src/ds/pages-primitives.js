@@ -12,9 +12,10 @@ import { avatarSheet } from './primitives/avatar.js';
 import { logoSheet } from './primitives/logo.js';
 export function render(){
   return [
-    `<p class="ds-crumb">Primitives · Components</p><div class="ds-hero"><h1>Actions, not decoration.</h1>`,
-    `<p class="lede">Primitives are the smallest reusable parts — each in one uniform sheet: Usage → Anatomy → `,
-    `Behaviour → Preview / Code / Tokens → knobs. Pill keeps filter/tab role.</p></div>`,
+    `<p class="ds-crumb">Elements · Primitives</p><div class="ds-hero"><h1>Actions, not decoration.</h1>`,
+    `<p class="lede">Primitives are the smallest reusable parts — each in one uniform sheet: What → When to use → `,
+    `Preview / Code / Tokens → knobs. Pill keeps filter/tab role.</p>`,
+    `<p class="sub"><a href="#/components">← Elements map</a></p></div>`,
   btnSheet(),
   tagSheet(),
   kickerSheet(),

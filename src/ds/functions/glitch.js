@@ -13,7 +13,7 @@ export const title = 'Glitch';
 // — Markup —
 export function render() {
   return [
-    `<p class="ds-crumb">Functions · Glitch</p><div class="ds-hero"><h1>Glitch — any container.</h1>`,
+    `<p class="ds-crumb">Motion · Glitch</p><div class="ds-hero"><h1>Glitch — any container.</h1>`,
     `<p class="lede">Visual <span class="tok">.fx-glitch</span> + procedural audio palette: `,
     TYPES.join(' · '),
     `. Rendered with WebAudio, played back through audio elements. Default is <span class="tok">hum 320ms</span> `,

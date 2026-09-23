@@ -6,7 +6,7 @@ import { attachGlimmerOrb } from '../../views/glimmer-orb.js';
 export const title = 'Glimmer orb';
 export function render(){
   return [
-    `<p class="ds-crumb">Functions · Glimmer orb</p><div class="ds-hero"><h1>Glimmer orb — square cells.</h1>`,
+    `<p class="ds-crumb">Motion · Glimmer orb</p><div class="ds-hero"><h1>Glimmer orb — square cells.</h1>`,
     `<p class="lede">Voice-state orb: <span class="tok">idle</span> breathes, <span class="tok">listening</span> `,
     `ripples with mic level, <span class="tok">thinking</span> runs three orbiters. Cells are squares (<span `,
     `class="tok">fillRect</span>), color is <span class="tok">--color-accent</span>.</p></div>`,

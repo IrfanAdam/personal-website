@@ -25,13 +25,13 @@ const rows=[
 ];
 export function render(){
   return [
-    `<p class="ds-crumb">Functions · index</p><div class="ds-hero"><h1>Motion with a model.</h1>`,
-    `<p class="lede">Cell-grid reveal, skeletal shimmer, hero rise, and the viewer portal — each its own route. `,
+    `<p class="ds-crumb">Motion · Index</p><div class="ds-hero"><h1>Motion with a model.</h1>`,
+    `<p class="lede">Seven tuned labs, each its own route. `,
     `Labs run on production geometry; the site stays untouched until a tuned value graduates to a token.</p></div>`,
   ].join('')
 +[
   `<div class="ds-sec"><h2>Where labs live</h2>`,
-  `<p class="sub">Four routes + this index. Old <span class="tok">#/functions</span> was one long page — now split `,
+  `<p class="sub">Seven labs + this index. Old <span class="tok">#/functions</span> was one long page — now split `,
   `so each lab has depth without scrolling.</p>`,
 ].join('')
 +[

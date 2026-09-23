@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/component · composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/component · composer · [plan:2026-09-23_134500-ds-coherent-consumable.md#phase-2] */
 import { tabs } from './tabs.js';
 import { copy } from './specimens.js';
 import { knobsHTML as knobControls } from './component/knobs.js';
@@ -39,8 +39,8 @@ export function component({ title, sub, anatomy, behaviour, knobs = [], render, 
     title,
     `</h2>`,
     sub?`<p class="sub">${sub}</p>`:'',
-    anatomy?`<h3>Anatomy</h3><p class="sub">${anatomy}</p>`:'',
-    behaviour?`<h3>Behaviour</h3><p class="sub">${behaviour}</p>`:'',
+    anatomy?`<h3>What</h3><p class="sub">${anatomy}</p>`:'',
+    behaviour?`<h3>When to use</h3><p class="sub">${behaviour}</p>`:'',
     tabsHTML,
     `<div class="fx-controls" data-comp-ctrl="`,
     id,
