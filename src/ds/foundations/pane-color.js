@@ -1,4 +1,5 @@
-/* ADAM/DS — ds/foundations/pane-color · color composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-1] */
+/* ADAM/DS — ds/foundations/pane-color · color composer
+   [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-1] */
 // Exports: label, html — inner line tabs: Ramps / Pairs / Decor / Lab
 import { ramp, note } from '../specimens.js';
 import { MIX, MATS, CANVAS, FEED } from './color/data.js';
@@ -10,7 +11,11 @@ export function html() {
   const qs = h.includes('?') ? h.split('?')[1] : (window.location.search.slice(1) || '');
   const sp = new URLSearchParams(qs);
   const t = (sp.get('tab') || sp.get('colorTab') || '').toLowerCase();
-  const m = { ramps: 0, ramp: 0, materials: 0, pairs: 1, pair: 1, canvas: 1, decor: 2, decorative: 2, slots: 2, lab: 3, mixer: 3, playground: 3 };
+  const m = {
+    ramps: 0, ramp: 0, materials: 0, pairs: 1, pair: 1,
+    canvas: 1, decor: 2, decorative: 2, slots: 2,
+    lab: 3, mixer: 3, playground: 3,
+  };
   const init = m[t] ?? 0;
   const intro = [
     `<div class="ds-sec"><h2>Color</h2>`,
@@ -21,7 +26,9 @@ export function html() {
   const ramps = [
     `<h3>① Materials — ref-only</h3><p class="sub">Consume the semantic name, never the step.</p>`,
     MATS.map(([a,r,tk,s]) => `<h3>${a} · ${r}</h3><p class="sub">${s}</p>${ramp(tk,a)}`).join(''),
-    note('Do', 'Three accents stop here: Phosphor · Resin · Glass. New hues arrive as component tokens, never a fourth ramp.'),
+    note('Do',
+      'Three accents stop here: Phosphor · Resin · Glass. '
+      + 'New hues arrive as component tokens, never a fourth ramp.'),
   ].join('');
   const pairsHtml = [
     `<h3>② Pairs — light on dark · dark on light, AA inline</h3>`,
@@ -53,7 +60,7 @@ export function html() {
     `<output data-mix-v="t">0.50</output></label><div class="fx-btns">`,
     `<button class="tok" data-mix-copy="var">copy var()</button>`,
     `<button class="tok" data-mix-copy="hex">copy hex</button></div>`,
-    `<div class="vl" id="mixVal" style="font-family:var(--font-mono);font-size:var(--text-micro)\"></div></div></div>`,
+    `<div class="vl" id="mixVal" style="font-family:var(--font-mono);font-size:var(--text-micro)"></div></div></div>`,
   ].join('');
   const inner = tabs({ variant: 'line', initial: init, panes: [
     { label: 'Ramps', html: ramps },

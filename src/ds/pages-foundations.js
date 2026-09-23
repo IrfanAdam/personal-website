@@ -1,5 +1,5 @@
-/* ADAM/DS — Foundations composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-1] */
-// Exports: render, mount — panes + mixer/sync/handlers stitching, outer deep link
+/* ADAM/DS — Foundations composer · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-2] */
+// Exports: render, mount — panes + mixer/sync/handlers + playground
 import { cssVar, contrastRatio as ratio, verdictRatio as verdict, probeTheme, refreshLive } from './specimens.js';
 import { makeMix } from './foundations-mix.js';
 import { makeHandlers } from './foundations-handlers.js';
@@ -13,6 +13,7 @@ import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
 import { label as oL, html as oH } from './foundations/pane-sound.js';
 import { mountSoundBoard } from './foundations/sound/board.js';
+import { mountPlayground } from './foundations/tokens/playground.js';
 function outerInitial() {
   const h = window.location.hash || '';
   const qs = h.includes('?') ? h.split('?')[1] : (window.location.search.slice(1) || '');
@@ -69,28 +70,31 @@ export function mount(root) {
   const onMix = () => refreshMix();
   const { onCopyVar, onType, onEase, onFx } = makeHandlers({ sw, typeSample, stage, dot, shimmer, rise });
   if (ctrls) { ctrls.addEventListener('input', onMix); ctrls.addEventListener('click', onCopyVar); }
-  let syncing = false;
-  const sync = () => { if (syncing) return;
+  let obs = null, syncing = false;
+  const sync = () => {
+    if (syncing) return;
     syncing = true;
-    fillPairs();
-    refreshMix();
-    refreshLive();
+    if (obs) obs.disconnect();
+    fillPairs(); refreshMix(); refreshLive();
+    if (obs) obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style'] });
     syncing = false;
   };
   sync();
-  const obs = new MutationObserver(sync);
+  obs = new MutationObserver(sync);
   obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style'] });
   root.__foundObs = obs;
   if (typeCtrls) typeCtrls.addEventListener('change', onType);
   if (easeCtrls) easeCtrls.addEventListener('click', onEase), easeCtrls.addEventListener('change', onEase);
   root.addEventListener('click', onFx);
   const offSound = mountSoundBoard(root);
+  const offPg = mountPlayground(root);
   return () => {
     if (ctrls) { ctrls.removeEventListener('input', onMix); ctrls.removeEventListener('click', onCopyVar); }
     if (typeCtrls) typeCtrls.removeEventListener('change', onType);
     if (easeCtrls) { easeCtrls.removeEventListener('click', onEase); easeCtrls.removeEventListener('change', onEase); }
     root.removeEventListener('click', onFx);
     try { offSound && offSound(); } catch {}
-    obs.disconnect();
+    try { offPg && offPg(); } catch {}
+    try { obs && obs.disconnect(); } catch {}
   };
 }

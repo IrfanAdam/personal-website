@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T07:33:59.614Z",
+ "generated": "2026-09-23T07:51:35.292Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -33,6 +33,15 @@
   "2026-09-23_130000-ds-understandable-mutable.md"
  ],
  "commits": [
+  {
+   "sha": "e47382e",
+   "full": "e47382eb185eb4dc2e161cccfff2d8a761fbfb2e",
+   "date": "2026-09-23",
+   "time": "13:04",
+   "subject": "feat(ds): color inner tabs + deep link + keyboard",
+   "plan": "2026-09-23_130000-ds-understandable-mutable.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "47f081b",
    "full": "47f081baab96fc8ea4e13179293eea643ad41476",
@@ -3500,9 +3509,9 @@
   }
  ],
  "wip": [
-  "M src/ds/changelog-names.json",
   "M src/ds/foundations/pane-color.js",
+  "M src/ds/foundations/pane-contract.js",
   "M src/ds/pages-foundations.js",
-  "M src/ds/tabs.js"
+  "?? src/ds/foundations/tokens/"
  ]
 }
