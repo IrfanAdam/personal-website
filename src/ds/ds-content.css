@@ -26,6 +26,12 @@
   line-height: var(--leading-display);
   margin: var(--space-10) 0 var(--space-12);
 }
+.ds-hero--lab h1 {
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-snug);
+  margin-top: 0;
+}
 .ds-hero .lede {
   color: var(--color-ink-muted);
   font-size: var(--text-ds-lede);

@@ -12,8 +12,8 @@ function soundOpts() {
 export function labSection(){
   return [
   `<div class="ds-sec"><h2>Lab</h2>`,
-  `<p class="sub">Capped at 280px; texture + sound pairing. Controls collapsed: core (cells/morph/span) `,
-  `+ <span class="tok">Advanced</span>. Reduced-motion paints one static frame.</p>`,
+  `<p class="sub">280px stage — helix preview by default. Hit <span class="tok">replay</span> to observe the `,
+  `reveal; switch texture to compare. Advanced holds gutter/order.</p>`,
 ].join('')
 +[
   `<div class="ds-spec block">`,
@@ -39,17 +39,18 @@ export function labSection(){
   `n:var(--space-8) 0">Advanced</summary>`,
 ].join('')
 +[
+  `<label class="fx-row">texture <select data-k="image"><option value="helix" selected>helix · .png</option>`,
+  `<option value="none">none · grey</option>`,
+  `<option value="fluxx">fluxx · .jpg</option>`,
+  `<option value="tas-35">tas-35 · .jpg</option></select><output data-v="image">helix</output></label>`,
+].join('')
++[
   `<label class="fx-row">gutter <input type="range" min="0" max="3" step="0.5" value="1" data-k="gut">`,
   `<output data-v="gut">1px</output></label>`,
 ].join('')
 +[
   `<label class="fx-row">order <select data-k="order"><option value="seq">sequential</option>`,
   `<option value="rnd">random</option></select><output data-v="order">seq</output></label>`,
-].join('')
-+[
-  `<label class="fx-row">texture <select data-k="image"><option value="none">none · grey</option>`,
-  `<option value="helix">helix · .png</option><option value="fluxx">fluxx · .jpg</option>`,
-  `<option value="tas-35">tas-35 · .jpg</option></select><output data-v="image">none</output></label>`,
 ].join('')
 +[
   `<label class="fx-row">sound <select data-k="sound">${soundOpts()}</select>`,

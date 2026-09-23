@@ -6,7 +6,7 @@ import { rgb, mix3 } from './color.js';
 // — Factory: getters keep split/pal/root live —
 export function makeDraw(ctx, canvas, get) {
   return () => {
-    const { root, P, split, pal, hasTex } = get();
+    const { root, P, split, pal, hasTex, texImg } = get();
     const W = canvas.width, H = canvas.height;
     if (!W || !H || !root) return;
     ctx.fillStyle = rgb(pal.bg);
@@ -36,5 +36,17 @@ export function makeDraw(ctx, canvas, get) {
       }
     };
     walk(root, 0, 0, W, H);
+    if (hasTex && texImg && texImg.naturalWidth) {
+      const photo = clamp01((split - 0.75) / 0.25);
+      if (photo > 0.002) {
+        const sc = Math.max(W / texImg.naturalWidth, H / texImg.naturalHeight);
+        const dw = texImg.naturalWidth * sc;
+        const dh = texImg.naturalHeight * sc;
+        ctx.save();
+        ctx.globalAlpha = Math.min(1, photo);
+        ctx.drawImage(texImg, (W - dw) / 2, (H - dh) / 2, dw, dh);
+        ctx.restore();
+      }
+    }
   };
 }

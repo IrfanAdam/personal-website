@@ -1,9 +1,10 @@
 /* ADAM/DS — Functions · Viewer (tamed editorial portal — params). */
-import { note, code } from '../specimens.js';
+import { note, code, cardHTML } from '../specimens.js';
+import { attachViewer } from '../../views/masonry/viewer.js';
 export const title = 'Viewer';
 export function render(){
   return [
-    `<p class="ds-crumb">Motion · Viewer</p><div class="ds-hero"><h1>Viewer portal — params.</h1>`,
+    `<div class="ds-hero ds-hero--lab"><h1>Viewer portal — params.</h1>`,
     `<p class="lede">Tamed editorial expander (hairline + paper, no neon). Former overlays (<span `,
     `class="tok">--viewer-grid/scan/neon</span>) removed in v1.1; glass/bar/shimmer markup deleted in 5.3.</p></div>`,
   ].join('')
@@ -37,13 +38,16 @@ export function render(){
 +`</div>`
 +[
   `<div class="ds-sec"><h2>Specimen</h2>`,
-  `<p class="sub">How it looks when live — portal + tether lines (hover-only, desktop).</p>`,
+  `<p class="sub">Hover the card — preview appears to the right (flips left on collision), Y follows cursor `,
+  `with spring, tether lines draw. Same physics as masonry.</p>`,
 ].join('')
 +[
-  `<div class="ds-spec block"><div class="viewer on" style="position:relative;inset:auto;opacity:1;animation:none">`,
-  `<img src="/images/fluxx.jpg" alt=""/></div>`,
+  `<div class="ds-spec block"><div class="cols" data-viewer-demo style="width:100%"><div class="col">`,
+  cardHTML('Fluxx', 'fluxx · 2024', '/images/fluxx.jpg', ['Fintech']),
+  `</div></div></div>`,
 ].join('')
-+`<figure><figcaption>cursor · viewer · lines · off on touch/mobile/reduced-motion</figcaption></figure></div>`
++`<figure><figcaption>threshold 12px · idle 850ms · debounce 70ms · k 0.1 · fr 0.54 · W 180px`,
++`preview to right, spring Y</figcaption></figure>`
 +`${note('Do','Keep <span class="tok">aria-hidden</span> + pointer-events none — cards keep native link semantics.')}`
 +`</div>`
 +`<div class="ds-sec"><h2>Graduation</h2><p class="sub">Phase-5 record — nothing here changes pixels.</p>`
@@ -54,4 +58,10 @@ export function render(){
 ].join('')
 +`${note('Don’t','No lab value enters site until it is a token via <span class="tok">var()</span>.','dont')}</div>`;
 }
-export function mount(){ return ()=>{}; }
+export function mount(root){
+  const grid = root.querySelector('[data-viewer-demo]');
+  if (!grid) return () => {};
+  let off = null;
+  try { off = attachViewer(grid); } catch (_) { off = null; }
+  return () => { try { off && off(); } catch (_) {} };
+}

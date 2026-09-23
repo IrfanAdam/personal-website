@@ -32,7 +32,12 @@
 }
 .fx-btns { display: flex; gap: var(--space-8); flex-wrap: wrap; }
 /* Glitch lab — card left, sound panel right (stacks narrow). */
-.fx-split { display: grid; grid-template-columns: minmax(var(--size-ds-img), 0.8fr) minmax(0, 1.5fr); gap: var(--space-16); align-items: start; }
+.fx-split {
+  display: grid;
+  grid-template-columns: minmax(var(--size-ds-img), 0.8fr) minmax(0, 1.5fr);
+  gap: var(--space-16);
+  align-items: start;
+}
 .fx-panel {
   border: var(--border-hairline);
   padding: var(--space-14);
@@ -42,14 +47,12 @@
   min-width: 0;
   overflow: hidden;
 }
-.fx-split > * { min-width: 0; }
-.fx-panel > * { min-width: 0; max-width: 100%; }
-.fx-panel .sub { overflow-wrap: anywhere; }
-.fx-panel .tok { white-space: normal; overflow-wrap: anywhere; }
-.fx-btns > * { min-width: 0; }
-.fx-row > * { min-width: 0; }
+.fx-split > *, .fx-panel > *, .fx-btns > *, .fx-row > * { min-width: 0; }
+.fx-panel > * { max-width: 100%; }
+.fx-panel .sub, .fx-panel .tok { overflow-wrap: anywhere; }
+.fx-panel .tok { white-space: normal; }
 .fx-row > :last-child:nth-child(2) { grid-column: 2 / -1; }
-.fx-row select, .fx-row input { width: 100%; min-width: 0; }
+.fx-row select, .fx-row input { width: 100%; }
 .fx-panel h3 {
   margin: 0;
   font-family: var(--font-mono);
@@ -92,8 +95,6 @@
 @media (prefers-reduced-motion: reduce) { .fx-shimmer i { animation: none; } .fx-rise { transition: none; } }
 
 /* full-width glitch demo — card fills its cell */
-.fx-split [data-lab] .card { width: 100%; max-width: none; }
-.cols[data-viewer-demo] .card { width: 100%; max-width: none; }
+.fx-split [data-lab] .card, .cols[data-viewer-demo] .card { width: 100%; max-width: none; }
 .cols[data-viewer-demo] .col { flex: 1 1 100%; }
-.cols[data-viewer-demo] .card .img { height: auto; aspect-ratio: 4 / 3; }
-.fx-split [data-lab] .card .img { height: auto; aspect-ratio: 4 / 3; }
+.fx-split [data-lab] .card .img, .cols[data-viewer-demo] .card .img { height: auto; aspect-ratio: 4 / 3; }

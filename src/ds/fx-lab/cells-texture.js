@@ -28,7 +28,7 @@ export function makeTexture(hooks) {
     if (!src) { hooks.rebuild(); hooks.draw(); return; }
     const im = new Image(); im.crossOrigin = 'anonymous'; im.src = src;
     im.onload = () => { texImg = im; hasTex = false; hooks.rebuild(); hooks.draw();
-      if (hooks.playing()) hooks.play(); else hooks.draw(); };
+      if (hooks.onTextureReady) hooks.onTextureReady(); else if (hooks.playing()) hooks.play(); };
     im.onerror = () => { texImg = null; hasTex = false; hooks.rebuild(); hooks.draw(); };
   };
   return {

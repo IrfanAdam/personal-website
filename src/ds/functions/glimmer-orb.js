@@ -3,10 +3,11 @@
    spring scale. Squares via fillRect (radius-none doctrine). */
 import { note, code } from '../specimens.js';
 import { attachGlimmerOrb } from '../../views/glimmer-orb.js';
+import { watchPaneVisible } from '../fx-lab/pane-visible.js';
 export const title = 'Glimmer orb';
 export function render(){
   return [
-    `<p class="ds-crumb">Motion · Glimmer orb</p><div class="ds-hero"><h1>Glimmer orb — square cells.</h1>`,
+    `<div class="ds-hero ds-hero--lab"><h1>Glimmer orb — square cells.</h1>`,
     `<p class="lede">Voice-state orb: <span class="tok">idle</span> breathes, <span class="tok">listening</span> `,
     `ripples with mic level, <span class="tok">thinking</span> runs three orbiters. Cells are squares (<span `,
     `class="tok">fillRect</span>), color is <span class="tok">--color-accent</span>.</p></div>`,
@@ -66,29 +67,34 @@ export function mount(root){
   const canvas = root.querySelector('[data-fx-glimmer]');
   if (!canvas || !canvas.getContext) return () => {};
   const ctl = root.querySelector('[data-fx-glimmer-ctl]');
-  let stop = attachGlimmerOrb(canvas, { state: 'listening' });
+  let stop = null;
   const outs = {}; if (ctl) ctl.querySelectorAll('[data-v]').forEach((o) => { outs[o.dataset.v] = o; });
   const show = (k, v) => { if (outs[k]) outs[k].textContent = v; };
-  const restart = () => {
+  const start = () => {
+    try { stop && stop(); } catch (_) {}
     const dots = ctl ? +ctl.querySelector('[data-k="dots"]').value : 11;
     const state = ctl ? ctl.querySelector('[data-k="state"]').value : 'listening';
     const lv = ctl ? +ctl.querySelector('[data-k="level"]').value : 0;
-    try { stop(); } catch (_) {}
     stop = attachGlimmerOrb(canvas, { state, dots, level: lv === 0 ? undefined : lv / 100 });
     show('dots', dots); show('state', state); show('level', lv === 0 ? 'auto' : (lv / 100).toFixed(2));
   };
+  const restart = () => start();
   const live = (e) => {
     const k = e.target.dataset.k; if (!k) return;
-    if (k === 'state' && stop.setState) { stop.setState(e.target.value); show('state', e.target.value); return; }
-    if (k === 'level' && stop.setLevel) { const v = +e.target.value;
-      stop
-        .setLevel(v === 0 ? undefined : v / 100);
-      show('level',
-        v === 0 ? 'auto' : (v / 100).toFixed(2)); return; }
+    if (k === 'state' && stop && stop.setState) {
+      stop.setState(e.target.value); show('state', e.target.value); return;
+    }
+    if (k === 'level' && stop && stop.setLevel) { const v = +e.target.value;
+      stop.setLevel(v === 0 ? undefined : v / 100);
+      show('level', v === 0 ? 'auto' : (v / 100).toFixed(2)); return; }
     restart();
   };
+  // Defer start until canvas is visible (tabs start hidden)
+  const offVisible = watchPaneVisible(canvas, start);
   if (ctl) { ctl.addEventListener('input', live); ctl.addEventListener('change', live); }
-  return () => { if (ctl) { ctl.removeEventListener('input',
-        live); ctl.removeEventListener('change',
-        live); } try { stop(); } catch (_) {} };
+  return () => {
+    offVisible();
+    if (ctl) { ctl.removeEventListener('input', live); ctl.removeEventListener('change', live); }
+    try { stop && stop(); } catch (_) {}
+  };
 }

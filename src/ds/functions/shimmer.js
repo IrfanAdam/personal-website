@@ -4,7 +4,7 @@ import { mountShimmer } from '../fx-lab.js';
 export const title = 'Shimmer';
 export function render(){
   return [
-    `<p class="ds-crumb">Motion · Shimmer</p><div class="ds-hero"><h1>Skeletal shimmer.</h1>`,
+    `<div class="ds-hero ds-hero--lab"><h1>Skeletal shimmer.</h1>`,
     `<p class="lede">Token trio live: <span class="tok">--shimmer-gradient</span> + <span `,
     `class="tok">--shimmer-band</span> + <span class="tok">--dur-shimmer</span>. Case heroes shimmer; masonry `,
     `shelved it (canvas owns that sheen).</p></div>`,

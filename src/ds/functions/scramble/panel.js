@@ -6,7 +6,7 @@ import { codeTab } from './code-tab.js';
 export function render(){
   const o = buildOpts();
   return [
-    `<p class="ds-crumb">Motion · Scramble</p><div class="ds-hero"><h1>Scramble — decoding text.</h1>`,
+    `<div class="ds-hero ds-hero--lab"><h1>Scramble — decoding text.</h1>`,
     `<p class="lede">GSAP <span class="tok">ScrambleTextPlugin</span>-like decoder: randomized chars refreshing at `,
     `<span class="tok">speed</span>, revealing left→right over <span class="tok">--dur-scramble</span>. Change font `,
     `+ fire sound — all <span class="tok">var()</span> type, sound renders offline and plays through audio `,
