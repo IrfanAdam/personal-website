@@ -140,4 +140,4 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All local gates pass and fresh screenshots of sidebar (`Special`) + `/ds/#/functions` (under Special) match.
 
-*Shipped in <sha> · Tasks 13–15 · phase-5.*
+*Shipped in 2dff01e · Tasks 13–15 · phase-5.*

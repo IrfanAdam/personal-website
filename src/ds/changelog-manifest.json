@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T13:40:32.943Z",
+ "generated": "2026-09-23T13:41:16.443Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "2dff01e",
+   "full": "2dff01ecbb14c020fa0d15ab7731c2d54c9643ca",
+   "date": "2026-09-23",
+   "time": "19:11",
+   "subject": "feat(ds): Special tab for Motion labs, Elements Motion removed",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-5}"
+  },
   {
    "sha": "7691802",
    "full": "7691802123a1092e22af7a6b18dde7cdd643be13",
@@ -3751,11 +3760,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/ds.js",
-  "D src/ds/motion-panes.js",
-  "M src/ds/pages-functions.js",
-  "D src/ds/pages-motion.js",
-  "M src/ds/routes.js"
- ]
+ "wip": []
 }
