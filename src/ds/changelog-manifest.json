@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:44:23.457Z",
+ "generated": "2026-09-23T12:46:50.084Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "9e8d9f9",
+   "full": "9e8d9f97eadf19aaa0101227c5ddc24ba33476ca",
+   "date": "2026-09-23",
+   "time": "18:16",
+   "subject": "fix(ds): clear wipes whole scope, not just last trace",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-4}"
+  },
   {
    "sha": "75cb968",
    "full": "75cb96874fed408082e8c3e28cb9c29f477ebb13",
