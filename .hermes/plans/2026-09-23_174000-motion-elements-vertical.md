@@ -5,8 +5,6 @@
 **Tech Stack:** Vanilla JS + Vite, `src/ds/tabs.js` (`vertical:true`), `src/ds/foundations/motion/*` + `foundations/sound/*`.
 **Tags:** Design System, Motion, Component
 
-<!-- changelog: hide -->
-
 ---
 
 ## Phase 1 — Motion as Elements, vertical tabs {#phase-1}
