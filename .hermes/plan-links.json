@@ -1059,7 +1059,12 @@
   "0d40da7": {
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-6}",
-   "note": "feat(list+case+tooling): 3-col desktop grid + 2\u00d74 mobile + case mobile reorder + playwright -> lump-sum P6 T15-18"
+   "note": "feat(list+case+tooling): 3-col desktop grid + 2×4 mobile + case mobile reorder + playwright -> lump-sum P6 T15-18"
+  },
+  "f74ef4d": {
+   "plan": "2026-09-23_173234-ds-motion-coherent.md",
+   "anchor": "{#phase-1}",
+   "note": "docs(plan): Motion coherent plan + names — Motion labs read like Elements"
   }
  }
 }
