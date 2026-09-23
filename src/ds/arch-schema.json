@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T14:00:50.741Z",
+  "generated": "2026-09-23T14:04:27.172Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -1416,16 +1416,16 @@
       "id": "ds_functions_glimmer_orb",
       "path": "src/ds/functions/glimmer-orb.js",
       "layer": "function",
-      "route": "#/functions/glimmer-orb",
-      "title": "Glimmer orb",
+      "route": null,
+      "title": "glimmer orb",
       "tokens": []
     },
     {
       "id": "ds_functions_glitch",
       "path": "src/ds/functions/glitch.js",
       "layer": "function",
-      "route": "#/functions/glitch",
-      "title": "Glitch",
+      "route": null,
+      "title": "glitch",
       "tokens": []
     },
     {
@@ -1490,8 +1490,8 @@
       "id": "ds_functions_grid_reveal",
       "path": "src/ds/functions/grid-reveal.js",
       "layer": "function",
-      "route": "#/functions/grid-reveal",
-      "title": "GridReveal",
+      "route": null,
+      "title": "grid reveal",
       "tokens": []
     },
     {
@@ -1522,16 +1522,16 @@
       "id": "ds_functions_rise",
       "path": "src/ds/functions/rise.js",
       "layer": "function",
-      "route": "#/functions/rise",
-      "title": "Rise",
+      "route": null,
+      "title": "rise",
       "tokens": []
     },
     {
       "id": "ds_functions_scramble",
       "path": "src/ds/functions/scramble.js",
       "layer": "function",
-      "route": "#/functions/scramble",
-      "title": "Scramble",
+      "route": null,
+      "title": "scramble",
       "tokens": []
     },
     {
@@ -1681,8 +1681,8 @@
       "id": "ds_functions_shimmer",
       "path": "src/ds/functions/shimmer.js",
       "layer": "function",
-      "route": "#/functions/shimmer",
-      "title": "Shimmer",
+      "route": null,
+      "title": "shimmer",
       "tokens": [
         "--dur-shimmer",
         "--shimmer-band",
@@ -1701,8 +1701,8 @@
       "id": "ds_functions_viewer",
       "path": "src/ds/functions/viewer.js",
       "layer": "function",
-      "route": "#/functions/viewer",
-      "title": "Viewer",
+      "route": null,
+      "title": "viewer",
       "tokens": []
     },
     {
@@ -2072,8 +2072,8 @@
       "id": "ds_pages_functions",
       "path": "src/ds/pages-functions.js",
       "layer": "function",
-      "route": "#/functions",
-      "title": "Motion",
+      "route": null,
+      "title": "pages functions",
       "tokens": []
     },
     {
@@ -2114,6 +2114,14 @@
       "layer": "component",
       "route": "#/sound",
       "title": "Sound",
+      "tokens": []
+    },
+    {
+      "id": "ds_pages_special",
+      "path": "src/ds/pages-special.js",
+      "layer": "component",
+      "route": "#/special",
+      "title": "Special",
       "tokens": []
     },
     {
@@ -5861,11 +5869,6 @@
       "kind": "imports"
     },
     {
-      "from": "ds_pages_functions",
-      "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
       "from": "ds_pages_library",
       "to": "ds_library_card",
       "kind": "imports"
@@ -6051,6 +6054,56 @@
       "kind": "imports"
     },
     {
+      "from": "ds_pages_special",
+      "to": "ds_functions_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_functions_glitch",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_functions_grid_reveal",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_functions_rise",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_functions_scramble",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_functions_shimmer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_functions_viewer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_pages_functions",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_special",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
       "from": "ds_patterns_data",
       "to": "ds_specimens",
       "kind": "imports"
@@ -6182,41 +6235,6 @@
     },
     {
       "from": "ds_routes",
-      "to": "ds_functions_glimmer_orb",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_functions_glitch",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_functions_grid_reveal",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_functions_rise",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_functions_scramble",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_functions_shimmer",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_functions_viewer",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
       "to": "ds_pages_atlas",
       "kind": "imports"
     },
@@ -6228,11 +6246,6 @@
     {
       "from": "ds_routes",
       "to": "ds_pages_foundations",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_pages_functions",
       "kind": "imports"
     },
     {
@@ -6258,6 +6271,11 @@
     {
       "from": "ds_routes",
       "to": "ds_pages_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_routes",
+      "to": "ds_pages_special",
       "kind": "imports"
     },
     {

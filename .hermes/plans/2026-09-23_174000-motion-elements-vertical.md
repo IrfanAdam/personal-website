@@ -167,7 +167,7 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** Screenshot of `/ds/#/foundations` shows Motion pane.
 
-*Shipped in 74fe3fd · Tasks 16–18 · phase-6.*
+*Shipped in 0494908 · Tasks 16–18 · phase-6.*
 
 ## Phase 7 — Special as Library-style vertical tabs {#phase-7}
 *Tags: Design System*
@@ -179,18 +179,20 @@
 | 20 | Routes → single Special entry | `src/ds/routes.js` keeps single `Special` entry (`#/special` canonical, `#/functions` alias via `ds.js`), drops 7 per-lab routes; `ds.js` redirects `#/functions/*` → `#/special`; sidebar shows `Special` once under group `Special` |
 | 21 | Verify build + Special screenshot | `plan:names`, `ds:track`, `test` green; sidebar has `Special` once, `/ds/#/special` shows vertical tabs like Library, each lab live |
 
-### Task 19: Collapse Special labs into one page
+### Task 19: Collapse Special labs into one page ✓ done
 **Objective:** Special reads like Library — one tab, many sheets.
 **Files:** `src/ds/pages-functions.js`, `src/ds/pages-special.js` (if new), `src/ds/functions/*`
 **Verify:** Vertical tabs switch without page change.
 
-### Task 20: Routes → single Special entry
+### Task 20: Routes → single Special entry ✓ done
 **Objective:** Sidebar not fragmented — one Special entry.
 **Files:** `src/ds/routes.js`, `src/ds/ds.js`
 **Verify:** `routes.js` has 1 Special entry; 7 lab routes removed; grep 0 orphan.
 
-### Task 21: Verify build + Special screenshot
+### Task 21: Verify build + Special screenshot ✓ done
 **Objective:** Ship only a rendered, linted, buildable Special tab.
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** Screenshot of `/ds/#/special` matches Library chrome.
+
+*Shipped in pending · Tasks 19–21 · phase-7.*
 
