@@ -115,4 +115,4 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All local gates pass and fresh `/ds/#/sound` Files tab shows 3-col table with clear at top.
 
-*Shipped in pending · Tasks 10–12 · phase-4.*
+*Shipped in 75cb968 · Tasks 10–12 · phase-4.*
