@@ -142,5 +142,9 @@
   "2026-09-23_154500-ds-elev-motion-tables.md": {
     "title": "FX elevation + Motion as tabbed tables",
     "purpose": "Tabled tokens"
+  },
+  "2026-09-23_173234-ds-motion-coherent.md": {
+    "title": "Motion coherent — labs read like Elements, live, one screen",
+    "purpose": "Motion labs coherent"
   }
 }
