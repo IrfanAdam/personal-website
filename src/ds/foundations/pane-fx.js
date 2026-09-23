@@ -7,11 +7,11 @@ export const label = 'FX';
 export function html() {
   return [
     `<div class="ds-sec"><h2>FX · visible effects</h2>`,
-    `<p class="sub">FX is everything that visibly moves after paint: reveal grids, shimmer sweeps, rises, `,
-    `glitches, press squashes, elevation, the viewer spring. <b>Motion</b> sets the timing (`,
-    `<span class="tok">--dur-*</span>, <span class="tok">--ease-*</span>); <b>FX</b> sets the effect that timing `,
-    `drives (<span class="tok">--fx-*</span>). Below: the token table, then each effect running live — tweak a `,
-    `token, every demo follows. Full playables live in the <a href="#/functions">Motion labs</a>.</p>`,
+    `<p class="sub">FX is what people see moving: an image appearing as a grid, a loading sheen, a hero growing `,
+    `into place, a block glitching, or a frame lifting off the page. <b>Motion</b> sets when and how it moves (`,
+    `<span class="tok">--dur-*</span>, <span class="tok">--ease-*</span>); <b>FX</b> sets what the movement does (`,
+    `<span class="tok">--fx-*</span>). Start with the effect tabs below; full interactive examples live in the `,
+    `<a href="#/functions">Motion labs</a>.</p>`,
   ].join('')
   + tokens()
   + demos()

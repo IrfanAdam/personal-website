@@ -1,4 +1,5 @@
-/* ADAM/DS — ds/foundations/fx/spring · spring + glitch · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/foundations/fx/spring · viewer spring + glitch link ·
+   [plan:2026-09-23_151320-ds-fx-cards.md#phase-1] */
 import { tokenTrace, note } from '../../specimens.js';
 export function spring(){return [
     `<h3>Viewer spring — live tokens</h3>`,
@@ -19,13 +20,8 @@ export function spring(){return [
         ['Viewer line', '--dur-viewer-line', '780ms · tether draw']] })
   + [
     `<h3>Glitch — generic container</h3>`,
-    `<p class="sub">Today's timeline tick, now for any block. CSS class <span class="tok">.fx-glitch</span> (or `,
-    `<span class="tok">attachGlitch(el)</span> in JS) reads <span class="tok">--dur-glitch</span> + <span `,
-    `class="tok">--fx-glitch-*</span>. Full lab at <a href="#/functions/glitch">Glitch</a>.</p>`,
+    `<p class="sub">The Distort tab above explains the visible shift, shear, and flicker. `,
+    `Use <span class="tok">.fx-glitch</span> or <span class="tok">attachGlitch(el)</span> `,
+    `to apply it; the full lab lives at <a href="#/functions/glitch">Glitch</a>.</p>`,
   ].join('')
-  + tokenTrace({ plain: true,
-      rows: [['Glitch duration', '--dur-glitch', '2.4s · loop'],
-        ['Glitch jitter', '--fx-glitch-x', 'var(--space-1) · X shift'],
-        ['Glitch skew', '--fx-glitch-skew', '-12deg · shear'],
-        ['Glitch flicker', '--fx-glitch-opacity', '0.5 · 89% opacity']] })
   + note('Do', 'Graduate knobs through tokens — lab-local count / gutter / order stay out of the contract.');}

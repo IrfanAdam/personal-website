@@ -1,4 +1,5 @@
-/* ADAM/DS foundations — vertical tabs + live definition demos. Token-only. */
+/* ADAM/DS foundations — vertical tabs + live definition demos ·
+   [plan:2026-09-23_151320-ds-fx-cards.md#phase-1] */
 .ds-tabs.vert { display: flex; gap: var(--space-12); align-items: flex-start; }
 .ds-tabs.vert > .ds-tablist {
   flex: 0 0 auto;

@@ -1,0 +1,63 @@
+/* ADAM/DS — ds/foundations-fx · FX token tables behind pill tabs ·
+   [plan:2026-09-23_151320-ds-fx-cards.md#phase-2] */
+.fx-tokens { margin: var(--space-12) 0; }
+.fx-pane-title { margin: 0 0 var(--space-2); }
+.fx-group-intro {
+  color: var(--color-ink-muted);
+  margin: 0 0 var(--space-8);
+  max-width: var(--measure-prose);
+}
+.fx-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.fx-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.fx-table th {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 400;
+  color: var(--color-ink-muted);
+  text-align: left;
+  padding: 0 var(--space-8) var(--space-4) 0;
+  border-bottom: var(--border-hairline);
+}
+.fx-table td {
+  vertical-align: top;
+  text-align: left;
+  padding: var(--space-6) var(--space-8) var(--space-6) 0;
+  border-bottom: var(--border-hairline);
+}
+.fx-table tbody tr {
+  cursor: pointer;
+}
+.fx-table tbody tr:hover {
+  outline: var(--border-focus);
+  outline-offset: calc(var(--focus-offset) * -1);
+}
+.fx-name {
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.fx-what {
+  color: var(--color-ink);
+  font-size: var(--text-ds-body);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+.fx-cue {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+.fx-live {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  white-space: nowrap;
+}

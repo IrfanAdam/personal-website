@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T09:26:43.850Z",
+  "generated": "2026-09-23T10:04:39.163Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -841,6 +841,40 @@
       ]
     },
     {
+      "id": "ds_foundations_fx",
+      "path": "src/ds/foundations-fx.css",
+      "layer": "style",
+      "route": null,
+      "title": "foundations fx",
+      "tokens": [
+        "--border-focus",
+        "--border-hairline",
+        "--color-ink",
+        "--color-ink-muted",
+        "--focus-offset",
+        "--font-mono",
+        "--font-sans",
+        "--leading-body",
+        "--measure-prose",
+        "--space-12",
+        "--space-2",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-ds-body",
+        "--text-micro",
+        "--text-small"
+      ]
+    },
+    {
+      "id": "ds_foundations_fx_cards",
+      "path": "src/ds/foundations/fx/cards.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "cards",
+      "tokens": []
+    },
+    {
       "id": "ds_foundations_fx_demos",
       "path": "src/ds/foundations/fx/demos.js",
       "layer": "foundation",
@@ -883,9 +917,7 @@
       "layer": "foundation",
       "route": null,
       "title": "spring",
-      "tokens": [
-        "--space-1"
-      ]
+      "tokens": []
     },
     {
       "id": "ds_foundations_fx_tokens",
@@ -893,9 +925,7 @@
       "layer": "foundation",
       "route": null,
       "title": "tokens",
-      "tokens": [
-        "--space-1"
-      ]
+      "tokens": []
     },
     {
       "id": "ds_foundations_handlers",
@@ -4594,6 +4624,16 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_foundations_fx_cards",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_fx_cards",
+      "to": "ds_tabs",
+      "kind": "imports"
+    },
+    {
       "from": "ds_foundations_fx_demos",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -4614,13 +4654,8 @@
       "kind": "imports"
     },
     {
-      "from": "ds_foundations_fx_spring",
-      "to": "styles_tokens",
-      "kind": "tokens"
-    },
-    {
       "from": "ds_foundations_fx_tokens",
-      "to": "ds_specimens",
+      "to": "ds_foundations_fx_cards",
       "kind": "imports"
     },
     {
@@ -4629,7 +4664,7 @@
       "kind": "styles"
     },
     {
-      "from": "ds_foundations_fx_tokens",
+      "from": "ds_foundations_fx",
       "to": "styles_tokens",
       "kind": "tokens"
     },
