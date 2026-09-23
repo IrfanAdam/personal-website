@@ -86,4 +86,4 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All local gates pass and fresh screenshot shows Scope at top with Voices active; playing a file updates same canvas.
 
-*Shipped in pending · Tasks 7–9 · phase-3.*
+*Shipped in 7bce104 · Tasks 7–9 · phase-3.*

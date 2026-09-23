@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:23:52.654Z",
+ "generated": "2026-09-23T12:29:10.368Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "7bce104",
+   "full": "7bce1040a673a2cd3edef34e6db5d1a3f0094b32",
+   "date": "2026-09-23",
+   "time": "17:58",
+   "subject": "feat(ds): Sound scope persists at top, updates from any tab",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-3}"
+  },
   {
    "sha": "5268f4c",
    "full": "5268f4c9af5e9d3a5917d76e51ddf02a44f9710b",
