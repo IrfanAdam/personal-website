@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/foundations/pane-motion · composer · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { tokenTrace, note, code } from '../specimens.js';
 import { bars, table, stage, blurs } from './motion/sections.js';
-export const label = 'Motion · Depth';
+export const label = 'Motion';
 export function html() {
   return [
     `<div class="ds-sec"><h2>Motion &amp; depth</h2>`,
@@ -11,7 +11,8 @@ export function html() {
   + `<h3>Durations — true-scale</h3>` + bars()
   + [
     `<h3>Duration → use</h3>`,
-    `<p class="sub">Reach for the use, not the number. FX and viewer steps demo in the FX tab.</p>`,
+    `<p class="sub">Reach for the use, not the number. Graduated demos live in FX, `,
+    `playable tuning in the <a href="#/functions">Motion labs</a>.</p>`,
   ].join('') + table()
   + [
     `<h3>Easing — signature curve</h3>`,

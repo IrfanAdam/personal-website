@@ -14,6 +14,7 @@ import { render as viewer, mount as mountViewer } from './functions/viewer.js';
 import { render as glimmer, mount as mountGlimmer } from './functions/glimmer-orb.js';
 import { render as glitch, mount as mountGlitch } from './functions/glitch.js';
 import { render as scramble, mount as mountScramble } from './functions/scramble.js';
+import { render as sound, mount as mountSound } from './functions/sound.js';
 import { render as atlas, mount as mountAtlas } from './pages-atlas.js';
 export const routes = [
   { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
@@ -32,4 +33,5 @@ export const routes = [
   { hash: '#/functions/glimmer-orb', label: 'Glimmer orb', group: 'Motion', render: glimmer, mount: mountGlimmer },
   { hash: '#/functions/glitch', label: 'Glitch', group: 'Motion', render: glitch, mount: mountGlitch },
   { hash: '#/functions/scramble', label: 'Scramble', group: 'Motion', render: scramble, mount: mountScramble },
+  { hash: '#/functions/sound', label: 'Sound', group: 'Motion', render: sound, mount: mountSound },
 ];

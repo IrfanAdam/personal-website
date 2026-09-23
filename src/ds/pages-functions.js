@@ -22,16 +22,20 @@ const rows=[
     '#/functions/scramble',
     ['GSAP ScrambleText parity · chars/speed/revealDelay/delimiter/rtl · --dur-scramble + font switch + synced ',
     'sound'].join('')],
+  ['Sound — feedback voice',
+    '#/functions/sound',
+    'procedural WebAudio synth + vendored files · scope render · moved out of Foundations'],
 ];
 export function render(){
   return [
     `<p class="ds-crumb">Motion · Index</p><div class="ds-hero"><h1>Motion with a model.</h1>`,
-    `<p class="lede">Seven tuned labs, each its own route. `,
-    `Labs run on production geometry; the site stays untouched until a tuned value graduates to a token.</p></div>`,
+    `<p class="lede">Eight tuned labs, each its own route. `,
+    `Labs run on production geometry; the site stays untouched until a tuned value graduates to a token. `,
+    `Durations + easings are specced in <a href="#/foundations">Foundations → Motion</a>.</p></div>`,
   ].join('')
 +[
   `<div class="ds-sec"><h2>Where labs live</h2>`,
-  `<p class="sub">Seven labs + this index. Old <span class="tok">#/functions</span> was one long page — now split `,
+  `<p class="sub">Eight labs + this index. Old <span class="tok">#/functions</span> was one long page — now split `,
   `so each lab has depth without scrolling.</p>`,
 ].join('')
 +[

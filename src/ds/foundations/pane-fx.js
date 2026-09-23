@@ -9,7 +9,8 @@ export function html() {
     `<div class="ds-sec"><h2>FX · graduated</h2>`,
     `<p class="sub">Three layers: <b>lab-local</b> knobs (cell count, gutter, order — experiments, never tokens) → `,
     `<b>graduated</b> <span class="tok">--fx-*</span> tokens (knobs proven on the site) → <b>site</b> consumption `,
-    `(gridReveal reads the same vars). Tweak a token, every demo below follows.</p>`,
+    `(gridReveal reads the same vars). Tweak a token, every demo below follows. `,
+    `Durations are specced in <a href="#/foundations">Motion</a>; tune playables in the <a href="#/functions">Motion labs</a>.</p>`,
   ].join('')
   + tokens()
   + demos()

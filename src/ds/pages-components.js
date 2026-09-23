@@ -22,7 +22,8 @@ export function render() {
     `Start here, then go deep.</p></div>`,
     `<div class="ds-sec"><h2>Where things live</h2>`,
     `<p class="sub">9 → 11 → 4 — primitives compose into library, `,
-    `library into patterns. Motion lives next door in <a href="#/functions">Motion</a>.</p>`,
+    `library into patterns. Motion lives next door in <a href="#/functions">Motion</a>. `,
+    `Tokens live in <a href="#/foundations">Start → Foundations</a>.</p>`,
     `<div class="ds-grid c2" style="gap:var(--space-12)">`,
     map.map(([name, n, href, holds, desc]) => [
       `<a href="${href}" style="text-decoration:none;display:block;`,
