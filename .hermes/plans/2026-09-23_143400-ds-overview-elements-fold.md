@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS + Vite, `src/ds/overview/*`, `src/ds/routes.js`, `src/ds/pages-*.js`.
 **Tags:** Design System, Layout
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Fold Elements map into Overview {#phase-1}

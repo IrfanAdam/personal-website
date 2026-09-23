@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS + Vite, `src/ds/routes.js`.
 **Tags:** Design System, Layout
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Pin Changelog + Components above Start {#phase-1}
