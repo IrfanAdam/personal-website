@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:04:06.906Z",
+ "generated": "2026-09-23T12:22:43.311Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -38,9 +38,19 @@
   "2026-09-23_150400-ds-fx-lede.md",
   "2026-09-23_151320-ds-fx-cards.md",
   "2026-09-23_154500-ds-elev-motion-tables.md",
-  "2026-09-23_173234-ds-motion-coherent.md"
+  "2026-09-23_173234-ds-motion-coherent.md",
+  "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "fd4e9b7",
+   "full": "fd4e9b722232eaffe2613f2a61f314e2cc6de84f",
+   "date": "2026-09-23",
+   "time": "17:52",
+   "subject": "feat(ds): Motion as Elements — vertical tabs, one screen per effect",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "f74ef4d",
    "full": "f74ef4d803dc670b57c99a7e9ad61f317b8ad3f7",

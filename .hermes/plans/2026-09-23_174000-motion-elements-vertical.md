@@ -32,7 +32,7 @@
 **Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
 **Verify:** All local gates pass and fresh screenshot of `/ds/#/motion` matches vertical-tab chrome.
 
-*Shipped in pending · Tasks 1–3 · phase-1.*
+*Shipped in fd4e9b7 · Tasks 1–3 · phase-1.*
 
 ## Phase 2 — Sound as Elements, vertical tabs {#phase-2}
 *Tags: Design System, Component*
