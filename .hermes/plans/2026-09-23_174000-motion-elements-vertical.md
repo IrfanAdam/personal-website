@@ -60,3 +60,30 @@
 **Verify:** All local gates pass and fresh screenshot of `/ds/#/sound` matches vertical-tab chrome.
 
 *Shipped in 5268f4c · Tasks 4–6 · phase-2.*
+
+## Phase 3 — Sound scope at top, always live {#phase-3}
+*Tags: Design System, Component*
+*Scope stays visible — Voices/Files play into the same canvas at the top.*
+
+| # | Task | Done when |
+|---|---|---|
+| 7 | Move Scope out of tabs | `src/ds/sound-panes.js` drops Scope pane → 3 panes (Voices · Files · Usage); Scope lives elsewhere |
+| 8 | Render Scope persistently above tabs | `src/ds/pages-sound.js` renders `scopeHtml()` in a sticky/persistent `ds-sec` above `tabs({vertical:true})`; `mountSoundBoard` still finds `#sndScope` regardless of active tab |
+| 9 | Verify scope updates from any tab | Playing any Voice or File updates the top Scope canvas + status; `plan:names`, `ds:track`, `test` green + fresh `/ds/#/sound` shows Scope at top |
+
+### Task 7: Move Scope out of tabs ✓ done
+**Objective:** Scope is not a hidden tab — it is the shared readout.
+**Files:** `src/ds/sound-panes.js`
+**Verify:** Panes length = 3; no Scope entry.
+
+### Task 8: Render Scope persistently above tabs ✓ done
+**Objective:** Scope visible on every Sound tab, updates live.
+**Files:** `src/ds/pages-sound.js`, `src/ds/foundations/sound/scope.js`
+**Verify:** `/ds/#/sound` shows Scope canvas + status bar at top, then vertical tabs below.
+
+### Task 9: Verify scope updates from any tab ✓ done
+**Objective:** Ship only a rendered, linted, buildable Sound with live Scope.
+**Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
+**Verify:** All local gates pass and fresh screenshot shows Scope at top with Voices active; playing a file updates same canvas.
+
+*Shipped in pending · Tasks 7–9 · phase-3.*

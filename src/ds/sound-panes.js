@@ -1,12 +1,11 @@
 /* ADAM/DS — ds/sound-panes · vertical Sound panes ·
-   [plan:2026-09-23_174000-motion-elements-vertical.md#phase-2] */
-// Exports: panes — 4 vertical tabs (Voices→Usage)
+   [plan:2026-09-23_174000-motion-elements-vertical.md#phase-3] */
+// Exports: panes — 3 vertical tabs (Voices→Usage), Scope persistent at top
 import { proceduralHtml } from './foundations/sound/procedural.js';
 import { filesHtml } from './foundations/sound/files.js';
-import { scopeHtml } from './foundations/sound/scope.js';
 import { usageHtml } from './foundations/sound/usage.js';
 
-// — Panes —
+// — Panes (Scope lives outside tabs, at page top) —
 export const panes = [
   {
     label: 'Voices',
@@ -18,12 +17,6 @@ export const panes = [
     label: 'Files',
     html: [
       filesHtml(),
-    ].join(''),
-  },
-  {
-    label: 'Scope',
-    html: [
-      scopeHtml(),
     ].join(''),
   },
   {
