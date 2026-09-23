@@ -3,11 +3,11 @@
 export const index = [
   ['Color', '--color-* + stone ramp → semantic → usage', 'bg, text, hairlines, accent'],
   ['Type', '--text-* + --font-* + leading/tracking', 'display → micro, tester live'],
-  ['Space · Layout', '--space-* + --size-* + --measure-* + --break-*',
+  ['Space', '--space-* + --size-* + --measure-* + --break-*',
     'rhythm/gutter, wrap 1600, sm 640 / md 800 / lg 900'],
   ['Shape', '--radius-* (= 0, normatively) + --border-* + --color-focus',
     'every radius + hairline/frame/dashed + focus ring'],
-  ['Motion · Depth', '--dur-* + --ease-* + --blur-*', 'glide, rise, reveal, viewer'],
+  ['Motion', '--dur-* + --ease-* + --blur-*', 'glide, rise, reveal, viewer'],
   ['FX', '--fx-* + viewer spring', 'grid, shimmer, rise'],
   ['Component overrides', '--<component>-* (pilot: --viewer-*)',
     'viewer border / shadow / in'],

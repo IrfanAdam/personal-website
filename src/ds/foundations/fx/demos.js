@@ -22,7 +22,7 @@ export function demos(){return [
   + [
     `<h3>Press · hover — live</h3>`,
     `<p class="sub">Press the button (<span class="tok">var(--scale-press)</span> squash); hover the row (dims to `,
-    `<span class="tok">var(--opacity-hover)</span>). Definitions live in Motion · Depth.</p><div class="fd-rowbtns">`,
+    `<span class="tok">var(--opacity-hover)</span>). Definitions live in Motion.</p><div class="fd-rowbtns">`,
     `<button class="fd-press">press me</button></div>`,
     `<div class="fd-hover">hover me — unselected rows dim to 0.55</div>`,
   ].join('');}

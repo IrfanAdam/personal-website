@@ -3,15 +3,15 @@ import { note } from './specimens.js';
 const map = [
   ['Primitives', '9', '#/primitives',
     'Button · Tag · Kicker · Divider · Badge · Field · Toggle · Avatar · Logo',
-    'Usage → Anatomy → Behaviour → Preview / Code / Tokens'],
+    'Usage → What → When to use → Preview / Code / Tokens'],
   ['Library', '11', '#/library',
     'Header · Footer · Hero · Card · Work · Filters · Strip · Spec · Next · CTA · Contact',
     'landing playgrounds dogfood real .top/.card/.cols'],
   ['Patterns', '4', '#/patterns',
     'Masonry · Viewer · Case 50/50 · A11y + Migration',
     'compositions + gates (contrast live, motion, focus)'],
-  ['Functions', '7', '#/functions',
-    'GridReveal · Shimmer · Rise · Viewer · Glimmer orb · Glitch · Scramble',
+  ['Motion', '8', '#/functions',
+    'GridReveal · Shimmer · Rise · Viewer · Glimmer orb · Glitch · Scramble · Sound',
     'labs + token backlog — tune here, graduate via --fx-*'],
 ];
 export const title = 'Components';
@@ -48,7 +48,7 @@ export function render() {
     `<div class="ds-sec"><h2>Migrated</h2>`,
     `<p class="sub">Pill → <a href="#/library">Filters</a> · Card → `,
     `<a href="#/library">Card</a> · Strip → <a href="#/library">Strip</a> · Viewer → `,
-    `<a href="#/functions">Functions</a> + <a href="#/patterns">Patterns</a>.</p>`,
+    `<a href="#/functions">Motion</a> + <a href="#/patterns">Patterns</a>.</p>`,
     `</div>`,
   ].join('');
 }

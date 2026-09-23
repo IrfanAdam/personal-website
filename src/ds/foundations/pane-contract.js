@@ -23,7 +23,7 @@ export function html() {
     '<span class="tok">--size-*</span> = named object · ',
     '<span class="tok">--measure-*</span> = ch · ',
     '<span class="tok">--rhythm/--gutter</span> = purpose aliases (prefer) · ',
-    '<span class="tok">--break-*</span> = viewport (640/800/900 — see Space · Layout).',
+    '<span class="tok">--break-*</span> = viewport (640/800/900 — see Space).',
   ].join(''))
   + note('Don’t', [
     'No <span class="tok">#hex</span> / <span class="tok">rgba()</span> / raw ',

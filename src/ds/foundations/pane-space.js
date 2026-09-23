@@ -4,7 +4,7 @@ import { groups, aliases } from './space/scale.js';
 import { layout } from './space/layout.js';
 import { measures, convention, breaks, recipe } from './space/tables.js';
 import { audit } from './space/audit.js';
-export const label = 'Space · Layout';
+export const label = 'Space';
 export function html() {
   return [
     `<div class="ds-sec"><h2>Spacing &amp; layout</h2>`,
