@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS + Vite, `src/ds/tabs.js`, `src/ds/foundations-fx.css` (`fx-table`), token-only CSS.
 **Tags:** Design System, Component
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Elevation tables behind tabs {#phase-1}
