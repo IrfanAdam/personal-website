@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_130000-ds-understandable-mutable.md#phase-3] */
+/* ADAM/DS — ds/routes · route table · [plan:2026-09-23_134500-ds-coherent-consumable.md#phase-1] */
 import { render as changelog, mount as mountChangelog } from './pages-changelog.js';
 import { render as overview, mount as mountOverview } from './pages-overview.js';
 import { render as foundations, mount as mountFoundations } from './pages-foundations.js';
@@ -18,22 +18,18 @@ import { render as atlas, mount as mountAtlas } from './pages-atlas.js';
 export const routes = [
   { hash: '#/changelog', label: 'Changelog', group: 'Start', render: changelog, mount: mountChangelog },
   { hash: '#/', label: 'Overview', group: 'Start', render: overview, mount: mountOverview },
-  { hash: '#/foundations',
-    label: 'Foundations · Tokens',
-    group: 'Start',
-    render: foundations,
-    mount: mountFoundations },
-  { hash: '#/atlas', label: 'Atlas', group: 'Atlas', render: atlas, mount: mountAtlas },
-  { hash: '#/primitives', label: 'Primitives', group: 'Components', render: primitives, mount: mountPrimitives },
-  { hash: '#/library', label: 'Library · Landing', group: 'Components', render: library, mount: mountLibrary },
-  { hash: '#/components', label: 'Components · Map', group: 'Components', render: components },
-  { hash: '#/patterns', label: 'Patterns · Quality', group: 'Components', render: patterns, mount: mountPatterns },
-  { hash: '#/functions', label: 'Functions', group: 'Functions', render: functions, mount: mountFunctions },
-  { hash: '#/functions/grid-reveal', label: 'GridReveal', group: 'Functions', render: gridReveal, mount: mountGrid },
-  { hash: '#/functions/shimmer', label: 'Shimmer', group: 'Functions', render: shimmer, mount: mountShimmer },
-  { hash: '#/functions/rise', label: 'Rise', group: 'Functions', render: rise, mount: mountRise },
-  { hash: '#/functions/viewer', label: 'Viewer', group: 'Functions', render: viewer, mount: mountViewer },
-  { hash: '#/functions/glimmer-orb', label: 'Glimmer orb', group: 'Functions', render: glimmer, mount: mountGlimmer },
-  { hash: '#/functions/glitch', label: 'Glitch', group: 'Functions', render: glitch, mount: mountGlitch },
-  { hash: '#/functions/scramble', label: 'Scramble', group: 'Functions', render: scramble, mount: mountScramble },
+  { hash: '#/foundations', label: 'Foundations', group: 'Start', render: foundations, mount: mountFoundations },
+  { hash: '#/atlas', label: 'Atlas', group: 'Start', render: atlas, mount: mountAtlas },
+  { hash: '#/components', label: 'Components', group: 'Elements', render: components },
+  { hash: '#/primitives', label: 'Primitives', group: 'Elements', render: primitives, mount: mountPrimitives },
+  { hash: '#/library', label: 'Library', group: 'Elements', render: library, mount: mountLibrary },
+  { hash: '#/patterns', label: 'Patterns', group: 'Elements', render: patterns, mount: mountPatterns },
+  { hash: '#/functions', label: 'Motion', group: 'Motion', render: functions, mount: mountFunctions },
+  { hash: '#/functions/grid-reveal', label: 'GridReveal', group: 'Motion', render: gridReveal, mount: mountGrid },
+  { hash: '#/functions/shimmer', label: 'Shimmer', group: 'Motion', render: shimmer, mount: mountShimmer },
+  { hash: '#/functions/rise', label: 'Rise', group: 'Motion', render: rise, mount: mountRise },
+  { hash: '#/functions/viewer', label: 'Viewer', group: 'Motion', render: viewer, mount: mountViewer },
+  { hash: '#/functions/glimmer-orb', label: 'Glimmer orb', group: 'Motion', render: glimmer, mount: mountGlimmer },
+  { hash: '#/functions/glitch', label: 'Glitch', group: 'Motion', render: glitch, mount: mountGlitch },
+  { hash: '#/functions/scramble', label: 'Scramble', group: 'Motion', render: scramble, mount: mountScramble },
 ];

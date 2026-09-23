@@ -114,5 +114,9 @@
   "2026-09-23_130000-ds-understandable-mutable.md": {
     "title": "DS understandable + mutable: focused panes, live tokens, clear IA",
     "purpose": "Make DS scannable and live-tweakable"
+  },
+  "2026-09-23_134500-ds-coherent-consumable.md": {
+    "title": "DS coherent + consumable: one IA, one header, material-only Foundations",
+    "purpose": "Make DS coherent for consumers"
   }
 }
