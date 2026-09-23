@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:56:20.166Z",
+ "generated": "2026-09-23T13:00:09.605Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "7691802",
+   "full": "7691802123a1092e22af7a6b18dde7cdd643be13",
+   "date": "2026-09-23",
+   "time": "18:30",
+   "subject": "fix(ds): succinct hover tips — purpose/clip not full Goal+Arch",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "d4f3db3",
    "full": "d4f3db31a8f0aec7b5afa6602993a5bce6cadf6f",
