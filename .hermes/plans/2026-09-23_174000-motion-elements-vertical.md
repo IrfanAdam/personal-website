@@ -3,12 +3,12 @@
 **Goal:** Motion and Sound stop living under Foundations/Motion labs — they read as Elements · Motion and Elements · Sound with vertical tabs like the screenshot (Masonry/Viewer/Case 50/50 pattern), one effect per screen.
 **Architecture:** New `src/ds/pages-motion.js` + `src/ds/pages-sound.js` reuse `foundations/motion/data.js` + `foundations/motion/sections.js` and `foundations/sound/*` with `tabs({vertical:true})` already used by Foundations/Patterns; `src/ds/routes.js` groups both under Elements; `src/ds/pages-foundations.js` drops Motion pane; Sound board keeps `mountSoundBoard`; live `data-live`/`data-copy-token` preserved.
 **Tech Stack:** Vanilla JS + Vite, `src/ds/tabs.js` (`vertical:true`), `src/ds/foundations/motion/*` + `foundations/sound/*`.
-**Tags:** Design System, Motion, Component
+**Tags:** Design System
 
 ---
 
 ## Phase 1 — Motion as Elements, vertical tabs {#phase-1}
-*Tags: Design System, Motion, Component*
+*Tags: Design System*
 *Motion leaves Foundations — 5 vertical tabs, same content, no pills.*
 
 | # | Task | Done when |
@@ -35,7 +35,7 @@
 *Shipped in fd4e9b7 · Tasks 1–3 · phase-1.*
 
 ## Phase 2 — Sound as Elements, vertical tabs {#phase-2}
-*Tags: Design System, Component*
+*Tags: Design System*
 *Sound leaves Motion labs — 4 vertical tabs, same board, no line pills.*
 
 | # | Task | Done when |
@@ -62,7 +62,7 @@
 *Shipped in 5268f4c · Tasks 4–6 · phase-2.*
 
 ## Phase 3 — Sound scope at top, always live {#phase-3}
-*Tags: Design System, Component*
+*Tags: Design System*
 *Scope stays visible — Voices/Files play into the same canvas at the top.*
 
 | # | Task | Done when |
@@ -89,7 +89,7 @@
 *Shipped in 7bce104 · Tasks 7–9 · phase-3.*
 
 ## Phase 4 — Files single player + Scope above Files + clear {#phase-4}
-*Tags: Design System, Component*
+*Tags: Design System*
 *Files stops doubling players — one Play on the right, Scope stays above Files, crowd cleared on demand.*
 
 | # | Task | Done when |

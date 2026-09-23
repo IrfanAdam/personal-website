@@ -3,12 +3,12 @@
 **Goal:** Make Motion read as one coherent story — the 8 labs share Elements' sheet chrome and live-tweakable tables so a first-timer can tune any model without re-learning the page.
 **Architecture:** Keep each lab's model untouched; replace bespoke lab headers/sections with the shared `crumb + hero (H1 + job lede)` + sheet contract `What / When / Demo / Tokens / Contract`; where a lab has >1 knob, group its demos/tokens as `tabs({variant:'line'})` + `fx-table` rows with `data-live`/`data-copy-token` so one effect per screen, no scroll.
 **Tech Stack:** Vanilla JS + Vite, `src/ds/routes.js`, `src/ds/pages-functions.js`, `src/ds/functions/*`, `src/ds/foundations/pane-motion.js` + `pane-fx.js` for cross-links, token-only CSS.
-**Tags:** Design System, Motion, Component
+**Tags:** Design System
 
 ---
 
 ## Phase 1 — Motion map + unified lab chrome {#phase-1}
-*Tags: Design System, Motion, Component*
+*Tags: Design System*
 *Motion starts with a map and every lab opens the same way — no bespoke headers.*
 
 | # | Task | Done when |
@@ -37,7 +37,7 @@
 ---
 
 ## Phase 2 — Labs as effect-first tables, one screen at a time {#phase-2}
-*Tags: Design System, Motion*
+*Tags: Design System*
 *Where a lab has >1 token/knob, tables replace stacked cards — pill tabs keep one effect visible.*
 
 | # | Task | Done when |
@@ -66,7 +66,7 @@
 ---
 
 ## Phase 3 — Ownership wayfinding + verify {#phase-3}
-*Tags: Design System, Motion*
+*Tags: Design System*
 *Motion labs, Foundations Motion, and FX state who owns what — one line each, no duplication.*
 
 | # | Task | Done when |

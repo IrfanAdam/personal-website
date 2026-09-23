@@ -3,13 +3,13 @@
 **Goal:** Make ADAM/DS read as one coherent system — Foundations scannable and live-tweakable (deep-linked panes + live token table), IA telling a consumer journey (Start → Elements → Motion), every page opening with unified chrome, and Foundations holding only material decisions.
 **Architecture:** Keep token single-source (`src/styles/tokens.css` → `var()` only) and vertical `tabs` shell. Add inner tabs + live token playground to Foundations, regroup routes into Start / Elements / Motion / Atlas with map-first order, unify crumb+hero+lede and sheet contracts, and move Sound from material to Motion labs.
 **Tech Stack:** Vanilla JS + Vite, `src/ds/tabs.js`, `src/ds/specimens.js` (`cssVar/probeTheme/refreshLive`), `src/ds/routes.js`/`ds.js`, page composers, `src/ds/foundations/*`, token-only CSS.
-**Tags:** Design System, Component, Tooling, Layout
+**Tags:** Design System
 
 ---
 
 ## Phase 1 — Foundations inner navigation + deep link {#phase-1}
 
-*Tags: Design System, Component*
+*Tags: Design System*
 
 *Color (and later Type) stop being one long scroll — inner horizontal tabs expose Ramps / Pairs / Decor / Lab as one selectable panel, with URL state and keyboard.*
 
@@ -40,7 +40,7 @@
 
 ## Phase 2 — Live token table + playground {#phase-2}
 
-*Tags: Design System, Tooling*
+*Tags: Design System*
 
 *One scannable table enumerates every semantic token with live swatch/value/copy; a paired playground lets you tweak spacing/color/type at runtime and see every specimen update.*
 
@@ -71,7 +71,7 @@
 
 ## Phase 3 — IA clarity + coverage {#phase-3}
 
-*Tags: Design System, Layout*
+*Tags: Design System*
 
 *Remove the dead-end index, surface the mental model, and make coverage explicit — the DS reads top-to-bottom without guessing where things live.*
 
@@ -99,7 +99,7 @@
 *Shipped in 659fb4b · Tasks 7–9 · phase-3.*
 
 ## Phase 4 — Nav + IA coherence {#phase-4}
-*Tags: Design System, Layout*
+*Tags: Design System*
 *Nav tells the story top-to-bottom: start here, build with this, move with this, map the rest.*
 *2026-09-23 13:45 · originally 2026-09-23_134500-ds-coherent-consumable.md Phase 1 · subset, ordered by first execution.*
 
@@ -129,7 +129,7 @@
 ---
 
 ## Phase 5 — Page chrome + sheet contract unity {#phase-5}
-*Tags: Design System, Component*
+*Tags: Design System*
 *Every page opens identically: crumb, one-line job statement, then uniform sheets — consumers never re-learn the layout.*
 *2026-09-23 13:57 · originally 2026-09-23_134500-ds-coherent-consumable.md Phase 2 · subset, ordered by first execution.*
 
