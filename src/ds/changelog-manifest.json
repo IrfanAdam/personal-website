@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T10:14:58.272Z",
+ "generated": "2026-09-23T11:09:04.615Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -40,6 +40,15 @@
   "2026-09-23_154500-ds-elev-motion-tables.md"
  ],
  "commits": [
+  {
+   "sha": "3de1a8d",
+   "full": "3de1a8da206f1d54a9146d7ac1169d20d7e27a1a",
+   "date": "2026-09-23",
+   "time": "16:38",
+   "subject": "refactor(ds): FX builds grouped — cards + elev/motion as one purpose build",
+   "plan": "2026-09-23_151320-ds-fx-cards.md",
+   "anchor": "{#phase-4}"
+  },
   {
    "sha": "28309a4",
    "full": "28309a419f5e6c7d6a1ba31c9cda731510c05775",
