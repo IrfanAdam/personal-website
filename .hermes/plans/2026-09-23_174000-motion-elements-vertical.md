@@ -89,3 +89,30 @@
 **Verify:** All local gates pass and fresh screenshot shows Scope at top with Voices active; playing a file updates same canvas.
 
 *Shipped in 7bce104 · Tasks 7–9 · phase-3.*
+
+## Phase 4 — Files single player + Scope above Files + clear {#phase-4}
+*Tags: Design System, Component*
+*Files stops doubling players — one Play on the right, Scope stays above Files, crowd cleared on demand.*
+
+| # | Task | Done when |
+|---|---|---|
+| 10 | Files table single player | `src/ds/foundations/sound/files.js` drops Preview column → header 3 cols FILE·DESC·PLAY, no `<audio>` preview, only right `▶ Play` + gain per row |
+| 11 | Scope above Files + clear | `src/ds/foundations/sound/scope.js` keeps canvas at top but `pages-sound.js` ensures it reads as above Files; `scope.js` adds `clear` pill at far right of bar, `board.js` handler clears canvas + resets status/info |
+| 12 | Verify build + Files screenshot | `plan:names`, `ds:track`, `test` green + fresh `/ds/#/sound` Files tab shows 3-col table + Scope with clear at top |
+
+### Task 10: Files table single player ✓ done
+**Objective:** No double players — keep the right one.
+**Files:** `src/ds/foundations/sound/files.js`
+**Verify:** Files header 3 cols, no Preview/audio tag, Play on right.
+
+### Task 11: Scope above Files + clear ✓ done
+**Objective:** Scope reads as panel above Files, crowd gone on demand.
+**Files:** `src/ds/foundations/sound/scope.js`, `src/ds/foundations/sound/board.js`, `src/ds/pages-sound.js`
+**Verify:** Scope bar has `clear` at far right, clears canvas + resets `idle — hit ▶…` + `—`, Scope remains above vertical tabs (above Files when Files active).
+
+### Task 12: Verify build + Files screenshot ✓ done
+**Objective:** Ship only a rendered, linted, buildable single-player Files.
+**Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
+**Verify:** All local gates pass and fresh `/ds/#/sound` Files tab shows 3-col table with clear at top.
+
+*Shipped in pending · Tasks 10–12 · phase-4.*

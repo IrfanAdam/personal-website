@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/pages-sound · Elements Sound vertical tabs ·
-   [plan:2026-09-23_174000-motion-elements-vertical.md#phase-3] */
+   [plan:2026-09-23_174000-motion-elements-vertical.md#phase-4] */
 // Exports: title, render, mount — Scope at top, vertical tabs below
 import { note } from './specimens.js';
 import { tabs } from './tabs.js';

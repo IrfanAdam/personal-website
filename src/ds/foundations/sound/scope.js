@@ -1,7 +1,6 @@
 /* ADAM/DS — ds/foundations/sound/scope · scope + status markup ·
-   [plan:2026-09-15_190000-foundations-sound-pane.md#phase-1] */
-// Exports: scopeHtml
-// — Markup —
+   [plan:2026-09-23_174000-motion-elements-vertical.md#phase-4] */
+// Exports: scopeHtml — canvas + status + master + clear
 export function scopeHtml() {
   return [
     `<h3>Scope — what you just heard</h3>`,
@@ -13,6 +12,7 @@ export function scopeHtml() {
     `<div class="snd-scope-bar">`,
     `<span class="fx-status" data-snd-status>idle — hit ▶ on any voice or file</span>`,
     `<span class="tok" data-snd-info>—</span>`,
+    `<button class="pill" data-snd="clear" title="Clear waveform" style="margin-left:auto">clear</button>`,
     `</div>`,
     `</div>`,
     `<div class="snd-global">`,

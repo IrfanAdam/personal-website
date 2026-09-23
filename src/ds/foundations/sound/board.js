@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/foundations/sound/board · sound foundations mount ·
-   [plan:2026-09-15_190000-foundations-sound-pane.md#phase-1] */
+   [plan:2026-09-23_174000-motion-elements-vertical.md#phase-4] */
 // Exports: mountSoundBoard
 // — Mount —
 import { playVoice, playFileId } from '../../../views/element-sound.js';
@@ -74,7 +74,20 @@ export function mountSoundBoard(root) {
     const b = e.target.closest('[data-snd="testb"]');
     if (b) { say('B: ' + await testFileTone()); return; }
     const c = e.target.closest('[data-snd="resetc"]');
-    if (c) { say(await resetCtx()); }
+    if (c) { say(await resetCtx()); return; }
+    const cl = e.target.closest('[data-snd="clear"]');
+    if (cl) {
+      try {
+        const ctx = scope && scope.getContext('2d');
+        if (ctx) {
+          ctx.fillStyle = getComputedStyle(scope).getPropertyValue('--color-panel') || '#f2f4f7';
+          ctx.fillRect(0, 0, scope.width, scope.height);
+        }
+      } catch {}
+      say('idle — hit ▶ on any voice or file');
+      sayInfo('—');
+      return;
+    }
   });
   try {
     if (scope) {
