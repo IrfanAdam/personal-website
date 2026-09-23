@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:55:58.078Z",
+ "generated": "2026-09-23T12:56:20.166Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -42,6 +42,15 @@
   "2026-09-23_174000-motion-elements-vertical.md"
  ],
  "commits": [
+  {
+   "sha": "d4f3db3",
+   "full": "d4f3db31a8f0aec7b5afa6602993a5bce6cadf6f",
+   "date": "2026-09-23",
+   "time": "18:26",
+   "subject": "chore(ds): consolidate FX/Motion into one DS refining build — 23 Sep last 3 → 1",
+   "plan": "2026-09-23_174000-motion-elements-vertical.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "1d735c3",
    "full": "1d735c3b1e52613ce7c73e1626b9eebc0310dd52",
@@ -3733,7 +3742,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-names.json"
- ]
+ "wip": []
 }
