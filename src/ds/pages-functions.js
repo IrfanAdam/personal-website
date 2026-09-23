@@ -28,7 +28,7 @@ export function render(){
     `<p class="ds-crumb">Motion · Index</p><div class="ds-hero"><h1>Motion with a model.</h1>`,
     `<p class="lede">Seven tuned labs, each its own route. `,
     `Labs run on production geometry; the site stays untouched until a tuned value graduates to a token. `,
-    `Durations + easings are specced in <a href="#/motion">Elements → Motion</a>.</p></div>`,
+    `Durations + easings are specced in <span class="tok">--dur-* / --ease-*</span> tokens.</p></div>`,
   ].join('')
 +[
   `<div class="ds-sec"><h2>Where labs live</h2>`,

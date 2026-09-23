@@ -114,3 +114,30 @@
 **Verify:** All local gates pass and fresh `/ds/#/sound` Files tab shows 3-col table with clear at top.
 
 *Shipped in 75cb968 · Tasks 10–12 · phase-4.*
+
+## Phase 5 — Special tab for Motion labs, Elements Motion removed {#phase-5}
+*Tags: Design System*
+*Motion labs no longer under Motion — 8 routes (Motion index + 7 labs) move to Special; redundant Elements Motion (Durations etc.) deleted, Foundations untouched.*
+
+| # | Task | Done when |
+|---|---|---|
+| 13 | Remove Elements Motion | `routes.js` drops `#/motion` import/route, `pages-motion.js` + `motion-panes.js` deleted, `ds.js` redirects `#/motion` → `#/functions`; `pages-functions.js` link updated |
+| 14 | Motion labs → Special | `routes.js` groups `#/functions` + 7 labs under `Special` (was `Motion`); sidebar shows `Special` with Motion·GridReveal·Shimmer·Rise·Viewer·Glimmer orb·Glitch·Scramble; `Elements` stays Primitives·Library·Patterns·Sound |
+| 15 | Verify build + nav | `plan:names`, `ds:track`, `test` green; `/ds/#/functions` under `Special`, no `#/motion` entry, `Foundations` 6 panes, graph/manifest updated |
+
+### Task 13: Remove Elements Motion ✓ done
+**Objective:** Redundant 5-pane Motion gone — no duplicate Durations/Easing table.
+**Files:** `src/ds/routes.js`, `src/ds/ds.js`, `src/ds/pages-motion.js`, `src/ds/motion-panes.js`, `src/ds/pages-functions.js`
+**Verify:** `routes.js` has no `#/motion`; grep 0 importers; `#/motion` redirects.
+
+### Task 14: Motion labs → Special ✓ done
+**Objective:** Labs read under Special, not Motion.
+**Files:** `src/ds/routes.js`
+**Verify:** 8 routes grouped `Special`; sidebar `Special` shows 8 entries, `Motion` group gone.
+
+### Task 15: Verify build + nav ✓ done
+**Objective:** Ship only a rendered, linted, buildable Special tab.
+**Files:** plan and names metadata plus generated graph/manifest as required by the repo gates.
+**Verify:** All local gates pass and fresh screenshots of sidebar (`Special`) + `/ds/#/functions` (under Special) match.
+
+*Shipped in <sha> · Tasks 13–15 · phase-5.*

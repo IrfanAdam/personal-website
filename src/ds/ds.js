@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/ds · app shell · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/ds · app shell · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-5] */
 import { routes } from './routes.js';
 import { mountTheme } from './theme.js';
 import { mountSidebar } from './sidebar.js';
@@ -19,6 +19,10 @@ let cleanup = null;
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }
   let h = location.hash || '#/';
+  if (h.startsWith('#/motion')) {
+    location.hash = '#/functions';
+    h = '#/functions';
+  }
   if (h === '#/tokens') { location.hash = '#/foundations'; h = '#/foundations'; }
   if (h === '#/builds') { location.hash = '#/changelog'; h = '#/changelog'; }
   if (h === '#/functions/sound') { location.hash = '#/sound'; h = '#/sound'; }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T12:27:44.712Z",
+  "generated": "2026-09-23T13:40:32.274Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -1871,14 +1871,6 @@
       "tokens": []
     },
     {
-      "id": "ds_motion_panes",
-      "path": "src/ds/motion-panes.js",
-      "layer": "component",
-      "route": null,
-      "title": "motion panes",
-      "tokens": []
-    },
-    {
       "id": "ds_overview_checklist",
       "path": "src/ds/overview/checklist.js",
       "layer": "component",
@@ -2091,16 +2083,6 @@
       "route": "#/library",
       "title": "Library",
       "tokens": []
-    },
-    {
-      "id": "ds_pages_motion",
-      "path": "src/ds/pages-motion.js",
-      "layer": "component",
-      "route": "#/motion",
-      "title": "Motion",
-      "tokens": [
-        "--ease-signature"
-      ]
     },
     {
       "id": "ds_pages_overview",
@@ -5649,21 +5631,6 @@
       "kind": "imports"
     },
     {
-      "from": "ds_motion_panes",
-      "to": "ds_foundations_motion_data",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_motion_panes",
-      "to": "ds_foundations_motion_sections",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_motion_panes",
-      "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
       "from": "ds_overview_checklist",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -5962,26 +5929,6 @@
       "from": "ds_pages_library",
       "to": "ds_tabs",
       "kind": "imports"
-    },
-    {
-      "from": "ds_pages_motion",
-      "to": "ds_motion_panes",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_motion",
-      "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_motion",
-      "to": "ds_tabs",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_motion",
-      "to": "styles_tokens",
-      "kind": "tokens"
     },
     {
       "from": "ds_pages_overview",
@@ -6286,11 +6233,6 @@
     {
       "from": "ds_routes",
       "to": "ds_pages_library",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
-      "to": "ds_pages_motion",
       "kind": "imports"
     },
     {
