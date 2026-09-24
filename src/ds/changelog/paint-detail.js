@@ -18,7 +18,7 @@ export function paintDetail(root, ctx){
       i === sel[1] ? ' on' : '',
       isDone(frac) ? '' : ' is-open',
       `" data-tip="`,
-      esc(clip(sprintDesc(s), 120)),
+      esc(clip(sprintDesc(s), 100)),
       `"><span class="ds-row"><span class="ds-num">Phase `,
       String(n).padStart(2, '0'),
       `</span><b>`,

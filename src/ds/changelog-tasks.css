@@ -69,8 +69,12 @@
   pointer-events: none;
   overflow: hidden;
   overflow-wrap: break-word;
-  text-wrap: pretty;
-  display: block;
-  max-height: calc(1.5em * 3 + var(--space-8) * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   box-sizing: border-box;
+}
+.ds-cursor-tip[hidden] {
+  display: none !important;
 }
