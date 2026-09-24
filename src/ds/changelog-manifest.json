@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T12:02:35.316Z",
+ "generated": "2026-09-24T12:02:45.420Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -47,6 +47,15 @@
   "2026-09-24_170000-code-syntax-highlight.md"
  ],
  "commits": [
+  {
+   "sha": "0bfe775",
+   "full": "0bfe7755c27606183c5411313a44f18a95e304b0",
+   "date": "2026-09-24",
+   "time": "17:32",
+   "subject": "fix(ds): tip max-height block clamp — no 4th line sliver",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-9"
+  },
   {
    "sha": "855a66a",
    "full": "855a66a8a2d6f5afb491fc41da1c791e600d71fc",
@@ -4017,7 +4026,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-tasks.css"
- ]
+ "wip": []
 }
