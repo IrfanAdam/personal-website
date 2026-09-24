@@ -1,85 +1,87 @@
-/* ADAM/DS — ds/component · composer · [plan:2026-09-23_134500-ds-coherent-consumable.md#phase-2] */
+/* ADAM/DS — ds/component · composer · [plan:2026-09-24_160000-primitives-complete.md#phase-2] */
+// Exports: component, mountComponent — sheet chrome
+// — Helpers · Component · Mount —
+
 import { tabs } from './tabs.js';
 import { copy } from './specimens.js';
 import { knobsHTML as knobControls } from './component/knobs.js';
+
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const reg = (window.__compReg = window.__compReg || {});
-export function component({ title, sub, anatomy, behaviour, knobs = [], render, code, tokens = [] }){
-  const id = 'comp-' + Math.random().toString(36).slice(2,6);
+
+export function component({ title, sub, anatomy, behaviour, knobs = [], render, code, tokens = [] }) {
+  const id = 'comp-' + Math.random().toString(36).slice(2, 6);
   reg[id] = { knobs, render, code };
-  const init = Object.fromEntries(knobs.map((k)=>[k.key,k.default]));
+  const init = Object.fromEntries(knobs.map((k) => [k.key, k.default]));
   const knobsHTML = knobControls(knobs, id);
-  const tokHTML = tokens.length ? [
-    `<div class="fx-btns" style="margin-top:var(--space-10)">`,
-    tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
-    `</div>`,
-  ].join('') : '';
+  const tokHTML = tokens.length
+    ? ['<div class="fx-btns" style="margin-top:var(--space-10)">',
+      tokens.map((t) => `<button class="tok" data-copy="${t}">${t}</button>`).join(''),
+      '</div>'].join('') : '';
   const previewHTML = `<div data-comp-preview="${id}">${render(init)}</div>`;
-  const codeHTML = [
-    `<div class="ds-code" data-comp-code="`,
-    id,
-    `"><pre>`,
-    esc(code(init)),
-    `</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="`,
-    id,
-    `">copy code</button></div>`,
-    tokHTML,
-    tokHTML?`<p class="sub" style="margin-top:var(--space-8)">Tap token to copy — live <span class="tok">var()</span>.</p>`:'',
-  ].join('');
-  const tabsHTML = tabs({ variant: 'line', panes: [
-    { label: 'Preview', html: previewHTML },
-    { label: 'Code', html: codeHTML },
-  ] });
-  return [
-    `<div class="ds-sec" data-comp-root="`,
-    id,
-    `"><h2>`,
-    title,
-    `</h2>`,
-    sub?`<p class="sub">${sub}</p>`:'',
-    anatomy?`<h3>What</h3><p class="sub">${anatomy}</p>`:'',
-    behaviour?`<h3>When to use</h3><p class="sub">${behaviour}</p>`:'',
+  const liveNote = '<p class="sub" style="margin-top:var(--space-8)">'
+    + 'Tap token to copy — live <span class="tok">var()</span>.</p>';
+  const codeHTML = ['<div class="ds-code" data-comp-code="', id, '"><pre>', esc(code(init)),
+    '</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="', id, '">copy code</button></div>',
+    tokHTML, tokHTML ? liveNote : ''].join('');
+  const tabsHTML = tabs({
+    variant: 'line',
+    panes: [
+      { label: 'Preview', html: previewHTML },
+      { label: 'Code', html: codeHTML },
+    ],
+  });
+  return ['<div class="ds-sec" data-comp-root="', id, '"><h2>', title, '</h2>',
+    sub ? `<p class="sub">${sub}</p>` : '',
+    anatomy ? `<h3>What</h3><p class="sub">${anatomy}</p>` : '',
+    behaviour ? `<h3>When to use</h3><p class="sub">${behaviour}</p>` : '',
     tabsHTML,
-    `<div class="fx-controls" data-comp-ctrl="`,
-    id,
-    `">`,
-    knobsHTML,
-    `</div></div>`,
-  ].join('');
+    '<div class="fx-controls" data-comp-ctrl="', id, '">', knobsHTML, '</div></div>'].join('');
 }
-export function mountComponent(root){
-  const offs=[];
-  root.querySelectorAll('[data-comp-root]').forEach((sec)=>{
-    const id=sec.getAttribute('data-comp-root'); const cfg=reg[id]; if(!cfg) return;
-    const preview=sec.querySelector(`[data-comp-preview="${id}"]`);
-    const codeEl=sec.querySelector(`[data-comp-code="${id}"] pre`);
-    const ctrls=sec.querySelector(`[data-comp-ctrl="${id}"]`);
-    if(!preview||!ctrls) return;
-    const outs={}; ctrls.querySelectorAll('[data-v]').forEach((o)=> outs[o.dataset.v]=o);
-    const state=Object.fromEntries(cfg.knobs.map((k)=>[k.key,k.default]));
-    const refresh=()=>{
-      preview.innerHTML=cfg.render(state);
-      if(codeEl) codeEl.textContent=cfg.code(state);
-      Object.entries(outs).forEach(([k,el])=>{
-        const kn=cfg.knobs.find((x)=>x.key===k); const v=state[k];
-        el.textContent=typeof v==='boolean'?(v?'on':'off'):String(v)+(kn&&kn.unit||'');
+
+export function mountComponent(root) {
+  const offs = [];
+  root.querySelectorAll('[data-comp-root]').forEach((sec) => {
+    const id = sec.getAttribute('data-comp-root');
+    const cfg = reg[id];
+    if (!cfg) return;
+    const preview = sec.querySelector(`[data-comp-preview="${id}"]`);
+    const codeEl = sec.querySelector(`[data-comp-code="${id}"] pre`);
+    const ctrls = sec.querySelector(`[data-comp-ctrl="${id}"]`);
+    if (!preview || !ctrls) return;
+    const outs = {};
+    ctrls.querySelectorAll('[data-v]').forEach((o) => outs[o.dataset.v] = o);
+    const state = Object.fromEntries(cfg.knobs.map((k) => [k.key, k.default]));
+    const refresh = () => {
+      preview.innerHTML = cfg.render(state);
+      if (codeEl) codeEl.textContent = cfg.code(state);
+      Object.entries(outs).forEach(([k, el]) => {
+        const kn = cfg.knobs.find((x) => x.key === k);
+        const v = state[k];
+        let out = String(v) + (kn && kn.unit || '');
+        if (typeof v === 'boolean') out = v ? 'on' : 'off';
+        el.textContent = out;
       });
     };
-    const onInput=(e)=>{
-      const k=e.target.dataset.k; if(!k||e.target.dataset.comp!==id) return;
-      const kn=cfg.knobs.find((x)=>x.key===k);
-      let v=e.target.type==='checkbox'?e.target.checked:e.target.value;
-      if(kn&&kn.type==='range') v=Number(v);
-      state[k]=v; refresh();
+    const onInput = (e) => {
+      const k = e.target.dataset.k;
+      if (!k || e.target.dataset.comp !== id) return;
+      const kn = cfg.knobs.find((x) => x.key === k);
+      let v = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      if (kn && kn.type === 'range') v = Number(v);
+      state[k] = v;
+      refresh();
     };
-    const btn=sec.querySelector(`[data-comp-copy="${id}"]`);
-    const onCopy=()=> copy(cfg.code(state), btn);
-    ctrls.addEventListener('input', onInput); ctrls.addEventListener('change', onInput);
-    if(btn) btn.addEventListener('click', onCopy);
-    offs.push(()=>{ ctrls.removeEventListener('input',
-          onInput); ctrls.removeEventListener('change',
-          onInput); if(btn) btn.removeEventListener('click',
-          onCopy); });
+    const btn = sec.querySelector(`[data-comp-copy="${id}"]`);
+    const onCopy = () => copy(cfg.code(state), btn);
+    ctrls.addEventListener('input', onInput);
+    ctrls.addEventListener('change', onInput);
+    if (btn) btn.addEventListener('click', onCopy);
+    offs.push(() => {
+      ctrls.removeEventListener('input', onInput);
+      ctrls.removeEventListener('change', onInput);
+      if (btn) btn.removeEventListener('click', onCopy);
+    });
   });
-  return ()=> offs.forEach((fn)=>fn());
+  return () => offs.forEach((fn) => fn());
 }

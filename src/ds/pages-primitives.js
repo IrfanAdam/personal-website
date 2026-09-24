@@ -1,4 +1,7 @@
-/* ADAM/DS — ds/pages-primitives · primitives composer · [plan:2026-09-23_145600-ds-elements-tabs.md#phase-1] */
+/* ADAM/DS — ds/pages-primitives · primitives composer · [plan:2026-09-24_160000-primitives-complete.md#phase-2] */
+// Exports: render, mount — 9 vertical primitive sheets
+// — Imports · Render · Mount —
+
 import { mountComponent } from './component.js';
 import { tabs } from './tabs.js';
 import { btnSheet } from './primitives/btn.js';
@@ -10,7 +13,9 @@ import { fieldSheet } from './primitives/field.js';
 import { toggleSheet } from './primitives/toggle.js';
 import { avatarSheet } from './primitives/avatar.js';
 import { logoSheet } from './primitives/logo.js';
-export function render(){
+
+// — Render —
+export function render() {
   const panes = [
     { label: 'Button', html: btnSheet() },
     { label: 'Tag', html: tagSheet() },
@@ -23,10 +28,16 @@ export function render(){
     { label: 'Logo', html: logoSheet() },
   ];
   return [
-    `<p class="ds-crumb">Elements · Primitives</p><div class="ds-hero"><h1>Actions, not decoration.</h1>`,
-    `<p class="lede">Primitives are the smallest reusable parts — each sheet is one story: what it is, when to use it, `,
-    `then Preview / Code. Tokens live in Code, knobs stay below the tabs.</p>`,
-    `<p class="sub"><a href="#/">← Overview</a></p></div>`,
-  tabs({ vertical: true, panes }),
-].join('');}
-export function mount(root){return mountComponent(root);}
+    '<p class="ds-crumb">Elements · Primitives</p>',
+    '<div class="ds-hero"><h1>Actions, not decoration.</h1>',
+    '<p class="lede">Primitives are the smallest reusable parts — each sheet is one story: ',
+    'what it is, when to use it, then Preview / Code. Tokens live in Code, knobs below.</p>',
+    '<p class="sub"><a href="#/">← Overview</a></p></div>',
+    tabs({ vertical: true, panes }),
+  ].join('');
+}
+
+// — Mount —
+export function mount(root) {
+  return mountComponent(root);
+}

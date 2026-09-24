@@ -1,55 +1,67 @@
-/* ADAM/DS — ds/playground · shell · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-7] */
-/* playground, mountPlayground · line tabs Preview/Code, tokens in Code */
+/* ADAM/DS — ds/playground · shell · [plan:2026-09-24_160000-primitives-complete.md#phase-2] */
+// Exports: playground, mountPlayground — playground shell + tabs
+// — Helpers · Playground —
+
 import { tabs } from './tabs.js';
 import { knobsHTML as knobControls } from './playground/knobs.js';
+
 export { mountPlayground } from './playground/mount.js';
-// — helpers —
+
+// — Helpers —
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const reg = (window.__pgReg = window.__pgReg || {});
-// — playground —
-export function playground({ title, sub, knobs = [], render, code, tokens = [] }){
-  const id = 'pg-' + Math.random().toString(36).slice(2,6);
+
+// — Playground —
+export function playground({ title, sub, knobs = [], render, code, tokens = [] }) {
+  const id = 'pg-' + Math.random().toString(36).slice(2, 6);
   reg[id] = { knobs, render, code };
   const knobsHTML = knobControls(knobs, id);
-  const init = Object.fromEntries(knobs.map((k)=>[k.key,k.default]));
+  const init = Object.fromEntries(knobs.map((k) => [k.key, k.default]));
   const previewHTML = [
-    `<div class="ds-spec block"><div data-pg-preview="`,
+    '<div class="ds-spec block"><div data-pg-preview="',
     id,
-    `">`,
+    '">',
     render(init),
-    `</div></div>`,
+    '</div></div>',
   ].join('');
   const codeHTML = [
-    `<div class="ds-code" data-pg-code="`,
+    '<div class="ds-code" data-pg-code="',
     id,
-    `"><pre>`,
+    '"><pre>',
     esc(code(init)),
-    `</pre></div><div class="fx-btns"><button class="pill" data-pg-copy="`,
+    '</pre></div><div class="fx-btns"><button class="pill" data-pg-copy="',
     id,
-    `">copy code</button></div>`,
+    '">copy code</button></div>',
   ].join('');
-  const tokHTML = tokens.length ? [
-    `<div class="fx-btns" style="margin-top:var(--space-10)">`,
-    tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
-    `</div><p class="sub" style="margin-top:var(--space-8)">Tap any token to copy — live <span class="tok">var()</span>.</p>`,
-  ].join('') : '';
+  const tokHTML = tokens.length
+    ? [
+      '<div class="fx-btns" style="margin-top:var(--space-10)">',
+      tokens.map((t) => `<button class="tok" data-copy="${t}">${t}</button>`).join(''),
+      '</div>',
+      '<p class="sub" style="margin-top:var(--space-8)">Tap any token to copy — '
+        + 'live <span class="tok">var()</span>.</p>',
+    ].join('')
+    : '';
   const codeWithTokens = [codeHTML, tokHTML].join('');
-  const tabsHTML = tabs({ variant: 'line', panes: [
-    { label: 'Preview', html: previewHTML },
-    { label: 'Code', html: codeWithTokens },
-  ] });
+  const tabsHTML = tabs({
+    variant: 'line',
+    panes: [
+      { label: 'Preview', html: previewHTML },
+      { label: 'Code', html: codeWithTokens },
+    ],
+  });
   return [
-    `<div class="ds-sec" data-pg-root="`,
+    '<div class="ds-sec" data-pg-root="',
     id,
-    `"><h2>`,
+    '"><h2>',
     title,
-    `</h2>`,
-    sub?`<p class="sub">${sub}</p>`:'',
+    '</h2>',
+    sub ? `<p class="sub">${sub}</p>` : '',
     tabsHTML,
-    `<div class="fx-controls" data-pg-ctrl="`,
+    '<div class="fx-controls" data-pg-ctrl="',
     id,
-    `">`,
+    '">',
     knobsHTML,
-    `</div></div>`,
+    '</div></div>',
   ].join('');
 }
