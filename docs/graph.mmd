@@ -153,8 +153,6 @@ ds_functions_grid_reveal --> ds_functions_line_tabs
 ds_functions_grid_reveal --> ds_fx_lab
 ds_functions_grid_reveal_docs --> ds_specimens
 ds_functions_grid_reveal_lab --> ds_specimens
-ds_functions_grid_reveal_lab --> ds_views_masonry_cells
-ds_functions_grid_reveal_lab --> ds_views_masonry_gridReveal
 ds_functions_rise --> ds_fx_lab
 ds_functions_rise --> ds_specimens
 ds_functions_scramble --> ds_functions_scramble_bind
@@ -250,8 +248,10 @@ ds_pages_foundations --> ds_foundations_pane_contract
 ds_pages_foundations --> ds_foundations_pane_fx
 ds_pages_foundations --> ds_foundations_pane_motion
 ds_pages_foundations --> ds_foundations_pane_shape
+ds_pages_foundations --> ds_foundations_pane_sound
 ds_pages_foundations --> ds_foundations_pane_space
 ds_pages_foundations --> ds_foundations_pane_type
+ds_pages_foundations --> ds_foundations_sound_board
 ds_pages_foundations --> ds_foundations_tokens_playground
 ds_pages_foundations --> ds_specimens
 ds_pages_foundations --> ds_tabs
@@ -267,7 +267,6 @@ ds_pages_library --> ds_library_spec
 ds_pages_library --> ds_library_strip
 ds_pages_library --> ds_library_work
 ds_pages_library --> ds_playground
-ds_pages_library --> ds_specimens
 ds_pages_library --> ds_tabs
 ds_pages_overview --> ds_overview_sections
 ds_pages_overview --> views_glimmer_orb
@@ -285,13 +284,7 @@ ds_pages_primitives --> ds_primitives_kicker
 ds_pages_primitives --> ds_primitives_logo
 ds_pages_primitives --> ds_primitives_tag
 ds_pages_primitives --> ds_primitives_toggle
-ds_pages_primitives --> ds_specimens
 ds_pages_primitives --> ds_tabs
-ds_pages_sound --> ds_foundations_sound_board
-ds_pages_sound --> ds_foundations_sound_scope
-ds_pages_sound --> ds_sound_panes
-ds_pages_sound --> ds_specimens
-ds_pages_sound --> ds_tabs
 ds_pages_special --> ds_functions_glimmer_orb
 ds_pages_special --> ds_functions_glitch
 ds_pages_special --> ds_functions_grid_reveal
@@ -305,7 +298,9 @@ ds_patterns_layouts --> ds_specimens
 ds_patterns_quality --> ds_patterns_data
 ds_patterns_quality --> ds_specimens
 ds_playground --> ds_playground_knobs
-ds_playground --> ds_specimens
+ds_playground --> ds_playground_mount
+ds_playground --> ds_tabs
+ds_playground_mount --> ds_specimens
 ds_primitives_avatar --> ds_component
 ds_primitives_badge --> ds_component
 ds_primitives_btn --> ds_component
@@ -324,11 +319,7 @@ ds_routes --> ds_pages_library
 ds_routes --> ds_pages_overview
 ds_routes --> ds_pages_patterns
 ds_routes --> ds_pages_primitives
-ds_routes --> ds_pages_sound
 ds_routes --> ds_pages_special
-ds_sound_panes --> ds_foundations_sound_files
-ds_sound_panes --> ds_foundations_sound_procedural
-ds_sound_panes --> ds_foundations_sound_usage
 ds_specimens --> ds_specimens_color
 ds_specimens --> ds_specimens_copy
 ds_specimens --> ds_specimens_grids

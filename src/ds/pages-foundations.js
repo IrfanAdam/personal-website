@@ -1,5 +1,5 @@
-/* ADAM/DS — ds/pages-foundations · Foundations 7 panes · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-6] */
-// Exports: render, mount — 7 panes (Motion inside), mixer/sync/handlers
+/* ADAM/DS — ds/pages-foundations · Foundations 8 panes · [plan:2026-09-24_150000-sound-to-foundations.md#phase-1] */
+// Exports: render, mount — 8 panes (Motion + Sound inside), mixer/sync/handlers + sound board
 import { cssVar, contrastRatio as ratio, verdictRatio as verdict, probeTheme, refreshLive } from './specimens.js';
 import { makeMix } from './foundations-mix.js';
 import { makeHandlers } from './foundations-handlers.js';
@@ -10,19 +10,23 @@ import { label as sL, html as sH } from './foundations/pane-space.js';
 import { label as hL, html as hH } from './foundations/pane-shape.js';
 import { label as mL, html as mH } from './foundations/pane-motion.js';
 import { label as fL, html as fH } from './foundations/pane-fx.js';
+import { label as dL, html as dH } from './foundations/pane-sound.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
 import { mountPlayground } from './foundations/tokens/playground.js';
+import { mountSoundBoard } from './foundations/sound/board.js';
 // — Initial —
 function outerInitial() {
   const h = window.location.hash || '';
   const qs = h.includes('?') ? h.split('?')[1] : (window.location.search.slice(1) || '');
   const sp = new URLSearchParams(qs);
   const p = (sp.get('pane') || '').toLowerCase();
+  if (p.includes('sound')) return 6;
+  if (p.includes('contract') || p.includes('token')) return 7;
   if (p.includes('motion')) return 4;
-  const m = { color: 0, type: 1, space: 2, shape: 3, motion: 4, fx: 5, tokens: 6, contract: 6 };
+  const m = { color: 0, type: 1, space: 2, shape: 3, motion: 4, fx: 5, sound: 6, tokens: 7, contract: 7 };
   if (m[p] != null) return m[p];
   if (p.includes('space')) return 2;
-  if (p.includes('token')) return 6;
+  if (p.includes('token')) return 7;
   return 0;
 }
 // — Render —
@@ -33,10 +37,11 @@ export function render() {
     { label: hL, html: hH() },
     { label: mL, html: mH() },
     { label: fL, html: fH() },
+    { label: dL, html: dH() },
     { label: kL, html: kH() }];
   return [
     `<p class="ds-crumb">Start · Foundations</p><div class="ds-hero"><h1>Material, before meaning.</h1>`,
-    `<p class="lede">Seven definitions feed every token. Swatches and values read live computed <span `,
+    `<p class="lede">Eight definitions feed every token. Swatches and values read live computed <span `,
     `class="tok">var()</span> — click any card to copy.</p></div>`,
   ].join('') + tabs({ vertical: true, initial: outerInitial(), panes });
 }
@@ -87,12 +92,14 @@ export function mount(root) {
   if (easeCtrls) easeCtrls.addEventListener('click', onEase), easeCtrls.addEventListener('change', onEase);
   root.addEventListener('click', onFx);
   const offPg = mountPlayground(root);
+  const offSnd = mountSoundBoard(root);
   return () => {
     if (ctrls) { ctrls.removeEventListener('input', onMix); ctrls.removeEventListener('click', onCopyVar); }
     if (typeCtrls) typeCtrls.removeEventListener('change', onType);
     if (easeCtrls) { easeCtrls.removeEventListener('click', onEase); easeCtrls.removeEventListener('change', onEase); }
     root.removeEventListener('click', onFx);
     try { offPg && offPg(); } catch {}
+    try { offSnd && offSnd(); } catch {}
     try { obs && obs.disconnect(); } catch {}
   };
 }

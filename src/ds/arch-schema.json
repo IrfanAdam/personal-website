@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T08:34:23.175Z",
+  "generated": "2026-09-24T09:15:50.220Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -492,6 +492,7 @@
       "route": null,
       "title": "component",
       "tokens": [
+        "--space-10",
         "--space-8"
       ]
     },
@@ -2135,14 +2136,6 @@
       "tokens": []
     },
     {
-      "id": "ds_pages_sound",
-      "path": "src/ds/pages-sound.js",
-      "layer": "component",
-      "route": "#/sound",
-      "title": "Sound",
-      "tokens": []
-    },
-    {
       "id": "ds_pages_special",
       "path": "src/ds/pages-special.js",
       "layer": "component",
@@ -2189,6 +2182,7 @@
       "route": null,
       "title": "playground",
       "tokens": [
+        "--space-10",
         "--space-8"
       ]
     },
@@ -2198,6 +2192,14 @@
       "layer": "component",
       "route": null,
       "title": "knobs",
+      "tokens": []
+    },
+    {
+      "id": "ds_playground_mount",
+      "path": "src/ds/playground/mount.js",
+      "layer": "component",
+      "route": null,
+      "title": "mount",
       "tokens": []
     },
     {
@@ -2330,14 +2332,6 @@
       "layer": "component",
       "route": null,
       "title": "sidebar",
-      "tokens": []
-    },
-    {
-      "id": "ds_sound_panes",
-      "path": "src/ds/sound-panes.js",
-      "layer": "component",
-      "route": null,
-      "title": "sound panes",
       "tokens": []
     },
     {
@@ -5286,16 +5280,6 @@
     },
     {
       "from": "ds_functions_grid_reveal_lab",
-      "to": "ds_views_masonry_cells",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_functions_grid_reveal_lab",
-      "to": "ds_views_masonry_gridReveal",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_functions_grid_reveal_lab",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -5901,12 +5885,22 @@
     },
     {
       "from": "ds_pages_foundations",
+      "to": "ds_foundations_pane_sound",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
       "to": "ds_foundations_pane_space",
       "kind": "imports"
     },
     {
       "from": "ds_pages_foundations",
       "to": "ds_foundations_pane_type",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_sound_board",
       "kind": "imports"
     },
     {
@@ -5982,11 +5976,6 @@
     {
       "from": "ds_pages_library",
       "to": "ds_playground",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_library",
-      "to": "ds_specimens",
       "kind": "imports"
     },
     {
@@ -6076,36 +6065,6 @@
     },
     {
       "from": "ds_pages_primitives",
-      "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_primitives",
-      "to": "ds_tabs",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_sound",
-      "to": "ds_foundations_sound_board",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_sound",
-      "to": "ds_foundations_sound_scope",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_sound",
-      "to": "ds_sound_panes",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_sound",
-      "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_pages_sound",
       "to": "ds_tabs",
       "kind": "imports"
     },
@@ -6180,13 +6139,23 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_playground_mount",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
       "from": "ds_playground",
       "to": "ds_playground_knobs",
       "kind": "imports"
     },
     {
       "from": "ds_playground",
-      "to": "ds_specimens",
+      "to": "ds_playground_mount",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_playground",
+      "to": "ds_tabs",
       "kind": "imports"
     },
     {
@@ -6316,27 +6285,7 @@
     },
     {
       "from": "ds_routes",
-      "to": "ds_pages_sound",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_routes",
       "to": "ds_pages_special",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_sound_panes",
-      "to": "ds_foundations_sound_files",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_sound_panes",
-      "to": "ds_foundations_sound_procedural",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_sound_panes",
-      "to": "ds_foundations_sound_usage",
       "kind": "imports"
     },
     {

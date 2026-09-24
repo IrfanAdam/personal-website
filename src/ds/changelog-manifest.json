@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T08:34:23.557Z",
+ "generated": "2026-09-24T09:15:50.590Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -41,9 +41,19 @@
   "2026-09-23_173234-ds-motion-coherent.md",
   "2026-09-23_174000-motion-elements-vertical.md",
   "2026-09-23_212500-glitch-lab-split.md",
-  "2026-09-24_140000-ds-docs-compact.md"
+  "2026-09-24_140000-ds-docs-compact.md",
+  "2026-09-24_150000-sound-to-foundations.md"
  ],
  "commits": [
+  {
+   "sha": "6d5880e",
+   "full": "6d5880ea82332c2f81a24b5bb079ea6ec4ac7de3",
+   "date": "2026-09-24",
+   "time": "14:09",
+   "subject": "feat(ds): special labs tabified Lab|Code, graduation removed — compact",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-2"
+  },
   {
    "sha": "a56cb9d",
    "full": "a56cb9dfde8339eb6766b7efb66173bd7920e36b",
@@ -3871,11 +3881,17 @@
   }
  ],
  "wip": [
-  "M src/ds/functions/glimmer-orb.js",
-  "M src/ds/functions/grid-reveal.js",
-  "M src/ds/functions/rise.js",
-  "M src/ds/functions/shimmer.js",
-  "M src/ds/functions/viewer.js",
-  "?? src/ds/functions/line-tabs.js"
+  "M src/ds/changelog-names.json",
+  "M src/ds/component.js",
+  "M src/ds/ds.js",
+  "M src/ds/functions/grid-reveal-lab.js",
+  "M src/ds/pages-foundations.js",
+  "M src/ds/pages-library.js",
+  "M src/ds/pages-primitives.js",
+  "D src/ds/pages-sound.js",
+  "M src/ds/playground.js",
+  "M src/ds/routes.js",
+  "D src/ds/sound-panes.js",
+  "?? src/ds/playground/mount.js"
  ]
 }

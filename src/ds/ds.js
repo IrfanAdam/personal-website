@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/ds · app shell · [plan:2026-09-23_174000-motion-elements-vertical.md#phase-7] */
+/* ADAM/DS — ds/ds · app shell · [plan:2026-09-24_150000-sound-to-foundations.md#phase-1] */
 import { routes } from './routes.js';
 import { mountTheme } from './theme.js';
 import { mountSidebar } from './sidebar.js';
@@ -27,7 +27,8 @@ function route() {
     location.hash = '#/foundations';
     h = '#/foundations';
   }
-  if (h === '#/functions/sound') { location.hash = '#/sound'; h = '#/sound'; }
+  if (h === '#/sound' || h.startsWith('#/sound')) { location.hash = '#/foundations'; h = '#/foundations'; }
+  if (h === '#/functions/sound') { location.hash = '#/foundations'; h = '#/foundations'; }
   if (h === '#/functions' || h.startsWith('#/functions/')) {
     location.hash = '#/special';
     h = '#/special';

@@ -10,7 +10,7 @@ export function component({ title, sub, anatomy, behaviour, knobs = [], render, 
   const init = Object.fromEntries(knobs.map((k)=>[k.key,k.default]));
   const knobsHTML = knobControls(knobs, id);
   const tokHTML = tokens.length ? [
-    `<div class="fx-btns" style="margin-top:var(--space-8)">`,
+    `<div class="fx-btns" style="margin-top:var(--space-10)">`,
     tokens.map((t)=>`<button class="tok" data-copy="${t}">${t}</button>`).join(''),
     `</div>`,
   ].join('') : '';
@@ -23,15 +23,13 @@ export function component({ title, sub, anatomy, behaviour, knobs = [], render, 
     `</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="`,
     id,
     `">copy code</button></div>`,
-  ].join('');
-  const tokensHTML = tokens.length ? [
     tokHTML,
-    `<p class="sub" style="margin-top:var(--space-8)">Click any <span class="tok">var()</span> to copy. All values `,
-    `read live <span class="tok">var()</span> — no literals.</p>`,
-  ].join('') : '<p class="sub">No component tokens — inherits global rhythm.</p>';
-  const tabsHTML = tabs({ panes: [{ label:'Preview', html: previewHTML },
-        { label:'Code', html: codeHTML },
-        { label:'Tokens', html: tokensHTML }] });
+    tokHTML?`<p class="sub" style="margin-top:var(--space-8)">Tap token to copy — live <span class="tok">var()</span>.</p>`:'',
+  ].join('');
+  const tabsHTML = tabs({ variant: 'line', panes: [
+    { label: 'Preview', html: previewHTML },
+    { label: 'Code', html: codeHTML },
+  ] });
   return [
     `<div class="ds-sec" data-comp-root="`,
     id,

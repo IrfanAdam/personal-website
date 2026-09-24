@@ -1,6 +1,6 @@
 /* ADAM/DS — Functions · GridReveal lab section · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
 // Exports: labSection — lab markup (controls + stage + guidance)
-import { note, code } from '../specimens.js';
+import { note } from '../specimens.js';
 const SOUNDS = [
   'none','authorize.mp3','button_pop.mp3','click.mp3','hover.wav','load.wav',
   'loading.mp3','pop.mp3','pull.mp3','window-open.mp3','reel.mp3','schloop.mp3','schlop.mp3',
@@ -11,7 +11,7 @@ function soundOpts() {
 }
 export function labSection(){
   return [
-  `<div class="ds-sec"><h2>Lab</h2>`,
+  `<div class="ds-sec">`,
   `<p class="sub">280px stage — helix preview by default. Hit <span class="tok">replay</span> to observe the `,
   `reveal; switch texture to compare. Advanced holds gutter/order.</p>`,
 ].join('')
@@ -64,11 +64,6 @@ export function labSection(){
   `</div><figure>`,
   `<figcaption>geometry + pacing mirror gridReveal.js · replay fires selected file via <span `,
   `class="tok">playFileId</span> for GridReveal pairing.</figcaption></figure></div>`,
-].join('')
-+[
-  code(["import { buildTree, orderRandom } from '../views/masonry/cells.js'  // single source\\nimport { ",
-    "attachGridReveal } from '../views/masonry/gridReveal.js' // single renderer\\n// tokens: --fx-cell · ",
-    "--fx-wait · --fx-photo-from · --dur-fx-color · --dur-fx-span · --fx-morph · --fx-split-end"].join('')),
 ].join('')
 +[
   note('Do',['Tune here, graduate via <span class="tok">--fx-*</span>. Replay + shuffle work with texture ON/OFF; ',
