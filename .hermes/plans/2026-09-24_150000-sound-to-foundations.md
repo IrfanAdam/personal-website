@@ -32,4 +32,4 @@
 **Files:** `src/ds/pages-foundations.js`, `src/ds/foundations/sound/board.js`
 **Verify:** Playing a voice/file on Foundations Sound tab repaints scope; gates green.
 
-*Shipped in 793489b · Tasks 1–3 · phase-1.*
+*Shipped in c7dd23c · Tasks 1–3 · phase-1.*
