@@ -56,4 +56,15 @@
   /* — Elevation · shadows (travel from --space-* primitives, color+opacity from above) — */
   --shadow-on-media: 0 var(--space-1) var(--space-12) var(--color-shadow-media);
     --shadow-on-media-sm: 0 var(--space-1) var(--space-10) var(--color-shadow-media-sm);
+  /* — Code syntax · IDE palette (tokens only) — */
+  --color-code-bg: var(--color-surface);
+    --color-code-fg: var(--color-ink);
+    --color-code-comm: var(--stone-500);
+    --color-code-str: var(--accent3-600);
+    --color-code-tag: var(--accent-700);
+    --color-code-attr: var(--accent2-700);
+    --color-code-kw: var(--accent-700);
+    --color-code-var: var(--accent3-600);
+    --color-code-num: var(--accent2-700);
+    --color-code-punct: var(--stone-500);
 }

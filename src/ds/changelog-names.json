@@ -36,11 +36,11 @@
     "title": "Turn ADAM/DS into a system that builds pages itself"
   },
   "2026-09-09_145218-bidirectional-pipeline.md": {
-    "purpose": "Plan\u2194commit linking",
+    "purpose": "Plan↔commit linking",
     "title": "Link every plan and DS commit both ways, no bookkeeping"
   },
   "2026-09-09_170854-design-system-update-4.md": {
-    "purpose": "Foundations \u2192 Evo parity",
+    "purpose": "Foundations → Evo parity",
     "title": "Bring Foundations to Evo parity: color, type, tokens"
   },
   "2026-09-10_153555-color-cool-synthetic.md": {
@@ -73,7 +73,7 @@
   },
   "2026-09-14_003212-builds-nomenclature.md": {
     "purpose": "Builds nomenclature",
-    "title": "The changelog keeps its name \u2014 every entry in it is a build"
+    "title": "The changelog keeps its name — every entry in it is a build"
   },
   "2026-09-14_004508-refactor-bugfix.md": {
     "purpose": "Split-regression repair",
@@ -88,7 +88,7 @@
     "purpose": "atlas fullscreen"
   },
   "2026-09-15_100000-mobile-optimisation.md": {
-    "title": "Make the whole portfolio usable at 360\u2013768px",
+    "title": "Make the whole portfolio usable at 360–768px",
     "purpose": "Mobile responsiveness"
   },
   "2026-09-15_183400-lump-sum-builds.md": {
@@ -112,7 +112,7 @@
     "purpose": "Code quality"
   },
   "2026-09-23_130000-ds-understandable-mutable.md": {
-    "title": "DS coherent \u2014 live Foundations, unified IA, consistent chrome",
+    "title": "DS coherent — live Foundations, unified IA, consistent chrome",
     "purpose": "Live Foundations + unified IA"
   },
   "2026-09-23_134500-ds-coherent-consumable.md": {
@@ -136,7 +136,7 @@
     "purpose": "Pane copy"
   },
   "2026-09-23_151320-ds-fx-cards.md": {
-    "title": "FX + Motion legible \u2014 what each token changes, one screen",
+    "title": "FX + Motion legible — what each token changes, one screen",
     "purpose": "FX + Motion legible"
   },
   "2026-09-23_154500-ds-elev-motion-tables.md": {
@@ -144,19 +144,19 @@
     "purpose": "Tabled tokens"
   },
   "2026-09-23_173234-ds-motion-coherent.md": {
-    "title": "Motion coherent \u2014 labs read like Elements, live, one screen",
+    "title": "Motion coherent — labs read like Elements, live, one screen",
     "purpose": "Motion labs coherent"
   },
   "2026-09-23_174000-motion-elements-vertical.md": {
-    "title": "DS refining \u2014 FX + Motion + Sound, one screen per effect",
-    "purpose": "DS refining \u2014 one screen per effect"
+    "title": "DS refining — FX + Motion + Sound, one screen per effect",
+    "purpose": "DS refining — one screen per effect"
   },
   "2026-09-23_212500-glitch-lab-split.md": {
-    "title": "Glitch lab split \u2014 narrower card, wrapping sound panel",
+    "title": "Glitch lab split — narrower card, wrapping sound panel",
     "purpose": "Glitch lab split + wrap"
   },
   "2026-09-24_140000-ds-docs-compact.md": {
-    "title": "24 Sep \u2014 docs, Sound and primitives \u2014 single build",
+    "title": "24 Sep — docs, Sound and primitives — single build",
     "purpose": "One build: docs compact + Sound + primitives"
   },
   "2026-09-24_150000-sound-to-foundations.md": {
@@ -164,7 +164,11 @@
     "purpose": "Sound inside Foundations, not Elements"
   },
   "2026-09-24_160000-primitives-complete.md": {
-    "title": "Primitives polished \u2014 readable sheets, honest tokens",
+    "title": "Primitives polished — readable sheets, honest tokens",
     "purpose": "Readable primitives, honest tokens"
+  },
+  "2026-09-24_170000-code-syntax-highlight.md": {
+    "title": "Code syntax highlight — IDE-like, mono, one component",
+    "purpose": "Mono IDE-like highlight for every code snippet"
   }
 }

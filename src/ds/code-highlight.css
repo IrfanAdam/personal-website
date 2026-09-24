@@ -1,0 +1,60 @@
+/* ADAM/DS — ds/code-highlight.css · code syntax chrome · [plan:2026-09-24_170000-code-syntax-highlight.md#phase-1] */
+/* — Code block · token-only — */
+
+/* — Block — */
+.ds-code {
+  background: var(--color-code-bg);
+  color: var(--color-code-fg);
+}
+.ds-code pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  line-height: var(--leading-mono);
+}
+.ds-code code.hl {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  line-height: var(--leading-mono);
+}
+
+/* — Tokens — */
+.hl-comm {
+  color: var(--color-code-comm);
+  font-style: italic;
+}
+.hl-str {
+  color: var(--color-code-str);
+}
+.hl-tag {
+  color: var(--color-code-tag);
+}
+.hl-attr {
+  color: var(--color-code-attr);
+}
+.hl-kw {
+  color: var(--color-code-kw);
+  font-weight: var(--weight-semibold);
+}
+.hl-var {
+  color: var(--color-code-var);
+}
+.hl-num {
+  color: var(--color-code-num);
+}
+.hl-punct {
+  color: var(--color-code-punct);
+}
+
+/* — Lang badge — */
+.ds-code[data-lang]::before {
+  content: attr(data-lang);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border-hairline);
+}
