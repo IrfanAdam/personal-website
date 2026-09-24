@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T09:18:33.803Z",
+ "generated": "2026-09-24T09:27:44.722Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -46,6 +46,33 @@
   "2026-09-24_160000-primitives-complete.md"
  ],
  "commits": [
+  {
+   "sha": "307ccd7",
+   "full": "307ccd737ff417c77a53c5d90343c2f1b114c8d1",
+   "date": "2026-09-24",
+   "time": "14:57",
+   "subject": "fix(ds): scope below intro in Foundations Sound pane",
+   "plan": "2026-09-24_150000-sound-to-foundations.md",
+   "anchor": "phase-1"
+  },
+  {
+   "sha": "569aa24",
+   "full": "569aa24a6591148fd938031447f5e7cd670e61a9",
+   "date": "2026-09-24",
+   "time": "14:55",
+   "subject": "feat(ds): primitives composer + chrome — ≤100, readable",
+   "plan": "2026-09-24_160000-primitives-complete.md",
+   "anchor": "phase-2"
+  },
+  {
+   "sha": "ae132a8",
+   "full": "ae132a85fe0d40f7752cb5a13693991f3db6ab1c",
+   "date": "2026-09-24",
+   "time": "14:55",
+   "subject": "feat(ds): primitives readable — 9 sheets audited, token-honest",
+   "plan": "2026-09-24_160000-primitives-complete.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "b821eae",
    "full": "b821eae00f8b5ab2932c1a37da4f2346c999e7d2",

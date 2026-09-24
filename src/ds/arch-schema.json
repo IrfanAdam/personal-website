@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T09:15:50.220Z",
+  "generated": "2026-09-24T09:22:16.906Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2214,6 +2214,7 @@
         "--color-ink-muted",
         "--font-mono",
         "--space-16",
+        "--space-8",
         "--text-meta"
       ]
     },
@@ -2294,6 +2295,7 @@
         "--color-bg",
         "--color-ink-muted",
         "--font-mono",
+        "--space-14",
         "--space-16",
         "--text-meta"
       ]
