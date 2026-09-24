@@ -29,5 +29,5 @@ export function html() {
     ],
   });
   const scope = `<div class="ds-sec">` + scopeHtml() + `</div>`;
-  return intro + inner + scope;
+  return intro + scope + inner;
 }
