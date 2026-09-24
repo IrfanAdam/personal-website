@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T09:56:17.167Z",
+ "generated": "2026-09-24T10:45:21.813Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -43,7 +43,8 @@
   "2026-09-23_212500-glitch-lab-split.md",
   "2026-09-24_140000-ds-docs-compact.md",
   "2026-09-24_150000-sound-to-foundations.md",
-  "2026-09-24_160000-primitives-complete.md"
+  "2026-09-24_160000-primitives-complete.md",
+  "2026-09-24_170000-code-syntax-highlight.md"
  ],
  "commits": [
   {
@@ -3962,5 +3963,15 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-names.json",
+  "M src/ds/component.js",
+  "M src/ds/foundations/space/tables.js",
+  "M src/ds/playground.js",
+  "M src/ds/playground/mount.js",
+  "M src/ds/specimens/markup.js",
+  "M src/styles/tokens-dark.css",
+  "?? src/ds/code-highlight.css",
+  "?? src/ds/code-highlight.js"
+ ]
 }

@@ -1,14 +1,14 @@
-/* ADAM/DS — ds/playground · shell · [plan:2026-09-24_160000-primitives-complete.md#phase-2] */
+/* ADAM/DS — ds/playground · shell · [plan:2026-09-24_170000-code-syntax-highlight.md#phase-2] */
 // Exports: playground, mountPlayground — playground shell + tabs
 // — Helpers · Playground —
 
 import { tabs } from './tabs.js';
 import { knobsHTML as knobControls } from './playground/knobs.js';
+import { highlight } from './code-highlight.js';
 
 export { mountPlayground } from './playground/mount.js';
 
 // — Helpers —
-const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const reg = (window.__pgReg = window.__pgReg || {});
 
 // — Playground —
@@ -25,18 +25,18 @@ export function playground({ title, sub, knobs = [], render, code, tokens = [] }
     '</div></div>',
   ].join('');
   const codeHTML = [
-    '<div class="ds-code" data-pg-code="',
+    '<div class="ds-code" data-lang="html" data-pg-code="',
     id,
-    '"><pre>',
-    esc(code(init)),
-    '</pre></div><div class="fx-btns"><button class="pill" data-pg-copy="',
+    '"><pre><code class="hl">',
+    highlight(code(init)),
+    '</code></pre></div><div class="fx-btns"><button class="pill" data-pg-copy="',
     id,
     '">copy code</button></div>',
   ].join('');
   const tokHTML = tokens.length
     ? [
       '<div class="fx-btns" style="margin-top:var(--space-10)">',
-      tokens.map((t) => `<button class="tok" data-copy="${t}">${t}</button>`).join(''),
+      tokens.map((t) => '<button class="tok" data-copy="' + t + '">' + t + '</button>').join(''),
       '</div>',
       '<p class="sub" style="margin-top:var(--space-8)">Tap any token to copy — '
         + 'live <span class="tok">var()</span>.</p>',
@@ -56,7 +56,7 @@ export function playground({ title, sub, knobs = [], render, code, tokens = [] }
     '"><h2>',
     title,
     '</h2>',
-    sub ? `<p class="sub">${sub}</p>` : '',
+    sub ? '<p class="sub">' + sub + '</p>' : '',
     tabsHTML,
     '<div class="fx-controls" data-pg-ctrl="',
     id,

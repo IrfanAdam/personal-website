@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T09:55:28.209Z",
+  "generated": "2026-09-24T10:41:43.693Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -484,6 +484,43 @@
       "route": null,
       "title": "changelog titles",
       "tokens": []
+    },
+    {
+      "id": "ds_code_highlight",
+      "path": "src/ds/code-highlight.js",
+      "layer": "component",
+      "route": null,
+      "title": "code highlight",
+      "tokens": []
+    },
+    {
+      "id": "ds_code_highlight",
+      "path": "src/ds/code-highlight.css",
+      "layer": "style",
+      "route": null,
+      "title": "code highlight",
+      "tokens": [
+        "--border-hairline",
+        "--color-code-attr",
+        "--color-code-bg",
+        "--color-code-comm",
+        "--color-code-fg",
+        "--color-code-kw",
+        "--color-code-num",
+        "--color-code-punct",
+        "--color-code-str",
+        "--color-code-tag",
+        "--color-code-var",
+        "--color-ink-muted",
+        "--font-mono",
+        "--leading-mono",
+        "--space-4",
+        "--space-6",
+        "--text-meta",
+        "--text-micro",
+        "--tracking-mono",
+        "--weight-semibold"
+      ]
     },
     {
       "id": "ds_component",
@@ -3330,6 +3367,7 @@
         "--color-line",
         "--color-shadow-media",
         "--color-shadow-media-sm",
+        "--color-surface",
         "--fx-grid-pitch",
         "--opacity-shadow-media",
         "--opacity-shadow-media-sm",
@@ -3342,6 +3380,7 @@
         "--stone-100",
         "--stone-200",
         "--stone-400",
+        "--stone-500",
         "--stone-600",
         "--stone-900",
         "--stone-950"
@@ -3359,10 +3398,12 @@
         "--color-line",
         "--color-shadow-viewer",
         "--color-shadow-viewer-soft",
+        "--color-surface",
         "--space-12",
         "--space-14",
         "--space-3",
         "--space-36",
+        "--stone-400",
         "--stone-500",
         "--stone-700",
         "--stone-900"
@@ -4560,6 +4601,16 @@
       "from": "ds_changelog",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_code_highlight",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_component",
+      "to": "ds_code_highlight",
+      "kind": "imports"
     },
     {
       "from": "ds_component",
@@ -6143,7 +6194,17 @@
     },
     {
       "from": "ds_playground_mount",
+      "to": "ds_code_highlight",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_playground_mount",
       "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_playground",
+      "to": "ds_code_highlight",
       "kind": "imports"
     },
     {
@@ -6304,6 +6365,11 @@
     {
       "from": "ds_specimens_grids",
       "to": "ds_specimens_color",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_specimens_markup",
+      "to": "ds_code_highlight",
       "kind": "imports"
     },
     {

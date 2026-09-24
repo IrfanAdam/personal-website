@@ -1,8 +1,9 @@
-/* ADAM/DS — ds/playground/mount · mount · [plan:2026-09-24_160000-primitives-complete.md#phase-2] */
+/* ADAM/DS — ds/playground/mount · mount · [plan:2026-09-24_170000-code-syntax-highlight.md#phase-2] */
 // Exports: mountPlayground — binds playground knobs + live code
 // — Mount —
 
 import { copy } from '../specimens.js';
+import { highlight } from '../code-highlight.js';
 
 // — Mount —
 const reg = (window.__pgReg = window.__pgReg || {});
@@ -14,7 +15,7 @@ export function mountPlayground(root) {
     const cfg = reg[id];
     if (!cfg) return;
     const preview = sec.querySelector(`[data-pg-preview="${id}"]`);
-    const codeEl = sec.querySelector(`[data-pg-code="${id}"] pre`);
+    const codeEl = sec.querySelector(`[data-pg-code="${id}"] code.hl`);
     const ctrls = sec.querySelector(`[data-pg-ctrl="${id}"]`);
     if (!preview || !ctrls) return;
     const outs = {};
@@ -27,11 +28,16 @@ export function mountPlayground(root) {
           preview.firstElementChild.style.setProperty(k, String(v));
         }
       });
-      if (codeEl) codeEl.textContent = cfg.code(state);
+      if (codeEl) codeEl.innerHTML = highlight(cfg.code(state));
       Object.entries(outs).forEach(([k, el]) => {
         const kn = cfg.knobs.find((x) => x.key === k);
         const v = state[k];
-        el.textContent = typeof v === 'boolean' ? (v ? 'on' : 'off') : String(v) + (kn && kn.unit || '');
+        let out = String(v) + (kn && kn.unit || '');
+        if (typeof v === 'boolean') {
+          if (v) out = 'on';
+          else out = 'off';
+        }
+        el.textContent = out;
       });
     };
     const onInput = (e) => {
