@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T09:27:44.722Z",
+ "generated": "2026-09-24T09:56:17.167Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -47,13 +47,49 @@
  ],
  "commits": [
   {
+   "sha": "bdf91d0",
+   "full": "bdf91d0a8f395924ebfa7aa0a53cc4b5a781b346",
+   "date": "2026-09-24",
+   "time": "15:25",
+   "subject": "feat(ds): 24 Sep single build — docs, Sound, primitives + Library-like refinements",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-7"
+  },
+  {
+   "sha": "c7d3c4d",
+   "full": "c7d3c4d98757e8141cffeb869180d8568bd5db80",
+   "date": "2026-09-24",
+   "time": "14:59",
+   "subject": "chore(ds): primitives graph + manifest sync, docs compact",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-6"
+  },
+  {
+   "sha": "8dcfe25",
+   "full": "8dcfe25a414057676fde9217ef41c20041281a04",
+   "date": "2026-09-24",
+   "time": "14:59",
+   "subject": "docs(plan): record shipped c7d3c4d for primitives proof",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-6"
+  },
+  {
    "sha": "307ccd7",
    "full": "307ccd737ff417c77a53c5d90343c2f1b114c8d1",
    "date": "2026-09-24",
    "time": "14:57",
    "subject": "fix(ds): scope below intro in Foundations Sound pane",
-   "plan": "2026-09-24_150000-sound-to-foundations.md",
-   "anchor": "phase-1"
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-3"
+  },
+  {
+   "sha": "dcc6b54",
+   "full": "dcc6b54f4dc3c3ab5b72324c194cb53bb30c6b73",
+   "date": "2026-09-24",
+   "time": "14:57",
+   "subject": "chore(ds): sync manifest after scope below intro",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-3"
   },
   {
    "sha": "569aa24",
@@ -61,8 +97,8 @@
    "date": "2026-09-24",
    "time": "14:55",
    "subject": "feat(ds): primitives composer + chrome — ≤100, readable",
-   "plan": "2026-09-24_160000-primitives-complete.md",
-   "anchor": "phase-2"
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-5"
   },
   {
    "sha": "ae132a8",
@@ -70,8 +106,8 @@
    "date": "2026-09-24",
    "time": "14:55",
    "subject": "feat(ds): primitives readable — 9 sheets audited, token-honest",
-   "plan": "2026-09-24_160000-primitives-complete.md",
-   "anchor": "phase-1"
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-4"
   },
   {
    "sha": "b821eae",
@@ -79,8 +115,8 @@
    "date": "2026-09-24",
    "time": "14:48",
    "subject": "chore(ds): register primitives plan name",
-   "plan": "2026-09-24_160000-primitives-complete.md",
-   "anchor": "phase-1"
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-4"
   },
   {
    "sha": "c7dd23c",
@@ -88,8 +124,8 @@
    "date": "2026-09-24",
    "time": "14:47",
    "subject": "feat(ds): Sound returns to Foundations as eighth pane",
-   "plan": "2026-09-24_150000-sound-to-foundations.md",
-   "anchor": "phase-1"
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-3"
   },
   {
    "sha": "6d5880e",
