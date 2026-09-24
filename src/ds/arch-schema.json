@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T08:21:47.273Z",
+  "generated": "2026-09-24T08:34:23.175Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -1520,6 +1520,14 @@
       ]
     },
     {
+      "id": "ds_functions_line_tabs",
+      "path": "src/ds/functions/line-tabs.js",
+      "layer": "function",
+      "route": null,
+      "title": "line tabs",
+      "tokens": []
+    },
+    {
       "id": "ds_functions_rise",
       "path": "src/ds/functions/rise.js",
       "layer": "function",
@@ -1687,7 +1695,8 @@
       "tokens": [
         "--dur-shimmer",
         "--shimmer-band",
-        "--shimmer-gradient"
+        "--shimmer-gradient",
+        "--space-8"
       ]
     },
     {
@@ -5102,6 +5111,11 @@
     },
     {
       "from": "ds_functions_glimmer_orb",
+      "to": "ds_functions_line_tabs",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glimmer_orb",
       "to": "ds_fx_lab_pane_visible",
       "kind": "imports"
     },
@@ -5293,6 +5307,11 @@
     {
       "from": "ds_functions_grid_reveal",
       "to": "ds_functions_grid_reveal_lab",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_grid_reveal",
+      "to": "ds_functions_line_tabs",
       "kind": "imports"
     },
     {

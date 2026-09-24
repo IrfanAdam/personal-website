@@ -1,8 +1,8 @@
-/* ADAM/DS — Functions · GridReveal (shared) · composer ·
-   [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
+/* ADAM/DS — gridReveal · lab/code tabs · [plan:2026-09-24_140000-ds-docs-compact.md#phase-2] */
 import { mountCells } from '../fx-lab.js';
 import { labSection } from './grid-reveal-lab.js';
 import { docsSections } from './grid-reveal-docs.js';
+import { bindLineTabs } from './line-tabs.js';
 export const title = 'GridReveal';
 export function render(){
   return [
@@ -12,7 +12,16 @@ export function render(){
     `class="tok">gridReveal.js</span> as the hero. The lab below is a 280px window into that function — never `,
     `pushes controls below the fold.</p></div>`,
   ].join('')
-  + labSection()
-  + docsSections();
++[
+  `<div class="ds-tablist ds-tablist--line" role="tablist" data-grid-tabs>`,
+  `<button class="ds-tab on" role="tab" aria-selected="true" data-tab="lab">Lab</button>`,
+  `<button class="ds-tab" role="tab" aria-selected="false" data-tab="code">Code</button></div>`,
+].join('')
++`<div data-tab-panel="lab">` + labSection() + `</div>`
++`<div data-tab-panel="code" hidden>` + docsSections() + `</div>`;
 }
-export function mount(root){ return mountCells(root); }
+export function mount(root){
+  const offCells = mountCells(root);
+  const offTabs = bindLineTabs(root, '[data-grid-tabs]');
+  return () => { try { offCells && offCells(); } catch {} offTabs(); };
+}
