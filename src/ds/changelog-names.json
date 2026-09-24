@@ -162,5 +162,9 @@
   "2026-09-24_150000-sound-to-foundations.md": {
     "title": "Sound returns to Foundations as the eighth pane",
     "purpose": "Sound inside Foundations, not Elements"
+  },
+  "2026-09-24_160000-primitives-complete.md": {
+    "title": "Primitives polished — readable sheets, honest tokens",
+    "purpose": "Readable primitives, honest tokens"
   }
 }
