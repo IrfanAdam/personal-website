@@ -53,7 +53,7 @@ export function render() {
   ].join('')
   + `</div>`
   + [
-    `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Code</h2>`,
+    `<div data-tab-panel="code" hidden><div class="ds-sec">`,
     code(`import { attachGlitch } from '../views/glitch.js';\nattachGlitch(el, { trigger: 'hover' });`),
     `</div></div>`,
     note('Do', 'Glitch marks one thing at a time.'),
