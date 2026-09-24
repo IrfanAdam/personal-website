@@ -1140,6 +1140,16 @@
    "plan": "2026-09-24_140000-ds-docs-compact.md",
    "anchor": "phase-3",
    "note": "fold \u2014 manifest sync after Sound, single build"
-  }
+ },
+  "b09ab52": {
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-8",
+   "note": "fold \u2014 code highlight tokens + engine + chrome, single 24 Sep build (was 170000 P1)"
+ },
+  "1afa0c0": {
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-8",
+   "note": "fold \u2014 code highlight adopt everywhere, single 24 Sep build (was 170000 P2)"
  }
+}
 }
