@@ -2,7 +2,6 @@
    [plan:2026-09-23_174000-motion-elements-vertical.md#phase-7] */
 // Exports: render, mount — Like Library: 1 tab, 7 labs
 import { tabs } from './tabs.js';
-import { note } from './specimens.js';
 import { render as rGrid, mount as mGrid } from './functions/grid-reveal.js';
 import { render as rShim, mount as mShim } from './functions/shimmer.js';
 import { render as rRise, mount as mRise } from './functions/rise.js';
@@ -27,8 +26,7 @@ export function render() {
   return [
     `<p class="ds-crumb">Special · Motion labs</p><div class="ds-hero"><h1>Motion with a model.</h1>`,
     `<p class="lede">Seven tuned labs, each its own sheet. Labs run on production geometry; values graduate to tokens before use.</p></div>`,
-  ].join('') + tabs({ vertical: true, panes: panes() })
-    + note('Do', 'Tune in the lab that owns the model, then graduate via <span class="tok">--fx-*</span> — never copy literal.');
+  ].join('') + tabs({ vertical: true, panes: panes() });
 }
 export function mount(root) {
   const c = [mGrid, mShim, mRise, mView, mGlim, mGlitch, mScram].map((fn) => {

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T08:19:41.730Z",
+ "generated": "2026-09-24T08:21:47.967Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -44,6 +44,15 @@
   "2026-09-24_140000-ds-docs-compact.md"
  ],
  "commits": [
+  {
+   "sha": "2c5b7ca",
+   "full": "2c5b7ca042a3d72b5d67828cb15f895ab0372680",
+   "date": "2026-09-24",
+   "time": "13:50",
+   "subject": "fix(ds): drop redundant Code heading in glitch lab — tab is the label",
+   "plan": "2026-09-24_140000-ds-docs-compact.md",
+   "anchor": "phase-1"
+  },
   {
    "sha": "1f41331",
    "full": "1f41331d248a9a23f58ae4d8a6e5500b50220003",
@@ -3853,6 +3862,6 @@
   }
  ],
  "wip": [
-  "M src/ds/functions/glitch.js"
+  "M src/ds/pages-special.js"
  ]
 }
