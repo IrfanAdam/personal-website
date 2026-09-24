@@ -42,3 +42,12 @@
   color: var(--color-ink);
   border-bottom-color: var(--color-accent);
 }
+/* — Glitch lab compact — tabs flow into content, one line only [plan:2026-09-24_140000-ds-docs-compact.md#phase-1] */
+.ds-tablist--line ~ [data-tab-panel] > .ds-sec {
+  margin-top: var(--space-10);
+  padding-top: 0;
+  border-top: none;
+}
+.ds-tablist--line ~ [data-tab-panel] > .ds-sec > .ds-spec.block:first-child {
+  margin-top: 0;
+}
