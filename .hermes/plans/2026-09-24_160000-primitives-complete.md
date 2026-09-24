@@ -44,7 +44,7 @@
 **Files:** `src/ds/primitives/toggle.js`, `src/ds/primitives/avatar.js`, `src/ds/primitives/logo.js`
 **Verify:** Same.
 
-*Shipped in <sha> · Tasks 1–5 · phase-1.*
+*Shipped in ae132a8 · Tasks 1–5 · phase-1.*
 
 ---
 
@@ -67,7 +67,7 @@
 **Files:** `src/ds/component.js`, `src/ds/playground.js`, `src/ds/playground/mount.js`
 **Verify:** Each ≤100 or split, banners + export map, `lint-manage` + `lint:tokens` + `build` green.
 
-*Shipped in <sha> · Tasks 6–7 · phase-2.*
+*Shipped in 569aa24 · Tasks 6–7 · phase-2.*
 
 ---
 
