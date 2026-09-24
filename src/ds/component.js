@@ -9,19 +9,26 @@ import { knobsHTML as knobControls } from './component/knobs.js';
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const reg = (window.__compReg = window.__compReg || {});
 
-export function component({ title, sub, anatomy, behaviour, knobs = [], render, code, tokens = [] }) {
+// — Component —
+export function component(o) {
   const id = 'comp-' + Math.random().toString(36).slice(2, 6);
-  reg[id] = { knobs, render, code };
-  const init = Object.fromEntries(knobs.map((k) => [k.key, k.default]));
-  const knobsHTML = knobControls(knobs, id);
-  const tokHTML = tokens.length
+  reg[id] = { knobs: o.knobs, render: o.render, code: o.code };
+  const init = Object.fromEntries(o.knobs.map((k) => [k.key, k.default]));
+  const knobsHTML = knobControls(o.knobs, id);
+  const tokHTML = o.tokens.length
     ? ['<div class="fx-btns" style="margin-top:var(--space-10)">',
-      tokens.map((t) => `<button class="tok" data-copy="${t}">${t}</button>`).join(''),
+      o.tokens.map((t) => `<button class="tok" data-copy="${t}">${t}</button>`).join(''),
       '</div>'].join('') : '';
-  const previewHTML = `<div data-comp-preview="${id}">${render(init)}</div>`;
+  const previewHTML = [
+    '<div class="ds-spec block"><div data-comp-preview="',
+    id,
+    '">',
+    o.render(init),
+    '</div></div>',
+  ].join('');
   const liveNote = '<p class="sub" style="margin-top:var(--space-8)">'
     + 'Tap token to copy — live <span class="tok">var()</span>.</p>';
-  const codeHTML = ['<div class="ds-code" data-comp-code="', id, '"><pre>', esc(code(init)),
+  const codeHTML = ['<div class="ds-code" data-comp-code="', id, '"><pre>', esc(o.code(init)),
     '</pre></div><div class="fx-btns"><button class="pill" data-comp-copy="', id, '">copy code</button></div>',
     tokHTML, tokHTML ? liveNote : ''].join('');
   const tabsHTML = tabs({
@@ -31,14 +38,18 @@ export function component({ title, sub, anatomy, behaviour, knobs = [], render, 
       { label: 'Code', html: codeHTML },
     ],
   });
-  return ['<div class="ds-sec" data-comp-root="', id, '"><h2>', title, '</h2>',
-    sub ? `<p class="sub">${sub}</p>` : '',
-    anatomy ? `<h3>What</h3><p class="sub">${anatomy}</p>` : '',
-    behaviour ? `<h3>When to use</h3><p class="sub">${behaviour}</p>` : '',
+  const specHTML = [
+    o.anatomy ? `<p class="sub" style="margin-top:var(--space-12)"><span class="tok">What</span> ${o.anatomy}</p>` : '',
+    o.behaviour ? `<p class="sub"><span class="tok">Use</span> ${o.behaviour}</p>` : '',
+  ].join('');
+  return ['<div class="ds-sec" data-comp-root="', id, '"><h2>', o.title, '</h2>',
+    o.sub ? `<p class="sub">${o.sub}</p>` : '',
     tabsHTML,
+    specHTML,
     '<div class="fx-controls" data-comp-ctrl="', id, '">', knobsHTML, '</div></div>'].join('');
 }
 
+// — Mount —
 export function mountComponent(root) {
   const offs = [];
   root.querySelectorAll('[data-comp-root]').forEach((sec) => {

@@ -30,9 +30,9 @@ export function render() {
   return [
     '<p class="ds-crumb">Elements · Primitives</p>',
     '<div class="ds-hero"><h1>Actions, not decoration.</h1>',
-    '<p class="lede">Primitives are the smallest reusable parts — each sheet is one story: ',
-    'what it is, when to use it, then Preview / Code. Tokens live in Code, knobs below.</p>',
-    '<p class="sub"><a href="#/">← Overview</a></p></div>',
+    '<p class="lede">Each sheet is one primitive — what it is, how it looks, ',
+    'and which tokens it uses. Preview is live; Code holds snippet + tokens. ',
+    'Knobs stay below so you can tune without leaving the view.</p></div>',
     tabs({ vertical: true, panes }),
   ].join('');
 }

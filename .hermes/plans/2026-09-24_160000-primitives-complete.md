@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS (`component.js` + `tabs.js` + `specimens.js`), `src/ds/primitives/*` (9 sheets) + `src/ds/component.js` + `src/ds/pages-primitives.js`, token family `src/styles/tokens*.css`, `scripts/lint-manage.mjs` + `scripts/lint-tokens.mjs`, `vite build`.
 **Tags:** Design System, Component
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — 9 sheets readable, token-audited {#phase-1}

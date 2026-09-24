@@ -5,6 +5,8 @@
 **Tech Stack:** Vanilla JS + Vite, `tabs({vertical:true})`, `foundations/sound/*` + `pane-sound.js` + `board.js`.
 **Tags:** Design System
 
+<!-- changelog: hide -->
+
 ---
 
 ## Phase 1 — Sound inside Foundations {#phase-1}
@@ -12,7 +14,7 @@
 *Elements Sound becomes the eighth Foundations subtab; the Foundations copy says eight definitions, the sidebar no longer lists Sound separately, and old hashes still land.*
 
 | # | Task | Done when |
-|---|---|---|
+|---|---|-----------|
 | 1 | Foundations adds Sound pane | `pages-foundations.js` imports `pane-sound` as eighth pane (after FX, before Tokens), lede says Eight definitions, `outerInitial` maps `sound→7`, tabs count 8 |
 | 2 | Routes + redirect | `routes.js` removes `#/sound` Elements entry; `ds.js` maps `#/sound` and `#/functions/sound` → `#/foundations` (Sound pane), sidebar no longer shows Sound under Elements |
 | 3 | Mount wiring + verify | `pages-foundations.js` mount calls `mountSoundBoard(root)` and cleans up; `plan:names`, `ds:track`, `test` green; `/ds/#/foundations` shows 8 vertical tabs with Sound active and playable |
