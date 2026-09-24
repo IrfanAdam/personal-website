@@ -90,4 +90,4 @@
 **Files:** (screenshots)
 **Verify:** 9 screenshots attached, knobs live, Code reflects knobs, dark probe where applicable.
 
-*Shipped in <sha> · Tasks 8–9 · phase-3.*
+*Shipped in c7d3c4d · Tasks 8–9 · phase-3.*
