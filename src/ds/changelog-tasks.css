@@ -67,10 +67,10 @@
   background: var(--color-ink);
   padding: var(--space-8) var(--space-10);
   pointer-events: none;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   overflow-wrap: break-word;
   text-wrap: pretty;
+  display: block;
+  max-height: calc(1.5em * 3 + var(--space-8) * 2);
+  box-sizing: border-box;
 }
