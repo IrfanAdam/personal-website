@@ -54,7 +54,7 @@ export function paintPlan(root, ctx){
       i === sel[0] ? ' on' : '',
       isDone(frac) ? '' : ' is-open',
       `" data-tip="`,
-      esc(clip(p.goal, 180) || p.purpose || p.title),
+      esc(clip(p.goal, 120) || p.purpose || p.title),
       `"><span class="ds-row"><span class="ds-num">`,
       num,
       `</span><b>`,

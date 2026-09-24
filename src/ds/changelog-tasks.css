@@ -62,7 +62,7 @@
   max-width: min(40ch, 60vw);
   font-family: var(--font-mono);
   font-size: var(--text-micro);
-  line-height: var(--leading-prose);
+  line-height: 1.5;
   color: var(--color-bg);
   background: var(--color-ink);
   padding: var(--space-8) var(--space-10);
@@ -72,4 +72,5 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   overflow-wrap: break-word;
+  text-wrap: pretty;
 }
