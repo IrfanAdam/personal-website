@@ -2,6 +2,8 @@
 // Exports: makeChase, scrollState — frame-rate independent decay, no overshoot
 const LAMBDA = 11;
 const FAST_LAMBDA = 22;
+const SETTLE_LAMBDA = 26;
+const SETTLE_FRAMES = 3;
 const SNAP_GAP = 0.5;
 
 // — Shared state —
@@ -16,6 +18,7 @@ export function makeChase(cols, getDeficits, getProgress, onSettle) {
   let rafId = 0;
   let last = 0;
   let lastY = [];
+  let stillN = 0;
   const render = () => {
     const deficits = getDeficits();
     for (let i = 0; i < cols.length; i++) {
@@ -33,6 +36,7 @@ export function makeChase(cols, getDeficits, getProgress, onSettle) {
     last = now;
     const moved = Math.abs(target - prevTarget) > 0.000001;
     prevTarget = target;
+    stillN = moved ? 0 : stillN + 1;
     const gap = target - current;
     if (Math.abs(gap) > SNAP_GAP) current = target;
     else if (Math.abs(gap) < 0.00035 && !moved) {
@@ -42,7 +46,9 @@ export function makeChase(cols, getDeficits, getProgress, onSettle) {
       if (onSettle) onSettle();
       return;
     } else {
-      const rate = LAMBDA + (FAST_LAMBDA - LAMBDA) * Math.min(1, Math.abs(gap) / 0.08);
+      const rate = stillN >= SETTLE_FRAMES
+        ? SETTLE_LAMBDA
+        : LAMBDA + (FAST_LAMBDA - LAMBDA) * Math.min(1, Math.abs(gap) / 0.08);
       current += gap * (1 - Math.exp(-rate * dt));
     }
     render();
@@ -67,6 +73,7 @@ export function makeChase(cols, getDeficits, getProgress, onSettle) {
     target = 0;
     prevTarget = 0;
     lastY = [];
+    stillN = 0;
     scrollState.active = false;
     if (rafId) cancelAnimationFrame(rafId);
     rafId = 0;
