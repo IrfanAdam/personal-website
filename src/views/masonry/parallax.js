@@ -2,7 +2,7 @@
 // Exports: attachParallax — chase in parallax-chase, math in calc/measure
 import { syncBounds as calcBounds, progress as calcProgress } from './parallax-calc.js';
 import { measureDeficits, gateOnImages } from './parallax-measure.js';
-import { makeChase } from './parallax-chase.js';
+import { makeChase, scrollState } from './parallax-chase.js';
 
 // — Analytic deficits —
 // Cards reserve height via aspect-ratio, so column fills derive from layout
@@ -30,7 +30,11 @@ export function attachParallax(grid, hint) {
     gridStart = b.gridStart;
   };
   const progress = () => calcProgress(maxScroll, gridStart);
-  const chase = makeChase(cols, () => deficits, progress);
+  const settleUI = () => {
+    grid.classList.remove('is-scrolling');
+    scrollState.active = false;
+  };
+  const chase = makeChase(cols, () => deficits, progress, settleUI);
   const kick = () => chase.kick();
   function measure() {
     if (window.innerWidth <= 640) {
@@ -63,7 +67,7 @@ export function attachParallax(grid, hint) {
   const onScroll = () => {
     grid.classList.add('is-scrolling');
     clearTimeout(idleT);
-    idleT = setTimeout(() => grid.classList.remove('is-scrolling'), 320);
+    idleT = setTimeout(() => { if (!chase.isRunning()) settleUI(); }, 800);
     kick();
   };
   gateOnImages(grid, refine);
@@ -81,7 +85,7 @@ export function attachParallax(grid, hint) {
     clearTimeout(idleT);
     if (measureRaf) cancelAnimationFrame(measureRaf);
     chase.reset();
-    grid.classList.remove('is-scrolling');
+    settleUI();
     cols.forEach((c) => { c.style.transform = ''; c.removeAttribute('data-deficit'); });
   };
 }

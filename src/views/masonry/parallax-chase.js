@@ -3,21 +3,19 @@
 const LAMBDA = 11;
 const FAST_LAMBDA = 22;
 const SNAP_GAP = 0.5;
-const IDLE_MS = 250;
 
 // — Shared state —
-// Reveal tickers read this to yield paint budget while scrolling fast.
-export const scrollState = { active: false, fast: false };
+// Reveal tickers read this to yield paint budget while the chase settles.
+export const scrollState = { active: false };
 
 // — Factory —
-export function makeChase(cols, getDeficits, getProgress) {
+export function makeChase(cols, getDeficits, getProgress, onSettle) {
   let target = 0;
   let prevTarget = 0;
   let current = 0;
   let rafId = 0;
   let last = 0;
   let lastY = [];
-  let idleT = 0;
   const render = () => {
     const deficits = getDeficits();
     for (let i = 0; i < cols.length; i++) {
@@ -41,24 +39,18 @@ export function makeChase(cols, getDeficits, getProgress) {
       current = target;
       render();
       rafId = 0;
+      if (onSettle) onSettle();
       return;
     } else {
-      const rate = scrollState.fast ? FAST_LAMBDA : LAMBDA;
+      const rate = LAMBDA + (FAST_LAMBDA - LAMBDA) * Math.min(1, Math.abs(gap) / 0.08);
       current += gap * (1 - Math.exp(-rate * dt));
     }
     render();
     rafId = requestAnimationFrame(tick);
   };
   const kick = () => {
-    const t = getProgress();
-    if (Math.abs(t - target) > 0.02) scrollState.fast = true;
-    target = t;
+    target = getProgress();
     scrollState.active = true;
-    clearTimeout(idleT);
-    idleT = setTimeout(() => {
-      scrollState.active = false;
-      scrollState.fast = false;
-    }, IDLE_MS);
     if (!rafId) {
       last = performance.now();
       prevTarget = target;
@@ -75,11 +67,10 @@ export function makeChase(cols, getDeficits, getProgress) {
     target = 0;
     prevTarget = 0;
     lastY = [];
-    clearTimeout(idleT);
     scrollState.active = false;
-    scrollState.fast = false;
     if (rafId) cancelAnimationFrame(rafId);
     rafId = 0;
   };
-  return { kick, snapAtTop, reset, get current() { return current; } };
+  const isRunning = () => rafId !== 0;
+  return { kick, snapAtTop, reset, isRunning, get current() { return current; } };
 }

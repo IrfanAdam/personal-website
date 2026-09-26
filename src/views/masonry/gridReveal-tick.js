@@ -28,7 +28,7 @@ export function makeTicker(s, render, finish) {
   let yieldFrame = false;
   const tick = (now) => {
     raf = nextFrame(tick, st);
-    if (scrollState.fast) {
+    if (scrollState.active) {
       yieldFrame = !yieldFrame;
       if (yieldFrame) return;
     }
