@@ -1,13 +1,15 @@
-/* ADAM/SOUND — views/masonry/reel-tick · interruptible zing · [plan:2026-09-15_183400-lump-sum-builds.md#phase-11] */
+/* ADAM/SOUND — views/masonry/reel-tick · interruptible zing · [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 // Exports: reelTick() — shutter: kill previous before firing next
 //          desktopZing() / attachDesktopZing() — hover variant for >640
 import { isMuted, scaledGain } from '../audio-ctx.js';
+import { scrollState } from './parallax-chase.js';
 
 let last = 0;
 let active = null;
 
 function canZing(el) {
   if (isMuted()) return false;
+  if (scrollState.active) return false;
   try {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
   } catch {}
