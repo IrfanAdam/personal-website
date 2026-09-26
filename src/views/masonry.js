@@ -1,4 +1,4 @@
-/* ADAM/PAGE — views/masonry · masonry · [plan:2026-09-15_183400-lump-sum-builds.md#phase-11] */
+/* ADAM/PAGE — views/masonry · masonry · [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 import { projects } from '../data/site.js';
 import { distribute } from './masonry/layout.js';
 import { attachParallax } from './masonry/parallax.js';
@@ -46,7 +46,7 @@ function draw(root) {
     grid.innerHTML = buckets.map((b) => `<div class="col">${
       b.map((i) => card(list[i], n++ < 6)).join('')}</div>`).join('');
     revealOff = reveal(grid);
-    parallaxOff = attachParallax(grid);
+    parallaxOff = attachParallax(grid, { heights, buckets });
     lingerOff = attachLinger(grid);
     desktopZingOff = attachDesktopZing(grid);
     if (window.innerWidth > 640) viewerOff = attachViewer(grid);

@@ -1,4 +1,4 @@
-/* ADAM/STYLE — styles/masonry · grid layout · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/STYLE — styles/masonry · grid layout · [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 /* Masonry grid — column layout + parallax. Mosaic canvas lives here; card internals in card.css. */
 .cols {
   display: grid;
@@ -11,10 +11,11 @@
   gap: var(--rhythm);
   align-content: start;
   min-width: 0;
-  will-change: transform;
-  /* keep composited layer alive so the first scroll doesn't promote mid-frame */
-  transform: translate3d(0, 0, 0);
+  will-change: auto;
   backface-visibility: hidden;
+}
+.cols.is-scrolling .col {
+  will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {
   .col { will-change: auto; transform: none; backface-visibility: visible; }

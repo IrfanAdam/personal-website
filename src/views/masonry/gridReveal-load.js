@@ -1,4 +1,4 @@
-/* ADAM/FX — gridReveal-load · decode gate + buffers · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/FX — gridReveal-load · decode gate + buffers · [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 // Exports: makeDecode, gateLoad, forgetReveal — session-seen cache, replay, mobile replay, timeout
 import { measureTree, orderRandom } from './cells.js';
 import { fxMs } from '../fx-tokens.js';
@@ -61,15 +61,13 @@ export function gateLoad(img, hero, reduce, s, decode, render, finish, replay = 
   const mobile = matchMedia('(max-width: 640px)').matches;
   const wantReplay = replay || (hero && mobile && !reduce);
   if ((seen.has(key) || (img.complete && img.naturalWidth)) && !wantReplay) {
-    const p = decode();
-    const go = () => {
-      s.split = 1;
-      s.eased = 1;
-      s.fade = 1;
-      finish();
-    };
-    if (p && p.then) p.then(go);
-    else go();
+    seen.add(key);
+    s.done = true;
+    s.loadedAt = performance.now();
+    s.split = 1;
+    s.eased = 1;
+    s.fade = 1;
+    finish();
     return true;
   }
   if (img.complete && img.naturalWidth) {

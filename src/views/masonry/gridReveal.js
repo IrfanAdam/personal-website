@@ -1,4 +1,4 @@
-/* ADAM/FX — gridReveal · attach lifecycle · [plan:2026-09-13_235413-over-limit-splits.md#phase-3] */
+/* ADAM/FX — gridReveal · attach lifecycle · [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 // Exports: attachGridReveal — painter lives in gridReveal-draw.js
 // Paced port of rareui GridReveal — frame one is already half-subdivided,
 // subdivision with eased split morphs (random split order), gutters
@@ -76,7 +76,7 @@ export function attachGridReveal(box, img, delay = 0, hero = false, holdMs = 0, 
   const decode = makeDecode(img, root, branches, s, makeBuffers, render, finish, reduce);
   if (gateLoad(img, hero, reduce, s, decode, render, finish, replay)) return () => {};
   const resize = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 2), r = box.getBoundingClientRect();
+    const dpr = Math.min(devicePixelRatio || 1, 1.5), r = box.getBoundingClientRect();
     const W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));
     s.dark = darkNow(); if (W === s.W && H === s.H) return;
     s.W = W; s.H = H; s.gut = dpr; canvas.width = W; canvas.height = H;

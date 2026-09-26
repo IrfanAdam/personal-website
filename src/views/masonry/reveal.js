@@ -1,4 +1,4 @@
-/* ADAM/PAGE — views/masonry/reveal · reveal · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+/* ADAM/PAGE — views/masonry/reveal · reveal · [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 // Exports: reveal(), attachLinger() — staggered reveal timing owns the slots
 import { attachGridReveal } from './gridReveal.js';
 import { fxMs } from '../fx-tokens.js';
@@ -10,8 +10,16 @@ export function reveal(grid) {
   const STAGGER_CAP = 8;
   const cards = [...grid.querySelectorAll('.card')];
   const slots = cards.map((_, i) => Math.min(i, STAGGER_CAP) * STAGGER_MS);
+  let seed = 0x9e3779b9;
+  const rand = () => {
+    seed ^= seed << 13;
+    seed ^= seed >>> 17;
+    seed ^= seed << 5;
+    seed >>>= 0;
+    return seed / 4294967296;
+  };
   for (let i = slots.length - 1; i > 0; i--) {
-    const j = (Math.random() * (i + 1)) | 0;
+    const j = (rand() * (i + 1)) | 0;
     [slots[i], slots[j]] = [slots[j], slots[i]];
   }
   const offs = cards.map((el, i) => {

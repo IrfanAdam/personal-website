@@ -1,7 +1,8 @@
 /* ADAM/FX — gridReveal-tick · frame scheduler + split ticker ·
-   [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
+   [plan:2026-09-21_125642-lump-sum-builds.md#phase-8] */
 // Exports: makeTicker(s, render, finish) — RAF fallback + eased split chase
 import { smoothstep } from './cells.js';
+import { scrollState } from './parallax-chase.js';
 
 // — Frame scheduler: RAF when visible, timeout fallback —
 export function nextFrame(cb, state) {
@@ -24,8 +25,13 @@ export function makeTicker(s, render, finish) {
   let raf = 0;
   let visible = true;
   let stopped = false;
+  let yieldFrame = false;
   const tick = (now) => {
     raf = nextFrame(tick, st);
+    if (scrollState.fast) {
+      yieldFrame = !yieldFrame;
+      if (yieldFrame) return;
+    }
     const dt = Math.min(((now - (s.now || now)) / 1000) || 0, 0.05);
     s.clock += dt;
     if (now < s.t0) {
