@@ -17,6 +17,8 @@
 ## Phase 1 — Lint gate + build warnings clean {#phase-1}
 *Tags: Tooling*
 
+*Shipped in d3fd5b8 · Tasks 1–4 · phase-1.*
+
 *`npm test` does not gate manage lint, but `lint:manage` fails (10) and `vite build` warns (`repeating-linear-gradient` CSS + `sound-palette.js` dual import). This phase makes both clean with zero visual diff, keeping every file ≤100 lines one-statement-per-line.*
 
 | # | Task | Done when |
