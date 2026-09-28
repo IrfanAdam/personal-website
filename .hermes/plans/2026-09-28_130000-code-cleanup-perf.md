@@ -106,6 +106,8 @@
 ## Phase 3 — Runtime waste cut + no-regression prove {#phase-3}
 *Tags: Tooling, Component*
 
+*Shipped in ff0b77f · Tasks 8–11 · phase-3.*
+
 *Even with smaller bundles, runtime still fetches all heroes eagerly and holds a micro-tick sound fetch. Fonts block without `display=swap`, and 16 `FILES` ship sounds never used beyond DS demos. All are invisible changes — verified by network + build + screenshots.*
 
 | # | Task | Done when |
