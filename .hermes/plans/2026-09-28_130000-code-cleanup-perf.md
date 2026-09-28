@@ -68,6 +68,8 @@
 ## Phase 2 — Route code-split + chunk hygiene {#phase-2}
 *Tags: Tooling, Layout*
 
+*Shipped in aef3a76 · Tasks 5–7 · phase-2.*
+
 *Current `src/boot/routing.js` eagerly imports 5 routes + `src/main.js` imports chrome; prod `main` 111.9 kB / `ds` 967 kB is one chunk per entry with no `manualChunks`. 32 `<link rel=stylesheet>` are render-blocking in dev (prod bundles to 1 CSS but dev waterfall remains). This phase keeps token order and visuals identical while splitting code.*
 
 | # | Task | Done when |
