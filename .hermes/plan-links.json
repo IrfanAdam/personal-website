@@ -1149,7 +1149,47 @@
   "1afa0c0": {
    "plan": "2026-09-24_140000-ds-docs-compact.md",
    "anchor": "phase-8",
-   "note": "fold \u2014 code highlight adopt everywhere, single 24 Sep build (was 170000 P2)"
+   "note": "fold — code highlight adopt everywhere, single 24 Sep build (was 170000 P2)"
+ },
+  "73eced5": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "feat(grid): parallax perf rebuild — analytic deficits, fresh-target chase, ticker yield"
+ },
+  "89d2cc1": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "close phase-8 — stamping 73eced5"
+ },
+  "988b4b2": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "fix(grid): settle chop — is-scrolling clears on chase settle, gap-scaled lambda"
+ },
+  "0e53365": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "close phase-8 task 21 — stamping 988b4b2"
+ },
+  "7543c49": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "fix(grid): mute hover zing mid-scroll"
+ },
+  "227b673": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "close phase-8 task 22 — stamping 7543c49"
+ },
+  "1aa8397": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "perf(grid): two-regime chase — fast converge once the target parks"
+ },
+  "8bb55f0": {
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}",
+   "note": "close phase-8 task 23 — stamping 1aa8397"
  }
 }
 }

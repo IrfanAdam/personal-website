@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-28T07:39:21.750Z",
+ "generated": "2026-09-28T08:22:05.835Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -56,6 +56,78 @@
    "subject": "refactor(ds): phase-1 lint gate + build warnings clean",
    "plan": "2026-09-28_130000-code-cleanup-perf.md",
    "anchor": "{#phase-1}"
+  },
+  {
+   "sha": "1aa8397",
+   "full": "1aa839784a4695ca0e231f7e184790f351509a52",
+   "date": "2026-09-26",
+   "time": "21:14",
+   "subject": "perf(grid): two-regime chase — fast converge once the target parks",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "8bb55f0",
+   "full": "8bb55f0c3555f16b2bd9b2c956111480dd7ef5df",
+   "date": "2026-09-26",
+   "time": "21:14",
+   "subject": "chore(lump-sum): close phase-8 task 23 — stamping 1aa8397",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "7543c49",
+   "full": "7543c49e84440e5c2d9b3645d8afc603b7985a24",
+   "date": "2026-09-26",
+   "time": "21:07",
+   "subject": "fix(grid): mute hover zing mid-scroll — Audio storm janked repeat flicks",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "227b673",
+   "full": "227b673efb811c6353d1721d6a4f5e0133460e30",
+   "date": "2026-09-26",
+   "time": "21:07",
+   "subject": "chore(lump-sum): close phase-8 task 22 — stamping 7543c49",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "988b4b2",
+   "full": "988b4b2aec9b43b41fd9ec25ebec4bb09ed67062",
+   "date": "2026-09-26",
+   "time": "21:01",
+   "subject": "fix(grid): settle chop — is-scrolling clears on chase settle, gap-scaled lambda",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "0e53365",
+   "full": "0e533650d804038c1dd842b2c72dafefe25b0215",
+   "date": "2026-09-26",
+   "time": "21:01",
+   "subject": "chore(lump-sum): close phase-8 task 21 — stamping 988b4b2",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "73eced5",
+   "full": "73eced5fca3e4c830dace70a4b5c4c5f2af4dda8",
+   "date": "2026-09-26",
+   "time": "20:11",
+   "subject": "feat(grid): parallax perf — analytic deficits, fresh-target chase, ticker yield",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "89d2cc1",
+   "full": "89d2cc1714b0dd77f1a97813b332aee3158427a0",
+   "date": "2026-09-26",
+   "time": "20:11",
+   "subject": "chore(lump-sum): close phase-8 — stamping 73eced5",
+   "plan": "2026-09-21_125642-lump-sum-builds.md",
+   "anchor": "{#phase-8}"
   },
   {
    "sha": "9e7e03a",
