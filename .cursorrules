@@ -48,7 +48,7 @@ Anchored at `20260909_145218_9888b1` (`continuation` in `.hermes/continuation.js
 - `npm test` (`lint:tokens` + `build`) green
 - Visual: `/ds/#/changelog` Miller columns + drawer badges resolve per phase; `Build N` recomputes on filtered list client-side.
 
-**Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never carry a lump-sum plan across a week boundary, never skip `ds-track` before commit, never push a plan-less commit, never ship a phase with unchecked tasks, never `git push` without your explicit `y`, never report a change as deployed without checking the deployed bundle. This section is law — agents enforce it without being asked.
+**Hygiene:** never rewrite history for retro links, never leave a phased plan untagged or unnamed, never carry a lump-sum plan across a week boundary, never skip `ds-track` before commit, never push a plan-less commit, never ship a phase with unchecked tasks, never `git push` without your explicit `y`, never report a change as deployed without checking the deployed bundle, never hide a phased plan from the changelog without your explicit approval — every phased plan renders by default (historical hides grandfathered). This section is law — agents enforce it without being asked.
 
 ## 6. File Budget — Max 100 lines, all languages (JS+CSS+scripts)
 Every source file ≤100 lines incl. comments. CI (`lint-manage.mjs`) fails the build over budget. Split via extract-module + barrel re-export; never via minification/packing.

@@ -10,8 +10,6 @@
 
 **Tags:** Tooling, Layout, Component
 
-<!-- changelog: hide -->
-
 ---
 
 ## Phase 1 — Lint gate + build warnings clean {#phase-1}
@@ -154,6 +152,35 @@ option (FILES lists + lab dropdowns reference it; deletion would 404 local-first
 **Verify:** All 4 checks logged in commit trailer `build` run; checker would open `/ds/#/changelog` Miller columns — no new wip.
 
 *Shipped in <sha> · Tasks 8–11 · phase-3.*
+
+---
+
+## Phase 4 — Every phased plan renders in the changelog {#phase-4}
+*Tags: Tooling*
+
+*Shipped in <sha> · Tasks 12–13 · phase-4.*
+
+*Phases 1–3 shipped with a changelog-hide marker in the plan header, so today's build never carded despite 6 linked commits. From here every phased plan renders by default; hiding needs explicit user approval.*
+
+| # | Task | Done when |
+|---|---|-----------|
+| 12 | Unhide this plan | hide marker removed from header; filter audit lists the plan visible; `/ds/#/changelog` cards today's build |
+| 13 | Persist no-silent-hide rule | AGENTS.md + .cursorrules §5 forbid silent hides; plan-traceability skill patched; `plan:names` + `ds:track` + `build` green |
+
+### Task 12: Unhide this plan ✓ done
+**Objective:** Today's build cards in the changelog.
+**Files:**
+- Modify: `.hermes/plans/2026-09-28_130000-code-cleanup-perf.md` — header marker removed
+**Verify:** node filter audit lists `2026-09-28_130000-code-cleanup-perf.md` visible; changelog `All (N)` rises by 1.
+
+### Task 13: Persist no-silent-hide rule ✓ done
+**Objective:** No future plan hides without explicit approval.
+**Files:**
+- Modify: `AGENTS.md` §5 Hygiene + `.cursorrules` §5 (identical mirrors)
+- Patch: `plan-traceability` skill (hide only on explicit user approval)
+**Verify:** `diff AGENTS.md .cursorrules` empty; gates green.
+
+*Shipped in <sha> · Tasks 12–13 · phase-4.*
 
 ---
 
