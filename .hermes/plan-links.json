@@ -1190,6 +1190,31 @@
    "plan": "2026-09-21_125642-lump-sum-builds.md",
    "anchor": "{#phase-8}",
    "note": "close phase-8 task 23 — stamping 1aa8397"
+ },
+  "ffeb566": {
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-1}",
+   "note": "close phase-1 — stamping d3fd5b8"
+ },
+  "aef3a76": {
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-2}",
+   "note": "perf(routes): phase-2 code-split + vendor chunk + css barrel"
+ },
+  "cef4373": {
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-2}",
+   "note": "close phase-2 — stamping aef3a76"
+ },
+  "ff0b77f": {
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-3}",
+   "note": "perf(runtime): phase-3 drop eager hero preload, retain sounds"
+ },
+  "c183b69": {
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-3}",
+   "note": "close phase-3 — stamping ff0b77f"
  }
 }
 }

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-28T08:22:05.835Z",
+ "generated": "2026-09-28T08:23:11.135Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -49,11 +49,56 @@
  ],
  "commits": [
   {
+   "sha": "ff0b77f",
+   "full": "ff0b77fec5e91e0ac509d18813c718938850197a",
+   "date": "2026-09-28",
+   "time": "13:20",
+   "subject": "perf(runtime): phase-3 drop eager hero preload, retain sounds",
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "c183b69",
+   "full": "c183b693e9669960f66d4d4e7dbf4b55f5b5bf54",
+   "date": "2026-09-28",
+   "time": "13:20",
+   "subject": "chore(plan): close phase-3 — stamping ff0b77f",
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "aef3a76",
+   "full": "aef3a760d7647332b202d1ada5deb1aa31bfa5f8",
+   "date": "2026-09-28",
+   "time": "13:16",
+   "subject": "perf(routes): phase-2 code-split + vendor chunk + css barrel",
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-2}"
+  },
+  {
+   "sha": "cef4373",
+   "full": "cef4373b80216c856ff71820da9567cbdc78bcd1",
+   "date": "2026-09-28",
+   "time": "13:16",
+   "subject": "chore(plan): close phase-2 — stamping aef3a76",
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-2}"
+  },
+  {
    "sha": "d3fd5b8",
    "full": "d3fd5b8393d2d996f68e049955f2bd737ea8fa3e",
    "date": "2026-09-28",
    "time": "13:09",
    "subject": "refactor(ds): phase-1 lint gate + build warnings clean",
+   "plan": "2026-09-28_130000-code-cleanup-perf.md",
+   "anchor": "{#phase-1}"
+  },
+  {
+   "sha": "ffeb566",
+   "full": "ffeb566245f8451bae1c205071995e7bf7c6ff75",
+   "date": "2026-09-28",
+   "time": "13:09",
+   "subject": "chore(plan): close phase-1 — stamping d3fd5b8",
    "plan": "2026-09-28_130000-code-cleanup-perf.md",
    "anchor": "{#phase-1}"
   },
