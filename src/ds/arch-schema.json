@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T07:38:01.190Z",
+  "generated": "2026-09-28T07:42:51.564Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -7,6 +7,14 @@
       "layer": "view",
       "route": null,
       "title": "boot chrome",
+      "tokens": []
+    },
+    {
+      "id": "boot_route_load",
+      "path": "src/boot/route-load.js",
+      "layer": "component",
+      "route": null,
+      "title": "route load",
       "tokens": []
     },
     {
@@ -2670,6 +2678,14 @@
       "tokens": []
     },
     {
+      "id": "styles_app",
+      "path": "src/styles/app.css",
+      "layer": "style",
+      "route": null,
+      "title": "app",
+      "tokens": []
+    },
+    {
       "id": "styles_base",
       "path": "src/styles/base.css",
       "layer": "style",
@@ -4377,33 +4393,38 @@
   ],
   "edges": [
     {
+      "from": "boot_route_load",
+      "to": "views_headerFrame",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_route_load",
+      "to": "views_masonry",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_route_load",
+      "to": "views_settings_menu",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_route_load",
+      "to": "views_stripbar",
+      "kind": "imports"
+    },
+    {
+      "from": "boot_route_load",
+      "to": "views_transit",
+      "kind": "imports"
+    },
+    {
       "from": "boot_routing",
-      "to": "views_contact",
+      "to": "boot_route_load",
       "kind": "imports"
     },
     {
       "from": "boot_routing",
       "to": "views_headerFrame",
-      "kind": "imports"
-    },
-    {
-      "from": "boot_routing",
-      "to": "views_map_index",
-      "kind": "imports"
-    },
-    {
-      "from": "boot_routing",
-      "to": "views_masonry",
-      "kind": "imports"
-    },
-    {
-      "from": "boot_routing",
-      "to": "views_minimal_lab",
-      "kind": "imports"
-    },
-    {
-      "from": "boot_routing",
-      "to": "views_project",
       "kind": "imports"
     },
     {
@@ -4414,11 +4435,6 @@
     {
       "from": "boot_routing",
       "to": "views_stripbar",
-      "kind": "imports"
-    },
-    {
-      "from": "boot_routing",
-      "to": "views_transit",
       "kind": "imports"
     },
     {

@@ -8,6 +8,13 @@ export default defineConfig({
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         ds: fileURLToPath(new URL('./ds/index.html', import.meta.url)),
       },
+      // Vendor split — marked is read by lazy portfolio routes + eager DS
+      // specimens; one shared chunk instead of a copy in each entry.
+      output: {
+        manualChunks: {
+          vendor: ['marked'],
+        },
+      },
     },
   },
   plugins: [

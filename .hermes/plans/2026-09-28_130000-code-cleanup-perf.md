@@ -76,20 +76,20 @@
 | 6 | Vite `manualChunks` | `vite.config.js` adds `build.rollupOptions.output.manualChunks` splitting `ds` vs `vendor` vs `main`, `build.chunkSizeWarningLimit` tuned; `ds-CRRpEWaK.js` no longer warns >500k without reason |
 | 7 | Stylesheet consolidation | `index.html` 32 links reduced to prod-equivalent order via single barrel (`src/styles/app.css` importing in source order) or JS `import` chain in `src/main.js`; `dist/assets/main-Dm30KPgn.css` hash stable, no FOUC, `lint:tokens` clean |
 
-### Task 5: Route-level dynamic import
+### Task 5: Route-level dynamic import ✓ done
 **Objective:** No eager route code in initial chunk.
 **Files:**
 - Modify: `src/boot/routing.js:2-6` → `const loadMasonry = () => import('../views/masonry.js')` etc, `async route()` with cache map
 - Test: navigate hash `#/`, `#/projects/helix`, `#/contact`, `#/lab/architecture`, back to `#/masonry` in smoke
 **Verify:** `npm run build` shows new chunks (e.g. `assets/masonry-*.js`, `assets/project-*.js`); `main-*.js` gzip <37k or measurably smaller; all routes render.
 
-### Task 6: Vite manualChunks
+### Task 6: Vite manualChunks ✓ done
 **Objective:** DS bulk isolated, vendor deduped, warnings actionable.
 **Files:**
 - Modify: `vite.config.js` — add `output.manualChunks: { vendor: id => id.includes('node_modules'), ds: id => id.includes('/src/ds/') }` or similar, keep `input: { main, ds }`
 **Verify:** `npm run build` chunk list includes `ds-*.js`, `vendor-*.js`, `main-*.js`; `dist/ds-CRRpEWaK.js` equivalent not 967k in one blob; `ds-track` still 0 wip.
 
-### Task 7: Stylesheet consolidation
+### Task 7: Stylesheet consolidation ✓ done
 **Objective:** Dev waterfall reduced without changing prod semantics.
 **Files:**
 - Create: `src/styles/app.css` (if barrel approach) importing token layers + feature sheets in index.html order

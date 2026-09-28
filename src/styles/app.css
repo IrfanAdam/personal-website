@@ -1,0 +1,34 @@
+/* ADAM/STYLE — styles/app · single stylesheet entry (order = index.html) ·
+   [plan:2026-09-28_130000-code-cleanup-perf.md#phase-2] */
+@import './tokens.css';
+@import './tokens-color.css';
+@import './tokens-type.css';
+@import './tokens-fx.css';
+@import './tokens-promo.css';
+@import './tokens-dark.css';
+@import './tokens-overrides.css';
+@import './base.css';
+@import './base-actions.css';
+@import './base-atoms.css';
+@import './footer.css';
+@import './masonry.css';
+@import './card.css';
+@import './card-info.css';
+@import './viewer.css';
+@import './pages.css';
+@import './pages-sections.css';
+@import './list-mobile.css';
+@import './pages-cta.css';
+@import './work-cursor.css';
+@import './case.css';
+@import './next.css';
+@import './promo-video.css';
+@import './transit.css';
+@import './case-prose.css';
+@import './form.css';
+@import './form-controls.css';
+@import './glitch.css';
+@import './proceed.css';
+@import './map.css';
+@import './map-controls.css';
+@import './lab.css';

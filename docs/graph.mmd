@@ -1,13 +1,13 @@
 graph TD
-boot_routing --> views_contact
+boot_route_load --> views_headerFrame
+boot_route_load --> views_masonry
+boot_route_load --> views_settings_menu
+boot_route_load --> views_stripbar
+boot_route_load --> views_transit
+boot_routing --> boot_route_load
 boot_routing --> views_headerFrame
-boot_routing --> views_map_index
-boot_routing --> views_masonry
-boot_routing --> views_minimal_lab
-boot_routing --> views_project
 boot_routing --> views_settings_menu
 boot_routing --> views_stripbar
-boot_routing --> views_transit
 ds_atlas_actions --> ds_atlas_camera
 ds_atlas_actions --> ds_atlas_insight
 ds_atlas_actions --> ds_atlas_schema
