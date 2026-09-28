@@ -158,7 +158,7 @@ option (FILES lists + lab dropdowns reference it; deletion would 404 local-first
 ## Phase 4 — Every phased plan renders in the changelog {#phase-4}
 *Tags: Tooling*
 
-*Shipped in <sha> · Tasks 12–13 · phase-4.*
+*Shipped in 4da9d6c · Tasks 12–13 · phase-4.*
 
 *Phases 1–3 shipped with a changelog-hide marker in the plan header, so today's build never carded despite 6 linked commits. From here every phased plan renders by default; hiding needs explicit user approval.*
 
