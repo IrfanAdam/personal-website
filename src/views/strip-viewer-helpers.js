@@ -1,6 +1,6 @@
 /* ADAM/SHARED — views/strip-viewer-helpers · dom + place + hero + spring
    [plan:2026-09-15_183400-lump-sum-builds.md#phase-17] */
-// Exports: makeStripEl, placeStrip, HERO, slugFrom, createFollower, preloadHeroes · createListFollower (re-export)
+// Exports: makeStripEl, placeStrip, HERO, slugFrom, createFollower · createListFollower (re-export)
 import { projects } from '../data/site.js';
 import { fxNum } from './fx-tokens.js';
 export { createListFollower } from './list-follower.js';
@@ -14,13 +14,6 @@ export function makeStripEl() {
   el.style.zIndex = '30';
   document.body.appendChild(el);
   return el;
-}
-export function preloadHeroes() {
-  Object.values(HERO).forEach((src) => {
-    if (!src) return;
-    const im = new Image(); im.decoding = 'async'; im.src = src;
-    if (im.decode) im.decode().catch(() => {});
-  });
 }
 export function placeStrip(cx, cy, vw, vh, pad, gap) {
   let x = cx + gap;

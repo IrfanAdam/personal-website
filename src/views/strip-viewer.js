@@ -2,7 +2,7 @@
    [plan:2026-09-15_183400-lump-sum-builds.md#phase-17] */
 // Exports: attachStripViewer — cursor-following hero popover for header strip
 import {
-  HERO, slugFrom, placeWithOrigin, preloadHeroes,
+  HERO, slugFrom, placeWithOrigin,
 } from './strip-viewer-helpers.js';
 import { makeViewerCore } from './strip-viewer-core.js';
 export function attachStripViewer(bar) {
@@ -11,7 +11,6 @@ export function attachStripViewer(bar) {
   if (matchMedia('(hover: none)').matches) return () => {};
   const links = [...bar.querySelectorAll('.strip a[href^="#/projects/"]')];
   if (!links.length) return () => {};
-  preloadHeroes();
   const { VW, GAP, PAD, HIDE, SWAP, el, img, fol, VH } = makeViewerCore();
   let cur = '', hideT = 0, popT = 0, on = false, cx = 0, cy = 0;
   const place = () => placeWithOrigin(el, cx, cy, VW, VH, PAD, GAP);

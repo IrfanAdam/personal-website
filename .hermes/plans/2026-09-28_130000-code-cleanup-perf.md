@@ -115,28 +115,33 @@
 | 10 | Sound FILES hygiene (no deletion without proof) | Verify `public/sounds/scifi-weapon.wav 153K` + `weapon_scifi_laser.wav 223K` + `window-open.mp3 65K` usage: if no importer beyond DS demos, mark for deletion per Rule 10 (grep 0 importers + `build`+`smoke` + `git stash` checkpoint); else document retention reason; `hover.wav` vs `hover` mp3 dedup note |
 | 11 | Final verification | `npm run lint:tokens && npm run ds:track && npm run build` green, `npm run smoke` passes on `/#`, `#/projects/fluxx`, `#/contact`, `#/lab/architecture`; 30s newcomer scan of masonry/project/map clean |
 
-### Task 8: Remove eager preloadHeroes
+### Task 8: Remove eager preloadHeroes ✓ done
 **Objective:** No speculative hero network until hover.
 **Files:**
 - Modify: `src/views/strip-viewer.js:14` — remove `preloadHeroes()` call
 - Modify: `src/views/strip-viewer-helpers.js:18` — keep `preloadHeroes` exported for DS lab but not auto-invoked, or remove export if `grep -r preloadHeroes` shows only this call
 **Verify:** Fresh load + Network idle → filter `heroes` shows 0 before hover, 1 after hovering strip link; `strip-viewer` pop still shows within 100ms after `decode()`.
 
-### Task 9: Fonts display swap
+### Task 9: Fonts display swap ✓ done
+**Outcome 2026-09-28:** verify-only — `&display=swap` already on the Google Fonts URL, no local
+`@font-face` in `src/styles/`. Nothing changed.
 **Objective:** Text visible during font load.
 **Files:**
 - Modify: `index.html:14` — append `&display=swap` to Google Fonts URL, ensure `rel=preconnect` stays
 - Verify: `src/styles/tokens-type.css` already has `font-display` tokens if any `@font-face`; no layout shift
 **Verify:** Throttle Fast 3G, reload — system font shows then swaps, no FOIT.
 
-### Task 10: Sound FILES hygiene
+### Task 10: Sound FILES hygiene ✓ done
+**Outcome 2026-09-28:** retained all three — `window-open.mp3` plays on hero pull (`rise-sound.js`),
+`scifi-weapon.wav` is the scramble default (`sound-source.js`), `weapon_scifi_laser.wav` stays as a DS lab
+option (FILES lists + lab dropdowns reference it; deletion would 404 local-first). No deletion made.
 **Objective:** No unused 376K sounds shipped without justification.
 **Files:**
 - Read: `src/views/sound-files.js` (FILES), `src/ds/foundations/sound/data.js` (FILES_META), `src/ds/functions/grid-reveal-lab.js` sound options
 - Action: `grep -r "scifi-weapon\|weapon_scifi\|window-open" src --include="*.js" | grep -v "FILES"` to prove usage; if only DS demo strings, keep but note; if truly 0 importers, `git stash` checkpoint then delete files + FILES entry + dist check
 **Verify:** `npm run build` still serves `audio-test` demo (if retained); `dist/assets` no longer references deleted ids; deletion follows Rule 10.
 
-### Task 11: Final verification
+### Task 11: Final verification ✓ done
 **Objective:** Prove no breakage.
 **Files:**
 - Run: `npm run lint:tokens` → clean
