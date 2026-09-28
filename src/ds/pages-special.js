@@ -25,7 +25,8 @@ function panes() {
 export function render() {
   return [
     `<p class="ds-crumb">Special · Motion labs</p><div class="ds-hero"><h1>Motion with a model.</h1>`,
-    `<p class="lede">Seven tuned labs, each its own sheet. Labs run on production geometry; values graduate to tokens before use.</p></div>`,
+    `<p class="lede">Seven tuned labs, each its own sheet. Labs run on production geometry;`,
+    ` values graduate to tokens before use.</p></div>`,
   ].join('') + tabs({ vertical: true, panes: panes() });
 }
 export function mount(root) {

@@ -1,5 +1,6 @@
 /* ADAM/DS — glimmer · lab/code tabs · [plan:2026-09-24_140000-ds-docs-compact.md#phase-2] */
-import { note, code } from '../specimens.js';
+import { note } from '../specimens.js';
+import { codePanel } from './glimmer-orb-code.js';
 import { attachGlimmerOrb } from '../../views/glimmer-orb.js';
 import { watchPaneVisible } from '../fx-lab/pane-visible.js';
 import { bindLineTabs } from './line-tabs.js';
@@ -34,7 +35,10 @@ export function render(){
   `<label class="fx-row">level <input type="range" min="0" max="100" step="5" value="0" data-k="level">`,
   `<output data-v="level">auto</output></label>`,
 ].join('')
-+`</div><figure><figcaption>square cells · spring scale 0.88/1/0.92 · dpr ≤ 4 · sub-pixel cells skipped</figcaption></figure>`
++[
+  `</div><figure><figcaption>square cells · spring scale`,
+  ` 0.88/1/0.92 · dpr ≤ 4 · sub-pixel cells skipped</figcaption></figure>`,
+].join('')
 +`</div>`
 +[
   note('Do',
@@ -42,18 +46,7 @@ export function render(){
     'a literal.'].join('')),
   `</div></div>`,
 ].join('')
-+[
-  `<div data-tab-panel="code" hidden><div class="ds-sec">`,
-  code(["import { attachGlimmerOrb } from '../views/glimmer-orb.js'\\\\nconst stop = attachGlimmerOrb(canvas, { state: ",
-    "'listening' }) // color: --color-accent\\\\nstop.setState('thinking'); stop.setLevel(0.6); stop();"].join('')),
-].join('')
-+`<table class="ds-table"><tr><th>Module</th><th>Exports</th><th>Consumers</th></tr>`
-+[
-  `<tr><td><span class="tok">views/glimmer-orb.js</span></td><td>`,
-  `<span class="tok">attachGlimmerOrb</span>(canvas, { state, level, size, dots, color })</td><td>lab (only)</td>`,
-  `</tr></table>`,
-].join('')
-+`</div></div>`;
++codePanel();
 }
 export function mount(root){
   const canvas = root.querySelector('[data-fx-glimmer]');
@@ -74,8 +67,18 @@ export function mount(root){
   const restart = () => start();
   const live = (e) => {
     const k = e.target.dataset.k; if (!k) return;
-    if (k === 'state' && stop && stop.setState) { stop.setState(e.target.value); show('state', e.target.value); return; }
-    if (k === 'level' && stop && stop.setLevel) { const v = +e.target.value; stop.setLevel(v === 0 ? undefined : v / 100); show('level', v === 0 ? 'auto' : (v / 100).toFixed(2)); return; }
+    if (k === 'state' && stop && stop.setState) {
+      stop.setState(e.target.value); show('state', e.target.value); return;
+    }
+    if (k === 'level' && stop && stop.setLevel) {
+      const v = +e.target.value;
+      if (v === 0) {
+        stop.setLevel(undefined); show('level', 'auto');
+      } else {
+        stop.setLevel(v / 100); show('level', (v / 100).toFixed(2));
+      }
+      return;
+    }
     restart();
   };
   const offVisible = watchPaneVisible(canvas, start);

@@ -1,4 +1,5 @@
-/* ADAM/DS — overview/elements-map · Elements map section · [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
+/* ADAM/DS — overview/elements-map · Elements map section ·
+   [plan:2026-09-23_143400-ds-overview-elements-fold.md#phase-1] */
 // Exports: elementsMapHtml — Elements index folded into Overview
 import { note } from '../specimens.js';
 

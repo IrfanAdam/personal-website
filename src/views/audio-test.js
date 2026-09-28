@@ -1,6 +1,7 @@
 /* ADAM/SOUND — audio-test · self-tests + WAV encode · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: testLiveOsc, testFileTone, encodeWavBuffer — diagnostics only
 import { getCtx } from './audio-ctx.js';
+import { synth } from './sound-palette.js';
 
 // — Encode —
 export function encodeWavBuffer(ch, rate) {
@@ -54,7 +55,6 @@ export async function testLiveOsc() {
 
 export async function testFileTone() {
   try {
-    const { synth } = await import('./sound-palette.js');
     const rate = 44100;
     const OC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
     if (!OC) return 'no-offline';

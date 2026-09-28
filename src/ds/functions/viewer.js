@@ -28,7 +28,8 @@ export function render(){
 +`${note('Do','Keep <span class="tok">aria-hidden</span> + pointer-events none — cards keep native link semantics.')}`
 +`</div></div>`
 +[
-  `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Params</h2><p class="sub">Live tokens the site reads — fallbacks shipped, never literals.</p>`,
+  `<div data-tab-panel="code" hidden><div class="ds-sec"><h2>Params</h2>`,
+  `<p class="sub">Live tokens the site reads — fallbacks shipped, never literals.</p>`,
   `<table class="ds-table"><tr><th>Param</th><th>Value</th><th>Role</th></tr>`,
 ].join('')
 +[

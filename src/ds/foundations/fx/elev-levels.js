@@ -1,0 +1,35 @@
+/* ADAM/DS — ds/foundations/fx/elev-levels · elevation demo levels ·
+   [plan:2026-09-28_130000-code-cleanup-perf.md#phase-1] */
+// Exports: levels
+// — Visual levels (kept, now inside its tab) —
+export const levels = () => [
+  `<div class="fd-elev-row">`,
+  `<div class="fd-elev" data-copy-token="--border-hairline" title="Copy --border-hairline"`,
+  ` style="cursor:pointer"><b>0 · flat</b><span class="tok">--border-hairline</span>`,
+  `<small>every card / pill / thumb<br>surface on paper, 1px line</small>`,
+  `<code data-live="--border-hairline">--border-hairline</code></div>`,
+  `<div class="fd-elev" data-copy-token="--color-surface-sunken"`,
+  ` title="Copy --color-surface-sunken" style="cursor:pointer;background:var(--color-surface-sunken)">`,
+  `<b>–1 · sunken</b><span class="tok">--color-surface-sunken</span>`,
+  `<small>inset ground — no shadow<br>disabled / well on paper</small>`,
+  `<code data-live="--color-surface-sunken">--color-surface-sunken</code></div>`,
+  `<div class="fd-elev fd-elev--viewer" data-copy-token="--shadow-viewer"`,
+  ` title="Copy --shadow-viewer" style="cursor:pointer"><b>1 · lifted</b>`,
+  `<span class="tok">--shadow-viewer</span><small>viewer frame only<br>`,
+  `<span class="tok">--space-12</span> / <span class="tok">--space-32</span>`,
+  ` + <span class="tok">--space-2</span> / <span class="tok">--space-10</span> · theme 12→14 / 32→36</small>`,
+  `<code data-live="--shadow-viewer">--shadow-viewer</code></div>`,
+  `<div class="fd-elev fd-elev--media" data-copy-token="--shadow-on-media"`,
+  ` title="Copy --shadow-on-media" style="cursor:pointer">`,
+  `<b style="text-shadow:var(--shadow-on-media)">O · on-media</b>`,
+  `<span class="tok">--shadow-on-media</span><small>text keeps legible on chip / image<br>`,
+  `<span class="tok">--space-1</span> / <span class="tok">--space-10</span>`,
+  ` / <span class="tok">--space-12</span></small>`,
+  `<code data-live="--shadow-on-media">--shadow-on-media</code></div>`,
+  `</div>`,
+  `<p class="sub" style="font-family:var(--font-mono);font-size:var(--text-micro);`,
+  `color:var(--color-ink-muted)">Tip: the media card shows`,
+  ` <span class="tok">text-shadow</span> (not box-shadow) — dark chip behind the title does the real lifting,`,
+  ` shadow is the 1px crispener. Travel always <span class="tok">var(--space-*)</span>;`,
+  ` color never raw <span class="tok">rgba()</span>.</p>`,
+].join('');

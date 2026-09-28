@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-26T15:36:41.408Z",
+  "generated": "2026-09-28T07:38:01.190Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -939,6 +939,18 @@
       "title": "elev",
       "tokens": [
         "--color-ink-muted",
+        "--font-mono",
+        "--text-micro"
+      ]
+    },
+    {
+      "id": "ds_foundations_fx_elev_levels",
+      "path": "src/ds/foundations/fx/elev-levels.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "elev levels",
+      "tokens": [
+        "--color-ink-muted",
         "--color-surface-sunken",
         "--font-mono",
         "--shadow-on-media",
@@ -967,6 +979,14 @@
       "layer": "component",
       "route": null,
       "title": "foundations handlers",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_initial",
+      "path": "src/ds/foundations-initial.js",
+      "layer": "component",
+      "route": null,
+      "title": "foundations initial",
       "tokens": []
     },
     {
@@ -1039,6 +1059,14 @@
       "tokens": [
         "--ease-signature"
       ]
+    },
+    {
+      "id": "ds_foundations_pane_motion_contract",
+      "path": "src/ds/foundations/pane-motion-contract.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "pane motion contract",
+      "tokens": []
     },
     {
       "id": "ds_foundations_pane_shape",
@@ -1181,6 +1209,14 @@
       "layer": "foundation",
       "route": null,
       "title": "board",
+      "tokens": []
+    },
+    {
+      "id": "ds_foundations_sound_board_helpers",
+      "path": "src/ds/foundations/sound/board-helpers.js",
+      "layer": "foundation",
+      "route": null,
+      "title": "board helpers",
       "tokens": []
     },
     {
@@ -1458,6 +1494,14 @@
       "layer": "function",
       "route": null,
       "title": "glimmer orb",
+      "tokens": []
+    },
+    {
+      "id": "ds_functions_glimmer_orb_code",
+      "path": "src/ds/functions/glimmer-orb-code.js",
+      "layer": "function",
+      "route": null,
+      "title": "glimmer orb code",
       "tokens": []
     },
     {
@@ -4728,6 +4772,16 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_foundations_fx_elev_levels",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_foundations_fx_elev",
+      "to": "ds_foundations_fx_elev_levels",
+      "kind": "imports"
+    },
+    {
       "from": "ds_foundations_fx_elev",
       "to": "ds_specimens",
       "kind": "imports"
@@ -4848,6 +4902,11 @@
       "kind": "imports"
     },
     {
+      "from": "ds_foundations_pane_motion_contract",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
       "from": "ds_foundations_pane_motion",
       "to": "ds_foundations_motion_data",
       "kind": "imports"
@@ -4855,6 +4914,11 @@
     {
       "from": "ds_foundations_pane_motion",
       "to": "ds_foundations_motion_sections",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_pane_motion",
+      "to": "ds_foundations_pane_motion_contract",
       "kind": "imports"
     },
     {
@@ -5009,6 +5073,11 @@
     },
     {
       "from": "ds_foundations_sound_board",
+      "to": "ds_foundations_sound_board_helpers",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_foundations_sound_board",
       "to": "ds_foundations_sound_scope_draw",
       "kind": "imports"
     },
@@ -5158,6 +5227,21 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_functions_glimmer_orb_code",
+      "to": "ds_specimens",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glimmer_orb_code",
+      "to": "ds_views_glimmer_orb",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_functions_glimmer_orb",
+      "to": "ds_functions_glimmer_orb_code",
+      "kind": "imports"
+    },
+    {
       "from": "ds_functions_glimmer_orb",
       "to": "ds_functions_line_tabs",
       "kind": "imports"
@@ -5170,11 +5254,6 @@
     {
       "from": "ds_functions_glimmer_orb",
       "to": "ds_specimens",
-      "kind": "imports"
-    },
-    {
-      "from": "ds_functions_glimmer_orb",
-      "to": "ds_views_glimmer_orb",
       "kind": "imports"
     },
     {
@@ -5905,6 +5984,11 @@
     {
       "from": "ds_pages_foundations",
       "to": "ds_foundations_handlers",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_foundations",
+      "to": "ds_foundations_initial",
       "kind": "imports"
     },
     {
@@ -6700,6 +6784,11 @@
     {
       "from": "views_audio_test",
       "to": "views_audio_ctx",
+      "kind": "imports"
+    },
+    {
+      "from": "views_audio_test",
+      "to": "views_sound_palette",
       "kind": "imports"
     },
     {

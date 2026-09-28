@@ -5,6 +5,7 @@
 import { playVoice, playFileId } from '../../../views/element-sound.js';
 import { testLiveOsc, testFileTone, resetCtx, isMuted } from '../../../views/audio-ctx.js';
 import { drawWave, drawFileWave } from './scope-draw.js';
+import { makeOn, syncOut } from './board-helpers.js';
 import { renderWave } from './synth-render.js';
 
 export function mountSoundBoard(root) {
@@ -16,22 +17,7 @@ export function mountSoundBoard(root) {
   const say = (t) => { if (status) status.textContent = t; };
   const sayInfo = (t) => { if (info) info.textContent = t; };
   const offs = [];
-  const on = (el, ev, fn) => {
-    if (!el) return;
-    el.addEventListener(ev, fn);
-    offs.push(() => el.removeEventListener(ev, fn));
-  };
-  const syncOut = (e) => {
-    const inp = e.target.closest('input[data-snd]');
-    if (!inp) return;
-    const k = inp.getAttribute('data-snd');
-    const out = inp.parentElement && inp.parentElement.querySelector('[data-snd-v]');
-    if (!out) return;
-    const v = inp.value;
-    if (k === 'gain' || k === 'master' || k === 'fgain') out.textContent = v + '%';
-    else if (k === 'ms') out.textContent = v + 'ms';
-    else if (k === 'freq') out.textContent = v + 'Hz';
-  };
+  const on = makeOn(offs);
   on(root, 'input', syncOut);
   on(root, 'click', async (e) => {
     const btn = e.target.closest('[data-snd-play]');

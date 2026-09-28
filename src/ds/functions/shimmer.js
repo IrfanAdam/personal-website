@@ -29,7 +29,8 @@ export function render(){
 +[
   `<p class="sub" style="margin-top:var(--space-8)">Grid is <span class="tok">--reveal-grid</span> (reads <span `,
   `class="tok">--fx-grid-pitch</span>); sheen is a masked gradient sweep.</p>`,
-  `<figure><figcaption>grid = --reveal-grid · sheen = masked gradient sweep · reduced-motion: off</figcaption></figure>`,
+  `<figure><figcaption>grid = --reveal-grid · sheen =`,
+  ` masked gradient sweep · reduced-motion: off</figcaption></figure>`,
 ].join('')
 +[
   note('Do',

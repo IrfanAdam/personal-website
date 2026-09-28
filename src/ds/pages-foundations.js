@@ -13,22 +13,8 @@ import { label as fL, html as fH } from './foundations/pane-fx.js';
 import { label as dL, html as dH } from './foundations/pane-sound.js';
 import { label as kL, html as kH } from './foundations/pane-contract.js';
 import { mountPlayground } from './foundations/tokens/playground.js';
+import { outerInitial } from './foundations-initial.js';
 import { mountSoundBoard } from './foundations/sound/board.js';
-// — Initial —
-function outerInitial() {
-  const h = window.location.hash || '';
-  const qs = h.includes('?') ? h.split('?')[1] : (window.location.search.slice(1) || '');
-  const sp = new URLSearchParams(qs);
-  const p = (sp.get('pane') || '').toLowerCase();
-  if (p.includes('sound')) return 6;
-  if (p.includes('contract') || p.includes('token')) return 7;
-  if (p.includes('motion')) return 4;
-  const m = { color: 0, type: 1, space: 2, shape: 3, motion: 4, fx: 5, sound: 6, tokens: 7, contract: 7 };
-  if (m[p] != null) return m[p];
-  if (p.includes('space')) return 2;
-  if (p.includes('token')) return 7;
-  return 0;
-}
 // — Render —
 export function render() {
   const panes = [{ label: cL, html: cH() },

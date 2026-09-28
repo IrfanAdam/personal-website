@@ -40,7 +40,7 @@
     --shimmer-band: linear-gradient(90deg, transparent 27%, #000 41%, #000 59%, transparent 73%);
     --reveal-grid: repeating-linear-gradient(to right,
       color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px,
-      transparent var(--space-1) var(--fx-grid-pitch)),;
+      transparent var(--space-1) var(--fx-grid-pitch)),
     repeating-linear-gradient(to bottom,
       color-mix(in srgb, var(--color-line) 50%, transparent) 0 1px,
       transparent var(--space-1) var(--fx-grid-pitch));
