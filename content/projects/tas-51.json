@@ -1,19 +1,19 @@
 {
   "timeline": "3 months",
   "body": "",
+  "nextImage": "/images/next/tas-51.jpg",
   "mock": "https://framerusercontent.com/images/h4qP7oiPaqgFFu5JkjzPQEDq8.jpg?scale-down-to=2048",
   "slug": "tas-51",
   "catA": "Sales Goals",
   "promoVideo": "/videos/woman_standing_in_concrete_atrium_20260920203104.mp4",
   "catB": "Sales CRM",
-  "order": 1,
+  "order": 2,
   "date": "Sep-Dec'24",
-  "platform": "\u2014",
-  "deliverables": "\u2014",
+  "platform": "—",
+  "deliverables": "—",
   "role": "Brand Identity",
   "title": "Mining gems over hitting sales goals",
   "tag": "crm",
   "hero": "/heroes/tas-51.jpg",
-  "image": "/images/tas-51.jpg",
-  "nextImage": "/images/next/tas-51.jpg"
+  "image": "/images/tas-51.jpg"
 }
