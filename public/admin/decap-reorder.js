@@ -224,21 +224,16 @@
       if (color(btns[1]) !== inactive && color(btns[0]) === inactive) btns[0].click();
       btns[0].parentElement.style.display = 'none';
     }
-    // hide Sort-by: walk from its label up to the direct child of the
-    // row-reverse controls row, independent of the toggle pair
-    const labels = [...document.querySelectorAll('div')]
-      .filter((d) => d.children.length === 0 && d.textContent.trim() === 'Sort by');
-    for (const lab of labels) {
-      let p = lab;
-      let guard = 0;
-      while (p && p !== document.body && guard < 6) {
-        const par = p.parentElement;
-        if (par && getComputedStyle(par).flexDirection === 'row-reverse') break;
-        p = par;
-        guard += 1;
+    // hide Sort-by: kill the whole row-reverse controls row that contains it
+    if (document.body.textContent.includes('Sort by')) {
+      const divs = [...document.querySelectorAll('div')];
+      for (const d of divs) {
+        if (d === document.body || d.style.display === 'none') continue;
+        if (!d.textContent.includes('Sort by')) continue;
+        let cs = null;
+        try { cs = getComputedStyle(d); } catch { continue; }
+        if (cs.display === 'flex' && cs.flexDirection === 'row-reverse') d.style.display = 'none';
       }
-      const par = p ? p.parentElement : null;
-      if (p && par && getComputedStyle(par).flexDirection === 'row-reverse') p.style.display = 'none';
     }
   }
 
