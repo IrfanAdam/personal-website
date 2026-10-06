@@ -109,7 +109,7 @@
         });
         if (!commitR.ok) await fail(commitR, 'committing');
         const commitSha = (await commitR.json()).sha;
-        const refW = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, {
+        const refW = await fetch(`${API}/repos/${REPO}/git/refs/heads/${BRANCH}`, {
           method: 'PATCH',
           headers: head(t),
           body: JSON.stringify({ sha: commitSha }),
