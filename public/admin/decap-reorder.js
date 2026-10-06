@@ -296,6 +296,11 @@
       card.addEventListener('click', (e) => {
         if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
       }, true);
+      // kill native link-drag (Safari) so the pointer drag owns the gesture
+      if (!card.dataset.dragOff) {
+        card.dataset.dragOff = '1';
+        card.addEventListener('dragstart', (e) => e.preventDefault());
+      }
     }
     // arrange once to the true order — when every row is recognised
     // and the user hasn't already dragged (never clobber their drag)
