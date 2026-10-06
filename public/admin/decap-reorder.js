@@ -215,27 +215,30 @@
   }
 
   // list view only: flip grid back to list, hide the toggle pair + Sort-by control
+  // runs on every pass — Decap re-renders must never bring them back
   function tidyControls() {
     const btns = [...document.querySelectorAll('button')].filter((b) => b.querySelector('svg') && !b.textContent.trim());
-    let controls = null;
     if (btns.length === 2 && btns[0].parentElement === btns[1].parentElement) {
       const inactive = 'rgb(179,185,196)';
       const color = (b) => getComputedStyle(b).color.replace(/\s/g, '');
       if (color(btns[1]) !== inactive && color(btns[0]) === inactive) btns[0].click();
       btns[0].parentElement.style.display = 'none';
-      controls = btns[0].parentElement.parentElement;
     }
-    // backstop: hide Sort-by even with a stale cached config
-    const labels = [...(controls || document).querySelectorAll('div')]
+    // hide Sort-by: walk from its label up to the direct child of the
+    // row-reverse controls row, independent of the toggle pair
+    const labels = [...document.querySelectorAll('div')]
       .filter((d) => d.children.length === 0 && d.textContent.trim() === 'Sort by');
     for (const lab of labels) {
-      let p = lab.parentElement;
-      let depth = 0;
-      while (p && p !== document.body && p.parentElement !== controls && depth < 3) {
-        p = p.parentElement;
-        depth += 1;
+      let p = lab;
+      let guard = 0;
+      while (p && p !== document.body && guard < 6) {
+        const par = p.parentElement;
+        if (par && getComputedStyle(par).flexDirection === 'row-reverse') break;
+        p = par;
+        guard += 1;
       }
-      if (p && p !== document.body) p.style.display = 'none';
+      const par = p ? p.parentElement : null;
+      if (p && par && getComputedStyle(par).flexDirection === 'row-reverse') p.style.display = 'none';
     }
   }
 
@@ -255,6 +258,7 @@
       if (ourList && ourList.parentElement) ourList.remove();
       return;
     }
+    tidyControls();
     const cards = findCards();
     if (cards.length < 2) return;
     if (!projBySlug) return;
