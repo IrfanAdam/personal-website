@@ -62,6 +62,7 @@
 }
 .dr-badge{
   flex-shrink:0;
+  margin-left:auto;
   min-width:22px;
   height:22px;
   display:grid;

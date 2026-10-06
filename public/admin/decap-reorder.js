@@ -11,6 +11,7 @@
   let resetBtn = null;
   let statusEl = null;
   let initial = [];
+  let arranged = false;
   let suppressClick = false;
   let container = null;
 
@@ -287,19 +288,21 @@
         if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
       }, true);
     }
-    // set initial order from current DOM if not set
+    // arrange once to the true order — when every row is recognised
+    // and the user hasn't already dragged (never clobber their drag)
     const cur = currentOrder();
-    if (initial.length === 0 && cur.length) {
-      if (cur.length >= projOrder.length) {
-        // every row recognised — arrange DOM to the true order
-        initial = [...projOrder].filter((s) => cur.includes(s));
-        const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
+    if (cur.length) {
+      const missing = projOrder.filter((s) => !cur.includes(s));
+      const untouched = !initial.length || same(initial, cur);
+      if (!missing.length && !arranged && untouched) {
+        arranged = true;
+        initial = [...projOrder];
+        const orderMap = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
         for (const slug of initial) {
-          const el = map.get(slug);
+          const el = orderMap.get(slug);
           if (el) container.appendChild(el);
         }
-      } else {
-        // some rows unrecognised — leave Decap order alone, treat DOM as truth
+      } else if (!initial.length) {
         initial = [...cur];
       }
       renumber();
@@ -332,15 +335,16 @@
       }
     }
     enhance();
-    // retry a few times because Decap renders async
-    if (tries < 20 && (!container || container.querySelectorAll('.dr-card').length < 8)) {
+    // retry while Decap still renders rows — arrange needs every row recognised
+    const seen = container ? container.querySelectorAll('.dr-card').length : 0;
+    if (tries < 30 && (!container || (projOrder.length && seen < projOrder.length))) {
       tries += 1;
       setTimeout(tick, 400);
     }
   };
 
   // observe hash and DOM
-  window.addEventListener('hashchange', () => { initial = []; container = null; bar = null; setTimeout(tick, 300); });
+  window.addEventListener('hashchange', () => { initial = []; arranged = false; container = null; bar = null; setTimeout(tick, 300); });
   const obs = new MutationObserver(() => {
     if (onProjectsPage() && (!container || !document.contains(container) || document.querySelectorAll('.dr-card').length === 0)) {
       tick();
