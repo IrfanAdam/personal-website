@@ -1,0 +1,72 @@
+/* ADAM/TOOL — public/admin/decap-reorder.css · injected into Decap Projects list */
+.dr-bar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  margin:12px 0 14px;
+  background:#fff;
+  border:1px solid #e2e6ea;
+  border-radius:10px;
+  font-family:"Inter Tight",system-ui,sans-serif;
+  font-size:13px
+}
+.dr-bar strong{font-weight:700}
+.dr-bar small{color:#737e8a;margin-left:6px}
+.dr-bar .spacer{flex:1}
+.dr-btn{
+  border:1px solid #e2e6ea;
+  background:#fff;
+  border-radius:8px;
+  padding:7px 12px;
+  font:600 12px "Inter Tight",system-ui,sans-serif;
+  cursor:pointer
+}
+.dr-btn:disabled{opacity:.45;cursor:default}
+.dr-btn.primary{background:#15191f;color:#fff;border-color:#15191f}
+.dr-status{font-size:12px;color:#737e8a;min-width:90px;text-align:right}
+.dr-card{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  cursor:grab !important;
+}
+.dr-card.dragging{opacity:.45 !important;outline:1px dashed #e8442e}
+.dr-card.drag-over{outline:1px solid #e8442e}
+.dr-grip{
+  flex-shrink:0;
+  width:18px;
+  text-align:center;
+  color:#9aa5b1;
+  font-size:14px;
+  line-height:1;
+  cursor:grab;
+  user-select:none
+}
+.dr-thumb{
+  flex-shrink:0;
+  width:30px;
+  height:30px;
+  border-radius:6px;
+  object-fit:cover;
+  background:#eceef2;
+  border:1px solid #e2e6ea
+}
+.dr-title{
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+.dr-badge{
+  flex-shrink:0;
+  min-width:22px;
+  height:22px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  font:600 11px "Chivo Mono",monospace;
+  background:#15191f;
+  color:#fff
+}

@@ -1,0 +1,298 @@
+/* ADAM/TOOL — public/admin/decap-reorder.js · inject drag reorder + thumbs into Decap Projects list */
+(() => {
+  const API_GET = '/__admin/projects';
+  const API_POST = '/__admin/reorder';
+  let projBySlug = null;
+  let projOrder = [];
+  let bar = null;
+  let saveBtn = null;
+  let resetBtn = null;
+  let statusEl = null;
+  let initial = [];
+  let dragEl = null;
+  let container = null;
+
+  const onProjectsPage = () => location.hash.includes('/collections/projects') && !location.hash.includes('/entries/') && !location.hash.includes('/new');
+  const fetchProjects = async () => {
+    if (projBySlug) return;
+    try {
+      const r = await fetch(API_GET);
+      if (!r.ok) throw new Error(r.status);
+      const arr = await r.json();
+      projBySlug = Object.fromEntries(arr.map((p) => [p.slug, p]));
+      projOrder = arr.map((p) => p.slug);
+    } catch {}
+  };
+
+  const setStatus = (t, ms = 0) => {
+    if (!statusEl) return;
+    statusEl.textContent = t;
+    if (ms) setTimeout(() => { if (statusEl.textContent === t) statusEl.textContent = ''; }, ms);
+  };
+
+  const currentOrder = () => {
+    if (!container) return [];
+    return [...container.querySelectorAll('.dr-card')].map((n) => n.dataset.slug);
+  };
+  const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
+  const sync = () => {
+    if (!saveBtn) return;
+    saveBtn.disabled = same(initial, currentOrder());
+  };
+  const renumber = () => {
+    if (!container) return;
+    [...container.querySelectorAll('.dr-card')].forEach((el, i) => {
+      const b = el.querySelector('.dr-badge');
+      if (b) b.textContent = String(i + 1);
+    });
+  };
+
+  function getAfter(y) {
+    const els = [...container.querySelectorAll('.dr-card:not(.dragging)')];
+    let best = { off: Number.NEGATIVE_INFINITY, el: null };
+    for (const el of els) {
+      const box = el.getBoundingClientRect();
+      const off = y - box.top - box.height / 2;
+      if (off < 0 && off > best.off) best = { off, el };
+    }
+    return best.el;
+  }
+
+  function findCards() {
+    // Decap list cards are anchors to entries; try multiple selectors
+    let nodes = [...document.querySelectorAll('a[href*=\"/collections/projects/entries/\"]')];
+    if (nodes.length === 0) {
+      // fallback: cards containing (slug)
+      const all = [...document.querySelectorAll('a, div')];
+      nodes = all.filter((n) => {
+        const t = n.textContent || '';
+        return /\(.+\)$/.test(t.trim()) && n.children.length === 0 && t.includes('(');
+      }).map((n) => n.closest('a') || n.closest('div'));
+      nodes = [...new Set(nodes.filter(Boolean))];
+    }
+    // filter to only those whose text contains a known slug
+    if (projBySlug) {
+      nodes = nodes.filter((n) => {
+        const txt = (n.textContent || '').toLowerCase();
+        return Object.keys(projBySlug).some((s) => txt.includes(`(${s})`) || txt.includes(s));
+      });
+    }
+    // dedupe and keep only visible cards
+    nodes = [...new Set(nodes)].filter((n) => n.offsetParent !== null);
+    // if still few, try broader: find white cards stack
+    if (nodes.length < 3) {
+      const cand = [...document.querySelectorAll('div')].filter((d) => {
+        const s = getComputedStyle(d);
+        return s.backgroundColor === 'rgb(255, 255, 255)' && d.textContent.includes('(') && d.offsetHeight > 20 && d.offsetHeight < 90;
+      });
+      if (cand.length >= 8) nodes = cand;
+    }
+    return nodes;
+  }
+
+  function findContainer(cards) {
+    if (!cards.length) return null;
+    // common parent of all cards
+    let p = cards[0].parentElement;
+    while (p && p !== document.body) {
+      const containsAll = cards.every((c) => p.contains(c));
+      if (containsAll) return p;
+      p = p.parentElement;
+    }
+    return cards[0].parentElement;
+  }
+
+  function ensureBar(cont) {
+    if (bar && document.contains(bar)) return;
+    bar = document.createElement('div');
+    bar.className = 'dr-bar';
+    bar.innerHTML = '<strong>Reorder</strong><small>drag to reorder · thumbnails 30px</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
+    statusEl = bar.querySelector('.dr-status');
+    resetBtn = bar.querySelector('.dr-btn:not(.primary)');
+    saveBtn = bar.querySelector('.dr-btn.primary');
+    resetBtn.addEventListener('click', () => {
+      if (!container) return;
+      const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
+      // remove all then re-append in initial order
+      for (const slug of initial) {
+        const el = map.get(slug);
+        if (el) container.appendChild(el);
+      }
+      renumber();
+      sync();
+      setStatus('Reset', 1500);
+    });
+    saveBtn.addEventListener('click', async () => {
+      const order = currentOrder();
+      saveBtn.disabled = true;
+      setStatus('Saving…');
+      try {
+        const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(j.error || r.status);
+        initial = [...order];
+        sync();
+        setStatus('Saved ✓', 2200);
+      } catch (e) {
+        setStatus(String(e).slice(0, 80));
+        saveBtn.disabled = false;
+      }
+    });
+    // insert before the cards container, or after the Projects header
+    const header = [...document.querySelectorAll('h1,h2')].find((h) => h.textContent.trim() === 'Projects');
+    const anchor = cont;
+    if (header) {
+      // header is inside a top bar; insert bar after that bar
+      let topBar = header.closest('div');
+      while (topBar && topBar.nextElementSibling !== anchor && topBar.parentElement !== document.body) {
+        if (topBar.parentElement && topBar.parentElement.contains(anchor)) break;
+        topBar = topBar.parentElement;
+      }
+      if (anchor && anchor.parentElement) anchor.parentElement.insertBefore(bar, anchor);
+      else header.parentElement.insertAdjacentElement('afterend', bar);
+    } else if (cont && cont.parentElement) {
+      cont.parentElement.insertBefore(bar, cont);
+    }
+  }
+
+  function enhance() {
+    if (!onProjectsPage()) {
+      if (bar && bar.parentElement) bar.remove();
+      return;
+    }
+    const cards = findCards();
+    if (cards.length < 2) return;
+    // need project data for thumbs
+    if (!projBySlug) return;
+    const cont = findContainer(cards);
+    if (!cont) return;
+    container = cont;
+    ensureBar(cont);
+    // enhance each card
+    for (const card of cards) {
+      if (card.dataset.drDone) continue;
+      // extract slug
+      let slug = '';
+      const href = card.getAttribute('href') || '';
+      if (href.includes('/entries/')) slug = href.split('/').pop().split('?')[0].split('#')[0];
+      if (!slug) {
+        const txt = card.textContent || '';
+        const m = txt.match(/\(([^)]+)\)\s*$/);
+        if (m) slug = m[1].trim();
+      }
+      slug = slug.toLowerCase();
+      if (!projBySlug[slug]) continue;
+      const p = projBySlug[slug];
+      card.classList.add('dr-card');
+      card.dataset.slug = slug;
+      card.dataset.drDone = '1';
+      card.draggable = true;
+      // inject grip + thumb + badge if not present
+      // avoid duplicating if already injected
+      if (!card.querySelector('.dr-grip')) {
+        const grip = document.createElement('span');
+        grip.className = 'dr-grip';
+        grip.textContent = '⋮⋮';
+        grip.setAttribute('aria-hidden', 'true');
+        card.prepend(grip);
+      }
+      if (!card.querySelector('.dr-thumb')) {
+        const img = document.createElement('img');
+        img.className = 'dr-thumb';
+        img.alt = '';
+        img.loading = 'lazy';
+        img.src = p.image || '';
+        // insert after grip
+        const grip = card.querySelector('.dr-grip');
+        if (grip && grip.nextSibling) grip.insertAdjacentElement('afterend', img);
+        else card.prepend(img);
+      }
+      if (!card.querySelector('.dr-badge')) {
+        const badge = document.createElement('span');
+        badge.className = 'dr-badge';
+        badge.textContent = String(p.order || '?');
+        card.appendChild(badge);
+      }
+      // prevent click navigating while dragging
+      card.addEventListener('dragstart', (e) => {
+        dragEl = card;
+        card.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', slug);
+        // delay to avoid link follow
+        setTimeout(() => { card.style.pointerEvents = 'none'; }, 0);
+      });
+      card.addEventListener('dragend', () => {
+        card.classList.remove('dragging');
+        card.style.pointerEvents = '';
+        dragEl = null;
+        if (container) container.querySelectorAll('.drag-over').forEach((n) => n.classList.remove('drag-over'));
+        renumber();
+        sync();
+      });
+      // block click after drag
+      let wasDragging = false;
+      card.addEventListener('mousedown', () => { wasDragging = false; });
+      card.addEventListener('click', (e) => {
+        if (wasDragging) { e.preventDefault(); e.stopPropagation(); wasDragging = false; }
+      });
+      card.addEventListener('dragstart', () => { wasDragging = true; });
+    }
+    // container dragover for reordering
+    if (!cont.dataset.drBound) {
+      cont.dataset.drBound = '1';
+      cont.addEventListener('dragover', (e) => {
+        if (!dragEl) return;
+        e.preventDefault();
+        const after = getAfter(e.clientY);
+        if (after == null) cont.appendChild(dragEl);
+        else cont.insertBefore(dragEl, after);
+        cont.querySelectorAll('.dr-card').forEach((n) => n.classList.remove('drag-over'));
+        if (after) after.classList.add('drag-over');
+      });
+      cont.addEventListener('drop', (e) => e.preventDefault());
+    }
+    // set initial order from current DOM if not set
+    const cur = currentOrder();
+    if (initial.length === 0 && cur.length) {
+      // use fetched sorted order as initial, not DOM (which may be whatever Decap shows)
+      initial = [...projOrder].filter((s) => cur.includes(s));
+      // if Decap shows different order, keep projOrder as truth; reorder DOM to match projOrder
+      const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
+      for (const slug of initial) {
+        const el = map.get(slug);
+        if (el) container.appendChild(el);
+      }
+      renumber();
+      sync();
+    } else {
+      renumber();
+      sync();
+    }
+  }
+
+  let tries = 0;
+  const tick = async () => {
+    if (!onProjectsPage()) { tries = 0; return; }
+    if (!projBySlug) await fetchProjects();
+    enhance();
+    // retry a few times because Decap renders async
+    if (tries < 20 && (!container || container.querySelectorAll('.dr-card').length < 8)) {
+      tries += 1;
+      setTimeout(tick, 400);
+    }
+  };
+
+  // observe hash and DOM
+  window.addEventListener('hashchange', () => { initial = []; container = null; bar = null; setTimeout(tick, 300); });
+  const obs = new MutationObserver(() => {
+    if (onProjectsPage() && (!container || !document.contains(container) || document.querySelectorAll('.dr-card').length === 0)) {
+      tick();
+    }
+  });
+  obs.observe(document.documentElement, { childList: true, subtree: true });
+  // also poll visible
+  setInterval(tick, 1200);
+  // initial
+  setTimeout(tick, 800);
+})();
