@@ -86,32 +86,42 @@
       tree.push({ path: `${DIR}/${slug}.json`, mode: '100644', type: 'blob', content: text });
     });
     if (!tree.length) return { noop: true, login: me.login };
-    const refR = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, { headers: head(t) });
-    if (!refR.ok) await fail(refR, 'reading branch');
-    const base = (await refR.json()).object.sha;
-    if (onStep) onStep('Committing…');
-    const treeR = await fetch(`${API}/repos/${REPO}/git/trees`, {
-      method: 'POST',
-      headers: head(t),
-      body: JSON.stringify({ base_tree: base, tree }),
-    });
-    if (!treeR.ok) await fail(treeR, 'creating tree');
-    const treeSha = (await treeR.json()).sha;
-    const msg = 'chore(cms): reorder projects via admin';
-    const commitR = await fetch(`${API}/repos/${REPO}/git/commits`, {
-      method: 'POST',
-      headers: head(t),
-      body: JSON.stringify({ message: msg, tree: treeSha, parents: [base] }),
-    });
-    if (!commitR.ok) await fail(commitR, 'committing');
-    const commitSha = (await commitR.json()).sha;
-    const refW = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, {
-      method: 'PATCH',
-      headers: head(t),
-      body: JSON.stringify({ sha: commitSha }),
-    });
-    if (!refW.ok) await fail(refW, 'updating branch');
-    return { commit: commitSha.slice(0, 7), login: me.login };
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    let lastErr = null;
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      try {
+        if (onStep) onStep(attempt > 1 ? 'Retrying…' : 'Committing…');
+        const refR = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, { headers: head(t) });
+        if (!refR.ok) await fail(refR, 'reading branch');
+        const base = (await refR.json()).object.sha;
+        const treeR = await fetch(`${API}/repos/${REPO}/git/trees`, {
+          method: 'POST',
+          headers: head(t),
+          body: JSON.stringify({ base_tree: base, tree }),
+        });
+        if (!treeR.ok) await fail(treeR, 'creating tree');
+        const treeSha = (await treeR.json()).sha;
+        const msg = 'chore(cms): reorder projects via admin';
+        const commitR = await fetch(`${API}/repos/${REPO}/git/commits`, {
+          method: 'POST',
+          headers: head(t),
+          body: JSON.stringify({ message: msg, tree: treeSha, parents: [base] }),
+        });
+        if (!commitR.ok) await fail(commitR, 'committing');
+        const commitSha = (await commitR.json()).sha;
+        const refW = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, {
+          method: 'PATCH',
+          headers: head(t),
+          body: JSON.stringify({ sha: commitSha }),
+        });
+        if (!refW.ok) await fail(refW, 'updating branch');
+        return { commit: commitSha.slice(0, 7), login: me.login };
+      } catch (e) {
+        lastErr = e;
+        if (attempt < 2) await sleep(1500);
+      }
+    }
+    throw lastErr;
   }
 
   window.DrGH = { load, save };
