@@ -2,8 +2,10 @@
 (() => {
   const API_GET = '/__admin/projects';
   const API_POST = '/__admin/reorder';
+  const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
   let projBySlug = null;
   let projOrder = [];
+  let ghRaws = null;
   let bar = null;
   let saveBtn = null;
   let resetBtn = null;
@@ -15,13 +17,22 @@
   const onProjectsPage = () => location.hash.includes('/collections/projects') && !location.hash.includes('/entries/') && !location.hash.includes('/new');
   const fetchProjects = async () => {
     if (projBySlug) return;
-    try {
-      const r = await fetch(API_GET);
-      if (!r.ok) throw new Error(r.status);
-      const arr = await r.json();
-      projBySlug = Object.fromEntries(arr.map((p) => [p.slug, p]));
-      projOrder = arr.map((p) => p.slug);
-    } catch {}
+    if (isLocal) {
+      try {
+        const r = await fetch(API_GET);
+        if (!r.ok) throw new Error(r.status);
+        const arr = await r.json();
+        projBySlug = Object.fromEntries(arr.map((p) => [p.slug, p]));
+        projOrder = arr.map((p) => p.slug);
+        return;
+      } catch {}
+    }
+    // live site — load from GitHub with the CMS login
+    if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
+    const g = await window.DrGH.load();
+    ghRaws = g.raws;
+    projBySlug = Object.fromEntries(g.items.map((p) => [p.slug, p]));
+    projOrder = g.items.map((p) => p.slug);
   };
 
   const setStatus = (t, ms = 0) => {
@@ -106,7 +117,7 @@
     if (bar && document.contains(bar)) return;
     bar = document.createElement('div');
     bar.className = 'dr-bar';
-    bar.innerHTML = '<strong>Reorder</strong><small>drag to reorder · thumbnails 30px</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
+    bar.innerHTML = '<strong>Reorder</strong><small>drag · save commits to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
     statusEl = bar.querySelector('.dr-status');
     resetBtn = bar.querySelector('.dr-btn:not(.primary)');
     saveBtn = bar.querySelector('.dr-btn.primary');
@@ -127,14 +138,24 @@
       saveBtn.disabled = true;
       setStatus('Saving…');
       try {
-        const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok) throw new Error(j.error || r.status);
+        if (isLocal) {
+          const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
+          const j = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(j.error || r.status);
+          initial = [...order];
+          sync();
+          setStatus('Saved ✓', 2200);
+          return;
+        }
+        // live site — one commit to main with the CMS login, Vercel redeploys
+        if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
+        const g = await window.DrGH.save(order, ghRaws || {}, (s) => setStatus(s));
         initial = [...order];
         sync();
-        setStatus('Saved ✓', 2200);
+        if (g.noop) setStatus('No changes', 2200);
+        else setStatus(`Saved ✓ ${g.commit} — redeploying`, 5000);
       } catch (e) {
-        setStatus(String(e).slice(0, 80));
+        setStatus(String(e.message || e).slice(0, 90));
         saveBtn.disabled = false;
       }
     });
@@ -168,6 +189,7 @@
     if (!cont) return;
     container = cont;
     ensureBar(cont);
+    document.querySelectorAll('.dr-notice').forEach((n) => n.remove());
     // enhance each card
     for (const card of cards) {
       if (card.dataset.drDone) continue;
@@ -271,10 +293,27 @@
     }
   }
 
+  function notice(msg) {
+    if (document.querySelector('.dr-notice')) return;
+    const header = [...document.querySelectorAll('h1,h2')].find((h) => h.textContent.trim() === 'Projects');
+    if (!header) return;
+    const el = document.createElement('div');
+    el.className = 'dr-bar dr-notice';
+    el.innerHTML = `<strong>Reorder unavailable:</strong><small>${msg}</small>`;
+    header.parentElement.insertAdjacentElement('afterend', el);
+  }
+
   let tries = 0;
   const tick = async () => {
     if (!onProjectsPage()) { tries = 0; return; }
-    if (!projBySlug) await fetchProjects();
+    if (!projBySlug) {
+      try {
+        await fetchProjects();
+      } catch (e) {
+        notice(String(e.message || e).slice(0, 90));
+        return;
+      }
+    }
     enhance();
     // retry a few times because Decap renders async
     if (tries < 20 && (!container || container.querySelectorAll('.dr-card').length < 8)) {
