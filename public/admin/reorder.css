@@ -1,0 +1,74 @@
+/* ADAM/TOOL — public/admin/reorder.css · drag reorder list */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:"Inter Tight",system-ui,sans-serif;
+  background:var(--stone-50,#f2f4f7);
+  color:var(--stone-900,#15191f);
+}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:24px 20px 40px}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:20px
+}
+.top h1{font-size:22px;font-weight:700;margin:0;line-height:1}
+.top p{margin:4px 0 0;color:var(--stone-500,#737e8a);font-size:13px}
+.actions{display:flex;gap:10px;align-items:center}
+.btn{
+  border:1px solid var(--stone-200,#e2e6ea);
+  background:var(--stone-0,#fff);
+  color:var(--stone-900,#15191f);
+  border-radius:10px;
+  padding:10px 16px;
+  font:600 13px "Inter Tight",system-ui,sans-serif;
+  cursor:pointer
+}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{
+  background:var(--stone-900,#15191f);
+  color:var(--stone-0,#fff);
+  border-color:var(--stone-900,#15191f)
+}
+.status{font-size:13px;color:var(--stone-500,#737e8a);min-height:18px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  background:var(--stone-0,#fff);
+  border:1px solid var(--stone-200,#e2e6ea);
+  border-radius:12px;
+  cursor:grab;
+  user-select:none
+}
+.item.dragging{opacity:.45;border-style:dashed}
+.item.drag-over{border-color:var(--accent-500,#e8442e)}
+.grip{color:var(--stone-400,#9aa5b1);font-size:16px;line-height:1;cursor:grab}
+.thumb{
+  width:44px;
+  height:44px;
+  border-radius:8px;
+  object-fit:cover;
+  background:var(--stone-100,#eceef2);
+  flex-shrink:0
+}
+.meta{flex:1;min-width:0}
+.meta strong{display:block;font-size:13.5px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta span{display:block;font-size:12px;color:var(--stone-500,#737e8a);margin-top:2px}
+.badge{
+  min-width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  font:600 12px "Chivo Mono",monospace;
+  background:var(--stone-900,#15191f);
+  color:var(--stone-0,#fff)
+}
+.hint{margin-top:16px;color:var(--stone-500,#737e8a);font-size:12px;line-height:1.6}
+.hint code{font-family:"Chivo Mono",monospace;font-size:11px;background:var(--stone-0,#fff);border:1px solid var(--stone-200,#e2e6ea);padding:1px 5px;border-radius:6px}
