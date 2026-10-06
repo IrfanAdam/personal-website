@@ -15,6 +15,8 @@
   let arranged = false;
   let suppressClick = false;
   let container = null;
+  let saveTimer = null;
+  let saving = false;
 
   function autoScroll(y) {
     const m = 60;
@@ -52,6 +54,7 @@
       container.querySelectorAll('.drag-over').forEach((n) => n.classList.remove('drag-over'));
       renumber();
       sync();
+      scheduleAutosave();
     };
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
@@ -102,6 +105,59 @@
       const b = el.querySelector('.dr-badge');
       if (b) b.textContent = String(i + 1);
     });
+  };
+
+  // Auto-save: debounced single-commit save after each drop, no manual click.
+  // Manual Save button stays as a fallback (e.g. after a failed auto-save).
+  const doSave = async (order) => {
+    if (!order || !order.length) return;
+    if (saving) { scheduleAutosave(); return; }
+    if (same(initial, order)) return;
+    saving = true;
+    if (saveBtn) saveBtn.disabled = true;
+    setStatus('Saving…');
+    try {
+      if (isLocal) {
+        const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(j.error || r.status);
+        initial = [...order];
+        sync();
+        setStatus('Saved ✓', 2200);
+      } else {
+        // live site — one commit to main with the CMS login, Vercel redeploys
+        if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
+        const g = await window.DrGH.save(order, ghRaws || {}, (s) => setStatus(s));
+        // refresh cached raw texts so the next drag diffs against the new order
+        if (ghRaws && !g.noop) {
+          order.forEach((slug, i) => {
+            const raw = ghRaws[slug];
+            if (raw && typeof raw.text === 'string') {
+              raw.text = raw.text.replace(/("order"\s*:\s*)\d+/, `$1${i + 1}`);
+            }
+          });
+        }
+        initial = [...order];
+        sync();
+        if (g.noop) setStatus('No changes', 2200);
+        else setStatus(`Saved ✓ ${g.commit} — redeploying`, 5000);
+      }
+    } catch (e) {
+      setStatus(String(e.message || e).slice(0, 90));
+      if (saveBtn) saveBtn.disabled = false;
+    } finally {
+      saving = false;
+    }
+  };
+
+  const scheduleAutosave = () => {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      saveTimer = null;
+      const order = currentOrder();
+      if (!order.length || same(initial, order)) { sync(); return; }
+      doSave(order);
+    }, 700);
   };
 
   function getAfter(y) {
@@ -163,11 +219,12 @@
     if (bar && document.contains(bar)) return;
     bar = document.createElement('div');
     bar.className = 'dr-bar';
-    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub">drag · save commits to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
+    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub">drag · autosaves to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
     statusEl = bar.querySelector('.dr-status');
     resetBtn = bar.querySelector('.dr-btn:not(.primary)');
     saveBtn = bar.querySelector('.dr-btn.primary');
     resetBtn.addEventListener('click', () => {
+      if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
       if (!container) return;
       const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
       // remove all then re-append in initial order
@@ -180,30 +237,8 @@
       setStatus('Reset', 1500);
     });
     saveBtn.addEventListener('click', async () => {
-      const order = currentOrder();
-      saveBtn.disabled = true;
-      setStatus('Saving…');
-      try {
-        if (isLocal) {
-          const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
-          const j = await r.json().catch(() => ({}));
-          if (!r.ok) throw new Error(j.error || r.status);
-          initial = [...order];
-          sync();
-          setStatus('Saved ✓', 2200);
-          return;
-        }
-        // live site — one commit to main with the CMS login, Vercel redeploys
-        if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
-        const g = await window.DrGH.save(order, ghRaws || {}, (s) => setStatus(s));
-        initial = [...order];
-        sync();
-        if (g.noop) setStatus('No changes', 2200);
-        else setStatus(`Saved ✓ ${g.commit} — redeploying`, 5000);
-      } catch (e) {
-        setStatus(String(e.message || e).slice(0, 90));
-        saveBtn.disabled = false;
-      }
+      if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+      await doSave(currentOrder());
     });
     // insert before the cards container, or after the Projects header
     const header = [...document.querySelectorAll('h1,h2')].find((h) => h.textContent.trim() === 'Projects');
@@ -322,7 +357,7 @@
       const sub = bar ? bar.querySelector('.dr-sub') : null;
       if (sub && projOrder.length) {
         const n = [...container.querySelectorAll('.dr-card')].length;
-        sub.textContent = `drag · ${n}/${projOrder.length} rows · save commits to main`;
+        sub.textContent = `drag · ${n}/${projOrder.length} rows · autosaves to main`;
       }
       renumber();
       sync();
@@ -363,7 +398,7 @@
   };
 
   // observe hash and DOM
-  window.addEventListener('hashchange', () => { initial = []; arranged = false; container = null; bar = null; setTimeout(tick, 300); });
+  window.addEventListener('hashchange', () => { if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; } saving = false; initial = []; arranged = false; container = null; bar = null; setTimeout(tick, 300); });
   const obs = new MutationObserver(() => {
     if (onProjectsPage() && (!container || !document.contains(container) || document.querySelectorAll('.dr-card').length === 0)) {
       tick();
