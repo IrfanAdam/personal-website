@@ -1,4 +1,4 @@
-/* ADAM/TOOL — public/admin/decap-reorder.js · inject drag reorder + thumbs into Decap Projects list */
+/* ADAM/TOOL — public/admin/decap-reorder.js · in-list drag reorder, instant save */
 (() => {
   const API_GET = '/__admin/projects';
   const API_POST = '/__admin/reorder';
@@ -8,14 +8,13 @@
   let projByTitle = {};
   let ghRaws = null;
   let bar = null;
-  let saveBtn = null;
-  let resetBtn = null;
   let statusEl = null;
-  let initial = [];
-  let arranged = false;
+  let subEl = null;
   let container = null;
-  let saveTimer = null;
   let saving = false;
+  let pending = null;
+  let dragLive = false;
+  let suppressClick = false;
 
   const onProjectsPage = () => location.hash.includes('/collections/projects') && !location.hash.includes('/entries/') && !location.hash.includes('/new');
   const fetchProjects = async () => {
@@ -31,7 +30,6 @@
         return;
       } catch {}
     }
-    // live site — load from GitHub with the CMS login
     if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
     const g = await window.DrGH.load();
     ghRaws = g.raws;
@@ -45,16 +43,11 @@
     statusEl.textContent = t;
     if (ms) setTimeout(() => { if (statusEl.textContent === t) statusEl.textContent = ''; }, ms);
   };
-
   const currentOrder = () => {
     if (!container) return [];
     return [...container.querySelectorAll('.dr-card')].map((n) => n.dataset.slug);
   };
   const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
-  const sync = () => {
-    if (!saveBtn) return;
-    saveBtn.disabled = same(initial, currentOrder());
-  };
   const renumber = () => {
     if (!container) return;
     [...container.querySelectorAll('.dr-card')].forEach((el, i) => {
@@ -62,29 +55,40 @@
       if (b) b.textContent = String(i + 1);
     });
   };
+  const counter = () => {
+    if (!subEl || !projOrder.length) return;
+    const n = container ? container.querySelectorAll('.dr-card').length : 0;
+    subEl.textContent = `${n}/${projOrder.length} rows · drop to save`;
+  };
+  const arrangeDom = (order) => {
+    if (!container) return;
+    const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
+    for (const slug of order) {
+      const el = map.get(slug);
+      if (el) container.appendChild(el);
+    }
+  };
 
-  // Auto-save: debounced single-commit save after each drop, no manual click.
-  // Manual Save button stays as a fallback (e.g. after a failed auto-save).
-  const doSave = async (order) => {
-    if (!order || !order.length) return;
-    if (saving) { scheduleAutosave(); return; }
-    if (same(initial, order)) return;
+  // instant save on drop — optimistic reorder, rollback on failure
+  async function commitDrop(order) {
+    if (!order.length || same(projOrder, order)) { renumber(); counter(); return; }
+    const prev = [...projOrder];
+    projOrder = [...order];
+    order.forEach((s, i) => { if (projBySlug[s]) projBySlug[s].order = i + 1; });
+    renumber();
+    counter();
+    if (saving) { pending = [...order]; return; }
     saving = true;
-    if (saveBtn) saveBtn.disabled = true;
     setStatus('Saving…');
     try {
       if (isLocal) {
         const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
         const j = await r.json().catch(() => ({}));
-        if (!r.ok) throw new Error(j.error || r.status);
-        initial = [...order];
-        sync();
+        if (!r.ok) throw new Error(j.error || `Local ${r.status} · saving order`);
         setStatus('Saved ✓', 2200);
       } else {
-        // live site — one commit to main with the CMS login, Vercel redeploys
         if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
         const g = await window.DrGH.save(order, ghRaws || {}, (s) => setStatus(s));
-        // refresh cached raw texts so the next drag diffs against the new order
         if (ghRaws && !g.noop) {
           order.forEach((slug, i) => {
             const raw = ghRaws[slug];
@@ -93,133 +97,104 @@
             }
           });
         }
-        initial = [...order];
-        sync();
         if (g.noop) setStatus('No changes', 2200);
-        else setStatus(`Saved ✓ ${g.commit} — redeploying`, 5000);
+        else setStatus(`Saved ✓ ${g.commit} · ${g.login}`, 5000);
       }
     } catch (e) {
-      setStatus(String(e.message || e).slice(0, 90));
-      if (saveBtn) saveBtn.disabled = false;
+      projOrder = [...prev];
+      prev.forEach((s, i) => { if (projBySlug[s]) projBySlug[s].order = i + 1; });
+      arrangeDom(prev);
+      renumber();
+      setStatus(String(e.message || e).slice(0, 110));
     } finally {
       saving = false;
+      if (pending) { const q = pending; pending = null; commitDrop(q); }
     }
-  };
+  }
 
-  const scheduleAutosave = () => {
-    if (saveTimer) clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => {
-      saveTimer = null;
-      const order = currentOrder();
-      if (!order.length || same(initial, order)) { sync(); return; }
-      doSave(order);
-    }, 700);
-  };
+  function getAfter(y) {
+    const els = [...container.querySelectorAll('.dr-card:not(.dragging)')];
+    let best = { off: Number.NEGATIVE_INFINITY, el: null };
+    for (const el of els) {
+      const box = el.getBoundingClientRect();
+      const off = y - box.top - box.height / 2;
+      if (off < 0 && off > best.off) best = { off, el };
+    }
+    return best.el;
+  }
 
-  // shared with the arrange sheet (own DOM, no Decap interference)
-  window.DrReorder = {
-    items: () => projOrder.map((s) => projBySlug[s]).filter(Boolean),
-    save: (order) => doSave(order),
-    syncList: (order) => {
-      if (!container) return;
-      const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
-      for (const s of order) {
-        const el = map.get(s);
-        if (el) container.appendChild(el);
+  function onDown(e, card) {
+    if (e.button !== undefined && e.button !== 0) return;
+    e.preventDefault();
+    const y0 = e.clientY;
+    let live = false;
+    const move = (ev) => {
+      if (!live) {
+        if (Math.abs(ev.clientY - y0) < 5) return;
+        live = true;
+        dragLive = true;
+        card.classList.add('dragging');
       }
+      const after = getAfter(ev.clientY);
+      if (after == null) container.appendChild(card);
+      else if (after !== card) container.insertBefore(card, after);
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointercancel', up);
+      if (!live) return;
+      dragLive = false;
+      card.classList.remove('dragging');
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 120);
       renumber();
-      sync();
-    },
-  };
+      commitDrop(currentOrder());
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    window.addEventListener('pointercancel', up);
+  }
 
   function findCards() {
-    // Decap list cards are anchors to entries; try multiple selectors
-    let nodes = [...document.querySelectorAll('a[href*=\"/collections/projects/entries/\"]')];
-    if (nodes.length === 0) {
-      // fallback: cards containing (slug)
-      const all = [...document.querySelectorAll('a, div')];
-      nodes = all.filter((n) => {
-        const t = n.textContent || '';
-        return /\(.+\)$/.test(t.trim()) && n.children.length === 0 && t.includes('(');
-      }).map((n) => n.closest('a') || n.closest('div'));
-      nodes = [...new Set(nodes.filter(Boolean))];
-    }
-    // filter to only those whose text contains a known slug
-    if (projBySlug) {
-      nodes = nodes.filter((n) => {
-        const txt = (n.textContent || '').toLowerCase();
-        return Object.keys(projBySlug).some((s) => txt.includes(`(${s})`) || txt.includes(s));
-      });
-    }
-    // dedupe and keep only visible cards
+    let nodes = [...document.querySelectorAll('a[href*="/collections/projects/entries/"]')];
+    if (!projBySlug) return nodes;
+    nodes = nodes.filter((n) => {
+      const txt = (n.textContent || '').toLowerCase();
+      return Object.keys(projBySlug).some((s) => txt.includes(`(${s})`) || txt.includes(s));
+    });
     nodes = [...new Set(nodes)].filter((n) => n.offsetParent !== null);
-    // if still few, try broader: find white cards stack
-    if (nodes.length < 3) {
-      const cand = [...document.querySelectorAll('div')].filter((d) => {
-        const s = getComputedStyle(d);
-        return s.backgroundColor === 'rgb(255, 255, 255)' && d.textContent.includes('(') && d.offsetHeight > 20 && d.offsetHeight < 90;
-      });
-      if (cand.length >= 8) nodes = cand;
-    }
     return nodes;
   }
 
   function findContainer(cards) {
     if (!cards.length) return null;
-    // common parent of all cards
     let p = cards[0].parentElement;
     while (p && p !== document.body) {
-      const containsAll = cards.every((c) => p.contains(c));
-      if (containsAll) return p;
+      if (cards.every((c) => p.contains(c))) return p;
       p = p.parentElement;
     }
     return cards[0].parentElement;
+  }
+
+  // list view only: flip grid back to list, then hide the toggle pair
+  function forceListView() {
+    const btns = [...document.querySelectorAll('button')].filter((b) => b.querySelector('svg') && !b.textContent.trim());
+    if (btns.length !== 2 || btns[0].parentElement !== btns[1].parentElement) return;
+    const inactive = 'rgb(179,185,196)';
+    const color = (b) => getComputedStyle(b).color.replace(/\s/g, '');
+    if (color(btns[1]) !== inactive && color(btns[0]) === inactive) btns[0].click();
+    btns[0].parentElement.style.display = 'none';
   }
 
   function ensureBar(cont) {
     if (bar && document.contains(bar)) return;
     bar = document.createElement('div');
     bar.className = 'dr-bar';
-    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub">arrange · autosaves to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn dr-arrange" type="button">Arrange</button><button class="dr-btn dr-reset" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
+    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub"></small><span class="spacer"></span><span class="dr-status"></span>';
     statusEl = bar.querySelector('.dr-status');
-    resetBtn = bar.querySelector('.dr-reset');
-    saveBtn = bar.querySelector('.dr-btn.primary');
-    bar.querySelector('.dr-arrange').addEventListener('click', () => {
-      if (window.DrPanel) window.DrPanel.open();
-    });
-    resetBtn.addEventListener('click', () => {
-      if (window.DrPanel) window.DrPanel.close();
-      if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
-      if (!container) return;
-      const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
-      // remove all then re-append in initial order
-      for (const slug of initial) {
-        const el = map.get(slug);
-        if (el) container.appendChild(el);
-      }
-      renumber();
-      sync();
-      setStatus('Reset', 1500);
-    });
-    saveBtn.addEventListener('click', async () => {
-      if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
-      await doSave(currentOrder());
-    });
-    // insert before the cards container, or after the Projects header
-    const header = [...document.querySelectorAll('h1,h2')].find((h) => h.textContent.trim() === 'Projects');
-    const anchor = cont;
-    if (header) {
-      // header is inside a top bar; insert bar after that bar
-      let topBar = header.closest('div');
-      while (topBar && topBar.nextElementSibling !== anchor && topBar.parentElement !== document.body) {
-        if (topBar.parentElement && topBar.parentElement.contains(anchor)) break;
-        topBar = topBar.parentElement;
-      }
-      if (anchor && anchor.parentElement) anchor.parentElement.insertBefore(bar, anchor);
-      else header.parentElement.insertAdjacentElement('afterend', bar);
-    } else if (cont && cont.parentElement) {
-      cont.parentElement.insertBefore(bar, cont);
-    }
+    subEl = bar.querySelector('.dr-sub');
+    if (cont && cont.parentElement) cont.parentElement.insertBefore(bar, cont);
   }
 
   function enhance() {
@@ -229,28 +204,24 @@
     }
     const cards = findCards();
     if (cards.length < 2) return;
-    // need project data for thumbs
     if (!projBySlug) return;
     const cont = findContainer(cards);
     if (!cont) return;
     container = cont;
     ensureBar(cont);
+    forceListView();
     document.querySelectorAll('.dr-notice').forEach((n) => n.remove());
-    // enhance each card
     for (const card of cards) {
       if (card.dataset.drDone) continue;
-      // extract slug
       let slug = '';
       const href = card.getAttribute('href') || '';
       if (href.includes('/entries/')) slug = href.split('/').pop().split('?')[0].split('#')[0];
       if (!slug) {
-        const txt = card.textContent || '';
-        const m = txt.match(/\(([^)]+)\)\s*$/);
+        const m = (card.textContent || '').match(/\(([^)]+)\)\s*$/);
         if (m) slug = m[1].trim();
       }
       slug = slug.toLowerCase();
       if (!projBySlug[slug]) {
-        // href didn't resolve — match by title text instead
         const low = (card.textContent || '').toLowerCase();
         const hit = Object.keys(projByTitle).find((t) => t && low.includes(t));
         if (hit) slug = projByTitle[hit];
@@ -260,14 +231,23 @@
       card.classList.add('dr-card');
       card.dataset.slug = slug;
       card.dataset.drDone = '1';
-      // inject thumb + badge if not present (grip lives in the arrange sheet)
+      if (!card.querySelector('.dr-grip')) {
+        const grip = document.createElement('span');
+        grip.className = 'dr-grip';
+        grip.textContent = '⋮⋮';
+        grip.setAttribute('aria-hidden', 'true');
+        card.prepend(grip);
+      }
       if (!card.querySelector('.dr-thumb')) {
         const img = document.createElement('img');
         img.className = 'dr-thumb';
         img.alt = '';
         img.loading = 'lazy';
+        img.draggable = false;
         img.src = p.image || '';
-        card.prepend(img);
+        const grip = card.querySelector('.dr-grip');
+        if (grip) grip.insertAdjacentElement('afterend', img);
+        else card.prepend(img);
       }
       if (!card.querySelector('.dr-badge')) {
         const badge = document.createElement('span');
@@ -275,39 +255,26 @@
         badge.textContent = String(p.order || '?');
         card.appendChild(badge);
       }
-      // kill native link-drag so text selection never starts a ghost drag
-      if (!card.dataset.dragOff) {
-        card.dataset.dragOff = '1';
+      const grip = card.querySelector('.dr-grip');
+      if (grip && !grip.dataset.bound) {
+        grip.dataset.bound = '1';
+        grip.addEventListener('pointerdown', (e) => onDown(e, card));
+      }
+      if (!card.dataset.clickOff) {
+        card.dataset.clickOff = '1';
+        card.addEventListener('click', (e) => {
+          if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
+        }, true);
         card.addEventListener('dragstart', (e) => e.preventDefault());
       }
     }
-    // arrange once to the true order — when every row is recognised
-    // and the user hasn't already dragged (never clobber their drag)
+    // always display the true order (except mid-drag — never yank the row)
     const cur = currentOrder();
     if (cur.length) {
       const missing = projOrder.filter((s) => !cur.includes(s));
-      const untouched = !initial.length || same(initial, cur);
-      if (!missing.length && !arranged && untouched) {
-        arranged = true;
-        initial = [...projOrder];
-        const orderMap = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
-        for (const slug of initial) {
-          const el = orderMap.get(slug);
-          if (el) container.appendChild(el);
-        }
-      } else if (!initial.length) {
-        initial = [...cur];
-      }
-      const sub = bar ? bar.querySelector('.dr-sub') : null;
-      if (sub && projOrder.length) {
-        const n = [...container.querySelectorAll('.dr-card')].length;
-        sub.textContent = `arrange · ${n}/${projOrder.length} rows · autosaves to main`;
-      }
+      if (!missing.length && !dragLive && !same(projOrder, cur)) arrangeDom(projOrder);
+      counter();
       renumber();
-      sync();
-    } else {
-      renumber();
-      sync();
     }
   }
 
@@ -333,7 +300,6 @@
       }
     }
     enhance();
-    // retry while Decap still renders rows — arrange needs every row recognised
     const seen = container ? container.querySelectorAll('.dr-card').length : 0;
     if (tries < 30 && (!container || (projOrder.length && seen < projOrder.length))) {
       tries += 1;
@@ -341,16 +307,13 @@
     }
   };
 
-  // observe hash and DOM
-  window.addEventListener('hashchange', () => { if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; } saving = false; initial = []; arranged = false; container = null; bar = null; setTimeout(tick, 300); });
+  window.addEventListener('hashchange', () => { saving = false; pending = null; dragLive = false; container = null; bar = null; setTimeout(tick, 300); });
   const obs = new MutationObserver(() => {
     if (onProjectsPage() && (!container || !document.contains(container) || document.querySelectorAll('.dr-card').length === 0)) {
       tick();
     }
   });
   obs.observe(document.documentElement, { childList: true, subtree: true });
-  // also poll visible
   setInterval(tick, 1200);
-  // initial
   setTimeout(tick, 800);
 })();

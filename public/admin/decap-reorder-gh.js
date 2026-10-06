@@ -29,23 +29,38 @@
     return new TextDecoder().decode(bytes);
   };
 
-  const fail = async (r) => {
-    if (r.status === 401) throw new Error('Session expired — log out and back into the CMS');
-    if (r.status === 409) throw new Error('Conflict — refresh the page and retry');
-    throw new Error(`GitHub ${r.status}`);
+  const fail = async (r, step) => {
+    if (r.status === 401) throw new Error(`Session expired · ${step} — log out and back into the CMS`);
+    if (r.status === 409) throw new Error(`Conflict · ${step} — refresh the page and retry`);
+    throw new Error(`GitHub ${r.status} · ${step}`);
   };
+
+  // one-time preflight: who is logged in, and can they push?
+  let pre = null;
+  async function preflight(t) {
+    if (pre) return pre;
+    const u = await fetch(`${API}/user`, { headers: head(t) });
+    if (!u.ok) throw new Error(`GitHub ${u.status} · checking login — log out and back into the CMS`);
+    const login = (await u.json()).login || '?';
+    const rr = await fetch(`${API}/repos/${REPO}`, { headers: head(t) });
+    if (!rr.ok) throw new Error(`GitHub ${rr.status} · repo unreachable as ${login}`);
+    const perms = (await rr.json()).permissions || {};
+    if (!perms.push) throw new Error(`No write access as ${login} — log out and back in`);
+    pre = { login };
+    return pre;
+  }
 
   async function load() {
     const t = token();
     if (!t) throw new Error('Log into the CMS to enable reorder');
     const dl = await fetch(`${API}/repos/${REPO}/contents/${DIR}?ref=${BRANCH}`, { headers: head(t) });
-    if (!dl.ok) await fail(dl);
+    if (!dl.ok) await fail(dl, 'loading list');
     const files = (await dl.json()).filter((f) => f.name.endsWith('.json'));
     const raws = {};
     const gets = files.map(async (f) => {
       const u = `${API}/repos/${REPO}/contents/${DIR}/${f.name}?ref=${BRANCH}`;
       const r = await fetch(u, { headers: head(t) });
-      if (!r.ok) await fail(r);
+      if (!r.ok) await fail(r, 'reading files');
       const j = await r.json();
       const text = dec(j.content);
       const p = JSON.parse(text);
@@ -60,6 +75,7 @@
   async function save(order, raws, onStep) {
     const t = token();
     if (!t) throw new Error('Log into the CMS to enable reorder');
+    const me = await preflight(t);
     const tree = [];
     order.forEach((slug, i) => {
       const n = i + 1;
@@ -69,9 +85,9 @@
       const text = raw.text.replace(/("order"\s*:\s*)\d+/, `$1${n}`);
       tree.push({ path: `${DIR}/${slug}.json`, mode: '100644', type: 'blob', content: text });
     });
-    if (!tree.length) return { noop: true };
+    if (!tree.length) return { noop: true, login: me.login };
     const refR = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, { headers: head(t) });
-    if (!refR.ok) await fail(refR);
+    if (!refR.ok) await fail(refR, 'reading branch');
     const base = (await refR.json()).object.sha;
     if (onStep) onStep('Committing…');
     const treeR = await fetch(`${API}/repos/${REPO}/git/trees`, {
@@ -79,7 +95,7 @@
       headers: head(t),
       body: JSON.stringify({ base_tree: base, tree }),
     });
-    if (!treeR.ok) await fail(treeR);
+    if (!treeR.ok) await fail(treeR, 'creating tree');
     const treeSha = (await treeR.json()).sha;
     const msg = 'chore(cms): reorder projects via admin';
     const commitR = await fetch(`${API}/repos/${REPO}/git/commits`, {
@@ -87,15 +103,15 @@
       headers: head(t),
       body: JSON.stringify({ message: msg, tree: treeSha, parents: [base] }),
     });
-    if (!commitR.ok) await fail(commitR);
+    if (!commitR.ok) await fail(commitR, 'committing');
     const commitSha = (await commitR.json()).sha;
     const refW = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, {
       method: 'PATCH',
       headers: head(t),
       body: JSON.stringify({ sha: commitSha }),
     });
-    if (!refW.ok) await fail(refW);
-    return { commit: commitSha.slice(0, 7) };
+    if (!refW.ok) await fail(refW, 'updating branch');
+    return { commit: commitSha.slice(0, 7), login: me.login };
   }
 
   window.DrGH = { load, save };
