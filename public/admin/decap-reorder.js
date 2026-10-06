@@ -214,13 +214,29 @@
     return cards[0].parentElement;
   }
 
-  function forceListView() {
+  // list view only: flip grid back to list, hide the toggle pair + Sort-by control
+  function tidyControls() {
     const btns = [...document.querySelectorAll('button')].filter((b) => b.querySelector('svg') && !b.textContent.trim());
-    if (btns.length !== 2 || btns[0].parentElement !== btns[1].parentElement) return;
-    const inactive = 'rgb(179,185,196)';
-    const color = (b) => getComputedStyle(b).color.replace(/\s/g, '');
-    if (color(btns[1]) !== inactive && color(btns[0]) === inactive) btns[0].click();
-    btns[0].parentElement.style.display = 'none';
+    let controls = null;
+    if (btns.length === 2 && btns[0].parentElement === btns[1].parentElement) {
+      const inactive = 'rgb(179,185,196)';
+      const color = (b) => getComputedStyle(b).color.replace(/\s/g, '');
+      if (color(btns[1]) !== inactive && color(btns[0]) === inactive) btns[0].click();
+      btns[0].parentElement.style.display = 'none';
+      controls = btns[0].parentElement.parentElement;
+    }
+    // backstop: hide Sort-by even with a stale cached config
+    const labels = [...(controls || document).querySelectorAll('div')]
+      .filter((d) => d.children.length === 0 && d.textContent.trim() === 'Sort by');
+    for (const lab of labels) {
+      let p = lab.parentElement;
+      let depth = 0;
+      while (p && p !== document.body && p.parentElement !== controls && depth < 3) {
+        p = p.parentElement;
+        depth += 1;
+      }
+      if (p && p !== document.body) p.style.display = 'none';
+    }
   }
 
   function ensureBar(cont) {
@@ -246,7 +262,7 @@
     if (!cont) return;
     container = cont;
     ensureBar(cont);
-    forceListView();
+    tidyControls();
     document.querySelectorAll('.dr-notice').forEach((n) => n.remove());
     for (const card of cards) {
       if (card.style.display !== 'none') card.style.display = 'none';
