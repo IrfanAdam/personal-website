@@ -11,8 +11,50 @@
   let resetBtn = null;
   let statusEl = null;
   let initial = [];
-  let dragEl = null;
+  let suppressClick = false;
   let container = null;
+
+  function autoScroll(y) {
+    const m = 60;
+    const sp = 14;
+    if (y < m) window.scrollBy(0, -sp);
+    if (y > window.innerHeight - m) window.scrollBy(0, sp);
+  }
+
+  function onGripDown(e, card) {
+    if (e.button !== undefined && e.button !== 0) return;
+    e.preventDefault();
+    const startY = e.clientY;
+    let live = false;
+    const move = (ev) => {
+      if (!live) {
+        if (Math.abs(ev.clientY - startY) < 5) return;
+        live = true;
+        card.classList.add('dragging');
+      }
+      const after = getAfter(ev.clientY);
+      if (after == null) container.appendChild(card);
+      else if (after !== card) container.insertBefore(card, after);
+      container.querySelectorAll('.dr-card').forEach((n) => n.classList.remove('drag-over'));
+      if (after && after !== card) after.classList.add('drag-over');
+      autoScroll(ev.clientY);
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointercancel', up);
+      if (!live) return;
+      card.classList.remove('dragging');
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 80);
+      container.querySelectorAll('.drag-over').forEach((n) => n.classList.remove('drag-over'));
+      renumber();
+      sync();
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    window.addEventListener('pointercancel', up);
+  }
 
   const onProjectsPage = () => location.hash.includes('/collections/projects') && !location.hash.includes('/entries/') && !location.hash.includes('/new');
   const fetchProjects = async () => {
@@ -208,7 +250,6 @@
       card.classList.add('dr-card');
       card.dataset.slug = slug;
       card.dataset.drDone = '1';
-      card.draggable = true;
       // inject grip + thumb + badge if not present
       // avoid duplicating if already injected
       if (!card.querySelector('.dr-grip')) {
@@ -235,55 +276,31 @@
         badge.textContent = String(p.order || '?');
         card.appendChild(badge);
       }
-      // prevent click navigating while dragging
-      card.addEventListener('dragstart', (e) => {
-        dragEl = card;
-        card.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', slug);
-        // delay to avoid link follow
-        setTimeout(() => { card.style.pointerEvents = 'none'; }, 0);
-      });
-      card.addEventListener('dragend', () => {
-        card.classList.remove('dragging');
-        card.style.pointerEvents = '';
-        dragEl = null;
-        if (container) container.querySelectorAll('.drag-over').forEach((n) => n.classList.remove('drag-over'));
-        renumber();
-        sync();
-      });
-      // block click after drag
-      let wasDragging = false;
-      card.addEventListener('mousedown', () => { wasDragging = false; });
+      // pointer drag from the grip — reliable inside Decap rows
+      const grip = card.querySelector('.dr-grip');
+      if (grip && !grip.dataset.bound) {
+        grip.dataset.bound = '1';
+        grip.addEventListener('pointerdown', (e) => onGripDown(e, card));
+      }
+      // block the row's navigation click right after a drag
       card.addEventListener('click', (e) => {
-        if (wasDragging) { e.preventDefault(); e.stopPropagation(); wasDragging = false; }
-      });
-      card.addEventListener('dragstart', () => { wasDragging = true; });
-    }
-    // container dragover for reordering
-    if (!cont.dataset.drBound) {
-      cont.dataset.drBound = '1';
-      cont.addEventListener('dragover', (e) => {
-        if (!dragEl) return;
-        e.preventDefault();
-        const after = getAfter(e.clientY);
-        if (after == null) cont.appendChild(dragEl);
-        else cont.insertBefore(dragEl, after);
-        cont.querySelectorAll('.dr-card').forEach((n) => n.classList.remove('drag-over'));
-        if (after) after.classList.add('drag-over');
-      });
-      cont.addEventListener('drop', (e) => e.preventDefault());
+        if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
     }
     // set initial order from current DOM if not set
     const cur = currentOrder();
     if (initial.length === 0 && cur.length) {
-      // use fetched sorted order as initial, not DOM (which may be whatever Decap shows)
-      initial = [...projOrder].filter((s) => cur.includes(s));
-      // if Decap shows different order, keep projOrder as truth; reorder DOM to match projOrder
-      const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
-      for (const slug of initial) {
-        const el = map.get(slug);
-        if (el) container.appendChild(el);
+      if (cur.length >= projOrder.length) {
+        // every row recognised — arrange DOM to the true order
+        initial = [...projOrder].filter((s) => cur.includes(s));
+        const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
+        for (const slug of initial) {
+          const el = map.get(slug);
+          if (el) container.appendChild(el);
+        }
+      } else {
+        // some rows unrecognised — leave Decap order alone, treat DOM as truth
+        initial = [...cur];
       }
       renumber();
       sync();

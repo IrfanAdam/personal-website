@@ -41,7 +41,8 @@
   font-size:14px;
   line-height:1;
   cursor:grab;
-  user-select:none
+  user-select:none;
+  touch-action:none
 }
 .dr-thumb{
   flex-shrink:0;
