@@ -5,6 +5,7 @@
   const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
   let projBySlug = null;
   let projOrder = [];
+  let projByTitle = {};
   let ghRaws = null;
   let bar = null;
   let saveBtn = null;
@@ -67,6 +68,7 @@
         const arr = await r.json();
         projBySlug = Object.fromEntries(arr.map((p) => [p.slug, p]));
         projOrder = arr.map((p) => p.slug);
+        projByTitle = Object.fromEntries(arr.map((p) => [String(p.title || '').toLowerCase(), p.slug]));
         return;
       } catch {}
     }
@@ -76,6 +78,7 @@
     ghRaws = g.raws;
     projBySlug = Object.fromEntries(g.items.map((p) => [p.slug, p]));
     projOrder = g.items.map((p) => p.slug);
+    projByTitle = Object.fromEntries(g.items.map((p) => [String(p.title || '').toLowerCase(), p.slug]));
   };
 
   const setStatus = (t, ms = 0) => {
@@ -160,7 +163,7 @@
     if (bar && document.contains(bar)) return;
     bar = document.createElement('div');
     bar.className = 'dr-bar';
-    bar.innerHTML = '<strong>Reorder</strong><small>drag · save commits to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
+    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub">drag · save commits to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
     statusEl = bar.querySelector('.dr-status');
     resetBtn = bar.querySelector('.dr-btn:not(.primary)');
     saveBtn = bar.querySelector('.dr-btn.primary');
@@ -246,6 +249,12 @@
         if (m) slug = m[1].trim();
       }
       slug = slug.toLowerCase();
+      if (!projBySlug[slug]) {
+        // href didn't resolve — match by title text instead
+        const low = (card.textContent || '').toLowerCase();
+        const hit = Object.keys(projByTitle).find((t) => t && low.includes(t));
+        if (hit) slug = projByTitle[hit];
+      }
       if (!projBySlug[slug]) continue;
       const p = projBySlug[slug];
       card.classList.add('dr-card');
@@ -304,6 +313,11 @@
         }
       } else if (!initial.length) {
         initial = [...cur];
+      }
+      const sub = bar ? bar.querySelector('.dr-sub') : null;
+      if (sub && projOrder.length) {
+        const n = [...container.querySelectorAll('.dr-card')].length;
+        sub.textContent = `drag · ${n}/${projOrder.length} rows · save commits to main`;
       }
       renumber();
       sync();
