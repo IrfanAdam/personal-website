@@ -13,53 +13,9 @@
   let statusEl = null;
   let initial = [];
   let arranged = false;
-  let suppressClick = false;
   let container = null;
   let saveTimer = null;
   let saving = false;
-
-  function autoScroll(y) {
-    const m = 60;
-    const sp = 14;
-    if (y < m) window.scrollBy(0, -sp);
-    if (y > window.innerHeight - m) window.scrollBy(0, sp);
-  }
-
-  function onGripDown(e, card) {
-    if (e.button !== undefined && e.button !== 0) return;
-    e.preventDefault();
-    const startY = e.clientY;
-    let live = false;
-    const move = (ev) => {
-      if (!live) {
-        if (Math.abs(ev.clientY - startY) < 5) return;
-        live = true;
-        card.classList.add('dragging');
-      }
-      const after = getAfter(ev.clientY);
-      if (after == null) container.appendChild(card);
-      else if (after !== card) container.insertBefore(card, after);
-      container.querySelectorAll('.dr-card').forEach((n) => n.classList.remove('drag-over'));
-      if (after && after !== card) after.classList.add('drag-over');
-      autoScroll(ev.clientY);
-    };
-    const up = () => {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      window.removeEventListener('pointercancel', up);
-      if (!live) return;
-      card.classList.remove('dragging');
-      suppressClick = true;
-      setTimeout(() => { suppressClick = false; }, 80);
-      container.querySelectorAll('.drag-over').forEach((n) => n.classList.remove('drag-over'));
-      renumber();
-      sync();
-      scheduleAutosave();
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-    window.addEventListener('pointercancel', up);
-  }
 
   const onProjectsPage = () => location.hash.includes('/collections/projects') && !location.hash.includes('/entries/') && !location.hash.includes('/new');
   const fetchProjects = async () => {
@@ -160,16 +116,21 @@
     }, 700);
   };
 
-  function getAfter(y) {
-    const els = [...container.querySelectorAll('.dr-card:not(.dragging)')];
-    let best = { off: Number.NEGATIVE_INFINITY, el: null };
-    for (const el of els) {
-      const box = el.getBoundingClientRect();
-      const off = y - box.top - box.height / 2;
-      if (off < 0 && off > best.off) best = { off, el };
-    }
-    return best.el;
-  }
+  // shared with the arrange sheet (own DOM, no Decap interference)
+  window.DrReorder = {
+    items: () => projOrder.map((s) => projBySlug[s]).filter(Boolean),
+    save: (order) => doSave(order),
+    syncList: (order) => {
+      if (!container) return;
+      const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
+      for (const s of order) {
+        const el = map.get(s);
+        if (el) container.appendChild(el);
+      }
+      renumber();
+      sync();
+    },
+  };
 
   function findCards() {
     // Decap list cards are anchors to entries; try multiple selectors
@@ -219,11 +180,15 @@
     if (bar && document.contains(bar)) return;
     bar = document.createElement('div');
     bar.className = 'dr-bar';
-    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub">drag · autosaves to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
+    bar.innerHTML = '<strong>Reorder</strong><small class="dr-sub">arrange · autosaves to main</small><span class="spacer"></span><span class="dr-status"></span><button class="dr-btn dr-arrange" type="button">Arrange</button><button class="dr-btn dr-reset" type="button">Reset</button><button class="dr-btn primary" type="button" disabled>Save order</button>';
     statusEl = bar.querySelector('.dr-status');
-    resetBtn = bar.querySelector('.dr-btn:not(.primary)');
+    resetBtn = bar.querySelector('.dr-reset');
     saveBtn = bar.querySelector('.dr-btn.primary');
+    bar.querySelector('.dr-arrange').addEventListener('click', () => {
+      if (window.DrPanel) window.DrPanel.open();
+    });
     resetBtn.addEventListener('click', () => {
+      if (window.DrPanel) window.DrPanel.close();
       if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
       if (!container) return;
       const map = new Map([...container.querySelectorAll('.dr-card')].map((el) => [el.dataset.slug, el]));
@@ -295,25 +260,14 @@
       card.classList.add('dr-card');
       card.dataset.slug = slug;
       card.dataset.drDone = '1';
-      // inject grip + thumb + badge if not present
-      // avoid duplicating if already injected
-      if (!card.querySelector('.dr-grip')) {
-        const grip = document.createElement('span');
-        grip.className = 'dr-grip';
-        grip.textContent = '⋮⋮';
-        grip.setAttribute('aria-hidden', 'true');
-        card.prepend(grip);
-      }
+      // inject thumb + badge if not present (grip lives in the arrange sheet)
       if (!card.querySelector('.dr-thumb')) {
         const img = document.createElement('img');
         img.className = 'dr-thumb';
         img.alt = '';
         img.loading = 'lazy';
         img.src = p.image || '';
-        // insert after grip
-        const grip = card.querySelector('.dr-grip');
-        if (grip && grip.nextSibling) grip.insertAdjacentElement('afterend', img);
-        else card.prepend(img);
+        card.prepend(img);
       }
       if (!card.querySelector('.dr-badge')) {
         const badge = document.createElement('span');
@@ -321,17 +275,7 @@
         badge.textContent = String(p.order || '?');
         card.appendChild(badge);
       }
-      // pointer drag from the grip — reliable inside Decap rows
-      const grip = card.querySelector('.dr-grip');
-      if (grip && !grip.dataset.bound) {
-        grip.dataset.bound = '1';
-        grip.addEventListener('pointerdown', (e) => onGripDown(e, card));
-      }
-      // block the row's navigation click right after a drag
-      card.addEventListener('click', (e) => {
-        if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
-      }, true);
-      // kill native link-drag (Safari) so the pointer drag owns the gesture
+      // kill native link-drag so text selection never starts a ghost drag
       if (!card.dataset.dragOff) {
         card.dataset.dragOff = '1';
         card.addEventListener('dragstart', (e) => e.preventDefault());
@@ -357,7 +301,7 @@
       const sub = bar ? bar.querySelector('.dr-sub') : null;
       if (sub && projOrder.length) {
         const n = [...container.querySelectorAll('.dr-card')].length;
-        sub.textContent = `drag · ${n}/${projOrder.length} rows · autosaves to main`;
+        sub.textContent = `arrange · ${n}/${projOrder.length} rows · autosaves to main`;
       }
       renumber();
       sync();
