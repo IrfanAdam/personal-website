@@ -25,7 +25,6 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url === '/admin' || req.url === '/admin/') req.url = '/admin/index.html';
-          if (req.url === '/admin/reorder' || req.url === '/admin/reorder/') req.url = '/admin/reorder.html';
           if (req.url === '/ds' || req.url === '/ds/') req.url = '/ds/index.html';
           next();
         });
