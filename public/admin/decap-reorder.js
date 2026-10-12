@@ -57,17 +57,36 @@
   };
   const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-  // instant save on drop — optimistic reorder, rollback on failure
+  const lock = (on) => {
+    saving = on;
+    if (ourList) {
+      ourList.style.pointerEvents = on ? 'none' : '';
+      ourList.style.opacity = on ? '0.55' : '';
+      ourList.classList.toggle('dr-saving', on);
+    }
+    bar?.classList.toggle('dr-saving', on);
+  };
+  async function refreshRaws(order) {
+    if (!window.DrGH || !ghRaws) return;
+    try {
+      const g = await window.DrGH.load();
+      ghRaws = g.raws;
+      const freshOrder = g.items.map((x) => x.slug);
+      if (freshOrder.length && !freshOrder.every((s, i) => order[i] === s)) {
+        projOrder = [...freshOrder];
+        projBySlug = Object.fromEntries(g.items.map((p) => [p.slug, p]));
+        renderList(); counter();
+      }
+    } catch {}
+  }
   async function commitDrop(order) {
     if (!order.length || same(projOrder, order)) { renumber(); counter(); return; }
+    if (saving) { setStatus('Saving — wait…', 1500); return; }
     const prev = [...projOrder];
     projOrder = [...order];
     order.forEach((s, i) => { if (projBySlug[s]) projBySlug[s].order = i + 1; });
-    renumber();
-    counter();
-    if (saving) { pending = [...order]; return; }
-    saving = true;
-    setStatus('Saving…');
+    renumber(); counter();
+    lock(true); setStatus('Saving…');
     try {
       if (isLocal) {
         const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
@@ -77,26 +96,16 @@
       } else {
         if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
         const g = await window.DrGH.save(order, ghRaws || {}, (s) => setStatus(s));
-        if (ghRaws && !g.noop) {
-          order.forEach((slug, i) => {
-            const raw = ghRaws[slug];
-            if (raw && typeof raw.text === 'string') {
-              raw.text = raw.text.replace(/("order"\s*:\s*)\d+/, `$1${i + 1}`);
-            }
-          });
-        }
+        if (ghRaws && !g.noop) order.forEach((slug, i) => { const raw = ghRaws[slug]; if (raw?.text) raw.text = raw.text.replace(/("order"\s*:\s*)\d+/, `$1${i + 1}`); });
         if (g.noop) setStatus('No changes', 2200);
-        else setStatus(`Saved ✓ ${g.commit} · ${g.login}`, 5000);
+        else { setStatus(`Saved ✓ ${g.commit} · ${g.login}`, 3000); await refreshRaws(order); setStatus(`Saved ✓ ${g.commit}`, 4000); }
       }
     } catch (e) {
       projOrder = [...prev];
       prev.forEach((s, i) => { if (projBySlug[s]) projBySlug[s].order = i + 1; });
-      renderList();
-      setStatus(String(e.message || e).slice(0, 110));
-    } finally {
-      saving = false;
-      if (pending) { const q = pending; pending = null; commitDrop(q); }
-    }
+      renderList(); setStatus(String(e.message || e).slice(0, 120));
+      try { await refreshRaws(prev); } catch {}
+    } finally { lock(false); renumber(); counter(); }
   }
 
   function after(y) {
@@ -111,6 +120,7 @@
   }
 
   function onDown(e, el) {
+    if (saving) { setStatus('Saving — wait…', 1200); return; }
     if (e.button !== undefined && e.button !== 0) return;
     e.preventDefault();
     const y0 = e.clientY;
@@ -145,6 +155,7 @@
   }
 
   function step(el, d) {
+    if (saving) { setStatus('Saving — wait…', 1200); return; }
     const sib = d < 0 ? el.previousElementSibling : el.nextElementSibling;
     if (!sib || !sib.classList.contains('dr-row')) return;
     if (d < 0) ourList.insertBefore(el, sib);

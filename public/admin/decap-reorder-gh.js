@@ -22,22 +22,22 @@
   let pre = null;
   async function preflight(t) {
     if (pre) return pre;
-    const u = await fetch(`${API}/user`, { headers: head(t) });
+    const u = await fetch(`${API}/user`, { headers: head(t), cache: 'no-store' });
     if (!u.ok) throw new Error(`GitHub ${u.status} · checking login — log out and back in`);
     const login = (await u.json()).login || '?';
-    const rr = await fetch(`${API}/repos/${REPO}`, { headers: head(t) });
+    const rr = await fetch(`${API}/repos/${REPO}`, { headers: head(t), cache: 'no-store' });
     if (!rr.ok) throw new Error(`GitHub ${rr.status} · repo unreachable as ${login}`);
     if (!((await rr.json()).permissions || {}).push) throw new Error(`No write access as ${login} — log out and back in`);
     pre = { login }; return pre;
   }
   async function load() {
     const t = token(); if (!t) throw new Error('Log into the CMS to enable reorder');
-    const dl = await fetch(`${API}/repos/${REPO}/contents/${DIR}?ref=${BRANCH}`, { headers: head(t) });
+    const dl = await fetch(`${API}/repos/${REPO}/contents/${DIR}?ref=${BRANCH}&t=${Date.now()}`, { headers: head(t), cache: 'no-store' });
     if (!dl.ok) await fail(dl, 'loading list');
     const files = (await dl.json()).filter((f) => f.name.endsWith('.json'));
     const raws = {};
     const gets = files.map(async (f) => {
-      const r = await fetch(`${API}/repos/${REPO}/contents/${DIR}/${f.name}?ref=${BRANCH}`, { headers: head(t) });
+      const r = await fetch(`${API}/repos/${REPO}/contents/${DIR}/${f.name}?ref=${BRANCH}&t=${Date.now()}`, { headers: head(t), cache: 'no-store' });
       if (!r.ok) await fail(r, 'reading files');
       const j = await r.json(); const text = dec(j.content); const p = JSON.parse(text);
       raws[p.slug] = { text }; return { slug: p.slug, title: p.title, order: p.order, image: p.image, tag: p.tag };
@@ -60,13 +60,13 @@
     const tree = build(); if (!tree.length) return { noop: true, login: me.login };
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     let lastErr = null;
-    for (let attempt = 1; attempt <= 3; attempt += 1) {
+    for (let attempt = 1; attempt <= 4; attempt += 1) {
       try {
-        if (onStep) onStep(attempt > 1 ? `Retrying… (${attempt}/3)` : 'Committing…');
-        const refR = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, { headers: head(t) });
+        if (onStep) onStep(attempt > 1 ? `Retrying… (${attempt}/4)` : 'Committing…');
+        const refR = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}?t=${Date.now()}`, { headers: head(t), cache: 'no-store' });
         if (!refR.ok) await fail(refR, 'reading branch');
         const base = (await refR.json()).object.sha;
-        const cR = await fetch(`${API}/repos/${REPO}/git/commits/${base}`, { headers: head(t) });
+        const cR = await fetch(`${API}/repos/${REPO}/git/commits/${base}?t=${Date.now()}`, { headers: head(t), cache: 'no-store' });
         if (!cR.ok) await fail(cR, 'reading base commit');
         const baseTree = (await cR.json()).tree.sha;
         const treeR = await fetch(`${API}/repos/${REPO}/git/trees`, { method: 'POST', headers: head(t), body: JSON.stringify({ base_tree: baseTree, tree }) });
@@ -77,8 +77,15 @@
         const commitSha = (await commitR.json()).sha;
         const refW = await fetch(`${API}/repos/${REPO}/git/refs/heads/${BRANCH}`, { method: 'PATCH', headers: head(t), body: JSON.stringify({ sha: commitSha }) });
         if (!refW.ok) await fail(refW, 'updating branch');
+        for (let k = 0; k < 6; k += 1) {
+          await sleep(550);
+          try {
+            const chk = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}?t=${Date.now()}`, { headers: head(t), cache: 'no-store' });
+            if (chk.ok && (await chk.json()).object.sha === commitSha) break;
+          } catch {}
+        }
         return { commit: commitSha.slice(0, 7), login: me.login };
-      } catch (e) { lastErr = e; if (attempt < 3) await sleep(900 * attempt); }
+      } catch (e) { lastErr = e; if (attempt < 4) await sleep(800 * attempt); }
     }
     throw lastErr;
   }
