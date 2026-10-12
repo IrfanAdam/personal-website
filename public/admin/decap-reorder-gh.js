@@ -1,128 +1,86 @@
-/* ADAM/TOOL — public/admin/decap-reorder-gh · GitHub reorder load+save, one commit */
-// Exports: DrGH.load, DrGH.save
+/* ADAM/TOOL — public/admin/decap-reorder-gh.js · GitHub reorder load+save, one commit */
+/* Exports: DrGH.load, DrGH.save — [plan:2026-09-06_183401-portfolio-decap-completion.md#phase-1] */
 (() => {
   const REPO = 'IrfanAdam/personal-website';
   const BRANCH = 'main';
   const DIR = 'content/projects';
   const API = 'https://api.github.com';
-
   const token = () => {
-    const keys = ['decap-cms-user', 'netlify-cms-user'];
-    for (const k of keys) {
-      try {
-        const u = JSON.parse(localStorage.getItem(k) || 'null');
-        if (u && u.token) return u.token;
-      } catch {}
+    for (const k of ['decap-cms-user', 'netlify-cms-user']) {
+      try { const u = JSON.parse(localStorage.getItem(k) || 'null'); if (u?.token) return u.token; } catch {}
     }
     return '';
   };
-
-  const head = (t) => ({
-    Accept: 'application/vnd.github+json',
-    Authorization: `Bearer ${t}`,
-    'X-GitHub-Api-Version': '2022-11-28',
-  });
-
-  const dec = (b64) => {
-    const bin = atob(String(b64 || '').replace(/\n/g, ''));
-    const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
-    return new TextDecoder().decode(bytes);
-  };
-
+  const head = (t) => ({ Accept: 'application/vnd.github+json', Authorization: `Bearer ${t}`, 'X-GitHub-Api-Version': '2022-11-28' });
+  const dec = (b64) => { const bin = atob(String(b64 || '').replace(/\n/g, '')); return new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0))); };
   const fail = async (r, step) => {
-    if (r.status === 401) throw new Error(`Session expired · ${step} — log out and back into the CMS`);
-    if (r.status === 409) throw new Error(`Conflict · ${step} — refresh the page and retry`);
-    throw new Error(`GitHub ${r.status} · ${step}`);
+    let m = ''; try { const j = await r.json(); m = j.message ? ` — ${j.message}` : ''; } catch {}
+    if (r.status === 401) throw new Error(`Session expired · ${step}${m} — log out and back in`);
+    if (r.status === 409) throw new Error(`Conflict · ${step}${m} — refresh and retry`);
+    throw new Error(`GitHub ${r.status}${m} · ${step}`);
   };
-
-  // one-time preflight: who is logged in, and can they push?
   let pre = null;
   async function preflight(t) {
     if (pre) return pre;
     const u = await fetch(`${API}/user`, { headers: head(t) });
-    if (!u.ok) throw new Error(`GitHub ${u.status} · checking login — log out and back into the CMS`);
+    if (!u.ok) throw new Error(`GitHub ${u.status} · checking login — log out and back in`);
     const login = (await u.json()).login || '?';
     const rr = await fetch(`${API}/repos/${REPO}`, { headers: head(t) });
     if (!rr.ok) throw new Error(`GitHub ${rr.status} · repo unreachable as ${login}`);
-    const perms = (await rr.json()).permissions || {};
-    if (!perms.push) throw new Error(`No write access as ${login} — log out and back in`);
-    pre = { login };
-    return pre;
+    if (!((await rr.json()).permissions || {}).push) throw new Error(`No write access as ${login} — log out and back in`);
+    pre = { login }; return pre;
   }
-
   async function load() {
-    const t = token();
-    if (!t) throw new Error('Log into the CMS to enable reorder');
+    const t = token(); if (!t) throw new Error('Log into the CMS to enable reorder');
     const dl = await fetch(`${API}/repos/${REPO}/contents/${DIR}?ref=${BRANCH}`, { headers: head(t) });
     if (!dl.ok) await fail(dl, 'loading list');
     const files = (await dl.json()).filter((f) => f.name.endsWith('.json'));
     const raws = {};
     const gets = files.map(async (f) => {
-      const u = `${API}/repos/${REPO}/contents/${DIR}/${f.name}?ref=${BRANCH}`;
-      const r = await fetch(u, { headers: head(t) });
+      const r = await fetch(`${API}/repos/${REPO}/contents/${DIR}/${f.name}?ref=${BRANCH}`, { headers: head(t) });
       if (!r.ok) await fail(r, 'reading files');
-      const j = await r.json();
-      const text = dec(j.content);
-      const p = JSON.parse(text);
-      raws[p.slug] = { text };
-      return { slug: p.slug, title: p.title, order: p.order, image: p.image, tag: p.tag };
+      const j = await r.json(); const text = dec(j.content); const p = JSON.parse(text);
+      raws[p.slug] = { text }; return { slug: p.slug, title: p.title, order: p.order, image: p.image, tag: p.tag };
     });
-    const items = await Promise.all(gets);
-    items.sort((a, b) => a.order - b.order);
+    const items = await Promise.all(gets); items.sort((a, b) => a.order - b.order);
     return { items, raws };
   }
-
   async function save(order, raws, onStep) {
-    const t = token();
-    if (!t) throw new Error('Log into the CMS to enable reorder');
+    const t = token(); if (!t) throw new Error('Log into the CMS to enable reorder');
     const me = await preflight(t);
-    const tree = [];
-    order.forEach((slug, i) => {
-      const n = i + 1;
-      const raw = raws[slug];
-      if (!raw) return;
-      if (JSON.parse(raw.text).order === n) return;
-      const text = raw.text.replace(/("order"\s*:\s*)\d+/, `$1${n}`);
-      tree.push({ path: `${DIR}/${slug}.json`, mode: '100644', type: 'blob', content: text });
-    });
-    if (!tree.length) return { noop: true, login: me.login };
+    const build = () => {
+      const out = [];
+      order.forEach((slug, i) => {
+        const n = i + 1; const raw = raws[slug]; if (!raw) return;
+        try { if (JSON.parse(raw.text).order === n) return; } catch {}
+        out.push({ path: `${DIR}/${slug}.json`, mode: '100644', type: 'blob', content: raw.text.replace(/("order"\s*:\s*)\d+/, `$1${n}`) });
+      });
+      return out;
+    };
+    const tree = build(); if (!tree.length) return { noop: true, login: me.login };
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     let lastErr = null;
-    for (let attempt = 1; attempt <= 2; attempt += 1) {
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
       try {
-        if (onStep) onStep(attempt > 1 ? 'Retrying…' : 'Committing…');
+        if (onStep) onStep(attempt > 1 ? `Retrying… (${attempt}/3)` : 'Committing…');
         const refR = await fetch(`${API}/repos/${REPO}/git/ref/heads/${BRANCH}`, { headers: head(t) });
         if (!refR.ok) await fail(refR, 'reading branch');
         const base = (await refR.json()).object.sha;
-        const treeR = await fetch(`${API}/repos/${REPO}/git/trees`, {
-          method: 'POST',
-          headers: head(t),
-          body: JSON.stringify({ base_tree: base, tree }),
-        });
+        const cR = await fetch(`${API}/repos/${REPO}/git/commits/${base}`, { headers: head(t) });
+        if (!cR.ok) await fail(cR, 'reading base commit');
+        const baseTree = (await cR.json()).tree.sha;
+        const treeR = await fetch(`${API}/repos/${REPO}/git/trees`, { method: 'POST', headers: head(t), body: JSON.stringify({ base_tree: baseTree, tree }) });
         if (!treeR.ok) await fail(treeR, 'creating tree');
         const treeSha = (await treeR.json()).sha;
-        const msg = 'chore(cms): reorder projects via admin';
-        const commitR = await fetch(`${API}/repos/${REPO}/git/commits`, {
-          method: 'POST',
-          headers: head(t),
-          body: JSON.stringify({ message: msg, tree: treeSha, parents: [base] }),
-        });
+        const commitR = await fetch(`${API}/repos/${REPO}/git/commits`, { method: 'POST', headers: head(t), body: JSON.stringify({ message: 'chore(cms): reorder projects via admin', tree: treeSha, parents: [base] }) });
         if (!commitR.ok) await fail(commitR, 'committing');
         const commitSha = (await commitR.json()).sha;
-        const refW = await fetch(`${API}/repos/${REPO}/git/refs/heads/${BRANCH}`, {
-          method: 'PATCH',
-          headers: head(t),
-          body: JSON.stringify({ sha: commitSha }),
-        });
+        const refW = await fetch(`${API}/repos/${REPO}/git/refs/heads/${BRANCH}`, { method: 'PATCH', headers: head(t), body: JSON.stringify({ sha: commitSha }) });
         if (!refW.ok) await fail(refW, 'updating branch');
         return { commit: commitSha.slice(0, 7), login: me.login };
-      } catch (e) {
-        lastErr = e;
-        if (attempt < 2) await sleep(1500);
-      }
+      } catch (e) { lastErr = e; if (attempt < 3) await sleep(900 * attempt); }
     }
     throw lastErr;
   }
-
   window.DrGH = { load, save };
 })();
