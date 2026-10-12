@@ -88,3 +88,6 @@
   background:#15191f;
   color:#fff
 }
+.dr-bar.dr-saving .dr-status{color:#b3541e}
+.dr-list{transition:opacity .2s}
+.dr-bar.dr-saving{border-color:#e8c39a}

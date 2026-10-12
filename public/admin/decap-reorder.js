@@ -1,4 +1,5 @@
-/* ADAM/TOOL — public/admin/decap-reorder.js · own rows in list view, instant save */
+/* ADAM/TOOL — public/admin/decap-reorder.js · own rows in list view, queued instant save */
+// Exports: none (side-effect enhancer) — [plan:2026-09-06_183401-portfolio-decap-completion.md#phase-1]
 (() => {
   const API_GET = '/__admin/projects';
   const API_POST = '/__admin/reorder';
@@ -11,11 +12,11 @@
   let subEl = null;
   let container = null;
   let ourList = null;
-  let saving = false;
-  let pending = null;
   let dragLive = false;
   let suppressClick = false;
-
+  let queued = null;
+  let pumping = false;
+  let failCount = 0;
   const onProjectsPage = () => location.hash.includes('/collections/projects') && !location.hash.includes('/entries/') && !location.hash.includes('/new');
   const fetchProjects = async () => {
     if (projBySlug) return;
@@ -35,7 +36,6 @@
     projBySlug = Object.fromEntries(g.items.map((p) => [p.slug, p]));
     projOrder = g.items.map((p) => p.slug);
   };
-
   const setStatus = (t, ms = 0) => {
     if (!statusEl) return;
     statusEl.textContent = t;
@@ -53,61 +53,82 @@
   const counter = () => {
     if (!subEl || !projOrder.length) return;
     const n = ourList ? ourList.querySelectorAll('.dr-row').length : 0;
-    subEl.textContent = `${n}/${projOrder.length} rows · drop to save`;
+    subEl.textContent = n + '/' + projOrder.length + ' rows · drop to save';
   };
   const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-  const lock = (on) => {
-    saving = on;
-    if (ourList) {
-      ourList.style.pointerEvents = on ? 'none' : '';
-      ourList.style.opacity = on ? '0.55' : '';
-      ourList.classList.toggle('dr-saving', on);
-    }
-    bar?.classList.toggle('dr-saving', on);
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const isFatal = (m) => /Session expired|No write access|checking login|repo unreachable|Log into the CMS|Reorder script failed/.test(String(m || ''));
+  const markRaws = (order) => {
+    order.forEach((s, i) => {
+      if (projBySlug[s]) projBySlug[s].order = i + 1;
+      const raw = (ghRaws || {})[s];
+      if (raw && typeof raw.text === 'string') raw.text = raw.text.replace(/("order"\s*:\s*)\d+/, '$1' + (i + 1));
+    });
   };
-  async function refreshRaws(order) {
-    if (!window.DrGH || !ghRaws) return;
-    try {
-      const g = await window.DrGH.load();
-      ghRaws = g.raws;
-      const freshOrder = g.items.map((x) => x.slug);
-      if (freshOrder.length && !freshOrder.every((s, i) => order[i] === s)) {
-        projOrder = [...freshOrder];
-        projBySlug = Object.fromEntries(g.items.map((p) => [p.slug, p]));
-        renderList(); counter();
-      }
-    } catch {}
-  }
-  async function commitDrop(order) {
-    if (!order.length || same(projOrder, order)) { renumber(); counter(); return; }
-    if (saving) { setStatus('Saving — wait…', 1500); return; }
-    const prev = [...projOrder];
+  // — queue pump: every drop is accepted instantly, saves run serially in background —
+  const kick = (order) => {
+    if (!order.length) return;
+    if (same(projOrder, order) && !queued) { renumber(); counter(); return; }
     projOrder = [...order];
     order.forEach((s, i) => { if (projBySlug[s]) projBySlug[s].order = i + 1; });
-    renumber(); counter();
-    lock(true); setStatus('Saving…');
-    try {
-      if (isLocal) {
-        const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order }) });
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok) throw new Error(j.error || `Local ${r.status} · saving order`);
-        setStatus('Saved ✓', 2200);
-      } else {
-        if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
-        const g = await window.DrGH.save(order, ghRaws || {}, (s) => setStatus(s));
-        if (ghRaws && !g.noop) order.forEach((slug, i) => { const raw = ghRaws[slug]; if (raw?.text) raw.text = raw.text.replace(/("order"\s*:\s*)\d+/, `$1${i + 1}`); });
-        if (g.noop) setStatus('No changes', 2200);
-        else { setStatus(`Saved ✓ ${g.commit} · ${g.login}`, 3000); await refreshRaws(order); setStatus(`Saved ✓ ${g.commit}`, 4000); }
+    renumber();
+    counter();
+    queued = [...order];
+    if (!pumping) pump();
+  };
+  async function pump() {
+    if (pumping) return;
+    pumping = true;
+    while (queued) {
+      const target = [...queued];
+      queued = null;
+      setStatus(failCount ? 'Syncing…' : 'Saving…');
+      if (bar) bar.classList.add('dr-saving');
+      try {
+        if (isLocal) {
+          const r = await fetch(API_POST, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order: target }) });
+          const j = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(j.error || ('Local ' + r.status + ' · saving order'));
+          failCount = 0;
+          projOrder = [...target];
+          if (queued) { setStatus('Syncing queued change…'); continue; }
+          setStatus('Saved ✓', 2200);
+        } else {
+          if (!window.DrGH) throw new Error('Reorder script failed to load — refresh');
+          try {
+            const fresh = await window.DrGH.load();
+            ghRaws = fresh.raws;
+            fresh.items.forEach((it) => {
+              if (projBySlug[it.slug]) { projBySlug[it.slug].title = it.title; projBySlug[it.slug].image = it.image; }
+              else projBySlug[it.slug] = it;
+            });
+          } catch (e) { if (isFatal(e.message)) throw e; }
+          const g = await window.DrGH.save(target, ghRaws || {}, (s) => setStatus(s));
+          markRaws(target);
+          projOrder = [...target];
+          failCount = 0;
+          if (queued) { setStatus('Syncing queued change…'); continue; }
+          if (g.noop) setStatus('No changes', 2200);
+          else setStatus('Saved ✓ ' + (g.commit || ''), 4000);
+        }
+      } catch (e) {
+        const msg = String((e && e.message) || e);
+        if (isFatal(msg)) { setStatus(msg.slice(0, 120)); queued = null; failCount = 0; break; }
+        failCount += 1;
+        if (!queued) queued = [...target];
+        const wait = Math.min(2000 * failCount, 15000);
+        setStatus('Syncing… retry in ' + Math.round(wait / 1000) + 's', wait);
+        await sleep(wait);
+        if (failCount > 30) { failCount = 0; await sleep(5000); }
+      } finally {
+        if (!queued && bar) bar.classList.remove('dr-saving');
       }
-    } catch (e) {
-      projOrder = [...prev];
-      prev.forEach((s, i) => { if (projBySlug[s]) projBySlug[s].order = i + 1; });
-      renderList(); setStatus(String(e.message || e).slice(0, 120));
-      try { await refreshRaws(prev); } catch {}
-    } finally { lock(false); renumber(); counter(); }
+    }
+    pumping = false;
+    renumber();
+    counter();
+    if (bar) bar.classList.remove('dr-saving');
   }
-
   function after(y) {
     const els = [...ourList.querySelectorAll('.dr-row:not(.dragging)')];
     let best = { off: Number.NEGATIVE_INFINITY, el: null };
@@ -118,9 +139,7 @@
     }
     return best.el;
   }
-
   function onDown(e, el) {
-    if (saving) { setStatus('Saving — wait…', 1200); return; }
     if (e.button !== undefined && e.button !== 0) return;
     e.preventDefault();
     const y0 = e.clientY;
@@ -147,44 +166,40 @@
       suppressClick = true;
       setTimeout(() => { suppressClick = false; }, 120);
       renumber();
-      commitDrop(currentOrder());
+      kick(currentOrder());
     };
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
     window.addEventListener('pointercancel', up);
   }
-
   function step(el, d) {
-    if (saving) { setStatus('Saving — wait…', 1200); return; }
     const sib = d < 0 ? el.previousElementSibling : el.nextElementSibling;
     if (!sib || !sib.classList.contains('dr-row')) return;
     if (d < 0) ourList.insertBefore(el, sib);
     else ourList.insertBefore(sib, el);
     renumber();
-    commitDrop(currentOrder());
+    kick(currentOrder());
   }
-
   function rowEl(p) {
     const el = document.createElement('div');
     el.className = 'dr-row';
     el.dataset.slug = p.slug;
-    el.innerHTML = `<span class="dr-grip" aria-hidden="true">⋮⋮</span>`
-      + `<img class="dr-thumb" alt="" loading="lazy" draggable="false" src="${p.image || ''}">`
-      + `<span class="dr-title">${esc(p.title)} (${esc(p.slug)})</span>`
-      + `<span class="dr-mv"><button type="button" data-up="1" title="Move up">▲</button>`
-      + `<button type="button" data-down="1" title="Move down">▼</button></span>`
-      + `<span class="dr-badge">?</span>`;
+    el.innerHTML = '<span class="dr-grip" aria-hidden="true">⋮⋮</span>'
+      + '<img class="dr-thumb" alt="" loading="lazy" draggable="false" src="' + (p.image || '') + '">'
+      + '<span class="dr-title">' + esc(p.title) + ' (' + esc(p.slug) + ')</span>'
+      + '<span class="dr-mv"><button type="button" data-up="1" title="Move up">▲</button>'
+      + '<button type="button" data-down="1" title="Move down">▼</button></span>'
+      + '<span class="dr-badge">?</span>';
     el.querySelector('[data-up]').addEventListener('click', (e) => { e.stopPropagation(); step(el, -1); });
     el.querySelector('[data-down]').addEventListener('click', (e) => { e.stopPropagation(); step(el, 1); });
     el.querySelector('.dr-grip').addEventListener('pointerdown', (e) => onDown(e, el));
     el.addEventListener('dragstart', (e) => e.preventDefault());
     el.addEventListener('click', () => {
       if (suppressClick) return;
-      location.hash = `#/collections/projects/entries/${p.slug}`;
+      location.hash = '#/collections/projects/entries/' + p.slug;
     });
     return el;
   }
-
   function renderList() {
     if (!ourList || !document.contains(ourList)) {
       ourList = document.createElement('div');
@@ -209,12 +224,10 @@
     }
     renumber();
   }
-
   function findCards() {
     return [...document.querySelectorAll('a[href*="/collections/projects/entries/"]')]
       .filter((n) => n.offsetParent !== null);
   }
-
   function findContainer(cards) {
     if (!cards.length) return null;
     let p = cards[0].parentElement;
@@ -224,9 +237,7 @@
     }
     return cards[0].parentElement;
   }
-
-  // list view only: flip grid back to list, hide the toggle pair + Sort-by control
-  // runs on every pass — Decap re-renders must never bring them back
+  // — list view only: flip grid back to list, hide the toggle pair + Sort-by control —
   function tidyControls() {
     const btns = [...document.querySelectorAll('button')].filter((b) => b.querySelector('svg') && !b.textContent.trim());
     if (btns.length === 2 && btns[0].parentElement === btns[1].parentElement) {
@@ -235,7 +246,6 @@
       if (color(btns[1]) !== inactive && color(btns[0]) === inactive) btns[0].click();
       btns[0].parentElement.style.display = 'none';
     }
-    // hide Sort-by: kill the whole row-reverse controls row that contains it
     if (document.body.textContent.includes('Sort by')) {
       const divs = [...document.querySelectorAll('div')];
       for (const d of divs) {
@@ -247,7 +257,6 @@
       }
     }
   }
-
   function ensureBar(cont) {
     if (bar && document.contains(bar)) return;
     bar = document.createElement('div');
@@ -257,7 +266,6 @@
     subEl = bar.querySelector('.dr-sub');
     if (cont && cont.parentElement) cont.parentElement.insertBefore(bar, cont);
   }
-
   function enhance() {
     if (!onProjectsPage()) {
       if (bar && bar.parentElement) bar.remove();
@@ -280,17 +288,15 @@
     renderList();
     counter();
   }
-
   function notice(msg) {
     if (document.querySelector('.dr-notice')) return;
     const header = [...document.querySelectorAll('h1,h2')].find((h) => h.textContent.trim() === 'Projects');
     if (!header) return;
     const el = document.createElement('div');
     el.className = 'dr-bar dr-notice';
-    el.innerHTML = `<strong>Reorder unavailable:</strong><small>${msg}</small>`;
+    el.innerHTML = '<strong>Reorder unavailable:</strong><small>' + esc(msg) + '</small>';
     header.parentElement.insertAdjacentElement('afterend', el);
   }
-
   let tries = 0;
   const tick = async () => {
     if (!onProjectsPage()) { tries = 0; return; }
@@ -309,9 +315,8 @@
       setTimeout(tick, 400);
     }
   };
-
   window.addEventListener('hashchange', () => {
-    saving = false; pending = null; dragLive = false;
+    queued = null; pumping = false; failCount = 0; dragLive = false;
     container = null; bar = null; ourList = null;
     projBySlug = null; projOrder = []; ghRaws = null;
     setTimeout(tick, 300);
