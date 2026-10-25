@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-25T11:08:37.169Z",
+ "generated": "2026-10-25T11:09:48.646Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -49,6 +49,15 @@
   "2026-10-19_000000-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "182919d",
+   "full": "182919d5229a34236c82cfe746a5796f32c15955",
+   "date": "2026-10-25",
+   "time": "16:39",
+   "subject": "feat(contact): Cal inline embed modal on Contact page",
+   "plan": "2026-10-19_000000-lump-sum-builds.md",
+   "anchor": "{#phase-2}"
+  },
   {
    "sha": "da720ac",
    "full": "da720aca76f92aae68d110b4148c77cc1e51ed8d",
@@ -4172,7 +4181,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/styles/tokens-fx.css"
- ]
+ "wip": []
 }
