@@ -34,6 +34,7 @@ collections:
               - { label: "Bio 2", name: "bio2", widget: "text" }
               - { label: "WIP", name: "wip", widget: "string" }
               - { label: "Quote", name: "quote", widget: "text" }
+          - { label: "Cal.com URL", name: "calUrl", widget: "string", required: false, hint: "Scheduling link — shows as Schedule button on Contact" }
           - label: "Socials"
             name: "socials"
             widget: "list"

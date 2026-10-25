@@ -17,6 +17,7 @@ const items = Object.values(files)
   .sort((a, b) => a.order - b.order);
 export const socials = (settings.socials || []).map((s) => [s.name, s.url]);
 export const about = settings.about || '';
+export const calUrl = settings.calUrl || 'https://cal.com/irfan-adam-m-2lzwxz';
 export const contact = settings.contact || { hero: [], now: '', past: '', bio2: '', wip: '', quote: '' };
 export const profileImage = settings.profileImage || '/images/irfan-profile.jpg';
 export const bodies = Object.fromEntries(items.map((p) => [p.slug, p.body || '']));
