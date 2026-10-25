@@ -1,0 +1,8 @@
+/* ADAM/STYLE — styles/tokens-modal · Cal modal size tokens · [plan:2026-10-19_000000-lump-sum-builds.md#phase-2] */
+:root {
+  --size-modal-w: 960px;
+  --size-modal-h: 820px;
+  --size-modal-vh: 86vh;
+  --size-modal-vh-sm: 92vh;
+  --size-modal-min: 520px;
+}

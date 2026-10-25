@@ -93,4 +93,5 @@
     --scale-press: 0.94;
     --scale-zoom: 1.015;
   --z-media: 1; --z-frame: 2; --z-ds-side: 5; --z-ds-controls: 6; --z-header: 20;
+  --z-modal: 30;
 }

@@ -1,0 +1,86 @@
+/* ADAM/STYLE — styles/cal-modal · Cal embed modal · [plan:2026-10-19_000000-lump-sum-builds.md#phase-2] */
+// Exports: none (imported via app.css) — .cal-modal, .cal-modal__*
+
+
+/* — Overlay — */
+.cal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16);
+}
+.cal-modal[hidden] {
+  display: none !important;
+}
+.cal-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--stone-900) 48%, transparent);
+  backdrop-filter: blur(var(--blur-scrim));
+  -webkit-backdrop-filter: blur(var(--blur-scrim));
+}
+.cal-modal__panel {
+  position: relative;
+  width: min(var(--size-modal-w), 100%);
+  height: min(var(--size-modal-vh), var(--size-modal-h));
+  background: var(--color-surface);
+  border: var(--border-hairline);
+  box-shadow: var(--shadow-viewer);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.cal-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-10) var(--space-14);
+  border-bottom: var(--border-hairline);
+  flex-shrink: 0;
+  background: var(--color-surface);
+}
+.cal-modal__title {
+  margin: 0;
+  font-size: var(--text-copy);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-copy);
+  color: var(--color-ink);
+}
+.cal-modal__close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--color-ink);
+  font-size: var(--text-title);
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--space-4);
+}
+.cal-modal__close:focus-visible {
+  outline: var(--border-focus);
+  outline-offset: var(--focus-offset);
+}
+.cal-modal__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: var(--color-surface);
+}
+.cal-modal__body #my-cal-inline-15min {
+  width: 100%;
+  height: 100%;
+  min-height: var(--size-modal-min);
+  overflow: auto;
+}
+@media (max-width: 640px) {
+  .cal-modal {
+    padding: var(--space-8);
+  }
+  .cal-modal__panel {
+    height: var(--size-modal-vh-sm);
+  }
+}

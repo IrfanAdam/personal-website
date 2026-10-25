@@ -1,9 +1,10 @@
 /* ADAM/PAGE — views/contact · contact page · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
-// Exports: Contact, mountContact — contact page + Cal CTA + rise
+// Exports: Contact, mountContact — contact page + Cal modal + rise
 import { contact, about, profileImage, calUrl } from '../data/site.js';
 import { footer } from './shared.js';
 import { mountHeroRise } from './rise.js';
 import { mountTitleReveal } from './title-reveal.js';
+import { calModalHtml, mountCalModal } from './cal-modal.js';
 
 // profile image dims: 1400x1181
 const PW = 1400, PH = 1181;
@@ -11,8 +12,8 @@ const PW = 1400, PH = 1181;
 // — CTA —
 function calCta() {
   if (!calUrl) return '';
-  return `<a class="btn btn--primary" href="${calUrl}" target="_blank"`
-    + ` rel="noopener noreferrer">Schedule a meeting — Cal.com ↗</a>`;
+  return `<button class="btn btn--primary" type="button" data-cal-open>`
+    + `Schedule a meeting — Cal.com ↗</button>`;
 }
 
 export function Contact() {
@@ -65,6 +66,7 @@ export function Contact() {
     PH,
     `" decoding="async" fetchpriority="high" /></div></div>
   </div></article>`,
+    calModalHtml(),
     footer(),
   ].join('');
 }
@@ -72,5 +74,10 @@ export function Contact() {
 export function mountContact(root) {
   const offRise = mountHeroRise(root);
   const offTitle = mountTitleReveal(root);
-  return () => { try { offRise(); } catch {} try { offTitle(); } catch {} };
+  const offCal = mountCalModal(root);
+  return () => {
+    try { offRise(); } catch {}
+    try { offTitle(); } catch {}
+    try { offCal(); } catch {}
+  };
 }

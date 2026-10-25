@@ -4,6 +4,7 @@
 @import './tokens-color.css';
 @import './tokens-type.css';
 @import './tokens-fx.css';
+@import './tokens-modal.css';
 @import './tokens-promo.css';
 @import './tokens-dark.css';
 @import './tokens-overrides.css';
@@ -19,6 +20,7 @@
 @import './pages-sections.css';
 @import './list-mobile.css';
 @import './pages-cta.css';
+@import './cal-modal.css';
 @import './work-cursor.css';
 @import './case.css';
 @import './next.css';
