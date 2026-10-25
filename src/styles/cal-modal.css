@@ -1,5 +1,5 @@
 /* ADAM/STYLE — styles/cal-modal · Cal embed modal · [plan:2026-10-19_000000-lump-sum-builds.md#phase-2] */
-// Exports: none (imported via app.css) — .cal-modal, .cal-modal__*
+/* Exports: none (imported via app.css) — .cal-modal, .cal-modal__* */
 
 
 /* — Overlay — */
@@ -16,7 +16,7 @@
   display: none !important;
 }
 .cal-modal__backdrop {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: color-mix(in srgb, var(--stone-900) 48%, transparent);
   backdrop-filter: blur(var(--blur-scrim));
@@ -24,6 +24,7 @@
 }
 .cal-modal__panel {
   position: relative;
+  z-index: 1;
   width: min(var(--size-modal-w), 100%);
   height: min(var(--size-modal-vh), var(--size-modal-h));
   background: var(--color-surface);
