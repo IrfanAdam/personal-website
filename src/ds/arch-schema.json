@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T11:09:24.012Z",
+  "generated": "2026-10-27T12:37:37.058Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -2654,6 +2654,14 @@
       "tokens": []
     },
     {
+      "id": "scripts_optimize_videos",
+      "path": "scripts/optimize-videos.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "optimize videos",
+      "tokens": []
+    },
+    {
       "id": "scripts_plan_names",
       "path": "scripts/plan-names.mjs",
       "layer": "tool",
@@ -2675,6 +2683,14 @@
       "layer": "tool",
       "route": null,
       "title": "smoke",
+      "tokens": []
+    },
+    {
+      "id": "scripts_video_ffmpeg",
+      "path": "scripts/video-ffmpeg.mjs",
+      "layer": "tool",
+      "route": null,
+      "title": "video ffmpeg",
       "tokens": []
     },
     {
@@ -3437,6 +3453,22 @@
         "--stone-950",
         "--text-meta",
         "--tracking-mono"
+      ]
+    },
+    {
+      "id": "styles_promo_video_loading",
+      "path": "src/styles/promo-video-loading.css",
+      "layer": "style",
+      "route": null,
+      "title": "promo video loading",
+      "tokens": [
+        "--dur-slow",
+        "--promo-pill",
+        "--promo-pill-line",
+        "--size-hairline",
+        "--space-12",
+        "--space-26",
+        "--stone-0"
       ]
     },
     {
@@ -4284,6 +4316,22 @@
       "layer": "view",
       "route": null,
       "title": "promo video mount",
+      "tokens": []
+    },
+    {
+      "id": "views_promo_video_poster",
+      "path": "src/views/promo-video-poster.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video poster",
+      "tokens": []
+    },
+    {
+      "id": "views_promo_video_scrub",
+      "path": "src/views/promo-video-scrub.js",
+      "layer": "view",
+      "route": null,
+      "title": "promo video scrub",
       "tokens": []
     },
     {
@@ -6806,6 +6854,11 @@
       "kind": "tokens"
     },
     {
+      "from": "styles_promo_video_loading",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "styles_promo_video",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -7568,6 +7621,16 @@
     {
       "from": "views_promo_video_mount",
       "to": "views_promo_video_icons",
+      "kind": "imports"
+    },
+    {
+      "from": "views_promo_video_mount",
+      "to": "views_promo_video_poster",
+      "kind": "imports"
+    },
+    {
+      "from": "views_promo_video_mount",
+      "to": "views_promo_video_scrub",
       "kind": "imports"
     },
     {
