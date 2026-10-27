@@ -1,8 +1,10 @@
-/* ADAM/PAGE — views/promo-video-mount · player mount ·
-   [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/PAGE — views/promo-video-mount · player mount · [plan:2026-10-26_000000-lump-sum-builds.md#{#phase-2}] */
 // Exports: mountPromoVideo(root)
 import { IC_PLAY, IC_PAUSE, IC_SOUND, IC_MUTE } from './promo-video-icons.js';
 import { fmt, nudgeFrame } from './promo-video-format.js';
+import { bindScrub } from './promo-video-scrub.js';
+import { ensurePoster } from './promo-video-poster.js';
+// — Mount —
 export function mountPromoVideo(root) {
   const box = root.querySelector('[data-promo-video]');
   if (!box) return () => {};
@@ -16,17 +18,6 @@ export function mountPromoVideo(root) {
   const buf = box.querySelector('[data-buf]');
   const timeEl = box.querySelector('[data-time]');
   if (!v) return () => {};
-  const ensurePoster = () => {
-    if (v.getAttribute('poster')) return;
-    if (v.readyState < 2) return;
-    try {
-      const c = document.createElement('canvas');
-      c.width = v.videoWidth || 1280;
-      c.height = v.videoHeight || 720;
-      c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
-      v.setAttribute('poster', c.toDataURL('image/jpeg', 0.82));
-    } catch {}
-  };
   const setState = () => {
     const playing = !v.paused && !v.ended;
     box.classList.toggle('playing', playing);
@@ -51,32 +42,34 @@ export function mountPromoVideo(root) {
     }
     if (timeEl) timeEl.textContent = `${fmt(cur)} / ${fmt(dur)}`;
   };
-  const onTrack = (e) => {
-    const r = track.getBoundingClientRect();
-    const x = Math.min(Math.max(0, e.clientX - r.left), r.width);
+  const seekFrac = (f) => {
     const dur = v.duration || 0;
-    if (dur) v.currentTime = (x / r.width) * dur;
+    if (dur) v.currentTime = f * dur;
   };
+  const boostPreload = () => { if (v.preload !== 'auto') v.preload = 'auto'; };
+  const onWait = () => box.classList.add('loading');
+  const onReady = () => box.classList.remove('loading');
   const onFs = () => {
+    if (typeof v.webkitEnterFullscreen === 'function') {
+      try { v.webkitEnterFullscreen(); } catch {}
+      return;
+    }
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
     else (box.requestFullscreen || box.webkitRequestFullscreen || (() => {})).call(box);
   };
-  let scrub = false;
-  const onDown = (e) => { scrub = true; onTrack(e); };
-  const onMove = (e) => { if (scrub) onTrack(e); };
-  const onUp = () => { scrub = false; };
-  const onMeta = () => { syncTime(); if (!v.poster && v.currentTime < 0.05) nudgeFrame(v); };
-  const onSeeked = () => { ensurePoster(); syncTime(); };
+  const onMeta = () => { boostPreload(); syncTime(); if (!v.poster && v.currentTime < 0.05) nudgeFrame(v); };
+  const onSeeked = () => { ensurePoster(v); syncTime(); };
   const binds = [
     [playBtn, 'click', togglePlay], [v, 'click', togglePlay],
     [muteBtn, 'click', toggleMute], [fsBtn, 'click', onFs],
     [v, 'play', setState], [v, 'pause', setState], [v, 'ended', setState],
     [v, 'timeupdate', syncTime], [v, 'progress', syncTime],
-    [v, 'loadedmetadata', onMeta], [v, 'seeked', onSeeked], [v, 'canplay', ensurePoster],
-    [track, 'click', onTrack], [track, 'mousedown', onDown],
-    [window, 'mousemove', onMove], [window, 'mouseup', onUp],
+    [v, 'waiting', onWait], [v, 'playing', onReady], [v, 'canplay', onReady],
+    [v, 'loadedmetadata', onMeta], [v, 'seeked', onSeeked], [v, 'canplay', () => ensurePoster(v)],
   ];
   binds.forEach(([el, ev, fn]) => { try { el.addEventListener(ev, fn); } catch {} });
+  const unscrub = bindScrub(track, seekFrac);
+  boostPreload();
   const onKey = (e) => {
     if (e.code === 'Space' && document.activeElement === v) { e.preventDefault(); togglePlay(); }
     if (e.key === 'k' || e.key === 'K') togglePlay();
@@ -89,6 +82,7 @@ export function mountPromoVideo(root) {
   syncTime(); setState();
   return () => {
     binds.forEach(([el, ev, fn]) => { try { el.removeEventListener(ev, fn); } catch {} });
+    try { unscrub(); } catch {}
     try { box.removeEventListener('keydown', onKey); } catch {}
     try { v.pause(); } catch {}
   };

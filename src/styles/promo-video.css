@@ -1,5 +1,6 @@
 /* ADAM/STYLE — styles/promo-video · cinematic player ·
-   [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+   [plan:2026-10-26_000000-lump-sum-builds.md#{#phase-2}] */
+@import './promo-video-loading.css';
 .case-promo { margin: var(--space-22) 0 0; width: 100%; }
 .case-media .case-promo { margin: 0; }
 .promo-video {
@@ -69,6 +70,7 @@
 .promo-mute:active, .promo-fs:active { transform: scale(0.96); }
 .promo-track {
   flex: 1; height: var(--promo-track-h);
+  touch-action: none;
   background: color-mix(in srgb, var(--stone-0) 28%, transparent);
   border-radius: var(--promo-pill); position: relative; cursor: pointer; overflow: hidden;
   align-self: center;

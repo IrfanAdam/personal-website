@@ -1,0 +1,21 @@
+/* ADAM/STYLE — styles/promo-video-loading · spinner · [plan:2026-10-26_000000-lump-sum-builds.md#{#phase-2}] */
+/* Exports: .loading spinner (consumed via promo-video.css @import) */
+.promo-video.loading::after {
+  content: '';
+  position: absolute;
+  left: var(--space-12);
+  top: var(--space-12);
+  width: var(--space-26);
+  height: var(--space-26);
+  border-radius: var(--promo-pill);
+  border: var(--size-hairline) solid var(--promo-pill-line);
+  border-top-color: var(--stone-0);
+  animation: promo-spin var(--dur-slow) linear infinite;
+  pointer-events: none;
+}
+@keyframes promo-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-video.loading::after { animation: none; }
+}

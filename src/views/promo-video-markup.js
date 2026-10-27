@@ -1,24 +1,34 @@
-/* ADAM/PAGE — views/promo-video-markup · 16:9 markup · [plan:2026-09-13_193000-refactor-manageability.md#phase-1] */
+/* ADAM/PAGE — views/promo-video-markup · 16:9 markup · [plan:2026-10-26_000000-lump-sum-builds.md#{#phase-2}] */
 // Exports: promoVideoMarkup(src)
 import { IC_PLAY, IC_SOUND, IC_FS } from './promo-video-icons.js';
-
+// — Sources —
 const DUMMY = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
 function posterFor(src) {
   if (!src || !src.trim()) return '';
   if (/^https?:\/\//i.test(src)) return '';
   return src.replace(/\.(mp4|webm|mov)(\?.*)?$/i, '.jpg');
 }
+function isCrossOrigin(src) {
+  try {
+    if (typeof location !== 'undefined' && location.origin) {
+      return new URL(src, location.href).origin !== location.origin;
+    }
+  } catch {}
+  return /^https?:\/\//i.test(src);
+}
+// — Markup —
 export function promoVideoMarkup(src) {
   const v = src && src.trim() ? src : DUMMY;
   const poster = posterFor(v);
   const attr = poster ? ` poster="${poster}"` : '';
-  const open = `<video preload="metadata" playsinline${attr}`;
+  const cross = isCrossOrigin(v) ? ' crossorigin="anonymous"' : '';
+  const open = `<video preload="metadata" playsinline${attr}${cross}`;
   const remote = /^https?:\/\//i.test(v);
   if (remote) {
     return [
       `<section class="case-promo" aria-label="Promo video">`,
       `<div class="promo-video paused" data-promo-video>`,
-      `${open} src="${v}" crossorigin="anonymous"></video>`,
+      `${open} src="${v}"></video>`,
       `<button class="promo-play" type="button" aria-label="Play video" data-play>`,
       `<span class="promo-play-pill">${IC_PLAY}</span></button>`,
       `<div class="promo-bar"><button class="promo-mute" type="button"`,
@@ -34,7 +44,7 @@ export function promoVideoMarkup(src) {
   return [
     `<section class="case-promo" aria-label="Promo video">`,
     `<div class="promo-video paused" data-promo-video>`,
-    `${open} crossorigin="anonymous">`,
+    `${open}>`,
     `<source src="${mob}" media="(max-width: 768px)">`,
     `<source src="${v}"></video>`,
     `<button class="promo-play" type="button" aria-label="Play video" data-play>`,
