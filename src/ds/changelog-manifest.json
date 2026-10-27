@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-25T11:09:48.646Z",
+ "generated": "2026-10-27T12:19:31.797Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -46,9 +46,19 @@
   "2026-09-24_160000-primitives-complete.md",
   "2026-09-24_170000-code-syntax-highlight.md",
   "2026-09-28_130000-code-cleanup-perf.md",
-  "2026-10-19_000000-lump-sum-builds.md"
+  "2026-10-19_000000-lump-sum-builds.md",
+  "2026-10-26_000000-lump-sum-builds.md"
  ],
  "commits": [
+  {
+   "sha": "fd32451",
+   "full": "fd324514a44784a1e7583a0cb05b80170044265a",
+   "date": "2026-10-27",
+   "time": "17:49",
+   "subject": "chore(lump-sum): open Oct-26 week, video phase shipped in 309a91e",
+   "plan": "2026-10-26_000000-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "182919d",
    "full": "182919d5229a34236c82cfe746a5796f32c15955",
