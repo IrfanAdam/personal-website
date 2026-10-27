@@ -12,11 +12,31 @@ export function promoVideoMarkup(src) {
   const v = src && src.trim() ? src : DUMMY;
   const poster = posterFor(v);
   const attr = poster ? ` poster="${poster}"` : '';
+  const open = `<video preload="metadata" playsinline${attr}`;
+  const remote = /^https?:\/\//i.test(v);
+  if (remote) {
+    return [
+      `<section class="case-promo" aria-label="Promo video">`,
+      `<div class="promo-video paused" data-promo-video>`,
+      `${open} src="${v}" crossorigin="anonymous"></video>`,
+      `<button class="promo-play" type="button" aria-label="Play video" data-play>`,
+      `<span class="promo-play-pill">${IC_PLAY}</span></button>`,
+      `<div class="promo-bar"><button class="promo-mute" type="button"`,
+      ` aria-label="Mute" data-mute>${IC_SOUND}</button>`,
+      `<div class="promo-track" data-track><div class="promo-buf" data-buf></div>`,
+      `<div class="promo-fill" data-fill></div></div>`,
+      `<span class="promo-time" data-time>0:00 / 0:00</span>`,
+      `<button class="promo-fs" type="button" aria-label="Fullscreen" data-fs>`,
+      `${IC_FS}</button></div></div></section>`,
+    ].join('');
+  }
+  const mob = v.replace(/-?\.mp4(\?.*)?$/i, '-mobile.mp4');
   return [
     `<section class="case-promo" aria-label="Promo video">`,
     `<div class="promo-video paused" data-promo-video>`,
-    `<video preload="metadata" playsinline${attr} src="${v}"`,
-    ` crossorigin="anonymous"></video>`,
+    `${open} crossorigin="anonymous">`,
+    `<source src="${mob}" media="(max-width: 768px)">`,
+    `<source src="${v}"></video>`,
     `<button class="promo-play" type="button" aria-label="Play video" data-play>`,
     `<span class="promo-play-pill">${IC_PLAY}</span></button>`,
     `<div class="promo-bar"><button class="promo-mute" type="button"`,
