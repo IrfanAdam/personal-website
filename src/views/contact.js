@@ -29,7 +29,7 @@ export function Contact() {
     `    <section class="hero contact-hero"><h1>`,
     heroSpans,
     `</h1>
-    <p><b>Designing Softwares.</b> `,
+    <p><b>Designing software for people and the worlds they inhabit.</b> `,
     contact.now,
     `. `,
     contact.past,
