@@ -42,6 +42,18 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
 
+      - label: "Personal Page"
+        name: "personal"
+        file: "content/personal.json"
+        fields:
+          - { label: "Hero Lines", name: "hero", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+          - { label: "Lead", name: "lead", widget: "string", hint: "Bold lead — personal page intro" }
+          - { label: "Intro", name: "intro", widget: "text", hint: "Paragraph after lead" }
+          - { label: "About", name: "about", widget: "text" }
+          - { label: "Bio 2", name: "bio2", widget: "text" }
+          - { label: "WIP", name: "wip", widget: "string" }
+          - { label: "Quote", name: "quote", widget: "text" }
+
   - name: "projects"
     label: "Projects"
     folder: "content/projects"

@@ -22,6 +22,10 @@ export function Contact() {
   const heroSpans = lines
     .map((t, i) => `<span class="${i < split ? 'ink' : 'muted'}">${t}</span>`)
     .join('');
+  const lead = contact.lead || 'Designing software for people and the worlds they inhabit.';
+  const intro = contact.intro
+    || [contact.now, contact.past].filter(Boolean).join('. ');
+  const leadLine = `<p><b>${lead}</b> ${intro}</p></section>`;
   return [
     `<article class="case"><div class="case-grid">
   <div class="case-copy">
@@ -29,12 +33,9 @@ export function Contact() {
     `    <section class="hero contact-hero"><h1>`,
     heroSpans,
     `</h1>
-    <p><b>Designing software for people and the worlds they inhabit.</b> `,
-    contact.now,
-    `. `,
-    contact.past,
-    `</p></section>
-    <section class="about contact-about">
+`,
+    leadLine,
+    `    <section class="about contact-about">
       <p>`,
     about,
     `</p><p>`,
