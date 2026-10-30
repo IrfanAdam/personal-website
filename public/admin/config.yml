@@ -46,13 +46,13 @@ collections:
         name: "personal"
         file: "content/personal.json"
         fields:
-          - { label: "Hero Lines", name: "hero", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
-          - { label: "Lead", name: "lead", widget: "string", hint: "Bold lead — personal page intro" }
-          - { label: "Intro", name: "intro", widget: "text", hint: "Paragraph after lead" }
-          - { label: "About", name: "about", widget: "text" }
-          - { label: "Bio 2", name: "bio2", widget: "text" }
-          - { label: "WIP", name: "wip", widget: "string" }
-          - { label: "Quote", name: "quote", widget: "text" }
+          - { label: "Hero Headline (big title)", name: "hero", widget: "list", hint: "One line per row — the big headline, name first. Top half solid, bottom half muted. Clearing all rows falls back to your Lead, then Irfan Adam M.", field: { label: "Line", name: "line", widget: "string" } }
+          - { label: "Lead (bold opener)", name: "lead", widget: "string", required: false, hint: "Bold first line of the paragraph under the hero — leave empty when the hero already says it" }
+          - { label: "Intro (paragraph)", name: "intro", widget: "text", required: false, hint: "Main paragraph under the hero — clear to hide it" }
+          - { label: "About (section below)", name: "about", widget: "text", required: false, hint: "First paragraph of the about section — clear to hide it" }
+          - { label: "Bio 2 (section below)", name: "bio2", widget: "text", required: false, hint: "Second paragraph of the about section — clear to hide it" }
+          - { label: "WIP (section below)", name: "wip", widget: "string", required: false, hint: "Status line in the about section — clear to hide it" }
+          - { label: "Quote (section below)", name: "quote", widget: "text", required: false, hint: "Closing quote — clear to hide it" }
 
   - name: "projects"
     label: "Projects"

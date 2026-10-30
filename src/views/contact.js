@@ -17,15 +17,24 @@ function calCta() {
 }
 
 export function Contact() {
-  const lines = contact.hero || [];
+  const lines = contact.hero.length ? contact.hero : ['Irfan', 'Adam', 'M'];
   const split = Math.ceil(lines.length / 2);
   const heroSpans = lines
     .map((t, i) => `<span class="${i < split ? 'ink' : 'muted'}">${t}</span>`)
     .join('');
-  const lead = contact.lead || 'Designing software for people and the worlds they inhabit.';
-  const intro = contact.intro
-    || [contact.now, contact.past].filter(Boolean).join('. ');
-  const leadLine = `<p><b>${lead}</b> ${intro}</p></section>`;
+  const lead = (contact.lead || '').trim();
+  const intro = (contact.intro
+    || [contact.now, contact.past].filter((t) => t && t.trim()).join('. ')).trim();
+  const para = lead || intro
+    ? `<p>${lead ? `<b>${lead}</b> ` : ''}${intro}</p>`
+    : '';
+  const aboutParas = [about, contact.bio2, contact.wip]
+    .filter((t) => t && t.trim())
+    .map((t) => `<p>${t}</p>`)
+    .join('');
+  const quoteBlock = contact.quote && contact.quote.trim()
+    ? `<blockquote>${contact.quote}</blockquote>`
+    : '';
   return [
     `<article class="case"><div class="case-grid">
   <div class="case-copy">
@@ -34,19 +43,13 @@ export function Contact() {
     heroSpans,
     `</h1>
 `,
-    leadLine,
-    `    <section class="about contact-about">
-      <p>`,
-    about,
-    `</p><p>`,
-    contact.bio2,
-    `</p><p>`,
-    contact.wip,
-    `</p>
-      <blockquote>`,
-    contact.quote,
-    `</blockquote>
-      <div class="contact-cta">`,
+    para,
+    `</section>
+    <section class="about contact-about">
+`,
+    aboutParas,
+    quoteBlock,
+    `      <div class="contact-cta">`,
     calCta(),
     `</div>
     </section>

@@ -16,24 +16,36 @@ const files = import.meta.glob('../../content/projects/*.json', { eager: true })
 const items = Object.values(files)
   .map((m) => m.default ?? m)
   .sort((a, b) => a.order - b.order);
+// Whitespace-only CMS values count as empty — clearing a field hides it.
+const clean = (v) => (typeof v === 'string' ? v.trim() : '');
+const cleanLines = (v) => (Array.isArray(v) ? v.map(clean).filter(Boolean) : []);
+const sc = settings.contact || {};
+const has = (k) => Object.prototype.hasOwnProperty.call(personalJson, k);
+const pick = (k) => (has(k) ? clean(personalJson[k]) : clean(sc[k] ?? ''));
+const heroLines = cleanLines(personalJson.hero);
+const leadText = clean(personalJson.lead);
 export const socials = (settings.socials || []).map((s) => [s.name, s.url]);
-export const about = personalJson.about || settings.about || '';
+export const about = has('about') ? clean(personalJson.about) : clean(settings.about);
 export const calUrl = settings.calUrl || 'https://cal.com/irfan-adam-m-2lzwxz';
 export const personal = {
-  hero: personalJson.hero || [],
-  lead: personalJson.lead || '',
-  intro: personalJson.intro || '',
-  bio2: personalJson.bio2 || '',
-  wip: personalJson.wip || '',
-  quote: personalJson.quote || '',
+  hero: heroLines.length ? heroLines
+    : leadText ? [leadText] : ['Irfan', 'Adam', 'M'],
+  lead: leadText,
+  intro: pick('intro'),
+  bio2: pick('bio2'),
+  wip: pick('wip'),
+  quote: pick('quote'),
 };
+// now/past are legacy settings-only fields — once personal.json owns
+// intro, a cleared intro stays hidden instead of resurrecting old copy.
+const legacy = !has('intro');
 export const contact = {
-  hero: personal.hero.length ? personal.hero : (settings.contact || {}).hero || [],
-  now: personal.intro || (settings.contact || {}).now || '',
-  past: (settings.contact || {}).past || '',
-  bio2: personal.bio2 || (settings.contact || {}).bio2 || '',
-  wip: personal.wip || (settings.contact || {}).wip || '',
-  quote: personal.quote || (settings.contact || {}).quote || '',
+  hero: personal.hero,
+  now: legacy ? clean(sc.now) : personal.intro,
+  past: legacy ? clean(sc.past) : '',
+  bio2: personal.bio2,
+  wip: personal.wip,
+  quote: personal.quote,
   lead: personal.lead,
   intro: personal.intro,
 };
