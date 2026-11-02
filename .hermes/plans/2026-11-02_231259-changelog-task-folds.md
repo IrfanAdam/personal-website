@@ -47,6 +47,8 @@
 
 **Verify:** `node --check` clean; probe colon/twin/smooth titles parse to the same name.
 
+*Shipped in fc06e20 · Tasks 1–3 · phase-1.*
+
 ---
 
 ## Phase 2 — Block + task renderers {#phase-2}
@@ -85,6 +87,8 @@
 - Create: `src/ds/changelog/sec-status.js`
 
 **Verify:** `node --check` clean; probe open-gate phase reads `2/2 · GATE OPEN`, never `✓ DONE · GATE OPEN`.
+
+*Shipped in 8de7573 · Tasks 4–6 · phase-2.*
 
 ---
 
@@ -125,6 +129,8 @@
 - Create: `src/ds/changelog-folds.css`
 
 **Verify:** `npm run plan:names` 0 missing; `npm run ds:track` tagged == phased, 0 wip, manifest byte-stable; `npm test` green; parity probe (safepipe vs port tag-counts + text equality) passes on all parity phases.
+
+*Shipped in fc272c0 · Tasks 7–9 · phase-3.*
 
 ---
 
