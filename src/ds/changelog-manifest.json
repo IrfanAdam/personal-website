@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T18:18:30.393Z",
+ "generated": "2026-11-02T18:19:18.951Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,33 @@
   "2026-11-02_231259-changelog-task-folds.md"
  ],
  "commits": [
+  {
+   "sha": "fc272c0",
+   "full": "fc272c0c70911de2b709853e06cf49981e0dc585",
+   "date": "2026-11-02",
+   "time": "23:49",
+   "subject": "feat(changelog): section machine + drawer wiring + folds CSS",
+   "plan": "2026-11-02_231259-changelog-task-folds.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "8de7573",
+   "full": "8de7573d8cec5a7a0fc47654d43b8e07343a64c5",
+   "date": "2026-11-02",
+   "time": "23:49",
+   "subject": "feat(changelog): block + task renderers for folds",
+   "plan": "2026-11-02_231259-changelog-task-folds.md",
+   "anchor": "{#phase-2}"
+  },
+  {
+   "sha": "fc06e20",
+   "full": "fc06e205cf2daf68defbc1e1fb8f362eb35347aa",
+   "date": "2026-11-02",
+   "time": "23:49",
+   "subject": "feat(changelog): raw + text primitives for task folds",
+   "plan": "2026-11-02_231259-changelog-task-folds.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "1b28e4c",
    "full": "1b28e4cf21f29389c714660734d1de358c23f855",
@@ -4265,19 +4292,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-names.json",
-  "M src/ds/changelog/paint-detail.js",
-  "M src/ds/changelog/raw-detail.js",
-  "?? src/ds/changelog-folds.css",
-  "?? src/ds/changelog/fmt-text.js",
-  "?? src/ds/changelog/render-blocks.js",
-  "?? src/ds/changelog/render-section.js",
-  "?? src/ds/changelog/render-task.js",
-  "?? src/ds/changelog/sec-final.js",
-  "?? src/ds/changelog/sec-raw.js",
-  "?? src/ds/changelog/sec-scan.js",
-  "?? src/ds/changelog/sec-status.js",
-  "?? src/ds/changelog/task-shape.js"
- ]
+ "wip": []
 }
