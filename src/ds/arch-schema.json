@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T17:16:32.810Z",
+  "generated": "2026-11-02T17:32:59.223Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -351,7 +351,6 @@
         "--leading-mono",
         "--leading-prose",
         "--leading-snug",
-        "--radius-sm",
         "--space-1",
         "--space-10",
         "--space-12",
