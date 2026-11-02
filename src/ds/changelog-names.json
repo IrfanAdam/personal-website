@@ -182,5 +182,9 @@
   "2026-10-26_000000-lump-sum-builds.md": {
     "title": "Lump-sum builds, week of Oct 26: ad-hoc shipments",
     "purpose": "Weekly ad-hoc traceability"
+  },
+  "2026-11-02_192021-changelog-parity.md": {
+    "title": "Changelog parity — crm/safepipe features into personal log",
+    "purpose": "Timeline, gates, evals, Due, honest detail in personal changelog"
   }
 }
