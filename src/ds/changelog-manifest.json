@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T14:07:49.935Z",
+ "generated": "2026-11-02T14:08:41.031Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -51,6 +51,42 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "4d1cf5b",
+   "full": "4d1cf5bc2763d7fede9390bd88b1b4d7329befcc",
+   "date": "2026-11-02",
+   "time": "19:37",
+   "subject": "feat(changelog): timeline tracks + filter drawer + deep links",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
+  {
+   "sha": "4e1a4fa",
+   "full": "4e1a4fa81073e956159f5d2c94347f15daea85de",
+   "date": "2026-11-02",
+   "time": "19:37",
+   "subject": "feat(changelog): honest detail + evals/commits panels",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "a20169d",
+   "full": "a20169de9a062e6c3a700b1172490bb47d15f504",
+   "date": "2026-11-02",
+   "time": "19:37",
+   "subject": "feat(changelog): gates + due parsers, digit-boundary anchors",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-2}"
+  },
+  {
+   "sha": "0e553d6",
+   "full": "0e553d638055f2651b1704ca093b9b1cc682e005",
+   "date": "2026-11-02",
+   "time": "19:37",
+   "subject": "feat(changelog): plan-history + version stamp in tracker",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "7151f0e",
    "full": "7151f0ee65e2fd196e386693776d1d20a4b4d2d7",
