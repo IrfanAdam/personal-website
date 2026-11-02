@@ -45,7 +45,7 @@ export function bindChangelogEvents(root, st, helpers) {
     const to = e.target.closest('[data-tl-open]');
     if (to) { const c = cur();
       const i = c.list.findIndex((p) => p.file === to.dataset.tlOpen);
-      if (i > -1) { st.sel = [i, st.sel[1]]; st.open = true; st.stage = 'tasks'; }
+      if (i > -1) { st.sel = [i, 0]; st.open = true; st.stage = 'tasks'; }
       const sc = root.querySelector('.ds-tl-scroll');
       st.tlScroll = sc ? sc.scrollLeft : 0;
       st.returnView = st.view;
@@ -68,7 +68,7 @@ export function bindChangelogEvents(root, st, helpers) {
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const col = b.closest('[data-col]'), i = [...col.querySelectorAll('.ds-pick')].indexOf(b);
     if (col.dataset.col === 'plan') { st.sel = [i,
-        st.sel[1]]; st.open = true; st.stage = 'tasks'; } else { st.sel = [st.sel[0],
+        i === st.sel[0] ? st.sel[1] : 0]; st.open = true; st.stage = 'tasks'; } else { st.sel = [st.sel[0],
         i]; st.stage = 'tasks'; }
     doPaint(root);
   };

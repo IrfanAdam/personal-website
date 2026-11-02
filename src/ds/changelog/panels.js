@@ -33,9 +33,9 @@ const revText = (t) => {
 };
 const itemHtml = (kind, text, small) => {
   const sm = small ? `<small>${esc(small)}</small>` : '';
-  return `<div class="ds-timeline-item ds-timeline-item--${kind}"><span>${esc(text)}</span>${sm}</div>`;
+  return `<div class="ds-evals-item ds-evals-item--${kind}"><span>${esc(text)}</span>${sm}</div>`;
 };
-const dayOpen = (t) => `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${t}</summary>`;
+const dayOpen = (t) => `<details class="ds-evals-group" open><summary class="ds-evals-date">${t}</summary>`;
 const histRevs = (planFile, head, history) => {
   const rows = [];
   const entries = (history && history[planFile]) || [];
@@ -62,11 +62,11 @@ export const renderEvals = (planFile, head, body, history) => {
     const pe = ps.map((r) => itemHtml('eval', r.text)).join('');
     const ie = its.map((r) => itemHtml('iter', r.text, d)).join('');
     const open = dayOpen(label);
-    return `${open}<div class="ds-timeline-items">${pe}${ie}</div></details>`;
+    return `${open}<div class="ds-evals-items">${pe}${ie}</div></details>`;
   }).join('');
   const n = notes.length + revs.length;
   const sum = `<summary class="ds-panel-title">Evals · ${n}</summary>`;
-  const inner = `<div class="ds-timeline">${groups}</div>`;
+  const inner = `<div class="ds-evals-list">${groups}</div>`;
   return `<details class="ds-panel ds-evals"${dueAttr(head, body)} open>${sum}${inner}</details>`;
 };
 // [plan:2026-11-02_192021-changelog-parity.md#phase-3]
@@ -83,7 +83,7 @@ export const renderCommitsPanel = (commits) => {
     const label = d ? esc(fmtDate(d) || d) : 'Undated';
     const badges = items.map(badge).join('');
     const open = dayOpen(`${label} · ${items.length}`);
-    return `${open}<div class="ds-timeline-items">${badges}</div></details>`;
+    return `${open}<div class="ds-evals-items">${badges}</div></details>`;
   }).join('');
   const sum = `<summary class="ds-panel-title">Commits · ${list.length}</summary>`;
   return `<details class="ds-panel ds-commits" open>${sum}${groups}</details>`;

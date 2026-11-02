@@ -81,6 +81,15 @@ export function paintDetail(root, ctx) {
   const u = unlinked(texts);
   const triage = root.querySelector('[data-col="triage"]');
   triage.innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
+  // A new plan or phase starts at its top: the drawer keeps one scroll owner,
+  // so without this a deep scroll lands the reader mid-section on open.
+  // [plan:2026-11-02_231259-changelog-task-folds.md#phase-3]
+  const key = `${plan.file}#${sii}`;
+  if (drawer.dataset.key !== key) {
+    drawer.dataset.key = key;
+    drawer.scrollTop = 0;
+    root.querySelector('[data-col="sprint"]').scrollTop = 0;
+  }
   if (open) { drawer.hidden = false; scrim.hidden = false; }
   else { drawer.hidden = true; scrim.hidden = !ctx.timeline; }
 }

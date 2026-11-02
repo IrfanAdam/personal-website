@@ -73,20 +73,20 @@
 .ds-panel-title::-webkit-details-marker { display: none; }
 .ds-panel-title::before { content: "›"; transition: transform 0.15s; }
 .ds-panel[open] > .ds-panel-title::before { transform: rotate(90deg); }
-.ds-timeline {
+.ds-evals-list {
   margin: 0; padding: var(--space-6) var(--space-12) var(--space-12) var(--space-18);
   border-left: var(--border-hairline);
 }
-.ds-timeline-date {
+.ds-evals-date {
   margin: var(--space-10) 0 var(--space-4); font-family: var(--font-mono);
   font-size: var(--text-micro); font-weight: 700; letter-spacing: var(--tracking-label);
   color: var(--color-ink-muted); text-transform: uppercase; cursor: pointer; list-style: none;
 }
-.ds-timeline-item {
+.ds-evals-item {
   padding: var(--space-4) 0; font-size: var(--text-micro); line-height: var(--leading-mono);
 }
-.ds-timeline-item small { display: block; margin-top: var(--space-1); color: var(--color-ink-muted); }
-.ds-timeline-item--iter {
+.ds-evals-item small { display: block; margin-top: var(--space-1); color: var(--color-ink-muted); }
+.ds-evals-item--iter {
   margin-left: var(--space-10); padding-left: var(--space-8); border-left: var(--border-hairline);
 }
 .ds-badge {
