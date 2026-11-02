@@ -1,96 +1,100 @@
-/* ADAM/DS — ds/changelog-timeline · panel, axis, rows · [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+/* ADAM/DS — ds/changelog-timeline · panel, head, axis, rows, plan labels ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+/* A destination, not a column: it slides over the list; closing returns to the same scroll. */
+.ds-timeline {
+  position: fixed; top: 0; right: 0; bottom: 0; margin: 0;
+  width: min(86vw, var(--size-ds-drawer)); box-sizing: border-box;
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--color-bg); border-left: var(--border-hairline);
+  box-shadow: var(--shadow-viewer); z-index: var(--z-ds-drawer);
+}
+.ds-timeline[hidden] { display: none; }
+.ds-timeline:not([hidden]) { animation: ds-tl-in var(--dur-glide) var(--ease-signature); }
+@keyframes ds-tl-in { from { opacity: 0; transform: translateX(var(--space-30)); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ds-timeline:not([hidden]) { animation: none; } }
+@media (max-width: 720px) { .ds-timeline { width: 100%; max-width: 100%; } }
 .ds-tl-head {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-8);
-  padding: var(--space-8);
-  color: var(--color-ink);
+  flex: none; display: flex; align-items: center; gap: var(--space-8);
+  padding: var(--space-14) var(--space-16) var(--space-8); border-bottom: var(--border-hairline);
 }
 .ds-tl-head b {
-  font-size: var(--text-small);
+  flex: 1 1 auto; min-width: 0; overflow: hidden; font-size: var(--text-h2);
+  font-weight: var(--weight-bold); letter-spacing: var(--tracking-heading);
+  color: var(--color-ink); white-space: nowrap; text-overflow: ellipsis;
 }
 .ds-tl-head small {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  color: var(--color-ink-muted);
+  flex: none; font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-ink-muted); white-space: nowrap;
+}
+.ds-tl-head button {
+  flex: none; padding: var(--space-4) var(--space-9); font-family: var(--font-mono);
+  font-size: var(--text-micro); color: var(--color-ink); background: var(--color-surface);
+  border: var(--border-hairline); border-radius: var(--radius-sm); cursor: pointer;
 }
 .ds-tl-scroll {
-  overflow: auto;
-  overscroll-behavior: contain;
-  padding: 0;
+  flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; padding-bottom: var(--space-8);
 }
 .ds-tl-body {
-  position: relative;
-  width: max-content;
-  min-width: 100%;
-  --tl-day: var(--space-28);
+  position: relative; width: max-content; min-width: 100%;
+  --tl-day: var(--space-28); --tl-label: calc(var(--space-28) * 8); --tl-month: var(--space-12);
 }
 .ds-tl-axis {
-  position: sticky;
-  top: 0;
-  display: flex;
-  align-items: flex-end;
-  background: var(--color-surface);
-  border-bottom: var(--border-hairline);
-  z-index: 2;
+  position: sticky; top: 0; z-index: var(--z-ds-side); display: flex; align-items: flex-end;
+  border-bottom: var(--border-hairline); background: var(--color-bg);
+}
+.ds-tl-clabel {
+  position: sticky; left: 0; z-index: var(--z-ds-side); flex: none; width: var(--tl-label);
+  background: var(--color-bg); height: var(--space-22); padding-left: var(--space-16);
+  font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700;
+  line-height: var(--space-22); letter-spacing: var(--tracking-mono); color: var(--color-ink-muted);
+  text-transform: uppercase; border-right: var(--border-hairline);
 }
 .ds-tl-curmonth {
-  position: sticky;
-  left: 0;
-  flex: none;
-  width: max-content;
-  padding-right: var(--space-8);
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  font-weight: 600;
-  color: var(--color-ink);
-  background: var(--color-surface);
-  z-index: 3;
+  position: sticky; left: var(--tl-label); z-index: var(--z-ds-side); display: inline-block;
+  flex: none; width: max-content; height: var(--space-22); max-width: calc(var(--tl-day) * 2);
+  padding-right: var(--space-12); font-family: var(--font-mono); font-size: var(--text-micro);
+  font-weight: 700; line-height: var(--space-22); color: var(--color-ink);
+  background: linear-gradient(to right, var(--color-bg) 50%, transparent);
 }
-.ds-tl-curmonth[hidden] {
-  display: none;
-}
+.ds-tl-curmonth[hidden] { display: none; }
 .ds-tl-ticks {
-  position: relative;
-  flex: none;
+  position: relative; flex: none; height: calc(var(--space-22) + var(--tl-month));
   width: calc(var(--tl-days, 30) * var(--tl-day));
-  height: var(--space-16);
 }
 .ds-tl-tick {
-  position: absolute;
-  top: 0;
-  width: var(--tl-day);
-  height: 100%;
-  text-align: center;
-  border-left: var(--border-hairline);
-  box-sizing: border-box;
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  line-height: var(--space-16);
-  color: var(--color-ink-subtle);
+  position: absolute; top: 0; height: 100%; width: var(--tl-day);
+  padding-top: var(--tl-month); border-left: var(--border-hairline); font-family: var(--font-mono);
+  font-size: var(--text-micro); line-height: var(--space-22); text-align: center; color: var(--color-ink-muted);
 }
-.ds-tl-tick.is-month {
-  color: var(--color-ink-muted);
-  font-weight: 600;
+/* The 1st keeps its number via data-d; the tick text stays the bare month name the badge reads. */
+.ds-tl-tick.is-month::after {
+  content: attr(data-d); position: absolute; right: 0; bottom: 0; left: 0; text-align: center;
+}
+.ds-tl-mon {
+  position: absolute; top: 0; left: 0; z-index: 1; padding: 0 var(--space-3);
+  background: var(--color-bg); line-height: var(--tl-month); white-space: nowrap;
+  color: var(--color-ink); font-weight: var(--weight-bold); text-transform: uppercase;
 }
 .ds-tl-row {
-  position: relative;
-  border-top: var(--border-hairline);
+  display: flex; align-items: stretch; min-height: var(--space-32); border-bottom: var(--border-hairline);
 }
+.ds-tl-row.has-track { background: color-mix(in srgb, var(--color-surface) 45%, transparent); }
+.ds-tl-row:hover { background: color-mix(in srgb, var(--color-surface) 80%, transparent); }
+.ds-tl-label {
+  position: sticky; left: 0; z-index: 3; flex: none; display: flex; align-items: center;
+  gap: var(--space-6); width: var(--tl-label); padding: 0 var(--space-8) 0 var(--space-16);
+  border: 0; border-right: var(--border-hairline); background: var(--color-bg);
+  font: inherit; font-size: var(--text-ds-table); text-align: left; cursor: pointer;
+}
+.ds-tl-label .ds-num {
+  flex: none; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted);
+}
+.ds-tl-label-name { overflow: hidden; color: var(--color-ink); text-overflow: ellipsis; white-space: nowrap; }
+.ds-tl-row:hover .ds-tl-label-name { color: var(--color-accent); }
 .ds-tl-lane {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: calc(var(--tl-days, 30) * var(--tl-day));
-  min-height: var(--space-20);
+  position: relative; flex: none; align-self: stretch; width: calc(var(--tl-days, 30) * var(--tl-day));
+  background-image: repeating-linear-gradient(to right,
+    color-mix(in srgb, var(--color-line) 85%, transparent) 0 var(--space-1),
+    transparent var(--space-1) var(--tl-day));
 }
-.ds-tl-empty {
-  padding: var(--space-12);
-  font-size: var(--text-small);
-  color: var(--color-ink-muted);
-}
+.ds-tl-empty { padding: var(--space-16); font-size: var(--text-micro); color: var(--color-ink-muted); }

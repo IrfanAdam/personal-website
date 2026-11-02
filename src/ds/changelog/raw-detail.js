@@ -22,12 +22,12 @@ const stampNum = (t) => {
 // Shared seal: cancelled outranks done outranks incomplete. Every surface
 // imports this helper; the expression lives here exactly once.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-3]
+export const isSealed = (s) => headMark((s || {}).head) !== 'open' || isDone(state((s || {}).body));
 export const planStatus = (p) => {
   try {
     const ss = (p && p.sprints) || [];
     if (!ss.length) return 'incomplete';
-    const sealed = (s) => headMark(s.head) !== 'open' || isDone(state(s.body));
-    if (ss.every(sealed)) return headMark(ss[ss.length - 1].head) === 'cancelled' ? 'cancelled' : 'done';
+    if (ss.every(isSealed)) return headMark(ss[ss.length - 1].head) === 'cancelled' ? 'cancelled' : 'done';
     return 'incomplete';
   } catch { return 'incomplete'; }
 };
@@ -51,6 +51,12 @@ export const renderSection = (head, body, suffix = '', md = null) => {
   const note = splitNote(base);
   const render = md || plain;
   const lines = String(body || '').split('\n');
+  // Drop a body that repeats its own heading — the pane injects the title once.
+  const first = lines.findIndex((l) => l.trim());
+  if (first > -1 && /^#{1,4}\s/.test(lines[first])
+    && cleanHead(lines[first]).replace(/[#\s]/g, '') === cleanHead(raw).replace(/[#\s]/g, '')) {
+    lines[first] = '';
+  }
   const tasks = [];
   let cur = null;
   const prose = [];
@@ -62,7 +68,10 @@ export const renderSection = (head, body, suffix = '', md = null) => {
   }
   const stamps = stampNum(base) && tasks.length && tasks.every((t) => stampNum(t.title) === stampNum(base));
   const bare = stamps && !prose.join('').trim() && tasks.every((t) => !t.lines.join('').trim());
-  const eff = bare && mark === 'open' ? headMark(tasks[0].title) : mark;
+  let eff = bare && mark === 'open' ? headMark(tasks[0].title) : mark;
+  // A section whose every task is ticked is done even when the heading lacks
+  // the mark — the list card already reads that way, so the pane must too.
+  if (eff === 'open' && isDone(state(body))) eff = 'done';
   const gate = suffix ? ` · ${esc(String(suffix).replace(/^[✓·\s]+/, ''))}` : '';
   let st = '';
   if (eff === 'done') st = `<p class="ds-status ds-is-done">✓ DONE${gate}</p>`;

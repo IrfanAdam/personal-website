@@ -173,6 +173,7 @@
 
 - REF GATE 4 (ship, OPEN, by owner): timeline opens with named bars + ghost, status filter + deep links work, no reload during drawer interaction. Owed: owner confirms on landed tree.
 - REF GATE 4 · rev 2026-11-02 — structural pass against crm/safepipe references: status filter is multi-select (was radio), funnel trigger icon-only + first in the chips row, drawer ships its own host chrome, timeline uses the day-unit grid with month padding, today wash + fractional line, caret sync, ghost rules, return-view scroll restore. Verdict: OPEN.
+- REF GATE 4 · rev 2026-11-02b — UI/UX pass, behaviour not just placement: timeline is a fixed side panel over the shared scrim with sticky plan-label column, day gridlines, integer-day today marker and a seven-line lane popover (title → goal → scope → status → stats → due → range); plan drawer reborn as crumb → one title → status → due → prose with rail subtext (`fraction · commits · gate`) and styled evals/commits panels; list cards use list ordinals and a date/state meta line; one dismissal order (filter → drawer → timeline) shared by scrim, ✕ and Escape. Verdict: OPEN.
 
 ---
 

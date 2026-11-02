@@ -5,12 +5,14 @@ import { bindHum } from './changelog-hum.js';
 import { buildDeepLink } from './changelog/deep-links.js';
 import { bindHover } from './changelog/hover.js';
 import { revealTrack } from './changelog/tl-edges.js';
+import { closeTop } from './changelog/close-top.js';
 // — Events —
 // Branch order matters: specific [data-*] branches run before the generic
 // .ds-chip fallthrough (the filter trigger carries .ds-chip itself).
 // [plan:2026-11-02_192021-changelog-parity#phase-4]
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
+  const close = () => { if (closeTop(st)) doPaint(root); };
   const onClick = (e) => {
     if (e.target.closest('[data-day-clear]')) { st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
     const dd = e.target.closest('[data-day]');
@@ -30,10 +32,12 @@ export function bindChangelogEvents(root, st, helpers) {
       st.sel = [0, 0]; doPaint(root); return; }
     const tv = e.target.closest('[data-view="timeline"]');
     if (tv) { st.view = st.view === 'timeline' ? 'list' : 'timeline';
+      if (st.view === 'timeline') { st.open = false; st.stage = 'list'; }
       const sel = st.view === 'timeline' ? { view: 'timeline' } : {};
       try { history.replaceState(null, '', buildDeepLink(sel)); } catch {}
       doPaint(root); return; }
-    if (e.target.closest('[data-tl-close]')) { st.view = 'list'; doPaint(root); return; }
+    if (e.target.closest('[data-tl-close]') || e.target.closest('[data-close]')
+      || e.target.closest('[data-scrim]')) { close(); return; }
     const te = e.target.closest('[data-tl-edge]');
     if (te) { const row = te.closest('[data-tl-row]');
       if (row) revealTrack(row, te.dataset.tlEdge);
@@ -55,9 +59,7 @@ export function bindChangelogEvents(root, st, helpers) {
       } else { st.active.has(t) ? st.active.delete(t) : st.active.add(t);
       } st.sel = [0, 0]; doPaint(root); return; }
     if (e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { st.open = false; st.stage = 'list';
-      if (st.returnView) { st.view = st.returnView; st.returnView = ''; }
-      doPaint(root); return; }
+      || e.target.closest('[data-scrim]')) { close(); return; }
     if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
     const step = e.target.closest('[data-step]');
     if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
@@ -72,12 +74,7 @@ export function bindChangelogEvents(root, st, helpers) {
   };
   const onKey = (e) => {
     if (e.key !== 'Escape') return;
-    if (st.filterOpen) st.filterOpen = false;
-    else if (st.open) { st.open = false;
-      if (st.returnView) { st.view = st.returnView; st.returnView = ''; } }
-    else if (st.view === 'timeline') st.view = 'list';
-    else return;
-    doPaint(root);
+    close();
   };
   const offHum = bindHum(root);
   const offHover = bindHover(root);

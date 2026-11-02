@@ -1,59 +1,70 @@
 /* ADAM/DS — ds/changelog/tl-rows · bar, ghost, row markup ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
-// Exports: titleOf, rowHtml — exactly one bar name per row, on its longest bout
-import { DAY, atMid, geomOf, spanText } from './tl-grid.js';
+// Exports: titleOf, rowHtml — one name per row (longest bout); every bar
+// carries the whole lane payload, so the popover never re-parses a plan.
+import { geomOf } from './tl-grid.js';
+import { spanText } from './tl-meta.js';
+import { isSealed } from './raw-detail.js';
 const noq = (s) => String(s || '').replace(/"/g, '');
 const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 export const titleOf = (p) => p.title || p.file || 'Untitled plan';
-// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 const pctOf = (p) => {
   const ss = p.sprints || [];
   if (!ss.length) return 0;
-  const done = ss.filter((s) => /✓/.test(String(s.head || ''))).length;
-  return Math.round((done / ss.length) * 100);
+  return Math.round((ss.filter(isSealed).length / ss.length) * 100);
 };
-const daysOf = (b) => Math.round((atMid(b.end) - atMid(b.start)) / DAY) + 1;
-const longestIdx = (bs) => {
-  let bi = 0;
-  bs.forEach((b, i) => { if (daysOf(b) > daysOf(bs[bi])) bi = i; });
-  return bi;
-};
-// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
-const barHtml = (p, b, i, startMs, named, pct) => {
-  const tip = `${titleOf(p)} · ${spanText(b.start, b.end)} · ${b.dates.length}d`;
-  const name = named ? `<span class="ds-tl-barname">${esc(titleOf(p))}</span>` : '';
+const payload = (r, span, extra) => {
+  const m = r.meta || {};
   return [
-    `<button class="ds-tl-bar" data-tl-open="${p.file}" data-tl-bout="${p.file}:${i}"`,
-    ` data-tip="${noq(tip)}" data-pop="${noq(titleOf(p))}"`,
-    ` style="${geomOf(b.start, b.end, startMs)};--tl-done:${pct}%"`,
-    ` aria-label="${noq(tip)}">${name}</button>`,
+    ` data-pop="${noq(titleOf(r.p))}"`,
+    m.desc ? ` data-desc="${noq(m.desc)}"` : '',
+    ` data-ph="${noq(m.ph)}" data-tk="${noq(m.tk)}"`,
+    ` data-cm="${noq(m.cm)}" data-rv="${noq(m.revTxt || m.rv)}"`,
+    m.st ? ` data-st="${noq(m.st)}"` : '',
+    m.due ? ` data-due="${noq(m.due)}"` : '',
+    span ? ` data-span="${noq(span)}"` : '',
+    extra || '',
   ].join('');
 };
-const ghostHtml = (p, g, startMs) => {
-  if (!g) return '';
-  const tip = `Due ${g.to}${g.overdue ? ' · overdue' : ''} · ${titleOf(p)}`;
+// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
+const barHtml = (r, b, i, startMs, pct) => {
+  const span = spanText(b.start, b.end);
+  const tip = `${titleOf(r.p)} · ${span} · ${b.dates.length}d`;
+  const cls = pct < 100 ? ' is-open' : '';
   return [
-    `<button class="ds-tl-ghost${g.overdue ? ' is-overdue' : ''}" data-tl-open="${p.file}"`,
-    ` data-tl-ghost="${p.file}" data-due="${g.to}" data-tip="${noq(tip)}"`,
+    `<button class="ds-tl-bar${cls}" data-tl-open="${r.p.file}" data-tl-bout="${r.p.file}:${i}"`,
+    payload(r, span, ` data-tip="${noq(tip)}"`),
+    ` style="${geomOf(b.start, b.end, startMs)};--tl-done:${pct}%"`,
+    ` aria-label="${noq(tip)}"></button>`,
+  ].join('');
+};
+const ghostHtml = (r, g, startMs) => {
+  if (!g) return '';
+  const tip = `Due ${g.to}${g.overdue ? ' · overdue' : ''} · ${titleOf(r.p)}`;
+  const extra = ` data-tl-ghost="${r.p.file}" data-tip="${noq(tip)}"`;
+  return [
+    `<button class="ds-tl-ghost${g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}"`,
+    payload(r, spanText(g.from, g.to), extra),
     ` style="${geomOf(g.from, g.to, startMs)}" aria-label="${noq(tip)}"></button>`,
   ].join('');
 };
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const rowHtml = (r, startMs) => {
-  const named = r.bouts.length ? longestIdx(r.bouts) : -1;
   const pct = pctOf(r.p);
-  const bars = r.bouts.map((b, i) => barHtml(r.p, b, i, startMs, i === named, pct)).join('');
-  const bare = r.bouts.length ? '' : [
-    `<button class="ds-tl-lane-name" data-tl-open="${r.p.file}"`,
-    ` data-tip="${noq(titleOf(r.p))}">${esc(titleOf(r.p))}</button>`,
+  const bars = r.bouts.map((b, i) => barHtml(r, b, i, startMs, pct)).join('');
+  const label = [
+    `<button class="ds-tl-label" data-tl-open="${r.p.file}"`,
+    payload(r, '', '') + ` aria-label="${noq(titleOf(r.p))}">`,
+    `<span class="ds-num">${esc(r.seq || r.p.id || '')}</span>`,
+    `<span class="ds-tl-label-name">${esc(titleOf(r.p))}</span></button>`,
   ].join('');
   return [
-    `<div class="ds-tl-row" data-tl-row="${r.p.file}" data-pop="${noq(titleOf(r.p))}">`,
+    `<div class="ds-tl-row${r.bouts.length ? ' has-track' : ''}" data-tl-row="${r.p.file}">`,
+    label,
     `<div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l"`,
     ` aria-label="Scroll track into view" hidden>«</button>`,
     bars,
-    ghostHtml(r.p, r.ghost, startMs),
-    bare,
+    ghostHtml(r, r.ghost, startMs),
     `<button class="ds-tl-edge is-r" data-tl-edge="r"`,
     ` aria-label="Scroll track into view" hidden>»</button></div></div>`,
   ].join('');

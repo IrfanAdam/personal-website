@@ -1,0 +1,92 @@
+/* ADAM/DS — ds/changelog-hierarchy · cards + rail head ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+/* Card hierarchy: number and title share one baseline, then a quieter meta
+   line tucked a hairline below — the pair reads as a single stacked unit. */
+.ds-pick.is-done .ds-num {
+  color: var(--color-accent);
+}
+.ds-pick.is-pending {
+  color: var(--color-ink-muted);
+}
+.ds-pick.is-pending .ds-num {
+  color: var(--color-ink-muted);
+}
+.ds-pick.is-cancelled { opacity: 0.55; }
+.ds-pick.is-done.on {
+  background: var(--color-panel);
+  box-shadow: inset var(--space-2) 0 0 var(--color-accent);
+}
+.ds-pick.is-pending.on {
+  background: var(--color-surface);
+  box-shadow: inset var(--space-2) 0 0 var(--color-line);
+}
+.ds-pick small .ds-date { color: var(--color-ink-muted); }
+.ds-pick small .ds-state { color: var(--color-ink-subtle); }
+.ds-pick small .ds-state::before {
+  content: " · ";
+}
+.ds-tags {
+  max-width: 42%;
+  overflow: hidden;
+  color: var(--color-ink-subtle);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Rail head: number + uppercase plan title, sticky so the phase list can
+   scroll under it without losing which plan is open. */
+.ds-rail-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  margin-bottom: var(--space-6);
+  padding: var(--space-6) 0 var(--space-10);
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--color-bg);
+  border-bottom: var(--border-hairline);
+}
+.ds-rail-num {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-subtle);
+}
+.ds-rail-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-muted);
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+/* Rail picks: number and title on one baseline; meta one hairline below so
+   the row stays a unit instead of drifting apart. */
+.ds-rail .ds-pick { padding: var(--space-6) var(--space-8); }
+.ds-rail .ds-pick .ds-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+}
+.ds-rail .ds-pick .ds-num {
+  flex: none;
+  letter-spacing: var(--tracking-mono);
+}
+.ds-rail .ds-pick b {
+  overflow: hidden;
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ds-rail .ds-pick small {
+  margin-top: var(--space-1);
+  line-height: var(--leading-mono);
+}

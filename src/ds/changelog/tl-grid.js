@@ -1,11 +1,10 @@
 /* ADAM/DS — ds/changelog/tl-grid · bounds, month padding, ticks, geometry ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
-// Exports: DAY, atMid, isoOf, spanText, timelineGrid, geomOf, ticksHtml — pure, no DOM
+// Exports: DAY, atMid, isoOf, timelineGrid, geomOf, ticksHtml — pure, no DOM
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const DAY = 86400000;
 export const atMid = (k) => Date.parse(`${k}T00:00:00Z`);
 export const isoOf = (ms) => new Date(ms).toISOString().slice(0, 10);
-export const spanText = (s, e) => (s === e ? s : `${s} → ${e}`);
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const isDay = (s) => ISO.test(s || '') && !Number.isNaN(atMid(s));
 const shiftMonth = (k, n) => {
@@ -24,7 +23,8 @@ export const timelineGrid = (rows = [], today) => {
   const t = isDay(today) ? today : isoOf(Date.now());
   const pts = [t];
   for (const r of rows) {
-    if (r.plan && isDay(r.plan.date)) pts.push(r.plan.date);
+    const p = r.p || r.plan || {};
+    if (isDay(p.date)) pts.push(p.date);
     for (const b of r.bouts || []) { pts.push(b.start); pts.push(b.end); }
     if (r.ghost) { pts.push(r.ghost.from); pts.push(r.ghost.to); }
   }
@@ -43,12 +43,17 @@ export const geomOf = (s, e, startMs) => {
   const span = Math.max(Math.round((atMid(e) - startMs) / DAY) - off + 1, 2);
   return `--tl-off:${off};--tl-span:${span}`;
 };
-// Daily ticks: bare day numbers, month name on the 1st, month marked.
+// Daily ticks: the number always owns its cell. The 1st adds a month stamp on
+// the band above, pinned to its own left edge so it can never reach a neighbour.
+// A month tick's text stays the bare month name — the sticky badge in tl-edges
+// reads textContent — so its day number rides in data-d and paints via ::after.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const ticksHtml = (startMs, days) => Array.from({ length: days }, (_, d) => {
   const dt = new Date(startMs + d * DAY);
-  const month = dt.getUTCDate() === 1;
-  const label = month ? dt.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) : dt.getUTCDate();
-  const cls = month ? ' is-month' : '';
-  return `<span class="ds-tl-tick${cls}" style="left:calc(${d} * var(--tl-day))">${label}</span>`;
+  const day = dt.getUTCDate();
+  const at = `style="left:calc(${d} * var(--tl-day))"`;
+  if (day !== 1) return `<span class="ds-tl-tick" ${at}>${day}</span>`;
+  const mon = dt.toLocaleString('en', { month: 'short', timeZone: 'UTC' });
+  const stamp = `<span class="ds-tl-mon">${mon}</span>`;
+  return `<span class="ds-tl-tick is-month" data-d="${day}" ${at}>${stamp}</span>`;
 }).join('');

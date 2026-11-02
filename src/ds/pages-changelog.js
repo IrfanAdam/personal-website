@@ -63,7 +63,7 @@ export function render() {
   return [
     `<p class="ds-crumb">Start \u00b7 Changelog</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
     `<hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div>`,
-    `<div class="ds-tl" data-col="timeline" hidden></div>`,
+    `<aside class="ds-timeline" data-col="timeline" aria-label="Timeline" hidden></aside>`,
     `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage">`,
     `</div><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
     `<div class="ds-tl-pop" data-tl-pop hidden role="status"></div>`,
@@ -85,6 +85,8 @@ function doPaint(root) {
         .then(() => { st.tlScroll = null; });
     } else { tl.hidden = true; tl.innerHTML = ''; }
   }
+  const scrim = root.querySelector('[data-scrim]');
+  if (scrim) scrim.hidden = !(st.open || st.view === 'timeline');
 }
 // [plan:2026-11-02_192021-changelog-parity#phase-4]
 export function mount(root) {

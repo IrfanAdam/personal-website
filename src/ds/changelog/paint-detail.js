@@ -1,4 +1,7 @@
-/* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/changelog/paint-detail · rail + detail ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+// Exports: paintDetail — rail (plan head + phase picks + goal foot) and the
+// task pane (crumb → title → status → due → body → evals → commits)
 import { marked } from 'marked';
 import { hits, badges, orphans, unlinked } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
@@ -7,61 +10,74 @@ import { esc } from './esc.js';
 import { renderSection, orphanRail } from './raw-detail.js';
 import { stripGateThread, renderEvals, renderCommitsPanel } from './panels.js';
 import { parseGates } from './gates.js';
+import { dueOf } from './due.js';
 import history from '../plan-history.json';
-export function paintDetail(root, ctx){
-  const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
+const gateTag = (head, body) => {
+  const g = parseGates(head, body);
+  if (!g) return '';
+  let v = 'GATE OPEN';
+  if (g.verdict === 'passed') v = 'GATE PASSED';
+  else if (g.verdict === 'failed') v = 'GATE FAILED';
+  if (!g.revCount) return v;
+  return `${v} · ${g.revCount} rev${g.revCount > 1 ? 's' : ''}`;
+};
+const railHead = (plan, seq) => [
+  `<div class="ds-rail-head"><span class="ds-rail-num">${esc(plan.id || seq)}</span>`,
+  `<span class="ds-rail-title">${esc(String(plan.title || '').toUpperCase())}</span></div>`,
+].join('');
+const dueLine = (sprint) => {
+  if (isDone(state(sprint.body)) || /✗/.test(sprint.head)) return '';
+  const d = dueOf({ head: sprint.head, body: sprint.body });
+  return d ? `<p class="ds-due">Deadline · ${esc(d)}</p>` : '';
+};
+const crumbOf = (plan) => {
+  const tags = plan.tags || [];
+  if (!tags.length) return '';
+  const more = tags.length > 2 ? ` · +${tags.length - 2}` : '';
+  return `<p class="ds-crumb">${esc(tags.slice(0, 2).join(' · '))}${more}</p>`;
+};
+// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
+export function paintDetail(root, ctx) {
+  const { list, pi, plan, sprints, si, sel, open, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
-  root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
-    const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
-      hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
-      has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
-      frac = state(s.body);
+  const seq = String(Math.max(list.length - pi, 1)).padStart(2, '0');
+  const picks = sprints.map((s, i) => {
+    const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
+    const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0);
+    const frac = state(s.body), done = isDone(frac), cancelled = /✗/.test(s.head);
+    const gate = gateTag(s.head, s.body);
+    const meta = [frac, hsS.length ? `${hsS.length} commit${hsS.length > 1 ? 's' : ''}` : '',
+      gate].filter(Boolean).join(' · ');
+    let cls = ' is-open is-pending';
+    if (done) cls = ' is-done';
+    else if (cancelled) cls = ' is-cancelled';
     return [
-      `<button class="ds-pick`,
-      i === sel[1] ? ' on' : '',
-      isDone(frac) ? '' : ' is-open',
-      `" data-tip="`,
+      `<button class="ds-pick${i === sel[1] ? ' on' : ''}${cls}" data-tip="`,
       esc(clip(sprintDesc(s), 100)),
-      `"><span class="ds-row"><span class="ds-num">Phase `,
-      String(n).padStart(2, '0'),
-      `</span><b>`,
-      esc(short(s.head)),
-      `</b></span><small>`,
-      [frac + has].filter(Boolean).join(' \u00b7 '),
-      `</small></button>`,
+      `"><span class="ds-row"><span class="ds-num">Phase ${String(n).padStart(2, '0')}</span>`,
+      `<b>${esc(short(s.head))}</b></span><small>${esc(meta)}</small></button>`,
     ].join('');
-  }).join('') + [
-    `<p class="ds-commits" data-prov>`,
-    esc(provenance(plan)),
-    `</p><div class="ds-rail-foot" data-foot>`,
-    esc(plan.goal || sprintDesc(sprint)),
-    `</div>`,
+  }).join('');
+  root.querySelector('[data-col="sprint"]').innerHTML = railHead(plan, seq) + picks + [
+    `<p class="ds-commits" data-prov>${esc(provenance(plan))}</p>`,
+    `<div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`,
   ].join('');
   const sii = plan.sprints.indexOf(sprint);
   const hs = hits(plan.file, sprint.body, sii === 0);
-  const g = parseGates(sprint.head, sprint.body);
-  let suffix = '';
-  if (g) {
-    if (g.verdict === 'passed') suffix = '✓ GATE PASSED';
-    else if (g.verdict === 'failed') suffix = '· GATE FAILED';
-    else suffix = '· GATE OPEN';
-    if (g.revCount) suffix += ` · ${g.revCount} rev${g.revCount > 1 ? 's' : ''}`;
-  }
-  const prose = stripGateThread(sprint.body);
-  const md = (t) => marked.parse(t);
-  const sec = renderSection(sprint.head, prose, suffix, md);
+  const sec = renderSection(sprint.head, stripGateThread(sprint.body),
+    gateTag(sprint.head, sprint.body), marked.parse);
   const evals = renderEvals(plan.file, sprint.head, sprint.body, history);
   const commitsHtml = renderCommitsPanel((hs || []).map((c) => ({ sha: c.sha || c, date: c.date || '' })));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
-  const rail = orphanRail(plan.sprints, sii, badges(orph));
   root.querySelector('[data-col="tasks"]').innerHTML = [
-    `<div class="ds-drawer-head">` + sec.head
-    + `<button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
-    sec.body + evals + commitsHtml + rail,
-    `</div>`,
+    `<div class="ds-drawer-head"><button data-close aria-label="Close detail">✕</button></div>`,
+    `<div class="ds-md">`, crumbOf(plan), sec.head, sec.body, dueLine(sprint),
+    evals, commitsHtml, orphanRail(plan.sprints, sii, badges(orph)), `</div>`,
   ].join('');
   const u = unlinked(texts);
-  root.querySelector('[data-col="triage"]').innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
-  if (open) { drawer.hidden = false; scrim.hidden = false; } else { drawer.hidden = true; scrim.hidden = true; }
+  const triage = root.querySelector('[data-col="triage"]');
+  triage.innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
+  if (open) { drawer.hidden = false; scrim.hidden = false; }
+  else { drawer.hidden = true; scrim.hidden = !ctx.timeline; }
 }

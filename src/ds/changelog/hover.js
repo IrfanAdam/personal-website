@@ -1,44 +1,58 @@
-/* ADAM/DS — ds/changelog/hover · cursor tip + timeline popover · [plan:2026-11-02_192021-changelog-parity#phase-4] */
-// Exports: bindHover — mousemove/leave wiring, popover + tip share one placer
-const popLines = (pop) => {
-  const out = [];
-  if (pop.dataset.span) out.push(pop.dataset.span);
-  if (pop.dataset.cm) out.push(`${pop.dataset.cm} commits`);
-  if (pop.dataset.due) out.push(`Due ${pop.dataset.due}`);
-  return out;
+/* ADAM/DS — ds/changelog/hover · cursor tip + lane popover ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+// Exports: bindHover — one mousemove pass: structured lane popover + plain tip
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+}[c]));
+const scopeOf = (d) => {
+  const bits = [];
+  if (d.ph) bits.push(`<b>${esc(d.ph)}</b> phases`);
+  if (d.tk) bits.push(`<b>${esc(d.tk)}</b> tasks`);
+  if (!bits.length) return '';
+  return `<span class="ds-tl-pop__scope">${bits.join(' · ')}</span>`;
 };
-const placeNear = (el, x, y) => {
-  const pad = 14;
-  let ax = x + pad, ay = y + pad;
+const statsOf = (d) => {
+  const bits = [];
+  if (d.cm) bits.push(`${esc(d.cm)} commits`);
+  if (d.rv) bits.push(esc(d.rv));
+  return bits.join(' · ');
+};
+// Lane popover: title, goal, scope, status, stats, due, range — same order and
+// wording as the drawer rail, so hovering a bar previews what clicking opens.
+// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
+const paintPop = (pv, el) => {
+  const d = el.dataset;
+  const stats = statsOf(d);
+  pv.innerHTML = [
+    `<b class="ds-tl-pop__title">${esc(d.pop)}</b>`,
+    d.desc ? `<span class="ds-tl-pop__desc">${esc(d.desc)}</span>` : '',
+    scopeOf(d),
+    d.st ? `<span class="ds-tl-pop__status">${esc(d.st)}</span>` : '',
+    stats ? `<span class="ds-tl-pop__stats">${stats}</span>` : '',
+    d.due ? `<span class="ds-tl-pop__due">Due ${esc(d.due)}</span>` : '',
+    d.span ? `<span class="ds-tl-pop__date">${esc(d.span)}</span>` : '',
+  ].join('');
+};
+const place = (el, x, y, pad) => {
+  el.style.left = '-9999px';
+  el.style.top = '0px';
   const r = el.getBoundingClientRect();
-  if (ax + r.width > innerWidth - 8) ax = x - r.width - pad;
-  if (ay + r.height > innerHeight - 8) ay = y - r.height - pad;
-  el.style.left = ax + 'px';
-  el.style.top = ay + 'px';
+  let px = x + pad, py = y + pad;
+  if (px + r.width > innerWidth - 8) px = x - r.width - pad;
+  if (py + r.height > innerHeight - 8) py = y - r.height - pad;
+  px = Math.min(px, innerWidth - r.width - 8);
+  py = Math.min(py, innerHeight - r.height - 8);
+  el.style.left = `${Math.max(8, px)}px`;
+  el.style.top = `${Math.max(8, py)}px`;
 };
-const paintPop = (pv, pop) => {
-  pv.replaceChildren();
-  const b = document.createElement('b');
-  b.textContent = pop.dataset.pop || '';
-  pv.appendChild(b);
-  popLines(pop).forEach((line) => {
-    const s = document.createElement('span');
-    s.textContent = line;
-    pv.appendChild(s);
-  });
-};
-// [plan:2026-11-02_192021-changelog-parity#phase-4]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const bindHover = (root) => {
   const move = (e) => {
     const pv = root.querySelector('[data-tl-pop]');
     if (pv) {
       const pop = e.target.closest('[data-pop]');
-      if (!pop) pv.hidden = true;
-      else {
-        paintPop(pv, pop);
-        pv.hidden = false;
-        placeNear(pv, e.clientX, e.clientY);
-      }
+      if (!pop || !pop.dataset.desc) pv.hidden = true;
+      else { paintPop(pv, pop); pv.hidden = false; place(pv, e.clientX, e.clientY, 10); }
     }
     const el = e.target.closest('[data-tip]');
     const tip = root.querySelector('.ds-cursor-tip');
@@ -46,18 +60,18 @@ export const bindHover = (root) => {
     if (!el) { tip.hidden = true; return; }
     tip.textContent = el.dataset.tip;
     tip.hidden = false;
-    placeNear(tip, e.clientX, e.clientY);
+    place(tip, e.clientX, e.clientY, 14);
   };
-  const hideTip = () => {
+  const hide = () => {
     const t = root.querySelector('.ds-cursor-tip');
     if (t) t.hidden = true;
     const pv = root.querySelector('[data-tl-pop]');
     if (pv) pv.hidden = true;
   };
   root.addEventListener('mousemove', move);
-  document.addEventListener('mouseleave', hideTip);
+  document.addEventListener('mouseleave', hide);
   return () => {
     root.removeEventListener('mousemove', move);
-    document.removeEventListener('mouseleave', hideTip);
+    document.removeEventListener('mouseleave', hide);
   };
 };

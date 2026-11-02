@@ -1,92 +1,87 @@
-/* ADAM/DS — ds/changelog-timeline-bars · bars, ghost, today, carets ·
+/* ADAM/DS — ds/changelog-timeline-bars · bars, ghost, carets, popover ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
 .ds-tl-bar {
-  position: absolute;
-  top: 50%;
-  left: calc(var(--tl-off) * var(--tl-day));
+  position: absolute; top: 50%; left: calc(var(--tl-off) * var(--tl-day));
+  display: flex; align-items: center; box-sizing: border-box; overflow: hidden;
   width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
-  height: var(--space-12);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transform: translateY(-50%);
+  height: var(--space-22); padding: 0; border: 0;
+  border-radius: var(--radius-sm); font: inherit; text-align: left;
+  cursor: pointer; transform: translateY(-50%);
   background: linear-gradient(
     to right,
-    color-mix(in srgb, var(--color-accent) 45%, var(--color-panel)) 0 var(--tl-done, 0%),
-    var(--color-panel) var(--tl-done, 0%) 100%
+    color-mix(in srgb, var(--color-accent) 45%, var(--color-surface)) 0 var(--tl-done, 0%),
+    color-mix(in srgb, var(--color-ink-muted) 35%, var(--color-surface)) var(--tl-done, 0%) 100%
   );
 }
-.ds-tl-barname {
-  pointer-events: none;
-  overflow: hidden;
-  padding: 0 var(--space-4);
-  font-size: var(--text-micro);
-  color: var(--color-ink);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.ds-tl-bar:hover { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
+.ds-tl-bar.is-open {
+  outline: var(--space-1) dashed color-mix(in srgb, var(--color-ink) 35%, transparent);
+  outline-offset: calc(var(--space-1) * -1);
 }
 .ds-tl-ghost {
-  position: absolute;
-  top: 50%;
-  left: calc(var(--tl-off) * var(--tl-day));
-  width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
-  height: var(--space-12);
-  padding: 0;
-  border: var(--space-1) dashed var(--color-warning);
-  background: transparent;
-  cursor: pointer;
-  transform: translateY(-50%);
+  position: absolute; top: 50%; left: calc(var(--tl-off) * var(--tl-day));
+  box-sizing: border-box; width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
+  height: var(--space-22); padding: 0; background: transparent;
+  border: var(--space-1) dashed var(--color-ink-muted);
+  border-radius: var(--radius-sm); cursor: pointer; transform: translateY(-50%);
 }
 .ds-tl-ghost.is-overdue {
   border-color: var(--color-error);
-}
-.ds-tl-lane-name {
-  position: absolute;
-  left: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  font: inherit;
-  font-size: var(--text-micro);
-  color: var(--color-ink-muted);
-  cursor: pointer;
+  background: color-mix(in srgb, var(--color-error) 12%, transparent);
 }
 .ds-tl-todaycol {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: var(--tl-day);
-  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
-  pointer-events: none;
-  z-index: 0;
+  position: absolute; top: 0; bottom: 0; width: var(--tl-day); z-index: 0;
+  background: color-mix(in srgb, var(--color-accent) 7%, transparent); pointer-events: none;
 }
 .ds-tl-today {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: var(--space-1);
-  background: var(--color-accent);
+  position: absolute; top: 0; bottom: 0; width: var(--space-1); z-index: 1;
+  border-left: var(--space-2) dotted color-mix(in srgb, var(--color-accent) 55%, transparent);
   pointer-events: none;
-  z-index: 1;
 }
 .ds-tl-edge {
-  position: sticky;
-  padding: 0 var(--space-2);
-  border: 0;
-  background: var(--color-surface);
-  color: var(--color-ink-muted);
-  cursor: pointer;
-  z-index: 4;
+  position: sticky; display: inline-flex; align-items: center; justify-content: center;
+  width: var(--space-26); height: var(--space-26); padding: 0;
+  margin: calc((var(--space-32) - var(--space-26)) / 2) 0 0;
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--color-ink); background: var(--color-surface);
+  border: var(--border-hairline); border-radius: var(--radius-sm);
+  cursor: pointer; z-index: 4;
 }
-.ds-tl-edge.is-l {
-  left: 0;
+.ds-tl-edge.is-l { left: var(--tl-label); }
+.ds-tl-edge.is-r { right: var(--space-8); margin-left: auto; }
+.ds-tl-edge[hidden] { display: none; }
+@keyframes ds-tl-nudge-fwd { from { transform: translateX(var(--space-8)); } to { transform: translateX(0); } }
+@keyframes ds-tl-nudge-back {
+  from { transform: translateX(calc(var(--space-8) * -1)); }
+  to { transform: translateX(0); }
 }
-.ds-tl-edge.is-r {
-  right: 0;
-  margin-left: auto;
+@media (prefers-reduced-motion: no-preference) {
+  .ds-tl-row.is-nudge-fwd { animation: ds-tl-nudge-fwd 180ms ease-out; }
+  .ds-tl-row.is-nudge-back { animation: ds-tl-nudge-back 180ms ease-out; }
 }
+.ds-tl-pop {
+  position: fixed; left: 0; top: 0; z-index: var(--z-modal);
+  max-width: min(38ch, 72vw); box-sizing: border-box;
+  padding: var(--space-8) var(--space-12);
+  background: var(--color-surface); border: var(--border-hairline);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-viewer);
+  pointer-events: none; white-space: normal;
+}
+.ds-tl-pop[hidden] { display: none; }
+.ds-tl-pop__title {
+  display: block; margin: 0 0 var(--space-4); font-size: var(--text-ds-body);
+  font-weight: 600; line-height: var(--leading-snug); color: var(--color-ink);
+}
+.ds-tl-pop__desc {
+  display: -webkit-box; margin: 0 0 var(--space-4); overflow: hidden;
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  line-height: var(--leading-mono); color: var(--color-ink-muted);
+  -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+}
+.ds-tl-pop__scope, .ds-tl-pop__status, .ds-tl-pop__stats, .ds-tl-pop__due, .ds-tl-pop__date {
+  display: block; margin: 0; font-family: var(--font-mono);
+  font-size: var(--text-micro); line-height: var(--leading-mono); color: var(--color-ink-muted);
+}
+.ds-tl-pop__scope b { font-weight: 700; color: var(--color-accent); }
+.ds-tl-pop__due { color: var(--color-ink); }
+.ds-tl-pop__date { margin-top: var(--space-2); }
