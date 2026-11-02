@@ -14,14 +14,14 @@
 
 *Tags: Tooling*
 
-*Status: 0/2 tasks · GATE OPEN (by owner: history + stamp green on landed tree)*
+*Status: 2/2 tasks · GATE OPEN (by owner: history + stamp green on landed tree)*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 1 | plan-history hist block in ds-track.mjs | `design-system`-style per-plan section-hash history generates at `src/ds/plan-history.json`, rerun adds 0 |
 | 2 | version.json deploy stamp | `public/version.json` carries head:count, byte-stable on rerun |
 
-### Task 1: plan-history hist block ✓ done or open per gate
+### Task 1: plan-history hist block in ds-track.mjs ✓ done
 
 **Objective:** Mirror the crm/safepipe hist block: per plan file, array of `{sha, date, hash, sections: [{head, hash, state}]}` using the existing `split`/`state`/`hash` imports.
 
@@ -30,7 +30,7 @@
 
 **Verify:** `node --check` clean; parent runs `npm run ds:track` twice, second run byte-stable; `src/ds/plan-history.json` exists with 46 keys.
 
-### Task 2: version.json deploy stamp
+### Task 2: version.json deploy stamp ✓ done
 
 **Objective:** Stamp `public/version.json` as `{"sha":"<head>:<count>"}` on every track run; skip write when unchanged.
 
@@ -38,6 +38,8 @@
 - Modify: `scripts/ds-track.mjs` (stamp block; same lane file as Task 1)
 
 **Verify:** `node --check` clean; parent confirms stamp flips after a content commit, stable on rerun.
+
+*Shipped in 0e553d6 · Tasks 1–2 · phase-1.*
 
 - REF GATE 1 (ship, OPEN, by owner): history covers all 46 plans, rerun adds 0, stamp flips only on content change. Owed: owner confirms gate evidence on landed tree.
 
@@ -47,7 +49,7 @@
 
 *Tags: Function*
 
-*Status: 0/3 tasks · GATE OPEN (by owner: gates/due/anchors proven on corpus)*
+*Status: 3/3 tasks · GATE OPEN (by owner: gates/due/anchors proven on corpus)*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -55,7 +57,7 @@
 | 4 | due.js Due parser | `*Due: YYYY-MM-DD*` under head, incomplete-only, invalid→null |
 | 5 | Anchor hardening patch spec | Case-insensitive digit-boundary `anchorHit` + `{#task-N}` tokens; triage parity |
 
-### Task 3: gates.js verdict parser
+### Task 3: gates.js verdict parser ✓ done
 
 **Objective:** New pure module parsing `REF GATE N (STATUS)` lines: status passed/failed/open, rev-count from `· rev` lines, ship marker; ownership by heading number.
 
@@ -64,7 +66,7 @@
 
 **Verify:** Node probe over 3 real plan files prints expected verdicts; `node --check` clean.
 
-### Task 4: due.js Due parser
+### Task 4: due.js Due parser ✓ done
 
 **Objective:** New pure module: `parseDue`/`dueOf` per the frozen contract; invalid dates → null; shipped/done sections → null.
 
@@ -73,7 +75,7 @@
 
 **Verify:** Node probe on safepipe-shaped Due lines + personal plans; `node --check` clean.
 
-### Task 5: Anchor hardening patch spec
+### Task 5: Anchor hardening patch spec ✓ done
 
 **Objective:** Deluxe `anchorHit` (case-insensitive, digit boundaries) + synthesized `{#task-N}` tokens in section bodies and the triage texts map, so triage matches the way `hits()` matches. Shared file stays parent-owned: lane returns a file:line patch spec only.
 
@@ -81,6 +83,8 @@
 - Patch spec against: `src/ds/changelog-links.js` (parent lands it)
 
 **Verify:** Parent applies spec; orphan count on landed tree does not grow vs baseline; no new false orphans.
+
+*Shipped in a20169d · Tasks 3–5 · phase-2.*
 
 - REF GATE 2 (ship, OPEN, by owner): gate tags render on a gated plan, Due dots read from real Due lines, orphan count ≤ baseline. Owed: owner confirms on landed tree.
 
@@ -90,14 +94,14 @@
 
 *Tags: Component*
 
-*Status: 0/2 tasks · GATE OPEN (by owner: drawer reads honest on gated + cancelled plans)*
+*Status: 2/2 tasks · GATE OPEN (by owner: drawer reads honest on gated + cancelled plans)*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 6 | raw-detail.js honest renderer | Honest DONE, stamp rollup, title-note split, folds, gate suffix, cancelled propagation |
 | 7 | panels.js evals + commits | Day-grouped collapsible Evals/Commits panels mirroring each other |
 
-### Task 6: raw-detail.js honest renderer
+### Task 6: raw-detail.js honest renderer ✓ done
 
 **Objective:** New view-layer module owning section-body render: honest DONE only when head carries ✓, bare `### Task N ✓` stamp seals without nested render, trailing paren → body note, lone-task promotion, per-phase gate suffix, `planStatus()` shared helper (cancelled > done > incomplete), Further-commits orphan rail per section with first-section ownership dedupe.
 
@@ -107,7 +111,7 @@
 
 **Verify:** `node --check` clean; parent screenshots gated + cancelled + stamped plans read honest.
 
-### Task 7: panels.js evals + commits
+### Task 7: panels.js evals + commits ✓ done
 
 **Objective:** New module painting `Evals · N` (gate `· rev` notes + history revs scoped to open phase, threaded parent→iteration per date, newest first) and `Commits · N` (day-grouped badges with dates) as collapsible `<details class="ds-panel">` pairs; `- REF GATE` thread stripped from prose before markdown.
 
@@ -117,6 +121,8 @@
 
 **Verify:** `node --check` clean; parent confirms eval/commit pairing on a plan with revs.
 
+*Shipped in 4e1a4fa · Tasks 6–7 · phase-3.*
+
 - REF GATE 3 (ship, OPEN, by owner): drawer on a gated plan shows verdict + evals + commits with Day threading; cancelled plan reads cancelled everywhere. Owed: owner confirms on landed tree.
 
 ---
@@ -125,7 +131,7 @@
 
 *Tags: Layout*
 
-*Status: 0/3 tasks · GATE OPEN (by owner: timeline + filters + deep links live)*
+*Status: 3/3 tasks · GATE OPEN (by owner: timeline + filters + deep links live)*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -133,7 +139,7 @@
 | 9 | Filter drawer + status | Tags/Status tabbed drawer, status radio with counts, active-count badge |
 | 10 | Deep links + version poll | `?day= ?sha= ?view=timeline`, version.json poll with reload guards |
 
-### Task 8: Timeline model + paint + CSS
+### Task 8: Timeline model + paint + CSS ✓ done
 
 **Objective:** New modules: pure model (`activeDates`, gap-merge bouts MERGE_GAP=3, ghost = earliest Due among incomplete from max(lastActive,today)), paint (1 row per plan, plan name inside bar, dashed ghost, daily ticks, today line, sticky month badge, edge carets, structured popovers), token-only CSS. Parent wires view state + events.
 
@@ -143,7 +149,7 @@
 
 **Verify:** `node --check` clean on both js files; parent screenshots timeline with ≥1 bout + ghost.
 
-### Task 9: Filter drawer + status
+### Task 9: Filter drawer + status ✓ done
 
 **Objective:** New module: single Tags/Status tabbed drawer (`role=dialog`), status radio Done/Incomplete/Cancelled fed by shared `planStatus()`, active-count badge on trigger, mobile two-level behavior hooks. Parent wires trigger + events.
 
@@ -153,7 +159,7 @@
 
 **Verify:** `node --check` clean; parent confirms status filter empties/fills list correctly.
 
-### Task 10: Deep links + version poll
+### Task 10: Deep links + version poll ✓ done
 
 **Objective:** New modules: boot-time `?day= ?sha= ?view=timeline&plan=&bout=` handling, and a version.json sha poll (once per sha, never mid-interaction, neutral view only). Parent wires boot + guards.
 
@@ -163,6 +169,8 @@
 
 **Verify:** `node --check` clean; parent curls deep link rendering + poll silence on same sha.
 
+*Shipped in 4d1cf5b · Tasks 8–10 · phase-4.*
+
 - REF GATE 4 (ship, OPEN, by owner): timeline opens with named bars + ghost, status filter + deep links work, no reload during drawer interaction. Owed: owner confirms on landed tree.
 
 ---
@@ -171,14 +179,14 @@
 
 *Tags: Tooling*
 
-*Status: 0/2 tasks · GATE OPEN (by owner: full suite + screenshots + deployed parity)*
+*Status: 2/2 tasks · GATE OPEN (by owner: full suite + screenshots + deployed parity)*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 11 | Parent integration + verify | All patch specs landed, `npm test` green, screenshots per phase, per-phase commits |
 | 12 | Global changelog-kit skill update | Parity lessons recorded in `~/.hermes/skills/changelog-kit/SKILL.md` |
 
-### Task 11: Parent integration + verify
+### Task 11: Parent integration + verify ✓ done
 
 **Objective:** Parent-only: apply lane patch specs to shared files, wire new modules, run `npm run ds:track` + `npm test`, screenshot every touched surface, commit path-limited per phase with `[plan:2026-11-02_192021-changelog-parity.md#{#phase-N}]` trailers, close each phase with `✓ done` + sha.
 
@@ -186,13 +194,17 @@
 
 **Verify:** `npm run plan:names` 0 missing; `npm run ds:track` tagged == phased, 0 wip; `npm test` green; `/ds/#/changelog` Miller + drawer + timeline resolve per phase.
 
-### Task 12: Global changelog-kit skill update
+### Task 12: Global changelog-kit skill update ✓ done
+
+**Files (landed):** `~/.hermes/skills/changelog-kit/references/parity-port.md` (new reference; SKILL.md body is over the 100k skill limit so the section patch was refused — body split recorded as an owner decision, not re-probed).
 
 **Objective:** Record what this parity build taught (personal-shape deltas, honest-renderer gotchas, timeline wiring order) as imperative rules in the global skill via `skill_manage` patch ops — lessons only, no logs.
 
 **Files:** `~/.hermes/skills/changelog-kit/SKILL.md` via skill_manage.
 
 **Verify:** Skill re-reads clean; new rules cited by topic.
+
+*Shipped in b70c155 · Tasks 11–12 · phase-5.*
 
 - REF GATE 5 (ship, OPEN, by owner): suite green, screenshots attached, skill updated. Owed: owner sign-off on parity screenshots.
 
