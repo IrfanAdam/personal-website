@@ -98,7 +98,7 @@
 | 8 | render-section.js assembly | Head scan plus `finalizeSection` wiring, `renderSection(raw, {suffix})`, ≤100 lines |
 | 9 | Parent wiring + folds CSS | `paint-detail.js` renders from raw, `raw-detail.js` pruned, `changelog-folds.css` linked, parity probe green |
 
-### Task 7: sec-scan.js line machine
+### Task 7: sec-scan.js line machine ✓ done
 
 **Objective:** The line state machine (fields, loose blocks, open lists, fences) returning `{tasks, blocks}`.
 
@@ -107,7 +107,7 @@
 
 **Verify:** `node --check` clean; probe indented continuation joins its list item.
 
-### Task 8: render-section.js assembly
+### Task 8: render-section.js assembly ✓ done
 
 **Objective:** Head detection plus assembly through `scanLines` and `finalizeSection`.
 
@@ -116,7 +116,7 @@
 
 **Verify:** `node --check` clean; probe every parity phase yields exactly one `h2`.
 
-### Task 9: Parent wiring + folds CSS
+### Task 9: Parent wiring + folds CSS ✓ done
 
 **Objective:** Parent-only: drawer renders from raw with raw fallback, old section renderer pruned, token-only fold styles, cross-repo parity probe, full gates.
 

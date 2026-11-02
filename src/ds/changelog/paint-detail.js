@@ -1,14 +1,16 @@
-/* ADAM/DS — ds/changelog/paint-detail · rail + detail ·
-   [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/changelog/paint-detail · rail + raw detail ·
+   [plan:2026-11-02_231259-changelog-task-folds.md#phase-3] */
 // Exports: paintDetail — rail (plan head + phase picks + goal foot) and the
-// task pane (crumb → title → status → due → body → evals → commits)
-import { marked } from 'marked';
+// raw section pane (crumb → title → status → due → body → evals → commits)
 import { hits, badges, orphans, unlinked } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
 import { isDone, state } from '../changelog-parse.js';
 import { esc } from './esc.js';
-import { renderSection, orphanRail } from './raw-detail.js';
-import { stripGateThread, renderEvals, renderCommitsPanel } from './panels.js';
+import { orphanRail } from './raw-detail.js';
+import { renderSection } from './render-section.js';
+import { sectionRaw } from './sec-raw.js';
+import { suffixOf } from './sec-status.js';
+import { renderEvals, renderCommitsPanel } from './panels.js';
 import { parseGates } from './gates.js';
 import { dueOf } from './due.js';
 import history from '../plan-history.json';
@@ -65,8 +67,9 @@ export function paintDetail(root, ctx) {
   ].join('');
   const sii = plan.sprints.indexOf(sprint);
   const hs = hits(plan.file, sprint.body, sii === 0);
-  const sec = renderSection(sprint.head, stripGateThread(sprint.body),
-    gateTag(sprint.head, sprint.body), marked.parse);
+  const raw = sectionRaw(texts[plan.file] || '', sprint.head);
+  const suffix = suffixOf(sprint.head, raw);
+  const sec = raw ? renderSection(raw, { suffix }) : renderSection(`## ${sprint.head}\n${sprint.body}`, { suffix });
   const evals = renderEvals(plan.file, sprint.head, sprint.body, history);
   const commitsHtml = renderCommitsPanel((hs || []).map((c) => ({ sha: c.sha || c, date: c.date || '' })));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
