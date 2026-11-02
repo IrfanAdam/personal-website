@@ -1,0 +1,100 @@
+/* ADAM/DS — ds/changelog-timeline · tracks view tokens · [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+.ds-tl-body {
+  --tl-day: var(--space-28);
+}
+.ds-tl-scroll {
+  overflow-x: auto;
+  padding: var(--space-4);
+}
+.ds-tl-head {
+  display: flex;
+  gap: var(--space-8);
+  align-items: baseline;
+  padding: var(--space-8);
+  color: var(--color-ink);
+}
+.ds-tl-axis {
+  position: sticky;
+  top: var(--space-1);
+}
+.ds-tl-curmonth {
+  position: sticky;
+  left: var(--space-1);
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+}
+.ds-tl-ticks {
+  position: relative;
+  height: var(--space-16);
+}
+.ds-tl-tick {
+  position: absolute;
+  font-size: var(--text-micro);
+  font-family: var(--font-mono);
+  color: var(--color-ink-subtle);
+}
+.ds-tl-tick.is-month {
+  color: var(--color-ink-muted);
+}
+.ds-tl-row {
+  position: relative;
+}
+.ds-tl-row + .ds-tl-row {
+  border-top: var(--border-hairline);
+}
+.ds-tl-lane {
+  position: relative;
+  display: flex;
+  min-height: var(--space-20);
+}
+.ds-tl-bar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: var(--space-16);
+  background: var(--color-panel);
+  border-left: var(--space-2) solid var(--color-accent);
+  left: calc(var(--tl-off) * var(--tl-day));
+  width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
+}
+.ds-tl-barname {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--text-micro);
+  color: var(--color-ink);
+  padding: var(--space-4);
+}
+.ds-tl-ghost {
+  position: absolute;
+  height: var(--space-16);
+  border: var(--space-1) dashed var(--color-warning);
+  left: calc(var(--tl-off) * var(--tl-day));
+  width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
+}
+.ds-tl-ghost.is-overdue {
+  border-color: var(--color-error);
+}
+.ds-tl-today {
+  position: absolute;
+  top: var(--space-1);
+  bottom: var(--space-1);
+  width: var(--space-1);
+  background: var(--color-accent);
+}
+.ds-tl-edge {
+  position: sticky;
+  color: var(--color-ink-muted);
+  background: var(--color-surface);
+}
+.ds-tl-edge.is-l {
+  left: var(--space-1);
+}
+.ds-tl-edge.is-r {
+  right: var(--space-1);
+}
+.ds-tl-empty {
+  font-size: var(--text-small);
+  color: var(--color-ink-muted);
+  padding: var(--space-12);
+}
