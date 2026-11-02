@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T17:32:59.223Z",
+  "generated": "2026-11-02T18:18:30.998Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -455,6 +455,38 @@
       "tokens": []
     },
     {
+      "id": "ds_changelog_fmt_text",
+      "path": "src/ds/changelog/fmt-text.js",
+      "layer": "component",
+      "route": null,
+      "title": "fmt text",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_folds",
+      "path": "src/ds/changelog-folds.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog folds",
+      "tokens": [
+        "--color-ink",
+        "--color-ink-muted",
+        "--font-mono",
+        "--leading-body",
+        "--space-1",
+        "--space-12",
+        "--space-2",
+        "--space-4",
+        "--space-8",
+        "--text-meta",
+        "--text-micro",
+        "--text-small",
+        "--tracking-label",
+        "--weight-bold",
+        "--weight-extrabold"
+      ]
+    },
+    {
       "id": "ds_changelog_format",
       "path": "src/ds/changelog-format.js",
       "layer": "component",
@@ -617,11 +649,75 @@
       "tokens": []
     },
     {
+      "id": "ds_changelog_render_blocks",
+      "path": "src/ds/changelog/render-blocks.js",
+      "layer": "component",
+      "route": null,
+      "title": "render blocks",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_render_section",
+      "path": "src/ds/changelog/render-section.js",
+      "layer": "component",
+      "route": null,
+      "title": "render section",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_render_task",
+      "path": "src/ds/changelog/render-task.js",
+      "layer": "component",
+      "route": null,
+      "title": "render task",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_sec_final",
+      "path": "src/ds/changelog/sec-final.js",
+      "layer": "component",
+      "route": null,
+      "title": "sec final",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_sec_raw",
+      "path": "src/ds/changelog/sec-raw.js",
+      "layer": "component",
+      "route": null,
+      "title": "sec raw",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_sec_scan",
+      "path": "src/ds/changelog/sec-scan.js",
+      "layer": "component",
+      "route": null,
+      "title": "sec scan",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_sec_status",
+      "path": "src/ds/changelog/sec-status.js",
+      "layer": "component",
+      "route": null,
+      "title": "sec status",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_tags",
       "path": "src/ds/changelog-tags.js",
       "layer": "component",
       "route": null,
       "title": "changelog tags",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_task_shape",
+      "path": "src/ds/changelog/task-shape.js",
+      "layer": "component",
+      "route": null,
+      "title": "task shape",
       "tokens": []
     },
     {
@@ -5005,6 +5101,11 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_folds",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_changelog_graph",
       "to": "ds_changelog_links",
       "kind": "imports"
@@ -5091,6 +5192,21 @@
     },
     {
       "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_render_section",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_sec_raw",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_sec_status",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
       "to": "ds_changelog_titles",
       "kind": "imports"
     },
@@ -5166,12 +5282,107 @@
     },
     {
       "from": "ds_changelog_raw_detail",
-      "to": "ds_changelog_esc",
+      "to": "ds_changelog_parse",
       "kind": "imports"
     },
     {
-      "from": "ds_changelog_raw_detail",
-      "to": "ds_changelog_parse",
+      "from": "ds_changelog_render_blocks",
+      "to": "ds_changelog_fmt_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_blocks",
+      "to": "ds_changelog_task_shape",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_section",
+      "to": "ds_changelog_fmt_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_section",
+      "to": "ds_changelog_sec_final",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_section",
+      "to": "ds_changelog_sec_raw",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_section",
+      "to": "ds_changelog_sec_scan",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_section",
+      "to": "ds_changelog_sec_status",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_task",
+      "to": "ds_changelog_fmt_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_task",
+      "to": "ds_changelog_render_blocks",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_render_task",
+      "to": "ds_changelog_task_shape",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_final",
+      "to": "ds_changelog_fmt_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_final",
+      "to": "ds_changelog_render_blocks",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_final",
+      "to": "ds_changelog_render_task",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_final",
+      "to": "ds_changelog_sec_status",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_final",
+      "to": "ds_changelog_task_shape",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_scan",
+      "to": "ds_changelog_fmt_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_scan",
+      "to": "ds_changelog_sec_raw",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_scan",
+      "to": "ds_changelog_task_shape",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_status",
+      "to": "ds_changelog_fmt_text",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_sec_status",
+      "to": "ds_changelog_gates",
       "kind": "imports"
     },
     {

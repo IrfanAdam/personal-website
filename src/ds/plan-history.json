@@ -1367,6 +1367,62 @@
      "state": "0/2"
     }
    ]
+  },
+  {
+   "sha": "76755c13142f99208d92e07b2e87aa576bcb2cb7",
+   "date": "2026-11-02",
+   "hash": "87136c78",
+   "sections": [
+    {
+     "head": "Phase 1 — Tracker: history + deploy stamp {#phase-1}",
+     "hash": "aee8ee8d",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — Parse core: gates + due + anchors {#phase-2}",
+     "hash": "80c5d9f0",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Detail + evals panels {#phase-3}",
+     "hash": "5d395fd2",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 4 — Timeline + chrome {#phase-4}",
+     "hash": "7bee0ab7",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Integration + skill update {#phase-5}",
+     "hash": "ed18bffd",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-11-02_231259-changelog-task-folds.md": [
+  {
+   "sha": null,
+   "date": "2026-11-02",
+   "hash": "9f6204e6",
+   "sections": [
+    {
+     "head": "Phase 1 — Raw + text primitives {#phase-1}",
+     "hash": "2e8c4230",
+     "state": "0/3"
+    },
+    {
+     "head": "Phase 2 — Block + task renderers {#phase-2}",
+     "hash": "ece16e30",
+     "state": "0/3"
+    },
+    {
+     "head": "Phase 3 — Section machine + wiring + folds CSS {#phase-3}",
+     "hash": "4d37d786",
+     "state": "0/3"
+    }
+   ]
   }
  ]
 }

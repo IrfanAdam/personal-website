@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T17:33:46.461Z",
+ "generated": "2026-11-02T18:18:30.393Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -48,7 +48,8 @@
   "2026-09-28_130000-code-cleanup-perf.md",
   "2026-10-19_000000-lump-sum-builds.md",
   "2026-10-26_000000-lump-sum-builds.md",
-  "2026-11-02_192021-changelog-parity.md"
+  "2026-11-02_192021-changelog-parity.md",
+  "2026-11-02_231259-changelog-task-folds.md"
  ],
  "commits": [
   {
@@ -4264,5 +4265,19 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-names.json",
+  "M src/ds/changelog/paint-detail.js",
+  "M src/ds/changelog/raw-detail.js",
+  "?? src/ds/changelog-folds.css",
+  "?? src/ds/changelog/fmt-text.js",
+  "?? src/ds/changelog/render-blocks.js",
+  "?? src/ds/changelog/render-section.js",
+  "?? src/ds/changelog/render-task.js",
+  "?? src/ds/changelog/sec-final.js",
+  "?? src/ds/changelog/sec-raw.js",
+  "?? src/ds/changelog/sec-scan.js",
+  "?? src/ds/changelog/sec-status.js",
+  "?? src/ds/changelog/task-shape.js"
+ ]
 }
