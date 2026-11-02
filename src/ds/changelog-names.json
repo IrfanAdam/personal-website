@@ -186,5 +186,9 @@
   "2026-11-02_192021-changelog-parity.md": {
     "title": "Changelog parity — crm/safepipe features into personal log",
     "purpose": "Timeline, gates, evals, Due, honest detail in personal changelog"
+  },
+  "2026-11-02_231259-changelog-task-folds.md": {
+    "title": "Structured task folds in the changelog drawer from safepipe",
+    "purpose": "Block-aware task folds, fields, gate suffixes in drawer"
   }
 }
