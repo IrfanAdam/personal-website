@@ -20,7 +20,7 @@
 | 2 | fmt-text.js inline text | `esc`/`escHtml`/`fmtInline`/`cleanHead`/`isTaskHead`/`LABEL_LINE`/`TASK_HEAD` ported, code-span-safe, ≤100 lines |
 | 3 | task-shape.js task model | `fieldRank`/`isObjective`/`taskTitleOf`/`taskTick`/`splitItemContent` ported, ≤100 lines |
 
-### Task 1: ✓ done — sec-raw.js raw acquisition
+### Task 1: sec-raw.js raw acquisition ✓ done
 
 **Objective:** Raw chunk lookup plus display strippers, so the renderer never touches normed bodies.
 
@@ -29,7 +29,7 @@
 
 **Verify:** `node --check` clean; probe `sectionRaw` returns the Phase 3 chunk verbatim minus gate thread.
 
-### Task 2: ✓ done — fmt-text.js inline text
+### Task 2: fmt-text.js inline text ✓ done
 
 **Objective:** Safepipe-identical text escaper plus inline spans (code spans immune to bold/em pairing).
 
@@ -38,7 +38,7 @@
 
 **Verify:** `node --check` clean; probe `` **a** `` inside backticks stays literal.
 
-### Task 3: ✓ done — task-shape.js task model
+### Task 3: task-shape.js task model ✓ done
 
 **Objective:** Field ranking, triple-shape task titles (colon / twin / smooth), checkbox tick, item splitter.
 
@@ -59,7 +59,7 @@
 | 5 | render-task.js folds | `taskInner`/`renderTask` ported, task-is-the-fold, bare headers stay flat, ≤100 lines |
 | 6 | sec-status.js verdicts | `suffixOf` adapter over personal `parseGates`, plus status-line builders and `finalizeSection`, ≤100 lines |
 
-### Task 4: render-blocks.js flow
+### Task 4: render-blocks.js flow ✓ done
 
 **Objective:** Paragraph/list/pre blocks plus open field rows; `##` bodies keep authored order.
 
@@ -68,7 +68,7 @@
 
 **Verify:** `node --check` clean; probe a Files+Verify body keeps source order.
 
-### Task 5: render-task.js folds
+### Task 5: render-task.js folds ✓ done
 
 **Objective:** One `<details>` per task (summary = tick + name + caret), content-less tasks stay bare.
 
@@ -77,7 +77,7 @@
 
 **Verify:** `node --check` clean; probe bare `### Task 1 ✓ done <sha>` renders header-only.
 
-### Task 6: sec-status.js verdicts
+### Task 6: sec-status.js verdicts ✓ done
 
 **Objective:** Gate suffix from personal `parseGates`, stamp rollup, phase fraction/DONE synthesis, lone-task promotion via `finalizeSection`.
 
