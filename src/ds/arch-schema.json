@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T14:50:02.341Z",
+  "generated": "2026-11-02T17:16:32.810Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -317,12 +317,60 @@
       "tokens": []
     },
     {
+      "id": "ds_changelog_close_top",
+      "path": "src/ds/changelog/close-top.js",
+      "layer": "component",
+      "route": null,
+      "title": "close top",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_deep_links",
       "path": "src/ds/changelog/deep-links.js",
       "layer": "component",
       "route": null,
       "title": "deep links",
       "tokens": []
+    },
+    {
+      "id": "ds_changelog_detail",
+      "path": "src/ds/changelog-detail.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog detail",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-surface",
+        "--font-mono",
+        "--leading-body",
+        "--leading-mono",
+        "--leading-prose",
+        "--leading-snug",
+        "--radius-sm",
+        "--space-1",
+        "--space-10",
+        "--space-12",
+        "--space-16",
+        "--space-18",
+        "--space-2",
+        "--space-20",
+        "--space-4",
+        "--space-6",
+        "--space-8",
+        "--text-ds-body",
+        "--text-ds-table",
+        "--text-h3",
+        "--text-micro",
+        "--text-small",
+        "--tracking-heading",
+        "--tracking-label",
+        "--tracking-mono"
+      ]
     },
     {
       "id": "ds_changelog_drawer",
@@ -432,6 +480,33 @@
       "tokens": [
         "--space-16",
         "--space-4"
+      ]
+    },
+    {
+      "id": "ds_changelog_hierarchy",
+      "path": "src/ds/changelog-hierarchy.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog hierarchy",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-line",
+        "--color-panel",
+        "--color-surface",
+        "--font-mono",
+        "--leading-mono",
+        "--leading-snug",
+        "--space-1",
+        "--space-10",
+        "--space-2",
+        "--space-6",
+        "--space-8",
+        "--text-micro",
+        "--tracking-mono"
       ]
     },
     {
@@ -591,19 +666,42 @@
       "title": "changelog timeline",
       "tokens": [
         "--border-hairline",
+        "--color-accent",
+        "--color-bg",
         "--color-ink",
         "--color-ink-muted",
-        "--color-ink-subtle",
+        "--color-line",
         "--color-surface",
+        "--dur-glide",
+        "--ease-signature",
         "--font-mono",
+        "--radius-sm",
+        "--shadow-viewer",
+        "--size-ds-drawer",
+        "--space-1",
         "--space-12",
+        "--space-14",
         "--space-16",
-        "--space-20",
+        "--space-22",
         "--space-28",
+        "--space-3",
+        "--space-30",
+        "--space-32",
+        "--space-4",
+        "--space-6",
         "--space-8",
+        "--space-9",
+        "--text-ds-table",
+        "--text-h2",
         "--text-micro",
-        "--text-small",
-        "--tl-day"
+        "--tl-day",
+        "--tl-label",
+        "--tl-month",
+        "--tracking-heading",
+        "--tracking-mono",
+        "--weight-bold",
+        "--z-ds-drawer",
+        "--z-ds-side"
       ]
     },
     {
@@ -613,21 +711,32 @@
       "route": null,
       "title": "changelog timeline bars",
       "tokens": [
+        "--border-hairline",
         "--color-accent",
         "--color-error",
         "--color-ink",
         "--color-ink-muted",
-        "--color-panel",
         "--color-surface",
-        "--color-warning",
+        "--font-mono",
+        "--leading-mono",
+        "--leading-snug",
+        "--radius-sm",
+        "--shadow-viewer",
         "--space-1",
         "--space-12",
         "--space-2",
+        "--space-22",
+        "--space-26",
+        "--space-32",
         "--space-4",
+        "--space-8",
+        "--text-ds-body",
         "--text-micro",
         "--tl-day",
+        "--tl-label",
         "--tl-off",
-        "--tl-span"
+        "--tl-span",
+        "--z-modal"
       ]
     },
     {
@@ -637,7 +746,8 @@
       "route": null,
       "title": "timeline paint",
       "tokens": [
-        "--tl-day"
+        "--tl-day",
+        "--tl-label"
       ]
     },
     {
@@ -665,6 +775,14 @@
       "tokens": [
         "--tl-day"
       ]
+    },
+    {
+      "id": "ds_changelog_tl_meta",
+      "path": "src/ds/changelog/tl-meta.js",
+      "layer": "component",
+      "route": null,
+      "title": "tl meta",
+      "tokens": []
     },
     {
       "id": "ds_changelog_tl_rows",
@@ -4848,9 +4966,19 @@
       "kind": "imports"
     },
     {
+      "from": "ds_changelog_detail",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_changelog_drawer",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_events",
+      "to": "ds_changelog_close_top",
+      "kind": "imports"
     },
     {
       "from": "ds_changelog_events",
@@ -4893,6 +5021,11 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_hierarchy",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_changelog_hum",
       "to": "views_element_sound",
       "kind": "imports"
@@ -4920,6 +5053,11 @@
     {
       "from": "ds_changelog_paint_chips",
       "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_due",
       "kind": "imports"
     },
     {
@@ -4970,6 +5108,11 @@
     {
       "from": "ds_changelog_paint_plan",
       "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_plan",
+      "to": "ds_changelog_raw_detail",
       "kind": "imports"
     },
     {
@@ -5054,6 +5197,11 @@
     },
     {
       "from": "ds_changelog_timeline_paint",
+      "to": "ds_changelog_tl_meta",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_timeline_paint",
       "to": "ds_changelog_tl_rows",
       "kind": "imports"
     },
@@ -5083,8 +5231,28 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_tl_meta",
+      "to": "ds_changelog_due",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_tl_meta",
+      "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_tl_rows",
+      "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_tl_rows",
       "to": "ds_changelog_tl_grid",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_tl_rows",
+      "to": "ds_changelog_tl_meta",
       "kind": "imports"
     },
     {

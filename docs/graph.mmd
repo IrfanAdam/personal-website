@@ -27,6 +27,7 @@ ds_atlas_view --> ds_atlas_canvas
 ds_atlas_view --> ds_atlas_insight
 ds_changelog_boot --> ds_changelog_deep_links
 ds_changelog_boot --> ds_changelog_version_poll
+ds_changelog_events --> ds_changelog_close_top
 ds_changelog_events --> ds_changelog_deep_links
 ds_changelog_events --> ds_changelog_hover
 ds_changelog_events --> ds_changelog_hum
@@ -42,6 +43,7 @@ ds_changelog_paint_chips --> ds_changelog_filter_drawer
 ds_changelog_paint_chips --> ds_changelog_graph
 ds_changelog_paint_chips --> ds_changelog_parse
 ds_changelog_paint_chips --> ds_changelog_raw_detail
+ds_changelog_paint_detail --> ds_changelog_due
 ds_changelog_paint_detail --> ds_changelog_esc
 ds_changelog_paint_detail --> ds_changelog_gates
 ds_changelog_paint_detail --> ds_changelog_links
@@ -52,6 +54,7 @@ ds_changelog_paint_detail --> ds_changelog_titles
 ds_changelog_paint_plan --> ds_changelog_esc
 ds_changelog_paint_plan --> ds_changelog_links
 ds_changelog_paint_plan --> ds_changelog_parse
+ds_changelog_paint_plan --> ds_changelog_raw_detail
 ds_changelog_paint_plan --> ds_changelog_titles
 ds_changelog_panels --> ds_changelog_due
 ds_changelog_panels --> ds_changelog_esc
@@ -64,8 +67,13 @@ ds_changelog_timeline --> ds_changelog_due
 ds_changelog_timeline --> ds_changelog_raw_detail
 ds_changelog_timeline_paint --> ds_changelog_tl_edges
 ds_changelog_timeline_paint --> ds_changelog_tl_grid
+ds_changelog_timeline_paint --> ds_changelog_tl_meta
 ds_changelog_timeline_paint --> ds_changelog_tl_rows
+ds_changelog_tl_meta --> ds_changelog_due
+ds_changelog_tl_meta --> ds_changelog_raw_detail
+ds_changelog_tl_rows --> ds_changelog_raw_detail
 ds_changelog_tl_rows --> ds_changelog_tl_grid
+ds_changelog_tl_rows --> ds_changelog_tl_meta
 ds_component --> ds_code_highlight
 ds_component --> ds_component_knobs
 ds_component --> ds_specimens
