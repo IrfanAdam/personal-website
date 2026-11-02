@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T17:28:52.598Z",
+ "generated": "2026-11-02T17:33:46.461Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -51,6 +51,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "1b28e4c",
+   "full": "1b28e4cf21f29389c714660734d1de358c23f855",
+   "date": "2026-11-02",
+   "time": "23:03",
+   "subject": "fix(changelog): one-line popover scope, flat drawer panels",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
   {
    "sha": "76755c1",
    "full": "76755c13142f99208d92e07b2e87aa576bcb2cb7",
