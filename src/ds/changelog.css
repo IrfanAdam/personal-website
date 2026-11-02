@@ -87,3 +87,6 @@ button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-of
   border: var(--border-hairline);
   border-radius: var(--radius-sm);
 }
+.ds-chip-filter { display: inline-flex; align-items: center; justify-content: center; }
+.ds-chip-filter__icon { width: var(--space-14); height: var(--space-14); flex: none; }
+.ds-chips [data-view="timeline"] { margin-left: auto; }

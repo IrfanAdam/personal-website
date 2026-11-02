@@ -5,10 +5,12 @@ export const MERGE_GAP = 3;
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const DAY = 86400000;
 import { dueOf } from './due.js';
+import { planStatus } from './raw-detail.js';
 const CLOSED = /[✓✗]/;
 const liveToday = () => new Date().toISOString().slice(0, 10);
 const dayNum = (iso) => Date.parse(`${iso}T00:00:00Z`);
 const isRealDay = (s) => ISO.test(s || '') && !Number.isNaN(dayNum(s));
+const isoOf = (ms) => new Date(ms).toISOString().slice(0, 10);
 const sectionsOf = (plan) => (plan && (plan.sprints || plan.sections)) || [];
 // — Open sections —
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
@@ -39,6 +41,7 @@ export const activeDatesOf = (plan = {}, commits = []) => {
   return [...out].sort();
 };
 // — Bouts —
+// Activity runs merged while the gap stays <= MERGE_GAP days.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const boutsOf = (dates = [], gap = MERGE_GAP) => {
   const sorted = [...new Set((dates || []).filter(isRealDay))].sort();
@@ -58,13 +61,19 @@ export const boutsOf = (dates = [], gap = MERGE_GAP) => {
   return bouts;
 };
 // — Ghost —
+// Projection from last activity to the owning open section's Due (first open
+// section carrying one, else +21d). No projectable section = null.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const ghostOf = (plan = {}, commits = [], todayISO) => {
   const today = isRealDay(todayISO) ? todayISO : liveToday();
-  const due = earliestDueOf(plan);
-  if (!due) return null;
+  if (planStatus(plan) !== 'incomplete') return null;
+  const open = sectionsOf(plan).filter(isOpenSection);
+  if (!open.length) return null;
   const active = activeDatesOf(plan, commits);
-  const last = active.length ? active[active.length - 1] : null;
-  const from = last && last > today ? last : today;
-  return { from, to: due, overdue: due < today };
+  const last = active.length ? active[active.length - 1] : plan.date;
+  if (!isRealDay(last)) return null;
+  const dues = open.map(dueOfSection).filter(isRealDay).sort();
+  const to = dues.length ? dues[0] : isoOf(dayNum(last) + 21 * DAY);
+  if (!isRealDay(to) || dayNum(to) <= dayNum(last)) return null;
+  return { from: isoOf(dayNum(last) + DAY), to, overdue: to < today };
 };

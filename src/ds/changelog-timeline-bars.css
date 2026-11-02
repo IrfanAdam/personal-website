@@ -1,0 +1,92 @@
+/* ADAM/DS — ds/changelog-timeline-bars · bars, ghost, today, carets ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+.ds-tl-bar {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--tl-off) * var(--tl-day));
+  width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
+  height: var(--space-12);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-accent) 45%, var(--color-panel)) 0 var(--tl-done, 0%),
+    var(--color-panel) var(--tl-done, 0%) 100%
+  );
+}
+.ds-tl-barname {
+  pointer-events: none;
+  overflow: hidden;
+  padding: 0 var(--space-4);
+  font-size: var(--text-micro);
+  color: var(--color-ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ds-tl-ghost {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--tl-off) * var(--tl-day));
+  width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
+  height: var(--space-12);
+  padding: 0;
+  border: var(--space-1) dashed var(--color-warning);
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.ds-tl-ghost.is-overdue {
+  border-color: var(--color-error);
+}
+.ds-tl-lane-name {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+.ds-tl-todaycol {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--tl-day);
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+  pointer-events: none;
+  z-index: 0;
+}
+.ds-tl-today {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--space-1);
+  background: var(--color-accent);
+  pointer-events: none;
+  z-index: 1;
+}
+.ds-tl-edge {
+  position: sticky;
+  padding: 0 var(--space-2);
+  border: 0;
+  background: var(--color-surface);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+  z-index: 4;
+}
+.ds-tl-edge.is-l {
+  left: 0;
+}
+.ds-tl-edge.is-r {
+  right: 0;
+  margin-left: auto;
+}

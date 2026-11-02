@@ -38,11 +38,18 @@ const plans = entries.map(([p, md]) => {
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
 // [plan:2026-11-02_192021-changelog-parity#phase-4]
 const st = { active: new Set(), day: '', sel: [0, 0], open: false, stage: 'list',
-  view: 'list', status: new Set(), filterTab: 'tags', filterOpen: false, tlSel: null };
+  view: 'list', status: new Set(), filterTab: 'tags', filterOpen: false, tlSel: null,
+  returnView: '', tlScroll: null };
 const visiblePlans = () => plans
   .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
     && (!st.status.size || st.status.has(planStatus(p)))
     && (!st.day || p.date === st.day || commits.some((c) => c.plan === p.file && c.date === st.day)));
+// The timeline is a secondary view: it inherits tags + status but never the
+// transient day filter, so a bar click can never target a hidden plan.
+// [plan:2026-11-02_192021-changelog-parity#phase-4]
+const timelinePlans = () => plans
+  .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
+    && (!st.status.size || st.status.has(planStatus(p))));
 const visibleSprints = (plan) => {
   const ss = st.active.size ? plan.sprints.filter((s) => s.tags.some((t) => st.active.has(t))) : plan.sprints;
   return ss.length ? ss : plan.sprints;
@@ -73,15 +80,9 @@ function doPaint(root) {
   const tl = root.querySelector('[data-col="timeline"]');
   if (tl) {
     if (st.view === 'timeline') {
-      const ctx = { plans: visiblePlans(), commits };
-      ctx.today = new Date().toISOString().slice(0, 10);
-      paintTimeline(root, ctx).then(() => {
-        const sc = root.querySelector('.ds-tl-scroll');
-        const today = root.querySelector('.ds-tl-today');
-        if (!sc || !today) return;
-        const dx = today.getBoundingClientRect().left - sc.getBoundingClientRect().left;
-        sc.scrollLeft = Math.max(0, sc.scrollLeft + dx - sc.clientWidth * 0.55);
-      });
+      const today = new Date().toISOString().slice(0, 10);
+      paintTimeline(root, { plans: timelinePlans(), commits, today, scroll: st.tlScroll })
+        .then(() => { st.tlScroll = null; });
     } else { tl.hidden = true; tl.innerHTML = ''; }
   }
 }

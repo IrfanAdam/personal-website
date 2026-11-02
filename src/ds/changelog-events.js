@@ -4,6 +4,7 @@
 import { bindHum } from './changelog-hum.js';
 import { buildDeepLink } from './changelog/deep-links.js';
 import { bindHover } from './changelog/hover.js';
+import { revealTrack } from './changelog/tl-edges.js';
 // — Events —
 // Branch order matters: specific [data-*] branches run before the generic
 // .ds-chip fallthrough (the filter trigger carries .ds-chip itself).
@@ -17,16 +18,15 @@ export function bindChangelogEvents(root, st, helpers) {
       st.sel = [0, 0]; doPaint(root); return; }
     const ft = e.target.closest('[data-filter-toggle]');
     if (ft) { st.filterOpen = !st.filterOpen; doPaint(root); return; }
-    const ftab = e.target.closest('[data-filter-tab]');
-    if (ftab) { st.filterTab = ftab.dataset.filterTab; doPaint(root); return; }
+    const ftab = e.target.closest('[data-tab]');
+    if (ftab) { st.filterTab = ftab.dataset.tab; doPaint(root); return; }
     const topt = e.target.closest('[data-tag-opt]');
     if (topt) { const t = topt.dataset.tagOpt;
       if (st.active.has(t)) st.active.delete(t); else st.active.add(t);
       st.sel = [0, 0]; doPaint(root); return; }
     const sopt = e.target.closest('[data-status-opt]');
     if (sopt) { const v = sopt.dataset.statusOpt;
-      if (st.status.has(v)) st.status.delete(v);
-      else { st.status.clear(); st.status.add(v); }
+      if (st.status.has(v)) st.status.delete(v); else st.status.add(v);
       st.sel = [0, 0]; doPaint(root); return; }
     const tv = e.target.closest('[data-view="timeline"]');
     if (tv) { st.view = st.view === 'timeline' ? 'list' : 'timeline';
@@ -36,26 +36,28 @@ export function bindChangelogEvents(root, st, helpers) {
     if (e.target.closest('[data-tl-close]')) { st.view = 'list'; doPaint(root); return; }
     const te = e.target.closest('[data-tl-edge]');
     if (te) { const row = te.closest('[data-tl-row]');
-      const lane = row ? row.querySelector('.ds-tl-lane') : null;
-      const dir = te.dataset.tlEdge === 'l' ? -1 : 1;
-      if (lane) lane.scrollBy({ left: dir * lane.clientWidth * 0.8, behavior: 'smooth' });
+      if (row) revealTrack(row, te.dataset.tlEdge);
       return; }
     const to = e.target.closest('[data-tl-open]');
     if (to) { const c = cur();
       const i = c.list.findIndex((p) => p.file === to.dataset.tlOpen);
       if (i > -1) { st.sel = [i, st.sel[1]]; st.open = true; st.stage = 'tasks'; }
+      const sc = root.querySelector('.ds-tl-scroll');
+      st.tlScroll = sc ? sc.scrollLeft : 0;
+      st.returnView = st.view;
+      st.view = 'list';
       doPaint(root); return; }
-    const chip = e
-      .target
-      .closest('.ds-chip');
+    const chip = e.target.closest('.ds-chip');
     if (chip) { const t = chip.dataset.tag;
       if (!t) { st.active = new Set();
+        st.status = new Set();
         st.day = '';
       } else { st.active.has(t) ? st.active.delete(t) : st.active.add(t);
-      } st.sel = [0,
-        0]; doPaint(root); return; }
+      } st.sel = [0, 0]; doPaint(root); return; }
     if (e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { st.open = false; st.stage = 'list'; doPaint(root); return; }
+      || e.target.closest('[data-scrim]')) { st.open = false; st.stage = 'list';
+      if (st.returnView) { st.view = st.returnView; st.returnView = ''; }
+      doPaint(root); return; }
     if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
     const step = e.target.closest('[data-step]');
     if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
@@ -71,16 +73,28 @@ export function bindChangelogEvents(root, st, helpers) {
   const onKey = (e) => {
     if (e.key !== 'Escape') return;
     if (st.filterOpen) st.filterOpen = false;
-    else if (st.open) st.open = false;
+    else if (st.open) { st.open = false;
+      if (st.returnView) { st.view = st.returnView; st.returnView = ''; } }
     else if (st.view === 'timeline') st.view = 'list';
     else return;
     doPaint(root);
   };
   const offHum = bindHum(root);
   const offHover = bindHover(root);
-  root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
+  const onDocClick = (e) => {
+    if (!st.filterOpen) return;
+    if (e.target.closest('[data-filter-drawer],[data-filter-toggle]')) return;
+    st.filterOpen = false;
+    doPaint(root);
+  };
+  root.addEventListener('click', onClick);
+  document.addEventListener('keydown', onKey);
+  document.addEventListener('click', onDocClick);
   return () => {
     offHum();
     offHover();
-    root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey); };
+    root.removeEventListener('click', onClick);
+    document.removeEventListener('keydown', onKey);
+    document.removeEventListener('click', onDocClick);
+  };
 }

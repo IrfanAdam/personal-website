@@ -1,0 +1,80 @@
+/* ADAM/DS — ds/changelog-filter · filter drawer chrome ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
+.ds-chips {
+  position: relative;
+}
+.ds-tag-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-4));
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: calc(var(--space-28) * 9);
+  max-width: 100%;
+  max-height: 70vh;
+  overflow: auto;
+  padding: var(--space-8);
+  background: var(--color-surface);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+}
+.ds-tag-dropdown[hidden] {
+  display: none;
+}
+.ds-filter-tabs {
+  display: flex;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+  border-bottom: var(--border-hairline);
+}
+.ds-filter-tab {
+  padding: var(--space-4) var(--space-2);
+  border: 0;
+  border-bottom: var(--space-2) solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+.ds-filter-tab.is-active {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-accent);
+}
+.ds-filter-panels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+[data-filter-panel][hidden] {
+  display: none;
+}
+.ds-tag-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-2) 0;
+  font-size: var(--text-micro);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+.ds-tag-option:hover {
+  color: var(--color-ink);
+}
+.ds-tag-option input {
+  accent-color: var(--color-accent);
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .ds-tag-dropdown {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    max-height: 70vh;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+}
