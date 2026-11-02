@@ -1,9 +1,13 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { marked } from 'marked';
-import { hits, badges, unlinked } from '../changelog-links.js';
+import { hits, badges, orphans, unlinked } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
 import { isDone, state } from '../changelog-parse.js';
 import { esc } from './esc.js';
+import { renderSection, orphanRail } from './raw-detail.js';
+import { stripGateThread, renderEvals, renderCommitsPanel } from './panels.js';
+import { parseGates } from './gates.js';
+import history from '../plan-history.json';
 export function paintDetail(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
@@ -34,12 +38,27 @@ export function paintDetail(root, ctx){
     esc(plan.goal || sprintDesc(sprint)),
     `</div>`,
   ].join('');
-  const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
+  const sii = plan.sprints.indexOf(sprint);
+  const hs = hits(plan.file, sprint.body, sii === 0);
+  const g = parseGates(sprint.head, sprint.body);
+  let suffix = '';
+  if (g) {
+    if (g.verdict === 'passed') suffix = '✓ GATE PASSED';
+    else if (g.verdict === 'failed') suffix = '· GATE FAILED';
+    else suffix = '· GATE OPEN';
+    if (g.revCount) suffix += ` · ${g.revCount} rev${g.revCount > 1 ? 's' : ''}`;
+  }
+  const prose = stripGateThread(sprint.body);
+  const md = (t) => marked.parse(t);
+  const sec = renderSection(sprint.head, prose, suffix, md);
+  const evals = renderEvals(plan.file, sprint.head, sprint.body, history);
+  const commitsHtml = renderCommitsPanel((hs || []).map((c) => ({ sha: c.sha || c, date: c.date || '' })));
+  const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
+  const rail = orphanRail(plan.sprints, sii, badges(orph));
   root.querySelector('[data-col="tasks"]').innerHTML = [
-    `<div class="ds-drawer-head"><b>`,
-    short(sprint.head),
-    `</b><button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
-    marked.parse(sprint.body) + badges(hs),
+    `<div class="ds-drawer-head">` + sec.head
+    + `<button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
+    sec.body + evals + commitsHtml + rail,
     `</div>`,
   ].join('');
   const u = unlinked(texts);
