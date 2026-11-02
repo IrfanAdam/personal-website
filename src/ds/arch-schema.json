@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-27T12:37:37.058Z",
+  "generated": "2026-11-02T14:07:32.352Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -253,18 +253,23 @@
         "--color-accent",
         "--color-ink",
         "--color-ink-muted",
+        "--color-surface",
         "--dur-glitch",
         "--font-mono",
         "--fx-glitch-skew",
         "--fx-glitch-x",
+        "--radius-sm",
         "--space-1",
+        "--space-10",
         "--space-12",
         "--space-16",
         "--space-2",
         "--space-26",
         "--space-28",
         "--space-4",
-        "--text-micro"
+        "--space-8",
+        "--text-micro",
+        "--z-modal"
       ]
     },
     {
@@ -303,6 +308,22 @@
       ]
     },
     {
+      "id": "ds_changelog_boot",
+      "path": "src/ds/changelog/boot.js",
+      "layer": "component",
+      "route": null,
+      "title": "boot",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_deep_links",
+      "path": "src/ds/changelog/deep-links.js",
+      "layer": "component",
+      "route": null,
+      "title": "deep links",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_drawer",
       "path": "src/ds/changelog-drawer.css",
       "layer": "style",
@@ -334,6 +355,14 @@
       ]
     },
     {
+      "id": "ds_changelog_due",
+      "path": "src/ds/changelog/due.js",
+      "layer": "component",
+      "route": null,
+      "title": "due",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_esc",
       "path": "src/ds/changelog/esc.js",
       "layer": "component",
@@ -350,11 +379,27 @@
       "tokens": []
     },
     {
+      "id": "ds_changelog_filter_drawer",
+      "path": "src/ds/changelog/filter-drawer.js",
+      "layer": "component",
+      "route": null,
+      "title": "filter drawer",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_format",
       "path": "src/ds/changelog-format.js",
       "layer": "component",
       "route": null,
       "title": "changelog format",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_gates",
+      "path": "src/ds/changelog/gates.js",
+      "layer": "component",
+      "route": null,
+      "title": "gates",
       "tokens": []
     },
     {
@@ -367,6 +412,14 @@
         "--space-16",
         "--space-4"
       ]
+    },
+    {
+      "id": "ds_changelog_hover",
+      "path": "src/ds/changelog/hover.js",
+      "layer": "component",
+      "route": null,
+      "title": "hover",
+      "tokens": []
     },
     {
       "id": "ds_changelog_hum",
@@ -417,6 +470,14 @@
       "tokens": []
     },
     {
+      "id": "ds_changelog_panels",
+      "path": "src/ds/changelog/panels.js",
+      "layer": "component",
+      "route": null,
+      "title": "panels",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_parse",
       "path": "src/ds/changelog-parse.js",
       "layer": "component",
@@ -453,6 +514,14 @@
       ]
     },
     {
+      "id": "ds_changelog_raw_detail",
+      "path": "src/ds/changelog/raw-detail.js",
+      "layer": "component",
+      "route": null,
+      "title": "raw detail",
+      "tokens": []
+    },
+    {
       "id": "ds_changelog_tags",
       "path": "src/ds/changelog-tags.js",
       "layer": "component",
@@ -486,11 +555,69 @@
       ]
     },
     {
+      "id": "ds_changelog_timeline",
+      "path": "src/ds/changelog/timeline.js",
+      "layer": "component",
+      "route": null,
+      "title": "timeline",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_timeline",
+      "path": "src/ds/changelog-timeline.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog timeline",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-error",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-panel",
+        "--color-surface",
+        "--color-warning",
+        "--font-mono",
+        "--space-1",
+        "--space-12",
+        "--space-16",
+        "--space-2",
+        "--space-20",
+        "--space-28",
+        "--space-4",
+        "--space-8",
+        "--text-micro",
+        "--text-small",
+        "--tl-day",
+        "--tl-off",
+        "--tl-span"
+      ]
+    },
+    {
+      "id": "ds_changelog_timeline_paint",
+      "path": "src/ds/changelog/timeline-paint.js",
+      "layer": "component",
+      "route": null,
+      "title": "timeline paint",
+      "tokens": [
+        "--tl-day"
+      ]
+    },
+    {
       "id": "ds_changelog_titles",
       "path": "src/ds/changelog-titles.js",
       "layer": "component",
       "route": null,
       "title": "changelog titles",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_version_poll",
+      "path": "src/ds/changelog/version-poll.js",
+      "layer": "component",
+      "route": null,
+      "title": "version poll",
       "tokens": []
     },
     {
@@ -4649,9 +4776,29 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_boot",
+      "to": "ds_changelog_deep_links",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_boot",
+      "to": "ds_changelog_version_poll",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_drawer",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_events",
+      "to": "ds_changelog_deep_links",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_events",
+      "to": "ds_changelog_hover",
+      "kind": "imports"
     },
     {
       "from": "ds_changelog_events",
@@ -4685,6 +4832,11 @@
     },
     {
       "from": "ds_changelog_paint_chips",
+      "to": "ds_changelog_filter_drawer",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_chips",
       "to": "ds_changelog_graph",
       "kind": "imports"
     },
@@ -4694,8 +4846,18 @@
       "kind": "imports"
     },
     {
+      "from": "ds_changelog_paint_chips",
+      "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_paint_detail",
       "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_gates",
       "kind": "imports"
     },
     {
@@ -4705,7 +4867,17 @@
     },
     {
       "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_panels",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
       "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_raw_detail",
       "kind": "imports"
     },
     {
@@ -4749,6 +4921,26 @@
       "kind": "imports"
     },
     {
+      "from": "ds_changelog_panels",
+      "to": "ds_changelog_due",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_panels",
+      "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_panels",
+      "to": "ds_changelog_gates",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_panels",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_parse",
       "to": "ds_changelog_format",
       "kind": "imports"
@@ -4759,7 +4951,32 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_raw_detail",
+      "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_raw_detail",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_tasks",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_timeline_paint",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_timeline",
+      "to": "ds_changelog_due",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_timeline",
       "to": "styles_tokens",
       "kind": "tokens"
     },
@@ -6075,6 +6292,11 @@
     },
     {
       "from": "ds_pages_changelog",
+      "to": "ds_changelog_boot",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
       "to": "ds_changelog_events",
       "kind": "imports"
     },
@@ -6095,7 +6317,17 @@
     },
     {
       "from": "ds_pages_changelog",
+      "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
       "to": "ds_changelog_tags",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_timeline_paint",
       "kind": "imports"
     },
     {

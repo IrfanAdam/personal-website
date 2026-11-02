@@ -1,0 +1,1372 @@
+{
+ "2026-09-06_183401-portfolio-decap-completion.md": [
+  {
+   "sha": "4be6963152c53b02e9437fb8b673c3792972b44a",
+   "date": "2026-09-10",
+   "hash": "8598b692",
+   "sections": [
+    {
+     "head": "Phase 1 — Shipped: clone + CMS + chrome (retro)",
+     "hash": "3511d69f",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-07_113052-masonry-grid-opt.md": [
+  {
+   "sha": "ce0b94a7aa38b350a8303f5ce3469c0398b53467",
+   "date": "2026-09-11",
+   "hash": "212e7d3a",
+   "sections": [
+    {
+     "head": "Phase 0 — Safety checkpoint",
+     "hash": "d87cfd99",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 1 — Prune (low-risk, biggest KB win)",
+     "hash": "3ff99c76",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — True masonry + progressive load",
+     "hash": "2eeee670",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Unify + lifecycle + CSS/Vite",
+     "hash": "86c34563",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-07_140407-mobile-responsiveness.md": [
+  {
+   "sha": "4be6963152c53b02e9437fb8b673c3792972b44a",
+   "date": "2026-09-10",
+   "hash": "f468c2c4",
+   "sections": [
+    {
+     "head": "Phase 1 — Shipped: responsive pass (retro)",
+     "hash": "798e4b5a",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-07_170030-adam-ds-cleanup.md": [
+  {
+   "sha": "c595a3ebb0736bac72c6c838ff6b34c79c3f7418",
+   "date": "2026-09-08",
+   "hash": "b3a97498",
+   "sections": []
+  }
+ ],
+ "2026-09-08-fx-functions-section.md": [
+  {
+   "sha": "0287e3946c48e9ce89f9cd0ec9aee5f743afc277",
+   "date": "2026-09-09",
+   "hash": "401b1f7d",
+   "sections": []
+  }
+ ],
+ "2026-09-08_135000-cyberpunk-viewer.md": [
+  {
+   "sha": "c595a3ebb0736bac72c6c838ff6b34c79c3f7418",
+   "date": "2026-09-08",
+   "hash": "894387eb",
+   "sections": []
+  }
+ ],
+ "2026-09-08_203300-hero-image-load-sequence.md": [
+  {
+   "sha": "fd5638b02f26cd03e6b05129ff65f9142ce63ea0",
+   "date": "2026-09-21",
+   "hash": "8bc2558e",
+   "sections": [
+    {
+     "head": "Phase 1 — Shipped: hero load sequence + reveal polish (retro) {#phase-1}",
+     "hash": "04c73793",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-09_120000-ds-maturity.md": [
+  {
+   "sha": "d8845688edcaeac941de95277a307448cf0147cc",
+   "date": "2026-09-10",
+   "hash": "3e47e47e",
+   "sections": [
+    {
+     "head": "Phase 0 — Baseline + IA skeleton (no visual change)",
+     "hash": "f4e0c3d4",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 1 — Shared infra (tabs + token trace)",
+     "hash": "cbadcc7a",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — Foundations (one sheet per foundation)",
+     "hash": "15bd5501",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Components (uniform template + tabs)",
+     "hash": "aaeae899",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Functions (split + GridReveal as shared function)",
+     "hash": "5cf76fa2",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Overview narrative + moodboard (last)",
+     "hash": "f097aef6",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-09_130000-ds-maturity.md": [
+  {
+   "sha": "d8845688edcaeac941de95277a307448cf0147cc",
+   "date": "2026-09-10",
+   "hash": "350add0b",
+   "sections": [
+    {
+     "head": "Phase 0 · Freeze + audit (no code)",
+     "hash": "9b97c9a9",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 1 · Token hygiene (zero visual change)",
+     "hash": "1edb1203",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 2 · Playground infra (the interactive core)",
+     "hash": "11684fa4",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 3 · Primitives (each dogfoods its real class)",
+     "hash": "e6e77e6a",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 4 · Landing set (assemble a page from the library)",
+     "hash": "11a9605d",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 5 · Motion graduation (literals → tokens)",
+     "hash": "938b2ff9",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 6 · Quality live (gates that prove cohesion)",
+     "hash": "62e8c93f",
+     "state": "4/4"
+    }
+   ]
+  }
+ ],
+ "2026-09-09_145218-bidirectional-pipeline.md": [
+  {
+   "sha": "ce0b94a7aa38b350a8303f5ce3469c0398b53467",
+   "date": "2026-09-11",
+   "hash": "23494a3f",
+   "sections": [
+    {
+     "head": "Phase 0 — Already shipped (this continuation)",
+     "hash": "234ccce6",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 1 — Future scopes use this (no code)",
+     "hash": "2852dcad",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-09_170854-design-system-update-4.md": [
+  {
+   "sha": "d8845688edcaeac941de95277a307448cf0147cc",
+   "date": "2026-09-10",
+   "hash": "f1e38dba",
+   "sections": [
+    {
+     "head": "Phase 1 — Color: primitives → semantic → story (revised)",
+     "hash": "352912c0",
+     "state": "7/7"
+    },
+    {
+     "head": "Phase 2 — Type: capped scale + live samples + story",
+     "hash": "df944763",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 3 — Space · Layout: usage-anchored scale + honest specimens + naming",
+     "hash": "c8f3fff0",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 4 — Shape: doctrine + proof + mapping + ring",
+     "hash": "ec7f24d8",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Motion · Depth: story + prescription + honest illustration",
+     "hash": "d334771c",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 6 — FX: graduation story + connected demos",
+     "hash": "dae6ae09",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 7 — Tokens: third tier + policy + a11y gate",
+     "hash": "fe7cd8c8",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-10_153555-color-cool-synthetic.md": [
+  {
+   "sha": "d8845688edcaeac941de95277a307448cf0147cc",
+   "date": "2026-09-10",
+   "hash": "ee5d6468",
+   "sections": [
+    {
+     "head": "Phase 1 — Cooler neutrals",
+     "hash": "408a3661",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 2 — Synthetic material story",
+     "hash": "ce9521be",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — Swap-slot layer",
+     "hash": "d3a5cbe3",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 4 — Grouped token list audit",
+     "hash": "4e29ae26",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 5 — Site adoption",
+     "hash": "828d423c",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-09-10_195043-smart-changelog.md": [
+  {
+   "sha": "6a105d1e7a698485cbf5800f461a230766015fc9",
+   "date": "2026-09-11",
+   "hash": "1d981560",
+   "sections": [
+    {
+     "head": "Phase 1 — Tag taxonomy + auto-tag",
+     "hash": "dd7e732a",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — Changelog chips + dynamic iterations",
+     "hash": "0b8e23c2",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — SOP + suggester + tag existing plans",
+     "hash": "11c495e1",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Retro-link pre-trailer commits",
+     "hash": "15a62012",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 5 — Contribution timeline + day filter",
+     "hash": "d9cc5a38",
+     "state": "8/8"
+    }
+   ]
+  }
+ ],
+ "2026-09-10_201154-ds-nav-drawer.md": [
+  {
+   "sha": "ad6e5d9d4471ab612aa6adbeefb2101a985e614d",
+   "date": "2026-09-10",
+   "hash": "e4b83b69",
+   "sections": [
+    {
+     "head": "Phase 1 — Collapsible sidebar",
+     "hash": "0841747c",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — Phase detail drawer + prev/next",
+     "hash": "061c6747",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-12_150255-glitch-sound.md": [
+  {
+   "sha": "046f9248b8f2e491df951a4b6056ba40393a393e",
+   "date": "2026-09-14",
+   "hash": "a2cd1b4a",
+   "sections": [
+    {
+     "head": "Phase 1 — single-voice engine [plan:2026-09-12_150255-glitch-sound.md#phase-1]",
+     "hash": "5067ebea",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — today-only rollout [plan:2026-09-12_150255-glitch-sound.md#phase-2]",
+     "hash": "2a29aa5f",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — audibility hotfix [plan:2026-09-12_150255-glitch-sound.md#phase-3]",
+     "hash": "05244915",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 4 — palette + timing sync + changelog stability [plan:2026-09-12_150255-gl",
+     "hash": "782c4d0b",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — kind-first sources + file defaults + element engine [plan:2026-09-12_1",
+     "hash": "25c3952b",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 6 — hover hum through the element engine [plan:2026-09-12_150255-glitch-so",
+     "hash": "b06575a9",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-13_193000-refactor-manageability.md": [
+  {
+   "sha": "8e74433e8dab89ff1df8485e8db28d4dcf69020a",
+   "date": "2026-09-14",
+   "hash": "0c2ac0f6",
+   "sections": [
+    {
+     "head": "Phase 0 — Freeze behavior + baseline {#phase-0}",
+     "hash": "88af225b",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 1 — Nomenclature, folders, node diagram {#phase-1}",
+     "hash": "efa59cdc",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Split the 13 over-limit files {#phase-2}",
+     "hash": "4e53d68f",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 3 — Readability: no one-line hacks, scannable blocks {#phase-3}",
+     "hash": "83bfead4",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Recursive-loop harness + newcomer proof {#phase-4}",
+     "hash": "795c22df",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Codify rules (best practices → repo law) {#phase-5}",
+     "hash": "d0893615",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 6 — Changelog keeps its name; every entry is a build {#phase-6}",
+     "hash": "3e1cfe0c",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 7 — Dead handlers after the splits {#phase-7}",
+     "hash": "b460f738",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 8 — Glitch lab: Code tab + tab state {#phase-8}",
+     "hash": "4a6ae52f",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 9 — Sweep the rest of the refactor {#phase-9}",
+     "hash": "6a83cfed",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-13_235413-over-limit-splits.md": [
+  {
+   "sha": "0c0f36a905320a0b6379601c8be01b1fc0eb3cfe",
+   "date": "2026-09-14",
+   "hash": "3302437e",
+   "sections": [
+    {
+     "head": "Phase 1 — Glitch lab + cells {#phase-1}",
+     "hash": "55cebf08",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — DS pages {#phase-2}",
+     "hash": "0562c6cb",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Views + renderer {#phase-3}",
+     "hash": "559afdec",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 4 — App boot + close-out {#phase-4}",
+     "hash": "e463bb38",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-14_001100-graph-join-leak.md": [
+  {
+   "sha": "7e2d09b8289b2c7ab997eceb909e4e2f128109ef",
+   "date": "2026-09-14",
+   "hash": "b1f6d01d",
+   "sections": [
+    {
+     "head": "Phase 1 — Graph template repair {#phase-1}",
+     "hash": "c467e8d8",
+     "state": "4/4"
+    }
+   ]
+  }
+ ],
+ "2026-09-14_003212-builds-nomenclature.md": [
+  {
+   "sha": "5b347e42e6d3fa9bd4937e95e1d872d4d1f17328",
+   "date": "2026-09-14",
+   "hash": "a260983b",
+   "sections": [
+    {
+     "head": "Phase 1 — Changelog page + build vocabulary {#phase-1}",
+     "hash": "2b12ef53",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-14_004508-refactor-bugfix.md": [
+  {
+   "sha": "5b347e42e6d3fa9bd4937e95e1d872d4d1f17328",
+   "date": "2026-09-14",
+   "hash": "0b80005c",
+   "sections": [
+    {
+     "head": "Phase 1 — Dead handlers after the splits {#phase-1}",
+     "hash": "d1040f77",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Glitch lab: Code tab + tab state {#phase-2}",
+     "hash": "f6c4930a",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — Sweep the rest of the refactor {#phase-3}",
+     "hash": "a63d07f7",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-14_120000-arch-atlas-canvas.md": [
+  {
+   "sha": "9d56186dc0b61cf090bcfcabf039ded7080376b7",
+   "date": "2026-09-15",
+   "hash": "24594474",
+   "sections": [
+    {
+     "head": "Phase 1 — Audit inventory + connector evidence {#phase-1}",
+     "hash": "12556134",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Maintained architecture schema {#phase-2}",
+     "hash": "6b1752b5",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Atlas canvas route, one switchable view {#phase-3}",
+     "hash": "4e2d6b32",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Layer schemas + connector inspector {#phase-4}",
+     "hash": "0424e8bf",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Atlas canvas polish: dock on canvas, fit, emphasis, routing {#phase-5}",
+     "hash": "16e538c9",
+     "state": "6/6"
+    },
+    {
+     "head": "Phase 6 — Atlas insight layer: search, focus, paths {#phase-6}",
+     "hash": "5335f112",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 7 — Public architecture map on the main site (viewer-facing) {#phase-7}",
+     "hash": "f872ab68",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 8 — Public map insight + polish parity {#phase-8}",
+     "hash": "e36e4278",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 9 — Real-time upkeep + close-out {#phase-9}",
+     "hash": "ce802ebd",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 10 — Fullscreen stage overlay {#phase10}",
+     "hash": "da499ed4",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 11 — Fullscreen verify + ship {#phase11}",
+     "hash": "745fdb9b",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 12 — Arc flow, search left, legend off, fullscreen top-right {#phase12}",
+     "hash": "d753449f",
+     "state": "4/4"
+    }
+   ]
+  }
+ ],
+ "2026-09-14_192124-atlas-fullscreen.md": [
+  {
+   "sha": "0b1d0ff0c984e054997c1d4f8087416fc6bc6df9",
+   "date": "2026-09-14",
+   "hash": "c0f6bfc7",
+   "sections": [
+    {
+     "head": "Phase 1 — Fullscreen stage overlay {#phase-1}",
+     "hash": "b4655483",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Verify + ship {#phase-2}",
+     "hash": "74d369d1",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-15_100000-mobile-optimisation.md": [
+  {
+   "sha": "2e1b95bc986c1fb5151ee273ab753ff5ca6245cb",
+   "date": "2026-09-15",
+   "hash": "de0aaeaa",
+   "sections": [
+    {
+     "head": "Phase 1 — Settings menu (theme + sound off the bar) {#phase-1}",
+     "hash": "b6bf0e43",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — Mobile header in-flow fix {#phase-2}",
+     "hash": "58e3da26",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — Portfolio mobile sweep {#phase-3}",
+     "hash": "b5f9b84f",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 4 — Verify + ship {#phase-4}",
+     "hash": "33e28e41",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-09-15_183400-lump-sum-builds.md": [
+  {
+   "sha": "efde0788d17536dc44ae21cea613192a32d3195b",
+   "date": "2026-09-21",
+   "hash": "b8cd48b6",
+   "sections": [
+    {
+     "head": "Phase 1 — Post-ship mobile + media fixes {#phase-1}",
+     "hash": "fb6d03a4",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 2 — Header snap + title pace {#phase-2}",
+     "hash": "116245e4",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Ship rule: no untraceable push {#phase-3}",
+     "hash": "b372820f",
+     "state": "7/7"
+    },
+    {
+     "head": "Phase 4 — Sound polish: hero + reel + header slot {#phase-4}",
+     "hash": "46de5b58",
+     "state": "7/7"
+    },
+    {
+     "head": "Phase 5 — Reel shutter: interruptible zing {#phase-5}",
+     "hash": "845f2e8c",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 6 — Loading sound sync + hero height cache {#phase-6}",
+     "hash": "355f0866",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 7 — Settings surface: sheet, modal, anchored dropdown {#phase-7}",
+     "hash": "8036ea04",
+     "state": "9/9"
+    },
+    {
+     "head": "Phase 8 — Reel zing gating: first card to per-card ready {#phase-8}",
+     "hash": "f77bf965",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 9 — Proceed gate: cyberpunk authorize, subtle redux {#phase-9}",
+     "hash": "a2fa785f",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 10 — Token + changelog: gate vars, heat & badge times {#phase-10}",
+     "hash": "116634c4",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 11 — Visitor volume + desktop hover zing {#phase-11}",
+     "hash": "524c745b",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 12 — Visitor volume 0.36 + footer shimmer {#phase-12}",
+     "hash": "0a724dd4",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 13 — Footer fidelity to the original Framer footer {#phase-13}",
+     "hash": "2cf9fe93",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 14 — Retire the invisible-commit gap {#phase-14}",
+     "hash": "1b4b3cbe",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 15 — Footer fidelity round 2 + strip overflow {#phase-15}",
+     "hash": "4460bb5c",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 16 — Footer title at design scale {#phase-16}",
+     "hash": "88fca215",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 17 — Footer owns its padding + dual corner squares {#phase-17}",
+     "hash": "ec29a986",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 18 — Viewer physics + grid viewfinder {#phase-18}",
+     "hash": "4e6e61de",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 19 — List view preview pane {#phase-19}",
+     "hash": "63ab9c70",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 20 — List pane previews the project page, not the card crop {#phase-20}",
+     "hash": "1da05932",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 21 — List split matches the detail page {#phase-21}",
+     "hash": "5c1dcfb4",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 22 — Shared flight into the project page {#phase-22}",
+     "hash": "e65401f1",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 23 — Single-render popover, calm follower, patient pane {#phase-23}",
+     "hash": "73fc6471",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 24 — Fast list follow, rAF image swaps {#phase-24}",
+     "hash": "959ae9e3",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 25 — Instant list follow {#phase-25}",
+     "hash": "a6efc767",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 26 — Promo video admin pattern fix {#phase-26}",
+     "hash": "f1b17a13",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 27 — Hero 60% + promo stacked in media column · video relocates to public ",
+     "hash": "9a0d502f",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 28 — Changelog coverage sweep: Sep 6–20 retro-linked {#phase-28}",
+     "hash": "a41c7a0a",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-09-15_190000-foundations-sound-pane.md": [
+  {
+   "sha": "80906ade4589ad81c9602d147d269e56dc8724c6",
+   "date": "2026-09-15",
+   "hash": "119f8f76",
+   "sections": [
+    {
+     "head": "Phase 1 — Sound sheet: browse, play, prove {#phase-1}",
+     "hash": "e633ef08",
+     "state": "9/9"
+    },
+    {
+     "head": "Phase 2 — Web-sounds library + GridReveal pairing {#phase-2}",
+     "hash": "41627a51",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — Hero window-open pairing at 0.12 {#phase-3}",
+     "hash": "791f4e93",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-09-15_193000-theme-island-parity.md": [
+  {
+   "sha": "896068d24d257e069f23e7022de4d155fe5cb76a",
+   "date": "2026-09-15",
+   "hash": "732c4de4",
+   "sections": [
+    {
+     "head": "Phase 1 — Island parity + a shadow that renders {#phase-1}",
+     "hash": "0522b6af",
+     "state": "4/4"
+    }
+   ]
+  }
+ ],
+ "2026-09-21_125642-lump-sum-builds.md": [
+  {
+   "sha": "8bb55f0c3555f16b2bd9b2c956111480dd7ef5df",
+   "date": "2026-09-26",
+   "hash": "6cb2a57a",
+   "sections": [
+    {
+     "head": "Phase 1 — Hover inertia + deploy-on-approval SOP {#phase-1}",
+     "hash": "44212fd3",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 2 — List rows, cinematic promo player, transit repair {#phase-2}",
+     "hash": "539c926b",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Desktop popovers single-frame {#phase-3}",
+     "hash": "56401830",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 4 — Next preview + mobile list polish + cursor hint {#phase-4}",
+     "hash": "fd194ab7",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Hotfix — desktop order + subtle rims {#phase-5}",
+     "hash": "d22f15d6",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 6 — List & case responsive polish + tooling {#phase-6}",
+     "hash": "631620a0",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 7 — Special Viewer comma fix {#phase-7}",
+     "hash": "7d23cc0d",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 8 — Grid parallax perf rebuild {#phase-8}",
+     "hash": "56e68eef",
+     "state": "4/4"
+    }
+   ]
+  }
+ ],
+ "2026-09-22_141500-housekeeping-refactor.md": [
+  {
+   "sha": "a6e1d8f8803aac94b0bf459f59ccd1119cad9cbd",
+   "date": "2026-09-22",
+   "hash": "cd04cadf",
+   "sections": [
+    {
+     "head": "Phase 1 — Close the active lint-manage gate {#phase-1}",
+     "hash": "88b27941",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 2 — At-budget & near-limit tidy {#phase-2}",
+     "hash": "ffdb076d",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Import, style & readability hygiene {#phase-3}",
+     "hash": "e9ea9ea6",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_130000-ds-understandable-mutable.md": [
+  {
+   "sha": "df346a3cdef12e2e61cd3419b44271670356ce48",
+   "date": "2026-09-23",
+   "hash": "17659d6a",
+   "sections": [
+    {
+     "head": "Phase 1 — Foundations inner navigation + deep link {#phase-1}",
+     "hash": "7e8038c1",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Live token table + playground {#phase-2}",
+     "hash": "18b97879",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — IA clarity + coverage {#phase-3}",
+     "hash": "612eaab4",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Nav + IA coherence {#phase-4}",
+     "hash": "74fbb53c",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Page chrome + sheet contract unity {#phase-5}",
+     "hash": "d4fa9296",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 6 — Foundations focus for consumers {#phase-6}",
+     "hash": "31e95ffb",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_134500-ds-coherent-consumable.md": [
+  {
+   "sha": "6e30341b9cb88c051c98161758fc7d65ac1aa320",
+   "date": "2026-09-23",
+   "hash": "75396e9a",
+   "sections": [
+    {
+     "head": "Phase 1 — Nav + IA coherence {#phase-1}",
+     "hash": "ec037666",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Page chrome + sheet contract unity {#phase-2}",
+     "hash": "6d45d4c5",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Foundations focus for consumers {#phase-3}",
+     "hash": "85ae3bba",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_142100-ds-sidebar-pinned.md": [
+  {
+   "sha": "df4f05fe500664ee614a156ef61b2ae7b7c99d99",
+   "date": "2026-09-23",
+   "hash": "758435d5",
+   "sections": [
+    {
+     "head": "Phase 1 — Pin Changelog + Components above Start {#phase-1}",
+     "hash": "9f6e1fee",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_143400-ds-overview-elements-fold.md": [
+  {
+   "sha": "df4f05fe500664ee614a156ef61b2ae7b7c99d99",
+   "date": "2026-09-23",
+   "hash": "d6ba1f6b",
+   "sections": [
+    {
+     "head": "Phase 1 — Fold Elements map into Overview {#phase-1}",
+     "hash": "8a29e51d",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_145600-ds-elements-tabs.md": [
+  {
+   "sha": "df4f05fe500664ee614a156ef61b2ae7b7c99d99",
+   "date": "2026-09-23",
+   "hash": "4dd9ec59",
+   "sections": [
+    {
+     "head": "Phase 1 — Elements sheets behind vertical tabs {#phase-1}",
+     "hash": "3b2680bd",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_150400-ds-fx-lede.md": [
+  {
+   "sha": "df4f05fe500664ee614a156ef61b2ae7b7c99d99",
+   "date": "2026-09-23",
+   "hash": "b96b6850",
+   "sections": [
+    {
+     "head": "Phase 1 — FX lede in plain words {#phase-1}",
+     "hash": "c5f145ef",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_151320-ds-fx-cards.md": [
+  {
+   "sha": "d4f3db31a8f0aec7b5afa6602993a5bce6cadf6f",
+   "date": "2026-09-23",
+   "hash": "a6a0f439",
+   "sections": [
+    {
+     "head": "Phase 1 — Effect-first FX cards {#phase-1}",
+     "hash": "104379bf",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — FX tables behind pill tabs {#phase-2}",
+     "hash": "85d59e0c",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Elevation tables behind tabs {#phase-3}",
+     "hash": "048e1b3d",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Motion tables behind tabs {#phase-4}",
+     "hash": "a87b9098",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_154500-ds-elev-motion-tables.md": [
+  {
+   "sha": "3de1a8da206f1d54a9146d7ac1169d20d7e27a1a",
+   "date": "2026-09-23",
+   "hash": "c950731d",
+   "sections": [
+    {
+     "head": "Phase 1 — Elevation tables behind tabs {#phase-1}",
+     "hash": "1c306422",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Motion tables behind tabs {#phase-2}",
+     "hash": "9e2a3679",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_173234-ds-motion-coherent.md": [
+  {
+   "sha": "d4f3db31a8f0aec7b5afa6602993a5bce6cadf6f",
+   "date": "2026-09-23",
+   "hash": "3a824ecc",
+   "sections": [
+    {
+     "head": "Phase 1 — Motion map + unified lab chrome {#phase-1}",
+     "hash": "ed3cfb75",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Labs as effect-first tables, one screen at a time {#phase-2}",
+     "hash": "c7ef1fc9",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Ownership wayfinding + verify {#phase-3}",
+     "hash": "c0a88e7d",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_174000-motion-elements-vertical.md": [
+  {
+   "sha": "42455584efcaf396ff177e5188f6f222ff954508",
+   "date": "2026-09-23",
+   "hash": "3bf858cf",
+   "sections": [
+    {
+     "head": "Phase 1 — Motion as Elements, vertical tabs {#phase-1}",
+     "hash": "77a63f27",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Sound as Elements, vertical tabs {#phase-2}",
+     "hash": "bbf0c98b",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Sound scope at top, always live {#phase-3}",
+     "hash": "94db836f",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Files single player + Scope above Files + clear {#phase-4}",
+     "hash": "1dc72781",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 5 — Special tab for Motion labs, Elements Motion removed {#phase-5}",
+     "hash": "10e93aa1",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 6 — Motion returns to Foundations {#phase-6}",
+     "hash": "135c71e0",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 7 — Special as Library-style vertical tabs {#phase-7}",
+     "hash": "4d5bd915",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 8 — Special under Elements, labs live + in-budget {#phase-8}",
+     "hash": "51d002d9",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 9 — Vert sheets fit the viewport {#phase-9}",
+     "hash": "520fb565",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 10 — Viewer comma fix, folded in {#phase10}",
+     "hash": "fa60b39f",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 11 — Glitch lab split, folded in {#phase11}",
+     "hash": "c53ebe87",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-23_212500-glitch-lab-split.md": [
+  {
+   "sha": "42455584efcaf396ff177e5188f6f222ff954508",
+   "date": "2026-09-23",
+   "hash": "cd7461b1",
+   "sections": [
+    {
+     "head": "Phase 1 — Split rebalance + panel wrap {#phase-1}",
+     "hash": "c7e3b7a5",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-24_140000-ds-docs-compact.md": [
+  {
+   "sha": "855a66a8a2d6f5afb491fc41da1c791e600d71fc",
+   "date": "2026-09-24",
+   "hash": "c3bd5b1f",
+   "sections": [
+    {
+     "head": "Phase 1 — Glitch tabs compact flow {#phase-1}",
+     "hash": "c9781b37",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 2 — Special labs tabified — Lab | Code, Graduation removed {#phase-2}",
+     "hash": "b36a11d5",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 3 — Sound returns to Foundations as the eighth pane {#phase-3}",
+     "hash": "07d13c28",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 4 — Primitives: 9 sheets readable, token-audited {#phase-4}",
+     "hash": "54bf262b",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 5 — Primitives: composer + shared chrome, ≤100 lines {#phase-5}",
+     "hash": "c4d22685",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 6 — Primitives: proof, graph, gates green {#phase-6}",
+     "hash": "c6748f10",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 7 — Primitives refinements — tabs, intro, sections like Library/Special {#",
+     "hash": "b6fc572b",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 8 — Code syntax highlight — IDE-like, mono, one component {#phase-8}",
+     "hash": "b465bcf1",
+     "state": "6/6"
+    },
+    {
+     "head": "Phase 9 — Hover tips read like the build, not a label {#phase-9}",
+     "hash": "7930237a",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-24_150000-sound-to-foundations.md": [
+  {
+   "sha": "bdf91d0a8f395924ebfa7aa0a53cc4b5a781b346",
+   "date": "2026-09-24",
+   "hash": "7b9a8539",
+   "sections": [
+    {
+     "head": "Phase 1 — Sound inside Foundations {#phase-1}",
+     "hash": "51547ea1",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-24_160000-primitives-complete.md": [
+  {
+   "sha": "bdf91d0a8f395924ebfa7aa0a53cc4b5a781b346",
+   "date": "2026-09-24",
+   "hash": "e225044b",
+   "sections": [
+    {
+     "head": "Phase 1 — 9 sheets readable, token-audited {#phase-1}",
+     "hash": "7e6b516c",
+     "state": "5/5"
+    },
+    {
+     "head": "Phase 2 — Composer + shared chrome, ≤100 lines {#phase-2}",
+     "hash": "1fed4f5b",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — Proof, graph, gates green {#phase-3}",
+     "hash": "4c4e035d",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-09-24_170000-code-syntax-highlight.md": [
+  {
+   "sha": "e487e4b508c35188e45fe9b16ba66c2d5f8d6191",
+   "date": "2026-09-24",
+   "hash": "646cabb2",
+   "sections": [
+    {
+     "head": "Phase 1 — Tokens + highlight engine + chrome {#phase-1}",
+     "hash": "6bf210e3",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — Adopt everywhere, prove readable {#phase-2}",
+     "hash": "65fc8e44",
+     "state": "3/3"
+    }
+   ]
+  }
+ ],
+ "2026-09-28_130000-code-cleanup-perf.md": [
+  {
+   "sha": "b597b92d541a7e2e9f1037ea6ad2461d5718b1c3",
+   "date": "2026-09-28",
+   "hash": "a7709b72",
+   "sections": [
+    {
+     "head": "Phase 1 — Lint gate + build warnings clean {#phase-1}",
+     "hash": "4efbe79d",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 2 — Route code-split + chunk hygiene {#phase-2}",
+     "hash": "97293b9b",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 3 — Runtime waste cut + no-regression prove {#phase-3}",
+     "hash": "98e495b8",
+     "state": "4/4"
+    },
+    {
+     "head": "Phase 4 — Every phased plan renders in the changelog {#phase-4}",
+     "hash": "7132fc79",
+     "state": "2/2"
+    }
+   ]
+  }
+ ],
+ "2026-10-19_000000-lump-sum-builds.md": [
+  {
+   "sha": "fd324514a44784a1e7583a0cb05b80170044265a",
+   "date": "2026-10-27",
+   "hash": "11c02caa",
+   "sections": [
+    {
+     "head": "Phase 1 — Contact scheduling CTA {#phase-1}",
+     "hash": "b525127e",
+     "state": "1/1"
+    },
+    {
+     "head": "Phase 2 — Cal inline embed modal {#phase-2}",
+     "hash": "80d5546f",
+     "state": "1/1"
+    }
+   ]
+  }
+ ],
+ "2026-10-26_000000-lump-sum-builds.md": [
+  {
+   "sha": "463c7c059de6c481ffe393d97a9062c901aded1d",
+   "date": "2026-10-30",
+   "hash": "cf9092a9",
+   "sections": [
+    {
+     "head": "Phase 1 — Promo video mobile playback {#phase-1}",
+     "hash": "abd36ff3",
+     "state": "3/3"
+    },
+    {
+     "head": "Phase 2 — CMS video self-service {#phase-2}",
+     "hash": "b5dbb176",
+     "state": "2/2"
+    },
+    {
+     "head": "Phase 3 — Contact hero copy {#phase-3}",
+     "hash": "87e3ed25",
+     "state": "5/5"
+    }
+   ]
+  }
+ ],
+ "2026-11-02_192021-changelog-parity.md": [
+  {
+   "sha": null,
+   "date": "2026-11-02",
+   "hash": "3068c47e",
+   "sections": [
+    {
+     "head": "Phase 1 — Tracker: history + deploy stamp {#phase-1}",
+     "hash": "563c0838",
+     "state": "1/2"
+    },
+    {
+     "head": "Phase 2 — Parse core: gates + due + anchors {#phase-2}",
+     "hash": "22918fac",
+     "state": "0/3"
+    },
+    {
+     "head": "Phase 3 — Detail + evals panels {#phase-3}",
+     "hash": "406c52b1",
+     "state": "0/2"
+    },
+    {
+     "head": "Phase 4 — Timeline + chrome {#phase-4}",
+     "hash": "e2addb26",
+     "state": "0/3"
+    },
+    {
+     "head": "Phase 5 — Integration + skill update {#phase-5}",
+     "hash": "7a539536",
+     "state": "0/2"
+    }
+   ]
+  }
+ ]
+}
