@@ -62,13 +62,13 @@
   font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-mono);
   letter-spacing: var(--tracking-mono); color: var(--color-ink-subtle);
 }
-.ds-panel { margin: var(--space-16) 0; border: var(--border-hairline); border-radius: var(--radius-sm); }
+.ds-panel { margin: var(--space-16) 0; }
 .ds-panel-title {
   display: flex; align-items: center; gap: var(--space-8);
-  padding: var(--space-10) var(--space-12); font-family: var(--font-mono);
+  padding: var(--space-6) 0; font-family: var(--font-mono);
   font-size: var(--text-micro); letter-spacing: var(--tracking-mono);
   color: var(--color-ink-muted); text-transform: uppercase; cursor: pointer;
-  list-style: none; background: var(--color-surface);
+  list-style: none; background: transparent;
 }
 .ds-panel-title::-webkit-details-marker { display: none; }
 .ds-panel-title::before { content: "›"; transition: transform 0.15s; }

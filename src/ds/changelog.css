@@ -76,8 +76,10 @@ button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-of
   border-radius: var(--radius-sm);
   pointer-events: none;
 }
-.ds-tl-pop b { display: block; }
-.ds-tl-pop span { display: block; }
+.ds-tl-pop > b { display: block; }
+.ds-tl-pop > span { display: block; }
+.ds-tl-pop .ds-tl-pop__scope { display: block; white-space: nowrap; }
+.ds-tl-pop .ds-tl-pop__scope b { display: inline; }
 /* Deploy notice: one-line refresh banner, neutral view only. */
 .ds-ver-note {
   display: block;
