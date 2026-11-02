@@ -208,6 +208,7 @@
 *Shipped in b70c155 · Tasks 11–12 · phase-5.*
 
 - REF GATE 5 (ship, OPEN, by owner): suite green, screenshots attached, skill updated. Owed: owner sign-off on parity screenshots.
+- REF GATE 5 · rev 2026-11-02 — SKILL.md had outgrown its 100k limit (body patches refused), so the timeline/filter depth moved to two style-agnostic references (`timeline-panel.md`, `filter-drawer.md`) and the body bullets became pointers; body now 96,989 chars. Verdict: OPEN.
 
 ---
 

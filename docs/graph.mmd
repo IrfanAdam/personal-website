@@ -30,6 +30,7 @@ ds_changelog_boot --> ds_changelog_version_poll
 ds_changelog_events --> ds_changelog_deep_links
 ds_changelog_events --> ds_changelog_hover
 ds_changelog_events --> ds_changelog_hum
+ds_changelog_events --> ds_changelog_tl_edges
 ds_changelog_graph --> ds_changelog_links
 ds_changelog_graph --> ds_changelog_parse
 ds_changelog_hum --> views_element_sound
@@ -60,6 +61,11 @@ ds_changelog_parse --> ds_changelog_format
 ds_changelog_raw_detail --> ds_changelog_esc
 ds_changelog_raw_detail --> ds_changelog_parse
 ds_changelog_timeline --> ds_changelog_due
+ds_changelog_timeline --> ds_changelog_raw_detail
+ds_changelog_timeline_paint --> ds_changelog_tl_edges
+ds_changelog_timeline_paint --> ds_changelog_tl_grid
+ds_changelog_timeline_paint --> ds_changelog_tl_rows
+ds_changelog_tl_rows --> ds_changelog_tl_grid
 ds_component --> ds_code_highlight
 ds_component --> ds_component_knobs
 ds_component --> ds_specimens

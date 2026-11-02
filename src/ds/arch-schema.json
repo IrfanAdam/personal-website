@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T14:07:32.352Z",
+  "generated": "2026-11-02T14:50:02.341Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -262,6 +262,7 @@
         "--space-1",
         "--space-10",
         "--space-12",
+        "--space-14",
         "--space-16",
         "--space-2",
         "--space-26",
@@ -377,6 +378,26 @@
       "route": null,
       "title": "changelog events",
       "tokens": []
+    },
+    {
+      "id": "ds_changelog_filter",
+      "path": "src/ds/changelog-filter.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog filter",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-surface",
+        "--radius-sm",
+        "--space-2",
+        "--space-28",
+        "--space-4",
+        "--space-8",
+        "--text-micro"
+      ]
     },
     {
       "id": "ds_changelog_filter_drawer",
@@ -570,25 +591,40 @@
       "title": "changelog timeline",
       "tokens": [
         "--border-hairline",
+        "--color-ink",
+        "--color-ink-muted",
+        "--color-ink-subtle",
+        "--color-surface",
+        "--font-mono",
+        "--space-12",
+        "--space-16",
+        "--space-20",
+        "--space-28",
+        "--space-8",
+        "--text-micro",
+        "--text-small",
+        "--tl-day"
+      ]
+    },
+    {
+      "id": "ds_changelog_timeline_bars",
+      "path": "src/ds/changelog-timeline-bars.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog timeline bars",
+      "tokens": [
         "--color-accent",
         "--color-error",
         "--color-ink",
         "--color-ink-muted",
-        "--color-ink-subtle",
         "--color-panel",
         "--color-surface",
         "--color-warning",
-        "--font-mono",
         "--space-1",
         "--space-12",
-        "--space-16",
         "--space-2",
-        "--space-20",
-        "--space-28",
         "--space-4",
-        "--space-8",
         "--text-micro",
-        "--text-small",
         "--tl-day",
         "--tl-off",
         "--tl-span"
@@ -610,6 +646,32 @@
       "layer": "component",
       "route": null,
       "title": "changelog titles",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_tl_edges",
+      "path": "src/ds/changelog/tl-edges.js",
+      "layer": "component",
+      "route": null,
+      "title": "tl edges",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_tl_grid",
+      "path": "src/ds/changelog/tl-grid.js",
+      "layer": "component",
+      "route": null,
+      "title": "tl grid",
+      "tokens": [
+        "--tl-day"
+      ]
+    },
+    {
+      "id": "ds_changelog_tl_rows",
+      "path": "src/ds/changelog/tl-rows.js",
+      "layer": "component",
+      "route": null,
+      "title": "tl rows",
       "tokens": []
     },
     {
@@ -4806,6 +4868,16 @@
       "kind": "imports"
     },
     {
+      "from": "ds_changelog_events",
+      "to": "ds_changelog_tl_edges",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_filter",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_changelog_graph",
       "to": "ds_changelog_links",
       "kind": "imports"
@@ -4966,6 +5038,26 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_timeline_bars",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_timeline_paint",
+      "to": "ds_changelog_tl_edges",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_timeline_paint",
+      "to": "ds_changelog_tl_grid",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_timeline_paint",
+      "to": "ds_changelog_tl_rows",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_timeline_paint",
       "to": "styles_tokens",
       "kind": "tokens"
@@ -4977,8 +5069,23 @@
     },
     {
       "from": "ds_changelog_timeline",
+      "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_timeline",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_tl_grid",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_tl_rows",
+      "to": "ds_changelog_tl_grid",
+      "kind": "imports"
     },
     {
       "from": "ds_changelog",
