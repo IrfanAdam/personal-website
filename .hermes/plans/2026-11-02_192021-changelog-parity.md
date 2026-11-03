@@ -355,7 +355,7 @@
 | 23 | Card + chips mobile CSS | Plan cards re-column with pinned rows, tags on their own row, 44px targets, day graph full-bleed and scrollable |
 | 24 | Filter sheet parity | Bottom sheet at 70dvh with `100vmax` scrim, safe-area inset, 44px options, date chip on its own row, visible on open |
 
-### Task 22: mobile.js viewport contract ✗ open
+### Task 22: mobile.js viewport contract
 
 **Objective:** One shared 720px contract for level math, so CSS and JS cannot disagree about what "mobile" means.
 
@@ -364,7 +364,7 @@
 
 **Verify:** `node --check` clean; probe `stepBack` flips `tasks → list` only under 720 and reports `false` at `list`.
 
-### Task 23: Card + chips mobile CSS ✗ open
+### Task 23: Card + chips mobile CSS
 
 **Objective:** Phone list view: no ellipsised-into-nothing titles, no tags overprinting date, no sub-44px chips, graph scrolls instead of the page.
 
@@ -373,7 +373,7 @@
 
 **Verify:** At 390px and 320px every card title wraps to ≤2 lines, tags sit on their own row, and pairwise text-leaf overlap ≤1px.
 
-### Task 24: Filter sheet parity ✗ open
+### Task 24: Filter sheet parity
 
 **Objective:** The filter drawer reads as a phone sheet (not a desktop popover): scrim, top radius, safe-area padding, tap rows, date chip first.
 
@@ -397,7 +397,7 @@
 | 26 | Drawer mobile CSS | Full-bleed panes, parked transform (never `display:none`), flush sticky heads, 2-line rail titles, prose/table/pre wraps |
 | 27 | Dismissal + touch guard | `closeTop` steps L2→L1 before closing; one order for ✕/scrim/Esc/back; taps never latch hover popovers |
 
-### Task 25: Level model in paint + events ✗ open
+### Task 25: Level model in paint + events
 
 **Objective:** Two-level mobile model over the existing rail/detail panes, with no new state field: `stage` is the level.
 
@@ -407,7 +407,7 @@
 
 **Verify:** Plan pick lands L1; rail pick lands L2; deep link without phase lands L1; head shows only `‹ All plans` / `‹ Phases` on phone.
 
-### Task 26: Drawer mobile CSS ✗ open
+### Task 26: Drawer mobile CSS
 
 **Objective:** The drawer becomes a full-height phone surface: one pane at a time, slide between them, heads flush and opaque.
 
@@ -416,7 +416,7 @@
 
 **Verify:** At 390px the drawer is 100% wide, 100dvh, no nested scroll chaining, only the active pane is visible after the transition settles.
 
-### Task 27: Dismissal + touch guard ✗ open
+### Task 27: Dismissal + touch guard
 
 **Objective:** One dismissal order on touch: popover → drawer level → drawer → timeline; hover payloads are pointer-gated.
 
@@ -438,7 +438,7 @@
 | 28 | Timeline mobile CSS | Full-width panel, shrunken label/day units, wrapping head, 44px close, popover clamped, safe-area bottom |
 | 29 | Numeric mobile verification | 320/390 probes: `scrollWidth ≤ innerWidth`, text overlap ≤1px, sticky label stays put, back button on-screen |
 
-### Task 28: Timeline mobile CSS ✗ open
+### Task 28: Timeline mobile CSS
 
 **Objective:** The timeline stays a destination on a phone: label column readable, lanes reachable, carets and close tappable.
 
@@ -447,7 +447,7 @@
 
 **Verify:** At 390px `--tl-label` leaves ≥180px of lane, today line and edge carets stay aligned after horizontal scroll.
 
-### Task 29: Numeric mobile verification ✗ open
+### Task 29: Numeric mobile verification
 
 **Objective:** Prove the pass with measurements, not screenshots, at 320 and 390.
 
