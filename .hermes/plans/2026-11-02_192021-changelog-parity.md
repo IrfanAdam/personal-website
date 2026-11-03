@@ -124,6 +124,7 @@
 *Shipped in 4e1a4fa · Tasks 6–7 · phase-3.*
 
 - REF GATE 3 (ship, OPEN, by owner): drawer on a gated plan shows verdict + evals + commits with Day threading; cancelled plan reads cancelled everywhere. Owed: owner confirms on landed tree.
+- REF GATE 3 · rev 2026-11-03 — owner feedback pass, plan drawer: panel takes 60% of the viewport (was 50), the rail→detail gutter and drawer edge padding shrink to a moderate bleed, rail phase titles clamp to one line with the subtext tucked under it, the Evals and Commits panels lose the dead air between them, and the two kickers (rail plan number + name, tag crumb) share one micro-mono size, top inset and single-line clamp — tags expose their full list as a hover tip. Verdict: OPEN.
 
 ---
 
@@ -174,6 +175,7 @@
 - REF GATE 4 (ship, OPEN, by owner): timeline opens with named bars + ghost, status filter + deep links work, no reload during drawer interaction. Owed: owner confirms on landed tree.
 - REF GATE 4 · rev 2026-11-02 — structural pass against crm/safepipe references: status filter is multi-select (was radio), funnel trigger icon-only + first in the chips row, drawer ships its own host chrome, timeline uses the day-unit grid with month padding, today wash + fractional line, caret sync, ghost rules, return-view scroll restore. Verdict: OPEN.
 - REF GATE 4 · rev 2026-11-02b — UI/UX pass, behaviour not just placement: timeline is a fixed side panel over the shared scrim with sticky plan-label column, day gridlines, integer-day today marker and a seven-line lane popover (title → goal → scope → status → stats → due → range); plan drawer reborn as crumb → one title → status → due → prose with rail subtext (`fraction · commits · gate`) and styled evals/commits panels; list cards use list ordinals and a date/state meta line; one dismissal order (filter → drawer → timeline) shared by scrim, ✕ and Escape. Verdict: OPEN.
+- REF GATE 4 · rev 2026-11-03 — owner feedback pass, timeline chrome: the Timeline chip carries a lane icon; the month band above the day numbers is gone (the 1st cell names its own month and the sticky badge pins the current month once scrolled); the today line rides the time-of-day fraction instead of the day start, with a dot at the axis; the lane popover folds every date into one interpunct line (started · modified · status · due); caret reveal measures the sticky plan-label pane instead of the raw scroll box; day cells widen 28→30px and rows shrink 32→30px so a cell reads square-ish; the plan-name column is desktop-only. Verdict: OPEN.
 
 ---
 
@@ -455,6 +457,8 @@
 **Verify:** `scrollWidth ≤ innerWidth` on both widths; pairwise text-leaf rect intersection ≤1px; rail and detail pane rects fully inside the viewport after open; `npm run plan:names`, `npm run ds:track`, `npm test` green.
 
 *Shipped in 380e7ea · Tasks 28–29 · phase-11.*
+
+- REF GATE 11 · rev 2026-11-03 — owner feedback pass: the plan-name column is desktop-only. At ≤720px the timeline drops the sticky label pane (and its PLAN header) so the lane owns the full width — the list had no value on a phone and ate the grid. Verdict: OPEN.
 
 ---
 

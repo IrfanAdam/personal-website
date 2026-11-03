@@ -32,17 +32,17 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* Rail head: plan number + uppercase title sitting on the drawer's kicker
-   line, allowed to wrap to two lines instead of clipping the plan name. */
+/* Rail head: plan id + name on one micro mono kicker line — same size, case,
+   line box and top inset as the tag crumb, clipped instead of wrapped. */
 .ds-rail-head {
   position: sticky;
   top: 0;
   z-index: 2;
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: var(--space-8);
   margin-bottom: var(--space-6);
-  padding: var(--space-6) var(--space-6) var(--space-10) var(--space-8);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-8);
   background: var(--color-bg);
   border-bottom: var(--border-hairline);
 }
@@ -50,28 +50,27 @@
   flex: none;
   font-family: var(--font-mono);
   font-size: var(--text-micro);
+  line-height: var(--leading-mono);
   letter-spacing: var(--tracking-mono);
   color: var(--color-ink-subtle);
 }
 .ds-rail-title {
   flex: 1 1 auto;
   min-width: 0;
-  display: -webkit-box;
   overflow: hidden;
   font-family: var(--font-mono);
   font-size: var(--text-micro);
-  line-height: var(--leading-snug);
+  line-height: var(--leading-mono);
   letter-spacing: var(--tracking-mono);
   color: var(--color-ink-muted);
   text-transform: uppercase;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow-wrap: anywhere;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-/* Rail rows: one padding rhythm for every phase, and a two-column grid so a
-   wrapped title's second line hangs under the title, never the number. */
+/* Rail rows: one compact padding rhythm for every phase; the grid keeps the
+   number fixed so a clipped title never pushes it around. */
 .ds-rail .ds-pick {
-  padding: var(--space-8) var(--space-6) var(--space-8) var(--space-8);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-8);
 }
 .ds-rail button.ds-pick .ds-row {
   display: grid;
@@ -84,16 +83,14 @@
   line-height: var(--leading-snug);
   white-space: nowrap;
 }
-/* Rail titles: uniform two-line box so every row shares one rhythm; a short
-   title leaves blank space instead of pulling the subtext up. */
-.ds-rail .ds-pick .ds-row b {
-  display: -webkit-box;
-  min-height: 2.5em;
+/* Rail titles: one ellipsised line each, so the meta sits right under the
+   title and no row reserves a blank second line. */
+.ds-rail .ds-pick b {
+  display: block;
+  min-width: 0;
   overflow: hidden;
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
-  white-space: normal;
-  overflow-wrap: anywhere;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

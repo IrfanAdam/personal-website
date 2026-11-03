@@ -34,7 +34,8 @@ const crumbOf = (plan) => {
   const tags = plan.tags || [];
   if (!tags.length) return '';
   const more = tags.length > 2 ? ` · +${tags.length - 2}` : '';
-  return `<p class="ds-crumb">${esc(tags.slice(0, 2).join(' · '))}${more}</p>`;
+  const tip = ` data-tip="${esc(tags.join(' · '))}"`;
+  return `<p class="ds-crumb"${tip}>${esc(tags.slice(0, 2).join(' · '))}${more}</p>`;
 };
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export function paintDetail(root, ctx) {

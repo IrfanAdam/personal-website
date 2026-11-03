@@ -1,4 +1,5 @@
-/* ADAM/DS — changelog-drawer · scrim + drawer shell  · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — changelog-drawer · scrim + drawer shell ·
+   [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 /* phase drawer — fixed right panel + click-catcher scrim · emerge + dim */
 .ds-scrim {
   position: fixed;
@@ -14,16 +15,16 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(50vw, var(--size-ds-drawer));
+  width: min(60vw, var(--size-ds-drawer));
   box-sizing: border-box;
   background: var(--color-bg);
   border-left: var(--border-hairline);
   z-index: var(--z-ds-drawer);
   overflow-y: auto;
-  padding: var(--space-18) var(--space-16) var(--space-30);
+  padding: var(--space-18) var(--space-10) var(--space-30);
   box-shadow: var(--shadow-viewer);
   display: flex;
-  gap: var(--space-14);
+  gap: var(--space-8);
   align-items: stretch;
 }
 /* two-pane drawer: slim phase rail (shrunk cards) left, task detail right */
@@ -32,7 +33,7 @@
   min-width: 0;
   overflow-y: auto;
   border-right: var(--border-hairline);
-  padding-right: var(--space-12);
+  padding-right: var(--space-8);
   display: flex;
   flex-direction: column;
 }

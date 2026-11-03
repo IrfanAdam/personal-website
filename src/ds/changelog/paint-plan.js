@@ -49,11 +49,12 @@ export function paintPlan(root, ctx) {
     if (pst === 'done') cls = ' is-done';
     else if (pst === 'cancelled') cls = ' is-cancelled';
     const tags = p.tags.length ? p.tags.slice(0, 3).join(' · ') : 'untagged';
+    const tip = p.tags.length ? p.tags.join(' · ') : 'untagged';
     return [
       `<button class="ds-pick${i === sel[0] ? ' on' : ''}${cls}" data-tip="`,
       esc(clip(p.goal, 100) || p.purpose || p.title),
       `"><span class="ds-row"><span class="ds-num">${esc(num)}</span>`,
-      `<b>${esc(p.title)}</b><span class="ds-tags">${esc(tags)}</span></span>`,
+      `<b>${esc(p.title)}</b><span class="ds-tags" data-tip="${esc(tip)}">${esc(tags)}</span></span>`,
       `<small><span class="ds-date">${esc(rangeOf(p, last, st))}</span>`,
       `<span class="ds-state">${esc(stateOf(p, frac))}</span></small></button>`,
     ].join('');

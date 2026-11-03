@@ -20,13 +20,16 @@ export const drawerHeadHtml = (stage) => [
   `</div>`,
 ].join('');
 // [plan:2026-11-02_192021-changelog-parity.md#phase-10]
-export const railHeadHtml = (plan, seq) => [
-  `<div class="ds-rail-head">`,
-  `<button class="ds-mback" data-mback aria-label="Back to plans">‹ All plans</button>`,
-  `<span class="ds-rail-num">${esc(plan.id || seq)}</span>`,
-  `<span class="ds-rail-title">${esc(String(plan.title || '').toUpperCase())}</span>`,
-  `</div>`,
-].join('');
+export const railHeadHtml = (plan, seq) => {
+  const title = String(plan.title || '');
+  return [
+    `<div class="ds-rail-head">`,
+    `<button class="ds-mback" data-mback aria-label="Back to plans">‹ All plans</button>`,
+    `<span class="ds-rail-num">${esc(plan.id || seq)}</span>`,
+    `<span class="ds-rail-title" data-tip="${esc(title)}">${esc(title.toUpperCase())}</span>`,
+    `</div>`,
+  ].join('');
+};
 // — Sync —
 // data-mlevel and .is-l1/.is-l2 ride together; entering L2 resets the pane.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-10]
