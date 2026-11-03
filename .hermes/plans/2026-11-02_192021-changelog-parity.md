@@ -462,8 +462,6 @@
 
 *Tags: Layout, Tooling*
 
-*Status: 0/4 tasks*
-
 **Finding:** Phases 9–11 shipped five phone sheets that `ds/index.html` never
 linked, so every `≤720px` rule was dead code. At 320/390 the document measured
 650px wide, the drawer opened 195px wide with panes squeezed to 58/90px, no
@@ -478,7 +476,7 @@ once they ran.
 | 32 | Heads + controls as bare text | Sticky heads, 44px back/✕, default button chrome reset (no stray card in the bar) |
 | 33 | Sheet + timeline row fixes | Pills folded into the sheet, day chip on its own row, dimmed backdrop; timeline head one row with flush ✕ |
 
-### Task 30: Link the phone sheets
+### Task 30: Link the phone sheets ✓ done
 
 **Objective:** Make the ≤720px rules actually load, last, so they win on equal specificity.
 
@@ -487,7 +485,7 @@ once they ran.
 
 **Verify:** At 390px `#cl-root` computed styles pick up the mobile rules; `.ds-mback` is `display:none` at 1280 and visible at 390.
 
-### Task 31: Drawer panes as absolutes
+### Task 31: Drawer panes as absolutes ✓ done
 
 **Objective:** One pane owns the full drawer, the parked one leaves the flow.
 
@@ -496,7 +494,7 @@ once they ran.
 
 **Verify:** At 390px rail pane height == drawer height (844), drawer 100% wide, parked pane `visibility:hidden`.
 
-### Task 32: Heads + controls as bare text
+### Task 32: Heads + controls as bare text ✓ done
 
 **Objective:** The phone head is flush and tappable, and never inherits the default button card.
 
@@ -506,7 +504,7 @@ once they ran.
 
 **Verify:** Back is 44px tall, full-width on the rail head; ✕ is 44×44 with no border/background.
 
-### Task 33: Sheet + timeline row fixes
+### Task 33: Sheet + timeline row fixes ✓ done
 
 **Objective:** The tag family lives in the sheet, not as 44px pills stacked over the graph; the timeline head is one row.
 
@@ -514,6 +512,8 @@ once they ran.
 - Modify: `src/ds/changelog-mobile-filter.css`, `src/ds/changelog-mobile-timeline.css`
 
 **Verify:** At 390px the chip block is ≤2 rows tall, the sheet is bottom-anchored with a dimmed page, and the timeline ✕ sits top-right on the title row.
+
+*Shipped in ca32b24 · Tasks 30–33 · phase-12.*
 
 ---
 
