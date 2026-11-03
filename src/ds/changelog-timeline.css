@@ -1,6 +1,5 @@
-/* ADAM/DS — ds/changelog-timeline · panel, head, axis, rows, plan labels ·
+/* ADAM/DS — ds/changelog-timeline · a destination panel that slides over the list ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
-/* A destination, not a column: it slides over the list; closing returns to the same scroll. */
 .ds-timeline {
   position: fixed; top: 0; right: 0; bottom: 0; margin: 0;
   width: min(86vw, var(--size-ds-drawer)); box-sizing: border-box;
@@ -49,12 +48,14 @@
   line-height: var(--space-22); letter-spacing: var(--tracking-mono); color: var(--color-ink-muted);
   text-transform: uppercase; border-right: var(--border-hairline);
 }
+/* Pins the month at the column edge with no reserved width; its chip hides the sliding cell. */
 .ds-tl-curmonth {
-  position: sticky; left: var(--tl-label); z-index: var(--z-ds-side); display: inline-block;
-  flex: none; width: max-content; height: var(--space-22); max-width: calc(var(--tl-day) * 2);
-  padding-right: var(--space-12); font-family: var(--font-mono); font-size: var(--text-micro);
-  font-weight: 700; line-height: var(--space-22); color: var(--color-ink);
-  background: linear-gradient(to right, var(--color-bg) 50%, transparent);
+  position: sticky; left: var(--tl-label); z-index: var(--z-ds-side); flex: none;
+  width: 0; font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700;
+  line-height: var(--space-22); white-space: nowrap; color: var(--color-ink);
+}
+.ds-tl-curmonth::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; z-index: -1; width: 2em; background: var(--color-bg);
 }
 .ds-tl-curmonth[hidden] { display: none; }
 /* One line of chrome: the day numbers. Months ride inside their own 1st cell. */
@@ -67,8 +68,7 @@
   border-left: var(--border-hairline); font-family: var(--font-mono);
   font-size: var(--text-micro); line-height: var(--space-22); text-align: center; color: var(--color-ink-muted);
 }
-/* The 1st names its month in place of a day number, pinned to its own cell
-   edge; cell and sticky badge share this text, so both read as a name. */
+/* The 1st names its month in place of a day number; the sticky badge shares the text. */
 .ds-tl-mon {
   position: absolute; top: 0; left: 0; z-index: 1; height: 100%; padding: 0 var(--space-3);
   background: var(--color-bg); line-height: var(--space-22); white-space: nowrap;

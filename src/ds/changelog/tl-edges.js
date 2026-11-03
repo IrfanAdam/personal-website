@@ -43,13 +43,14 @@ const syncBadge = (host, view) => {
 const tracksOf = (row) => [...row.querySelectorAll('[data-tl-bout],[data-tl-ghost]')];
 // Nearest hidden track per side: a lane can hide a piece on either edge while
 // another bout of the same plan is still in view, so the verdict is per track.
+// The whole box is kept — revealing needs the far edge, not just the near one.
 const edgeOf = (tracks, view) => {
   let l = null;
   let r = null;
   for (const t of tracks) {
     const b = t.getBoundingClientRect();
-    if (b.right < view.left + SLOP) l = l == null ? b.right : Math.max(l, b.right);
-    if (b.left > view.right - SLOP) r = r == null ? b.left : Math.min(r, b.left);
+    if (b.right < view.left + SLOP && (!l || b.right > l.right)) l = b;
+    if (b.left > view.right - SLOP && (!r || b.left < r.left)) r = b;
   }
   return { l, r };
 };
@@ -79,8 +80,12 @@ export const revealTrack = (row, dir) => {
   const view = paneOf(sc, padOf(row));
   // Reveal the nearest hidden bout — the ghost can sit far right of the bars,
   // so picking by DOM order throws the track to the wrong edge.
-  const edge = dir === 'l' ? edgeOf(tracks, view).l : edgeOf(tracks, view).r;
-  if (edge == null) return;
-  const delta = dir === 'l' ? edge - view.left - SLOP : edge - view.right + SLOP;
+  const box = dir === 'l' ? edgeOf(tracks, view).l : edgeOf(tracks, view).r;
+  if (!box) return;
+  // Land the bout's far edge, not its near one: a near-edge nudge leaves most
+  // of the bar clipped and clears the caret, so the reveal can never finish.
+  const delta = dir === 'l'
+    ? box.left - view.left - SLOP
+    : box.right - view.right + SLOP;
   sc.scrollBy({ left: delta, behavior: 'smooth' });
 };

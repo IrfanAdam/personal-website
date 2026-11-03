@@ -31,6 +31,12 @@ const paintPop = (pv, el) => {
     d.dates ? `<span class="ds-tl-pop__date">${esc(d.dates)}</span>` : '',
   ].join('');
 };
+// Identity of a painted card: same node + same payload → nothing to rewrite,
+// so a lane-wide sweep repaints once per row instead of once per mousemove.
+const sigOf = (el) => {
+  const d = el.dataset;
+  return [d.pop, d.desc, d.ph, d.tk, d.cm, d.rv, d.dates].join('\u0001');
+};
 const place = (el, x, y, pad) => {
   el.style.left = '-9999px';
   el.style.top = '0px';
@@ -45,6 +51,7 @@ const place = (el, x, y, pad) => {
 };
 // [plan:2026-11-02_192021-changelog-parity.md#phase-10]
 export const bindHover = (root) => {
+  let card = null; // { pv, el, sig } — the card currently on screen
   const move = (e) => {
     // Touch never fires a leave, so a tap-painted tip would latch forever:
     // pointer-gate the whole pass instead of deleting the desktop hover.
@@ -55,8 +62,16 @@ export const bindHover = (root) => {
       // payload, so the row's label stands in for the empty grid around them.
       const row = e.target.closest('[data-tl-row]');
       const pop = e.target.closest('[data-pop]') || (row && row.querySelector('[data-pop]'));
-      if (!pop || !pop.dataset.desc) pv.hidden = true;
-      else { paintPop(pv, pop); pv.hidden = false; place(pv, e.clientX, e.clientY, 10); }
+      if (!pop) { pv.hidden = true; card = null; }
+      else {
+        const sig = sigOf(pop);
+        if (!card || card.pv !== pv || card.el !== pop || card.sig !== sig) {
+          paintPop(pv, pop);
+          card = { pv, el: pop, sig };
+        }
+        pv.hidden = false;
+        place(pv, e.clientX, e.clientY, 10);
+      }
     }
     const el = e.target.closest('[data-tip]');
     const tip = root.querySelector('.ds-cursor-tip');

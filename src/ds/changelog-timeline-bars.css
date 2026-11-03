@@ -83,12 +83,11 @@
   line-height: var(--leading-mono); color: var(--color-ink-muted);
   -webkit-box-orient: vertical; -webkit-line-clamp: 2;
 }
-.ds-tl-pop__scope, .ds-tl-pop__status, .ds-tl-pop__stats, .ds-tl-pop__due, .ds-tl-pop__date {
+/* One rhythm for the meta block: scope, stats and the date line share the same
+   line box and zero margins, so no line reads as a separate stanza. */
+.ds-tl-pop__scope, .ds-tl-pop__stats, .ds-tl-pop__date {
   display: block; margin: 0; font-family: var(--font-mono);
   font-size: var(--text-micro); line-height: var(--leading-mono); color: var(--color-ink-muted);
 }
 .ds-tl-pop__scope b { font-weight: 700; color: var(--color-accent); }
 .ds-tl-pop__scope { white-space: nowrap; }
-/* One rhythm for the meta block: scope, stats and dates share the same line box,
-   so no line reads as a separate stanza. */
-.ds-tl-pop__due { color: var(--color-ink); }
