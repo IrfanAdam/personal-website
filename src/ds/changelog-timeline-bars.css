@@ -38,10 +38,15 @@
   border-left: var(--space-2) dotted color-mix(in srgb, var(--color-accent) 55%, transparent);
   pointer-events: none;
 }
+/* Axis anchor for that fraction — the line alone read as just another gridline. */
+.ds-tl-todaydot {
+  position: absolute; bottom: 0; z-index: 2; width: var(--space-6); height: var(--space-6);
+  background: var(--color-accent); transform: translate(-50%, 50%); pointer-events: none;
+}
 .ds-tl-edge {
   position: sticky; display: inline-flex; align-items: center; justify-content: center;
   width: var(--space-26); height: var(--space-26); padding: 0;
-  margin: calc((var(--space-32) - var(--space-26)) / 2) 0 0;
+  margin: calc((var(--space-30) - var(--space-26)) / 2) 0 0;
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-ink); background: var(--color-surface);
   border: var(--border-hairline); border-radius: var(--radius-sm);

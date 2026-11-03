@@ -43,10 +43,22 @@ export function paintChips(root, ctx){
   ].join('')).join('');
   const filters = filterDrawer({ counts: tagCounts, statusCounts, active, status: stat,
     filterTab: ctx.filterTab, filterOpen: ctx.filterOpen });
+  // Compact gantt glyph: hairline frame + two staggered rounded bars, so the
+  // chip still reads at --text-micro beside the funnel on Filters.
+  const tlIcon = [
+    `<svg class="ds-chip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor"`,
+    ` stroke-width="1.5" aria-hidden="true">`,
+    `<rect x="1.5" y="2.5" width="13" height="11" rx="1.5"/>`,
+    `<rect x="4" y="5" width="5" height="1.6" rx=".8" fill="currentColor" stroke="none"/>`,
+    `<rect x="6.5" y="8.6" width="5.5" height="1.6" rx=".8" fill="currentColor" stroke="none"/>`,
+    `</svg>`,
+  ].join('');
   const tlChip = [
     `<button class="ds-chip" data-view="timeline" aria-pressed="`,
     ctx.view === 'timeline',
-    `">Timeline</button>`,
+    `">`,
+    tlIcon,
+    `Timeline</button>`,
   ].join('');
   root.querySelector('[data-col="chips"]').innerHTML = filters + dayChip + showAll + pills + tlChip;
   const gEl = root.querySelector('[data-col="graph"]');

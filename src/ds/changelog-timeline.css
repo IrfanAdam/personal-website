@@ -36,7 +36,7 @@
 }
 .ds-tl-body {
   position: relative; width: max-content; min-width: 100%;
-  --tl-day: var(--space-28); --tl-label: calc(var(--space-28) * 8); --tl-month: var(--space-12);
+  --tl-day: var(--space-30); --tl-label: calc(var(--space-30) * 8);
 }
 .ds-tl-axis {
   position: sticky; top: 0; z-index: var(--z-ds-side); display: flex; align-items: flex-end;
@@ -57,26 +57,25 @@
   background: linear-gradient(to right, var(--color-bg) 50%, transparent);
 }
 .ds-tl-curmonth[hidden] { display: none; }
+/* One line of chrome: the day numbers. Months ride inside their own 1st cell. */
 .ds-tl-ticks {
-  position: relative; flex: none; height: calc(var(--space-22) + var(--tl-month));
+  position: relative; flex: none; height: var(--space-22);
   width: calc(var(--tl-days, 30) * var(--tl-day));
 }
 .ds-tl-tick {
   position: absolute; top: 0; height: 100%; width: var(--tl-day);
-  padding-top: var(--tl-month); border-left: var(--border-hairline); font-family: var(--font-mono);
+  border-left: var(--border-hairline); font-family: var(--font-mono);
   font-size: var(--text-micro); line-height: var(--space-22); text-align: center; color: var(--color-ink-muted);
 }
-/* The 1st keeps its number via data-d; the tick text stays the bare month name the badge reads. */
-.ds-tl-tick.is-month::after {
-  content: attr(data-d); position: absolute; right: 0; bottom: 0; left: 0; text-align: center;
-}
+/* The 1st names its month in place of a day number, pinned to its own cell edge
+   so it can never reach a neighbour; the sticky badge reads this bare text. */
 .ds-tl-mon {
-  position: absolute; top: 0; left: 0; z-index: 1; padding: 0 var(--space-3);
-  background: var(--color-bg); line-height: var(--tl-month); white-space: nowrap;
+  position: absolute; top: 0; left: 0; z-index: 1; height: 100%; padding: 0 var(--space-3);
+  background: var(--color-bg); line-height: var(--space-22); white-space: nowrap;
   color: var(--color-ink); font-weight: var(--weight-bold); text-transform: uppercase;
 }
 .ds-tl-row {
-  display: flex; align-items: stretch; min-height: var(--space-32); border-bottom: var(--border-hairline);
+  display: flex; align-items: stretch; min-height: var(--space-30); border-bottom: var(--border-hairline);
 }
 .ds-tl-row.has-track { background: color-mix(in srgb, var(--color-surface) 45%, transparent); }
 .ds-tl-row:hover { background: color-mix(in srgb, var(--color-surface) 80%, transparent); }

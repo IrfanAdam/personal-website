@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog/tl-meta · lane + popover metadata ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
-// Exports: plain, spanText, laneMeta — one payload feeds bar tooltips, the
-// popover and the plan drawer rail, so no surface invents its own wording.
+// Exports: plain, dPart, spanText, laneMeta — one payload feeds bar tooltips,
+// the popover and the drawer rail, so no surface invents its own wording.
 import { isSealed, planStatus } from './raw-detail.js';
 import { dueOf } from './due.js';
 import history from '../plan-history.json';
@@ -34,6 +34,16 @@ const dueOfPlan = (p) => {
   return '';
 };
 const ST = { done: 'Done', cancelled: 'Cancelled', incomplete: 'In progress' };
+// One date line for the popover: started · modified · status · due, interpunct
+// separated, so a lane never stacks three separate date rows.
+const dateLine = (p, end, st, due) => {
+  const bits = [];
+  if (p.date) bits.push(`Started ${dPart(p.date).t}`);
+  if (p.date && end && end !== p.date) bits.push(`Modified ${dPart(end).t}`);
+  bits.push(st);
+  if (due) bits.push(`Due ${dPart(due).t}`);
+  return bits.join(' · ');
+};
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const laneMeta = (p, commits = []) => {
   const sprints = p.sprints || [];
@@ -44,6 +54,8 @@ export const laneMeta = (p, commits = []) => {
   const end = last && last > p.date ? last : p.date;
   const revs = (history[p.file] || []).length;
   const revTxt = revs === 1 ? '1 rev' : `${revs} revs`;
+  const st = ps === 'done' ? `Done ${dPart(end).t}` : ST[ps];
+  const due = dueOfPlan(p);
   return {
     title: p.title || p.file,
     desc: plain(p.goal).slice(0, 220) || plain(p.purpose),
@@ -52,8 +64,6 @@ export const laneMeta = (p, commits = []) => {
     cm: String(mine.length),
     rv: revs,
     revTxt,
-    st: ps === 'done' ? `Done ${dPart(end).t}` : ST[ps],
-    due: dueOfPlan(p),
-    span: spanText(p.date, end),
+    dates: dateLine(p, end, st, due),
   };
 };

@@ -67,6 +67,17 @@
   accent-color: var(--color-accent);
   margin: 0;
 }
+/* Timeline chip: line the gantt glyph up with the label at chip-text scale. */
+.ds-chips [data-view="timeline"] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.ds-chip-icon {
+  width: var(--space-12);
+  height: var(--space-12);
+  flex: none;
+}
 @media (max-width: 720px) {
   .ds-tag-dropdown {
     position: fixed;

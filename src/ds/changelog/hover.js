@@ -17,8 +17,8 @@ const statsOf = (d) => {
   if (d.rv) bits.push(esc(d.rv));
   return bits.join(' · ');
 };
-// Lane popover: title, goal, scope, status, stats, due, range — same order and
-// wording as the drawer rail, so hovering a bar previews what clicking opens.
+// Lane popover: title, goal, scope, stats, one date line — same wording as the
+// drawer rail, so hovering a bar previews what clicking opens.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 const paintPop = (pv, el) => {
   const d = el.dataset;
@@ -27,10 +27,8 @@ const paintPop = (pv, el) => {
     `<b class="ds-tl-pop__title">${esc(d.pop)}</b>`,
     d.desc ? `<span class="ds-tl-pop__desc">${esc(d.desc)}</span>` : '',
     scopeOf(d),
-    d.st ? `<span class="ds-tl-pop__status">${esc(d.st)}</span>` : '',
     stats ? `<span class="ds-tl-pop__stats">${stats}</span>` : '',
-    d.due ? `<span class="ds-tl-pop__due">Due ${esc(d.due)}</span>` : '',
-    d.span ? `<span class="ds-tl-pop__date">${esc(d.span)}</span>` : '',
+    d.dates ? `<span class="ds-tl-pop__date">${esc(d.dates)}</span>` : '',
   ].join('');
 };
 const place = (el, x, y, pad) => {

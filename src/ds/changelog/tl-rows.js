@@ -13,16 +13,14 @@ const pctOf = (p) => {
   if (!ss.length) return 0;
   return Math.round((ss.filter(isSealed).length / ss.length) * 100);
 };
-const payload = (r, span, extra) => {
+const payload = (r, extra) => {
   const m = r.meta || {};
   return [
     ` data-pop="${noq(titleOf(r.p))}"`,
     m.desc ? ` data-desc="${noq(m.desc)}"` : '',
     ` data-ph="${noq(m.ph)}" data-tk="${noq(m.tk)}"`,
     ` data-cm="${noq(m.cm)}" data-rv="${noq(m.revTxt || m.rv)}"`,
-    m.st ? ` data-st="${noq(m.st)}"` : '',
-    m.due ? ` data-due="${noq(m.due)}"` : '',
-    span ? ` data-span="${noq(span)}"` : '',
+    m.dates ? ` data-dates="${noq(m.dates)}"` : '',
     extra || '',
   ].join('');
 };
@@ -33,7 +31,7 @@ const barHtml = (r, b, i, startMs, pct) => {
   const cls = pct < 100 ? ' is-open' : '';
   return [
     `<button class="ds-tl-bar${cls}" data-tl-open="${r.p.file}" data-tl-bout="${r.p.file}:${i}"`,
-    payload(r, span, ` data-tip="${noq(tip)}"`),
+    payload(r, ` data-tip="${noq(tip)}"`),
     ` style="${geomOf(b.start, b.end, startMs)};--tl-done:${pct}%"`,
     ` aria-label="${noq(tip)}"></button>`,
   ].join('');
@@ -44,7 +42,7 @@ const ghostHtml = (r, g, startMs) => {
   const extra = ` data-tl-ghost="${r.p.file}" data-tip="${noq(tip)}"`;
   return [
     `<button class="ds-tl-ghost${g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}"`,
-    payload(r, spanText(g.from, g.to), extra),
+    payload(r, extra),
     ` style="${geomOf(g.from, g.to, startMs)}" aria-label="${noq(tip)}"></button>`,
   ].join('');
 };
@@ -54,7 +52,7 @@ export const rowHtml = (r, startMs) => {
   const bars = r.bouts.map((b, i) => barHtml(r, b, i, startMs, pct)).join('');
   const label = [
     `<button class="ds-tl-label" data-tl-open="${r.p.file}"`,
-    payload(r, '', '') + ` aria-label="${noq(titleOf(r.p))}">`,
+    payload(r, '') + ` aria-label="${noq(titleOf(r.p))}">`,
     `<span class="ds-num">${esc(r.seq || r.p.id || '')}</span>`,
     `<span class="ds-tl-label-name">${esc(titleOf(r.p))}</span></button>`,
   ].join('');

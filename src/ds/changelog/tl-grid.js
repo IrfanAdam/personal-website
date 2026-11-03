@@ -43,10 +43,9 @@ export const geomOf = (s, e, startMs) => {
   const span = Math.max(Math.round((atMid(e) - startMs) / DAY) - off + 1, 2);
   return `--tl-off:${off};--tl-span:${span}`;
 };
-// Daily ticks: the number always owns its cell. The 1st adds a month stamp on
-// the band above, pinned to its own left edge so it can never reach a neighbour.
-// A month tick's text stays the bare month name — the sticky badge in tl-edges
-// reads textContent — so its day number rides in data-d and paints via ::after.
+// Daily ticks: the number owns its cell. The 1st instead names its month in the
+// same cell — that text is exactly what the sticky badge in tl-edges reads, so
+// the cell carries no day number and needs no data-d / ::after overlay.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const ticksHtml = (startMs, days) => Array.from({ length: days }, (_, d) => {
   const dt = new Date(startMs + d * DAY);
@@ -54,6 +53,5 @@ export const ticksHtml = (startMs, days) => Array.from({ length: days }, (_, d) 
   const at = `style="left:calc(${d} * var(--tl-day))"`;
   if (day !== 1) return `<span class="ds-tl-tick" ${at}>${day}</span>`;
   const mon = dt.toLocaleString('en', { month: 'short', timeZone: 'UTC' });
-  const stamp = `<span class="ds-tl-mon">${mon}</span>`;
-  return `<span class="ds-tl-tick is-month" data-d="${day}" ${at}>${stamp}</span>`;
+  return `<span class="ds-tl-tick is-month" ${at}><span class="ds-tl-mon">${mon}</span></span>`;
 }).join('');
