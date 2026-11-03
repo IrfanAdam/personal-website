@@ -1,0 +1,41 @@
+/* ADAM/DS — ds/changelog-mobile-filter · phone sheet · [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
+/* Exports: ≤720px sheet chrome, safe-area pad, 44px rows, day-chip row (desktop untouched). */
+/* — Day chip owns the row above the trigger — */
+@media (max-width: 720px) {
+  .ds-chips [data-day-clear] {
+    order: -1;
+    flex: 1 1 100%;
+  }
+  .ds-chips .ds-chip {
+    min-height: var(--size-tap);
+  }
+}
+/* — Sheet: fixed bottom, 70dvh cap, safe-area pad, above the drawer — */
+@media (max-width: 720px) {
+  .ds-tag-dropdown:not([hidden]) {
+    position: fixed;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--z-modal);
+    visibility: visible;
+    max-height: 70dvh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom));
+    background: var(--color-surface);
+  }
+  .ds-tag-option {
+    min-height: var(--size-tap);
+    align-items: center;
+  }
+  .ds-filter-tab {
+    min-height: var(--size-tap);
+  }
+  .ds-scrim:not([hidden]) {
+    min-width: 100vmax;
+    min-height: 100vmax;
+  }
+}

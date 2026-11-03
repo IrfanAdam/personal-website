@@ -1,0 +1,51 @@
+/* ADAM/DS — ds/changelog-mobile-cards · phone list · [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
+/* Exports: ≤720px card re-column, 44px targets, graph scroll (desktop untouched). */
+/* — Shell guard: the page never scrolls sideways; the graph scrolls itself — */
+@media (max-width: 720px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+}
+/* — Cards: title wraps ≤2 lines, tags own the next row — */
+@media (max-width: 720px) {
+  .ds-plan-grid [data-col="plan"] .ds-pick {
+    min-height: var(--size-tap);
+  }
+  .ds-plan-grid .ds-row {
+    flex-wrap: wrap;
+  }
+  .ds-plan-grid .ds-row b {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .ds-plan-grid .ds-row .ds-tags {
+    flex: 1 1 100%;
+    max-width: none;
+    margin-left: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .ds-plan-grid .ds-pick small {
+    display: block;
+  }
+}
+/* — Targets + graph: 44px chips, graph scrolls instead of the page — */
+@media (max-width: 720px) {
+  .ds-chips .ds-chip {
+    min-height: var(--size-tap);
+    box-sizing: border-box;
+  }
+  .ds-graph {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+}
