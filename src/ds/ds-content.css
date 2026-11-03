@@ -38,21 +38,45 @@
   max-width: var(--measure-ds-lede);
   margin: 0 0 var(--space-6);
 }
-.ds-status {
-  display: flex;
-  gap: var(--space-8);
-  flex-wrap: wrap;
-  margin: var(--space-14) 0 0;
+/* Task pane kicker: same voice as the rail subtext — micro mono, muted, no
+   case or tracking change, and the same tight gap to the title. */
+.ds-md p.ds-crumb {
+  margin: var(--space-6) 0 var(--space-4);
+  font-size: var(--text-micro);
+  line-height: var(--leading-mono);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--color-ink-muted);
+}
+/* Status: one canonical line — <fraction> · <verdict>. Fraction accent, verdict
+   quiet, done flips the verdict to accent, cancelled mutes and strikes it. */
+.ds-md p.ds-status {
+  margin: var(--space-4) 0 var(--space-16);
   font-family: var(--font-mono);
-  font-size: var(--text-label);
+  font-size: var(--text-micro);
+  line-height: var(--leading-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
-.ds-status i {
-  font-style: normal;
-  border: var(--border-hairline);
-  background: var(--color-surface);
-  padding: var(--space-3) var(--space-8);
+.ds-status-frac {
+  font-weight: var(--weight-semibold);
 }
-.ds-status i b { font-weight: 500; color: var(--color-accent); }
+.ds-status-sep {
+  color: var(--color-ink-subtle);
+}
+.ds-status-verdict {
+  color: var(--color-ink-muted);
+  font-weight: var(--weight-regular);
+}
+.ds-md p.ds-is-done .ds-status-verdict {
+  color: var(--color-accent);
+  font-weight: var(--weight-semibold);
+}
+.ds-md p.ds-is-cancelled .ds-status-verdict {
+  color: var(--color-ink-subtle);
+  text-decoration: line-through;
+}
 .ds-sec { margin-top: var(--space-42); padding-top: var(--space-16); border-top: var(--border-hairline); }
 .ds-sec > h2 {
   font-size: var(--text-h2);
@@ -73,7 +97,3 @@
   margin: var(--space-22) 0 var(--space-8);
 }
 .ds-sec p { line-height: var(--leading-prose); }
-.ds-md .ds-crumb {
-  margin: 0 0 var(--space-1);
-  font-size: var(--text-micro);
-}

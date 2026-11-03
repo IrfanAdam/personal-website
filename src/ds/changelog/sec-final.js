@@ -73,13 +73,10 @@ export const finalizeSection = (sec) => {
   if (htag === 'h3-task' && real.length === 1 && !carrierContent && !blocks.length) {
     const lone = real[0];
     const lt = taskTitleOf(lone.title);
-    const gatePart = suffix ? ` · ${esc(suffix.trim().replace(/^[✓·\s]+/, '').trim())}` : '';
-    const shipParen = lt.shipped ? ` (${lt.shipped})` : '';
-    let status = '<p class="ds-status ds-is-gate">0/1</p>';
-    if (lone.done) status = `<p class="ds-status ds-is-done">✓ DONE${esc(shipParen)}${gatePart}</p>`;
-    else if (lone.cancelled) {
-      status = `<p class="ds-status ds-is-cancelled">✗ cancelled${esc(shipParen)}${gatePart}</p>`;
-    } else if (suffix) status = gateOnlyLine(suffix);
+    const paren = lt.shipped ? ` (${lt.shipped})` : '';
+    let status = gateOnlyLine(suffix, '0/1');
+    if (lone.done) status = headStatus(`✓ done${paren}`, suffix);
+    else if (lone.cancelled) status = headStatus(`✗ cancelled${paren}`, suffix);
     head = `<h2>${fmtInline(lt.name || (lt.num ? `Task ${lt.num}` : 'Task'))}</h2>` + status;
     body += taskInner(lone);
   } else if (real.length) {

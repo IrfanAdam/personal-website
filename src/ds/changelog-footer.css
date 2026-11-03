@@ -1,0 +1,100 @@
+/* ADAM/DS — ds/changelog-footer · commits + evals timeline (drawer footer)
+   [plan:2026-11-02_192021-changelog-parity.md#phase-3] */
+/* Safepipe footer parity: one hairline spine, dated day groups, accent day
+   numbers. Scoped under .ds-panel — this page already owns a global
+   .ds-timeline overlay, so the reset keeps this footer panel in flow. */
+.ds-panel .ds-timeline {
+  position: static;
+  width: auto;
+  overflow: visible;
+  margin: var(--space-8) 0 0 var(--space-4);
+  padding-left: var(--space-12);
+  border-left: var(--border-hairline);
+  box-shadow: none;
+  animation: none;
+  font-family: var(--font-sans);
+}
+.ds-timeline-date {
+  margin: var(--space-8) 0 var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  list-style: none;
+}
+/* one bullet geometry for both day dots and eval rings, colour per kind */
+.ds-timeline-date::before,
+.ds-timeline-item--eval::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-12) - var(--space-4));
+  top: var(--space-6);
+  width: var(--space-7);
+  height: var(--space-7);
+  box-sizing: border-box;
+  border-radius: var(--radius-pill);
+}
+.ds-timeline-date::before { background: var(--color-accent); }
+.ds-timeline-item--eval::before {
+  background: var(--color-bg);
+  border: var(--space-1) solid var(--color-accent);
+}
+.ds-day-num {
+  color: var(--color-accent);
+  font-weight: var(--weight-extrabold);
+}
+.ds-timeline-item {
+  position: relative;
+  padding: var(--space-2) 0 var(--space-4);
+  font-size: var(--text-ds-body);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+.ds-timeline-item a {
+  margin-right: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: var(--space-1);
+}
+.ds-timeline-item small {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  line-height: var(--leading-mono);
+  color: var(--color-ink-muted);
+}
+.ds-timeline-item--iter {
+  margin-left: var(--space-12);
+  padding-left: var(--space-8);
+  border-left: var(--border-hairline);
+  position: relative;
+}
+.ds-timeline-item--iter::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-1) - var(--space-3));
+  top: var(--space-8);
+  width: var(--space-4);
+  border-top: var(--border-hairline);
+}
+/* day groups: the date line is the summary, caret turns with it */
+.ds-timeline-group > .ds-timeline-date::-webkit-details-marker { display: none; }
+.ds-timeline-group > .ds-timeline-date::marker { content: ""; }
+.ds-timeline-group:not([open]) > .ds-timeline-date .ds-caret { transform: rotate(0deg); }
+/* panel title: the .ds-caret span replaces the old ::before glyph */
+.ds-panel > .ds-panel-title::before { content: none; }
+.ds-panel > .ds-panel-title .ds-caret { margin-right: 0; }
+.ds-panel-num {
+  color: var(--color-accent);
+  font-weight: var(--weight-bold);
+}

@@ -27,6 +27,9 @@
     padding-left: var(--space-16);
     padding-right: var(--space-16);
   }
+  .ds-rail-foot {
+    padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom, 0px));
+  }
 }
 /* — Task prose: the pane owns the inset now; long tokens wrap, tables scroll — */
 @media (max-width: 720px) {

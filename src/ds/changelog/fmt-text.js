@@ -12,16 +12,21 @@ export const escHtml = (t) => esc(t)
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#39;');
 // — Inline spans —
+// Code spans are parked behind sentinels first so emphasis can still pair its
+// markers across a code span (e.g. `*Merged from `x`.*`).
 // [plan:2026-11-02_192021-changelog-parity.md#phase-6]
-export const fmtInline = (t) => String(t || '').split(/(`[^`\n]*`)/g).map((p, i) => {
-  if (i % 2 === 1) {
-    return `<code>${p.slice(1, -1)}</code>`;
-  }
-  return p
+export const fmtInline = (t) => {
+  const codes = [];
+  const src = String(t || '').replace(/`([^`\n]*)`/g, (_, c) => {
+    codes.push(c);
+    return `\u0000${codes.length - 1}\u0000`;
+  });
+  const out = src
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*\w])\*([^*\n]+?)\*/g, '$1<em>$2</em>')
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
-}).join('');
+  return out.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${codes[Number(i)]}</code>`);
+};
 // — Head matchers —
 // [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const LABEL_LINE = (ln) => ln.match(/^\*\*([^*]{1,80}?):\*\*\s?(.*)$/);

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T10:42:49.951Z",
+  "generated": "2026-11-03T11:11:25.915Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -340,7 +340,6 @@
       "title": "changelog detail",
       "tokens": [
         "--border-hairline",
-        "--color-accent",
         "--color-bg",
         "--color-ink",
         "--color-ink-muted",
@@ -350,7 +349,7 @@
         "--leading-body",
         "--leading-mono",
         "--leading-prose",
-        "--leading-snug",
+        "--leading-title",
         "--space-1",
         "--space-10",
         "--space-12",
@@ -366,9 +365,10 @@
         "--text-h2",
         "--text-micro",
         "--text-small",
-        "--tracking-heading",
         "--tracking-label",
-        "--tracking-mono"
+        "--tracking-mono",
+        "--tracking-title",
+        "--weight-semibold"
       ]
     },
     {
@@ -495,6 +495,46 @@
       ]
     },
     {
+      "id": "ds_changelog_footer",
+      "path": "src/ds/changelog/footer.js",
+      "layer": "component",
+      "route": null,
+      "title": "footer",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_footer",
+      "path": "src/ds/changelog-footer.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog footer",
+      "tokens": [
+        "--border-hairline",
+        "--color-accent",
+        "--color-bg",
+        "--color-ink",
+        "--color-ink-muted",
+        "--font-mono",
+        "--font-sans",
+        "--leading-mono",
+        "--radius-pill",
+        "--space-1",
+        "--space-12",
+        "--space-2",
+        "--space-3",
+        "--space-4",
+        "--space-6",
+        "--space-7",
+        "--space-8",
+        "--text-ds-body",
+        "--text-micro",
+        "--tracking-label",
+        "--weight-bold",
+        "--weight-extrabold",
+        "--weight-semibold"
+      ]
+    },
+    {
       "id": "ds_changelog_format",
       "path": "src/ds/changelog-format.js",
       "layer": "component",
@@ -537,15 +577,14 @@
         "--color-panel",
         "--color-surface",
         "--font-mono",
-        "--leading-mono",
         "--leading-snug",
-        "--space-1",
         "--space-10",
         "--space-2",
         "--space-6",
         "--space-8",
         "--text-micro",
-        "--tracking-mono"
+        "--tracking-mono",
+        "--weight-medium"
       ]
     },
     {
@@ -752,6 +791,7 @@
         "--color-panel",
         "--color-surface",
         "--font-mono",
+        "--leading-mono",
         "--radius-none",
         "--space-12",
         "--space-14",
@@ -1173,20 +1213,19 @@
         "--border-hairline",
         "--color-accent",
         "--color-ink-muted",
-        "--color-surface",
+        "--color-ink-subtle",
         "--font-mono",
         "--leading-display",
+        "--leading-mono",
         "--leading-prose",
         "--leading-snug",
         "--measure-ds-lede",
         "--measure-prose",
-        "--space-1",
         "--space-10",
         "--space-12",
         "--space-14",
         "--space-16",
         "--space-22",
-        "--space-3",
         "--space-4",
         "--space-42",
         "--space-6",
@@ -1197,13 +1236,15 @@
         "--text-ds-lede",
         "--text-h2",
         "--text-h3",
-        "--text-label",
         "--text-meta",
         "--text-micro",
         "--tracking-display",
         "--tracking-heading",
         "--tracking-label",
+        "--tracking-mono",
         "--weight-bold",
+        "--weight-regular",
+        "--weight-semibold",
         "--z-ds-controls"
       ]
     },
@@ -5253,6 +5294,26 @@
       "kind": "tokens"
     },
     {
+      "from": "ds_changelog_footer",
+      "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_footer",
+      "to": "ds_changelog_parse",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_footer",
+      "to": "styles_footer",
+      "kind": "styles"
+    },
+    {
+      "from": "ds_changelog_footer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_changelog_graph",
       "to": "ds_changelog_links",
       "kind": "imports"
@@ -5445,6 +5506,11 @@
     {
       "from": "ds_changelog_panels",
       "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_panels",
+      "to": "ds_changelog_footer",
       "kind": "imports"
     },
     {

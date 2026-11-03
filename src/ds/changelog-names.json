@@ -186,5 +186,9 @@
   "2026-11-02_192021-changelog-parity.md": {
     "title": "Changelog parity — crm/safepipe features into personal log",
     "purpose": "Timeline, gates, evals, Due, honest detail, task folds, mobile"
+  },
+  "2026-11-02_000000-lump-sum-builds.md": {
+    "title": "Lump-sum builds, week of Nov 2: ad-hoc shipments",
+    "purpose": "Drawer panel: rail rhythm, pane type, safepipe footer"
   }
 }

@@ -1,9 +1,11 @@
-/* ADAM/DS — ds/changelog/panels · evals + commits panels · [plan:2026-11-02_192021-changelog-parity.md#phase-3] */
-// Exports: stripGateThread, renderEvals
+/* ADAM/DS — ds/changelog/panels · evals timeline panel (drawer footer)
+   [plan:2026-11-02_192021-changelog-parity.md#phase-3] */
+// Exports: stripGateThread, renderEvals, renderCommits (re-export of footer.js)
 import { esc } from './esc.js';
 import { fmtDate } from '../changelog-parse.js';
 import { parseGates } from './gates.js';
 import { dueOf } from './due.js';
+export { renderCommits } from './footer.js';
 const dueAttr = (head, body) => {
   try {
     const d = dueOf({ head, body });
@@ -31,11 +33,6 @@ const revText = (t) => {
   const s = String(t).replace(/^\s*-\s*/, '').replace(/^REF GATE\s+\d+\s*(\([^)]*\))?\s*/i, '');
   return s.replace(/^[·—–-]\s*rev\s*\d{4}-\d{2}-\d{2}\s*/i, '').replace(/^["“]+|["”]+$/g, '').trim();
 };
-const itemHtml = (kind, text, small) => {
-  const sm = small ? `<small>${esc(small)}</small>` : '';
-  return `<div class="ds-evals-item ds-evals-item--${kind}"><span>${esc(text)}</span>${sm}</div>`;
-};
-const dayOpen = (t) => `<details class="ds-evals-group" open><summary class="ds-evals-date">${t}</summary>`;
 const histRevs = (planFile, head, history) => {
   const rows = [];
   const entries = (history && history[planFile]) || [];
@@ -49,6 +46,18 @@ const histRevs = (planFile, head, history) => {
   }
   return rows;
 };
+// — Timeline rows: eval = accent ring bullet, iter = indented branch under it —
+const row = (kind, text, small) => {
+  const cls = `ds-timeline-item ds-timeline-item--${kind}`;
+  const sm = small ? `<small>${esc(small)}</small>` : '';
+  return `<div class="${cls}"><span>${esc(text)}</span>${sm}</div>`;
+};
+const group = (dayNum, dateLabel, count, inner) => [
+  `<details class="ds-timeline-group" open><summary class="ds-timeline-date">`,
+  `<span class="ds-caret">‹›</span><span class="ds-day-num">Day ${dayNum}</span>`,
+  ` · ${dateLabel} · ${count}</summary>`,
+  `<div class="ds-timeline-items">${inner}</div></details>`,
+].join('');
 // [plan:2026-11-02_192021-changelog-parity.md#phase-3]
 export const renderEvals = (planFile, head, body, history) => {
   const notes = revNotes(head, body).map((t) => ({ date: revDate(t), text: revText(t) }));
@@ -58,15 +67,15 @@ export const renderEvals = (planFile, head, body, history) => {
   const groups = dates.map((d, di) => {
     const ps = notes.filter((r) => r.date === d);
     const its = revs.filter((r) => r.date === d);
-    const label = d ? esc(fmtDate(d) || d) : 'Undated';
-    const pe = ps.map((r) => itemHtml('eval', r.text)).join('');
-    const ie = its.map((r) => itemHtml('iter', r.text, d)).join('');
-    const count = ps.length + its.length;
-    const open = dayOpen(`Day ${dates.length - di} · ${label} · ${count}`);
-    return `${open}<div class="ds-evals-items">${pe}${ie}</div></details>`;
+    const label = esc(d ? fmtDate(d) || d : 'Undated');
+    const inner = ps.map((r) => row('eval', r.text)).join('')
+      + its.map((r) => row('iter', r.text, d)).join('');
+    return group(dates.length - di, label, ps.length + its.length, inner);
   }).join('');
   const n = notes.length + revs.length;
-  const sum = `<summary class="ds-panel-title">Evals · ${n}</summary>`;
-  const inner = `<div class="ds-evals-list">${groups}</div>`;
-  return `<details class="ds-panel ds-evals"${dueAttr(head, body)} open>${sum}${inner}</details>`;
+  const sum = `<summary class="ds-panel-title"><span class="ds-caret">‹›</span>Evals · `
+    + `<span class="ds-panel-num">${n}</span></summary>`;
+  const box = `<div class="ds-timeline">${groups}</div>`;
+  const open = `<details class="ds-panel ds-evals ds-revs"${dueAttr(head, body)} open>`;
+  return `<hr class="ds-hr">${open}${sum}${box}</details>`;
 };

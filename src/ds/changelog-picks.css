@@ -58,6 +58,18 @@
 }
 .ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); }
 .ds-pick.on small { color: var(--color-ink-muted); }
+/* Rail subtext: always exactly one ellipsised line, a fixed hairline gap under
+   the title, so a long phase meta can never break the row rhythm or crop. */
+.ds-rail button.ds-pick > small {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: var(--space-4);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: var(--leading-mono);
+}
 .ds-pick.is-open .ds-num { color: var(--color-ink-muted); }
 .ds-hero.wide .lede { max-width: none; }
 .ds-commits {

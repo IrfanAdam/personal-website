@@ -10,7 +10,7 @@ import { orphanRail } from './raw-detail.js';
 import { renderSection } from './render-section.js';
 import { sectionRaw } from './sec-raw.js';
 import { suffixOf } from './sec-status.js';
-import { renderEvals } from './panels.js';
+import { renderEvals, renderCommits } from './panels.js';
 import { parseGates } from './gates.js';
 import { dueOf } from './due.js';
 import { drawerHeadHtml, railHeadHtml } from './drawer-head.js';
@@ -47,8 +47,10 @@ export function paintDetail(root, ctx) {
     const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0);
     const frac = state(s.body), done = isDone(frac), cancelled = /✗/.test(s.head);
     const gate = gateTag(s.head, s.body);
-    const meta = [frac, hsS.length ? `${hsS.length} commit${hsS.length > 1 ? 's' : ''}` : '',
-      gate].filter(Boolean).join(' · ');
+    const nc = hsS.length;
+    const bits = [`${nc} commit${nc === 1 ? '' : 's'}`];
+    if (!done && gate) bits.push(gate);
+    const meta = bits.filter(Boolean).join(' · ');
     let cls = ' is-open is-pending';
     if (done) cls = ' is-done';
     else if (cancelled) cls = ' is-cancelled';
@@ -72,7 +74,7 @@ export function paintDetail(root, ctx) {
     ? renderSection(raw, { suffix, frac })
     : renderSection(`## ${sprint.head}\n${sprint.body}`, { suffix, frac });
   const evals = renderEvals(plan.file, sprint.head, sprint.body, history);
-  const commitsHtml = badges(hs || []);
+  const commitsHtml = renderCommits(hs || []);
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
   root.querySelector('[data-col="tasks"]').innerHTML = [
     drawerHeadHtml(stage),
