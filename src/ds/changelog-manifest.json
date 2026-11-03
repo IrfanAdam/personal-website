@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T14:26:27.782Z",
+ "generated": "2026-11-03T15:50:13.389Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "f749099",
+   "full": "f7490992f861fd151d40260969f28e5441317190",
+   "date": "2026-11-03",
+   "time": "21:20",
+   "subject": "docs(plan): consolidate drawer panel into parity Phase 13, cancel lump-sum",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-13}"
+  },
   {
    "sha": "945745a",
    "full": "945745a878e2a965fa25845ec649531399007d7e",
@@ -148,8 +157,8 @@
    "date": "2026-11-03",
    "time": "16:56",
    "subject": "fix(changelog): even rail rows, single status, tidy footer markers",
-   "plan": "2026-11-02_000000-lump-sum-builds.md",
-   "anchor": "{#phase-1}"
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-13}"
   },
   {
    "sha": "317667d",
@@ -157,8 +166,8 @@
    "date": "2026-11-03",
    "time": "16:42",
    "subject": "fix(changelog): drawer panel — rail rhythm, pane type, safepipe footer",
-   "plan": "2026-11-02_000000-lump-sum-builds.md",
-   "anchor": "{#phase-1}"
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-13}"
   },
   {
    "sha": "ca32b24",
