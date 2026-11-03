@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T18:18:30.998Z",
+  "generated": "2026-11-03T10:19:45.795Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -363,7 +363,7 @@
         "--space-8",
         "--text-ds-body",
         "--text-ds-table",
-        "--text-h3",
+        "--text-h2",
         "--text-micro",
         "--text-small",
         "--tracking-heading",
@@ -401,6 +401,14 @@
         "--z-ds-drawer",
         "--z-ds-scrim"
       ]
+    },
+    {
+      "id": "ds_changelog_drawer_head",
+      "path": "src/ds/changelog/drawer-head.js",
+      "layer": "component",
+      "route": null,
+      "title": "drawer head",
+      "tokens": []
     },
     {
       "id": "ds_changelog_due",
@@ -563,6 +571,89 @@
       "route": null,
       "title": "changelog links",
       "tokens": []
+    },
+    {
+      "id": "ds_changelog_mobile",
+      "path": "src/ds/changelog/mobile.js",
+      "layer": "component",
+      "route": null,
+      "title": "mobile",
+      "tokens": []
+    },
+    {
+      "id": "ds_changelog_mobile_cards",
+      "path": "src/ds/changelog-mobile-cards.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile cards",
+      "tokens": [
+        "--size-tap",
+        "--space-12",
+        "--space-16",
+        "--space-2",
+        "--space-32",
+        "--space-8"
+      ]
+    },
+    {
+      "id": "ds_changelog_mobile_drawer",
+      "path": "src/ds/changelog-mobile-drawer.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile drawer",
+      "tokens": [
+        "--color-bg",
+        "--dur-glide",
+        "--ease-signature",
+        "--size-tap",
+        "--space-30"
+      ]
+    },
+    {
+      "id": "ds_changelog_mobile_filter",
+      "path": "src/ds/changelog-mobile-filter.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile filter",
+      "tokens": [
+        "--color-surface",
+        "--radius-sm",
+        "--size-tap",
+        "--space-16",
+        "--z-modal"
+      ]
+    },
+    {
+      "id": "ds_changelog_mobile_graph",
+      "path": "src/ds/changelog-mobile-graph.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile graph",
+      "tokens": [
+        "--color-bg",
+        "--size-tap",
+        "--space-12",
+        "--space-16",
+        "--space-32",
+        "--space-4",
+        "--space-6"
+      ]
+    },
+    {
+      "id": "ds_changelog_mobile_timeline",
+      "path": "src/ds/changelog-mobile-timeline.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile timeline",
+      "tokens": [
+        "--size-tap",
+        "--space-160",
+        "--space-20",
+        "--space-32",
+        "--space-4",
+        "--space-8",
+        "--tl-label"
+      ]
     },
     {
       "id": "ds_changelog_paint",
@@ -1055,6 +1146,7 @@
         "--leading-snug",
         "--measure-ds-lede",
         "--measure-prose",
+        "--space-1",
         "--space-10",
         "--space-12",
         "--space-14",
@@ -1073,6 +1165,7 @@
         "--text-h3",
         "--text-label",
         "--text-meta",
+        "--text-micro",
         "--tracking-display",
         "--tracking-heading",
         "--tracking-label",
@@ -5061,9 +5154,24 @@
       "kind": "imports"
     },
     {
+      "from": "ds_changelog_close_top",
+      "to": "ds_changelog_mobile",
+      "kind": "imports"
+    },
+    {
       "from": "ds_changelog_detail",
       "to": "styles_tokens",
       "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_drawer_head",
+      "to": "ds_changelog_esc",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_drawer_head",
+      "to": "ds_changelog_mobile",
+      "kind": "imports"
     },
     {
       "from": "ds_changelog_drawer",
@@ -5088,6 +5196,11 @@
     {
       "from": "ds_changelog_events",
       "to": "ds_changelog_hum",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_events",
+      "to": "ds_changelog_mobile",
       "kind": "imports"
     },
     {
@@ -5136,6 +5249,31 @@
       "kind": "imports"
     },
     {
+      "from": "ds_changelog_mobile_cards",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_mobile_drawer",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_mobile_filter",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_mobile_graph",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_mobile_timeline",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
       "from": "ds_changelog_paint_chips",
       "to": "ds_changelog_filter_drawer",
       "kind": "imports"
@@ -5153,6 +5291,11 @@
     {
       "from": "ds_changelog_paint_chips",
       "to": "ds_changelog_raw_detail",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_changelog_paint_detail",
+      "to": "ds_changelog_drawer_head",
       "kind": "imports"
     },
     {
@@ -6778,6 +6921,11 @@
     {
       "from": "ds_pages_changelog",
       "to": "ds_changelog_boot",
+      "kind": "imports"
+    },
+    {
+      "from": "ds_pages_changelog",
+      "to": "ds_changelog_drawer_head",
       "kind": "imports"
     },
     {
