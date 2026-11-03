@@ -45,9 +45,12 @@ const place = (el, x, y, pad) => {
   el.style.left = `${Math.max(8, px)}px`;
   el.style.top = `${Math.max(8, py)}px`;
 };
-// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-10]
 export const bindHover = (root) => {
   const move = (e) => {
+    // Touch never fires a leave, so a tap-painted tip would latch forever:
+    // pointer-gate the whole pass instead of deleting the desktop hover.
+    if (e.pointerType && e.pointerType !== 'mouse') return;
     const pv = root.querySelector('[data-tl-pop]');
     if (pv) {
       const pop = e.target.closest('[data-pop]');
@@ -68,10 +71,12 @@ export const bindHover = (root) => {
     const pv = root.querySelector('[data-tl-pop]');
     if (pv) pv.hidden = true;
   };
-  root.addEventListener('mousemove', move);
-  document.addEventListener('mouseleave', hide);
+  root.addEventListener('pointermove', move);
+  root.addEventListener('pointerdown', hide);
+  document.addEventListener('pointerleave', hide);
   return () => {
-    root.removeEventListener('mousemove', move);
-    document.removeEventListener('mouseleave', hide);
+    root.removeEventListener('pointermove', move);
+    root.removeEventListener('pointerdown', hide);
+    document.removeEventListener('pointerleave', hide);
   };
 };

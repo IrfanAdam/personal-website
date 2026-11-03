@@ -1,0 +1,36 @@
+/* ADAM/DS — ds/changelog-mobile-graph · phone activity graph ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
+/* Exports: none — ≤720px full-bleed strip with a pinned weekday column. */
+/* — Strip: bleeds to both page edges; only the weeks scroll — */
+@media (max-width: 720px) {
+  .ds-graph {
+    width: calc(100% + var(--space-32));
+    margin-left: calc(-1 * var(--space-16));
+    margin-right: calc(-1 * var(--space-16));
+    padding: var(--space-4) var(--space-16) var(--space-12);
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: var(--space-16);
+  }
+}
+/* — Weekday column: stays put while the weeks pass under it — */
+@media (max-width: 720px) {
+  .ds-dows {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--color-bg);
+  }
+}
+/* — Chips: tap-sized targets; the row wraps rather than squeezing labels — */
+@media (max-width: 720px) {
+  .ds-chips {
+    gap: var(--space-6);
+  }
+  .ds-chip {
+    min-height: var(--size-tap);
+    box-sizing: border-box;
+  }
+}

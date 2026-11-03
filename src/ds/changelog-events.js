@@ -6,6 +6,7 @@ import { buildDeepLink } from './changelog/deep-links.js';
 import { bindHover } from './changelog/hover.js';
 import { revealTrack } from './changelog/tl-edges.js';
 import { closeTop } from './changelog/close-top.js';
+import { isMobile, stepBack } from './changelog/mobile.js';
 // — Events —
 // Branch order matters: specific [data-*] branches run before the generic
 // .ds-chip fallthrough (the filter trigger carries .ds-chip itself).
@@ -36,6 +37,12 @@ export function bindChangelogEvents(root, st, helpers) {
       const sel = st.view === 'timeline' ? { view: 'timeline' } : {};
       try { history.replaceState(null, '', buildDeepLink(sel)); } catch {}
       doPaint(root); return; }
+    // Phone: back steps one drawer level, then closes. Desktop never shows it.
+    // [plan:2026-11-02_192021-changelog-parity.md#phase-10]
+    if (e.target.closest('[data-mback]')) {
+      if (stepBack(st)) { st.stage = 'list'; doPaint(root); } else close();
+      return;
+    }
     if (e.target.closest('[data-tl-close]') || e.target.closest('[data-close]')
       || e.target.closest('[data-scrim]')) { close(); return; }
     const te = e.target.closest('[data-tl-edge]');
@@ -45,7 +52,8 @@ export function bindChangelogEvents(root, st, helpers) {
     const to = e.target.closest('[data-tl-open]');
     if (to) { const c = cur();
       const i = c.list.findIndex((p) => p.file === to.dataset.tlOpen);
-      if (i > -1) { st.sel = [i, 0]; st.open = true; st.stage = 'tasks'; }
+      if (i > -1) { st.sel = [i, 0]; st.open = true;
+        st.stage = isMobile() ? 'list' : 'tasks'; }
       const sc = root.querySelector('.ds-tl-scroll');
       st.tlScroll = sc ? sc.scrollLeft : 0;
       st.returnView = st.view;
@@ -58,17 +66,12 @@ export function bindChangelogEvents(root, st, helpers) {
         st.day = '';
       } else { st.active.has(t) ? st.active.delete(t) : st.active.add(t);
       } st.sel = [0, 0]; doPaint(root); return; }
-    if (e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { close(); return; }
     if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
-    const step = e.target.closest('[data-step]');
-    if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
-        Math.min(Math.max(c.si + Number(step.dataset.step), 0),
-          c.sprints.length - 1)]; st.open = true; doPaint(root); return; }
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const col = b.closest('[data-col]'), i = [...col.querySelectorAll('.ds-pick')].indexOf(b);
     if (col.dataset.col === 'plan') { st.sel = [i,
-        i === st.sel[0] ? st.sel[1] : 0]; st.open = true; st.stage = 'tasks'; } else { st.sel = [st.sel[0],
+        i === st.sel[0] ? st.sel[1] : 0]; st.open = true;
+      st.stage = isMobile() ? 'list' : 'tasks'; } else { st.sel = [st.sel[0],
         i]; st.stage = 'tasks'; }
     doPaint(root);
   };

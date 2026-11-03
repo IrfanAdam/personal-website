@@ -10,6 +10,7 @@ import { goal, split, parseMeta } from './changelog-parse.js';
 import { paint } from './changelog-paint.js';
 import { bindChangelogEvents } from './changelog-events.js';
 import { planStatus } from './changelog/raw-detail.js';
+import { syncDrawerLevels } from './changelog/drawer-head.js';
 import { paintTimeline } from './changelog/timeline-paint.js';
 import { bootState, bootPoll } from './changelog/boot.js';
 
@@ -37,19 +38,17 @@ const plans = entries.map(([p, md]) => {
 }).filter((pl) => pl.sprints.length && !HIDDEN.test(pl.raw));
 const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).length]).filter(([, n]) => n);
 // [plan:2026-11-02_192021-changelog-parity#phase-4]
-const st = { active: new Set(), day: '', sel: [0, 0], open: false, stage: 'list',
+const st = { active: new Set(), day: '', sel: [0, 0], open: false, stage: 'list', prevStage: 'list',
   view: 'list', status: new Set(), filterTab: 'tags', filterOpen: false, tlSel: null,
   returnView: '', tlScroll: null };
-const visiblePlans = () => plans
-  .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
-    && (!st.status.size || st.status.has(planStatus(p)))
-    && (!st.day || p.date === st.day || commits.some((c) => c.plan === p.file && c.date === st.day)));
-// The timeline is a secondary view: it inherits tags + status but never the
-// transient day filter, so a bar click can never target a hidden plan.
+// One predicate pair for both views: tags + status apply everywhere; the day
+// filter is transient and never hides a timeline bar's plan.
 // [plan:2026-11-02_192021-changelog-parity#phase-4]
-const timelinePlans = () => plans
-  .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
-    && (!st.status.size || st.status.has(planStatus(p))));
+const tagHit = (p) => !st.active.size || p.tags.some((t) => st.active.has(t));
+const statHit = (p) => !st.status.size || st.status.has(planStatus(p));
+const visiblePlans = () => plans.filter((p) => tagHit(p) && statHit(p)
+  && (!st.day || p.date === st.day || commits.some((c) => c.plan === p.file && c.date === st.day)));
+const timelinePlans = () => plans.filter((p) => tagHit(p) && statHit(p));
 const visibleSprints = (plan) => {
   const ss = st.active.size ? plan.sprints.filter((s) => s.tags.some((t) => st.active.has(t))) : plan.sprints;
   return ss.length ? ss : plan.sprints;
@@ -74,9 +73,11 @@ export function render() {
 function doPaint(root) {
   const { list, pi, plan, sprints, si } = cur();
   st.sel = [pi, si];
+  syncDrawerLevels(root, st.stage, st.prevStage);
   paint(root, { list, pi, plan, sprints, si, active: st.active, day: st.day,
     sel: st.sel, open: st.open, stage: st.stage, counts, plans, texts,
     status: st.status, filterTab: st.filterTab, filterOpen: st.filterOpen, view: st.view });
+  st.prevStage = st.stage;
   const tl = root.querySelector('[data-col="timeline"]');
   if (tl) {
     if (st.view === 'timeline') {

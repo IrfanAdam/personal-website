@@ -1,5 +1,6 @@
-/* ADAM/DS — ds/changelog-mobile-cards · phone list · [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
-/* Exports: ≤720px card re-column, 44px targets, graph scroll (desktop untouched). */
+/* ADAM/DS — ds/changelog-mobile-cards · phone list + graph ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
+/* Exports: none — ≤720px card re-column, full-bleed graph, tap targets. */
 /* — Shell guard: the page never scrolls sideways; the graph scrolls itself — */
 @media (max-width: 720px) {
   html,
@@ -8,44 +9,66 @@
     overflow-x: clip;
   }
 }
-/* — Cards: title wraps ≤2 lines, tags own the next row — */
+/* — Cards: one leaf per row, so a title never shares a cell with its tags.
+   Explicit grid-row on every leaf: a column-only override lets the tags and
+   the meta line overprint the wrapped title. — */
 @media (max-width: 720px) {
-  .ds-plan-grid [data-col="plan"] .ds-pick {
-    min-height: var(--size-tap);
+  .ds-plan-grid {
+    width: calc(100% + var(--space-32));
+    margin-left: calc(-1 * var(--space-16));
+    margin-right: calc(-1 * var(--space-16));
+    gap: 0;
   }
-  .ds-plan-grid .ds-row {
-    flex-wrap: wrap;
-  }
-  .ds-plan-grid .ds-row b {
-    flex: 1 1 auto;
+  .ds-plan-grid .ds-col {
     min-width: 0;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+  }
+  .ds-plan-grid .ds-pick {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--space-8);
+    row-gap: var(--space-2);
+    min-height: var(--size-tap);
+    padding: var(--space-12) var(--space-16);
+  }
+  .ds-plan-grid .ds-pick .ds-row,
+  .ds-plan-grid .ds-pick small {
+    display: contents;
+  }
+  .ds-plan-grid .ds-pick .ds-num {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .ds-plan-grid .ds-pick b {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-width: 0;
     white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
     overflow-wrap: anywhere;
   }
-  .ds-plan-grid .ds-row .ds-tags {
-    flex: 1 1 100%;
+  .ds-plan-grid .ds-pick .ds-tags {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: start;
     max-width: none;
     margin-left: 0;
+    text-align: left;
     white-space: normal;
-    overflow-wrap: anywhere;
+    overflow: visible;
+    text-overflow: clip;
   }
-  .ds-plan-grid .ds-pick small {
-    display: block;
+  .ds-plan-grid .ds-pick .ds-date {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    white-space: normal;
   }
-}
-/* — Targets + graph: 44px chips, graph scrolls instead of the page — */
-@media (max-width: 720px) {
-  .ds-chips .ds-chip {
-    min-height: var(--size-tap);
-    box-sizing: border-box;
+  .ds-plan-grid .ds-pick .ds-state {
+    grid-column: 1 / -1;
+    grid-row: 5;
+    white-space: normal;
   }
-  .ds-graph {
-    max-width: 100%;
-    box-sizing: border-box;
-    overflow-x: auto;
+  .ds-plan-grid .ds-pick .ds-state::before {
+    content: "";
   }
 }
