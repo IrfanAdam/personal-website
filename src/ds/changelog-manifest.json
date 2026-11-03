@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T11:13:06.326Z",
+ "generated": "2026-11-03T11:26:39.524Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "a28b770",
+   "full": "a28b770efb6cef358703292fcae4b9613744efad",
+   "date": "2026-11-03",
+   "time": "16:56",
+   "subject": "fix(changelog): even rail rows, single status, tidy footer markers",
+   "plan": "2026-11-02_000000-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "317667d",
    "full": "317667d0eb1186fecf3d6e4617172da18d612123",
