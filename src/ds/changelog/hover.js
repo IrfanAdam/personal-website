@@ -90,9 +90,11 @@ export const bindHover = (root) => {
   root.addEventListener('pointermove', move);
   root.addEventListener('pointerdown', hide);
   document.addEventListener('pointerleave', hide);
+  window.addEventListener('blur', hide); // alt-tab away fires no pointer event
   return () => {
     root.removeEventListener('pointermove', move);
     root.removeEventListener('pointerdown', hide);
     document.removeEventListener('pointerleave', hide);
+    window.removeEventListener('blur', hide);
   };
 };

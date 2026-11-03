@@ -46,14 +46,21 @@
 .ds-tl-edge {
   position: sticky; display: inline-flex; align-items: center; justify-content: center;
   width: var(--space-26); height: var(--space-26); padding: 0;
-  margin: calc((var(--space-30) - var(--space-26)) / 2) 0 0;
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-ink); background: var(--color-surface);
   border: var(--border-hairline); border-radius: var(--radius-sm);
   cursor: pointer; z-index: 4;
+  outline-offset: calc(var(--space-1) * -1);
 }
 .ds-tl-edge.is-l { left: var(--tl-label); }
 .ds-tl-edge.is-r { right: var(--space-8); margin-left: auto; }
+/* Rows, bars and ghosts answer the cursor; a chip that only moved the pointer
+   read as static. Ink edge + tint on hover, token ring inset on focus. */
+.ds-tl-edge:hover {
+  border-color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-ink) 6%, var(--color-surface));
+}
+.ds-tl-edge:focus-visible { outline: var(--border-focus); }
 .ds-tl-edge[hidden] { display: none; }
 @keyframes ds-tl-nudge-fwd { from { transform: translateX(var(--space-8)); } to { transform: translateX(0); } }
 @keyframes ds-tl-nudge-back {

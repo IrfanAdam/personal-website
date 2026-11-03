@@ -48,16 +48,16 @@
   line-height: var(--space-22); letter-spacing: var(--tracking-mono); color: var(--color-ink-muted);
   text-transform: uppercase; border-right: var(--border-hairline);
 }
-/* Pins the month at the column edge with no reserved width; its chip hides the sliding cell. */
+/* Pins the month at the edge with no reserved width; its chip is opaque, then fades. */
 .ds-tl-curmonth {
   position: sticky; left: var(--tl-label); z-index: var(--z-ds-side); flex: none;
   width: 0; font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700;
   line-height: var(--space-22); white-space: nowrap; color: var(--color-ink);
 }
 .ds-tl-curmonth::before {
-  content: ""; position: absolute; inset: 0 auto 0 0; z-index: -1; width: 2em; background: var(--color-bg);
+  content: ""; position: absolute; inset: 0 auto 0 0; z-index: -1; width: 2.7em;
+  background: linear-gradient(90deg, var(--color-bg) 2em, transparent 2.7em); /* 0.7em skirt */
 }
-.ds-tl-curmonth[hidden] { display: none; }
 /* One line of chrome: the day numbers. Months ride inside their own 1st cell. */
 .ds-tl-ticks {
   position: relative; flex: none; height: var(--space-22);

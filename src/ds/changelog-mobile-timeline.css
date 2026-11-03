@@ -1,6 +1,6 @@
 /* ADAM/DS — ds/changelog-mobile-timeline · phone timeline destination ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-11] */
-/* Exports: none — max-width 720 overrides for changelog-timeline* hooks */
+/* Exports: none — ≤720 overrides + 721–900 ✕ tap target for changelog-timeline* hooks */
 /* — Panel: full-bleed destination — */
 @media (max-width: 720px) {
   .ds-timeline {
@@ -24,6 +24,8 @@
     flex-wrap: nowrap;
     gap: var(--space-6);
     padding: var(--space-10) var(--space-16);
+    padding-left: max(var(--space-16), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-16), env(safe-area-inset-right, 0px));
   }
   .ds-tl-head b {
     flex: 1 1 auto;
@@ -66,5 +68,17 @@
     max-width: calc(100vw - var(--space-32));
     max-height: 40dvh;
     overflow: auto;
+  }
+}
+/* — Tablet: past the phone breakpoint the ✕ shrinks to label size; keep a
+   finger-sized target on touch-width panels — */
+@media (min-width: 721px) and (max-width: 900px) {
+  .ds-tl-head button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--size-tap);
+    min-height: var(--size-tap);
+    padding: 0;
   }
 }
