@@ -54,7 +54,9 @@ export const laneMeta = (p, commits = []) => {
   const end = last && last > p.date ? last : p.date;
   const revs = (history[p.file] || []).length;
   const revTxt = revs === 1 ? '1 rev' : `${revs} revs`;
-  const st = ps === 'done' ? `Done ${dPart(end).t}` : ST[ps];
+  // A Modified date already owns the finish day; only single-day work needs the
+  // status to carry it, so the interpunct line never repeats a date.
+  const st = ps === 'done' && end === p.date ? `Done ${dPart(end).t}` : ST[ps];
   const due = dueOfPlan(p);
   return {
     title: p.title || p.file,
