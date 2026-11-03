@@ -525,6 +525,41 @@ once they ran.
 
 ---
 
+## Phase 13 — Drawer panel parity {#phase-13}
+
+*Tags: Component, Layout*
+
+*Consolidated from weekly lump-sum — the drawer panel is parity scope, not ad-hoc. One shipment rebuilt rail/rhythm/pane type and the safepipe footer; the follow-up evened rail rows, collapsed status to one line and tidied the footer markers.*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 34 | Drawer panel: rail rhythm, pane typography, safepipe footer | rail rows share one rhythm with hanging-indent title and never-cropped subtext; kicker matches rail subtext at 10.5px / same top offset; phase title 28px; one status line (`frac · verdict`); commits + evals render as safepipe day-grouped timelines with sha links, subjects and stamps |
+| 35 | Drawer panel follow-up: even rail rows, single status, tidy footer markers | rail rows 60px, single `frac · verdict` line, subtext one line ellipsised, footer day groups with 12px topic/hash meta and accent-ring eval bullets, no document overflow at 1280/390/320 |
+
+### Task 34: Drawer panel: rail rhythm, pane typography, safepipe footer ✓ done
+
+*2026-11-03 · fix(changelog): drawer panel — rail rhythm, pane type, safepipe footer*
+
+**Objective:** The panel read as three unrelated layouts: rail titles wrapped under the phase number with the subtext pushed onto a second line and sometimes cropped, the pane kicker sat at a different size/offset than the rail meta, the phase title was undersized, status appeared in four shapes (`frac`, `GATE OPEN`, `✓ DONE`, chips), and the footer printed bare commit ids with no structure. Rebuild each: rail as a two-column grid (number | title) with a clamped two-line title, a single ellipsised subtext line and one padding rhythm; pane kicker locked to the rail subtext's 10.5px mono voice and 24px top offset; title at `calc(var(--text-h2) * 1.4)`; `headStatus`/`gateOnlyLine` collapsed to one `frac · verdict` line where the fraction carries the accent; footer rebuilt to the safepipe timeline model (`<details>` panel → `Day N · date · count` groups → `.ds-timeline-item` rows; commits carry sha link + subject + stamp, evals keep accent-ring bullets and indented iteration branches). Inline emphasis now pairs across code spans so `*Merged from …*` renders as a footnote instead of literal asterisks.
+
+**Files:** `src/ds/changelog-hierarchy.css`, `changelog-picks.css`, `ds-content.css`, `changelog-detail.css`, `changelog-footer.css` (new), `src/ds/changelog/footer.js` (new), `panels.js`, `sec-status.js`, `sec-final.js`, `fmt-text.js`, `paint-detail.js`, `changelog-mobile-drawer-body.css`, `ds/index.html`
+
+**Verify:** `lint:manage` + `lint:tokens` green (0 violations, all files ≤100 lines); `npm test` build green; `ds:track` 485/485 linked, 0 wip; browser probes at 1280/390/320 — kicker and rail subtext both 10.5px at y=24, rail rows 60px with `small` one line, no document h-overflow, drawer scrollWidth clipped.
+
+### Task 35: Drawer panel follow-up: even rail rows, single status, tidy footer markers ✓ done
+
+*2026-11-03 · fix(changelog): even rail rows, single status, tidy footer markers*
+
+**Objective:** Follow-up after the main shipment: rail rows evened to 60px with uniform padding rhythm, `headStatus`/`gateOnlyLine` collapsed to a single `frac · verdict` line (fraction in accent), subtext forced to one ellipsised line, footer `DsFooter` day groups tightened with 12px de-emphasized topic/hash meta and 7px accent-ring eval bullets, prose clamps kept and inline emphasis pairing preserved.
+
+**Files:** `src/ds/changelog-footer.css`, `changelog-hierarchy.css`, `src/ds/changelog/footer.js`, `panels.js`, `sec-raw.js`
+
+**Verify:** `lint:manage` + `lint:tokens` green; `npm test` build green; `ds:track` 486/486 linked, 0 wip; drawer probes at 1280/390 — rail rows uniform, no cropped subtext, footer meta 12px, no overflow.
+
+*Shipped in a28b770 · Tasks 34–35 · phase-13.*
+
+---
+
 ## Execution map
 
 | Phase | Mode | Depends on |
@@ -539,8 +574,9 @@ once they ran.
 | 10 Mobile drawer levels | parent + lanes | 9 |
 | 11 Timeline + verify | parent + lanes | 10 |
 | 12 Phone audit | parent | 9–11 (found the sheets unlinked) |
+| 13 Drawer panel parity | parent | 12 (consolidated from lump-sum) |
 
-*Phases 1–4 dispatched as ONE parallel batch; 6–8 shipped from the merged folds plan; 9–11 dispatch as one file-disjoint batch with shared files parent-only.*
+*Phases 1–4 dispatched as ONE parallel batch; 6–8 shipped from the merged folds plan; 9–11 dispatch as one file-disjoint batch with shared files parent-only; 13 is the lump-sum consolidation.*
 
 ## Frozen contracts (parent-owned, pasted into every lane brief)
 

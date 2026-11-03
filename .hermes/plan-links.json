@@ -1265,6 +1265,16 @@
       "plan": "2026-11-02_192021-changelog-parity.md",
       "anchor": "{#phase-8}",
       "note": "version stamp after helper sign-off -> merged phase-8"
+    },
+    "317667d": {
+      "plan": "2026-11-02_192021-changelog-parity.md",
+      "anchor": "{#phase-13}",
+      "note": "migrated from lump-sum — single-build rule, drawer panel is parity scope"
+    },
+    "a28b770": {
+      "plan": "2026-11-02_192021-changelog-parity.md",
+      "anchor": "{#phase-13}",
+      "note": "migrated from lump-sum — single-build rule, drawer panel is parity scope"
     }
   }
 }
