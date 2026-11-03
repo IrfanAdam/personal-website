@@ -567,7 +567,7 @@ once they ran.
 
 **Verify:** `lint:manage` + `lint:tokens` green (all files ≤100 lines); `npm test` build green; `ds:track` 0 wip; drawer probes — shut carets point right muted, open carets point down ink, hover tints glyph only, no row jump.
 
-*Shipped in PENDING · Tasks 34–36 · phase-13.*
+*Shipped in a63e594 · Tasks 34–36 · phase-13.*
 
 ---
 

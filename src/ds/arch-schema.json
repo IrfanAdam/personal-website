@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T14:26:18.417Z",
+  "generated": "2026-11-03T17:28:56.254Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -475,6 +475,8 @@
       "tokens": [
         "--color-ink",
         "--color-ink-muted",
+        "--dur-fast",
+        "--ease-spring",
         "--font-mono",
         "--leading-body",
         "--space-1",
