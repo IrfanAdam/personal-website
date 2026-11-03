@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T12:38:08.340Z",
+  "generated": "2026-11-03T13:22:12.685Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -260,7 +260,6 @@
         "--fx-glitch-x",
         "--radius-sm",
         "--space-1",
-        "--space-10",
         "--space-12",
         "--space-14",
         "--space-16",
@@ -269,8 +268,7 @@
         "--space-28",
         "--space-4",
         "--space-8",
-        "--text-micro",
-        "--z-modal"
+        "--text-micro"
       ]
     },
     {

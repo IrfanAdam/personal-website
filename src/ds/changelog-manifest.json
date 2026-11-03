@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T12:59:51.589Z",
+ "generated": "2026-11-03T13:23:12.910Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "f780f38",
+   "full": "f780f3810478b4b693fd448fbb40a5358232757f",
+   "date": "2026-11-03",
+   "time": "18:53",
+   "subject": "fix(changelog): lane-wide popover, dates-only line, pane-true carets",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
   {
    "sha": "d44218d",
    "full": "d44218d6d3ed2c65979efeb260a227545a7d6daf",
