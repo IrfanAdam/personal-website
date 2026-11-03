@@ -1,16 +1,26 @@
 /* ADAM/DS — ds/changelog-mobile-filter · phone sheet · [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
 /* Exports: ≤720px sheet chrome, safe-area pad, 44px rows, day-chip row (desktop untouched). */
-/* — Day chip owns the row above the trigger — */
+/* — Row: the sheet holds the tag family, so inline pills go; the trigger,
+   All and Timeline share row one and the active day chip takes row two — */
 @media (max-width: 720px) {
+  .ds-chips .ds-chip[data-tag]:not([data-tag=""]) {
+    display: none;
+  }
   .ds-chips [data-day-clear] {
-    order: -1;
+    order: 1;
     flex: 1 1 100%;
+    justify-content: flex-start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ds-chips [data-view="timeline"] {
+    margin-left: auto;
   }
   .ds-chips .ds-chip {
     min-height: var(--size-tap);
   }
 }
-/* — Sheet: fixed bottom, 70dvh cap, safe-area pad, above the drawer — */
+/* — Sheet: fixed bottom, 70dvh cap, dimmed page behind, safe-area pad — */
 @media (max-width: 720px) {
   .ds-tag-dropdown:not([hidden]) {
     position: fixed;
@@ -23,13 +33,21 @@
     max-height: 70dvh;
     box-sizing: border-box;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    border-top: var(--border-hairline);
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding-top: var(--space-6);
     padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom));
     background: var(--color-surface);
+    box-shadow: 0 0 0 100vmax var(--color-viewer-shade);
   }
   .ds-tag-option {
     min-height: var(--size-tap);
     align-items: center;
+  }
+  .ds-tag-option input {
+    width: var(--space-16);
+    height: var(--space-16);
   }
   .ds-filter-tab {
     min-height: var(--size-tap);

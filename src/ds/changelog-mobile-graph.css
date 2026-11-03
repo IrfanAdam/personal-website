@@ -1,6 +1,6 @@
 /* ADAM/DS — ds/changelog-mobile-graph · phone activity graph ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
-/* Exports: none — ≤720px full-bleed strip with a pinned weekday column. */
+/* Exports: none — ≤720 wide full-bleed strip with a pinned weekday column. */
 /* — Strip: bleeds to both page edges; only the weeks scroll — */
 @media (max-width: 720px) {
   .ds-graph {

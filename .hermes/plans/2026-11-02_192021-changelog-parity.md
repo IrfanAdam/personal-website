@@ -347,15 +347,13 @@
 
 *Tags: Layout*
 
-*Status: 0/3 tasks*
-
 | # | Task | Done when |
 |---|------|-----------|
 | 22 | mobile.js viewport contract | `isMobile()` (720px, matchMedia, safe fallback) + `levelOf(st)`/`stepBack(st)` pure helpers, no DOM, ≤100 lines |
 | 23 | Card + chips mobile CSS | Plan cards re-column with pinned rows, tags on their own row, 44px targets, day graph full-bleed and scrollable |
 | 24 | Filter sheet parity | Bottom sheet at 70dvh with `100vmax` scrim, safe-area inset, 44px options, date chip on its own row, visible on open |
 
-### Task 22: mobile.js viewport contract
+### Task 22: mobile.js viewport contract ✓ done
 
 **Objective:** One shared 720px contract for level math, so CSS and JS cannot disagree about what "mobile" means.
 
@@ -364,7 +362,7 @@
 
 **Verify:** `node --check` clean; probe `stepBack` flips `tasks → list` only under 720 and reports `false` at `list`.
 
-### Task 23: Card + chips mobile CSS
+### Task 23: Card + chips mobile CSS ✓ done
 
 **Objective:** Phone list view: no ellipsised-into-nothing titles, no tags overprinting date, no sub-44px chips, graph scrolls instead of the page.
 
@@ -373,7 +371,7 @@
 
 **Verify:** At 390px and 320px every card title wraps to ≤2 lines, tags sit on their own row, and pairwise text-leaf overlap ≤1px.
 
-### Task 24: Filter sheet parity
+### Task 24: Filter sheet parity ✓ done
 
 **Objective:** The filter drawer reads as a phone sheet (not a desktop popover): scrim, top radius, safe-area padding, tap rows, date chip first.
 
@@ -383,13 +381,13 @@
 
 **Verify:** Sheet opens fully inside 70dvh without page scroll; close returns focus to the funnel; z-order keeps it above an open drawer.
 
+*Shipped in 497fead · Tasks 22–24 · phase-9.*
+
 ---
 
 ## Phase 10 — Mobile drawer levels {#phase-10}
 
 *Tags: Layout, Component*
-
-*Status: 0/3 tasks*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -397,7 +395,7 @@
 | 26 | Drawer mobile CSS | Full-bleed panes, parked transform (never `display:none`), flush sticky heads, 2-line rail titles, prose/table/pre wraps |
 | 27 | Dismissal + touch guard | `closeTop` steps L2→L1 before closing; one order for ✕/scrim/Esc/back; taps never latch hover popovers |
 
-### Task 25: Level model in paint + events
+### Task 25: Level model in paint + events ✓ done
 
 **Objective:** Two-level mobile model over the existing rail/detail panes, with no new state field: `stage` is the level.
 
@@ -407,7 +405,7 @@
 
 **Verify:** Plan pick lands L1; rail pick lands L2; deep link without phase lands L1; head shows only `‹ All plans` / `‹ Phases` on phone.
 
-### Task 26: Drawer mobile CSS
+### Task 26: Drawer mobile CSS ✓ done
 
 **Objective:** The drawer becomes a full-height phone surface: one pane at a time, slide between them, heads flush and opaque.
 
@@ -416,7 +414,7 @@
 
 **Verify:** At 390px the drawer is 100% wide, 100dvh, no nested scroll chaining, only the active pane is visible after the transition settles.
 
-### Task 27: Dismissal + touch guard
+### Task 27: Dismissal + touch guard ✓ done
 
 **Objective:** One dismissal order on touch: popover → drawer level → drawer → timeline; hover payloads are pointer-gated.
 
@@ -425,20 +423,20 @@
 
 **Verify:** Esc and scrim at L2 step to L1 and never close the drawer; a tap never leaves a tooltip latched.
 
+*Shipped in 3d8f1d3 · Tasks 25–27 · phase-10.*
+
 ---
 
 ## Phase 11 — Mobile timeline + verification {#phase-11}
 
 *Tags: Layout, Tooling*
 
-*Status: 0/2 tasks*
-
 | # | Task | Done when |
 |---|------|-----------|
 | 28 | Timeline mobile CSS | Full-width panel, shrunken label/day units, wrapping head, 44px close, popover clamped, safe-area bottom |
 | 29 | Numeric mobile verification | 320/390 probes: `scrollWidth ≤ innerWidth`, text overlap ≤1px, sticky label stays put, back button on-screen |
 
-### Task 28: Timeline mobile CSS
+### Task 28: Timeline mobile CSS ✓ done
 
 **Objective:** The timeline stays a destination on a phone: label column readable, lanes reachable, carets and close tappable.
 
@@ -447,7 +445,7 @@
 
 **Verify:** At 390px `--tl-label` leaves ≥180px of lane, today line and edge carets stay aligned after horizontal scroll.
 
-### Task 29: Numeric mobile verification
+### Task 29: Numeric mobile verification ✓ done
 
 **Objective:** Prove the pass with measurements, not screenshots, at 320 and 390.
 
@@ -455,6 +453,67 @@
 - Probe: `ds/#/changelog` (dev server reads only)
 
 **Verify:** `scrollWidth ≤ innerWidth` on both widths; pairwise text-leaf rect intersection ≤1px; rail and detail pane rects fully inside the viewport after open; `npm run plan:names`, `npm run ds:track`, `npm test` green.
+
+*Shipped in 380e7ea · Tasks 28–29 · phase-11.*
+
+---
+
+## Phase 12 — Phone audit: the sheets were never linked {#phase-12}
+
+*Tags: Layout, Tooling*
+
+*Status: 0/4 tasks*
+
+**Finding:** Phases 9–11 shipped five phone sheets that `ds/index.html` never
+linked, so every `≤720px` rule was dead code. At 320/390 the document measured
+650px wide, the drawer opened 195px wide with panes squeezed to 58/90px, no
+back affordance existed, and taps latched tooltips. The CSS was right; the page
+never loaded it. This phase wires the sheets and fixes what the probe found
+once they ran.
+
+| # | Task | Done when | 
+|---|------|-----------|
+| 30 | Link the phone sheets | Five `<link>`s after `ds-responsive.css`; `.ds-mback` stays hidden above 720 so desktop is untouched |
+| 31 | Drawer panes as absolutes | Parked pane leaves the flex flow (`inset:0`, translate + visibility) so L1 is full height, not half |
+| 32 | Heads + controls as bare text | Sticky heads, 44px back/✕, default button chrome reset (no stray card in the bar) |
+| 33 | Sheet + timeline row fixes | Pills folded into the sheet, day chip on its own row, dimmed backdrop; timeline head one row with flush ✕ |
+
+### Task 30: Link the phone sheets
+
+**Objective:** Make the ≤720px rules actually load, last, so they win on equal specificity.
+
+**Files:**
+- Modify: `ds/index.html`
+
+**Verify:** At 390px `#cl-root` computed styles pick up the mobile rules; `.ds-mback` is `display:none` at 1280 and visible at 390.
+
+### Task 31: Drawer panes as absolutes
+
+**Objective:** One pane owns the full drawer, the parked one leaves the flow.
+
+**Files:**
+- Modify: `src/ds/changelog-mobile-drawer.css`
+
+**Verify:** At 390px rail pane height == drawer height (844), drawer 100% wide, parked pane `visibility:hidden`.
+
+### Task 32: Heads + controls as bare text
+
+**Objective:** The phone head is flush and tappable, and never inherits the default button card.
+
+**Files:**
+- Create: `src/ds/changelog-mobile-drawer-head.css`
+- Modify: `src/ds/changelog-picks.css`
+
+**Verify:** Back is 44px tall, full-width on the rail head; ✕ is 44×44 with no border/background.
+
+### Task 33: Sheet + timeline row fixes
+
+**Objective:** The tag family lives in the sheet, not as 44px pills stacked over the graph; the timeline head is one row.
+
+**Files:**
+- Modify: `src/ds/changelog-mobile-filter.css`, `src/ds/changelog-mobile-timeline.css`
+
+**Verify:** At 390px the chip block is ≤2 rows tall, the sheet is bottom-anchored with a dimmed page, and the timeline ✕ sits top-right on the title row.
 
 ---
 
@@ -471,6 +530,7 @@
 | 9 Mobile shell + list | parent + lanes | 1–5 (no tracker dependency) |
 | 10 Mobile drawer levels | parent + lanes | 9 |
 | 11 Timeline + verify | parent + lanes | 10 |
+| 12 Phone audit | parent | 9–11 (found the sheets unlinked) |
 
 *Phases 1–4 dispatched as ONE parallel batch; 6–8 shipped from the merged folds plan; 9–11 dispatch as one file-disjoint batch with shared files parent-only.*
 

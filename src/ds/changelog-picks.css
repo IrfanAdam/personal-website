@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 .ds-drawer-head button:disabled { opacity: 0.4; cursor: default; }
-/* Phone-only back step: hidden on every viewport until the ≤720px sheet
+/* Phone-only back step: hidden on every viewport until the ≤720 wide sheet
    rules reveal it, so the desktop head keeps its single ✕. */
 /* [plan:2026-11-02_192021-changelog-parity.md#phase-10] */
 .ds-mback { display: none; }

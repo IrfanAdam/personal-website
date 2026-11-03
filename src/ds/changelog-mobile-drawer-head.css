@@ -1,0 +1,62 @@
+/* ADAM/DS — ds/changelog-mobile-drawer-head · phone drawer heads + content ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-10] */
+/* Exports: ≤720 wide sticky heads, back/close resets, rail picks, task prose. */
+/* — Controls: the base sheet hides .ds-mback for desktop, so the phone has to
+   reveal it or the drawer loses its only way back. Reset to bare text: the
+   default button chrome reads as a stray card inside a sticky bar. — */
+@media (max-width: 720px) {
+  .ds-drawer-head .ds-mback,
+  .ds-rail-head .ds-mback,
+  .ds-drawer-head [data-close] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--size-tap);
+    min-height: var(--size-tap);
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  .ds-drawer-head {
+    position: sticky;
+    top: 0;
+    right: auto;
+    left: auto;
+    z-index: 3;
+    min-height: var(--size-tap);
+    margin: 0;
+    padding: var(--space-4) var(--space-16);
+    background: var(--color-bg);
+    border-bottom: var(--border-hairline);
+  }
+  .ds-drawer-head [data-close] {
+    margin-left: auto;
+    opacity: 0.6;
+  }
+  .ds-rail-head {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    flex-wrap: wrap;
+    row-gap: var(--space-2);
+    padding: var(--space-4) var(--space-16) var(--space-8);
+    background: var(--color-bg);
+    border-bottom: var(--border-hairline);
+    white-space: normal;
+    overflow: visible;
+  }
+  .ds-rail-head .ds-mback {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    padding: 0;
+  }
+  .ds-rail-head .ds-rail-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}

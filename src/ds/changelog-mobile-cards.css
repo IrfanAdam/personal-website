@@ -1,6 +1,6 @@
 /* ADAM/DS — ds/changelog-mobile-cards · phone list + graph ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-9] */
-/* Exports: none — ≤720px card re-column, full-bleed graph, tap targets. */
+/* Exports: none — ≤720 wide card re-column, full-bleed graph, tap targets. */
 /* — Shell guard: the page never scrolls sideways; the graph scrolls itself — */
 @media (max-width: 720px) {
   html,

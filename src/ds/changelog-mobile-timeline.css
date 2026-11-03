@@ -1,6 +1,6 @@
 /* ADAM/DS — ds/changelog-mobile-timeline · phone timeline destination ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-11] */
-/* Exports: none — max-width:720px overrides for changelog-timeline* hooks */
+/* Exports: none — max-width 720 overrides for changelog-timeline* hooks */
 /* — Panel: full-bleed destination — */
 @media (max-width: 720px) {
   .ds-timeline {
@@ -9,23 +9,42 @@
     max-width: 100%;
     border-left: 0;
   }
-  /* — Units: 160px label leaves 230px of lane at 390px — */
+  /* — Units: 160-unit label leaves 230 units of lane at 390 — */
   .ds-tl-body {
     --tl-day: var(--space-20);
     --tl-label: var(--space-160);
   }
-  /* — Head: title wraps over two rows, 44px close — */
+  /* — Head: one row. Title shrinks, the range ellipsises, ✕ stays tap-sized and
+     flush — the default pill chrome reads as a stray card on a phone — */
   .ds-tl-head {
-    flex-wrap: wrap;
-    row-gap: var(--space-4);
+    flex-wrap: nowrap;
+    gap: var(--space-6);
+    padding: var(--space-10) var(--space-16);
   }
   .ds-tl-head b {
-    flex: 1 1 100%;
-    white-space: normal;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: var(--text-h3);
+  }
+  .ds-tl-head small {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .ds-tl-head button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
     min-width: var(--size-tap);
     min-height: var(--size-tap);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    opacity: 0.6;
+    cursor: pointer;
   }
   /* — Scroll: safe-area bottom, sticky carets track the label var — */
   .ds-tl-scroll {

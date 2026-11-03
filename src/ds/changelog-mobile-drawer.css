@@ -1,84 +1,55 @@
-/* ADAM/DS — ds/changelog-mobile-drawer · phone drawer levels ·
+/* ADAM/DS — ds/changelog-mobile-drawer · phone drawer shell ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-10] */
-/* Exports: ≤720px full-bleed drawer, parked-pane slides, sticky heads, wraps. */
-/* — Shell: one full-height phone surface, panes slide, never display:none — */
+/* Exports: ≤720 wide full-bleed drawer and the parked-pane slide between levels.
+   Heads and pane content live in changelog-mobile-drawer-head.css. */
+/* — Shell: one full-height phone surface. Panes are absolute, not flex
+   siblings: a parked pane must stop taking half the height, or L1 renders as
+   a half-height rail above an invisible task pane. — */
 @media (max-width: 720px) {
   .ds-drawer {
     left: 0;
     width: 100%;
+    max-width: 100%;
     height: 100dvh;
-    flex-direction: column;
+    display: block;
     gap: 0;
+    padding: 0;
     overflow: hidden;
-    padding-bottom: calc(var(--space-30) + env(safe-area-inset-bottom));
+    border-left: 0;
   }
+}
+/* — Panes: full-bleed, one scroll owner each, parked to the right while the
+   other level is up. visibility rides along so the hidden pane leaves the
+   accessibility tree instead of only leaving the screen. — */
+@media (max-width: 720px) {
   .ds-rail,
   .ds-task {
-    flex: 1 1 auto;
-    min-height: 0;
+    position: absolute;
+    inset: 0;
     width: 100%;
+    min-width: 0;
+    margin: 0;
+    border: 0;
     border-right: none;
-    padding-right: 0;
+    padding: 0 0 calc(var(--space-30) + env(safe-area-inset-bottom));
+    background: var(--color-bg);
+    overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
+    transform: translateX(103%);
+    visibility: hidden;
+    transition: transform var(--dur-glide) var(--ease-signature),
+      visibility var(--dur-glide);
   }
   .ds-rail {
-    transition: transform var(--dur-glide) var(--ease-signature);
+    z-index: 1;
   }
   .ds-task {
-    transition: transform var(--dur-glide) var(--ease-signature);
-  }
-  .ds-drawer.is-l1 .ds-task {
-    transform: translateX(103%);
-    visibility: hidden;
-  }
-  .ds-drawer.is-l2 .ds-rail {
-    transform: translateX(103%);
-    visibility: hidden;
+    z-index: 2;
   }
   .ds-drawer.is-l1 .ds-rail,
   .ds-drawer.is-l2 .ds-task {
     transform: none;
     visibility: visible;
-  }
-}
-/* — Heads: flush, sticky, opaque, tap-sized — */
-@media (max-width: 720px) {
-  .ds-drawer-head {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    min-height: var(--size-tap);
-    margin: 0;
-    background: var(--color-bg);
-  }
-  .ds-drawer-head [data-mback] {
-    min-height: var(--size-tap);
-  }
-  .ds-rail-head {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background: var(--color-bg);
-  }
-}
-/* — Task prose: wrap long tokens, tables and code scroll inside — */
-@media (max-width: 720px) {
-  .ds-task .ds-md {
-    overflow-wrap: anywhere;
-  }
-  .ds-task .ds-md table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-  .ds-task .ds-md pre {
-    max-width: 100%;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  .ds-task .ds-md img {
-    max-width: 100%;
-    height: auto;
   }
 }

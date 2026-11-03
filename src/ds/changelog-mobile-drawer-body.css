@@ -1,0 +1,51 @@
+/* ADAM/DS — ds/changelog-mobile-drawer-body · phone drawer pane content ·
+   [plan:2026-11-02_192021-changelog-parity.md#phase-12] */
+/* Exports: ≤720 wide rail pick rows and task prose wrapping. Heads are in
+   changelog-mobile-drawer-head.css; the shell is changelog-mobile-drawer.css. */
+/* — Rail picks: phase number on its own line, title wraps, tap-height row — */
+@media (max-width: 720px) {
+  .ds-rail .ds-pick {
+    padding: var(--space-12) var(--space-16);
+    font-size: 1em;
+  }
+  .ds-rail .ds-pick .ds-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .ds-rail .ds-pick b {
+    width: 100%;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  .ds-rail .ds-pick small {
+    display: block;
+  }
+  .ds-rail [data-prov],
+  .ds-rail-foot {
+    padding-left: var(--space-16);
+    padding-right: var(--space-16);
+  }
+}
+/* — Task prose: the pane owns the inset now; long tokens wrap, tables scroll — */
+@media (max-width: 720px) {
+  .ds-task .ds-md {
+    padding: var(--space-14) var(--space-16) 0;
+    overflow-wrap: anywhere;
+  }
+  .ds-task .ds-md table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .ds-task .ds-md pre {
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .ds-task .ds-md img {
+    max-width: 100%;
+    height: auto;
+  }
+}

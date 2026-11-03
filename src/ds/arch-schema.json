@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T10:19:45.795Z",
+  "generated": "2026-11-03T10:42:49.951Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -605,8 +605,36 @@
         "--color-bg",
         "--dur-glide",
         "--ease-signature",
-        "--size-tap",
         "--space-30"
+      ]
+    },
+    {
+      "id": "ds_changelog_mobile_drawer_body",
+      "path": "src/ds/changelog-mobile-drawer-body.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile drawer body",
+      "tokens": [
+        "--space-12",
+        "--space-14",
+        "--space-16",
+        "--space-2"
+      ]
+    },
+    {
+      "id": "ds_changelog_mobile_drawer_head",
+      "path": "src/ds/changelog-mobile-drawer-head.css",
+      "layer": "style",
+      "route": null,
+      "title": "changelog mobile drawer head",
+      "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--size-tap",
+        "--space-16",
+        "--space-2",
+        "--space-4",
+        "--space-8"
       ]
     },
     {
@@ -616,10 +644,13 @@
       "route": null,
       "title": "changelog mobile filter",
       "tokens": [
+        "--border-hairline",
         "--color-surface",
+        "--color-viewer-shade",
         "--radius-sm",
         "--size-tap",
         "--space-16",
+        "--space-6",
         "--z-modal"
       ]
     },
@@ -647,11 +678,14 @@
       "title": "changelog mobile timeline",
       "tokens": [
         "--size-tap",
+        "--space-10",
+        "--space-16",
         "--space-160",
         "--space-20",
         "--space-32",
-        "--space-4",
+        "--space-6",
         "--space-8",
+        "--text-h3",
         "--tl-label"
       ]
     },
@@ -5250,6 +5284,16 @@
     },
     {
       "from": "ds_changelog_mobile_cards",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_mobile_drawer_body",
+      "to": "styles_tokens",
+      "kind": "tokens"
+    },
+    {
+      "from": "ds_changelog_mobile_drawer_head",
       "to": "styles_tokens",
       "kind": "tokens"
     },
