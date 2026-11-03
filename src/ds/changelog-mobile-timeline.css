@@ -63,6 +63,14 @@
   .ds-tl-edge {
     display: none;
   }
+  /* — Axis: the pinned month chip masks a two-digit day on a phone-sized cell —
+     its month's own 1st cell already names it, so the chip is surplus here — */
+  .ds-tl-curmonth {
+    display: none;
+  }
+  .ds-tl-curmonth::before {
+    display: none;
+  }
   /* — Popover: clamped to the viewport — */
   .ds-tl-pop {
     max-width: calc(100vw - var(--space-32));

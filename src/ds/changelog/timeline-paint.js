@@ -58,7 +58,14 @@ const paintWith = (model, host, plans, commits, today, saved) => {
     `</div></div>`,
   ].join('');
   const sc = host.querySelector('.ds-tl-scroll');
-  if (sc) sc.onscroll = () => syncTlEdges(host);
+  if (sc) {
+    // A burst of scroll events must cost one pass, not one per event.
+    let frame = 0;
+    sc.onscroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => { frame = 0; syncTlEdges(host); });
+    };
+  }
   syncTlEdges(host);
   // The panel can be painted while its route is still display:none; a scroll
   // assigned then clamps to 0 and is lost. Retry until it has a measurable width.

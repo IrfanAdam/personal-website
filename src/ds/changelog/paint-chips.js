@@ -4,6 +4,32 @@ import { fmtDate } from '../changelog-parse.js';
 import { graph } from './graph.js';
 import { planStatus } from './raw-detail.js';
 import { filterDrawer } from './filter-drawer.js';
+// Exports: focusKeyOf, restoreFocus, paintChips — chips markup + focus carry
+// — Focus carry —
+// A repaint must not drop the keyboard user at BODY: the key is the control
+// family attribute + value, plus whether focus sat on a descendant (the
+// checkbox inside an option row), so restore lands on its twin.
+// [plan:2026-11-02_192021-changelog-parity#phase-4]
+const FOCUS_ATTRS = ['filter-toggle', 'tab', 'tag-opt', 'status-opt', 'tag', 'day-clear', 'day'];
+const FOCUS_SEL = FOCUS_ATTRS.map((k) => `[data-${k}]`).join(',');
+export function focusKeyOf(root){
+  const ae = document.activeElement;
+  if (!ae || !root.contains(ae)) return null;
+  const el = ae.closest(FOCUS_SEL);
+  if (!el) return null;
+  const name = FOCUS_ATTRS.find((k) => el.hasAttribute(`data-${k}`));
+  if (!name) return null;
+  return { name, value: el.getAttribute(`data-${name}`), inner: ae !== el };
+}
+export function restoreFocus(root, key){
+  if (!key) return null;
+  const hit = Array.from(root.querySelectorAll(`[data-${key.name}]`))
+    .find((el) => el.getAttribute(`data-${key.name}`) === key.value);
+  if (!hit) return null;
+  const target = key.inner ? hit.querySelector('input') : hit;
+  if (target && target.focus) target.focus();
+  return target;
+}
 export function paintChips(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
   const stat = ctx.status || new Set();
@@ -60,7 +86,9 @@ export function paintChips(root, ctx){
     tlIcon,
     `Timeline</button>`,
   ].join('');
+  const key = focusKeyOf(root);
   root.querySelector('[data-col="chips"]').innerHTML = filters + dayChip + showAll + pills + tlChip;
+  restoreFocus(root, key);
   const gEl = root.querySelector('[data-col="graph"]');
   if (!gEl.dataset.ready) { gEl.innerHTML = graph({ plans, day }); gEl.dataset.ready = '1'; }
   else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day,

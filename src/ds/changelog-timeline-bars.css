@@ -18,6 +18,10 @@
   outline: var(--space-1) dashed color-mix(in srgb, var(--color-ink) 35%, transparent);
   outline-offset: calc(var(--space-1) * -1);
 }
+/* Focus outranks the open ring (higher specificity) and the overdue ghost edge. */
+.ds-tl-lane > :is(.ds-tl-bar, .ds-tl-ghost):focus-visible {
+  outline: var(--border-focus);
+}
 .ds-tl-ghost {
   position: absolute; top: 50%; left: calc(var(--tl-off) * var(--tl-day));
   box-sizing: border-box; width: calc(var(--tl-span) * var(--tl-day) - var(--space-4));
@@ -54,8 +58,6 @@
 }
 .ds-tl-edge.is-l { left: var(--tl-label); }
 .ds-tl-edge.is-r { right: var(--space-8); margin-left: auto; }
-/* Rows, bars and ghosts answer the cursor; a chip that only moved the pointer
-   read as static. Ink edge + tint on hover, token ring inset on focus. */
 .ds-tl-edge:hover {
   border-color: var(--color-ink);
   background: color-mix(in srgb, var(--color-ink) 6%, var(--color-surface));
@@ -90,11 +92,9 @@
   line-height: var(--leading-mono); color: var(--color-ink-muted);
   -webkit-box-orient: vertical; -webkit-line-clamp: 2;
 }
-/* One rhythm for the meta block: scope, stats and the date line share the same
-   line box and zero margins, so no line reads as a separate stanza. */
 .ds-tl-pop__scope, .ds-tl-pop__stats, .ds-tl-pop__date {
   display: block; margin: 0; font-family: var(--font-mono);
   font-size: var(--text-micro); line-height: var(--leading-mono); color: var(--color-ink-muted);
 }
-.ds-tl-pop__scope b { font-weight: 700; color: var(--color-accent); }
+.ds-tl-pop__scope b { font-weight: 700; color: var(--color-accent-ink); }
 .ds-tl-pop__scope { white-space: nowrap; }

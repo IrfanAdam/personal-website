@@ -9,6 +9,7 @@
     --color-ink-subtle: var(--stone-400);
     --color-line: rgba(21, 25, 31, 0.1);
     --color-accent: var(--signal);
+    --color-accent-ink: var(--accent-600);
     --color-on-accent: #f2f4f7;
     --color-chip: rgba(18, 21, 26, 0.62);
     --color-on-media: #f2f4f7;

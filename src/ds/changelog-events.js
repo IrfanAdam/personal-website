@@ -43,8 +43,7 @@ export function bindChangelogEvents(root, st, helpers) {
       if (stepBack(st)) { st.stage = 'list'; doPaint(root); } else close();
       return;
     }
-    if (e.target.closest('[data-tl-close]') || e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { close(); return; }
+    if (e.target.closest('[data-tl-close],[data-close],[data-scrim]')) { close(); return; }
     const te = e.target.closest('[data-tl-edge]');
     if (te) { const row = te.closest('[data-tl-row]');
       if (row) revealTrack(row, te.dataset.tlEdge);
@@ -76,8 +75,9 @@ export function bindChangelogEvents(root, st, helpers) {
     doPaint(root);
   };
   const onKey = (e) => {
-    if (e.key !== 'Escape') return;
-    close();
+    const box = e.key === 'Enter' && e.target.closest('[data-tag-opt] input,[data-status-opt] input');
+    if (box) { e.preventDefault(); box.click(); }
+    else if (e.key === 'Escape') close();
   };
   const offHum = bindHum(root);
   const offHover = bindHover(root);

@@ -2,6 +2,10 @@
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
 // Exports: syncTlEdges, revealTrack — geometry reads only, no state writes
 const SLOP = 24;
+// A reveal must clear the sticky chip, not just the pane edge: the chip is 26px
+// wide and sits 8px inside the right edge, so a 34px landing puts the bout
+// exactly under it (measured 0px) and the reveal can never be finished.
+const CLEAR = 40;
 // The plan-label column is sticky over the lane's left edge, so everything to
 // its left is hidden: reveal tests measure the pane's inner edge, not the raw
 // scroll box (a track behind that column is not "visible").
@@ -54,14 +58,16 @@ const edgeOf = (tracks, view) => {
   }
   return { l, r };
 };
-// [plan:2026-11-02_192021-changelog-parity.md#phase-4]
-const syncRow = (row, view) => {
-  const { l, r } = edgeOf(tracksOf(row), view);
-  const lb = row.querySelector('[data-tl-edge="l"]');
-  const rb = row.querySelector('[data-tl-edge="r"]');
-  if (lb) lb.hidden = l == null;
-  if (rb) rb.hidden = r == null;
+// Read every row's boxes first, then write every caret: interleaving the two
+// re-entered layout per row (29 read/write alternations per scroll event).
+const measureRow = (row, view) => ({ row, ...edgeOf(tracksOf(row), view) });
+const applyRow = (cell) => {
+  const lb = cell.row.querySelector('[data-tl-edge="l"]');
+  const rb = cell.row.querySelector('[data-tl-edge="r"]');
+  if (lb) lb.hidden = cell.l == null;
+  if (rb) rb.hidden = cell.r == null;
 };
+const measure = (rows, view) => rows.map((row) => measureRow(row, view));
 // Reveal only what sits outside the visible window — never yanks a visible row.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const syncTlEdges = (host) => {
@@ -70,7 +76,7 @@ export const syncTlEdges = (host) => {
   if (!sc) return;
   const view = paneOf(sc, padOf(host));
   syncBadge(host, view);
-  host.querySelectorAll('[data-tl-row]').forEach((row) => syncRow(row, view));
+  measure([...host.querySelectorAll('[data-tl-row]')], view).forEach(applyRow);
 };
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export const revealTrack = (row, dir) => {
@@ -82,10 +88,10 @@ export const revealTrack = (row, dir) => {
   // so picking by DOM order throws the track to the wrong edge.
   const box = dir === 'l' ? edgeOf(tracks, view).l : edgeOf(tracks, view).r;
   if (!box) return;
-  // Land the bout's far edge, not its near one: a near-edge nudge leaves most
-  // of the bar clipped and clears the caret, so the reveal can never finish.
+  // Land the bout's far edge clear of the caret chip, not just inside the pane:
+  // a near-edge nudge leaves most of the bar clipped, so the reveal never ends.
   const delta = dir === 'l'
-    ? box.left - view.left - SLOP
-    : box.right - view.right + SLOP;
+    ? box.left - view.left - CLEAR
+    : box.right - view.right + CLEAR;
   sc.scrollBy({ left: delta, behavior: 'smooth' });
 };

@@ -10,6 +10,7 @@
     --color-ink-muted: #9aa5b1;
     --color-ink-subtle: #9aa5b1;
     --color-line: rgba(242, 244, 247, 0.12);
+    --color-accent-ink: var(--accent-300);
     --color-panel: rgba(242, 244, 247, 0.06);
     --color-header: rgba(18, 21, 26, 0.6);
     --color-overlay: #1e2329;
@@ -51,6 +52,7 @@
     --color-ink-muted: #9aa5b1;
     --color-ink-subtle: #9aa5b1;
     --color-line: rgba(242, 244, 247, 0.12);
+    --color-accent-ink: var(--accent-300);
     --color-panel: rgba(242, 244, 247, 0.06);
     --color-header: rgba(18, 21, 26, 0.6);
     --color-overlay: #1e2329;
