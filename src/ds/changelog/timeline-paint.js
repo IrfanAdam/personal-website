@@ -15,11 +15,16 @@ const scrollToday = (host, frac, days) => {
   const sc = host.querySelector('.ds-tl-scroll');
   const lane = host.querySelector('.ds-tl-lane');
   if (!sc || !lane) return;
+  // The sticky plan column covers the lane's left edge, so the lane's own x is
+  // offset by its width and "in view" starts that far into the scroll box.
+  const lab = host.querySelector('.ds-tl-label');
+  const pad = lab ? lab.getBoundingClientRect().width : 0;
   const dayPx = lane.getBoundingClientRect().width / Math.max(days, 1);
   if (!dayPx) return;
-  const x = frac * dayPx;
-  if (x >= sc.scrollLeft && x <= sc.scrollLeft + sc.clientWidth - 8) return;
-  sc.scrollLeft = Math.max(0, x - sc.clientWidth * 0.3);
+  const x = pad + frac * dayPx;
+  if (x >= sc.scrollLeft + pad && x <= sc.scrollLeft + sc.clientWidth - 24) return;
+  const pane = Math.max(sc.clientWidth - pad, 1);
+  sc.scrollLeft = Math.max(0, x - pad - pane * 0.5);
 };
 const headHtml = (grid) => [
   `<div class="ds-tl-head"><b>Timeline</b>`,

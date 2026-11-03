@@ -65,21 +65,6 @@ button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-of
 }
 @media (prefers-reduced-motion: reduce) { .ds-day.is-today::after, .ds-day.is-today { animation: none; } }
 .ds-day.is-future { opacity: .6; }
-/* Timeline hover popover: fixed card above modal layer, pointer-transparent. */
-.ds-tl-pop {
-  position: fixed;
-  z-index: var(--z-modal);
-  max-width: 28ch;
-  padding: var(--space-10) var(--space-12);
-  background: var(--color-surface);
-  border: var(--border-hairline);
-  border-radius: var(--radius-sm);
-  pointer-events: none;
-}
-.ds-tl-pop > b { display: block; }
-.ds-tl-pop > span { display: block; }
-.ds-tl-pop .ds-tl-pop__scope { display: block; white-space: nowrap; }
-.ds-tl-pop .ds-tl-pop__scope b { display: inline; }
 /* Deploy notice: one-line refresh banner, neutral view only. */
 .ds-ver-note {
   display: block;

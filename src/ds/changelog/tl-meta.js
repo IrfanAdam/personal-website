@@ -34,12 +34,12 @@ const dueOfPlan = (p) => {
   return '';
 };
 const ST = { done: 'Done', cancelled: 'Cancelled', incomplete: 'In progress' };
-// One date line for the popover: started · modified · status · due, interpunct
-// separated, so a lane never stacks three separate date rows.
+// One date line for the popover: the dates carry the period, then status, then
+// Due — interpunct separated, so a lane never stacks three separate date rows.
 const dateLine = (p, end, st, due) => {
   const bits = [];
-  if (p.date) bits.push(`Started ${dPart(p.date).t}`);
-  if (p.date && end && end !== p.date) bits.push(`Modified ${dPart(end).t}`);
+  if (p.date) bits.push(dPart(p.date).t);
+  if (end && end !== p.date) bits.push(dPart(end).t);
   bits.push(st);
   if (due) bits.push(`Due ${dPart(due).t}`);
   return bits.join(' · ');
@@ -54,9 +54,8 @@ export const laneMeta = (p, commits = []) => {
   const end = last && last > p.date ? last : p.date;
   const revs = (history[p.file] || []).length;
   const revTxt = revs === 1 ? '1 rev' : `${revs} revs`;
-  // A Modified date already owns the finish day; only single-day work needs the
-  // status to carry it, so the interpunct line never repeats a date.
-  const st = ps === 'done' && end === p.date ? `Done ${dPart(end).t}` : ST[ps];
+  // The date line already leads with the dates, so the status stays a bare word.
+  const st = ST[ps];
   const due = dueOfPlan(p);
   return {
     title: p.title || p.file,

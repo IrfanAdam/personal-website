@@ -67,12 +67,12 @@
   border-left: var(--border-hairline); font-family: var(--font-mono);
   font-size: var(--text-micro); line-height: var(--space-22); text-align: center; color: var(--color-ink-muted);
 }
-/* The 1st names its month in place of a day number, pinned to its own cell edge
-   so it can never reach a neighbour; the sticky badge reads this bare text. */
+/* The 1st names its month in place of a day number, pinned to its own cell
+   edge; cell and sticky badge share this text, so both read as a name. */
 .ds-tl-mon {
   position: absolute; top: 0; left: 0; z-index: 1; height: 100%; padding: 0 var(--space-3);
   background: var(--color-bg); line-height: var(--space-22); white-space: nowrap;
-  color: var(--color-ink); font-weight: var(--weight-bold); text-transform: uppercase;
+  color: var(--color-ink); font-weight: var(--weight-bold);
 }
 .ds-tl-row {
   display: flex; align-items: stretch; min-height: var(--space-30); border-bottom: var(--border-hairline);
@@ -91,7 +91,8 @@
 .ds-tl-label-name { overflow: hidden; color: var(--color-ink); text-overflow: ellipsis; white-space: nowrap; }
 .ds-tl-row:hover .ds-tl-label-name { color: var(--color-accent); }
 .ds-tl-lane {
-  position: relative; flex: none; align-self: stretch; width: calc(var(--tl-days, 30) * var(--tl-day));
+  position: relative; flex: none; align-self: stretch; display: flex; align-items: center;
+  width: calc(var(--tl-days, 30) * var(--tl-day));
   background-image: repeating-linear-gradient(to right,
     color-mix(in srgb, var(--color-line) 85%, transparent) 0 var(--space-1),
     transparent var(--space-1) var(--tl-day));

@@ -41,20 +41,25 @@ const syncBadge = (host, view) => {
   if (ticks.style.marginLeft !== want) ticks.style.marginLeft = want;
 };
 const tracksOf = (row) => [...row.querySelectorAll('[data-tl-bout],[data-tl-ghost]')];
+// Nearest hidden track per side: a lane can hide a piece on either edge while
+// another bout of the same plan is still in view, so the verdict is per track.
+const edgeOf = (tracks, view) => {
+  let l = null;
+  let r = null;
+  for (const t of tracks) {
+    const b = t.getBoundingClientRect();
+    if (b.right < view.left + SLOP) l = l == null ? b.right : Math.max(l, b.right);
+    if (b.left > view.right - SLOP) r = r == null ? b.left : Math.min(r, b.left);
+  }
+  return { l, r };
+};
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 const syncRow = (row, view) => {
-  const tracks = tracksOf(row);
-  const l = row.querySelector('[data-tl-edge="l"]');
-  const r = row.querySelector('[data-tl-edge="r"]');
-  if (!tracks.length) {
-    if (l) l.hidden = true;
-    if (r) r.hidden = true;
-    return;
-  }
-  const first = tracks[0].getBoundingClientRect();
-  const last = tracks[tracks.length - 1].getBoundingClientRect();
-  if (l) l.hidden = !(last.right < view.left + SLOP);
-  if (r) r.hidden = !(first.left > view.right - SLOP);
+  const { l, r } = edgeOf(tracksOf(row), view);
+  const lb = row.querySelector('[data-tl-edge="l"]');
+  const rb = row.querySelector('[data-tl-edge="r"]');
+  if (lb) lb.hidden = l == null;
+  if (rb) rb.hidden = r == null;
 };
 // Reveal only what sits outside the visible window — never yanks a visible row.
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
@@ -72,7 +77,10 @@ export const revealTrack = (row, dir) => {
   const tracks = row ? tracksOf(row) : [];
   if (!sc || !tracks.length) return;
   const view = paneOf(sc, padOf(row));
-  const box = (dir === 'l' ? tracks[tracks.length - 1] : tracks[0]).getBoundingClientRect();
-  const delta = dir === 'l' ? box.right - view.left - SLOP : box.left - view.right + SLOP;
+  // Reveal the nearest hidden bout — the ghost can sit far right of the bars,
+  // so picking by DOM order throws the track to the wrong edge.
+  const edge = dir === 'l' ? edgeOf(tracks, view).l : edgeOf(tracks, view).r;
+  if (edge == null) return;
+  const delta = dir === 'l' ? edge - view.left - SLOP : edge - view.right + SLOP;
   sc.scrollBy({ left: delta, behavior: 'smooth' });
 };

@@ -51,7 +51,10 @@ export const bindHover = (root) => {
     if (e.pointerType && e.pointerType !== 'mouse') return;
     const pv = root.querySelector('[data-tl-pop]');
     if (pv) {
-      const pop = e.target.closest('[data-pop]');
+      // Anywhere on a lane previews its plan: every bar carries the same lane
+      // payload, so the row's label stands in for the empty grid around them.
+      const row = e.target.closest('[data-tl-row]');
+      const pop = e.target.closest('[data-pop]') || (row && row.querySelector('[data-pop]'));
       if (!pop || !pop.dataset.desc) pv.hidden = true;
       else { paintPop(pv, pop); pv.hidden = false; place(pv, e.clientX, e.clientY, 10); }
     }
