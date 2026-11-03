@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T10:44:19.719Z",
+ "generated": "2026-11-03T11:13:06.326Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -48,9 +48,19 @@
   "2026-09-28_130000-code-cleanup-perf.md",
   "2026-10-19_000000-lump-sum-builds.md",
   "2026-10-26_000000-lump-sum-builds.md",
+  "2026-11-02_000000-lump-sum-builds.md",
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "317667d",
+   "full": "317667d0eb1186fecf3d6e4617172da18d612123",
+   "date": "2026-11-03",
+   "time": "16:42",
+   "subject": "fix(changelog): drawer panel — rail rhythm, pane type, safepipe footer",
+   "plan": "2026-11-02_000000-lump-sum-builds.md",
+   "anchor": "{#phase-1}"
+  },
   {
    "sha": "ca32b24",
    "full": "ca32b245af42a82821f5fd114e0e58d8ff929935",
