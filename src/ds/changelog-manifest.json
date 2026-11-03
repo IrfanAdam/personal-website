@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T12:51:59.230Z",
+ "generated": "2026-11-03T12:54:52.444Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,33 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "7b6ef8d",
+   "full": "7b6ef8d6c61179d6e47ce8cf07f25b093388d385",
+   "date": "2026-11-03",
+   "time": "18:24",
+   "subject": "fix(changelog): phone timeline drops the plan-name column",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-11}"
+  },
+  {
+   "sha": "e9aa8bd",
+   "full": "e9aa8bd85ec3bd6158e95b5f8dd9777f8cfd707f",
+   "date": "2026-11-03",
+   "time": "18:24",
+   "subject": "fix(changelog): timeline axis, today marker, carets, popover line, chip icon",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
+  {
+   "sha": "c2cf0e2",
+   "full": "c2cf0e25bbb77770096da97a11b36c0cee1fb084",
+   "date": "2026-11-03",
+   "time": "18:24",
+   "subject": "fix(changelog): drawer 60vw, bleed gutters, one-line rail rows",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-3}"
+  },
   {
    "sha": "a28b770",
    "full": "a28b770efb6cef358703292fcae4b9613744efad",
@@ -4436,24 +4463,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-detail.css",
-  "M src/ds/changelog-drawer.css",
-  "M src/ds/changelog-filter.css",
-  "M src/ds/changelog-hierarchy.css",
-  "M src/ds/changelog-mobile-timeline.css",
-  "M src/ds/changelog-picks.css",
-  "M src/ds/changelog-timeline-bars.css",
-  "M src/ds/changelog-timeline.css",
-  "M src/ds/changelog/drawer-head.js",
-  "M src/ds/changelog/hover.js",
-  "M src/ds/changelog/paint-chips.js",
-  "M src/ds/changelog/paint-detail.js",
-  "M src/ds/changelog/paint-plan.js",
-  "M src/ds/changelog/timeline-paint.js",
-  "M src/ds/changelog/tl-edges.js",
-  "M src/ds/changelog/tl-grid.js",
-  "M src/ds/changelog/tl-meta.js",
-  "M src/ds/changelog/tl-rows.js"
- ]
+ "wip": []
 }
