@@ -9,10 +9,14 @@
     max-width: 100%;
     border-left: 0;
   }
-  /* — Units: 160-unit label leaves 230 units of lane at 390 — */
+  /* — Units: the plan-name column is desktop-only — the lane owns the phone — */
   .ds-tl-body {
     --tl-day: var(--space-20);
-    --tl-label: var(--space-160);
+    --tl-label: 0px;
+  }
+  .ds-tl-label,
+  .ds-tl-clabel {
+    display: none;
   }
   /* — Head: one row. Title shrinks, the range ellipsises, ✕ stays tap-sized and
      flush — the default pill chrome reads as a stray card on a phone — */
@@ -46,19 +50,16 @@
     opacity: 0.6;
     cursor: pointer;
   }
-  /* — Scroll: safe-area bottom, sticky carets track the label var — */
+  /* — Scroll: safe-area bottom, no sticky carets — with the label column gone
+     a pinned caret would sit on top of the grid — */
   .ds-tl-scroll {
     padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
   }
   .ds-tl-clabel {
-    width: var(--tl-label);
+    display: none;
   }
   .ds-tl-edge {
-    min-width: var(--size-tap);
-    min-height: var(--size-tap);
-  }
-  .ds-tl-edge.is-l {
-    left: var(--tl-label);
+    display: none;
   }
   /* — Popover: clamped to the viewport — */
   .ds-tl-pop {
