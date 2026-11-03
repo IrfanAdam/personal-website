@@ -24,7 +24,6 @@ const gateTag = (head, body) => {
   if (!g.revCount) return v;
   return `${v} · ${g.revCount} rev${g.revCount > 1 ? 's' : ''}`;
 };
-const railHead = (plan, seq) => railHeadHtml(plan, seq);
 const dueLine = (sprint) => {
   if (isDone(state(sprint.body)) || /✗/.test(sprint.head)) return '';
   const d = dueOf({ head: sprint.head, body: sprint.body });
@@ -37,6 +36,10 @@ const crumbOf = (plan) => {
   const tip = ` data-tip="${esc(tags.join(' · '))}"`;
   return `<p class="ds-crumb"${tip}>${esc(tags.slice(0, 2).join(' · '))}${more}</p>`;
 };
+const pickMeta = (plan, s, texts) => {
+  const raw = sectionRaw((texts && texts[plan.file]) || '', s.head);
+  return { frac: state(s.body), gate: gateTag(s.head, raw || s.body) };
+};
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export function paintDetail(root, ctx) {
   const { list, pi, plan, sprints, si, sel, open, stage, texts } = ctx;
@@ -46,10 +49,9 @@ export function paintDetail(root, ctx) {
   const picks = sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1);
     const hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0);
-    const frac = state(s.body), done = isDone(frac), cancelled = /✗/.test(s.head);
-    const gate = gateTag(s.head, s.body);
-    const nc = hsS.length;
-    const bits = [`${nc} commit${nc === 1 ? '' : 's'}`];
+    const { frac, gate } = pickMeta(plan, s, texts);
+    const done = isDone(frac), cancelled = /✗/.test(s.head);
+    const bits = [`${hsS.length} commit${hsS.length === 1 ? '' : 's'}`];
     if (!done && gate) bits.push(gate);
     const meta = bits.filter(Boolean).join(' · ');
     let cls = ' is-open is-pending';
@@ -62,7 +64,7 @@ export function paintDetail(root, ctx) {
       `<b>${esc(short(s.head))}</b></span><small>${esc(meta)}</small></button>`,
     ].join('');
   }).join('');
-  root.querySelector('[data-col="sprint"]').innerHTML = railHead(plan, seq) + picks + [
+  root.querySelector('[data-col="sprint"]').innerHTML = railHeadHtml(plan, seq) + picks + [
     `<p class="ds-commits" data-prov>${esc(provenance(plan))}</p>`,
     `<div class="ds-rail-foot" data-foot>${esc(plan.goal || sprintDesc(sprint))}</div>`,
   ].join('');
@@ -71,10 +73,8 @@ export function paintDetail(root, ctx) {
   const raw = sectionRaw(texts[plan.file] || '', sprint.head);
   const suffix = suffixOf(sprint.head, raw);
   const frac = state(sprint.body);
-  const sec = raw
-    ? renderSection(raw, { suffix, frac })
-    : renderSection(`## ${sprint.head}\n${sprint.body}`, { suffix, frac });
-  const evals = renderEvals(plan.file, sprint.head, sprint.body, history);
+  const sec = renderSection(raw || `## ${sprint.head}\n${sprint.body}`, { suffix, frac });
+  const evals = renderEvals(plan.file, sprint.head, raw || sprint.body, history);
   const commitsHtml = renderCommits(hs || []);
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
   root.querySelector('[data-col="tasks"]').innerHTML = [

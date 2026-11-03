@@ -124,7 +124,7 @@
 *Shipped in 4e1a4fa · Tasks 6–7 · phase-3.*
 
 - REF GATE 3 (ship, OPEN, by owner): drawer on a gated plan shows verdict + evals + commits with Day threading; cancelled plan reads cancelled everywhere. Owed: owner confirms on landed tree.
-- REF GATE 3 · rev 2026-11-03 — owner feedback pass, plan drawer: panel takes 60% of the viewport (was 50), the rail→detail gutter and drawer edge padding shrink to a moderate bleed, rail phase titles clamp to one line with the subtext tucked under it, the Evals and Commits panels lose the dead air between them, and the two kickers (rail plan number + name, tag crumb) share one micro-mono size, top inset and single-line clamp — tags expose their full list as a hover tip. Verdict: OPEN.
+- REF GATE 3 · rev 2026-11-03 — owner feedback pass, plan drawer: panel takes 60% of the viewport (was 50), the rail→detail gutter and drawer edge padding shrink to a moderate bleed, rail phase titles clamp to one line with the subtext tucked under it, the Evals and Commits panels lose the dead air between them, and the two kickers (rail plan number + name, tag crumb) share one micro-mono size, top inset and single-line clamp — tags expose their full list as a hover tip. Evals and gate rev-counts now parse the raw section, so each `· rev` line renders as its own dated entry instead of one collapsed task bullet. Verdict: OPEN.
 
 ---
 

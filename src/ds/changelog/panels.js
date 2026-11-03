@@ -34,7 +34,8 @@ const revDate = (t) => (String(t).match(/(20\d{2}-\d{2}-\d{2})/) || [])[1] || ''
 const revText = (t) => {
   const s = String(t).replace(/^\s*-\s*/, '')
     .replace(/^REF GATE\s+\d+\s*(\([^)]*\))?\s*/i, '')
-    .replace(/^[·—–-]\s*rev\s*\d{4}-\d{2}-\d{2}\s*/i, '')
+    .replace(/^[·—–-]\s*rev\s+\d{4}-\d{2}-\d{2}[a-z]?\s*/i, '')
+    .replace(/^[—–-]\s*/, '')
     .replace(/^\s*\[[ xX]\]\s*/, '')
     .replace(/[*_`]+/g, '')
     .replace(/\s*[—–]\s*Objective:[\s\S]*$/i, '')
