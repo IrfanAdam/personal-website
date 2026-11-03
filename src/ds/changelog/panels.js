@@ -64,7 +64,7 @@ const row = (kind, text, small) => {
 };
 const group = (dayNum, dateLabel, count, inner) => [
   `<details class="ds-timeline-group" open><summary class="ds-timeline-date">`,
-  `<span class="ds-caret">›</span><span class="ds-day-num">Day ${dayNum}</span>`,
+  `<span class="ds-caret" aria-hidden="true">▸</span><span class="ds-day-num">Day ${dayNum}</span>`,
   ` · ${dateLabel} · ${count}</summary>`,
   `<div class="ds-timeline-items">${inner}</div></details>`,
 ].join('');
@@ -83,7 +83,7 @@ export const renderEvals = (planFile, head, body, history) => {
     return group(dates.length - di, label, ps.length + its.length, inner);
   }).join('');
   const n = notes.length + revs.length;
-  const sum = `<summary class="ds-panel-title"><span class="ds-caret">›</span>Evals · `
+  const sum = `<summary class="ds-panel-title"><span class="ds-caret" aria-hidden="true">▸</span>Evals · `
     + `<span class="ds-panel-num">${n}</span></summary>`;
   const box = `<div class="ds-timeline">${groups}</div>`;
   const open = `<details class="ds-panel ds-evals ds-revs"${dueAttr(head, body)} open>`;

@@ -25,7 +25,6 @@
   font-size: var(--text-small); font-weight: var(--weight-bold); flex: 0 1 auto; min-width: 0; margin: 0;
 }
 .ds-md .ds-task-fold > summary .ds-caret { flex: none; }
-.ds-md details.ds-task-fold:not([open]) .ds-caret { transform: rotate(0deg); }
 .ds-md .ds-acc-head {
   cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: var(--space-4);
 }
@@ -36,9 +35,19 @@
 .ds-md .ds-acc-body p { margin: var(--space-1) 0; font-size: var(--text-small); }
 .ds-md .ds-acc-body li { margin-bottom: var(--space-1); }
 .ds-md .ds-acc-body pre { margin: var(--space-2) 0; }
-// — Caret: rotated when open, eases shut —
+// — Caret: filled snap, muted rest, spring shut —
+.ds-md details.ds-task-fold:not([open]) .ds-caret { transform: rotate(0deg); }
+.ds-md .ds-panel:not([open]) > .ds-panel-title .ds-caret { transform: rotate(0deg); }
+.ds-md .ds-timeline-group:not([open]) > .ds-timeline-date .ds-caret { transform: rotate(0deg); }
+.ds-md details[open] > summary .ds-caret { color: var(--color-ink); }
+.ds-md summary:hover .ds-caret { color: var(--color-ink); }
 .ds-caret {
-  color: var(--color-ink); font-weight: var(--weight-extrabold); font-size: var(--text-meta);
-  line-height: 1; margin-right: var(--space-2); display: inline-block;
-  transition: transform 0.15s; transform: rotate(90deg);
+  color: var(--color-ink-muted);
+  font-size: var(--text-meta);
+  font-weight: var(--weight-extrabold);
+  line-height: 1;
+  display: inline-block;
+  margin-right: var(--space-2);
+  transform: rotate(90deg);
+  transition: transform var(--dur-fast) var(--ease-spring);
 }

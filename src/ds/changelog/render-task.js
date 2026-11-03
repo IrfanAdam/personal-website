@@ -29,7 +29,7 @@ export const taskInner = (task) => {
 export const renderTask = (task) => {
   const { num, name, shipped, note } = taskTitleOf(task.title);
   const h3 = name || (num ? `Task ${num}` : 'Task');
-  const trig = `${taskTick(task)}<h3>${fmtInline(h3)}</h3><span class="ds-caret">›</span>`;
+  const trig = `${taskTick(task)}<h3>${fmtInline(h3)}</h3><span class="ds-caret" aria-hidden="true">▸</span>`;
   const obj = task.fields.find((f) => isObjective(f.label));
   const rest = task.fields.filter((f) => !isObjective(f.label));
   const hasContent = !!note || !!obj || task.lead.length > 0

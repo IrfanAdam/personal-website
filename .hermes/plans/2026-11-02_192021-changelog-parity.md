@@ -535,6 +535,7 @@ once they ran.
 |---|------|-----------|
 | 34 | Drawer panel: rail rhythm, pane typography, safepipe footer | rail rows share one rhythm with hanging-indent title and never-cropped subtext; kicker matches rail subtext at 10.5px / same top offset; phase title 28px; one status line (`frac · verdict`); commits + evals render as safepipe day-grouped timelines with sha links, subjects and stamps |
 | 35 | Drawer panel follow-up: even rail rows, single status, tidy footer markers | rail rows 60px, single `frac · verdict` line, subtext one line ellipsised, footer day groups with 12px topic/hash meta and accent-ring eval bullets, no document overflow at 1280/390/320 |
+| 36 | Evals/commits caret: filled snap with open/shut state | `▸` filled glyph in `panels.js`/`footer.js`/`render-task.js`; `.ds-caret` muted rest, ink on open/hover, 90deg open / 0deg shut with spring ease; panels + day groups rotate with state, hover tints glyph only |
 
 ### Task 34: Drawer panel: rail rhythm, pane typography, safepipe footer ✓ done
 
@@ -556,7 +557,17 @@ once they ran.
 
 **Verify:** `lint:manage` + `lint:tokens` green; `npm test` build green; `ds:track` 486/486 linked, 0 wip; drawer probes at 1280/390 — rail rows uniform, no cropped subtext, footer meta 12px, no overflow.
 
-*Shipped in a28b770 · Tasks 34–35 · phase-13.*
+### Task 36: Evals/commits caret — filled snap with open/shut state ✓ done
+
+*2026-11-03 · fix(changelog): filled evals/commits caret with open/shut snap*
+
+**Objective:** The evals/commits carets read as thin `›` outlines with no volume and never moved: panel titles had no closed-state rule (detail `::before` disabled by footer, span had no rotation) and day groups only closed one way, so open/shut looked identical. Swap the glyph to filled `▸` in `panels.js` (evals + day groups), `footer.js` (commits + day groups) and `render-task.js` (task folds, same voice); centralize state in `changelog-folds.css` — `.ds-caret` muted rest (`ink-muted`), ink on open/hover (glyph only, never the row), `rotate(90deg)` open / `0deg` shut with `var(--dur-fast)` + `var(--ease-spring)` overshoot.
+
+**Files:** `src/ds/changelog/panels.js`, `src/ds/changelog/footer.js`, `src/ds/changelog/render-task.js`, `src/ds/changelog-folds.css`
+
+**Verify:** `lint:manage` + `lint:tokens` green (all files ≤100 lines); `npm test` build green; `ds:track` 0 wip; drawer probes — shut carets point right muted, open carets point down ink, hover tints glyph only, no row jump.
+
+*Shipped in PENDING · Tasks 34–36 · phase-13.*
 
 ---
 

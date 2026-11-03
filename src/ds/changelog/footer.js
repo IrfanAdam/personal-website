@@ -18,7 +18,7 @@ const row = (c) => {
 };
 const group = (dayNum, label, count, inner) => [
   `<details class="ds-timeline-group" open><summary class="ds-timeline-date">`,
-  `<span class="ds-caret">›</span><span class="ds-day-num">Day ${dayNum}</span>`,
+  `<span class="ds-caret" aria-hidden="true">▸</span><span class="ds-day-num">Day ${dayNum}</span>`,
   ` · ${label} · ${count}</summary>`,
   `<div class="ds-timeline-items">${inner}</div></details>`,
 ].join('');
@@ -33,7 +33,7 @@ export const renderCommits = (list) => {
     return group(dates.length - di, dayLabel(d), day.length, inner);
   }).join('');
   const n = rows.length;
-  const sum = `<summary class="ds-panel-title"><span class="ds-caret">›</span>Commits · `
+  const sum = `<summary class="ds-panel-title"><span class="ds-caret" aria-hidden="true">▸</span>Commits · `
     + `<span class="ds-panel-num">${n}</span></summary>`;
   const box = `<div class="ds-timeline">${groups}</div>`;
   return `<hr class="ds-hr"><details class="ds-panel ds-commits-panel" open>${sum}${box}</details>`;
