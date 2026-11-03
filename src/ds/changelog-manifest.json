@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T18:31:41.907Z",
+ "generated": "2026-11-03T09:44:36.510Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -48,18 +48,53 @@
   "2026-09-28_130000-code-cleanup-perf.md",
   "2026-10-19_000000-lump-sum-builds.md",
   "2026-10-26_000000-lump-sum-builds.md",
-  "2026-11-02_192021-changelog-parity.md",
-  "2026-11-02_231259-changelog-task-folds.md"
+  "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "d3d7207",
+   "full": "d3d7207f49cef94e7eb7c61a41a4234b1445cb05",
+   "date": "2026-11-03",
+   "time": "00:12",
+   "subject": "chore(sync): version stamp after helper sign-off",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "dbbae3a",
+   "full": "dbbae3a827f95306b4d382f0e16a97278a36916f",
+   "date": "2026-11-03",
+   "time": "00:02",
+   "subject": "chore(sync): stamps after evals collision fix",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
+  },
   {
    "sha": "bd05dd0",
    "full": "bd05dd0585ed1d9bca01bea206dc7126bd433bc2",
    "date": "2026-11-03",
    "time": "00:01",
    "subject": "fix(changelog): evals class collision covered drawer; reset phase on plan switch",
-   "plan": "2026-11-02_231259-changelog-task-folds.md",
-   "anchor": "{#phase-3}"
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "eff2565",
+   "full": "eff2565fed3547e0696135bb73dbd59d7db8577e",
+   "date": "2026-11-02",
+   "time": "23:55",
+   "subject": "chore(sync): version stamp after plan-27 verification",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "102987e",
+   "full": "102987e54a81cfdb2142a861ef41dc71f1fd0ffe",
+   "date": "2026-11-02",
+   "time": "23:50",
+   "subject": "chore(sync): stamps after preview verification",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
   },
   {
    "sha": "fc272c0",
@@ -67,8 +102,8 @@
    "date": "2026-11-02",
    "time": "23:49",
    "subject": "feat(changelog): section machine + drawer wiring + folds CSS",
-   "plan": "2026-11-02_231259-changelog-task-folds.md",
-   "anchor": "{#phase-3}"
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
   },
   {
    "sha": "8de7573",
@@ -76,8 +111,8 @@
    "date": "2026-11-02",
    "time": "23:49",
    "subject": "feat(changelog): block + task renderers for folds",
-   "plan": "2026-11-02_231259-changelog-task-folds.md",
-   "anchor": "{#phase-2}"
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-7}"
   },
   {
    "sha": "fc06e20",
@@ -85,8 +120,26 @@
    "date": "2026-11-02",
    "time": "23:49",
    "subject": "feat(changelog): raw + text primitives for task folds",
-   "plan": "2026-11-02_231259-changelog-task-folds.md",
-   "anchor": "{#phase-1}"
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-6}"
+  },
+  {
+   "sha": "ef07f82",
+   "full": "ef07f82d672daa3d91b81a97fc4f194bb6e04c1b",
+   "date": "2026-11-02",
+   "time": "23:49",
+   "subject": "docs(changelog): close task-folds plan, all phases shipped",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
+  },
+  {
+   "sha": "e535d1f",
+   "full": "e535d1f3b28c8a7fbb7d6660b1879922bb26e376",
+   "date": "2026-11-02",
+   "time": "23:49",
+   "subject": "chore(sync): graph + manifest + history after folds",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-8}"
   },
   {
    "sha": "1b28e4c",
@@ -4301,5 +4354,19 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-folds.css",
+  "M src/ds/changelog-names.json",
+  "M src/ds/changelog/fmt-text.js",
+  "M src/ds/changelog/paint-detail.js",
+  "M src/ds/changelog/raw-detail.js",
+  "M src/ds/changelog/render-blocks.js",
+  "M src/ds/changelog/render-section.js",
+  "M src/ds/changelog/render-task.js",
+  "M src/ds/changelog/sec-final.js",
+  "M src/ds/changelog/sec-raw.js",
+  "M src/ds/changelog/sec-scan.js",
+  "M src/ds/changelog/sec-status.js",
+  "M src/ds/changelog/task-shape.js"
+ ]
 }

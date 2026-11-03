@@ -1,12 +1,12 @@
 /* ADAM/DS — ds/changelog/render-task · task fold renderer ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-2] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-7] */
 // Exports: taskInner, renderTask
 // — Imports —
 import { renderParts, fieldText, renderFieldsOpen, renderFlow } from './render-blocks.js';
 import { taskTitleOf, taskTick, isObjective, fieldRank } from './task-shape.js';
 import { fmtInline } from './fmt-text.js';
 // — Task inner —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const taskInner = (task) => {
   const { note } = taskTitleOf(task.title);
   const obj = task.fields.find((f) => isObjective(f.label));
@@ -25,7 +25,7 @@ export const taskInner = (task) => {
   return inner;
 };
 // — Task fold —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const renderTask = (task) => {
   const { num, name, shipped, note } = taskTitleOf(task.title);
   const h3 = name || (num ? `Task ${num}` : 'Task');

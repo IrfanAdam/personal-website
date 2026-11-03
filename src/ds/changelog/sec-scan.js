@@ -1,11 +1,11 @@
 /* ADAM/DS — ds/changelog/sec-scan.js · line state machine ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-3] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-8] */
 // Exports: scanLines(lines, start, seed)
 import { LABEL_LINE, TASK_HEAD, isTaskHead, fmtInline, cleanHead } from './fmt-text.js';
 import { fieldRank, splitItemContent } from './task-shape.js';
 import { DROP_LINE } from './sec-raw.js';
 // — Scan state —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-3]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-8]
 export const scanLines = (lines, start, seed) => {
   const tasks = [];
   let cur = null;

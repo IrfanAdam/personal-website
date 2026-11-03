@@ -1,4 +1,4 @@
-/* ADAM/DS — ds/changelog/sec-final · close · [plan:2026-11-02_231259-changelog-task-folds.md#phase-2] */
+/* ADAM/DS — ds/changelog/sec-final · close · [plan:2026-11-02_192021-changelog-parity.md#phase-7] */
 // Exports: finalizeSection
 import { taskTitleOf } from './task-shape.js';
 import { taskInner, renderTask } from './render-task.js';
@@ -19,7 +19,7 @@ const isStamp = (t, secNum) => {
   const n = stampNum(t.title);
   return !!n && !!secNum && n === secNum;
 };
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const finalizeSection = (sec) => {
   let head = sec.head;
   const htag = sec.htag;

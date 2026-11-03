@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/raw-detail · status + orphan rail ·
-   [plan:2026-11-02_192021-changelog-parity.md#phase-3] [plan:2026-11-02_231259-changelog-task-folds.md#phase-3] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-3] [plan:2026-11-02_192021-changelog-parity.md#phase-8] */
 // Exports: planStatus, isSealed, orphanRail
 import { isDone, state } from '../changelog-parse.js';
 // — Head marks —

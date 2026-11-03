@@ -1,10 +1,10 @@
 /* ADAM/DS — ds/changelog/sec-status · gate suffix + status lines ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-2] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-7] */
 // Exports: suffixOf, gatePassed, joinStatus, gateOnlyLine, headStatus
 import { parseGates } from './gates.js';
 import { esc } from './fmt-text.js';
 // — Gate suffix —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const suffixOf = (head, rawBody) => {
   const g = parseGates(head, rawBody);
   if (!g) return '';
@@ -14,20 +14,20 @@ export const suffixOf = (head, rawBody) => {
   return ` · GATE OPEN${rev}`;
 };
 // — Status lines —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const joinStatus = (lead, suffix) => {
   const gate = String(suffix || '').replace(/^\s*[✓·]\s*/, '').trim();
   return gate ? `${lead} · ${esc(gate)}` : lead;
 };
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const gatePassed = (s) => /^\s*✓/.test(String(s || '')) || /waiv/i.test(String(s || ''));
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const gateOnlyLine = (suffix) => {
   const t = String(suffix || '').replace(/^[✓·\s]+/, '').trim();
   const cls = gatePassed(suffix) ? 'ds-is-done' : 'ds-is-gate';
   return t ? `<p class="ds-status ${cls}">${esc(t)}</p>` : '';
 };
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const headStatus = (headText, suffix) => {
   const clean = String(headText || '').replace(/\{#([^}]*)\}/g, '').trim();
   const m = clean.match(/\s*([✓✗])\s*(done|cancelled)(\s*\([^)]*\))?\s*$/i);

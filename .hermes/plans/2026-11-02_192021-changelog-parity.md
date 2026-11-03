@@ -1,6 +1,6 @@
 # Changelog parity — crm/safepipe features into personal changelog
 
-**Goal:** Bring the personal `/ds/#/changelog` to feature parity with the latest changelog-kit skill as shipped in crm_proj and safepipe_proj: iteration history, gate verdicts, evals panels, timeline view, read-only Due, honest detail renderer, day-grouped badges, filter drawer, deep links, deploy stamp.
+**Goal:** Bring the personal `/ds/#/changelog` to feature parity with the latest changelog-kit skill as shipped in crm_proj and safepipe_proj: iteration history, gate verdicts, evals panels, timeline view, read-only Due, honest detail renderer, day-grouped badges, filter drawer, deep links, deploy stamp, structured task folds, and the same two-level mobile behaviour the references ship.
 
 **Architecture:** Four parallel file-disjoint implementer lanes write new modules plus patch specs for shared files; the parent lands every shared-file edit centrally, then runs gates, screenshots, and per-phase commits. No lane runs git, trackers, or builds.
 
@@ -213,6 +213,251 @@
 
 ---
 
+## Phase 6 — Raw + text primitives (task folds) {#phase-6}
+
+*Tags: Function*
+
+*Merged from `2026-11-02_231259-changelog-task-folds.md#phase-1` — folds are the display half of the same parity work, not a separate build.*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 13 | sec-raw.js raw acquisition | `sectionRaw`/`stripGateThread`/`stripInlineAnchors`/`DROP_LINE` ported, `node --check` clean, ≤100 lines |
+| 14 | fmt-text.js inline text | `esc`/`escHtml`/`fmtInline`/`cleanHead`/`isTaskHead`/`LABEL_LINE`/`TASK_HEAD` ported, code-span-safe, ≤100 lines |
+| 15 | task-shape.js task model | `fieldRank`/`isObjective`/`taskTitleOf`/`taskTick`/`splitItemContent` ported, ≤100 lines |
+
+### Task 13: sec-raw.js raw acquisition ✓ done
+
+**Objective:** Raw chunk lookup plus display strippers, so the renderer never touches normed bodies.
+
+**Files:**
+- Create: `src/ds/changelog/sec-raw.js`
+
+**Verify:** `node --check` clean; probe `sectionRaw` returns the Phase 3 chunk verbatim minus gate thread.
+
+### Task 14: fmt-text.js inline text ✓ done
+
+**Objective:** Safepipe-identical text escaper plus inline spans (code spans immune to bold/em pairing).
+
+**Files:**
+- Create: `src/ds/changelog/fmt-text.js`
+
+**Verify:** `node --check` clean; probe `` **a** `` inside backticks stays literal.
+
+### Task 15: task-shape.js task model ✓ done
+
+**Objective:** Field ranking, triple-shape task titles (colon / twin / smooth), checkbox tick, item splitter.
+
+**Files:**
+- Create: `src/ds/changelog/task-shape.js`
+
+**Verify:** `node --check` clean; probe colon/twin/smooth titles parse to the same name.
+
+*Shipped in fc06e20 · Tasks 13–15 · phase-6.*
+
+---
+
+## Phase 7 — Block + task renderers (task folds) {#phase-7}
+
+*Tags: Component*
+
+*Merged from `2026-11-02_231259-changelog-task-folds.md#phase-2`.*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 16 | render-blocks.js flow | `renderParts`/`renderFieldOpen`/`renderFieldsOpen`/`renderFlow` ported, authored order kept, ≤100 lines |
+| 17 | render-task.js folds | `taskInner`/`renderTask` ported, task-is-the-fold, bare headers stay flat, ≤100 lines |
+| 18 | sec-status.js verdicts | `suffixOf` adapter over personal `parseGates`, plus status-line builders and `finalizeSection`, ≤100 lines |
+
+### Task 16: render-blocks.js flow ✓ done
+
+**Objective:** Paragraph/list/pre blocks plus open field rows; `##` bodies keep authored order.
+
+**Files:**
+- Create: `src/ds/changelog/render-blocks.js`
+
+**Verify:** `node --check` clean; probe a Files+Verify body keeps source order.
+
+### Task 17: render-task.js folds ✓ done
+
+**Objective:** One `<details>` per task (summary = tick + name + caret), content-less tasks stay bare.
+
+**Files:**
+- Create: `src/ds/changelog/render-task.js`
+
+**Verify:** `node --check` clean; probe bare `### Task 1 ✓ done <sha>` renders header-only.
+
+### Task 18: sec-status.js verdicts ✓ done
+
+**Objective:** Gate suffix from personal `parseGates`, stamp rollup, phase fraction/DONE synthesis, lone-task promotion via `finalizeSection`.
+
+**Files:**
+- Create: `src/ds/changelog/sec-status.js`
+
+**Verify:** `node --check` clean; probe open-gate phase reads `2/2 · GATE OPEN`, never `✓ DONE · GATE OPEN`.
+
+*Shipped in 8de7573 · Tasks 16–18 · phase-7.*
+
+---
+
+## Phase 8 — Section machine + wiring + folds CSS {#phase-8}
+
+*Tags: Component*
+
+*Merged from `2026-11-02_231259-changelog-task-folds.md#phase-3`.*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 19 | sec-scan.js line machine | `scanLines` ported with list-continuation + ordered-peer + bold-step rules, ≤100 lines |
+| 20 | render-section.js assembly | Head scan plus `finalizeSection` wiring, `renderSection(raw, {suffix})`, ≤100 lines |
+| 21 | Parent wiring + folds CSS | `paint-detail.js` renders from raw, `raw-detail.js` pruned, `changelog-folds.css` linked, parity probe green |
+
+### Task 19: sec-scan.js line machine ✓ done
+
+**Objective:** The line state machine (fields, loose blocks, open lists, fences) returning `{tasks, blocks}`.
+
+**Files:**
+- Create: `src/ds/changelog/sec-scan.js`
+
+**Verify:** `node --check` clean; probe indented continuation joins its list item.
+
+### Task 20: render-section.js assembly ✓ done
+
+**Objective:** Head detection plus assembly through `scanLines` and `finalizeSection`.
+
+**Files:**
+- Create: `src/ds/changelog/render-section.js`
+
+**Verify:** `node --check` clean; probe every parity phase yields exactly one `h2`.
+
+### Task 21: Parent wiring + folds CSS ✓ done
+
+**Objective:** Parent-only: drawer renders from raw with raw fallback, old section renderer pruned, token-only fold styles, cross-repo parity probe, full gates.
+
+**Files:**
+- Modify: `src/ds/changelog/paint-detail.js`, `src/ds/changelog/raw-detail.js`, `ds/index.html`
+- Create: `src/ds/changelog-folds.css`
+
+**Verify:** `npm run plan:names` 0 missing; `npm run ds:track` tagged == phased, 0 wip, manifest byte-stable; `npm test` green; parity probe (safepipe vs port tag-counts + text equality) passes on all parity phases.
+
+*Shipped in fc272c0 · Tasks 19–21 · phase-8.*
+
+---
+
+## Phase 9 — Mobile shell + list {#phase-9}
+
+*Tags: Layout*
+
+*Status: 0/3 tasks*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 22 | mobile.js viewport contract | `isMobile()` (720px, matchMedia, safe fallback) + `levelOf(st)`/`stepBack(st)` pure helpers, no DOM, ≤100 lines |
+| 23 | Card + chips mobile CSS | Plan cards re-column with pinned rows, tags on their own row, 44px targets, day graph full-bleed and scrollable |
+| 24 | Filter sheet parity | Bottom sheet at 70dvh with `100vmax` scrim, safe-area inset, 44px options, date chip on its own row, visible on open |
+
+### Task 22: mobile.js viewport contract ✗ open
+
+**Objective:** One shared 720px contract for level math, so CSS and JS cannot disagree about what "mobile" means.
+
+**Files:**
+- Create: `src/ds/changelog/mobile.js`
+
+**Verify:** `node --check` clean; probe `stepBack` flips `tasks → list` only under 720 and reports `false` at `list`.
+
+### Task 23: Card + chips mobile CSS ✗ open
+
+**Objective:** Phone list view: no ellipsised-into-nothing titles, no tags overprinting date, no sub-44px chips, graph scrolls instead of the page.
+
+**Files:**
+- Create: `src/ds/changelog-mobile-cards.css`
+
+**Verify:** At 390px and 320px every card title wraps to ≤2 lines, tags sit on their own row, and pairwise text-leaf overlap ≤1px.
+
+### Task 24: Filter sheet parity ✗ open
+
+**Objective:** The filter drawer reads as a phone sheet (not a desktop popover): scrim, top radius, safe-area padding, tap rows, date chip first.
+
+**Files:**
+- Create: `src/ds/changelog-mobile-filter.css`
+- Patch spec against: `src/ds/changelog-events.js` (parent lands `ensureFilterVisible`)
+
+**Verify:** Sheet opens fully inside 70dvh without page scroll; close returns focus to the funnel; z-order keeps it above an open drawer.
+
+---
+
+## Phase 10 — Mobile drawer levels {#phase-10}
+
+*Tags: Layout, Component*
+
+*Status: 0/3 tasks*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 25 | Level model in paint + events | `stage` doubles as level (`list`→L1, `tasks`→L2), `data-mlevel` + `.is-l1/.is-l2`, back head, task pane scroll reset |
+| 26 | Drawer mobile CSS | Full-bleed panes, parked transform (never `display:none`), flush sticky heads, 2-line rail titles, prose/table/pre wraps |
+| 27 | Dismissal + touch guard | `closeTop` steps L2→L1 before closing; one order for ✕/scrim/Esc/back; taps never latch hover popovers |
+
+### Task 25: Level model in paint + events ✗ open
+
+**Objective:** Two-level mobile model over the existing rail/detail panes, with no new state field: `stage` is the level.
+
+**Files:**
+- Create: `src/ds/changelog/drawer-head.js`
+- Patch spec against: `src/ds/changelog/paint-detail.js`, `src/ds/changelog-events.js` (parent lands)
+
+**Verify:** Plan pick lands L1; rail pick lands L2; deep link without phase lands L1; head shows only `‹ All plans` / `‹ Phases` on phone.
+
+### Task 26: Drawer mobile CSS ✗ open
+
+**Objective:** The drawer becomes a full-height phone surface: one pane at a time, slide between them, heads flush and opaque.
+
+**Files:**
+- Create: `src/ds/changelog-mobile-drawer.css`
+
+**Verify:** At 390px the drawer is 100% wide, 100dvh, no nested scroll chaining, only the active pane is visible after the transition settles.
+
+### Task 27: Dismissal + touch guard ✗ open
+
+**Objective:** One dismissal order on touch: popover → drawer level → drawer → timeline; hover payloads are pointer-gated.
+
+**Files:**
+- Patch spec against: `src/ds/changelog/close-top.js`, `src/ds/changelog/hover.js` (parent lands)
+
+**Verify:** Esc and scrim at L2 step to L1 and never close the drawer; a tap never leaves a tooltip latched.
+
+---
+
+## Phase 11 — Mobile timeline + verification {#phase-11}
+
+*Tags: Layout, Tooling*
+
+*Status: 0/2 tasks*
+
+| # | Task | Done when |
+|---|------|-----------|
+| 28 | Timeline mobile CSS | Full-width panel, shrunken label/day units, wrapping head, 44px close, popover clamped, safe-area bottom |
+| 29 | Numeric mobile verification | 320/390 probes: `scrollWidth ≤ innerWidth`, text overlap ≤1px, sticky label stays put, back button on-screen |
+
+### Task 28: Timeline mobile CSS ✗ open
+
+**Objective:** The timeline stays a destination on a phone: label column readable, lanes reachable, carets and close tappable.
+
+**Files:**
+- Create: `src/ds/changelog-mobile-timeline.css`
+
+**Verify:** At 390px `--tl-label` leaves ≥180px of lane, today line and edge carets stay aligned after horizontal scroll.
+
+### Task 29: Numeric mobile verification ✗ open
+
+**Objective:** Prove the pass with measurements, not screenshots, at 320 and 390.
+
+**Files:**
+- Probe: `ds/#/changelog` (dev server reads only)
+
+**Verify:** `scrollWidth ≤ innerWidth` on both widths; pairwise text-leaf rect intersection ≤1px; rail and detail pane rects fully inside the viewport after open; `npm run plan:names`, `npm run ds:track`, `npm test` green.
+
+---
+
 ## Execution map
 
 | Phase | Mode | Depends on |
@@ -222,8 +467,12 @@
 | 3 Detail + evals | lane C solo | Frozen contracts only (runs parallel with 1, 2, 4) |
 | 4 Timeline + chrome | lane D solo | Frozen contracts only (runs parallel with 1, 2, 3) |
 | 5 Integration | parent | 1–4 |
+| 6–8 Task folds | merged from the folds plan | 1–5 (display-only, parse layer frozen) |
+| 9 Mobile shell + list | parent + lanes | 1–5 (no tracker dependency) |
+| 10 Mobile drawer levels | parent + lanes | 9 |
+| 11 Timeline + verify | parent + lanes | 10 |
 
-*Phases 1–4 dispatch as ONE parallel batch (file-disjoint new files; shared files parent-only). Phase 5 parent-side after all lanes land.*
+*Phases 1–4 dispatched as ONE parallel batch; 6–8 shipped from the merged folds plan; 9–11 dispatch as one file-disjoint batch with shared files parent-only.*
 
 ## Frozen contracts (parent-owned, pasted into every lane brief)
 
@@ -232,6 +481,9 @@
 - Gate line grammar: `REF GATE N (STATUS)` with verdict tokens PASSED/FAILED/OPEN, uppercase explicit; iterations append `· rev YYYY-MM-DD …` lines, never replace.
 - Due grammar: `*Due: YYYY-MM-DD*` under the section head, incomplete sections only; invalid → null. Write path (POST/API/Supabase) OUT OF SCOPE — read-only render; blocked on owner secrets, recorded here not re-probed.
 - Budgets: every file ≤100 lines incl. comments; one statement per line; tokens via `var(--token)` only; file header `/* ADAM/DS — <path> · <job> */` + export map + section banners; phase citations `[plan:2026-11-02_192021-changelog-parity.md#phase-N]` on file headers + exported functions.
+- Fold shapes: field `{label, inline[], parts[], idx, seq}`; para `{t:'para', text, seq}`; list `{t:'list', ordered, items[], home, seq}`; pre `{t:'pre', lang, code, seq}`; raw `{t:'raw', html}`; task `{title, done, cancelled, fields[], lead[], loose[], field}`.
+- Fold pipeline: `scanLines(lines, start, seed)` → `{tasks, blocks}`; `finalizeSection(...)` → `{head, body}`; `renderSection(raw, {suffix})`; `suffixOf(head, rawBody)` adapts personal `parseGates`. Parse layer (`changelog-parse.js`, `ds-track.mjs`, history) is FROZEN — display-only, no hash churn.
+- Mobile: 720px is the only level breakpoint; `isMobile()` is the one detector; `stage` doubles as level (`list` = L1, `tasks` = L2); parked panes use `translateX(103%) + visibility:hidden`, never `display:none`; `data-mlevel` and `.is-l1/.is-l2` ride together.
 
 ## File map (new modules)
 
@@ -247,3 +499,7 @@
 - Keep the parse layer hash-stable: display policy lives in view helpers, never in `state()`/`split()` semantics.
 - Second `ds-track` run must be byte-stable; timestamp-only churn gets reverted, not committed.
 - Commit path-limited per phase with the phase anchor trailer; generated files ride separate `chore(sync)` commits.
+- Mobile list: grid-row pinning beats a column-only override — every re-columned leaf needs its own row.
+- `100vw` causes horizontal scroll + pinch zoom; full-bleed uses `calc(100% + inset*2)` with negative margins.
+- Touch has no hover: gate popovers with a pointer flag, never by deleting the desktop hover.
+- Fold display is render-only; any edit to `split()`/`state()` churns all 47 plan hashes.

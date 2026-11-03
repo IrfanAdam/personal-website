@@ -1,10 +1,10 @@
 /* ADAM/DS — ds/changelog/render-blocks.js · block + field renderers ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-2] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-7] */
 // Exports: renderParts, fieldText, renderFieldOpen, renderFieldsOpen, renderFlow
 import { fmtInline, escHtml } from './fmt-text.js';
 import { isObjective, fieldRank } from './task-shape.js';
 // — Blocks —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const renderParts = (parts) => parts.map((p) => {
   if (p.t === 'list') {
     const tag = p.ordered ? 'ol' : 'ul';
@@ -17,10 +17,10 @@ export const renderParts = (parts) => parts.map((p) => {
   }
   return `<p>${fmtInline(p.text)}</p>`;
 }).join('');
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const fieldText = (f) => (f.inline || []).filter(Boolean).join(' ').trim();
 // — Fields —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const renderFieldOpen = (f) => {
   const inline = fieldText(f);
   const blocks = renderParts(f.parts || []);
@@ -29,10 +29,10 @@ export const renderFieldOpen = (f) => {
   const key = `<span class="ds-f-t">${fmtInline(f.label)}</span>`;
   return `<div class="ds-field">${key}${val}${blocks}</div>`;
 };
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const renderFieldsOpen = (fields) => (fields || []).map(renderFieldOpen).filter(Boolean).join('');
 // — Flow —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-2]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-7]
 export const renderFlow = (t, ledeObj) => {
   const units = [];
   for (const f of (t.fields || [])) {

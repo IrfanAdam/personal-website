@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + raw detail ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-3] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-8] */
 // Exports: paintDetail — rail (plan head + phase picks + goal foot) and the
 // raw section pane (crumb → title → status → due → body → evals → commits)
 import { hits, badges, orphans, unlinked } from '../changelog-links.js';
@@ -83,7 +83,7 @@ export function paintDetail(root, ctx) {
   triage.innerHTML = /All tracked/.test(u) ? '' : `<hr class="ds-hr">${u}`;
   // A new plan or phase starts at its top: the drawer keeps one scroll owner,
   // so without this a deep scroll lands the reader mid-section on open.
-  // [plan:2026-11-02_231259-changelog-task-folds.md#phase-3]
+  // [plan:2026-11-02_192021-changelog-parity.md#phase-8]
   const key = `${plan.file}#${sii}`;
   if (drawer.dataset.key !== key) {
     drawer.dataset.key = key;

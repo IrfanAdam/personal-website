@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/task-shape.js · task field shapes ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-1] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-6] */
 // Exports: fieldRank, isObjective, taskTitleOf, taskTick, splitItemContent
 // — Field order —
 const FIELD_RANK = [
@@ -8,7 +8,7 @@ const FIELD_RANK = [
   [/^(steps?|drill|procedure)\b/i, 3],
   [/^verif/i, 4],
 ];
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-1]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const fieldRank = (label) => {
   for (const [re, r] of FIELD_RANK) {
     if (re.test(String(label || '').trim())) {
@@ -17,14 +17,14 @@ export const fieldRank = (label) => {
   }
   return 5;
 };
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-1]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const isObjective = (label) => /^objective$/i.test(String(label || '').trim());
 // — Title parsing (private cleanHead; frozen graph allows no imports) —
 const cleanHead = (t) => String(t || '')
   .replace(/\{#[^}]*\}/g, '')
   .replace(/<!--[\s\S]*?-->/g, '');
 const SHA_RE = '[0-9a-f]{7,40}';
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-1]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const taskTitleOf = (title) => {
   const s = cleanHead(title).replace(/✓\s*done\s*—?/i, '').replace(/✗\s*cancelled\s*—?/i, '')
     .replace(/[✓✗]/g, '')
@@ -63,7 +63,7 @@ export const taskTitleOf = (title) => {
   return { num: '', name: s, shipped: '' };
 };
 // — Status tick —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-1]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const taskTick = (task) => {
   if (task.done) {
     return '☑';
@@ -74,7 +74,7 @@ export const taskTick = (task) => {
   return '☐';
 };
 // — Fallback item split —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-1]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const splitItemContent = (content) => {
   const segs = String(content || '').split(/\*\*([^*]{1,80}?):\*\*/);
   const lead = (segs[0] || '').trim();

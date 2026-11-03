@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/render-section.js · section assembly ·
-   [plan:2026-11-02_231259-changelog-task-folds.md#phase-3] */
+   [plan:2026-11-02_192021-changelog-parity.md#phase-8] */
 // Exports: renderSection(raw, opts)
 import { esc, fmtInline, cleanHead } from './fmt-text.js';
 import { stripGateThread, stripInlineAnchors, DROP_LINE } from './sec-raw.js';
@@ -7,7 +7,7 @@ import { scanLines } from './sec-scan.js';
 import { headStatus } from './sec-status.js';
 import { finalizeSection } from './sec-final.js';
 // — Section assembly —
-// [plan:2026-11-02_231259-changelog-task-folds.md#phase-3]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-8]
 export const renderSection = (raw, opts) => {
   const { suffix = '' } = opts || {};
   const src = stripInlineAnchors(esc(stripGateThread(raw).replace(/<!--[\s\S]*?-->/g, '')));
