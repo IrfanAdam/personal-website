@@ -80,11 +80,15 @@
   letter-spacing: var(--tracking-mono);
 }
 .ds-rail .ds-pick b {
+  display: -webkit-box;
+  min-width: 0;
   overflow: hidden;
   font-weight: 500;
   line-height: var(--leading-snug);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
 }
 .ds-rail .ds-pick small {
   margin-top: var(--space-1);

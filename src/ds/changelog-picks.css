@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 .ds-drawer-head button:disabled { opacity: 0.4; cursor: default; }
+/* Phone-only back step: hidden on every viewport until the ≤720px sheet
+   rules reveal it, so the desktop head keeps its single ✕. */
+/* [plan:2026-11-02_192021-changelog-parity.md#phase-10] */
+.ds-mback { display: none; }
 .ds-done {
   display: inline-block;
   background: var(--color-ink);
@@ -61,7 +65,8 @@
   font-size: var(--text-micro);
   line-height: 1.7;
   color: var(--color-ink-muted);
-  word-break: break-all;
+  overflow-wrap: break-word;
 }
+.ds-commits span { color: var(--color-ink); }
 .ds-commits a { color: var(--color-ink); text-decoration: underline; text-underline-offset: var(--space-2); }
 .ds-hr { border: none; border-top: var(--border-hairline); margin: var(--space-14) 0; }

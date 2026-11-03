@@ -62,17 +62,6 @@
     background: var(--color-bg);
   }
 }
-/* — Rail titles: wrap to two lines, never ellipsis into nothing — */
-@media (max-width: 720px) {
-  .ds-rail .ds-pick .ds-row b {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-}
 /* — Task prose: wrap long tokens, tables and code scroll inside — */
 @media (max-width: 720px) {
   .ds-task .ds-md {

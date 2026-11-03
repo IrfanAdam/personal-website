@@ -23,10 +23,10 @@ const isStamp = (t, secNum) => {
 export const finalizeSection = (sec) => {
   let head = sec.head;
   const htag = sec.htag;
-  const { tasks, blocks, suffix, htextRaw } = sec;
+  const { tasks, blocks, suffix, htextRaw, frac } = sec;
   const makeHead = (htext) => {
     const hc = cleanHead(htext).replace(/\s*([✓✗])\s*(done|cancelled)(\s*\([^)]*\))?\s*$/i, '');
-    return `<${htag}>${fmtInline(hc.trim())}</${htag}>` + headStatus(htext, suffix);
+    return `<${htag}>${fmtInline(hc.trim())}</${htag}>` + headStatus(htext, suffix, frac);
   };
   const renderBlock = (b) => (b.t === 'raw' ? b.html : renderParts([b]));
   let body = blocks.map(renderBlock).join('');
@@ -51,7 +51,7 @@ export const finalizeSection = (sec) => {
     let statusText = '';
     let cls = 'ds-is-gate';
     if (allDone && (!hasGate || gatePassed(suffix))) {
-      statusText = joinStatus('✓ DONE', suffix);
+      statusText = joinStatus(`${done}/${total} · ✓ DONE`, suffix);
       cls = 'ds-is-done';
     } else if (suffix) statusText = joinStatus(`${done}/${total}`, suffix);
     else statusText = `${done}/${total}`;

@@ -9,7 +9,7 @@ import { finalizeSection } from './sec-final.js';
 // — Section assembly —
 // [plan:2026-11-02_192021-changelog-parity.md#phase-8]
 export const renderSection = (raw, opts) => {
-  const { suffix = '' } = opts || {};
+  const { suffix = '', frac = '' } = opts || {};
   const src = stripInlineAnchors(esc(stripGateThread(raw).replace(/<!--[\s\S]*?-->/g, '')));
   const lines = src.split('\n');
   let hi = -1;
@@ -32,7 +32,7 @@ export const renderSection = (raw, opts) => {
   let seed = null;
   const makeHead = (htext) => {
     const hclean = cleanHead(htext).replace(/\s*([✓✗])\s*(done|cancelled)(\s*\([^)]*\))?\s*$/i, '').trim();
-    return `<${htag}>${fmtInline(hclean)}</${htag}>` + headStatus(htext, suffix);
+    return `<${htag}>${fmtInline(hclean)}</${htag}>` + headStatus(htext, suffix, frac);
   };
   if (hi >= 0) {
     htextRaw = lines[hi].replace(/^#{1,4}\s+/, '');
@@ -41,5 +41,5 @@ export const renderSection = (raw, opts) => {
     start = hi + 1;
   }
   const { tasks, blocks } = scanLines(lines, start, seed);
-  return finalizeSection({ head, htextRaw, htag, tasks, blocks, suffix });
+  return finalizeSection({ head, htextRaw, htag, tasks, blocks, suffix, frac });
 };

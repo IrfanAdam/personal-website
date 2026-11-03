@@ -10,9 +10,10 @@ import { orphanRail } from './raw-detail.js';
 import { renderSection } from './render-section.js';
 import { sectionRaw } from './sec-raw.js';
 import { suffixOf } from './sec-status.js';
-import { renderEvals, renderCommitsPanel } from './panels.js';
+import { renderEvals } from './panels.js';
 import { parseGates } from './gates.js';
 import { dueOf } from './due.js';
+import { drawerHeadHtml, railHeadHtml } from './drawer-head.js';
 import history from '../plan-history.json';
 const gateTag = (head, body) => {
   const g = parseGates(head, body);
@@ -23,10 +24,7 @@ const gateTag = (head, body) => {
   if (!g.revCount) return v;
   return `${v} · ${g.revCount} rev${g.revCount > 1 ? 's' : ''}`;
 };
-const railHead = (plan, seq) => [
-  `<div class="ds-rail-head"><span class="ds-rail-num">${esc(plan.id || seq)}</span>`,
-  `<span class="ds-rail-title">${esc(String(plan.title || '').toUpperCase())}</span></div>`,
-].join('');
+const railHead = (plan, seq) => railHeadHtml(plan, seq);
 const dueLine = (sprint) => {
   if (isDone(state(sprint.body)) || /✗/.test(sprint.head)) return '';
   const d = dueOf({ head: sprint.head, body: sprint.body });
@@ -40,7 +38,7 @@ const crumbOf = (plan) => {
 };
 // [plan:2026-11-02_192021-changelog-parity.md#phase-4]
 export function paintDetail(root, ctx) {
-  const { list, pi, plan, sprints, si, sel, open, texts } = ctx;
+  const { list, pi, plan, sprints, si, sel, open, stage, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
   const seq = String(Math.max(list.length - pi, 1)).padStart(2, '0');
@@ -69,12 +67,15 @@ export function paintDetail(root, ctx) {
   const hs = hits(plan.file, sprint.body, sii === 0);
   const raw = sectionRaw(texts[plan.file] || '', sprint.head);
   const suffix = suffixOf(sprint.head, raw);
-  const sec = raw ? renderSection(raw, { suffix }) : renderSection(`## ${sprint.head}\n${sprint.body}`, { suffix });
+  const frac = state(sprint.body);
+  const sec = raw
+    ? renderSection(raw, { suffix, frac })
+    : renderSection(`## ${sprint.head}\n${sprint.body}`, { suffix, frac });
   const evals = renderEvals(plan.file, sprint.head, sprint.body, history);
-  const commitsHtml = renderCommitsPanel((hs || []).map((c) => ({ sha: c.sha || c, date: c.date || '' })));
+  const commitsHtml = badges(hs || []);
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
   root.querySelector('[data-col="tasks"]').innerHTML = [
-    `<div class="ds-drawer-head"><button data-close aria-label="Close detail">✕</button></div>`,
+    drawerHeadHtml(stage),
     `<div class="ds-md">`, crumbOf(plan), sec.head, sec.body, dueLine(sprint),
     evals, commitsHtml, orphanRail(plan.sprints, sii, badges(orph)), `</div>`,
   ].join('');

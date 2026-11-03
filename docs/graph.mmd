@@ -27,10 +27,14 @@ ds_atlas_view --> ds_atlas_canvas
 ds_atlas_view --> ds_atlas_insight
 ds_changelog_boot --> ds_changelog_deep_links
 ds_changelog_boot --> ds_changelog_version_poll
+ds_changelog_close_top --> ds_changelog_mobile
+ds_changelog_drawer_head --> ds_changelog_esc
+ds_changelog_drawer_head --> ds_changelog_mobile
 ds_changelog_events --> ds_changelog_close_top
 ds_changelog_events --> ds_changelog_deep_links
 ds_changelog_events --> ds_changelog_hover
 ds_changelog_events --> ds_changelog_hum
+ds_changelog_events --> ds_changelog_mobile
 ds_changelog_events --> ds_changelog_tl_edges
 ds_changelog_graph --> ds_changelog_links
 ds_changelog_graph --> ds_changelog_parse
@@ -43,6 +47,7 @@ ds_changelog_paint_chips --> ds_changelog_filter_drawer
 ds_changelog_paint_chips --> ds_changelog_graph
 ds_changelog_paint_chips --> ds_changelog_parse
 ds_changelog_paint_chips --> ds_changelog_raw_detail
+ds_changelog_paint_detail --> ds_changelog_drawer_head
 ds_changelog_paint_detail --> ds_changelog_due
 ds_changelog_paint_detail --> ds_changelog_esc
 ds_changelog_paint_detail --> ds_changelog_gates
@@ -295,6 +300,7 @@ ds_pages_atlas --> ds_atlas_shell
 ds_pages_atlas --> ds_atlas_tooltip
 ds_pages_atlas --> ds_atlas_view
 ds_pages_changelog --> ds_changelog_boot
+ds_pages_changelog --> ds_changelog_drawer_head
 ds_pages_changelog --> ds_changelog_events
 ds_pages_changelog --> ds_changelog_links
 ds_pages_changelog --> ds_changelog_paint

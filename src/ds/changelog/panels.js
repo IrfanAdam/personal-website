@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/panels · evals + commits panels · [plan:2026-11-02_192021-changelog-parity.md#phase-3] */
-// Exports: stripGateThread, renderEvals, renderCommitsPanel
+// Exports: stripGateThread, renderEvals
 import { esc } from './esc.js';
 import { fmtDate } from '../changelog-parse.js';
 import { parseGates } from './gates.js';
@@ -55,36 +55,18 @@ export const renderEvals = (planFile, head, body, history) => {
   const revs = histRevs(planFile, head, history);
   if (!notes.length && !revs.length) return '';
   const dates = [...new Set([...notes.map((r) => r.date), ...revs.map((r) => r.date)])].sort().reverse();
-  const groups = dates.map((d) => {
+  const groups = dates.map((d, di) => {
     const ps = notes.filter((r) => r.date === d);
     const its = revs.filter((r) => r.date === d);
     const label = d ? esc(fmtDate(d) || d) : 'Undated';
     const pe = ps.map((r) => itemHtml('eval', r.text)).join('');
     const ie = its.map((r) => itemHtml('iter', r.text, d)).join('');
-    const open = dayOpen(label);
+    const count = ps.length + its.length;
+    const open = dayOpen(`Day ${dates.length - di} · ${label} · ${count}`);
     return `${open}<div class="ds-evals-items">${pe}${ie}</div></details>`;
   }).join('');
   const n = notes.length + revs.length;
   const sum = `<summary class="ds-panel-title">Evals · ${n}</summary>`;
   const inner = `<div class="ds-evals-list">${groups}</div>`;
   return `<details class="ds-panel ds-evals"${dueAttr(head, body)} open>${sum}${inner}</details>`;
-};
-// [plan:2026-11-02_192021-changelog-parity.md#phase-3]
-export const renderCommitsPanel = (commits) => {
-  const list = commits || [];
-  if (!list.length) return '';
-  const dates = [...new Set(list.map((c) => c.date || ''))].sort().reverse();
-  const badge = (c) => {
-    const sha = String(c.sha || '');
-    return `<span class="ds-badge" title="${esc(sha)}">${esc(sha.slice(0, 8))}</span>`;
-  };
-  const groups = dates.map((d) => {
-    const items = list.filter((c) => (c.date || '') === d);
-    const label = d ? esc(fmtDate(d) || d) : 'Undated';
-    const badges = items.map(badge).join('');
-    const open = dayOpen(`${label} · ${items.length}`);
-    return `${open}<div class="ds-evals-items">${badges}</div></details>`;
-  }).join('');
-  const sum = `<summary class="ds-panel-title">Commits · ${list.length}</summary>`;
-  return `<details class="ds-panel ds-commits" open>${sum}${groups}</details>`;
 };
