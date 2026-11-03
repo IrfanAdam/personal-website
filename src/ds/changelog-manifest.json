@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T11:26:39.524Z",
+ "generated": "2026-11-03T12:51:59.230Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -4436,5 +4436,24 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-detail.css",
+  "M src/ds/changelog-drawer.css",
+  "M src/ds/changelog-filter.css",
+  "M src/ds/changelog-hierarchy.css",
+  "M src/ds/changelog-mobile-timeline.css",
+  "M src/ds/changelog-picks.css",
+  "M src/ds/changelog-timeline-bars.css",
+  "M src/ds/changelog-timeline.css",
+  "M src/ds/changelog/drawer-head.js",
+  "M src/ds/changelog/hover.js",
+  "M src/ds/changelog/paint-chips.js",
+  "M src/ds/changelog/paint-detail.js",
+  "M src/ds/changelog/paint-plan.js",
+  "M src/ds/changelog/timeline-paint.js",
+  "M src/ds/changelog/tl-edges.js",
+  "M src/ds/changelog/tl-grid.js",
+  "M src/ds/changelog/tl-meta.js",
+  "M src/ds/changelog/tl-rows.js"
+ ]
 }
