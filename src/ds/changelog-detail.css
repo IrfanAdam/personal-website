@@ -67,7 +67,7 @@
   font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-mono);
   letter-spacing: var(--tracking-mono); color: var(--color-ink-subtle);
 }
-.ds-panel { margin: var(--space-8) 0; }
+.ds-panel { margin: var(--space-4) 0; }
 .ds-panel-title {
   display: flex; align-items: center; gap: var(--space-8);
   padding: var(--space-4) 0; font-family: var(--font-mono);

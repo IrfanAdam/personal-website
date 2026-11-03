@@ -96,4 +96,4 @@
 }
 .ds-commits span { color: var(--color-ink); }
 .ds-commits a { color: var(--color-ink); text-decoration: underline; text-underline-offset: var(--space-2); }
-.ds-hr { border: none; border-top: var(--border-hairline); margin: var(--space-8) 0; }
+.ds-hr { border: none; border-top: var(--border-hairline); margin: var(--space-2) 0; }

@@ -7,7 +7,7 @@
   position: static;
   width: auto;
   overflow: visible;
-  margin: var(--space-8) 0 0 var(--space-4);
+  margin: var(--space-2) 0 0 var(--space-4);
   padding-left: var(--space-12);
   border-left: var(--border-hairline);
   box-shadow: none;
@@ -15,7 +15,7 @@
   font-family: var(--font-sans);
 }
 .ds-timeline-date {
-  margin: var(--space-8) 0 var(--space-4);
+  margin: var(--space-3) 0 var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   letter-spacing: var(--tracking-label);
@@ -47,7 +47,7 @@
 }
 .ds-timeline-item {
   position: relative;
-  padding: var(--space-2) 0 var(--space-4);
+  padding: var(--space-1) 0 var(--space-3);
   font-size: var(--text-ds-body);
   color: var(--color-ink);
   overflow-wrap: anywhere;
