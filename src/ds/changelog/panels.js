@@ -17,6 +17,8 @@ const dueAttr = (head, body) => {
 export const stripGateThread = (body) => String(body || '').split('\n').filter((l) => {
   if (/^\s*-\s*REF GATE\b/i.test(l)) return false;
   if (/^\s*-\s*Evidence\b/i.test(l)) return false;
+  // Gate status prose duplicates the canonical `frac · verdict` line above it.
+  if (/^\s*[*_]*Status[*_]*:?\s*\d+\s*\/\s*\d+/i.test(l)) return false;
   return true;
 }).join('\n');
 const revNotes = (head, body) => {
@@ -30,8 +32,15 @@ const revNotes = (head, body) => {
 };
 const revDate = (t) => (String(t).match(/(20\d{2}-\d{2}-\d{2})/) || [])[1] || '';
 const revText = (t) => {
-  const s = String(t).replace(/^\s*-\s*/, '').replace(/^REF GATE\s+\d+\s*(\([^)]*\))?\s*/i, '');
-  return s.replace(/^[·—–-]\s*rev\s*\d{4}-\d{2}-\d{2}\s*/i, '').replace(/^["“]+|["”]+$/g, '').trim();
+  const s = String(t).replace(/^\s*-\s*/, '')
+    .replace(/^REF GATE\s+\d+\s*(\([^)]*\))?\s*/i, '')
+    .replace(/^[·—–-]\s*rev\s*\d{4}-\d{2}-\d{2}\s*/i, '')
+    .replace(/^\s*\[[ xX]\]\s*/, '')
+    .replace(/[*_`]+/g, '')
+    .replace(/\s*[—–]\s*Objective:[\s\S]*$/i, '')
+    .replace(/^["“]+|["”]+$/g, '')
+    .trim();
+  return s.length > 150 ? `${s.slice(0, 149).trimEnd()}…` : s;
 };
 const histRevs = (planFile, head, history) => {
   const rows = [];
@@ -54,7 +63,7 @@ const row = (kind, text, small) => {
 };
 const group = (dayNum, dateLabel, count, inner) => [
   `<details class="ds-timeline-group" open><summary class="ds-timeline-date">`,
-  `<span class="ds-caret">‹›</span><span class="ds-day-num">Day ${dayNum}</span>`,
+  `<span class="ds-caret">›</span><span class="ds-day-num">Day ${dayNum}</span>`,
   ` · ${dateLabel} · ${count}</summary>`,
   `<div class="ds-timeline-items">${inner}</div></details>`,
 ].join('');
@@ -73,7 +82,7 @@ export const renderEvals = (planFile, head, body, history) => {
     return group(dates.length - di, label, ps.length + its.length, inner);
   }).join('');
   const n = notes.length + revs.length;
-  const sum = `<summary class="ds-panel-title"><span class="ds-caret">‹›</span>Evals · `
+  const sum = `<summary class="ds-panel-title"><span class="ds-caret">›</span>Evals · `
     + `<span class="ds-panel-num">${n}</span></summary>`;
   const box = `<div class="ds-timeline">${groups}</div>`;
   const open = `<details class="ds-panel ds-evals ds-revs"${dueAttr(head, body)} open>`;

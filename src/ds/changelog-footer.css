@@ -28,8 +28,7 @@
   cursor: pointer;
   list-style: none;
 }
-/* one bullet geometry for both day dots and eval rings, colour per kind */
-.ds-timeline-date::before,
+/* eval rows carry the only bullet: a hollow accent ring */
 .ds-timeline-item--eval::before {
   content: "";
   position: absolute;
@@ -39,9 +38,6 @@
   height: var(--space-7);
   box-sizing: border-box;
   border-radius: var(--radius-pill);
-}
-.ds-timeline-date::before { background: var(--color-accent); }
-.ds-timeline-item--eval::before {
   background: var(--color-bg);
   border: var(--space-1) solid var(--color-accent);
 }

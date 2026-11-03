@@ -82,6 +82,7 @@ export const DROP_LINE = (ln) => {
     || /^<!--[\s\S]*-->$/.test(t)
     || /^\{#[^}]*\}$/.test(t)
     || /^\*Due:[^*]*\*$/.test(t)
+    || /^\*{0,2}Status:?\*{0,2}\s*\d+\s*\/\s*\d+/.test(t)
     || /^---\s*$/.test(t)
     || /^\*{1,2}Tags:\s*[^*]*\*{1,2}$/.test(t);
 };

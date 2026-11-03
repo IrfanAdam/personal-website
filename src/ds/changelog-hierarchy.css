@@ -84,8 +84,11 @@
   line-height: var(--leading-snug);
   white-space: nowrap;
 }
+/* Rail titles: uniform two-line box so every row shares one rhythm; a short
+   title leaves blank space instead of pulling the subtext up. */
 .ds-rail .ds-pick .ds-row b {
   display: -webkit-box;
+  min-height: 2.5em;
   overflow: hidden;
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
