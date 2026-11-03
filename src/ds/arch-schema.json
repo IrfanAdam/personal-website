@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T13:22:12.685Z",
+  "generated": "2026-11-03T14:26:18.417Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -933,7 +933,6 @@
         "--shadow-viewer",
         "--size-ds-drawer",
         "--space-1",
-        "--space-12",
         "--space-14",
         "--space-16",
         "--space-22",
@@ -962,8 +961,10 @@
       "route": null,
       "title": "changelog timeline bars",
       "tokens": [
+        "--border-focus",
         "--border-hairline",
         "--color-accent",
+        "--color-accent-ink",
         "--color-error",
         "--color-ink",
         "--color-ink-muted",
@@ -978,7 +979,6 @@
         "--space-2",
         "--space-22",
         "--space-26",
-        "--space-30",
         "--space-4",
         "--space-6",
         "--space-8",
@@ -4050,6 +4050,7 @@
       "route": null,
       "title": "tokens color",
       "tokens": [
+        "--accent-600",
         "--accent-700",
         "--color-ink",
         "--color-line",

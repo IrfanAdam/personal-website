@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T13:23:12.910Z",
+ "generated": "2026-11-03T14:26:27.782Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,42 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "945745a",
+   "full": "945745a878e2a965fa25845ec649531399007d7e",
+   "date": "2026-11-03",
+   "time": "19:56",
+   "subject": "fix(changelog): evals + commits panel rhythm, one grouped block",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-3}"
+  },
+  {
+   "sha": "cca8059",
+   "full": "cca80598d55c3b2675cce51632bf930e325d1fe7",
+   "date": "2026-11-03",
+   "time": "19:54",
+   "subject": "fix(changelog): caret clearance, rAF scroll, focus restore, AA accent",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
+  {
+   "sha": "2945113",
+   "full": "2945113e7dfbb7674aecc8528dcea8146eaab8e0",
+   "date": "2026-11-03",
+   "time": "19:33",
+   "subject": "fix(changelog): badge fade, caret states, blob-proof hover, tablet taps",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
+  {
+   "sha": "f8fd230",
+   "full": "f8fd2304ecf3632243419b96f6e43a9c887b5337",
+   "date": "2026-11-03",
+   "time": "19:14",
+   "subject": "fix(changelog): reveal lands the whole bout, badge stops oscillating",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-4}"
+  },
   {
    "sha": "f780f38",
    "full": "f780f3810478b4b693fd448fbb40a5358232757f",
