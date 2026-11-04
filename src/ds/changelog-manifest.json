@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T10:25:57.809Z",
+ "generated": "2026-11-04T10:32:38.781Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "29174f7",
+   "full": "29174f700f2214a9aad9905cddfa75172fba271a",
+   "date": "2026-11-04",
+   "time": "16:02",
+   "subject": "fix(changelog): spine from evals caret, task caret states live",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "{#phase-13}"
+  },
   {
    "sha": "5e2968d",
    "full": "5e2968d34e918a1b57bc156b277717920fa38a28",

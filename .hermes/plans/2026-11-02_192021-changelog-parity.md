@@ -605,6 +605,18 @@ once they ran.
 
 *Shipped in 5e2968d · Task 39 · phase-13.*
 
+### Task 40: Spine from the evals caret, task caret states live ✓ done
+
+*2026-11-04 · fix(changelog): spine from evals caret, task caret states live*
+
+**Objective:** Owner read: the dotted spine should hang from the EVALS caret's point, and task folds should share the panels' caret + collapsed-horizontal / expanded-vertical convention. Probe showed two faults: (1) panel caret centre 939.6 vs spine 943.4 — 4px left; (2) shut task folds rendered the OPEN (down) caret. Root cause of (2): `changelog-folds.css` used `//` section comments, which are not valid CSS — the parser fused each `//` line with the next selector, killing that rule. The `//` line above the caret block specifically ate the `details.ds-task-fold:not([open])` selector, so shut folds never rotated back. Fix: all five `//` lines → `/* */` (resurrects the shut rule plus the swallowed `.ds-field` / `.ds-tasks` / fold-h3 rules); panel caret `margin-left: space-4`.
+
+**Files:** `src/ds/changelog-folds.css`, `changelog-footer.css`
+
+**Verify:** lints green; live probes — caret centre 943.6 = spine 943.4 (0.2px), shut fold caret identity matrix (▸), open fold rotate-90 (▾); screenshot confirms spine under EVALS point, task 1 expanded ▾ with body, task 2 collapsed ▸.
+
+*Shipped in 29174f7 · Task 40 · phase-13.*
+
 ---
 
 ## Execution map
