@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T09:22:15.426Z",
+  "generated": "2026-11-04T09:26:55.315Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -713,10 +713,17 @@
       "route": null,
       "title": "changelog mobile timeline",
       "tokens": [
+        "--border-hairline",
+        "--color-bg",
+        "--color-ink",
+        "--dur-soft",
+        "--ease-standard",
+        "--radius-sm",
+        "--shadow-viewer",
         "--size-tap",
         "--space-10",
         "--space-16",
-        "--space-20",
+        "--space-28",
         "--space-32",
         "--space-6",
         "--space-8",
