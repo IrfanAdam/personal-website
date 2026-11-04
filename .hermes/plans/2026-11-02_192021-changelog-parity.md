@@ -581,6 +581,18 @@ once they ran.
 
 *Shipped in 09abacf · Task 37 · phase-13.*
 
+### Task 38: Drawer round two — title colon, day squares, dotted spine ✓ done
+
+*2026-11-04 · fix(changelog): title colon, day squares, dotted spine*
+
+**Objective:** Owner read of the Task 37 drawer: no extra air above the title, the drawer title should read `Phase 1 : Title`, markers belong on days not rows, and the safepipe dotted connector is missing. Reverted the kicker to `space-6` and re-seated the ✕ at `top: space-22` (probe: kicker and ✕ both at y=24); added view-only `phaseColon()` in `fmt-text.js` (parse/hash untouched) applied at both drawer H2 build sites so `Phase 1 — …` renders `Phase 1 : …`; moved the state square from every commit row to one 6px marker per `DAY` summary on a restored 1px dotted spine, nudged the day caret right `space-4`, rows render bare. Eval accent ring kept.
+
+**Files:** `src/ds/changelog-picks.css`, `changelog-detail.css`, `changelog-footer.css`, `src/ds/changelog/fmt-text.js`, `render-section.js`, `sec-final.js`
+
+**Verify:** `lint:manage` + `lint:tokens` green (91/43/45/95 lines); `npm test` build green; live probes — H2 `Phase 1 : Tracker: …`, ✕/kicker y=24, spine dotted 1px, day squares 6px muted, commit rows marker-free; Playwright headless screenshot confirms pixels. (Mid-task a sibling session stashed this wip as `stash@{0}`; restored via `checkout stash@{0} -- <files>`, their stash entry left intact.)
+
+*Shipped in e76abd2 · Task 38 · phase-13.*
+
 ---
 
 ## Execution map
