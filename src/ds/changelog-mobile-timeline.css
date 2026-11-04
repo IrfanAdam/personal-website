@@ -44,8 +44,8 @@
     min-height: var(--size-tap);
     padding: 0 var(--space-10);
     border: var(--border-hairline);
-    background: var(--color-ink);
-    color: var(--color-bg);
+    background: var(--color-surface);
+    color: var(--color-ink);
     border-radius: var(--radius-sm);
     opacity: 1;
     cursor: pointer;
@@ -58,11 +58,11 @@
     justify-content: center;
     width: var(--space-28);
     height: var(--space-28);
-    background: var(--color-ink);
-    color: var(--color-bg);
-    border: 0;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    border: var(--border-hairline);
     border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-viewer);
+    box-shadow: none;
     z-index: 4;
   }
   .ds-tl-edge::before {
