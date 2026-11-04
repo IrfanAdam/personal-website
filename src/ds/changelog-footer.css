@@ -1,15 +1,15 @@
 /* ADAM/DS — ds/changelog-footer · commits + evals timeline (drawer footer)
    [plan:2026-11-02_192021-changelog-parity.md#phase-3] */
-/* Safepipe footer parity: one hairline spine, dated day groups, accent day
+/* Safepipe footer parity: flat day groups, state markers, accent day
    numbers. Scoped under .ds-panel — this page already owns a global
    .ds-timeline overlay, so the reset keeps this footer panel in flow. */
 .ds-panel .ds-timeline {
   position: static;
   width: auto;
   overflow: visible;
-  margin: var(--space-2) 0 0 var(--space-4);
-  padding-left: var(--space-12);
-  border-left: var(--border-hairline);
+  margin: var(--space-2) 0 0;
+  padding-left: 0;
+  border-left: 0;
   box-shadow: none;
   animation: none;
   font-family: var(--font-sans);
@@ -28,15 +28,23 @@
   cursor: pointer;
   list-style: none;
 }
-/* eval rows carry the only bullet: a hollow accent ring */
+/* flat rows: every row opens with a state marker, no spine indent */
+.ds-timeline-item::before {
+  content: "";
+  display: inline-block;
+  width: var(--space-6);
+  height: var(--space-6);
+  margin-right: var(--space-8);
+  background: var(--color-ink-muted);
+}
+/* eval rows keep the hollow accent ring */
 .ds-timeline-item--eval::before {
   content: "";
-  position: absolute;
-  left: calc(-1 * var(--space-12) - var(--space-4));
-  top: var(--space-6);
+  display: inline-block;
   width: var(--space-7);
   height: var(--space-7);
   box-sizing: border-box;
+  margin-right: var(--space-8);
   border-radius: var(--radius-pill);
   background: var(--color-bg);
   border: var(--space-1) solid var(--color-accent);
@@ -46,7 +54,6 @@
   font-weight: var(--weight-extrabold);
 }
 .ds-timeline-item {
-  position: relative;
   padding: var(--space-1) 0 var(--space-3);
   font-size: var(--text-ds-body);
   color: var(--color-ink);
@@ -68,20 +75,6 @@
   font-size: var(--text-micro);
   line-height: var(--leading-mono);
   color: var(--color-ink-muted);
-}
-.ds-timeline-item--iter {
-  margin-left: var(--space-12);
-  padding-left: var(--space-8);
-  border-left: var(--border-hairline);
-  position: relative;
-}
-.ds-timeline-item--iter::before {
-  content: "";
-  position: absolute;
-  left: calc(-1 * var(--space-1) - var(--space-3));
-  top: var(--space-8);
-  width: var(--space-4);
-  border-top: var(--border-hairline);
 }
 /* day groups: the date line is the summary, caret turns with it */
 .ds-timeline-group > .ds-timeline-date::-webkit-details-marker { display: none; }
