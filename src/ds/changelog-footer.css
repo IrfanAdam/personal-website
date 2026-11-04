@@ -8,8 +8,14 @@
   width: auto;
   overflow: visible;
   margin: var(--space-2) 0 0;
-  padding-left: var(--space-12);
-  border-left: var(--size-hairline) dotted var(--color-line);
+  padding-left: var(--space-16);
+  border-left: 0;
+  background-image: repeating-linear-gradient(180deg,
+    color-mix(in srgb, var(--color-ink-muted) 60%, transparent) 0 var(--space-2),
+    transparent var(--space-2) var(--space-5));
+  background-position: var(--space-8) 0;
+  background-repeat: no-repeat;
+  background-size: var(--size-hairline) 100%;
   box-shadow: none;
   animation: none;
   font-family: var(--font-sans);
@@ -32,10 +38,11 @@
 .ds-timeline-date::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--space-12) - var(--space-3));
-  top: var(--space-4);
+  top: 50%;
+  left: calc(var(--space-8) + var(--size-hairline) / 2 - var(--space-3) - var(--space-16));
   width: var(--space-6);
   height: var(--space-6);
+  transform: translateY(-50%);
   background: var(--color-ink-muted);
 }
 .ds-timeline-date .ds-caret { margin-left: var(--space-4); }
