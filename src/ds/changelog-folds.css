@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog-folds · task fold + field styles ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-8] */
-// Exports: none (styles only) — classes emitted by render-task.js
-// — Fields —
+/* Exports: none (styles only) — classes emitted by render-task.js */
+/* — Fields — */
 .ds-md .ds-field {
   font-size: var(--text-small); color: var(--color-ink); line-height: var(--leading-body);
   overflow-wrap: anywhere; margin: var(--space-1) 0;
@@ -12,7 +12,7 @@
   text-transform: uppercase; color: var(--color-ink-muted);
 }
 .ds-md .ds-field .ds-f-t::after { content: ": "; letter-spacing: 0; }
-// — Task stack —
+/* — Task stack — */
 .ds-md .ds-tasks { display: flex; flex-direction: column; gap: var(--space-12); margin: var(--space-4) 0; }
 .ds-md .ds-subtask h3 {
   font-size: var(--text-small); font-weight: var(--weight-bold); flex: 0 1 auto; min-width: 0;
@@ -20,7 +20,7 @@
 }
 .ds-md .ds-task-bare { display: flex; align-items: baseline; gap: var(--space-4); }
 .ds-md .ds-task-bare h3 { margin: 0; }
-// — Folds: the task IS the accordion, summary carries header + status —
+/* — Folds: the task IS the accordion, summary carries header + status — */
 .ds-md .ds-task-fold > summary h3 {
   font-size: var(--text-small); font-weight: var(--weight-bold); flex: 0 1 auto; min-width: 0; margin: 0;
 }
@@ -35,7 +35,7 @@
 .ds-md .ds-acc-body p { margin: var(--space-1) 0; font-size: var(--text-small); }
 .ds-md .ds-acc-body li { margin-bottom: var(--space-1); }
 .ds-md .ds-acc-body pre { margin: var(--space-2) 0; }
-// — Caret: filled snap, muted rest, spring shut —
+/* — Caret: filled snap, muted rest, spring shut — */
 .ds-md details.ds-task-fold:not([open]) .ds-caret { transform: rotate(0deg); }
 .ds-md .ds-panel:not([open]) > .ds-panel-title .ds-caret { transform: rotate(0deg); }
 .ds-md .ds-timeline-group:not([open]) > .ds-timeline-date .ds-caret { transform: rotate(0deg); }

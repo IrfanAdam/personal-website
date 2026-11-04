@@ -91,7 +91,7 @@
 .ds-timeline-group:not([open]) > .ds-timeline-date .ds-caret { transform: rotate(0deg); }
 /* panel title: the .ds-caret span replaces the old ::before glyph */
 .ds-panel > .ds-panel-title::before { content: none; }
-.ds-panel > .ds-panel-title .ds-caret { margin-right: 0; }
+.ds-panel > .ds-panel-title .ds-caret { margin-right: 0; margin-left: var(--space-4); }
 .ds-panel-num {
   color: var(--color-accent);
   font-weight: var(--weight-bold);
