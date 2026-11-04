@@ -13,7 +13,7 @@
 }
 .ds-md .ds-field .ds-f-t::after { content: ": "; letter-spacing: 0; }
 /* — Task stack — */
-.ds-md .ds-tasks { display: flex; flex-direction: column; gap: var(--space-12); margin: var(--space-4) 0; }
+.ds-md .ds-tasks { display: flex; flex-direction: column; gap: var(--space-12); margin: var(--space-4) 0 var(--space-16); }
 .ds-md .ds-subtask h3 {
   font-size: var(--text-small); font-weight: var(--weight-bold); flex: 0 1 auto; min-width: 0;
   margin: var(--space-8) 0 var(--space-2);
