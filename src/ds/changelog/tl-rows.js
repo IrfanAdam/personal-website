@@ -60,10 +60,10 @@ export const rowHtml = (r, startMs) => {
     `<div class="ds-tl-row${r.bouts.length ? ' has-track' : ''}" data-tl-row="${r.p.file}">`,
     label,
     `<div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l"`,
-    ` aria-label="Show earlier track · ${noq(titleOf(r.p))}" hidden>«</button>`,
+    ` aria-label="Show earlier track · ${noq(titleOf(r.p))}" hidden>◂</button>`,
     bars,
     ghostHtml(r, r.ghost, startMs),
     `<button class="ds-tl-edge is-r" data-tl-edge="r"`,
-    ` aria-label="Show later track · ${noq(titleOf(r.p))}" hidden>»</button></div></div>`,
+    ` aria-label="Show later track · ${noq(titleOf(r.p))}" hidden>▸</button></div></div>`,
   ].join('');
 };
