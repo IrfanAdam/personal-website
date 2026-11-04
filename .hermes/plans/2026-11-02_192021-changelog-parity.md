@@ -617,6 +617,18 @@ once they ran.
 
 *Shipped in 29174f7 · Task 40 · phase-13.*
 
+### Task 41: Air under kicker, room after last task ✓ done
+
+*2026-11-04 · fix(changelog): air under kicker, room after last task*
+
+**Objective:** Owner read with screenshot: the title crowds the kicker above it, and the task stack crowds the EVALS rule below. Added the air on the correct sides — kicker keeps its top offset (✕ alignment untouched) and gains `margin-bottom: space-12`; the task stack gains `margin-bottom: space-16` before the footer rule. Two one-line margin swaps, no markup.
+
+**Files:** `src/ds/changelog-picks.css`, `changelog-folds.css`
+
+**Verify:** lints green; live probes — kicker→title 12px, last-task→rule 16px, kicker/✕ still y=24; screenshot confirms both gaps read as clear bands.
+
+*Shipped in c1a95f7 · Task 41 · phase-13.*
+
 ---
 
 ## Execution map
