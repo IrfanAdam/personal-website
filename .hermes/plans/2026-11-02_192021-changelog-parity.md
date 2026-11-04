@@ -593,6 +593,18 @@ once they ran.
 
 *Shipped in e76abd2 · Task 38 · phase-13.*
 
+### Task 39: Day marker truly square, spine truly dotted and centered ✓ done
+
+*2026-11-04 · fix(changelog): true square day marker on centered dotted spine*
+
+**Objective:** Owner pixel review: the marker read as a rectangle, the connector was not visibly dotted and not centered on the marker axis — desktop only, mobile looked right. Pixel probe found the cause: the 6px marker sat at `left:-15` from the summary (12px padding + 1px border), so 2px of it fell outside `.ds-timeline`'s box and was clipped to 4×6, leaving its left edge on the border instead of its centre; and a 1px `dotted` border gives 1px-on/1px-off, which antialiases into a near-solid whisper at DPR2 while staying crisp at the phone's DPR3 — hence "mobile is fine". Fix: drop the border, paint the spine as a 1px `repeating-linear-gradient` (2px dot / 3px gap at 60% ink) at `background-position: var(--space-8)` inside a widened 16px gutter, and centre the 6px square on that axis with `left: calc(var(--space-8) + var(--size-hairline)/2 - var(--space-3) - var(--space-16))`, `top:50%` + `translateY(-50%)`.
+
+**Files:** `src/ds/changelog-footer.css`
+
+**Verify:** `lint:tokens` + `lint:manage` green (98 lines); `npm test` build green; DPR2 pixel sweep — marker 12×12 device (6×6 CSS), spine cols 1px wide with 4-on/4-off runs = 2px dot / 2px gap, marker centre 0.25px off spine centre; 390px phone — marker 6×6, centre 8.5 = spine axis, `scrollWidth - innerWidth` 0.
+
+*Shipped in 5e2968d · Task 39 · phase-13.*
+
 ---
 
 ## Execution map

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T10:22:15.718Z",
+  "generated": "2026-11-04T10:24:29.432Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -522,6 +522,7 @@
         "--space-2",
         "--space-3",
         "--space-4",
+        "--space-5",
         "--space-6",
         "--space-7",
         "--space-8",
