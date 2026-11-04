@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T15:09:43.361Z",
+ "generated": "2026-11-04T15:11:51.908Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "f9f6e20",
+   "full": "f9f6e20ed20330f2108e01b759b858b12d8f9763",
+   "date": "2026-11-04",
+   "time": "20:41",
+   "subject": "fix(changelog): mobile timeline caret buttons + steady rows",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "phase-11"
+  },
   {
    "sha": "9c72360",
    "full": "9c72360e5dba27d73df7c9bc6a5c089836b2e93a",
@@ -4625,8 +4634,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-mobile-timeline.css",
-  "M src/ds/changelog/tl-edges.js"
- ]
+ "wip": []
 }
