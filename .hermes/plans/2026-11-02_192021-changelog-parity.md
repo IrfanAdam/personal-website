@@ -567,7 +567,19 @@ once they ran.
 
 **Verify:** `lint:manage` + `lint:tokens` green (all files ≤100 lines); `npm test` build green; `ds:track` 0 wip; drawer probes — shut carets point right muted, open carets point down ink, hover tints glyph only, no row jump.
 
+### Task 37: Drawer polish — title air, close line, flat day groups ✓ done
+
+*2026-11-04 · fix(changelog): drawer air, close line, flat day groups*
+
+**Objective:** Four small reads from the drawer screenshot: the phase title sat almost on the drawer top edge, the ✕ floated above the kicker line, and the evals/commits day groups carried a double indent (panel spine + branch indent) that buried the Day line. Give the kicker `space-16` top margin, drop the head to `top: space-30` so the ✕ centers on the kicker cap-height, and flatten the footer timeline (no spine, no padding indent, no iteration branch) so each row opens with a state marker inline — muted square for commits/iterations, accent ring kept for evals — with the `Day N · date · count` summary flush left carrying the collapse context. CSS-only, no JS/markup change.
+
+**Files:** `src/ds/changelog-picks.css`, `changelog-detail.css`, `changelog-footer.css`
+
+**Verify:** `lint:manage` + `lint:tokens` green (89/100/99 lines); `npm test` build green; live probes on preview — kicker y=34 (+10 air), ✕ center within 3px of kicker center, timeline margin/padding/border 0, rows carry 6px muted squares, day groups flush with title.
+
 *Shipped in a63e594 · Tasks 34–36 · phase-13.*
+
+*Shipped in 09abacf · Task 37 · phase-13.*
 
 ---
 
