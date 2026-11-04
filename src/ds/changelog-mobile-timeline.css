@@ -62,15 +62,15 @@
     position: sticky;
     align-items: center;
     justify-content: center;
+    flex: none;
     width: var(--size-tap);
-    height: var(--size-tap);
+    height: var(--space-28);
     padding: 0;
-    background: transparent;
-    color: var(--color-ink-muted);
-    border: 0;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    border: var(--border-hairline);
+    border-radius: var(--radius-sm);
     font-size: var(--text-meta);
-    font-weight: var(--weight-extrabold);
-    line-height: 1;
     z-index: 4;
   }
   .ds-tl-edge.is-l { left: var(--space-8); }

@@ -41,7 +41,7 @@ const syncBadge = (host, view) => {
   const show = !!(cur && curLeft < view.left);
   badge.hidden = !show;
   if (!ticks) return;
-  const want = show ? `${-badge.offsetWidth}px` : '';
+  const want = show && badge.offsetWidth ? `${-badge.offsetWidth}px` : '';
   if (ticks.style.marginLeft !== want) ticks.style.marginLeft = want;
 };
 const tracksOf = (row) => [...row.querySelectorAll('[data-tl-bout],[data-tl-ghost]')];

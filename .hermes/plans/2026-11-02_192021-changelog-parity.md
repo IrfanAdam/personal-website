@@ -463,6 +463,7 @@
 
 - REF GATE 11 · rev 2026-11-03 — owner feedback pass: the plan-name column is desktop-only. At ≤720px the timeline drops the sticky label pane (and its PLAN header) so the lane owns the full width — the list had no value on a phone and ate the grid. Verdict: OPEN.
 - REF GATE 11 · rev 2026-11-03b — phone pass: the pinned month chip is suppressed at ≤720px, where its 21px mask over a 20px cell was reducing a two-digit day to one digit (27 read as 7 at 320/360/414/720); the month still names itself in its own 1st cell as it scrolls past. Verdict: OPEN.
+- REF GATE 11 · rev 2026-11-04 — caret container + steady rows: the ≤720px edge carets are buttons again (surface, hairline, radius, 44px tap width) and capped at the 28px row height so showing/hiding them no longer grows the row; the badge shift no longer writes when the badge has no width. Verdict: OPEN.
 
 ---
 
