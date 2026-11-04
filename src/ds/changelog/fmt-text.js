@@ -33,6 +33,8 @@ export const LABEL_LINE = (ln) => ln.match(/^\*\*([^*]{1,80}?):\*\*\s?(.*)$/);
 // [plan:2026-11-02_192021-changelog-parity.md#phase-6]
 export const TASK_HEAD = (ln) => ln.match(/^###\s+(.+)$/);
 // [plan:2026-11-02_192021-changelog-parity.md#phase-6]
+// [plan:2026-11-02_192021-changelog-parity.md#phase-13]
+export const phaseColon = (t) => String(t || '').replace(/^Phase\s+(\d+)\s*[—–-]\s*/i, 'Phase $1 : ');
 export const isTaskHead = (title) => /^(Task|Step|Phase)\b/i.test(String(title || '').trim());
 // — Head cleaning —
 // [plan:2026-11-02_192021-changelog-parity.md#phase-6]

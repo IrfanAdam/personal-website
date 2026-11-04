@@ -3,7 +3,7 @@
 import { taskTitleOf } from './task-shape.js';
 import { taskInner, renderTask } from './render-task.js';
 import { renderParts, renderFlow, fieldText } from './render-blocks.js';
-import { esc, fmtInline, cleanHead } from './fmt-text.js';
+import { esc, fmtInline, cleanHead, phaseColon } from './fmt-text.js';
 import { joinStatus, gatePassed, gateOnlyLine, headStatus } from './sec-status.js';
 // — Section finalizer —
 const stampNum = (title) => {
@@ -57,7 +57,7 @@ export const finalizeSection = (sec) => {
     else statusText = `${done}/${total}`;
     const line = `<p class="ds-status ${cls}">${statusText}</p>`;
     if (head.includes('</h2>')) head = head.replace(/<\/h2>.*/, `</h2>${line}`);
-    else head = `<h2>${fmtInline(cleanHead(htextRaw))}</h2>${line}`;
+    else head = `<h2>${fmtInline(phaseColon(cleanHead(htextRaw)))}</h2>${line}`;
   }
   const carriers = tasks.filter((t) => !t.title);
   const carrierContent = carriers.some((t) => t.lead.length || (t.loose || []).length

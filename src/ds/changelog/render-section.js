@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog/render-section.js · section assembly ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-8] */
 // Exports: renderSection(raw, opts)
-import { esc, fmtInline, cleanHead } from './fmt-text.js';
+import { esc, fmtInline, cleanHead, phaseColon } from './fmt-text.js';
 import { stripGateThread, stripInlineAnchors, DROP_LINE } from './sec-raw.js';
 import { scanLines } from './sec-scan.js';
 import { headStatus } from './sec-status.js';
@@ -31,7 +31,7 @@ export const renderSection = (raw, opts) => {
   let htextRaw = '';
   let seed = null;
   const makeHead = (htext) => {
-    const hclean = cleanHead(htext).replace(/\s*([✓✗])\s*(done|cancelled)(\s*\([^)]*\))?\s*$/i, '').trim();
+    const hclean = phaseColon(cleanHead(htext)).replace(/\s*([✓✗])\s*(done|cancelled)(\s*\([^)]*\))?\s*$/i, '').trim();
     return `<${htag}>${fmtInline(hclean)}</${htag}>` + headStatus(htext, suffix, frac);
   };
   if (hi >= 0) {

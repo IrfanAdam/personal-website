@@ -2,7 +2,7 @@
    [plan:2026-11-02_192021-changelog-parity.md#phase-4] */
 /* Pane rhythm: kicker, one title, one status stamp, then airy prose. */
 .ds-drawer-head {
-  position: absolute; top: var(--space-30); right: var(--space-10); z-index: 2;
+  position: absolute; top: var(--space-22); right: var(--space-10); z-index: 2;
   display: flex; align-items: center; justify-content: flex-end; margin: 0;
   padding: var(--space-2) 0 var(--space-2) var(--space-8); background: var(--color-bg);
 }

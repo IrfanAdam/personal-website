@@ -8,8 +8,8 @@
   width: auto;
   overflow: visible;
   margin: var(--space-2) 0 0;
-  padding-left: 0;
-  border-left: 0;
+  padding-left: var(--space-12);
+  border-left: var(--size-hairline) dotted var(--color-line);
   box-shadow: none;
   animation: none;
   font-family: var(--font-sans);
@@ -28,15 +28,17 @@
   cursor: pointer;
   list-style: none;
 }
-/* flat rows: every row opens with a state marker, no spine indent */
-.ds-timeline-item::before {
+/* flat rows: the day carries the state marker on the dotted spine */
+.ds-timeline-date::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  left: calc(-1 * var(--space-12) - var(--space-3));
+  top: var(--space-4);
   width: var(--space-6);
   height: var(--space-6);
-  margin-right: var(--space-8);
   background: var(--color-ink-muted);
 }
+.ds-timeline-date .ds-caret { margin-left: var(--space-4); }
 /* eval rows keep the hollow accent ring */
 .ds-timeline-item--eval::before {
   content: "";

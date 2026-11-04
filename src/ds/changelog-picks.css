@@ -27,7 +27,7 @@
    same case, same line box and top inset, clipped instead of wrapped. */
 .ds-task .ds-md p.ds-crumb {
   overflow: hidden;
-  margin: var(--space-16) 0 var(--space-2);
+  margin: var(--space-6) 0 var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   line-height: var(--leading-mono);
