@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T10:12:47.015Z",
+  "generated": "2026-11-04T10:22:15.718Z",
   "nodes": [
     {
       "id": "boot_chrome",
@@ -512,14 +512,13 @@
         "--color-bg",
         "--color-ink",
         "--color-ink-muted",
-        "--color-line",
         "--font-mono",
         "--font-sans",
         "--leading-mono",
         "--radius-pill",
         "--size-hairline",
         "--space-1",
-        "--space-12",
+        "--space-16",
         "--space-2",
         "--space-3",
         "--space-4",
@@ -718,6 +717,7 @@
       "tokens": [
         "--border-hairline",
         "--color-ink",
+        "--color-ink-muted",
         "--color-surface",
         "--dur-soft",
         "--ease-standard",
@@ -729,7 +729,9 @@
         "--space-32",
         "--space-6",
         "--space-8",
-        "--text-h3"
+        "--text-h3",
+        "--text-meta",
+        "--weight-extrabold"
       ]
     },
     {

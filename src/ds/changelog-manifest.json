@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T10:13:00.316Z",
+ "generated": "2026-11-04T10:22:42.717Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "14220a2",
+   "full": "14220a2d010b33bddf73f4215e8a225a0eb851b9",
+   "date": "2026-11-04",
+   "time": "15:52",
+   "subject": "fix(changelog): thin text caret at lane end, 1-line phase name on mobile",
+   "plan": "2026-11-02_192021-changelog-parity.md",
+   "anchor": "phase-11"
+  },
   {
    "sha": "84733aa",
    "full": "84733aa11aebd94502382a0c6d775b9b8e30eb13",
@@ -4580,5 +4589,7 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-footer.css"
+ ]
 }
