@@ -1,7 +1,6 @@
 /* ADAM/DS — ds/changelog-mobile-timeline · phone timeline destination ·
    [plan:2026-11-02_192021-changelog-parity.md#phase-11] */
-/* Exports: none — ≤720 overrides + 721–900 ✕ tap target for changelog-timeline* hooks */
-/* — Panel: full-bleed destination — */
+/* Exports: none — ≤720 overrides for changelog-timeline* hooks */
 @media (max-width: 720px) {
   .ds-timeline {
     left: 0;
@@ -9,17 +8,15 @@
     max-width: 100%;
     border-left: 0;
   }
-  /* — Units: the plan-name column is desktop-only — the lane owns the phone — */
   .ds-tl-body {
-    --tl-day: var(--space-20);
+    --tl-day: var(--space-28);
     --tl-label: 0px;
   }
   .ds-tl-label,
-  .ds-tl-clabel {
-    display: none;
-  }
-  /* — Head: one row. Title shrinks, the range ellipsises, ✕ stays tap-sized and
-     flush — the default pill chrome reads as a stray card on a phone — */
+  .ds-tl-clabel { display: none; }
+  .ds-tl-row { min-height: var(--space-28); }
+  .ds-tl-ticks { height: var(--space-28); }
+  .ds-tl-tick { line-height: var(--space-28); }
   .ds-tl-head {
     flex-wrap: nowrap;
     gap: var(--space-6);
@@ -45,48 +42,59 @@
     flex: none;
     min-width: var(--size-tap);
     min-height: var(--size-tap);
-    padding: 0;
-    border: 0;
-    background: none;
-    color: inherit;
-    opacity: 0.6;
+    padding: 0 var(--space-10);
+    border: var(--border-hairline);
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    opacity: 1;
     cursor: pointer;
   }
-  /* — Scroll: safe-area bottom, no sticky carets — with the label column gone
-     a pinned caret would sit on top of the grid — */
-  .ds-tl-scroll {
-    padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
-  }
-  .ds-tl-clabel {
-    display: none;
-  }
+  .ds-tl-scroll { padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom, 0px)); }
   .ds-tl-edge {
-    display: none;
+    display: inline-flex;
+    position: sticky;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-28);
+    height: var(--space-28);
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-viewer);
+    z-index: 4;
   }
-  /* — Axis: the pinned month chip masks a two-digit day on a phone-sized cell —
-     its month's own 1st cell already names it, so the chip is surplus here — */
-  .ds-tl-curmonth {
-    display: none;
+  .ds-tl-edge::before {
+    content: "";
+    position: absolute;
+    inset: calc((var(--space-28) - var(--size-tap)) / 2);
   }
-  .ds-tl-curmonth::before {
-    display: none;
-  }
-  /* — Popover: clamped to the viewport — */
+  .ds-tl-edge.is-l { left: var(--space-8); }
+  .ds-tl-edge.is-r { right: var(--space-8); margin-left: auto; }
+  .ds-tl-edge[hidden] { display: none; }
+  .ds-tl-curmonth,
+  .ds-tl-curmonth::before { display: none; }
   .ds-tl-pop {
     max-width: calc(100vw - var(--space-32));
     max-height: 40dvh;
     overflow: auto;
   }
+  .ds-timeline:not([hidden]) { animation: ds-tl-in-m var(--dur-soft) var(--ease-standard); }
+  .ds-tl-row.is-nudge-fwd { animation: ds-tl-nudge-fwd-m 160ms var(--ease-standard); }
+  .ds-tl-row.is-nudge-back { animation: ds-tl-nudge-back-m 160ms var(--ease-standard); }
 }
-/* — Tablet: past the phone breakpoint the ✕ shrinks to label size; keep a
-   finger-sized target on touch-width panels — */
+@keyframes ds-tl-in-m {
+  from { opacity: 0; transform: translateX(var(--space-16)); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ds-tl-nudge-fwd-m {
+  from { transform: translateX(var(--space-6)); }
+  to { transform: translateX(0); }
+}
+@keyframes ds-tl-nudge-back-m {
+  from { transform: translateX(calc(var(--space-6) * -1)); }
+  to { transform: translateX(0); }
+}
 @media (min-width: 721px) and (max-width: 900px) {
-  .ds-tl-head button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: var(--size-tap);
-    min-height: var(--size-tap);
-    padding: 0;
-  }
-}
+.ds-tl-head button{min-width:var(--size-tap);min-height:var(--size-tap)}}
