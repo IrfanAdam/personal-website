@@ -1,0 +1,60 @@
+/* ADAM/STYLE — styles/cal-modal-states · Cal dialog states · [plan:2026-11-02_000000-lump-sum-builds.md#phase-2] */
+/* Exports: none (imported via app.css) — .cal-modal__loading, .cal-modal__error */
+
+/* — Visibility — */
+.cal-modal__loading[hidden] {
+  display: none;
+}
+.cal-modal__error[hidden] {
+  display: none;
+}
+
+/* — Loading — */
+.cal-modal__loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-16);
+}
+.cal-modal__loading p {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--color-ink-muted);
+}
+.cal-modal__loading span {
+  display: block;
+  height: var(--space-14);
+  background: var(--color-surface-sunken);
+  animation: cal-pulse var(--dur-slow) var(--ease-standard) infinite alternate;
+}
+@keyframes cal-pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+/* — Error — */
+.cal-modal__error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-16);
+}
+.cal-modal__error p {
+  margin: 0;
+  color: var(--color-ink);
+}
+.cal-modal__fallback {
+  color: var(--color-accent-ink);
+}
+
+/* — Reduced motion — */
+@media (prefers-reduced-motion: reduce) {
+  .cal-modal__loading span {
+    animation: none;
+  }
+}

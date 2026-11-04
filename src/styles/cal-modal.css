@@ -1,6 +1,5 @@
-/* ADAM/STYLE — styles/cal-modal · Cal embed modal · [plan:2026-10-19_000000-lump-sum-builds.md#phase-2] */
+/* ADAM/STYLE — styles/cal-modal · Cal connect dialog shell · [plan:2026-11-02_000000-lump-sum-builds.md#phase-2] */
 /* Exports: none (imported via app.css) — .cal-modal, .cal-modal__* */
-
 
 /* — Overlay — */
 .cal-modal {
@@ -29,59 +28,73 @@
   height: min(var(--size-modal-vh), var(--size-modal-h));
   background: var(--color-surface);
   border: var(--border-hairline);
+  border-radius: var(--radius-none);
   box-shadow: var(--shadow-viewer);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+.cal-modal:not([hidden]) .cal-modal__panel {
+  animation: cal-panel-in var(--dur-soft) var(--ease-signature);
+}
+@keyframes cal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-12));
+    filter: blur(var(--blur-micro));
+  }
+}
+
+/* — Head — */
 .cal-modal__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-12);
-  padding: var(--space-10) var(--space-14);
+  padding: var(--space-12) var(--space-16);
   border-bottom: var(--border-hairline);
   flex-shrink: 0;
   background: var(--color-surface);
 }
 .cal-modal__title {
   margin: 0;
-  font-size: var(--text-copy);
+  font-size: var(--text-card-title);
   font-weight: var(--weight-bold);
-  letter-spacing: var(--tracking-copy);
+  letter-spacing: var(--tracking-body);
   color: var(--color-ink);
 }
 .cal-modal__close {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--color-ink);
-  font-size: var(--text-title);
-  line-height: 1;
-  cursor: pointer;
-  padding: var(--space-4);
+  flex-shrink: 0;
 }
-.cal-modal__close:focus-visible {
-  outline: var(--border-focus);
-  outline-offset: var(--focus-offset);
-}
+
+/* — Body — */
 .cal-modal__body {
   flex: 1;
   min-height: 0;
   overflow: auto;
   background: var(--color-surface);
 }
-.cal-modal__body #my-cal-inline-15min {
-  width: 100%;
-  height: 100%;
+.cal-modal__embed {
   min-height: var(--size-modal-min);
-  overflow: auto;
 }
+.cal-modal__embed iframe {
+  display: block;
+  width: 100%;
+  min-height: var(--size-modal-min);
+  border: 0;
+}
+
+/* — Small screens + reduced motion — */
 @media (max-width: 640px) {
   .cal-modal {
     padding: var(--space-8);
   }
   .cal-modal__panel {
     height: var(--size-modal-vh-sm);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cal-modal:not([hidden]) .cal-modal__panel {
+    animation: none;
   }
 }
