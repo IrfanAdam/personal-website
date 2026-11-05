@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T09:06:04.028Z",
+ "generated": "2026-11-05T09:06:35.659Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -52,6 +52,15 @@
   "2026-11-02_192021-changelog-parity.md"
  ],
  "commits": [
+  {
+   "sha": "30b73c0",
+   "full": "30b73c0fda55af8f7273b498e5dc02e5e7722b3f",
+   "date": "2026-11-05",
+   "time": "14:36",
+   "subject": "fix(changelog): month text vertically centered on dates, mobile axis",
+   "plan": "2026-11-02_000000-lump-sum-builds.md",
+   "anchor": "{#phase-4}"
+  },
   {
    "sha": "dc63f12",
    "full": "dc63f1215f3450305308b342d6e5f05e277ee543",
@@ -4643,7 +4652,5 @@
    "anchor": "decap cms"
   }
  ],
- "wip": [
-  "M src/ds/changelog-mobile-timeline.css"
- ]
+ "wip": []
 }
