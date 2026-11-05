@@ -70,9 +70,9 @@
 }
 /* The 1st names its month in place of a day number; the sticky badge shares the text. */
 .ds-tl-mon {
-  position: absolute; top: 0; left: 0; z-index: 1; height: 100%; padding: 0 var(--space-3);
+  position: absolute; top: 0; left: 50%; z-index: 1; height: 100%; padding: 0 var(--space-3);
   background: var(--color-bg); line-height: var(--space-22); white-space: nowrap;
-  color: var(--color-ink); font-weight: var(--weight-bold);
+  color: var(--color-ink); font-weight: var(--weight-bold); transform: translateX(-50%);
 }
 .ds-tl-row {
   display: flex; align-items: stretch; min-height: var(--space-30); border-bottom: var(--border-hairline);

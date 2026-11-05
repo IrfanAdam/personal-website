@@ -63,7 +63,7 @@
     align-items: center;
     justify-content: center;
     flex: none;
-    width: var(--size-tap);
+    width: var(--space-28);
     height: var(--space-28);
     padding: 0;
     background: var(--color-surface);
@@ -76,7 +76,7 @@
   .ds-tl-edge.is-l { left: var(--space-8); }
   .ds-tl-edge.is-r { right: var(--space-8); margin-left: auto; }
   .ds-tl-edge[hidden] { display: none; }
-  .ds-tl-curmonth, .ds-tl-curmonth::before { display: none; }
+  .ds-tl-curmonth { left: var(--space-8); }
   .ds-tl-pop {
     max-width: calc(100vw - var(--space-32));
     max-height: 40dvh;

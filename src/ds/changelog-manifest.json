@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T15:11:51.908Z",
+ "generated": "2026-11-05T08:45:52.066Z",
  "continuation": "20260909_145218_9888b1",
  "plans": [
   "2026-09-06_183401-portfolio-decap-completion.md",
@@ -4634,5 +4634,8 @@
    "anchor": "decap cms"
   }
  ],
- "wip": []
+ "wip": [
+  "M src/ds/changelog-mobile-timeline.css",
+  "M src/ds/changelog-timeline.css"
+ ]
 }
