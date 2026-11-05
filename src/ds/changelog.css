@@ -54,6 +54,13 @@ button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-of
   animation: fx-blip 1.6s ease-out infinite;
   pointer-events: none;
 }
+/* Tight today halo: the generic fx-blip spreads wide, which reads oversized on a
+   small blob — today should pulse against its own edge, not glow the neighbours. */
+.ds-day.is-today::after { animation-name: ds-today-blip; }
+@keyframes ds-today-blip {
+  0% { box-shadow: 0 0 0 0 var(--color-accent); }
+  100% { box-shadow: 0 0 0 var(--space-2) transparent; }
+}
 .ds-day.is-today { animation: ds-day-glitch var(--dur-glitch) steps(1) infinite; will-change: transform; }
 /* transform-only twin of fx-glitch: today keeps its lv1–lv4 fill, jitter only. Opacity untouched. */
 @keyframes ds-day-glitch {
